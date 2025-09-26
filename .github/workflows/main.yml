@@ -26,15 +26,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pyyaml
 
-      # 4️⃣ 拉取订阅
+      # 4️⃣ 拉取订阅（Clash/V2Ray 通用）
       - name: Fetch subscriptions
         run: python fetch_subscriptions.py
 
-      # 5️⃣ 挑选香港节点
+      # 5️⃣ 挑选香港节点（参考节点池 + IP 范围 + 名称包含 hk/hongkong）
       - name: Pick HK nodes
         run: python pick_hk_nodes.py
 
-      # 6️⃣ 二阶段测速 & 优选
+      # 6️⃣ 二阶段测速 & 优选（下行 ≥10M，延迟 ≤200ms）
       - name: Speedtest & Select Best Nodes
         run: python speed_test.py
 
@@ -47,4 +47,4 @@ jobs:
           git config --global user.email "actions@github.com"
           git add best_nodes.yaml best_nodes.json
           git commit -m "Update best_nodes $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
+          git push
