@@ -1,0 +1,26 @@
+import requests
+import yaml
+import json
+
+with open("subscriptions.json", "r") as f:
+    data = json.load(f)
+
+all_proxies = []
+
+for url in data["subscriptions"]:
+    try:
+        r = requests.get(url, timeout=10)
+        content = r.text
+        # 如果是 YAML 直接解析
+        if content.strip().startswith("proxies:"):
+            y = yaml.safe_load(content)
+            all_proxies.extend(y.get("proxies", []))
+        else:
+            # 其它文本格式可先直接保存或解析 base64
+            all_proxies.append({"name": "raw_node", "server": url})
+    except Exception as e:
+        print(f"拉取失败: {url} -> {e}")
+
+# 输出到文件
+with open("all_nodes.yaml", "w") as f:
+    yaml.dump({"proxies": all_proxies}, f, allow_unicode=True)
