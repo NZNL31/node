@@ -3,7 +3,7 @@ import yaml
 import base64
 import json
 
-# 订阅列表
+# 订阅列表文件
 with open("subscriptions.json", "r") as f:
     data = json.load(f)
 
@@ -14,13 +14,13 @@ for url in data["subscriptions"]:
         r = requests.get(url, timeout=10)
         content = r.text.strip()
 
-        # 1. Clash YAML 格式
+        # 1️⃣ Clash YAML 格式
         if content.startswith("proxies:"):
             y = yaml.safe_load(content)
             proxies = y.get("proxies", [])
             all_nodes.extend(proxies)
 
-        # 2. Base64 订阅（Vmess / Vless / Trojan / SS）
+        # 2️⃣ Base64 订阅（Vmess / Vless / Trojan / SS）
         else:
             for line in content.splitlines():
                 line = line.strip()
@@ -34,19 +34,21 @@ for url in data["subscriptions"]:
                         node = json.loads(decoded)
                         all_nodes.append(node)
                     else:
-                        # 保留原始链接，后续可以再解析
+                        # 保留原始链接
                         all_nodes.append({"name": "raw_node", "server": decoded})
                 except:
-                    # 不是 base64 就直接存储
+                    # 非 base64 直接存储
                     all_nodes.append({"name": "raw_node", "server": line})
 
     except Exception as e:
         print(f"拉取失败: {url} -> {e}")
 
-# 保存为 Clash 通用 YAML
+# 保存 Clash 通用 YAML
 with open("all_nodes.yaml", "w") as f:
     yaml.dump({"proxies": all_nodes}, f, allow_unicode=True)
 
-# 保存为 V2Ray 通用 JSON（可选）
+# 保存 V2Ray 通用 JSON
 with open("all_nodes.json", "w") as f:
     json.dump(all_nodes, f, ensure_ascii=False, indent=2)
+
+print(f"已生成 all_nodes.yaml 和 all_nodes.json，共 {len(all_nodes)} 个节点")
