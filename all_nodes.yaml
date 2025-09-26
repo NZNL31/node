@@ -1,26 +1,52 @@
 import requests
 import yaml
+import base64
 import json
 
+# 订阅列表
 with open("subscriptions.json", "r") as f:
     data = json.load(f)
 
-all_proxies = []
+all_nodes = []
 
 for url in data["subscriptions"]:
     try:
         r = requests.get(url, timeout=10)
-        content = r.text
-        # 如果是 YAML 直接解析
-        if content.strip().startswith("proxies:"):
+        content = r.text.strip()
+
+        # 1. Clash YAML 格式
+        if content.startswith("proxies:"):
             y = yaml.safe_load(content)
-            all_proxies.extend(y.get("proxies", []))
+            proxies = y.get("proxies", [])
+            all_nodes.extend(proxies)
+
+        # 2. Base64 订阅（Vmess / Vless / Trojan / SS）
         else:
-            # 其它文本格式可先直接保存或解析 base64
-            all_proxies.append({"name": "raw_node", "server": url})
+            for line in content.splitlines():
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    # 尝试 base64 解码
+                    decoded = base64.b64decode(line + '=' * (-len(line) % 4)).decode()
+                    # 简单解析 Vmess JSON
+                    if decoded.startswith("{") and decoded.endswith("}"):
+                        node = json.loads(decoded)
+                        all_nodes.append(node)
+                    else:
+                        # 保留原始链接，后续可以再解析
+                        all_nodes.append({"name": "raw_node", "server": decoded})
+                except:
+                    # 不是 base64 就直接存储
+                    all_nodes.append({"name": "raw_node", "server": line})
+
     except Exception as e:
         print(f"拉取失败: {url} -> {e}")
 
-# 输出到文件
+# 保存为 Clash 通用 YAML
 with open("all_nodes.yaml", "w") as f:
-    yaml.dump({"proxies": all_proxies}, f, allow_unicode=True)
+    yaml.dump({"proxies": all_nodes}, f, allow_unicode=True)
+
+# 保存为 V2Ray 通用 JSON（可选）
+with open("all_nodes.json", "w") as f:
+    json.dump(all_nodes, f, ensure_ascii=False, indent=2)
