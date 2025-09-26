@@ -1,0 +1,44 @@
+name: Update Subscriptions
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"  # 每 3 小时自动更新
+  workflow_dispatch:        # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyyaml
+
+      - name: Fetch subscriptions (步骤 2)
+        run: |
+          python fetch_subscriptions.py
+
+      - name: Pick HK nodes (步骤 3)
+        run: |
+          python pick_hk_nodes.py
+
+      - name: Speedtest & Select Best Nodes (步骤 4)
+        run: |
+          python speed_test.py
+
+      - name: Commit and Push best_nodes (步骤 5)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add best_nodes.yaml best_nodes.json
+          git commit -m "Update best_nodes $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git push
