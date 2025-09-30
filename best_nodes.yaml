@@ -1,83 +1,4 @@
 proxies:
-- name: '[Trojan] 🇭🇰 香港4|@ripaojiedian'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 446
-  server: 221.128.195.217
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  type: trojan
-- alterId: 2
-  cipher: auto
-  name: '[VMess] 🇭🇰 香港5|@ripaojiedian'
-  network: ws
-  port: 80
-  server: 1e426046-t0fds0-t12cnj-1ol97.hk.p5pv.com
-  skip-cert-verify: false
-  tls: false
-  type: vmess
-  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
-  ws-opts:
-    headers:
-      Host: broadcastlv.chat.bilibili.com
-    path: /
-- name: '[Trojan] 🇭🇰 香港6|@ripaojiedian'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 443
-  server: 221.128.195.217
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  type: trojan
-- name: '[Trojan] 🇯🇵 日本3|@ripaojiedian'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 1802
-  server: 153.121.51.29
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  type: trojan
-- name: '[Trojan] 🇺🇸 美国|@ripaojiedian'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 3294
-  server: 160.16.117.182
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  type: trojan
-- name: '[Trojan] 🇺🇸 美国2|@ripaojiedian'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 5343
-  server: 160.16.117.182
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  type: trojan
-- alterId: 0
-  cipher: auto
-  name: '[VMess] 🇺🇸 美国3|@ripaojiedian'
-  port: 57518
-  server: 23.236.68.161
-  skip-cert-verify: false
-  tls: false
-  type: vmess
-  uuid: e47902b2-928b-41ec-a868-ed3d1d4bec76
-- cipher: aes-256-cfb
-  name: '[SS] 🇻🇳 越南|@ripaojiedian'
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  port: 38388
-  server: 103.186.154.42
-  type: ss
-- alterId: 0
-  cipher: auto
-  name: '[VMess] 🇰🇷 韩国2|@ripaojiedian 2'
-  port: 55879
-  server: 210.109.205.158
-  skip-cert-verify: false
-  tls: false
-  type: vmess
-  uuid: 7cc8bff2-1e5c-45d1-a3e7-b35e8f25cbbe
-- cipher: ss
-  name: '[SS] 🇻🇳 越南|@ripaojiedian 2'
-  password: //YWVzLTI1Ni1jZmI6WG44aktkbURNMDBJZU8lIyQjZkpBTXRzRUFFVU9wSC9ZV1l0WXFERm5UMFNW
-  port: 38388
-  server: 103.186.154.42
-  type: ss
 - name: xx|72d1|puddincat07@Telegram
   password: exaxgqkKkd0TAMrCxeonWg==
   port: 1443
@@ -86,19 +7,6 @@ proxies:
   type: http
   udp: true
   username: mrwdfNTD8M79LCukCieldrqZWqs=
-- name: xx|fb27|puddincat07@Telegram
-  network: ws
-  port: 8443
-  server: snipaste2.speedip.eu.org
-  servername: 0000azjycqzx0k1f4zfi.ulk.uobnni.14l3.j5lkw.4n78egq2un.5a0.gl8z.zcbx448m.zxbrhh5zykdh.1da9gkyonadedxfy069mz0wc9kjkhuzwyzfv.neib.cn
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  uuid: 01996a60-6dc4-2d0e-0dee-5832827589b4
-  ws-opts:
-    headers:
-      Host: 0000azjycqzx0k1f4zfi.ulk.uobnni.14l3.j5lkw.4n78egq2un.5a0.gl8z.zcbx448m.zxbrhh5zykdh.1da9gkyonadedxfy069mz0wc9kjkhuzwyzfv.neib.cn
-    path: /snippetsfp=chrome
 - name: xx|e008|puddincat07@Telegram
   network: ws
   port: 2082
@@ -122,6 +30,20 @@ proxies:
   skip-cert-verify: true
   tls: true
   type: ss
+- name: fi|153a|puddincat07@Telegram
+  network: ws
+  port: 443
+  server: 91.108.241.188
+  servername: kejiland.freewarp.eu.org
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560
 - cipher: aes-256-cfb
   name: kr|7810|puddincat07@Telegram
   password: f8f7aCzcPKbsF8p3
@@ -130,18 +52,29 @@ proxies:
   type: ss
 - alterId: 0
   cipher: auto
-  http-opts:
-    method: GET
-    path:
-    - /
-  name: hk|b991|puddincat07@Telegram
-  network: http
-  port: 24939
-  server: 38.147.188.112
+  name: my|7e2a|puddincat07@Telegram
+  port: 2052
+  server: 38.54.98.110
+  servername: ml0724.ysds168.shop
+  skip-cert-verify: true
+  tls: true
+  type: vmess
+  udp: true
+  uuid: 665d9b8f-153d-4907-adac-de12afd9c851
+- name: xx|cb81|puddincat07@Telegram
+  network: ws
+  port: 80
+  server: tgju.org
+  servername: de.channel.digicyber.click
   skip-cert-verify: false
   tls: false
-  type: vmess
-  uuid: 928408df-3114-4b57-b852-f8d120ce056c
+  type: vless
+  udp: true
+  uuid: 539bccb6-2a84-4464-b99e-ea781f2fdaa6
+  ws-opts:
+    headers:
+      Host: de.channel.digicyber.click
+    path: /olem/ws?ed=1024
 - client-fingerprint: chrome
   name: xx|12ce|puddincat07@Telegram
   network: ws
