@@ -1,11 +1,22 @@
 proxies:
-- name: '[Trojan] 🇭🇰 香港4|@ripaojiedian'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 446
-  server: 221.128.195.217
+- cipher: aes-256-gcm
+  name: '[SS] 🇭🇰 香港2|@ripaojiedian'
+  password: ccf426f1fe78
+  port: 443
+  server: 103.103.245.158
+  type: ss
+- alterId: 0
+  cipher: auto
+  name: '[VMess] 🇭🇰 香港3|@ripaojiedian'
+  network: ws
+  port: 31469
+  server: 149.30.232.103
   skip-cert-verify: false
-  sni: www.nintendogames.net
-  type: trojan
+  tls: false
+  type: vmess
+  uuid: 5381445d-6ae4-4948-b61a-a16d9498d21b
+  ws-opts:
+    path: /arki?ed=2048
 - alterId: 2
   cipher: auto
   name: '[VMess] 🇭🇰 香港5|@ripaojiedian'
@@ -20,6 +31,13 @@ proxies:
     headers:
       Host: broadcastlv.chat.bilibili.com
     path: /
+- name: '[Trojan] 🇭🇰 香港6|@ripaojiedian'
+  password: 253bc477d4e43c209f2d427272968280
+  port: 443
+  server: 221.128.195.217
+  skip-cert-verify: false
+  sni: www.nintendogames.net
+  type: trojan
 - name: '[Trojan] 🇯🇵 日本3|@ripaojiedian'
   password: 253bc477d4e43c209f2d427272968280
   port: 1802
@@ -27,25 +45,17 @@ proxies:
   skip-cert-verify: false
   sni: www.nintendogames.net
   type: trojan
-- cipher: aes-256-cfb
-  name: '[SS] 🇰🇷 韩国|@ripaojiedian'
-  password: qwerREWQ@@
-  port: 2520
-  server: 121.170.203.147
-  type: ss
-- alterId: 0
-  cipher: auto
-  name: '[VMess] 🇰🇷 韩国2|@ripaojiedian'
-  port: 55879
-  server: 210.109.205.158
-  skip-cert-verify: false
-  tls: false
-  type: vmess
-  uuid: 7cc8bff2-1e5c-45d1-a3e7-b35e8f25cbbe
 - name: '[Trojan] 🇸🇬 新加坡|@ripaojiedian'
   password: 253bc477d4e43c209f2d427272968280
   port: 4397
   server: 153.121.51.29
+  skip-cert-verify: false
+  sni: www.nintendogames.net
+  type: trojan
+- name: '[Trojan] 🇸🇬 新加坡2|@ripaojiedian'
+  password: 253bc477d4e43c209f2d427272968280
+  port: 3043
+  server: 160.16.130.66
   skip-cert-verify: false
   sni: www.nintendogames.net
   type: trojan
@@ -56,37 +66,6 @@ proxies:
   skip-cert-verify: false
   sni: www.nintendogames.net
   type: trojan
-- name: '[Trojan] 🇺🇸 美国2|@ripaojiedian'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 5343
-  server: 160.16.117.182
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  type: trojan
-- alterId: 0
-  cipher: auto
-  name: '[VMess] 🇺🇸 美国3|@ripaojiedian'
-  port: 57518
-  server: 23.236.68.161
-  skip-cert-verify: false
-  tls: false
-  type: vmess
-  uuid: e47902b2-928b-41ec-a868-ed3d1d4bec76
-- cipher: ss
-  name: '[SS] 🇰🇷 韩国|@ripaojiedian 2'
-  password: //YWVzLTI1Ni1jZmI6cXdlclJFV1FAQA
-  port: 2520
-  server: 121.170.203.147
-  type: ss
-- alterId: 0
-  cipher: auto
-  name: '[VMess] 🇺🇸 美国3|@ripaojiedian 2'
-  port: 57518
-  server: 23.236.68.161
-  skip-cert-verify: false
-  tls: false
-  type: vmess
-  uuid: e47902b2-928b-41ec-a868-ed3d1d4bec76
 - cipher: ss
   name: '[SS] 🇻🇳 越南|@ripaojiedian 2'
   password: //YWVzLTI1Ni1jZmI6WG44aktkbURNMDBJZU8lIyQjZkpBTXRzRUFFVU9wSC9ZV1l0WXFERm5UMFNW
@@ -117,50 +96,6 @@ proxies:
   port: 443
   server: 103.103.245.158
   type: ss
-- name: xx|72d1|puddincat07@Telegram
-  password: exaxgqkKkd0TAMrCxeonWg==
-  port: 1443
-  server: twmoon1-cdn-route.couldflare-cdn.com
-  tls: true
-  type: http
-  udp: true
-  username: mrwdfNTD8M79LCukCieldrqZWqs=
-- name: xx|fb27|puddincat07@Telegram
-  network: ws
-  port: 8443
-  server: snipaste2.speedip.eu.org
-  servername: 0000azjycqzx0k1f4zfi.ulk.uobnni.14l3.j5lkw.4n78egq2un.5a0.gl8z.zcbx448m.zxbrhh5zykdh.1da9gkyonadedxfy069mz0wc9kjkhuzwyzfv.neib.cn
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  uuid: 01996a60-6dc4-2d0e-0dee-5832827589b4
-  ws-opts:
-    headers:
-      Host: 0000azjycqzx0k1f4zfi.ulk.uobnni.14l3.j5lkw.4n78egq2un.5a0.gl8z.zcbx448m.zxbrhh5zykdh.1da9gkyonadedxfy069mz0wc9kjkhuzwyzfv.neib.cn
-    path: /snippetsfp=chrome
-- name: xx|e008|puddincat07@Telegram
-  network: ws
-  port: 2082
-  server: www.speedtest.net
-  servername: novinsoft.ir.oradoshop.com.persiangsm.ir.digikala.com.abadis.ir.shad.ir.divar.ir.downloadly.com.aparat.com.cafebazar.ir.varzesh3.com.ninisite.com.abadis.ir.bama.ir.p30download.ir.telewebion.bmi.ir.shad.ir.mayket.com.ninisite.top.
-  skip-cert-verify: false
-  tls: false
-  type: vless
-  udp: true
-  uuid: a76003a4-e5a5-45ca-a7b7-5a665a5e2a9b
-  ws-opts:
-    headers:
-      Host: novinsoft.ir.oradoshop.com.persiangsm.ir.digikala.com.abadis.ir.shad.ir.divar.ir.downloadly.com.aparat.com.cafebazar.ir.varzesh3.com.ninisite.com.abadis.ir.bama.ir.p30download.ir.telewebion.bmi.ir.shad.ir.mayket.com.ninisite.top.
-    path: /@spikevpn-@spikevpn-@spikevpn-@spikevpn-@spikevpn-@spikevpn?ed=2082
-- alterId: 0
-  cipher: chacha20-ietf-poly1305
-  name: xx|0350|puddincat07@Telegram
-  password: p78naCf2EfOlRSLTX0wFVx
-  port: 443
-  server: pupas-shirting-unsung.freesocks.work
-  skip-cert-verify: true
-  tls: true
-  type: ss
 - client-fingerprint: chrome
   name: de|e29e|puddincat07@Telegram
   port: 6666
@@ -188,23 +123,6 @@ proxies:
     headers:
       Host: kejiland.freewarp.eu.org
     path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560
-- cipher: chacha20-ietf-poly1305
-  name: xx|6baf|puddincat07@Telegram
-  password: Nk9asglDzHzjktVzTkvhaA
-  port: 443
-  server: arxfw2b78fi2q9hzylhn.freesocks.work
-  type: ss
-- alterId: 0
-  cipher: auto
-  name: my|7e2a|puddincat07@Telegram
-  port: 2052
-  server: 38.54.98.110
-  servername: ml0724.ysds168.shop
-  skip-cert-verify: true
-  tls: true
-  type: vmess
-  udp: true
-  uuid: 665d9b8f-153d-4907-adac-de12afd9c851
 - name: xx|cb81|puddincat07@Telegram
   network: ws
   port: 80
@@ -219,12 +137,6 @@ proxies:
     headers:
       Host: de.channel.digicyber.click
     path: /olem/ws?ed=1024
-- cipher: aes-256-cfb
-  name: nl|ee23|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  server: 51.15.17.169
-  type: ss
 - client-fingerprint: chrome
   name: xx|12ce|puddincat07@Telegram
   network: ws
