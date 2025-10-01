@@ -1,71 +1,149 @@
 proxies:
-- name: xx|72d1|puddincat07@Telegram
-  password: exaxgqkKkd0TAMrCxeonWg==
-  port: 1443
-  server: twmoon1-cdn-route.couldflare-cdn.com
-  tls: true
-  type: http
-  udp: true
-  username: mrwdfNTD8M79LCukCieldrqZWqs=
-- name: xx|fb27|puddincat07@Telegram
-  network: ws
-  port: 8443
-  server: snipaste2.speedip.eu.org
-  servername: 0000azjycqzx0k1f4zfi.ulk.uobnni.14l3.j5lkw.4n78egq2un.5a0.gl8z.zcbx448m.zxbrhh5zykdh.1da9gkyonadedxfy069mz0wc9kjkhuzwyzfv.neib.cn
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  uuid: 01996a60-6dc4-2d0e-0dee-5832827589b4
-  ws-opts:
-    headers:
-      Host: 0000azjycqzx0k1f4zfi.ulk.uobnni.14l3.j5lkw.4n78egq2un.5a0.gl8z.zcbx448m.zxbrhh5zykdh.1da9gkyonadedxfy069mz0wc9kjkhuzwyzfv.neib.cn
-    path: /snippetsfp=chrome
-- name: fi|153a|puddincat07@Telegram
-  network: ws
-  port: 443
-  server: 91.108.241.188
-  servername: kejiland.freewarp.eu.org
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560
-- cipher: aes-256-cfb
-  name: kr|7810|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  server: 154.90.62.168
-  type: ss
 - alterId: 0
   cipher: auto
-  name: my|7e2a|puddincat07@Telegram
-  port: 2052
-  server: 38.54.98.110
-  servername: ml0724.ysds168.shop
-  skip-cert-verify: true
+  name: hk|1195|puddincat07@Telegram
+  network: ws
+  port: 443
+  server: 154.21.201.83
+  skip-cert-verify: false
   tls: true
   type: vmess
   udp: true
-  uuid: 665d9b8f-153d-4907-adac-de12afd9c851
-- client-fingerprint: chrome
-  name: xx|12ce|puddincat07@Telegram
-  network: ws
-  port: 2096
-  server: zula.ir
-  servername: frAgteSt.JaHANGiRKh.eU.orG
+  uuid: 4bf075f5-4d5e-4d39-f5ab-b32a86250f0e
+  ws-opts:
+    headers:
+      Host: hk.nbee.pp.ua
+    path: /aa
+- cipher: aes-256-cfb
+  name: kr|60d7|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 4652
+  server: 218.237.185.230
+  type: ss
+- cipher: aes-256-gcm
+  client-fingerprint: chrome
+  name: hk|a7cc|puddincat07@Telegram
+  password: ccf426f1fe78
+  plugin: v2ray-plugin
+  plugin-opts:
+    host: newroot2v1.dsjsapp.com
+    mode: websocket
+    mux: true
+    path: /zksuapgx
+    skip-cert-verify: false
+    tls: true
+  port: 443
+  server: 103.103.245.158
+  tfo: false
+  type: ss
+- cipher: aes-256-cfb
+  name: kr|c2d4|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  server: 154.90.63.177
+  type: ss
+- name: xx|1d66|puddincat07@Telegram
+  password: pjdnqv
+  port: 443
+  server: aws-us-dallas-1.f1rocketnode.com
   skip-cert-verify: true
-  tfo: true
+  sni: aws-us-dallas-1.f1rocketnode.com
+  type: trojan
+  udp: true
+- alterId: 0
+  cipher: auto
+  name: us|ac45|puddincat07@Telegram
+  network: ws
+  port: 80
+  server: 104.19.44.103
+  skip-cert-verify: true
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 1cfaad16-d2ba-4c49-af07-d7b9f11f43d0
+  ws-opts:
+    path: /xn--mes53ddysu0o3gl
+- name: lt|6b11|puddincat07@Telegram
+  network: grpc
+  port: 8880
+  server: 94.131.13.163
+  skip-cert-verify: false
+  tfo: false
   tls: true
   type: vless
   udp: true
-  uuid: 97909ffd-6da0-4893-9d63-00e72ad55256
+  uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+- alterId: 0
+  cipher: auto
+  name: xx|28f7|puddincat07@Telegram
+  network: tcp
+  port: 45276
+  server: lt.fxlcn.com
+  skip-cert-verify: true
+  tfo: true
+  type: vmess
+  udp: true
+  uuid: 469e0b31-30c3-4dab-800d-711232634ce1
+- name: us|130b|puddincat07@Telegram
+  network: ws
+  password: 7f2782e1-1f1a-4c5b-b4ae-cead54b8c381
+  port: 443
+  server: 172.67.191.234
+  skip-cert-verify: true
+  sni: nl1.tRojANVpN.xYZ
+  type: trojan
+  udp: true
   ws-opts:
     headers:
-      Host: frAgteSt.JaHANGiRKh.eU.orG
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Host: nl1.tRojANVpN.xYZ
+    path: '%25252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252F'
+- alterId: 0
+  cipher: auto
+  name: fr|2a77|puddincat07@Telegram
+  network: ws
+  port: 443
+  server: 57.128.189.240
+  skip-cert-verify: false
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts:
     path: /
+- name: us|5486|puddincat07@Telegram
+  network: ws
+  port: 2083
+  server: 103.116.7.103
+  servername: saas.cfliu.filegear-sg.me
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8d5911d9-f9f9-484f-8f67-5729ab5fd1af
+  ws-opts:
+    headers:
+      Host: saas.cfliu.filegear-sg.me
+    path: /snippets?ip=tw.tp81.netlib.re:81
+- alterId: 0
+  cipher: auto
+  name: us|f7fa|puddincat07@Telegram
+  network: ws
+  port: 2095
+  server: 104.19.45.106
+  skip-cert-verify: true
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 7a737f41-b792-4260-94ff-3d864da67b80
+  ws-opts:
+    path: /
+- name: fr|b132|puddincat07@Telegram
+  network: grpc
+  port: 8880
+  server: 185.242.87.69
+  skip-cert-verify: false
+  tfo: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: df0680ca-e43c-498d-ed86-8e196eedd012
