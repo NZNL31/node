@@ -5,6 +5,12 @@ proxies:
   port: 443
   server: 3.107.151.161
   type: ss
+- cipher: aes-256-gcm
+  name: '[SS] 🇭🇰 香港2|@ripaojiedian'
+  password: ccf426f1fe78
+  port: 443
+  server: 103.103.245.158
+  type: ss
 - name: '[Trojan] 🇭🇰 香港6|@ripaojiedian'
   password: 253bc477d4e43c209f2d427272968280
   port: 443
@@ -19,17 +25,17 @@ proxies:
   skip-cert-verify: false
   sni: www.nintendogames.net
   type: trojan
+- name: '[Trojan] 🇯🇵 日本3|@ripaojiedian'
+  password: 253bc477d4e43c209f2d427272968280
+  port: 3160
+  server: 160.16.124.55
+  skip-cert-verify: false
+  sni: www.nintendogames.net
+  type: trojan
 - name: '[Trojan] 🇸🇬 新加坡|@ripaojiedian'
   password: 253bc477d4e43c209f2d427272968280
   port: 1085
   server: 36.156.102.88
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  type: trojan
-- name: '[Trojan] 🇸🇬 新加坡2|@ripaojiedian'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 2173
-  server: 160.16.72.33
   skip-cert-verify: false
   sni: www.nintendogames.net
   type: trojan
@@ -65,6 +71,19 @@ proxies:
   port: 38388
   server: 103.186.154.198
   type: ss
+- name: '[Vless] RU_speednode_0025'
+  network: ws
+  port: 2096
+  server: 5.182.85.54
+  servername: sni.aizrf.com
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  uuid: 12345678-1234-1234-1234-123456789123
+  ws-opts:
+    headers:
+      Host: sni.aizrf.com
+    path: /snippetsfp=chrome
 - name: '[Vless] US_speednode_0027'
   network: ws
   port: 443
@@ -106,6 +125,18 @@ proxies:
     headers:
       Host: WeekNDJOoN.PAgES.DEv
     path: /Z0R9Nb1Hgd7OEULT?ed=2560fp=randomized
+- name: '[Trojan] US_speednode_0032'
+  network: ws
+  password: T%40_WvT8Ho%40LW%25w_%2C
+  port: 2053
+  server: nop-55q.pages.dev
+  skip-cert-verify: false
+  sni: NOp-55q.pAgEs.dEv
+  type: trojan
+  ws-opts:
+    headers:
+      Host: NOp-55q.pAgEs.dEv
+    path: /trGPZDfetEwuO25SAs?ed=2560
 - name: '[Vless] US_speednode_0033'
   network: ws
   port: 443
@@ -119,50 +150,70 @@ proxies:
     headers:
       Host: WwW.OPENSIgnaL.cOm.NaynaY09.dynv6.nET
     path: /security=tls
-- name: '[Vless] ZA_speednode_0038'
+- name: '[Vless] US_speednode_0036'
   network: ws
-  port: 2096
-  server: 102.132.188.54
-  servername: sni.aizrf.com
+  port: 80
+  server: mstr.fastly80.hosting-ip.com
+  servername: gm195.io
   skip-cert-verify: false
-  tls: true
+  tls: false
   type: vless
-  uuid: 12345678-1234-1234-1234-123456789123
+  uuid: d46fbe10-7982-4229-b461-4afef5c690fa
   ws-opts:
     headers:
-      Host: sni.aizrf.com
-    path: /snippetsfp=chrome
-- cipher: aes-256-gcm
-  name: '[SS] 🇭🇰 香港2|@ripaojiedian 2'
-  password: ccf426f1fe78
-  plugin: v2ray-plugin
-  plugin-opts:
-    host: newroot2v1.dsjsapp.com
-    mode: websocket
-    mux: true
-    path: /zksuapgx
-    skip-cert-verify: false
-    tls: true
-  port: 443
-  server: 103.103.245.158
-  type: ss
+      Host: gm195.io
+    path: /admin
 - cipher: chacha20-ietf-poly1305
-  name: nl|e24e|puddincat07@Telegram
-  password: EacZIMFwmMCR6dWqN5Ah0c
-  port: 1419
-  server: 194.135.46.13
-  type: ss
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  name: xx|dba6|puddincat07@Telegram
+  name: xx|3ac9|puddincat07@Telegram
   password: dAHM1pm8ag7KdlrUylQi6t
   port: 443
   server: promo18v.bystrivpn.ru
   type: ss
   udp: true
+- name: us|3f59|puddincat07@Telegram
+  network: ws
+  port: 443
+  server: 162.159.43.92
+  servername: juzi.634676.xyz
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 0c0537c3-f0fb-40e6-bd59-f5038e1855ed
+  ws-opts:
+    headers:
+      Host: juzi.634676.xyz
+    path: /?ed=2560
+- name: xx|99f8|puddincat07@Telegram
+  network: ws
+  port: 443
+  server: wwwopensignalcom-goodspeed-8xx.pages.dev.
+  servername: WwW.OPENSIgnaL.cOm.NaynaY09.dynv6.nET
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 89b3cbba-e6ac-485a-9481-976a0415eab9
+  ws-opts:
+    headers:
+      Host: WwW.OPENSIgnaL.cOm.NaynaY09.dynv6.nET
+    path: /
+- alterId: 0
+  cipher: auto
+  name: xx|ba4a|puddincat07@Telegram
+  network: ws
+  port: 80
+  server: c004e6fe-t1i9s0-tm53cm-1ol97.hkt.tcpbbr.net
+  skip-cert-verify: true
+  type: vmess
+  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
+  ws-opts:
+    headers:
+      Host: c004e6fe-t1i9s0-tm53cm-1ol97.hkt.tcpbbr.net
+    path: /
 - alterId: 2
   cipher: auto
-  name: xx|7ef9|puddincat07@Telegram
+  name: xx|76c5|puddincat07@Telegram
   network: ws
   port: 80
   server: eb362f92-svukg0-t12cnj-1ol97.hk.p5pv.com
@@ -174,20 +225,13 @@ proxies:
     headers:
       Host: eb362f92-svukg0-t12cnj-1ol97.hk.p5pv.com
     path: /
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: us|d9f1|puddincat07@Telegram
-  port: 30227
-  reality-opts:
-    public-key: y0QO-mD8hrDE3rV7C8BX-gQiCANoasGKQlq2ReIVXkI
-  server: 216.133.149.235
-  servername: aws.amazon.com
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: 9a54bad8-538d-4744-b7bc-640629840490
-- name: xx|3400|puddincat07@Telegram
+- cipher: aes-256-cfb
+  name: nl|82ca|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  server: 51.15.17.169
+  type: ss
+- name: xx|534f|puddincat07@Telegram
   network: ws
   port: 80
   server: mstr.fastly80.hosting-ip.com
@@ -195,40 +239,26 @@ proxies:
   skip-cert-verify: false
   tls: false
   type: vless
-  udp: true
   uuid: d46fbe10-7982-4229-b461-4afef5c690fa
   ws-opts:
     headers:
       Host: gm195.io
     path: /admin
-- alterId: 2
-  cipher: auto
+- alpn:
+  - h2
+  - http/1.1
   client-fingerprint: chrome
-  name: xx|98d9|puddincat07@Telegram
+  name: xx|619b|puddincat07@Telegram
   network: ws
-  port: 80
-  server: 1e426046-t0fds0-t12cnj-1ol97.hk.p5pv.com
+  port: 443
+  server: ipw.gfdv54cvghhgfhgj-njhgj64.info
+  servername: smits.feronix.org
   skip-cert-verify: false
-  tfo: false
-  tls: false
-  type: vmess
-  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
-  ws-opts:
-    headers:
-      Host: broadcastlv.chat.bilibili.com
-    path: /
-- alterId: 2
-  cipher: auto
-  name: xx|15e6|puddincat07@Telegram
-  network: ws
-  port: 80
-  server: hkt.gotochinatown.net
-  skip-cert-verify: false
-  tls: false
-  type: vmess
+  tls: true
+  type: vless
   udp: true
-  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
+  uuid: 44e16031-bde2-407a-b629-ae4b84e7e49f
   ws-opts:
     headers:
-      Host: hkt.gotochinatown.net
+      Host: smits.feronix.org
     path: /
