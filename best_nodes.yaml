@@ -1,14 +1,8 @@
 proxies:
-- cipher: aes-256-gcm
-  name: '[SS] 🇭🇰 香港2|@ripaojiedian'
-  password: ccf426f1fe78
-  port: 443
-  server: 103.103.245.158
-  type: ss
-- name: '[Trojan] 🇭🇰 香港4|@ripaojiedian'
+- name: '[Trojan] 🇭🇰 香港6|@ripaojiedian'
   password: 253bc477d4e43c209f2d427272968280
-  port: 444
-  server: 221.128.195.217
+  port: 443
+  server: 58.152.25.156
   skip-cert-verify: false
   sni: www.nintendogames.net
   type: trojan
@@ -33,6 +27,12 @@ proxies:
   skip-cert-verify: false
   sni: www.nintendogames.net
   type: trojan
+- cipher: ss
+  name: '[SS] 🇻🇳 越南|@ripaojiedian 2'
+  password: //YWVzLTI1Ni1jZmI6WG44aktkbURNMDBJZU8lIyQjZkpBTXRzRUFFVU9wSC9ZV1l0WXFERm5UMFNW
+  port: 38388
+  server: 103.186.154.198
+  type: ss
 - name: '[Vless] US_speednode_0025'
   network: ws
   port: 2096
@@ -46,13 +46,35 @@ proxies:
     headers:
       Host: gaosir.unfeeling.sbs
     path: /Telegramsecurity=tls
-- cipher: aes-256-cfb
-  name: nl|ebab|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  server: 51.15.17.169
+- cipher: aes-256-gcm
+  name: '[SS] 🇭🇰 香港2|@ripaojiedian 2'
+  password: ccf426f1fe78
+  plugin: v2ray-plugin
+  plugin-opts:
+    host: newroot2v1.dsjsapp.com
+    mode: websocket
+    mux: true
+    path: /zksuapgx
+    skip-cert-verify: false
+    tls: true
+  port: 443
+  server: 103.103.245.158
   type: ss
-- name: xx|365b|puddincat07@Telegram
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: xx|2423|puddincat07@Telegram
+  port: 443
+  reality-opts:
+    public-key: J_jQq9-SWQZjiMhuPaFV7V2MaJ4pkKgVRaz7x6tmvy8
+    short-id: 16895459a2c7768d
+  server: wa.sfasti.ru
+  servername: wa.sfasti.ru
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: d4e4c02a-d969-47a6-ba0f-3d433fdac206
+- name: xx|0076|puddincat07@Telegram
   network: ws
   port: 80
   server: mstr.fastly80.hosting-ip.com
@@ -65,69 +87,61 @@ proxies:
     headers:
       Host: gm195.io
     path: /admin
+- alterId: 0
+  cipher: auto
+  client-fingerprint: chrome
+  name: xx|d02e|puddincat07@Telegram
+  network: ws
+  port: 80
+  server: c004e6fe-t1i9s0-tm53cm-1ol97.hkt.tcpbbr.net
+  skip-cert-verify: true
+  tls: false
+  type: vmess
+  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
+  ws-opts:
+    headers:
+      host: c004e6fe-t1i9s0-tm53cm-1ol97.hkt.tcpbbr.net
+    path: /
+- alterId: 2
+  cipher: auto
+  client-fingerprint: chrome
+  name: xx|bbb8|puddincat07@Telegram
+  network: ws
+  port: 80
+  server: 1e426046-t0fds0-t12cnj-1ol97.hk.p5pv.com
+  skip-cert-verify: true
+  tls: false
+  type: vmess
+  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
+  ws-opts:
+    headers:
+      host: 1e426046-t0fds0-t12cnj-1ol97.hk.p5pv.com
+    path: /
+- cipher: aes-256-cfb
+  name: is|345e|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  server: 37.235.49.168
+  type: ss
 - client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: xx|bd14|puddincat07@Telegram
-  port: 443
+  name: xx|37a9|puddincat07@Telegram
+  port: 48769
   reality-opts:
-    public-key: J_jQq9-SWQZjiMhuPaFV7V2MaJ4pkKgVRaz7x6tmvy8
-    short-id: 16895459a2c7768d
-  server: wa.sfasti.ru
-  servername: wa.sfasti.ru
+    public-key: 7nXyxyyn6fSlJzPO1DFmIEUV8LAmoP58-_1zP_MKo2E
+    short-id: 177f438f
+  server: fast7.hvitrin.ir
+  servername: miro.com
   skip-cert-verify: false
   tls: true
   type: vless
   udp: true
-  uuid: d4e4c02a-d969-47a6-ba0f-3d433fdac206
-- cipher: aes-256-cfb
-  name: md|a13e|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  server: 185.153.197.5
-  type: ss
-- alterId: 0
-  cipher: chacha20-ietf-poly1305
-  name: xx|e739|puddincat07@Telegram
-  password: p78naCf2EfOlRSLTX0wFVx
-  port: 443
-  server: pupas-shirting-unsung.freesocks.work
-  skip-cert-verify: true
-  tls: true
-  type: ss
-- cipher: aes-256-gcm
-  name: hk|8dff|puddincat07@Telegram
-  password: ccf426f1fe78
-  plugin: v2ray-plugin
-  plugin-opts:
-    host: newroot2v1.dsjsapp.com
-    mode: websocket
-    mux: true
-    path: /zksuapgx
-    skip-cert-verify: false
-    tls: true
-  port: 443
-  server: 103.103.245.158
-  tfo: false
-  type: ss
+  uuid: f8806934-15d7-4194-9c35-ec7a140bb6f6
 - alterId: 0
   cipher: auto
-  name: cn|ec5a|puddincat07@Telegram
+  name: cn|cd85|puddincat07@Telegram
   network: tcp
   port: 50007
   server: 112.132.215.34
   skip-cert-verify: true
   type: vmess
   uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
-- alterId: 0
-  cipher: auto
-  name: us|9934|puddincat07@Telegram
-  network: ws
-  port: 2095
-  server: 104.19.45.245
-  skip-cert-verify: true
-  tls: false
-  type: vmess
-  udp: true
-  uuid: 7a737f41-b792-4260-94ff-3d864da67b80
-  ws-opts:
-    path: /
