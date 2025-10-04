@@ -1,13 +1,5 @@
 [
   {
-    "cipher": "aes-256-gcm",
-    "name": "[SS] 🇭🇰 香港2|@ripaojiedian",
-    "password": "ccf426f1fe78",
-    "port": 443,
-    "server": "103.103.245.158",
-    "type": "ss"
-  },
-  {
     "alterId": 0,
     "cipher": "auto",
     "name": "[VMess] 🇭🇰 香港3|@ripaojiedian",
@@ -46,19 +38,10 @@
     }
   },
   {
-    "name": "[Trojan] 🇯🇵 日本2|@ripaojiedian",
+    "name": "[Trojan] 🇸🇬 新加坡2|@ripaojiedian",
     "password": "253bc477d4e43c209f2d427272968280",
-    "port": 1331,
-    "server": "160.16.124.55",
-    "skip-cert-verify": false,
-    "sni": "www.nintendogames.net",
-    "type": "trojan"
-  },
-  {
-    "name": "[Trojan] 🇸🇬 新加坡|@ripaojiedian",
-    "password": "253bc477d4e43c209f2d427272968280",
-    "port": 2283,
-    "server": "160.16.138.24",
+    "port": 22000,
+    "server": "36.156.102.86",
     "skip-cert-verify": false,
     "sni": "www.nintendogames.net",
     "type": "trojan"
@@ -73,14 +56,6 @@
     "type": "trojan"
   },
   {
-    "cipher": "aes-256-cfb",
-    "name": "[SS] 🇻🇳 越南|@ripaojiedian",
-    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
-    "port": 38388,
-    "server": "103.186.154.198",
-    "type": "ss"
-  },
-  {
     "alterId": 0,
     "cipher": "auto",
     "name": "[VMess] 🇭🇰 香港3|@ripaojiedian 2",
@@ -92,59 +67,118 @@
     "uuid": "ccc37b1b-4ef0-430c-b1e1-20bf96fcff8c"
   },
   {
-    "client-fingerprint": "chrome",
-    "flow": "xtls-rprx-vision",
-    "name": "xx|00ae|puddincat07@Telegram",
-    "port": 443,
-    "reality-opts": {
-      "public-key": "BhTJ3phnq-Z-10aFKSsj1lzhA8mULR4L6leE4-0WTAs"
+    "cipher": "aes-256-gcm",
+    "name": "[SS] 🇭🇰 香港2|@ripaojiedian 2",
+    "password": "ccf426f1fe78",
+    "plugin": "v2ray-plugin",
+    "plugin-opts": {
+      "host": "newroot2v1.dsjsapp.com",
+      "mode": "websocket",
+      "mux": true,
+      "path": "/zksuapgx",
+      "skip-cert-verify": false,
+      "tls": true
     },
-    "server": "deu163.unboundworld.org",
-    "servername": "www.bing.com",
-    "skip-cert-verify": false,
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "06fbbb8d-43b5-4ede-a0fe-417df04824cc"
+    "port": 443,
+    "server": "103.103.245.158",
+    "type": "ss"
   },
   {
     "client-fingerprint": "chrome",
     "flow": "xtls-rprx-vision",
-    "name": "xx|b857|puddincat07@Telegram",
-    "port": 443,
+    "name": "ie|47c6|puddincat07@Telegram",
+    "port": 36678,
     "reality-opts": {
-      "public-key": "V6i1V9804ZfgT8nutUwDs5IDQdcY9pK5uO075SW4ml4",
-      "short-id": "2d46a79deebf50fd"
+      "public-key": "rrGm0NemTtGQ8Vrd2AzB7pSoW_kYtqYvhRxsx_MtwG0",
+      "short-id": "5d20"
     },
-    "server": "yt.connect-iskra.ru",
-    "servername": "deepl.com",
+    "server": "192.210.183.136",
+    "servername": "swdist.apple.com",
     "skip-cert-verify": false,
     "tls": true,
     "type": "vless",
     "udp": true,
-    "uuid": "ed97e008-2b8d-4415-94c7-3da4919d361a"
+    "uuid": "bf9b316d-31ac-42ee-b8a5-8dc795118917"
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "xx|444f|puddincat07@Telegram",
+    "network": "ws",
+    "port": 2053,
+    "server": "snipaste1.speedip.eu.org",
+    "servername": "0000hckhxlvib1h4xk7f.n24.jci8uetubmkp.xb71x63c8vp.yzjyv1cj.m4pekb.44im9lt1u.cdlq6qkqh.m7ql78c.d8ls4sr.p2elzz2rm57d112wt3w.neib.cn",
+    "skip-cert-verify": false,
+    "tfo": false,
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "0199737e-f5a7-197e-35be-ba156931ead5",
+    "ws-opts": {
+      "headers": {
+        "Host": "0000hckhxlvib1h4xk7f.n24.jci8uetubmkp.xb71x63c8vp.yzjyv1cj.m4pekb.44im9lt1u.cdlq6qkqh.m7ql78c.d8ls4sr.p2elzz2rm57d112wt3w.neib.cn"
+      },
+      "path": "/snippets?ip=proxyip:port(443)"
+    }
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "us|d2be|puddincat07@Telegram",
+    "network": "ws",
+    "port": 80,
+    "server": "172.67.168.193",
+    "skip-cert-verify": true,
+    "tfo": true,
+    "tls": false,
+    "type": "vless",
+    "udp": true,
+    "uuid": "9096805c-e6b8-4da9-9bdc-d76e392e6630",
+    "ws-opts": {
+      "headers": {
+        "Host": "gamang.gpj2.dpdns.org",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "path": "/Free-VPN-Geo-Project/181.214.208.46-8011"
+    }
   },
   {
     "client-fingerprint": "chrome",
     "flow": "xtls-rprx-vision",
-    "name": "ru|7042|puddincat07@Telegram",
-    "port": 443,
+    "name": "xx|2967|puddincat07@Telegram",
+    "port": 20223,
     "reality-opts": {
-      "public-key": "J_jQq9-SWQZjiMhuPaFV7V2MaJ4pkKgVRaz7x6tmvy8",
-      "short-id": "16895459a2c7768d"
+      "public-key": "dRgK6_86Zkd_nFhiUxmrBjAbO_nis9zCEKZpiCl2Z2Q",
+      "short-id": "ec372208"
     },
-    "server": "66.90.90.10",
-    "servername": "wa.sfasti.ru",
+    "server": "gr1-4.9966662.xyz",
+    "servername": "www.cloudflare.com",
     "skip-cert-verify": false,
     "tls": true,
     "type": "vless",
     "udp": true,
-    "uuid": "d4e4c02a-d969-47a6-ba0f-3d433fdac206"
+    "uuid": "8d80603a-d7d7-4bcd-ad88-aaf1cf70b8c6"
+  },
+  {
+    "alterId": 2,
+    "cipher": "auto",
+    "name": "xx|2952|puddincat07@Telegram",
+    "network": "ws",
+    "port": 80,
+    "server": "eb362f92-svukg0-t12cnj-1ol97.hk.p5pv.com",
+    "skip-cert-verify": true,
+    "tls": false,
+    "type": "vmess",
+    "uuid": "93fb69fc-77cf-11ee-85ee-f23c91369f2d",
+    "ws-opts": {
+      "headers": {
+        "Host": "eb362f92-svukg0-t12cnj-1ol97.hk.p5pv.com"
+      },
+      "path": "/"
+    }
   },
   {
     "client-fingerprint": "chrome",
     "flow": "xtls-rprx-vision",
-    "name": "ru|ac3d|puddincat07@Telegram",
+    "name": "ru|651d|puddincat07@Telegram",
     "port": 443,
     "reality-opts": {
       "public-key": "J_jQq9-SWQZjiMhuPaFV7V2MaJ4pkKgVRaz7x6tmvy8",
@@ -157,5 +191,37 @@
     "type": "vless",
     "udp": true,
     "uuid": "d4e4c02a-d969-47a6-ba0f-3d433fdac206"
+  },
+  {
+    "alterId": 0,
+    "cipher": "auto",
+    "http-opts": {
+      "method": "GET",
+      "path": [
+        "/"
+      ]
+    },
+    "name": "hk|229d|puddincat07@Telegram",
+    "network": "http",
+    "port": 31212,
+    "server": "47.242.90.210",
+    "skip-cert-verify": false,
+    "tls": false,
+    "type": "vmess",
+    "udp": true,
+    "uuid": "3a4271fb-2718-4489-da78-80a8e7701aa5"
+  },
+  {
+    "alterId": 0,
+    "cipher": "auto",
+    "name": "cn|ad21|puddincat07@Telegram",
+    "network": "tcp",
+    "port": 30302,
+    "server": "39.107.155.11",
+    "skip-cert-verify": true,
+    "tfo": true,
+    "type": "vmess",
+    "udp": true,
+    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24"
   }
 ]
