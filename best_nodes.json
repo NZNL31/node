@@ -1,14 +1,11 @@
 [
   {
-    "alterId": 0,
-    "cipher": "auto",
-    "name": "[VMess] 🇭🇰 香港3|@ripaojiedian",
-    "port": 18366,
-    "server": "43.247.134.213",
-    "skip-cert-verify": false,
-    "tls": false,
-    "type": "vmess",
-    "uuid": "ccc37b1b-4ef0-430c-b1e1-20bf96fcff8c"
+    "cipher": "aes-256-gcm",
+    "name": "[SS] 🇭🇰 香港2|@ripaojiedian",
+    "password": "ccf426f1fe78",
+    "port": 443,
+    "server": "103.103.245.158",
+    "type": "ss"
   },
   {
     "name": "[Trojan] 🇭🇰 香港6|@ripaojiedian",
@@ -18,24 +15,6 @@
     "skip-cert-verify": false,
     "sni": "www.nintendogames.net",
     "type": "trojan"
-  },
-  {
-    "alterId": 2,
-    "cipher": "auto",
-    "name": "[VMess] 🇭🇰 香港5|@ripaojiedian",
-    "network": "ws",
-    "port": 80,
-    "server": "1e426046-t0fds0-t12cnj-1ol97.hk.p5pv.com",
-    "skip-cert-verify": false,
-    "tls": false,
-    "type": "vmess",
-    "uuid": "93fb69fc-77cf-11ee-85ee-f23c91369f2d",
-    "ws-opts": {
-      "headers": {
-        "Host": "broadcastlv.chat.bilibili.com"
-      },
-      "path": "/"
-    }
   },
   {
     "alterId": 0,
@@ -83,52 +62,31 @@
     "type": "ss"
   },
   {
-    "client-fingerprint": "chrome",
-    "flow": "xtls-rprx-vision",
-    "name": "de|1bac|puddincat07@Telegram",
-    "port": 9696,
-    "reality-opts": {
-      "public-key": "Y_GsfLRoTP6SXIyYQjrn8TM_nce7Y9RIoEfWTJ35sGI"
+    "cipher": "aes-256-gcm",
+    "name": "[SS] 🇭🇰 香港2|@ripaojiedian 2",
+    "password": "ccf426f1fe78",
+    "plugin": "v2ray-plugin",
+    "plugin-opts": {
+      "host": "newroot2v1.dsjsapp.com",
+      "mode": "websocket",
+      "mux": true,
+      "path": "/zksuapgx",
+      "skip-cert-verify": false,
+      "tls": true
     },
-    "server": "164.92.188.15",
-    "servername": "icloud.cdn-apple.com",
-    "skip-cert-verify": false,
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "bcc560e0-173b-4c49-a4ce-742c3fae0028"
-  },
-  {
-    "cipher": "aes-256-cfb",
-    "name": "vn|3ae2|puddincat07@Telegram",
-    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
-    "port": 38388,
-    "server": "103.186.154.79",
+    "port": 443,
+    "server": "103.103.245.158",
     "type": "ss"
   },
   {
-    "cipher": "aes-256-cfb",
-    "name": "vn|f100|puddincat07@Telegram",
-    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
-    "port": 38388,
-    "server": "103.186.154.15",
-    "tfo": false,
-    "type": "ss"
-  },
-  {
-    "cipher": "aes-256-cfb",
-    "name": "md|3466|puddincat07@Telegram",
-    "password": "f8f7aCzcPKbsF8p3",
-    "port": 989,
-    "server": "185.153.197.5",
-    "type": "ss"
-  },
-  {
-    "cipher": "aes-256-cfb",
-    "name": "xx|f732|puddincat07@Telegram",
-    "password": "qwerREWQ@@",
-    "port": 4652,
-    "server": "p141.panda001.net",
-    "type": "ss"
+    "alterId": 0,
+    "cipher": "auto",
+    "name": "cn|0ead|puddincat07@Telegram",
+    "network": "tcp",
+    "port": 50007,
+    "server": "112.132.215.34",
+    "skip-cert-verify": true,
+    "type": "vmess",
+    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24"
   }
 ]
