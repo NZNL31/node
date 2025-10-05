@@ -15,6 +15,20 @@ proxies:
   skip-cert-verify: false
   sni: www.nintendogames.net
   type: trojan
+- alterId: 2
+  cipher: auto
+  name: '[VMess] 🇭🇰 香港5|@ripaojiedian'
+  network: ws
+  port: 80
+  server: 1e426046-t0fds0-t12cnj-1ol97.hk.p5pv.com
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
+  ws-opts:
+    headers:
+      Host: broadcastlv.chat.bilibili.com
+    path: /
 - alterId: 0
   cipher: auto
   name: '[VMess] 🇭🇰 香港7|@ripaojiedian'
@@ -50,29 +64,41 @@ proxies:
   port: 38388
   server: 103.186.154.15
   type: ss
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: de|1bac|puddincat07@Telegram
+  port: 9696
+  reality-opts:
+    public-key: Y_GsfLRoTP6SXIyYQjrn8TM_nce7Y9RIoEfWTJ35sGI
+  server: 164.92.188.15
+  servername: icloud.cdn-apple.com
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: bcc560e0-173b-4c49-a4ce-742c3fae0028
 - cipher: aes-256-cfb
-  name: vn|95c6|puddincat07@Telegram
+  name: vn|3ae2|puddincat07@Telegram
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   port: 38388
   server: 103.186.154.79
   type: ss
-- alterId: 0
-  cipher: auto
-  name: us|e8c1|puddincat07@Telegram
-  network: ws
-  port: 443
-  server: 172.67.209.79
-  tls: true
-  type: vmess
-  uuid: 91362cdb-81f8-4fd3-9b9f-2b24a8146a25
-  ws-opts:
-    headers:
-      Host: ggggbbhyuuui.999834.xyz
-    path: /ODznTT5fgkUw3VH0GJ
 - cipher: aes-256-cfb
-  name: hr|5df5|puddincat07@Telegram
+  name: vn|f100|puddincat07@Telegram
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  port: 38388
+  server: 103.186.154.15
+  tfo: false
+  type: ss
+- cipher: aes-256-cfb
+  name: md|3466|puddincat07@Telegram
   password: f8f7aCzcPKbsF8p3
   port: 989
-  server: 46.183.184.60
+  server: 185.153.197.5
   type: ss
-  udp: true
+- cipher: aes-256-cfb
+  name: xx|f732|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 4652
+  server: p141.panda001.net
+  type: ss
