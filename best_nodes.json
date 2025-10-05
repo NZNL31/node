@@ -10,14 +10,6 @@
     "type": "hysteria2"
   },
   {
-    "cipher": "aes-256-gcm",
-    "name": "[SS] 🇭🇰 香港2|@ripaojiedian",
-    "password": "ccf426f1fe78",
-    "port": 443,
-    "server": "103.103.245.158",
-    "type": "ss"
-  },
-  {
     "alterId": 0,
     "cipher": "auto",
     "name": "[VMess] 🇭🇰 香港3|@ripaojiedian",
@@ -36,24 +28,6 @@
     "skip-cert-verify": false,
     "sni": "www.nintendogames.net",
     "type": "trojan"
-  },
-  {
-    "alterId": 2,
-    "cipher": "auto",
-    "name": "[VMess] 🇭🇰 香港5|@ripaojiedian",
-    "network": "ws",
-    "port": 80,
-    "server": "1e426046-t0fds0-t12cnj-1ol97.hk.p5pv.com",
-    "skip-cert-verify": false,
-    "tls": false,
-    "type": "vmess",
-    "uuid": "93fb69fc-77cf-11ee-85ee-f23c91369f2d",
-    "ws-opts": {
-      "headers": {
-        "Host": "broadcastlv.chat.bilibili.com"
-      },
-      "path": "/"
-    }
   },
   {
     "alterId": 0,
@@ -83,14 +57,6 @@
     "type": "trojan"
   },
   {
-    "cipher": "aes-256-cfb",
-    "name": "[SS] 🇻🇳 越南|@ripaojiedian",
-    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
-    "port": 38388,
-    "server": "103.186.154.15",
-    "type": "ss"
-  },
-  {
     "cipher": "ss",
     "name": "[SS] 🇻🇳 越南|@ripaojiedian 2",
     "password": "//YWVzLTI1Ni1jZmI6WG44aktkbURNMDBJZU8lIyQjZkpBTXRzRUFFVU9wSC9ZV1l0WXFERm5UMFNW",
@@ -100,24 +66,52 @@
   },
   {
     "client-fingerprint": "chrome",
-    "name": "ru|c803|puddincat07@Telegram",
-    "port": 8080,
+    "flow": "xtls-rprx-vision",
+    "name": "ru|1ea8|puddincat07@Telegram",
+    "port": 443,
     "reality-opts": {
-      "public-key": "iPjWLvXWt7ABJaSRRwzjgLrvlJlwoYQZN8zF-G3D-Qs",
-      "short-id": "27cfa05000c23cc4"
+      "public-key": "J_jQq9-SWQZjiMhuPaFV7V2MaJ4pkKgVRaz7x6tmvy8",
+      "short-id": "16895459a2c7768d"
     },
-    "server": "84.22.150.195",
-    "servername": "yandex.com",
+    "server": "188.225.81.91",
+    "servername": "wa.sfasti.ru",
     "skip-cert-verify": false,
     "tls": true,
     "type": "vless",
     "udp": true,
-    "uuid": "1abaa2b6-ab8c-4525-8c91-b73bc2ab2b37"
+    "uuid": "d4e4c02a-d969-47a6-ba0f-3d433fdac206"
+  },
+  {
+    "alterId": 0,
+    "cipher": "auto",
+    "name": "xx|2060|puddincat07@Telegram",
+    "network": "ws",
+    "port": 443,
+    "server": "a-v1.888988866.xyz",
+    "skip-cert-verify": true,
+    "tls": true,
+    "type": "vmess",
+    "uuid": "104556c9-797c-42e9-9bb7-7a6e9974b857",
+    "ws-opts": {
+      "headers": {
+        "Host": "a-v1.888988866.xyz"
+      },
+      "path": "/104556c9-797c-42e9-9bb7-7a6e9974b857"
+    }
+  },
+  {
+    "cipher": "aes-256-cfb",
+    "name": "vn|b5a4|puddincat07@Telegram",
+    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
+    "port": 38388,
+    "server": "103.186.154.15",
+    "tfo": false,
+    "type": "ss"
   },
   {
     "client-fingerprint": "chrome",
     "flow": "xtls-rprx-vision",
-    "name": "xx|9611|puddincat07@Telegram",
+    "name": "xx|b4f2|puddincat07@Telegram",
     "port": 443,
     "reality-opts": {
       "public-key": "J_jQq9-SWQZjiMhuPaFV7V2MaJ4pkKgVRaz7x6tmvy8",
@@ -132,32 +126,43 @@
     "uuid": "d4e4c02a-d969-47a6-ba0f-3d433fdac206"
   },
   {
-    "cipher": "aes-256-cfb",
-    "name": "vn|aa61|puddincat07@Telegram",
-    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
-    "port": 38388,
-    "server": "103.186.154.15",
+    "cipher": "chacha20-ietf-poly1305",
+    "name": "xx|e461|puddincat07@Telegram",
+    "password": "Nk9asglDzHzjktVzTkvhaA",
+    "port": 443,
+    "server": "arxfw2b78fi2q9hzylhn.freesocks.work",
     "type": "ss"
   },
   {
     "client-fingerprint": "chrome",
-    "name": "us|fc5e|puddincat07@Telegram",
-    "network": "ws",
-    "port": 2096,
-    "server": "104.26.12.31",
-    "servername": "vless-10.webn.cc",
-    "skip-cert-verify": true,
-    "tfo": true,
+    "name": "de|0530|puddincat07@Telegram",
+    "port": 6666,
+    "reality-opts": {
+      "public-key": "S_2bepGaT7EHeH5DdyEgio421RTgrAvvOOQiaq8zV0g",
+      "short-id": "b525ecd2fc"
+    },
+    "server": "188.68.53.100",
+    "servername": "Tgju.org",
+    "skip-cert-verify": false,
     "tls": true,
     "type": "vless",
     "udp": true,
-    "uuid": "6877b96c-a092-4f90-8e46-cbb4cad2bb9f",
+    "uuid": "0abf9050-c7be-464d-80af-24094c2b97de"
+  },
+  {
+    "alterId": 0,
+    "cipher": "auto",
+    "name": "us|49f1|puddincat07@Telegram",
+    "network": "ws",
+    "port": 8080,
+    "server": "104.19.44.203",
+    "skip-cert-verify": true,
+    "tls": false,
+    "type": "vmess",
+    "udp": true,
+    "uuid": "3fdf9d48-578a-42dc-9fdd-0dfcefa3d0c5",
     "ws-opts": {
-      "headers": {
-        "Host": "vless-10.webn.cc",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-      },
-      "path": "/snippets?ip=proxyip:port(443)&nat64=6to4"
+      "path": "/?ed=2048&Telegram🇨🇳�@WangCai_8"
     }
   }
 ]
