@@ -1,5 +1,13 @@
 [
   {
+    "cipher": "aes-256-gcm",
+    "name": "[SS] 🇭🇰 香港2|@ripaojiedian",
+    "password": "ccf426f1fe78",
+    "port": 443,
+    "server": "103.103.245.158",
+    "type": "ss"
+  },
+  {
     "alterId": 0,
     "cipher": "auto",
     "name": "[VMess] 🇭🇰 香港3|@ripaojiedian",
@@ -20,6 +28,25 @@
     "type": "trojan"
   },
   {
+    "cipher": "aes-256-cfb",
+    "name": "[SS] 🇻🇳 越南|@ripaojiedian",
+    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
+    "port": 38388,
+    "server": "103.186.154.51",
+    "type": "ss"
+  },
+  {
+    "alterId": 0,
+    "cipher": "auto",
+    "name": "[VMess] 🇭🇰 香港3|@ripaojiedian 2",
+    "port": 18366,
+    "server": "43.247.134.213",
+    "skip-cert-verify": false,
+    "tls": false,
+    "type": "vmess",
+    "uuid": "ccc37b1b-4ef0-430c-b1e1-20bf96fcff8c"
+  },
+  {
     "cipher": "ss",
     "name": "[SS] 🇻🇳 越南|@ripaojiedian 2",
     "password": "//YWVzLTI1Ni1jZmI6WG44aktkbURNMDBJZU8lIyQjZkpBTXRzRUFFVU9wSC9ZV1l0WXFERm5UMFNW",
@@ -28,62 +55,36 @@
     "type": "ss"
   },
   {
-    "cipher": "chacha20-ietf",
-    "name": "sg|7ab5|puddincat07@Telegram",
-    "password": "asd123456",
-    "port": 8388,
-    "server": "103.36.91.32",
+    "cipher": "aes-256-gcm",
+    "name": "[SS] 🇭🇰 香港2|@ripaojiedian 2",
+    "password": "ccf426f1fe78",
+    "plugin": "v2ray-plugin",
+    "plugin-opts": {
+      "host": "newroot2v1.dsjsapp.com",
+      "mode": "websocket",
+      "mux": true,
+      "path": "/zksuapgx",
+      "skip-cert-verify": false,
+      "tls": true
+    },
+    "port": 443,
+    "server": "103.103.245.158",
     "type": "ss"
   },
   {
-    "name": "xx|716b|puddincat07@Telegram",
-    "network": "ws",
-    "port": 443,
-    "server": "cf.0sm.com",
-    "servername": "baipiao.CMLiussss.abrdns.com",
-    "skip-cert-verify": false,
-    "tfo": false,
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
-    "ws-opts": {
-      "headers": {
-        "Host": "baipiao.CMLiussss.abrdns.com"
-      },
-      "path": "/snippets/ip=tw.tp81.netlib.re:81vless:/0c6b0284-77b9-48c8-969a-4be6b18b10d3"
-    }
+    "cipher": "aes-256-cfb",
+    "name": "vn|932b|puddincat07@Telegram",
+    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
+    "port": 38388,
+    "server": "103.186.154.76",
+    "type": "ss"
   },
   {
-    "name": "cf|684c|puddincat07@Telegram",
-    "network": "ws",
-    "port": 2096,
-    "server": "185.207.197.253",
-    "servername": "vlesspro.llengcugit.sbs",
-    "skip-cert-verify": false,
-    "tfo": false,
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "6e433a29-22ac-4061-ae8b-f1731715d0d9",
-    "ws-opts": {
-      "headers": {
-        "Host": "vlesspro.llengcugit.sbs"
-      },
-      "path": "/Telegram"
-    }
-  },
-  {
-    "alterId": 0,
-    "cipher": "auto",
-    "name": "cn|bda7|puddincat07@Telegram",
-    "network": "tcp",
-    "port": 30302,
-    "server": "39.107.155.11",
-    "skip-cert-verify": true,
-    "tfo": true,
-    "type": "vmess",
-    "udp": true,
-    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24"
+    "cipher": "aes-256-cfb",
+    "name": "xx|db4f|puddincat07@Telegram",
+    "password": "qwerREWQ@@",
+    "port": 4652,
+    "server": "p141.panda001.net",
+    "type": "ss"
   }
 ]
