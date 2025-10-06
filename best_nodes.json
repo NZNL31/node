@@ -8,39 +8,15 @@
     "type": "ss"
   },
   {
-    "name": "[Trojan] 🇭🇰 香港6|@ripaojiedian",
-    "password": "253bc477d4e43c209f2d427272968280",
-    "port": 443,
-    "server": "160.16.63.16",
-    "skip-cert-verify": false,
-    "sni": "www.nintendogames.net",
-    "type": "trojan"
-  },
-  {
     "alterId": 0,
     "cipher": "auto",
-    "name": "[VMess] 🇭🇰 香港7|@ripaojiedian",
-    "network": "ws",
-    "port": 8080,
-    "server": "www.speedtest.net",
+    "name": "[VMess] 🇭🇰 香港3|@ripaojiedian",
+    "port": 18366,
+    "server": "43.247.134.213",
     "skip-cert-verify": false,
     "tls": false,
     "type": "vmess",
-    "uuid": "3675ed61-e3fb-4306-8e06-8474b461cd29",
-    "ws-opts": {
-      "headers": {
-        "Host": "stakeholders-weekend-cable-module.trycloudflare.com"
-      },
-      "path": "3675ed61-e3fb-4306-8e06-8474b461cd29-vm"
-    }
-  },
-  {
-    "cipher": "aes-256-cfb",
-    "name": "[SS] 🇻🇳 越南|@ripaojiedian",
-    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
-    "port": 38388,
-    "server": "103.186.154.15",
-    "type": "ss"
+    "uuid": "ccc37b1b-4ef0-430c-b1e1-20bf96fcff8c"
   },
   {
     "alterId": 0,
@@ -79,14 +55,35 @@
     "type": "ss"
   },
   {
-    "alterId": 0,
-    "cipher": "auto",
-    "name": "cn|0ead|puddincat07@Telegram",
-    "network": "tcp",
-    "port": 50007,
-    "server": "112.132.215.34",
-    "skip-cert-verify": true,
-    "type": "vmess",
-    "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24"
+    "client-fingerprint": "chrome",
+    "name": "de|8061|puddincat07@Telegram",
+    "port": 6666,
+    "reality-opts": {
+      "public-key": "S_2bepGaT7EHeH5DdyEgio421RTgrAvvOOQiaq8zV0g",
+      "short-id": "b525ecd2fc"
+    },
+    "server": "188.68.53.100",
+    "servername": "Tgju.org",
+    "skip-cert-verify": false,
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "0abf9050-c7be-464d-80af-24094c2b97de"
+  },
+  {
+    "client-fingerprint": "chrome",
+    "flow": "xtls-rprx-vision",
+    "name": "de|6f2d|puddincat07@Telegram",
+    "port": 9696,
+    "reality-opts": {
+      "public-key": "Y_GsfLRoTP6SXIyYQjrn8TM_nce7Y9RIoEfWTJ35sGI"
+    },
+    "server": "164.92.188.15",
+    "servername": "icloud.cdn-apple.com",
+    "skip-cert-verify": false,
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "bcc560e0-173b-4c49-a4ce-742c3fae0028"
   }
 ]
