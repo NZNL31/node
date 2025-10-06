@@ -1,10 +1,4 @@
 proxies:
-- cipher: aes-256-gcm
-  name: '[SS] 🇭🇰 香港2|@ripaojiedian'
-  password: ccf426f1fe78
-  port: 443
-  server: 103.103.245.158
-  type: ss
 - alterId: 0
   cipher: auto
   name: '[VMess] 🇭🇰 香港3|@ripaojiedian'
@@ -14,6 +8,47 @@ proxies:
   tls: false
   type: vmess
   uuid: ccc37b1b-4ef0-430c-b1e1-20bf96fcff8c
+- name: '[Trojan] 🇭🇰 香港6|@ripaojiedian'
+  password: 253bc477d4e43c209f2d427272968280
+  port: 443
+  server: 160.16.63.16
+  skip-cert-verify: false
+  sni: www.nintendogames.net
+  type: trojan
+- alterId: 2
+  cipher: auto
+  name: '[VMess] 🇭🇰 香港5|@ripaojiedian'
+  network: ws
+  port: 80
+  server: 1e426046-t0fds0-t12cnj-1ol97.hk.p5pv.com
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
+  ws-opts:
+    headers:
+      Host: broadcastlv.chat.bilibili.com
+    path: /
+- alterId: 0
+  cipher: auto
+  name: '[VMess] 🇭🇰 香港7|@ripaojiedian'
+  network: ws
+  port: 8080
+  server: www.speedtest.net
+  skip-cert-verify: false
+  tls: false
+  type: vmess
+  uuid: 3675ed61-e3fb-4306-8e06-8474b461cd29
+  ws-opts:
+    headers:
+      Host: stakeholders-weekend-cable-module.trycloudflare.com
+    path: 3675ed61-e3fb-4306-8e06-8474b461cd29-vm
+- cipher: aes-256-cfb
+  name: '[SS] 🇻🇳 越南|@ripaojiedian'
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  port: 38388
+  server: 103.186.154.15
+  type: ss
 - alterId: 0
   cipher: auto
   name: '[VMess] 🇭🇰 香港3|@ripaojiedian 2'
@@ -44,7 +79,7 @@ proxies:
   server: 103.103.245.158
   type: ss
 - client-fingerprint: chrome
-  name: de|8061|puddincat07@Telegram
+  name: de|4670|puddincat07@Telegram
   port: 6666
   reality-opts:
     public-key: S_2bepGaT7EHeH5DdyEgio421RTgrAvvOOQiaq8zV0g
@@ -56,9 +91,15 @@ proxies:
   type: vless
   udp: true
   uuid: 0abf9050-c7be-464d-80af-24094c2b97de
+- cipher: aes-256-cfb
+  name: vn|5279|puddincat07@Telegram
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  port: 38388
+  server: 103.186.154.77
+  type: ss
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
-  name: de|6f2d|puddincat07@Telegram
+  name: de|f5f4|puddincat07@Telegram
   port: 9696
   reality-opts:
     public-key: Y_GsfLRoTP6SXIyYQjrn8TM_nce7Y9RIoEfWTJ35sGI
