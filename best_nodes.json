@@ -47,14 +47,6 @@
     "uuid": "ccc37b1b-4ef0-430c-b1e1-20bf96fcff8c"
   },
   {
-    "cipher": "ss",
-    "name": "[SS] 🇻🇳 越南|@ripaojiedian 2",
-    "password": "//YWVzLTI1Ni1jZmI6WG44aktkbURNMDBJZU8lIyQjZkpBTXRzRUFFVU9wSC9ZV1l0WXFERm5UMFNW",
-    "port": 38388,
-    "server": "103.186.154.51",
-    "type": "ss"
-  },
-  {
     "cipher": "aes-256-gcm",
     "name": "[SS] 🇭🇰 香港2|@ripaojiedian 2",
     "password": "ccf426f1fe78",
@@ -72,19 +64,53 @@
     "type": "ss"
   },
   {
-    "cipher": "aes-256-cfb",
-    "name": "vn|932b|puddincat07@Telegram",
-    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
-    "port": 38388,
-    "server": "103.186.154.76",
-    "type": "ss"
+    "client-fingerprint": "chrome",
+    "name": "us|bc9b|puddincat07@Telegram",
+    "network": "ws",
+    "port": 2096,
+    "server": "104.26.12.31",
+    "servername": "vless-10.webn.cc",
+    "skip-cert-verify": true,
+    "tfo": true,
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "6877b96c-a092-4f90-8e46-cbb4cad2bb9f",
+    "ws-opts": {
+      "headers": {
+        "Host": "vless-10.webn.cc",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "path": "/snippets?ip=proxyip:port(443)&nat64=6to4"
+    }
   },
   {
-    "cipher": "aes-256-cfb",
-    "name": "xx|db4f|puddincat07@Telegram",
-    "password": "qwerREWQ@@",
-    "port": 4652,
-    "server": "p141.panda001.net",
-    "type": "ss"
+    "cipher": "rc4-md5",
+    "name": "us|5d42|puddincat07@Telegram",
+    "obfs": "plain",
+    "password": "14fFPrbezE3HDZzsMOr6",
+    "port": 8080,
+    "protocol": "origin",
+    "server": "107.151.182.253",
+    "type": "ssr"
+  },
+  {
+    "alterId": 32,
+    "cipher": "auto",
+    "client-fingerprint": "chrome",
+    "name": "xx|42a3|puddincat07@Telegram",
+    "network": "ws",
+    "port": 443,
+    "server": "vc.fly.dev",
+    "skip-cert-verify": true,
+    "tls": true,
+    "type": "vmess",
+    "uuid": "35379219-6535-4f2e-a4fe-3e44f61e0eee",
+    "ws-opts": {
+      "headers": {
+        "host": "vc.fly.dev"
+      },
+      "path": "/vc"
+    }
   }
 ]
