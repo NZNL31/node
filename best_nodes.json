@@ -1,13 +1,5 @@
 [
   {
-    "cipher": "aes-256-gcm",
-    "name": "[SS] 🇭🇰 香港2|@ripaojiedian",
-    "password": "ccf426f1fe78",
-    "port": 443,
-    "server": "103.103.245.158",
-    "type": "ss"
-  },
-  {
     "alterId": 0,
     "cipher": "auto",
     "name": "[VMess] 🇭🇰 香港3|@ripaojiedian",
@@ -25,6 +17,15 @@
     "server": "lazy.rsqpq.cn",
     "skip-cert-verify": false,
     "sni": "lazy.rsqpq.cn",
+    "type": "trojan"
+  },
+  {
+    "name": "[Trojan] 🇭🇰 香港6|@ripaojiedian",
+    "password": "253bc477d4e43c209f2d427272968280",
+    "port": 4431,
+    "server": "221.128.195.218",
+    "skip-cert-verify": false,
+    "sni": "www.nintendogames.net",
     "type": "trojan"
   },
   {
@@ -47,62 +48,43 @@
     "uuid": "ccc37b1b-4ef0-430c-b1e1-20bf96fcff8c"
   },
   {
-    "cipher": "aes-256-gcm",
-    "name": "[SS] 🇭🇰 香港2|@ripaojiedian 2",
-    "password": "ccf426f1fe78",
-    "plugin": "v2ray-plugin",
-    "plugin-opts": {
-      "host": "newroot2v1.dsjsapp.com",
-      "mode": "websocket",
-      "mux": true,
-      "path": "/zksuapgx",
-      "skip-cert-verify": false,
-      "tls": true
-    },
-    "port": 443,
-    "server": "103.103.245.158",
+    "name": "[Trojan] 🇭🇰 香港5|@ripaojiedian 2",
+    "password": "2338a604-dc6a-4470-bc7d-947e462a3cfd",
+    "port": 30002,
+    "server": "lazy.rsqpq.cn",
+    "skip-cert-verify": false,
+    "type": "trojan"
+  },
+  {
+    "cipher": "ss",
+    "name": "[SS] 🇻🇳 越南|@ripaojiedian 2",
+    "password": "//YWVzLTI1Ni1jZmI6WG44aktkbURNMDBJZU8lIyQjZkpBTXRzRUFFVU9wSC9ZV1l0WXFERm5UMFNW",
+    "port": 38388,
+    "server": "103.186.155.233",
     "type": "ss"
   },
   {
-    "name": "xx|933a|puddincat07@Telegram",
-    "network": "ws",
-    "password": "YwuvGJk36B",
-    "port": 2053,
-    "server": "creativecommons.org",
-    "skip-cert-verify": true,
-    "sni": "kotlet.arshiacomplus.dpdns.org",
-    "tfo": true,
-    "type": "trojan",
-    "udp": true,
-    "ws-opts": {
-      "headers": {
-        "Host": "kotlet.arshiacomplus.dpdns.org"
-      },
-      "path": "/yamtekodasayahhh"
-    }
-  },
-  {
     "flow": "",
-    "name": "xx|c324|puddincat07@Telegram",
+    "name": "xx|2ea9|puddincat07@Telegram",
     "network": "ws",
     "port": 443,
-    "server": "google.sosorg.nyc.mn",
-    "servername": "bpg.307986.dpdns.org",
+    "server": "baidu.sosorg.nyc.mn",
+    "servername": "msttes.citess.ggff.net",
     "skip-cert-verify": false,
     "tfo": false,
     "tls": true,
     "type": "vless",
     "udp": true,
-    "uuid": "0199889f-d499-8cad-99f7-7507ed9a819b",
+    "uuid": "01998eee-009b-fad3-17c1-5d0999b53f54",
     "ws-opts": {
       "headers": {
-        "Host": "bpg.307986.dpdns.org"
+        "Host": "msttes.citess.ggff.net"
       },
-      "path": "/snippets?ip=ProxyIP.Oracle.cmliussss.net"
+      "path": "/snippets?ip=kr.tp50000.netlib.re:50000"
     }
   },
   {
-    "name": "xx|d339|puddincat07@Telegram",
+    "name": "xx|b74b|puddincat07@Telegram",
     "network": "ws",
     "port": 443,
     "server": "cf.0sm.com",
@@ -121,22 +103,20 @@
     }
   },
   {
-    "name": "cf|b3db|puddincat07@Telegram",
-    "network": "ws",
-    "port": 2096,
-    "server": "185.207.197.253",
-    "servername": "vlesspro.llengcugit.sbs",
+    "client-fingerprint": "chrome",
+    "flow": "xtls-rprx-vision",
+    "name": "ru|db06|puddincat07@Telegram",
+    "port": 443,
+    "reality-opts": {
+      "public-key": "J_jQq9-SWQZjiMhuPaFV7V2MaJ4pkKgVRaz7x6tmvy8",
+      "short-id": "16895459a2c7768d"
+    },
+    "server": "188.225.81.91",
+    "servername": "wa.sfasti.ru",
     "skip-cert-verify": false,
-    "tfo": false,
     "tls": true,
     "type": "vless",
     "udp": true,
-    "uuid": "6e433a29-22ac-4061-ae8b-f1731715d0d9",
-    "ws-opts": {
-      "headers": {
-        "Host": "vlesspro.llengcugit.sbs"
-      },
-      "path": "/Telegram"
-    }
+    "uuid": "d4e4c02a-d969-47a6-ba0f-3d433fdac206"
   }
 ]
