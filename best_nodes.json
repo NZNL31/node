@@ -1,39 +1,44 @@
 [
   {
-    "name": "[Trojan] JP_speednode_0032",
-    "password": "253bc477d4e43c209f2d427272968280",
+    "cipher": "aes-256-gcm",
+    "name": "[SS] 🇭🇰 香港2|@ripaojiedian",
+    "password": "ccf426f1fe78",
     "port": 443,
-    "server": "60.83.190.248",
-    "skip-cert-verify": false,
-    "sni": "www.nintendogames.net",
-    "type": "trojan"
+    "server": "103.103.245.158",
+    "type": "ss"
   },
   {
-    "name": "[Trojan] 🇭🇰 香港6|@ripaojiedian",
-    "password": "253bc477d4e43c209f2d427272968280",
-    "port": 443,
-    "server": "58.152.25.205",
-    "skip-cert-verify": false,
-    "sni": "www.nintendogames.net",
-    "type": "trojan"
+    "cipher": "aes-256-cfb",
+    "name": "[SS] 🇻🇳 越南|@ripaojiedian",
+    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
+    "port": 38388,
+    "server": "103.186.155.233",
+    "type": "ss"
   },
   {
-    "name": "[Trojan] JP_speednode_0034",
-    "password": "253bc477d4e43c209f2d427272968280",
-    "port": 4451,
-    "server": "160.16.136.130",
-    "skip-cert-verify": false,
-    "sni": "www.nintendogames.net",
-    "type": "trojan"
+    "cipher": "ss",
+    "name": "[SS] 🇻🇳 越南|@ripaojiedian 2",
+    "password": "//YWVzLTI1Ni1jZmI6WG44aktkbURNMDBJZU8lIyQjZkpBTXRzRUFFVU9wSC9ZV1l0WXFERm5UMFNW",
+    "port": 38388,
+    "server": "103.186.155.233",
+    "type": "ss"
   },
   {
-    "name": "[Trojan] 🇸🇬 新加坡2|@ripaojiedian",
-    "password": "253bc477d4e43c209f2d427272968280",
-    "port": 1085,
-    "server": "153.121.39.240",
+    "name": "[Vless] AE_speednode_0001",
+    "network": "ws",
+    "port": 2096,
+    "server": "185.158.133.43",
+    "servername": "kejiland.freewarp.eu.org",
     "skip-cert-verify": false,
-    "sni": "www.nintendogames.net",
-    "type": "trojan"
+    "tls": false,
+    "type": "vless",
+    "uuid": "01997b9d-a1f7-e188-981a-c665b723cfef",
+    "ws-opts": {
+      "headers": {
+        "Host": "kejiland.freewarp.eu.org"
+      },
+      "path": "/snippets"
+    }
   },
   {
     "name": "[Vless] AU_speednode_0005",
@@ -104,6 +109,23 @@
     }
   },
   {
+    "name": "[Vless] BR_speednode_0009",
+    "network": "ws",
+    "port": 443,
+    "server": "185.133.35.95",
+    "servername": "d-us4.djwstlsweb.top",
+    "skip-cert-verify": false,
+    "tls": true,
+    "type": "vless",
+    "uuid": "52ed75e2-70a2-41a0-b258-58ca4b200be9",
+    "ws-opts": {
+      "headers": {
+        "Host": "d-us4.djwstlsweb.top"
+      },
+      "path": "/djjc/us4fp=ios"
+    }
+  },
+  {
     "name": "[Vless] BR_speednode_0010",
     "network": "ws",
     "port": 443,
@@ -118,6 +140,23 @@
         "Host": "d-us3.djwstlsweb.top"
       },
       "path": "/djjc/us3fp=ios"
+    }
+  },
+  {
+    "name": "[Vless] BR_speednode_0011",
+    "network": "ws",
+    "port": 443,
+    "server": "185.133.35.95",
+    "servername": "d-jp1.djwstlsweb.top",
+    "skip-cert-verify": false,
+    "tls": true,
+    "type": "vless",
+    "uuid": "52ed75e2-70a2-41a0-b258-58ca4b200be9",
+    "ws-opts": {
+      "headers": {
+        "Host": "d-jp1.djwstlsweb.top"
+      },
+      "path": "/djjc/jp1fp=safari"
     }
   },
   {
@@ -189,40 +228,6 @@
     }
   },
   {
-    "name": "[Vless] LV_speednode_0040",
-    "network": "ws",
-    "port": 443,
-    "server": "138.124.182.204",
-    "servername": "kejiland.freewarp.eu.org",
-    "skip-cert-verify": false,
-    "tls": true,
-    "type": "vless",
-    "uuid": "01996549-6892-dbf0-0453-f700236936bd",
-    "ws-opts": {
-      "headers": {
-        "Host": "kejiland.freewarp.eu.org"
-      },
-      "path": "/snippets/ip=proxyip.fxxk.dedyn.io:443fp=chrome"
-    }
-  },
-  {
-    "name": "[Vless] NL_speednode_0042",
-    "network": "ws",
-    "port": 8000,
-    "server": "176.222.53.140",
-    "servername": "kejiland.freewarp.eu.org",
-    "skip-cert-verify": false,
-    "tls": false,
-    "type": "vless",
-    "uuid": "b65f4df7-f6af-42b2-877a-cef33f21675e",
-    "ws-opts": {
-      "headers": {
-        "Host": "kejiland.freewarp.eu.org"
-      },
-      "path": "/snippets/ip=proxyip.fxxk.dedyn.io:443security=tls"
-    }
-  },
-  {
     "name": "[Vless] NL_speednode_0043",
     "network": "ws",
     "port": 8000,
@@ -232,23 +237,6 @@
     "tls": false,
     "type": "vless",
     "uuid": "b65f4df7-f6af-42b2-877a-cef33f21675e",
-    "ws-opts": {
-      "headers": {
-        "Host": "kejiland.freewarp.eu.org"
-      },
-      "path": "/snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls"
-    }
-  },
-  {
-    "name": "[Vless] NL_speednode_0044",
-    "network": "ws",
-    "port": 443,
-    "server": "146.103.33.38",
-    "servername": "kejiland.freewarp.eu.org",
-    "skip-cert-verify": false,
-    "tls": false,
-    "type": "vless",
-    "uuid": "01996549-6892-dbf0-0453-f700236936bd",
     "ws-opts": {
       "headers": {
         "Host": "kejiland.freewarp.eu.org"
@@ -271,22 +259,6 @@
         "Host": "kejiland.freewarp.eu.org"
       },
       "path": "/snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls"
-    }
-  },
-  {
-    "name": "[Trojan] SG_speednode_0050",
-    "network": "ws",
-    "password": "wb6368",
-    "port": 2087,
-    "server": "92.243.75.49",
-    "skip-cert-verify": false,
-    "sni": "hsdgbuys.pages.dev",
-    "type": "trojan",
-    "ws-opts": {
-      "headers": {
-        "Host": "hsdgbuys.pages.dev"
-      },
-      "path": "/"
     }
   },
   {
@@ -324,10 +296,10 @@
     }
   },
   {
-    "name": "[Vless] US_speednode_0054",
+    "name": "[Vless] US_speednode_0055",
     "network": "ws",
     "port": 443,
-    "server": "162.159.43.92",
+    "server": "104.16.246.85",
     "servername": "juzi.634676.xyz",
     "skip-cert-verify": false,
     "tls": true,
@@ -341,32 +313,35 @@
     }
   },
   {
-    "name": "[Vless] US_speednode_0062",
+    "alpn": [
+      "h3"
+    ],
+    "name": "[Vless] US_speednode_0059",
     "network": "ws",
-    "port": 443,
-    "server": "registry.cyou",
-    "servername": "sni.wwxgxn.cfd",
+    "port": 2083,
+    "server": "162.159.142.252",
+    "servername": "fei.634676.xyz",
     "skip-cert-verify": false,
     "tls": true,
     "type": "vless",
-    "uuid": "01995fbf-d383-154f-98a0-5ff16ca40a79",
+    "uuid": "d2965257-0536-4811-a0d5-cdce54e90326",
     "ws-opts": {
       "headers": {
-        "Host": "sni.wwxgxn.cfd"
+        "Host": "fei.634676.xyz"
       },
-      "path": "/snippetsfp=chrome"
+      "path": "/?ed=2560fp=random"
     }
   },
   {
-    "name": "[Vless] US_speednode_0065",
+    "name": "[Vless] US_speednode_0064",
     "network": "ws",
     "port": 2096,
-    "server": "209.46.30.44",
+    "server": "166.62.111.32",
     "servername": "kejiland.freewarp.eu.org",
     "skip-cert-verify": false,
     "tls": false,
     "type": "vless",
-    "uuid": "12345678-1234-1234-1234-123456789123",
+    "uuid": "b65f4df7-f6af-42b2-877a-cef33f21675e",
     "ws-opts": {
       "headers": {
         "Host": "kejiland.freewarp.eu.org"
@@ -409,23 +384,6 @@
     }
   },
   {
-    "name": "[Vless] US_speednode_0069",
-    "network": "ws",
-    "port": 2096,
-    "server": "199.34.229.32",
-    "servername": "kejiland.freewarp.eu.org",
-    "skip-cert-verify": false,
-    "tls": false,
-    "type": "vless",
-    "uuid": "b65f4df7-f6af-42b2-877a-cef33f21675e",
-    "ws-opts": {
-      "headers": {
-        "Host": "kejiland.freewarp.eu.org"
-      },
-      "path": "/snippetsfpsecurity=tls"
-    }
-  },
-  {
     "name": "[Vless] US_speednode_0071",
     "network": "ws",
     "port": 443,
@@ -443,8 +401,57 @@
     }
   },
   {
+    "name": "[Trojan] US_speednode_0072",
+    "network": "ws",
+    "password": "iwangjie",
+    "port": 15805,
+    "server": "158.101.11.204",
+    "skip-cert-verify": false,
+    "sni": "nodes.830901.xyz",
+    "type": "trojan",
+    "ws-opts": {
+      "headers": {
+        "Host": "nodes.830901.xyz"
+      },
+      "path": "/?ed=2560"
+    }
+  },
+  {
+    "name": "[Trojan] US_speednode_0074",
+    "network": "ws",
+    "password": "iwangjie",
+    "port": 15805,
+    "server": "158.101.11.204",
+    "skip-cert-verify": false,
+    "sni": "nodes.830901.xyz",
+    "type": "trojan",
+    "ws-opts": {
+      "headers": {
+        "Host": "nodes.830901.xyz"
+      },
+      "path": "/"
+    }
+  },
+  {
+    "cipher": "aes-256-gcm",
+    "name": "[SS] 🇭🇰 香港2|@ripaojiedian 2",
+    "password": "ccf426f1fe78",
+    "plugin": "v2ray-plugin",
+    "plugin-opts": {
+      "host": "newroot2v1.dsjsapp.com",
+      "mode": "websocket",
+      "mux": true,
+      "path": "/zksuapgx",
+      "skip-cert-verify": false,
+      "tls": true
+    },
+    "port": 443,
+    "server": "103.103.245.158",
+    "type": "ss"
+  },
+  {
     "cipher": "aes-256-cfb",
-    "name": "us|98dd|puddincat07@Telegram",
+    "name": "us|c6bd|puddincat07@Telegram",
     "password": "f8f7aCzcPKbsF8p3",
     "port": 989,
     "server": "104.192.226.106",
@@ -452,33 +459,15 @@
   },
   {
     "cipher": "aes-256-cfb",
-    "name": "vn|3a55|puddincat07@Telegram",
+    "name": "vn|9c5b|puddincat07@Telegram",
     "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
     "port": 38388,
-    "server": "103.186.155.26",
+    "server": "103.186.155.12",
     "type": "ss",
     "udp": true
   },
   {
-    "name": "xx|6a50|puddincat07@Telegram",
-    "network": "ws",
-    "port": 80,
-    "server": "test.sachix.online",
-    "servername": "speedtest.net",
-    "skip-cert-verify": false,
-    "tls": false,
-    "type": "vless",
-    "udp": true,
-    "uuid": "522d0d20-40a3-49d8-af63-37c347b184ed",
-    "ws-opts": {
-      "headers": {
-        "Host": "speedtest.net"
-      },
-      "path": "/"
-    }
-  },
-  {
-    "name": "cf|abdb|puddincat07@Telegram",
+    "name": "cf|6754|puddincat07@Telegram",
     "network": "ws",
     "port": 2096,
     "server": "185.207.197.253",
@@ -497,7 +486,7 @@
     }
   },
   {
-    "name": "xx|39ab|puddincat07@Telegram",
+    "name": "xx|8128|puddincat07@Telegram",
     "network": "ws",
     "port": 80,
     "server": "mstr.fastly80.hosting-ip.com",
@@ -515,23 +504,16 @@
   },
   {
     "cipher": "aes-256-cfb",
-    "name": "kr|832f|puddincat07@Telegram",
-    "password": "f8f7aCzcPKbsF8p3",
-    "port": 989,
-    "server": "154.90.62.168",
-    "type": "ss"
-  },
-  {
-    "cipher": "aes-256-cfb",
-    "name": "vn|db9e|puddincat07@Telegram",
+    "name": "vn|5a58|puddincat07@Telegram",
     "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
     "port": 38388,
-    "server": "103.186.155.233",
-    "type": "ss"
+    "server": "103.186.155.60",
+    "type": "ss",
+    "udp": true
   },
   {
     "cipher": "aes-256-cfb",
-    "name": "vn|86ca|puddincat07@Telegram",
+    "name": "vn|1790|puddincat07@Telegram",
     "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
     "port": 38388,
     "server": "103.186.154.72",
@@ -540,7 +522,7 @@
   {
     "alterId": 1,
     "cipher": "auto",
-    "name": "us|7af0|puddincat07@Telegram",
+    "name": "us|3371|puddincat07@Telegram",
     "network": "ws",
     "port": 443,
     "server": "172.67.179.37",
