@@ -8,15 +8,6 @@
     "type": "ss"
   },
   {
-    "name": "[Trojan] 🇭🇰 香港5|@ripaojiedian",
-    "password": "2338a604-dc6a-4470-bc7d-947e462a3cfd",
-    "port": 30002,
-    "server": "lazy.rsqpq.cn",
-    "skip-cert-verify": false,
-    "sni": "lazy.rsqpq.cn",
-    "type": "trojan"
-  },
-  {
     "name": "[Trojan] 🇭🇰 香港6|@ripaojiedian",
     "password": "253bc477d4e43c209f2d427272968280",
     "port": 4431,
@@ -84,22 +75,6 @@
     }
   },
   {
-    "name": "[Trojan] SG_speednode_0023",
-    "network": "ws",
-    "password": "wb6368",
-    "port": 2087,
-    "server": "92.243.75.49",
-    "skip-cert-verify": false,
-    "sni": "hsdgbuys.pages.dev",
-    "type": "trojan",
-    "ws-opts": {
-      "headers": {
-        "Host": "hsdgbuys.pages.dev"
-      },
-      "path": "/"
-    }
-  },
-  {
     "name": "[Vless] US_speednode_0025",
     "network": "ws",
     "port": 2087,
@@ -134,6 +109,26 @@
     }
   },
   {
+    "alpn": [
+      "http/1.1"
+    ],
+    "name": "[Vless] US_speednode_0027",
+    "network": "ws",
+    "port": 443,
+    "server": "188.114.97.3",
+    "servername": "paS-kaLE-AGhA.pageS.deV",
+    "skip-cert-verify": false,
+    "tls": true,
+    "type": "vless",
+    "uuid": "f2e486f9-1697-4be6-be59-6c4fb42c7a24",
+    "ws-opts": {
+      "headers": {
+        "Host": "paS-kaLE-AGhA.pageS.deV"
+      },
+      "path": "/Telegram@V2ray_Alpha/?ed=2560fp=randomized"
+    }
+  },
+  {
     "name": "[Vless] US_speednode_0028",
     "network": "ws",
     "port": 443,
@@ -148,6 +143,40 @@
         "Host": "GgGgr.PaGES.dEV"
       },
       "path": "/Telegram@ShadowProxy66/?ed=2560fp=chrome"
+    }
+  },
+  {
+    "name": "[Vless] US_speednode_0029",
+    "network": "ws",
+    "port": 443,
+    "server": "172.66.44.118",
+    "servername": "ConFIgmr.PaGeS.dEV",
+    "skip-cert-verify": false,
+    "tls": true,
+    "type": "vless",
+    "uuid": "63005378-e32e-4e23-bc6e-84812f147a6f",
+    "ws-opts": {
+      "headers": {
+        "Host": "ConFIgmr.PaGeS.dEV"
+      },
+      "path": "/VrChX4o5oasIm4In?ed=2560fp=chrome"
+    }
+  },
+  {
+    "name": "[Vless] US_speednode_0032",
+    "network": "ws",
+    "port": 443,
+    "server": "creativecommons.org",
+    "servername": "nigan.pages.dev",
+    "skip-cert-verify": false,
+    "tls": true,
+    "type": "vless",
+    "uuid": "032dae6d-6f5f-4fba-ba18-ccdc43ee8e19",
+    "ws-opts": {
+      "headers": {
+        "Host": "nigan.pages.dev"
+      },
+      "path": "/socks5://51.210.111.216:33123fp=randomized"
     }
   },
   {
@@ -222,22 +251,6 @@
     }
   },
   {
-    "name": "[Trojan] US_speednode_0037",
-    "network": "ws",
-    "password": "YwuvGJk36B",
-    "port": 2053,
-    "server": "creativecommons.org",
-    "skip-cert-verify": false,
-    "sni": "kotlet.arshiacomplus.dpdns.org",
-    "type": "trojan",
-    "ws-opts": {
-      "headers": {
-        "Host": "kotlet.arshiacomplus.dpdns.org"
-      },
-      "path": "/yamtekodasayahhh"
-    }
-  },
-  {
     "name": "[Vless] US_speednode_0038",
     "network": "ws",
     "port": 80,
@@ -272,58 +285,79 @@
     }
   },
   {
-    "client-fingerprint": "chrome",
-    "flow": "xtls-rprx-vision",
-    "name": "xx|09b6|puddincat07@Telegram",
-    "port": 443,
-    "reality-opts": {
-      "public-key": "V6i1V9804ZfgT8nutUwDs5IDQdcY9pK5uO075SW4ml4",
-      "short-id": "2d46a79deebf50fd"
+    "cipher": "aes-256-gcm",
+    "name": "[SS] 🇭🇰 香港2|@ripaojiedian 2",
+    "password": "ccf426f1fe78",
+    "plugin": "v2ray-plugin",
+    "plugin-opts": {
+      "host": "newroot2v1.dsjsapp.com",
+      "mode": "websocket",
+      "mux": true,
+      "path": "/zksuapgx",
+      "skip-cert-verify": false,
+      "tls": true
     },
-    "server": "bridge.iskra-connect.xyz",
-    "servername": "deepl.com",
-    "skip-cert-verify": false,
-    "tls": true,
-    "type": "vless",
-    "udp": true,
-    "uuid": "ed97e008-2b8d-4415-94c7-3da4919d361a"
+    "port": 443,
+    "server": "103.103.245.158",
+    "type": "ss"
   },
   {
-    "client-fingerprint": "chrome",
-    "name": "xx|495f|puddincat07@Telegram",
+    "name": "cf|b6d2|puddincat07@Telegram",
     "network": "ws",
-    "port": 443,
-    "server": "net2026.zanddynastyofpersia.org",
-    "servername": "net2026.zanddynastyofpersia.org",
-    "skip-cert-verify": true,
-    "tfo": true,
+    "port": 2096,
+    "server": "185.207.197.253",
+    "servername": "vlesspro.llengcugit.sbs",
+    "skip-cert-verify": false,
+    "tfo": false,
     "tls": true,
     "type": "vless",
     "udp": true,
-    "uuid": "0ec8c120-33fa-4658-9bed-3a51cb04c55c",
+    "uuid": "6e433a29-22ac-4061-ae8b-f1731715d0d9",
     "ws-opts": {
       "headers": {
-        "Host": "net2026.zanddynastyofpersia.org",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        "Host": "vlesspro.llengcugit.sbs"
       },
-      "path": "/eJsVXFVZ6iavNx1EFxOyH861WH"
+      "path": "/Telegram"
     }
   },
   {
     "cipher": "aes-256-cfb",
-    "name": "kr|f676|puddincat07@Telegram",
-    "password": "f8f7aCzcPKbsF8p3",
-    "port": 989,
-    "server": "154.90.62.168",
-    "type": "ss"
-  },
-  {
-    "cipher": "aes-256-cfb",
-    "name": "vn|be0d|puddincat07@Telegram",
+    "name": "vn|adb1|puddincat07@Telegram",
     "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
     "port": 38388,
     "server": "103.186.155.233",
-    "tfo": false,
+    "type": "ss"
+  },
+  {
+    "cipher": "chacha20-ietf-poly1305",
+    "name": "xx|f15f|puddincat07@Telegram",
+    "password": "Nk9asglDzHzjktVzTkvhaA",
+    "port": 443,
+    "server": "arxfw2b78fi2q9hzylhn.freesocks.work",
+    "type": "ss"
+  },
+  {
+    "client-fingerprint": "chrome",
+    "name": "xx|e8c2|puddincat07@Telegram",
+    "port": 443,
+    "reality-opts": {
+      "public-key": "d4nrz5jZn6OcMGmRr4H-2v6hKexlwe4hKaDMgMqSV3A",
+      "short-id": "305b25f707eb"
+    },
+    "server": "nl.vip-get.ru",
+    "servername": "yahoo.com",
+    "skip-cert-verify": false,
+    "tls": true,
+    "type": "vless",
+    "udp": true,
+    "uuid": "b88a2e58-aebb-41c2-b1aa-509e6bbff335"
+  },
+  {
+    "cipher": "aes-256-cfb",
+    "name": "vn|9b65|puddincat07@Telegram",
+    "password": "Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV",
+    "port": 38388,
+    "server": "103.186.154.220",
     "type": "ss"
   }
 ]
