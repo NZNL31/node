@@ -8,43 +8,46 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 60     # 限制整个流程最长 20 分钟，防止被 GitHub 自动取消
+    timeout-minutes: 60     # 防止 GitHub 自动取消长任务
     continue-on-error: false
 
     steps:
+      # Step 1️⃣ 获取仓库
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2️⃣ 设置 Python 环境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
+      # Step 3️⃣ 安装依赖
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests pyyaml
 
-      # Step 1: 拉取远程订阅源
+      # Step 4️⃣ 拉取远程订阅源
       - name: Fetch subscriptions
         run: |
           echo "🚀 Fetching remote subscriptions..."
           python fetch_subscriptions.py || echo "⚠️ fetch_subscriptions.py 执行失败，继续下一步"
 
-      # Step 2: 筛选香港节点
+      # Step 5️⃣ 筛选香港节点
       - name: Pick HK Nodes
         run: |
           echo "🇭🇰 筛选香港节点..."
           python pick_hk_nodes.py || echo "⚠️ pick_hk_nodes.py 执行失败，继续下一步"
 
-      # Step 3: 测速与生成最终订阅文件
+      # Step 6️⃣ 真实测速与生成订阅
       - name: Speedtest & Generate Subscriptions
-        timeout-minutes: 8   # 单独给测速阶段设定超时时间
+        timeout-minutes: 25   # 延长时间，支持完整测速
         run: |
-          echo "⚡ 开始测速并生成订阅..."
-          python speed_test.py || echo "⚠️ speed_test.py 执行失败（超时或异常）"
+          echo "⚡ 开始测速所有节点（含代理）..."
+          python speed_test.py || echo "⚠️ speed_test.py 执行失败（可能超时）"
 
-      # Step 4: 防止空文件影响提交
+      # Step 7️⃣ 防止空文件影响提交
       - name: Check generated files
         run: |
           if [ ! -s "clash.yaml" ]; then
@@ -56,7 +59,7 @@ jobs:
             echo "# No valid V2 nodes generated" > v2.txt
           fi
 
-      # Step 5: 提交并推送更新结果
+      # Step 8️⃣ 提交并推送更新
       - name: Commit and Push updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
