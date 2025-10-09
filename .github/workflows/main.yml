@@ -3,52 +3,41 @@ name: Update Subscriptions
 on:
   schedule:
     - cron: "0 */3 * * *"  # 每 3 小时自动更新
-  workflow_dispatch:        # 支持手动触发
+  workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout 仓库
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 2️⃣ 设置 Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # 3️⃣ 安装依赖
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests pyyaml
 
-      # 4️⃣ 拉取订阅（Clash/V2Ray 通用）
       - name: Fetch subscriptions
         run: python fetch_subscriptions.py
 
-      # 5️⃣ 挑选香港节点（参考节点池 + IP 范围 + 名称包含 hk/hongkong）
       - name: Pick HK nodes
         run: python pick_hk_nodes.py
 
-      # 6️⃣ 二阶段测速 & 优选（下行 ≥10M，延迟 ≤200ms）
       - name: Speedtest & Select Best Nodes
         run: python speed_test.py
 
-      # 7️⃣ 生成 Clash 订阅（如果 speed_test.py 没生成，需要额外脚本）
-      - name: Generate Clash YAML
-        run: python generate_clash_yaml.py
-
-      # 8️⃣ 提交并推送生成的订阅文件
       - name: Commit and Push subscriptions
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "actions@github.com"
-          git add v2.txt clash.yaml || echo "No files to add"
+          git add -f v2.txt clash.yaml || echo "No files to add"
           git commit -m "Update subscriptions $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
           git push
