@@ -174,7 +174,7 @@ def main():
     best_nodes = []
     uri_list = []
 
-    # 3️⃣ 测速所有节点
+    # 3️⃣ ✅ 测速所有节点（不再限制数量）
     for node in all_nodes:
         name = node.get("name", "Unnamed")
         typ = node.get("type", "?")
@@ -184,6 +184,9 @@ def main():
         print(f"[{status}] {name} ({typ}) | 延迟 {latency} ms | 速度 {speed} MB/s | 分数 {score:.2f}")
 
         if score > 0:
+            node["score"] = score
+            node["latency"] = latency
+            node["speed"] = speed
             best_nodes.append(node)
             uri = node_to_uri(node)
             if uri:
@@ -192,8 +195,9 @@ def main():
         # 防止卡死
         time.sleep(random.uniform(0.3, 0.6))
 
-    # 4️⃣ 输出结果
-    best_nodes = sorted(best_nodes, key=lambda n: n.get("port", 0))[:10]
+    # 4️⃣ ✅ 取消 “[:10]” 限制，输出所有可用节点
+    best_nodes = sorted(best_nodes, key=lambda n: n.get("score", 0), reverse=True)
+
     clash_config = build_clash_config(best_nodes)
     with open(CLASH_FILE, "w", encoding="utf-8") as f:
         yaml.dump(clash_config, f, allow_unicode=True)
@@ -206,6 +210,7 @@ def main():
         print(f"✅ 已生成 {V2_FILE} (Base64 订阅)")
     else:
         print("⚠️ 没有生成任何可用节点")
+
 
 if __name__ == "__main__":
     main()
