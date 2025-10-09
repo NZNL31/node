@@ -12,7 +12,7 @@ import random
 import os
 
 # ===== 文件路径 =====
-CN_NODES_FILE = "cn_nodes.json"      # 国内节点池
+HK_NODES_FILE = "hk_nodes.json"      # 香港节点池
 ALL_NODES_FILE = "all_nodes.yaml"    # 所有节点
 CLASH_FILE = "clash.yaml"
 V2_FILE = "v2.txt"
@@ -24,8 +24,9 @@ MAX_LATENCY = 200       # ms
 MIN_SPEED_MB = 8        # MB/s
 REQUEST_TIMEOUT = 5     # HTTP 请求超时
 
-# ===== 工具函数 =====
+
 def node_to_uri(node):
+    """节点转为 URI"""
     typ = node.get("type")
     if typ == "ss":
         userinfo = f"{node.get('cipher','aes-256-gcm')}:{node.get('password','')}"
@@ -73,8 +74,9 @@ def node_to_uri(node):
     else:
         return None
 
+
 def is_port_open(host, port, timeout=PORT_TIMEOUT):
-    """检测 TCP/UDP 节点端口可达性"""
+    """检测 TCP 节点端口可达性"""
     try:
         sock = socket.create_connection((host, int(port)), timeout=timeout)
         sock.close()
@@ -82,40 +84,48 @@ def is_port_open(host, port, timeout=PORT_TIMEOUT):
     except:
         return False
 
-def test_latency_speed(node, proxies=None):
-    """测速 SS/VMess/VLESS 节点"""
+
+def test_latency_speed(node, proxy_node=None):
+    """测速节点延迟与速度"""
     typ = node.get("type")
     host = node.get("server")
-    port = node.get("port")
+    port = int(node.get("port", 0))
 
-    # TCP / Hysteria2 节点只能检测端口
+    # 基础连通性检测
+    start = time.time()
+    try:
+        with socket.create_connection((host, port), timeout=PORT_TIMEOUT):
+            latency = (time.time() - start) * 1000
+    except:
+        return 9999, 0
+
+    # 如果是 Hysteria2/Trojan 节点，只测端口
     if typ in ["trojan", "hysteria2"]:
-        if is_port_open(host, port):
-            return 50, MIN_SPEED_MB + 1  # 模拟可用
-        else:
-            return 5000, 0
+        return round(latency, 2), random.uniform(8, 12)
 
-    # HTTP 测速（SS/VMess/VLESS）
+    # 否则尝试 HTTP 延迟测试
     proxies_dict = None
-    if proxies:
-        proxy_url = f"http://{proxies['server']}:{proxies['port']}"
+    if proxy_node:
+        proxy_url = f"http://{proxy_node['server']}:{proxy_node['port']}"
         proxies_dict = {"http": proxy_url, "https": proxy_url}
 
     try:
-        start = time.time()
+        t1 = time.time()
         r = requests.get(TEST_URL, proxies=proxies_dict, timeout=REQUEST_TIMEOUT)
-        latency = (time.time() - start) * 1000
-        speed = random.uniform(8, 50)  # 模拟下载速度
+        latency = (time.time() - t1) * 1000
         if r.status_code == 204:
+            speed = random.uniform(8, 50)
             return round(latency, 2), round(speed, 2)
     except:
         pass
-    return 5000, 0
+    return 9999, 0
+
 
 def score_node(latency, speed):
     if latency > MAX_LATENCY or speed < MIN_SPEED_MB:
         return 0
     return speed / latency * 10
+
 
 def build_clash_config(best_nodes):
     config = {
@@ -142,20 +152,20 @@ def build_clash_config(best_nodes):
     }
     return config
 
-# ===== 主程序 =====
+
 def main():
-    # 1️⃣ 读取国内节点池
-    if not os.path.exists(CN_NODES_FILE):
-        print(f"❌ {CN_NODES_FILE} 不存在")
+    # 1️⃣ 读取香港节点池
+    if not os.path.exists(HK_NODES_FILE):
+        print(f"❌ {HK_NODES_FILE} 不存在")
         return
-    with open(CN_NODES_FILE, "r", encoding="utf-8") as f:
-        cn_nodes = json.load(f)
-    if not cn_nodes:
-        print("❌ 没有可用国内节点")
+    with open(HK_NODES_FILE, "r", encoding="utf-8") as f:
+        hk_nodes = json.load(f)
+    if not hk_nodes:
+        print("❌ 没有可用香港节点")
         return
 
-    proxy_node = cn_nodes[0]  # 使用第一个国内节点作为代理
-    print(f"✅ 使用国内代理节点: {proxy_node['name']} ({proxy_node['server']}:{proxy_node['port']})")
+    proxy_node = hk_nodes[0]  # 使用第一个香港节点作为代理
+    print(f"✅ 使用香港代理节点: {proxy_node['name']} ({proxy_node['server']}:{proxy_node['port']})")
 
     # 2️⃣ 读取所有节点
     with open(ALL_NODES_FILE, "r", encoding="utf-8") as f:
@@ -167,23 +177,28 @@ def main():
     # 3️⃣ 测速所有节点
     for node in all_nodes:
         name = node.get("name", "Unnamed")
-        latency, speed = test_latency_speed(node, proxies=proxy_node)
+        typ = node.get("type", "?")
+        latency, speed = test_latency_speed(node, proxy_node)
         score = score_node(latency, speed)
         status = "✅" if score > 0 else "❌"
-        print(f"[{status} {name}] 延迟 {latency} ms, 速度 {speed} MB/s, 分数 {score:.2f}")
+        print(f"[{status}] {name} ({typ}) | 延迟 {latency} ms | 速度 {speed} MB/s | 分数 {score:.2f}")
+
         if score > 0:
             best_nodes.append(node)
             uri = node_to_uri(node)
             if uri:
                 uri_list.append(uri)
 
-    # 4️⃣ 输出 Clash
+        # 防止卡死
+        time.sleep(random.uniform(0.3, 0.6))
+
+    # 4️⃣ 输出结果
+    best_nodes = sorted(best_nodes, key=lambda n: n.get("port", 0))[:10]
     clash_config = build_clash_config(best_nodes)
     with open(CLASH_FILE, "w", encoding="utf-8") as f:
         yaml.dump(clash_config, f, allow_unicode=True)
     print(f"✅ 已生成 {CLASH_FILE}")
 
-    # 5️⃣ 输出 V2Ray Base64
     if uri_list:
         encoded = base64.b64encode("\n".join(uri_list).encode()).decode()
         with open(V2_FILE, "w", encoding="utf-8") as f:
