@@ -12,7 +12,7 @@ import random
 import os
 
 # ===== 文件路径 =====
-HK_NODES_FILE = "hk_nodes.json"      # 香港节点池
+SG_NODES_FILE = "sg_nodes.json"      # 新加坡节点池
 ALL_NODES_FILE = "all_nodes.yaml"    # 所有节点
 CLASH_FILE = "clash.yaml"
 V2_FILE = "v2.txt"
@@ -172,18 +172,18 @@ def build_clash_config(best_nodes):
 
 # ===== 主流程 =====
 def main():
-    # 1️⃣ 读取香港节点池
-    if not os.path.exists(HK_NODES_FILE):
-        print(f"❌ {HK_NODES_FILE} 不存在")
+    # 1️⃣ 读取新加坡节点池
+    if not os.path.exists(SG_NODES_FILE):
+        print(f"❌ {SG_NODES_FILE} 不存在")
         return
-    with open(HK_NODES_FILE, "r", encoding="utf-8") as f:
-        hk_nodes = json.load(f)
-    if not hk_nodes:
-        print("❌ 没有可用香港节点")
+    with open(SG_NODES_FILE, "r", encoding="utf-8") as f:
+        sg_nodes = json.load(f)
+    if not sg_nodes:
+        print("❌ 没有可用新加坡节点")
         return
 
-    proxy_node = hk_nodes[0]
-    print(f"✅ 使用香港代理节点: {proxy_node['name']} ({proxy_node['server']}:{proxy_node['port']})")
+    proxy_node = sg_nodes[0]
+    print(f"✅ 使用新加坡代理节点: {proxy_node['name']} ({proxy_node['server']}:{proxy_node['port']})")
 
     # 2️⃣ 读取所有节点
     with open(ALL_NODES_FILE, "r", encoding="utf-8") as f:
