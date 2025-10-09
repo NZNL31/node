@@ -2,196 +2,119 @@
 # -*- coding: utf-8 -*-
 
 import json
-import yaml
-import base64
-import urllib.parse
+import re
 import socket
 import time
-import requests
-import random
-import os
-import concurrent.futures
+import ipaddress
 
-# ===== 文件路径 =====
-CN_NODES_FILE = "cn_nodes.json"
-ALL_NODES_FILE = "all_nodes.yaml"
-CLASH_FILE = "clash.yaml"
-V2_FILE = "v2.txt"
+# -----------------------------
+# 配置
+# -----------------------------
+ALL_NODES_FILE = "all_nodes.json"      # 所有节点输入文件
+CN_IP_RANGES_FILE = "cn_ip_ranges.json"  # 国内 IP 段文件
+OUTPUT_CN_POOL_FILE = "cn_nodes.json"  # 输出文件
+CN_NODE_COUNT = 10                      # 保留节点数量
+PORT_TIMEOUT = 3                        # 端口检测超时
+SPEED_THRESHOLD = 8                     # Mbps 下限（示意）
+PING_THRESHOLD = 200                    # ms 上限（示意）
 
-# ===== 测速配置 =====
-TEST_URL = "https://www.gstatic.com/generate_204"
-PORT_TIMEOUT = 2
-MAX_LATENCY = 200  # ms
-MIN_SPEED_MB = 8   # MB/s
-REQUEST_TIMEOUT = 3
-MAX_WORKERS = 30   # 并发线程数
+# -----------------------------
+# 工具函数
+# -----------------------------
 
-# ===== 工具函数 =====
-def node_to_uri(node):
-    typ = node.get("type")
-    if typ == "ss":
-        userinfo = f"{node.get('cipher','aes-256-gcm')}:{node.get('password','')}"
-        server_part = f"{node.get('server')}:{node.get('port')}"
-        base = base64.urlsafe_b64encode(userinfo.encode()).decode().strip("=")
-        name = urllib.parse.quote(node.get("name", "Unnamed"))
-        return f"ss://{base}@{server_part}#{name}"
-    elif typ == "vmess":
-        obj = {
-            "v": "2",
-            "ps": node.get("name", ""),
-            "add": node.get("server"),
-            "port": str(node.get("port")),
-            "id": node.get("uuid"),
-            "aid": str(node.get("alterId", 0)),
-            "net": node.get("network", "tcp"),
-            "type": "none",
-            "host": node.get("ws-opts", {}).get("headers", {}).get("Host", ""),
-            "path": node.get("ws-opts", {}).get("path", ""),
-            "tls": "tls" if node.get("tls") else "",
-        }
-        return "vmess://" + base64.urlsafe_b64encode(json.dumps(obj).encode()).decode().strip("=")
-    elif typ == "vless":
-        name = urllib.parse.quote(node.get("name", ""))
-        server = node.get("server")
-        port = node.get("port")
-        uuid = node.get("uuid")
-        tls = "tls" if node.get("tls") else "none"
-        path = node.get("ws-opts", {}).get("path", "")
-        host = node.get("ws-opts", {}).get("headers", {}).get("Host", "")
-        query = f"type=ws&security={tls}&path={urllib.parse.quote(path)}&host={host}"
-        return f"vless://{uuid}@{server}:{port}?{query}#{name}"
-    elif typ == "trojan":
-        name = urllib.parse.quote(node.get("name", ""))
-        server = node.get("server")
-        port = node.get("port")
-        password = node.get("password")
-        return f"trojan://{password}@{server}:{port}#{name}"
-    elif typ == "hysteria2":
-        name = urllib.parse.quote(node.get("name", ""))
-        server = node.get("server")
-        port = node.get("port")
-        proto = node.get("protocol", "udp")
-        return f"hysteria://{server}:{port}?protocol={proto}#{name}"
-    else:
-        return None
-
-
-def is_port_open(host, port, timeout=PORT_TIMEOUT):
-    """快速端口检测"""
+def is_node_reachable(server: str, port: int, proto="tcp", timeout=PORT_TIMEOUT) -> bool:
+    """检测节点端口可达性（区分 TCP / UDP）"""
     try:
-        sock = socket.create_connection((host, int(port)), timeout=timeout)
-        sock.close()
+        if proto == "tcp":
+            sock = socket.create_connection((server, port), timeout=timeout)
+            sock.close()
+        else:  # UDP
+            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            sock.settimeout(timeout)
+            sock.sendto(b"ping", (server, port))
         return True
     except Exception:
         return False
 
 
-def test_latency_speed(node, proxies=None):
-    """测速 SS/VMess/VLESS 节点"""
-    typ = node.get("type")
-    host = node.get("server")
-    port = node.get("port")
-
-    # 仅检测连通性（防止卡死）
-    if not is_port_open(host, port):
-        return 5000, 0
-
-    # 模拟测速结果（可换为真实代理测速）
-    latency = random.uniform(20, 150)
-    speed = random.uniform(10, 60)
-    return round(latency, 2), round(speed, 2)
+def ping_host(server, timeout=1):
+    """估算延迟（伪 ping，基于 TCP 握手时间）"""
+    start = time.time()
+    try:
+        sock = socket.create_connection((server, 80), timeout=timeout)
+        sock.close()
+        return round((time.time() - start) * 1000, 2)
+    except Exception:
+        return 9999
 
 
-def score_node(latency, speed):
-    if latency > MAX_LATENCY or speed < MIN_SPEED_MB:
-        return 0
-    return speed / latency * 10
+def is_cn_ip(ip, cn_ranges):
+    """判断 IP 是否属于国内段"""
+    try:
+        ip_obj = ipaddress.ip_address(ip)
+        for net in cn_ranges:
+            if ip_obj in ipaddress.ip_network(net):
+                return True
+    except:
+        pass
+    return False
 
 
-def build_clash_config(best_nodes):
-    config = {
-        "allow-lan": True,
-        "mode": "Rule",
-        "log-level": "info",
-        "port": 7890,
-        "proxies": best_nodes,
-        "proxy-groups": [
-            {
-                "name": "🌐 节点选择",
-                "type": "select",
-                "proxies": ["🔄 自动选择"] + [n["name"] for n in best_nodes],
-            },
-            {
-                "name": "🔄 自动选择",
-                "type": "url-test",
-                "url": TEST_URL,
-                "interval": 300,
-                "proxies": [n["name"] for n in best_nodes],
-            },
-        ],
-        "rules": ["MATCH,🌐 节点选择"],
-    }
-    return config
+# -----------------------------
+# 主逻辑
+# -----------------------------
+print("🚀 加载节点与国内 IP 段...")
+with open(ALL_NODES_FILE, "r", encoding="utf-8") as f:
+    all_nodes = json.load(f)
 
+with open(CN_IP_RANGES_FILE, "r", encoding="utf-8") as f:
+    CN_IP_RANGES = json.load(f)
 
-# ===== 主程序 =====
-def main():
-    # 读取国内节点池
-    if not os.path.exists(CN_NODES_FILE):
-        print(f"❌ {CN_NODES_FILE} 不存在")
-        return
-    with open(CN_NODES_FILE, "r", encoding="utf-8") as f:
-        cn_nodes = json.load(f)
-    if not cn_nodes:
-        print("❌ 没有可用国内节点")
-        return
+cn_nodes = []
 
-    proxy_node = cn_nodes[0]
-    print(f"✅ 使用国内代理节点: {proxy_node['name']} ({proxy_node['server']}:{proxy_node['port']})")
+# -----------------------------
+# 筛选逻辑
+# -----------------------------
+print(f"🔍 正在筛选 {len(all_nodes)} 个节点...")
 
-    # 读取所有节点
-    with open(ALL_NODES_FILE, "r", encoding="utf-8") as f:
-        all_nodes = yaml.safe_load(f).get("proxies", [])
+for node in all_nodes:
+    name = node.get("name", "").lower()
+    server = node.get("server", "").split(":")[0]
+    port = int(node.get("port", 0))
+    proto = node.get("type", "").lower()
+    proto = "udp" if proto in ["hysteria", "hysteria2", "tuic", "quic"] else "tcp"
 
-    best_nodes = []
-    uri_list = []
+    if not server or not port:
+        continue
 
-    # 并发测速（防止卡死）
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        future_to_node = {executor.submit(test_latency_speed, node, proxy_node): node for node in all_nodes}
+    # 1️⃣ 名称关键词判断
+    if re.search(r"(cn|china|国内|sh|bj|ct|cu|cm|cn2|cmi|cmcc|chinatelecom|chinaunicom|chinamobile)", name):
+        if is_node_reachable(server, port, proto=proto):
+            delay = ping_host(server)
+            if delay < PING_THRESHOLD:
+                node["ping"] = delay
+                cn_nodes.append(node)
+            continue
 
-        for future in concurrent.futures.as_completed(future_to_node, timeout=180):
-            node = future_to_node[future]
-            try:
-                latency, speed = future.result(timeout=5)
-            except Exception:
-                latency, speed = 9999, 0
+    # 2️⃣ IP 段判断
+    try:
+        if is_cn_ip(server, CN_IP_RANGES) and is_node_reachable(server, port, proto=proto):
+            delay = ping_host(server)
+            if delay < PING_THRESHOLD:
+                node["ping"] = delay
+                cn_nodes.append(node)
+    except:
+        continue
 
-            score = score_node(latency, speed)
-            status = "✅" if score > 0 else "❌"
-            print(f"[{status} {node.get('name')}] 延迟 {latency} ms, 速度 {speed} MB/s, 分数 {score:.2f}")
+# -----------------------------
+# 排序与输出
+# -----------------------------
+cn_nodes.sort(key=lambda n: n.get("ping", 9999))
+cn_nodes = cn_nodes[:CN_NODE_COUNT]
 
-            if score > 0:
-                best_nodes.append(node)
-                uri = node_to_uri(node)
-                if uri:
-                    uri_list.append(uri)
+with open(OUTPUT_CN_POOL_FILE, "w", encoding="utf-8") as f:
+    json.dump(cn_nodes, f, ensure_ascii=False, indent=2)
 
-    # 输出 Clash 配置
-    clash_config = build_clash_config(best_nodes)
-    with open(CLASH_FILE, "w", encoding="utf-8") as f:
-        yaml.dump(clash_config, f, allow_unicode=True)
-    print(f"✅ 已生成 {CLASH_FILE}")
-
-    # 输出 Base64 订阅
-    if uri_list:
-        encoded = base64.b64encode("\n".join(uri_list).encode()).decode()
-        with open(V2_FILE, "w", encoding="utf-8") as f:
-            f.write(encoded)
-        print(f"✅ 已生成 {V2_FILE} (Base64 订阅)")
-    else:
-        print("⚠️ 没有生成任何可用节点")
-
-
-if __name__ == "__main__":
-    main()
+print(f"\n✅ 已生成参考国内可用节点池 ({len(cn_nodes)} 个节点)：\n")
+for i, node in enumerate(cn_nodes, start=1):
+    print(f"{i}. {node.get('name')} -> {node.get('server')}:{node.get('port')} ({node.get('ping', '?')} ms)")
