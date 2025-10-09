@@ -8,7 +8,7 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 20     # 限制整个流程最长 20 分钟，防止被 GitHub 自动取消
+    timeout-minutes: 60     # 限制整个流程最长 20 分钟，防止被 GitHub 自动取消
     continue-on-error: false
 
     steps:
