@@ -8,9 +8,10 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15  # 防止测速超时
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -23,25 +24,31 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pyyaml
 
-      # 拉取订阅（Clash/V2Ray 通用）
+      # 拉取远程订阅源（fetch_subscriptions.py）
       - name: Fetch subscriptions
-        run: python fetch_subscriptions.py
+        run: |
+          echo "🚀 Fetching remote subscriptions..."
+          python fetch_subscriptions.py || echo "⚠️ fetch_subscriptions.py 失败，跳过"
 
-      # 挑选国内节点（CN 节点池 + IP 可选判断）
-      - name: Pick CN nodes
-        run: python pick_cn_nodes.py
+      # 选择香港（或国内）节点
+      - name: Pick HK Nodes
+        run: |
+          echo "🇭🇰 正在筛选香港节点..."
+          python pick_hk_nodes.py || echo "⚠️ pick_hk_nodes.py 失败，跳过"
 
-      # 二阶段测速 & 优选（可用端口即可）
+      # 测速与生成最终订阅文件
       - name: Speedtest & Generate Subscriptions
-        run: python speed_test.py
+        run: |
+          echo "⚡ 测速并生成订阅..."
+          python speed_test.py || echo "⚠️ speed_test.py 失败，跳过"
 
-      # 提交并推送生成的订阅文件
-      - name: Commit and Push subscriptions
+      # 提交并推送更新结果
+      - name: Commit and Push updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "actions@github.com"
-          git add -f v2.txt clash.yaml || echo "No files to add"
-          git commit -m "Update subscriptions $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git add clash.yaml v2.txt || echo "No files to add"
+          git commit -m "🚀 Auto update subscriptions on $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
           git push
