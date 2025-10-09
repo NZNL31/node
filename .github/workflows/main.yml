@@ -3,12 +3,12 @@ name: Update Subscriptions
 on:
   schedule:
     - cron: "0 */3 * * *"  # 每 3 小时自动更新
-  workflow_dispatch:        # 手动触发
+  workflow_dispatch:        # 支持手动触发
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 60     # 防止 GitHub 自动取消长任务
+    timeout-minutes: 60     # 防止长任务被 GitHub 自动终止
     continue-on-error: false
 
     steps:
@@ -34,20 +34,22 @@ jobs:
           echo "🚀 Fetching remote subscriptions..."
           python fetch_subscriptions.py || echo "⚠️ fetch_subscriptions.py 执行失败，继续下一步"
 
-      # Step 5️⃣ 筛选香港节点
-      - name: Pick HK Nodes
+      # Step 5️⃣ 筛选新加坡节点
+      - name: Pick SG Nodes
         run: |
-          echo "🇭🇰 筛选香港节点..."
-          python pick_hk_nodes.py || echo "⚠️ pick_hk_nodes.py 执行失败，继续下一步"
+          echo "🇸🇬 筛选新加坡节点..."
+          python pick_sg_nodes.py || echo "⚠️ pick_sg_nodes.py 执行失败，继续下一步"
 
-      # Step 6️⃣ 真实测速与生成订阅
+      # Step 6️⃣ 测速与生成订阅
       - name: Speedtest & Generate Subscriptions
-        timeout-minutes: 25   # 延长时间，支持完整测速
+        timeout-minutes: 25
+        env:
+          MAX_REAL_TEST: 300  # 限制真实测速节点数量
         run: |
           echo "⚡ 开始测速所有节点（含代理）..."
           python speed_test.py || echo "⚠️ speed_test.py 执行失败（可能超时）"
 
-      # Step 7️⃣ 防止空文件影响提交
+      # Step 7️⃣ 检查输出文件（防空）
       - name: Check generated files
         run: |
           if [ ! -s "clash.yaml" ]; then
@@ -59,7 +61,7 @@ jobs:
             echo "# No valid V2 nodes generated" > v2.txt
           fi
 
-      # Step 8️⃣ 提交并推送更新
+      # Step 8️⃣ 提交并推送
       - name: Commit and Push updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
