@@ -3,74 +3,79 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 1.88
+- latency: 1.82
   name: '[Trojan] SG_speednode_0050'
   network: ws
   password: wb6368
   port: 2087
-  score: 46.82116566452318
+  score: 65.45496866988341
   server: 92.243.75.49
-  sim_score: 1.4932790953787194
+  sim_score: 1.5683722068060146
   skip-cert-verify: false
   sni: hsdgbuys.pages.dev
-  speed: 8.802379144930356
+  speed: 11.912804297918782
   type: trojan
   ws-opts:
     headers:
       Host: hsdgbuys.pages.dev
     path: /
-- latency: 60.31
+- latency: 18.28
+  name: '[Trojan] US_speednode_0072'
+  network: ws
+  password: iwangjie
+  port: 15805
+  score: 5.419083901805118
+  server: 158.101.11.204
+  sim_score: 0.8670129232273521
+  skip-cert-verify: false
+  sni: nodes.830901.xyz
+  speed: 9.906085372499756
+  type: trojan
+  ws-opts:
+    headers:
+      Host: nodes.830901.xyz
+    path: /?ed=2560
+- latency: 49.99
   name: '[Trojan] 🇺🇸 美国|@ripaojiedian'
   password: 253bc477d4e43c209f2d427272968280
   port: 443
-  score: 1.6945065885060209
+  score: 1.6458292483124712
   server: 23.227.194.234
-  sim_score: 1.2709992150491314
+  sim_score: 4.829062578628818
   skip-cert-verify: false
   sni: www.nintendogames.net
-  speed: 10.219569235279813
+  speed: 8.227500412314043
   type: trojan
 - auth: biadailyconfigs
-  latency: 154.82
+  latency: 156.01
   name: '[Hysteria2] @Daily_Configs #6'
   obfs: salamander
   obfs-password: LzmYaFxALuuWNIu3zSeRJeV4z21RU1oS
   password: biadailyconfigs
   port: 443
-  score: 0.5245840445676027
+  score: 0.7557668925154784
   server: 103.249.133.79
-  sim_score: 1.6957111104206015
+  sim_score: 2.996088725512398
   skip-cert-verify: false
   sni: microsoft.com
-  speed: 8.121610177995624
+  speed: 11.790719290133978
   type: hysteria2
-- latency: 181.41
-  name: '[Trojan] NL_speednode_0047'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 443
-  score: 0.4597566789126223
-  server: 38.180.249.152
-  sim_score: 2.4951379704479857
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  speed: 8.34044591215388
-  type: trojan
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - '[Trojan] SG_speednode_0050'
+  - '[Trojan] US_speednode_0072'
   - '[Trojan] 🇺🇸 美国|@ripaojiedian'
   - '[Hysteria2] @Daily_Configs #6'
-  - '[Trojan] NL_speednode_0047'
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - '[Trojan] SG_speednode_0050'
+  - '[Trojan] US_speednode_0072'
   - '[Trojan] 🇺🇸 美国|@ripaojiedian'
   - '[Hysteria2] @Daily_Configs #6'
-  - '[Trojan] NL_speednode_0047'
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
