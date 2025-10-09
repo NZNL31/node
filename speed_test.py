@@ -19,12 +19,14 @@ V2_FILE = "v2.txt"
 
 # ===== 测速配置 =====
 TEST_URL = "https://www.gstatic.com/generate_204"
-PORT_TIMEOUT = 3
+PORT_TIMEOUT = 2
+REQUEST_TIMEOUT = 3
 MAX_LATENCY = 200       # ms
 MIN_SPEED_MB = 8        # MB/s
-REQUEST_TIMEOUT = 5     # HTTP 请求超时
+MAX_REAL_TEST = int(os.environ.get("MAX_REAL_TEST", 300))  # 限制测试节点数防止超时
 
 
+# ===== 工具函数 =====
 def node_to_uri(node):
     """节点转为 URI"""
     typ = node.get("type")
@@ -34,6 +36,7 @@ def node_to_uri(node):
         base = base64.urlsafe_b64encode(userinfo.encode()).decode().strip("=")
         name = urllib.parse.quote(node.get("name", "Unnamed"))
         return f"ss://{base}@{server_part}#{name}"
+
     elif typ == "vmess":
         obj = {
             "v": "2",
@@ -49,6 +52,7 @@ def node_to_uri(node):
             "tls": "tls" if node.get("tls") else "",
         }
         return "vmess://" + base64.urlsafe_b64encode(json.dumps(obj).encode()).decode().strip("=")
+
     elif typ == "vless":
         name = urllib.parse.quote(node.get("name", ""))
         server = node.get("server")
@@ -59,12 +63,14 @@ def node_to_uri(node):
         host = node.get("ws-opts", {}).get("headers", {}).get("Host", "")
         query = f"type=ws&security={tls}&path={urllib.parse.quote(path)}&host={host}"
         return f"vless://{uuid}@{server}:{port}?{query}#{name}"
+
     elif typ == "trojan":
         name = urllib.parse.quote(node.get("name", ""))
         server = node.get("server")
         port = node.get("port")
         password = node.get("password")
         return f"trojan://{password}@{server}:{port}#{name}"
+
     elif typ == "hysteria2":
         name = urllib.parse.quote(node.get("name", ""))
         server = node.get("server")
@@ -85,13 +91,24 @@ def is_port_open(host, port, timeout=PORT_TIMEOUT):
         return False
 
 
+def simulate_test_latency_speed(node):
+    """阶段1：模拟测速，仅检测端口"""
+    host = node.get("server")
+    port = node.get("port")
+    if not is_port_open(host, port):
+        return 9999, 0
+    latency = random.uniform(30, 150)
+    speed = random.uniform(5, 20)
+    return latency, speed
+
+
 def test_latency_speed(node, proxy_node=None):
-    """测速节点延迟与速度"""
+    """阶段2：真实测速"""
     typ = node.get("type")
     host = node.get("server")
     port = int(node.get("port", 0))
 
-    # 基础连通性检测
+    # TCP 连接延迟
     start = time.time()
     try:
         with socket.create_connection((host, port), timeout=PORT_TIMEOUT):
@@ -99,11 +116,11 @@ def test_latency_speed(node, proxy_node=None):
     except:
         return 9999, 0
 
-    # 如果是 Hysteria2/Trojan 节点，只测端口
+    # Hysteria/Trojan 仅测速端口
     if typ in ["trojan", "hysteria2"]:
         return round(latency, 2), random.uniform(8, 12)
 
-    # 否则尝试 HTTP 延迟测试
+    # HTTP 测速
     proxies_dict = None
     if proxy_node:
         proxy_url = f"http://{proxy_node['server']}:{proxy_node['port']}"
@@ -153,6 +170,7 @@ def build_clash_config(best_nodes):
     return config
 
 
+# ===== 主流程 =====
 def main():
     # 1️⃣ 读取香港节点池
     if not os.path.exists(HK_NODES_FILE):
@@ -164,44 +182,61 @@ def main():
         print("❌ 没有可用香港节点")
         return
 
-    proxy_node = hk_nodes[0]  # 使用第一个香港节点作为代理
+    proxy_node = hk_nodes[0]
     print(f"✅ 使用香港代理节点: {proxy_node['name']} ({proxy_node['server']}:{proxy_node['port']})")
 
     # 2️⃣ 读取所有节点
     with open(ALL_NODES_FILE, "r", encoding="utf-8") as f:
         all_nodes = yaml.safe_load(f).get("proxies", [])
+    print(f"🔍 共加载 {len(all_nodes)} 个节点")
 
+    # 阶段1：模拟筛选
+    print("\n🚦 阶段1：模拟测速（快速筛选端口可达节点）")
+    maybe_nodes = []
+    for node in all_nodes:
+        name = node.get("name", "Unnamed")
+        latency, speed = simulate_test_latency_speed(node)
+        score = score_node(latency, speed)
+        if score > 0:
+            node["sim_score"] = score
+            maybe_nodes.append(node)
+            print(f"[模拟✅] {name} | 延迟 {latency:.2f} ms | 速度 {speed:.2f} MB/s | 预估分数 {score:.2f}")
+        else:
+            print(f"[模拟❌] {name} 不可用")
+        time.sleep(random.uniform(0.05, 0.1))
+
+    print(f"✅ 模拟阶段完成，筛选出 {len(maybe_nodes)} 个可能可用节点\n")
+
+    # 阶段2：真实测速
+    print("⚙️ 阶段2：真实测速（精确测试）")
     best_nodes = []
     uri_list = []
 
-    # 3️⃣ ✅ 测速所有节点（不再限制数量）
-    for node in all_nodes:
+    for i, node in enumerate(maybe_nodes[:MAX_REAL_TEST]):
         name = node.get("name", "Unnamed")
         typ = node.get("type", "?")
-        latency, speed = test_latency_speed(node, proxy_node)
+        for _ in range(2):  # 最多两次重试
+            latency, speed = test_latency_speed(node, proxy_node)
+            if speed > 0:
+                break
         score = score_node(latency, speed)
         status = "✅" if score > 0 else "❌"
-        print(f"[{status}] {name} ({typ}) | 延迟 {latency} ms | 速度 {speed} MB/s | 分数 {score:.2f}")
+        print(f"[{status}] {i+1}/{len(maybe_nodes)} {name} ({typ}) | 延迟 {latency:.1f} ms | 速度 {speed:.1f} MB/s | 分数 {score:.2f}")
 
         if score > 0:
-            node["score"] = score
-            node["latency"] = latency
-            node["speed"] = speed
+            node.update({"score": score, "latency": latency, "speed": speed})
             best_nodes.append(node)
             uri = node_to_uri(node)
             if uri:
                 uri_list.append(uri)
+        time.sleep(random.uniform(0.2, 0.4))
 
-        # 防止卡死
-        time.sleep(random.uniform(0.3, 0.6))
-
-    # 4️⃣ ✅ 取消 “[:10]” 限制，输出所有可用节点
+    # 输出结果
     best_nodes = sorted(best_nodes, key=lambda n: n.get("score", 0), reverse=True)
-
     clash_config = build_clash_config(best_nodes)
     with open(CLASH_FILE, "w", encoding="utf-8") as f:
         yaml.dump(clash_config, f, allow_unicode=True)
-    print(f"✅ 已生成 {CLASH_FILE}")
+    print(f"\n✅ 已生成 {CLASH_FILE}")
 
     if uri_list:
         encoded = base64.b64encode("\n".join(uri_list).encode()).decode()
