@@ -23,15 +23,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pyyaml
 
+      # 拉取订阅（Clash/V2Ray 通用）
       - name: Fetch subscriptions
         run: python fetch_subscriptions.py
 
-      - name: Pick HK nodes
-        run: python pick_hk_nodes.py
+      # 挑选国内节点（CN 节点池 + IP 可选判断）
+      - name: Pick CN nodes
+        run: python pick_cn_nodes.py
 
-      - name: Speedtest & Select Best Nodes
+      # 二阶段测速 & 优选（可用端口即可）
+      - name: Speedtest & Generate Subscriptions
         run: python speed_test.py
 
+      # 提交并推送生成的订阅文件
       - name: Commit and Push subscriptions
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
