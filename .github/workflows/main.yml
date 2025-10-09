@@ -3,12 +3,13 @@ name: Update Subscriptions
 on:
   schedule:
     - cron: "0 */3 * * *"  # 每 3 小时自动更新
-  workflow_dispatch:
+  workflow_dispatch:        # 手动触发
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 15  # 防止测速超时
+    timeout-minutes: 20     # 限制整个流程最长 20 分钟，防止被 GitHub 自动取消
+    continue-on-error: false
 
     steps:
       - name: Checkout repository
@@ -24,25 +25,38 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pyyaml
 
-      # 拉取远程订阅源（fetch_subscriptions.py）
+      # Step 1: 拉取远程订阅源
       - name: Fetch subscriptions
         run: |
           echo "🚀 Fetching remote subscriptions..."
-          python fetch_subscriptions.py || echo "⚠️ fetch_subscriptions.py 失败，跳过"
+          python fetch_subscriptions.py || echo "⚠️ fetch_subscriptions.py 执行失败，继续下一步"
 
-      # 选择香港（或国内）节点
+      # Step 2: 筛选香港节点
       - name: Pick HK Nodes
         run: |
-          echo "🇭🇰 正在筛选香港节点..."
-          python pick_hk_nodes.py || echo "⚠️ pick_hk_nodes.py 失败，跳过"
+          echo "🇭🇰 筛选香港节点..."
+          python pick_hk_nodes.py || echo "⚠️ pick_hk_nodes.py 执行失败，继续下一步"
 
-      # 测速与生成最终订阅文件
+      # Step 3: 测速与生成最终订阅文件
       - name: Speedtest & Generate Subscriptions
+        timeout-minutes: 8   # 单独给测速阶段设定超时时间
         run: |
-          echo "⚡ 测速并生成订阅..."
-          python speed_test.py || echo "⚠️ speed_test.py 失败，跳过"
+          echo "⚡ 开始测速并生成订阅..."
+          python speed_test.py || echo "⚠️ speed_test.py 执行失败（超时或异常）"
 
-      # 提交并推送更新结果
+      # Step 4: 防止空文件影响提交
+      - name: Check generated files
+        run: |
+          if [ ! -s "clash.yaml" ]; then
+            echo "⚠️ clash.yaml 文件为空，创建占位文件"
+            echo "# No valid nodes generated" > clash.yaml
+          fi
+          if [ ! -s "v2.txt" ]; then
+            echo "⚠️ v2.txt 文件为空，创建占位文件"
+            echo "# No valid V2 nodes generated" > v2.txt
+          fi
+
+      # Step 5: 提交并推送更新结果
       - name: Commit and Push updates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,5 +64,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "actions@github.com"
           git add clash.yaml v2.txt || echo "No files to add"
-          git commit -m "🚀 Auto update subscriptions on $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
-          git push
+          if git diff --cached --quiet; then
+            echo "✅ 没有变化，跳过提交"
+          else
+            git commit -m "🚀 Auto update subscriptions on $(date +'%Y-%m-%d %H:%M:%S')"
+            git push
+          fi
