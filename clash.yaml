@@ -3,79 +3,79 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 1.82
+- latency: 2.1
   name: '[Trojan] SG_speednode_0050'
   network: ws
   password: wb6368
   port: 2087
-  score: 65.45496866988341
+  score: 50.37777348348891
   server: 92.243.75.49
-  sim_score: 1.5683722068060146
+  sim_score: 4.029403331263558
   skip-cert-verify: false
   sni: hsdgbuys.pages.dev
-  speed: 11.912804297918782
+  speed: 10.579332431532672
   type: trojan
   ws-opts:
     headers:
       Host: hsdgbuys.pages.dev
     path: /
-- latency: 18.28
-  name: '[Trojan] US_speednode_0072'
-  network: ws
-  password: iwangjie
-  port: 15805
-  score: 5.419083901805118
-  server: 158.101.11.204
-  sim_score: 0.8670129232273521
-  skip-cert-verify: false
-  sni: nodes.830901.xyz
-  speed: 9.906085372499756
-  type: trojan
-  ws-opts:
-    headers:
-      Host: nodes.830901.xyz
-    path: /?ed=2560
-- latency: 49.99
+- latency: 18.6
   name: '[Trojan] 🇺🇸 美国|@ripaojiedian'
   password: 253bc477d4e43c209f2d427272968280
   port: 443
-  score: 1.6458292483124712
+  score: 4.497147528019533
   server: 23.227.194.234
-  sim_score: 4.829062578628818
+  sim_score: 2.4859905625102217
   skip-cert-verify: false
   sni: www.nintendogames.net
-  speed: 8.227500412314043
+  speed: 8.364694402116331
   type: trojan
 - auth: biadailyconfigs
-  latency: 156.01
+  latency: 100.44
   name: '[Hysteria2] @Daily_Configs #6'
   obfs: salamander
   obfs-password: LzmYaFxALuuWNIu3zSeRJeV4z21RU1oS
   password: biadailyconfigs
   port: 443
-  score: 0.7557668925154784
+  score: 1.0912694935100702
   server: 103.249.133.79
-  sim_score: 2.996088725512398
+  sim_score: 2.2342989283312638
   skip-cert-verify: false
   sni: microsoft.com
-  speed: 11.790719290133978
+  speed: 10.960710792815144
   type: hysteria2
+- latency: 90.1
+  name: '[Trojan] US_speednode_0072'
+  network: ws
+  password: iwangjie
+  port: 15805
+  score: 0.9651329210859749
+  server: 158.101.11.204
+  sim_score: 1.9128925962748262
+  skip-cert-verify: false
+  sni: nodes.830901.xyz
+  speed: 8.695847618984633
+  type: trojan
+  ws-opts:
+    headers:
+      Host: nodes.830901.xyz
+    path: /?ed=2560
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - '[Trojan] SG_speednode_0050'
-  - '[Trojan] US_speednode_0072'
   - '[Trojan] 🇺🇸 美国|@ripaojiedian'
   - '[Hysteria2] @Daily_Configs #6'
+  - '[Trojan] US_speednode_0072'
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - '[Trojan] SG_speednode_0050'
-  - '[Trojan] US_speednode_0072'
   - '[Trojan] 🇺🇸 美国|@ripaojiedian'
   - '[Hysteria2] @Daily_Configs #6'
+  - '[Trojan] US_speednode_0072'
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
