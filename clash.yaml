@@ -3,374 +3,243 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 30.01
-  name: '[Vless] US_speednode_0077'
-  network: ws
-  port: 443
-  score: 16.06797734088637
-  server: mybb.com
-  servername: rAyAn-007.nAsTaRaN.DpDnS.OrG
-  sim_score: 3.1181499770867354
-  skip-cert-verify: false
-  speed: 48.22
-  tls: true
-  type: vless
-  uuid: aebe5a70-0ca3-46ce-8208-8b5bab1346ce
-  ws-opts:
-    headers:
-      Host: rAyAn-007.nAsTaRaN.DpDnS.OrG
-    path: /?ed=2560fp=chrome
 - alterId: 0
-  latency: 27.89
-  name: 🇯🇵JP-43.246.198.134-5616
+  latency: 29.69
+  name: 🇸🇬SG-47.237.13.208-5674
   network: ws
-  port: 45028
-  score: 15.084259591251342
-  server: 43.246.198.134
-  sim_score: 3.832886724935696
-  speed: 42.07
-  tls: false
-  type: vmess
-  uuid: c410fb8a-5cc4-4c4f-a475-d091dfdf6bd3
-  ws-opts: {}
-- alterId: 0
-  latency: 29.79
-  name: 🇺🇸 美国
-  network: ws
-  port: 443
-  score: 14.97146693521316
-  server: digitalocean.com
-  sim_score: 3.0025912777642754
-  speed: 44.6
-  tls: true
-  type: vmess
-  uuid: 621514d0-46de-47ea-9063-21eaea0999c7
-  ws-opts: {}
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  latency: 29.79
-  name: xx|4037|puddincat07@Telegram
-  port: 443
-  reality-opts:
-    public-key: YVDo7U4O-AT2fa5H9E7hyYHKgfZd1vB6UdbAf2ggWQE
-    short-id: 55e6af1a35e64a98
-  score: 14.911043974488084
-  server: ilta-wzxrxkdhbjpnprhkkpplsjwawhssvollvxzdhqshiqckwdgrdm.orbnet.xyz
-  servername: i2pd.website
-  sim_score: 3.27870903561338
-  skip-cert-verify: false
-  speed: 44.42
-  tls: true
-  type: vless
-  udp: true
-  uuid: 0e8a6896-ad90-4a3b-89a3-77d64aa409e2
-- alterId: 0
-  latency: 27.91
-  name: '@V2ray1_Ng'
-  network: tcp
-  port: 41100
-  score: 14.793980652096021
-  server: 15.204.234.200
-  sim_score: 1.4221481478290223
-  speed: 41.29
-  tls: false
-  type: vmess
-  uuid: c7f169a3-2e9a-4894-ba53-7b2fa6fd08b4
-  ws-opts: {}
-- alterId: 2
-  latency: 30.14
-  name: 🇭🇰HK-112.119.185.199-5279
-  network: ws
-  port: 80
-  score: 14.717982747179828
-  server: 9def5c5d-t398g0-tdnzz0-1qtp7.hk3.p5pv.com
-  sim_score: 0.975764564796259
-  speed: 44.36
-  tls: false
-  type: vmess
-  uuid: 3653c708-df72-11ee-aec1-f23c9164ca5d
-  ws-opts: {}
-- alterId: 0
-  latency: 29.38
-  name: 🇩🇪 VMESS-未知>德国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-188.114.98.18:80
-  network: ws
-  port: 80
-  score: 14.489448604492853
-  server: 188.114.98.18
-  sim_score: 2.787960162999497
-  speed: 42.57
-  tls: false
-  type: vmess
-  uuid: d2866d01-d76d-4a08-8bae-04fb3c502588
-  ws-opts: {}
-- alterId: 0
-  latency: 28.95
-  name: 🇺🇸 美国
-  network: ws
-  port: 8443
-  score: 14.269430051813472
-  server: 141.193.213.60
-  sim_score: 1.2520046326055176
-  speed: 41.31
-  tls: true
-  type: vmess
-  uuid: 621514d0-46de-47ea-9063-21eaea0999c7
-  ws-opts: {}
-- latency: 30.73
-  name: '[Vless] FI_speednode_0033'
-  network: ws
-  port: 48004
-  score: 14.165310771233324
-  server: 139.28.221.213
-  servername: kejiland.freewarp.eu.org
-  sim_score: 1.6037129293071548
-  skip-cert-verify: false
-  speed: 43.53
-  tls: true
-  type: vless
-  uuid: 01999036-500a-f27f-ee32-ee78844f2e4d
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560fp=chrome
-- latency: 28.85
-  name: '[Vless] US_speednode_0076'
-  network: ws
-  port: 443
-  score: 14.121317157712305
-  server: adf.ly
-  servername: rAyAn-007.pArViN.DpDnS.OrG
-  sim_score: 0.7016415112783908
-  skip-cert-verify: false
-  speed: 40.74
-  tls: true
-  type: vless
-  uuid: 1679af35-6dd6-4c09-ae3b-18f239217f3e
-  ws-opts:
-    headers:
-      Host: rAyAn-007.pArViN.DpDnS.OrG
-    path: /?ed=2560fp=chrome
-- alterId: 0
-  latency: 30.37
-  name: 🇭🇰HK-8.217.220.30-5643
-  network: ws
-  port: 39648
-  score: 14.040171221600264
-  server: 8.217.220.30
-  sim_score: 2.776039752189388
-  speed: 42.64
-  tls: false
-  type: vmess
-  uuid: 2c2583b6-ece0-4d3d-a7f5-cf37c4a6fa8d
-  ws-opts: {}
-- alterId: 0
-  latency: 30.17
-  name: 🇭🇰HK-8.217.34.12-5627
-  network: ws
-  port: 23477
-  score: 13.990719257540603
-  server: 8.217.34.12
-  sim_score: 4.831028723660593
-  speed: 42.21
-  tls: false
-  type: vmess
-  uuid: 80975d47-7f6a-436d-9085-4dadf4546e03
-  ws-opts: {}
-- alterId: 0
-  latency: 31.28
-  name: 🇭🇰HK-47.243.231.14-5595
-  network: ws
-  port: 34404
-  score: 13.785166240409206
-  server: 47.243.231.14
-  sim_score: 0.702043355671982
-  speed: 43.12
-  tls: false
-  type: vmess
-  uuid: 80d50481-a070-41fa-b7c1-82b49f053c7a
-  ws-opts: {}
-- alterId: 0
-  latency: 35.91
-  name: 🇲🇾MY-47.250.85.161-5619
-  network: ws
-  port: 17199
-  score: 13.773322194374828
-  server: 47.250.85.161
-  sim_score: 1.2985000591095277
-  speed: 49.46
-  tls: false
-  type: vmess
-  uuid: 16bb5574-7c94-428f-baf0-39fe7894a41c
-  ws-opts: {}
-- cipher: chacha20-ietf-poly1305
-  latency: 30.39
-  name: raw_node
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 8080
-  score: 13.668970055939454
-  server: 193.29.139.251
-  sim_score: 2.078337059421246
-  speed: 41.54
-  type: ss
-- alterId: 0
-  latency: 28.51
-  name: 🇩🇪 VMESS-未知>德国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-188.114.99.18:80
-  network: ws
-  port: 80
-  score: 13.50403367239565
-  server: 188.114.99.18
-  sim_score: 0.5953547186071824
-  speed: 38.5
-  tls: false
-  type: vmess
-  uuid: d2866d01-d76d-4a08-8bae-04fb3c502588
-  ws-opts: {}
-- alterId: 0
-  latency: 37.18
-  name: 🇭🇰HK-47.243.231.14-5604
-  network: ws
-  port: 4624
-  score: 13.364712210866056
-  server: 47.243.231.14
-  sim_score: 0.7323490740674193
-  speed: 49.69
-  tls: false
-  type: vmess
-  uuid: 2e015cb2-4377-476c-9ba3-f859ceb4c551
-  ws-opts: {}
-- alterId: 0
-  latency: 37.24
-  name: 🇫🇷法国1 | ⬇️ 2.3MB/s
-  network: ws
-  port: 443
-  score: 13.257250268528463
-  server: 172.67.198.187
-  sim_score: 1.0605897597911134
-  speed: 49.37
-  tls: true
-  type: vmess
-  uuid: 93ea486a-bada-42a4-ac38-d088b320fa1e
-  ws-opts: {}
-- cipher: aes-256-cfb
-  latency: 36.88
-  name: '[SS] 🇰🇷 韩国|@ripaojiedian'
-  password: qwerREWQ@@
-  port: 4652
-  score: 13.088394793926248
-  server: 218.237.185.230
-  sim_score: 1.7592980885810585
-  speed: 48.27
-  type: ss
-- alterId: 0
-  latency: 37.56
-  name: 🇸🇬SG-47.237.13.208-5670
-  network: ws
-  port: 51378
-  score: 13.07241746538871
+  port: 50110
+  score: 14.294375210508587
   server: 47.237.13.208
-  sim_score: 1.7126469229760857
-  speed: 49.1
+  sim_score: 2.0308770701011145
+  speed: 42.44
   tls: false
   type: vmess
-  uuid: 8168bcf5-5db1-4d38-a534-a86f7bf96ac6
+  uuid: 6e040614-bf79-4e45-8c77-1c37278e9143
   ws-opts: {}
-- latency: 31.62
-  name: '[Vless] NL_speednode_0057'
+- latency: 35.82
+  name: '[Vless] US_speednode_0092'
   network: ws
   port: 443
-  score: 13.001265022137886
-  server: 146.103.33.38
-  servername: kejiland.freewarp.eu.org
-  sim_score: 3.4341752077055974
+  score: 13.880513679508654
+  server: google.sosorg.nyc.mn
+  servername: bpg.307986.dpdns.org
+  sim_score: 2.1419830808969738
   skip-cert-verify: false
-  speed: 41.11
+  speed: 49.72
   tls: false
   type: vless
-  uuid: 01996549-6892-dbf0-0453-f700236936bd
+  uuid: 0199889f-d499-8cad-99f7-7507ed9a819b
   ws-opts:
     headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls
-- latency: 37.25
-  name: '[Trojan] 🇯🇵 日本2|@ripaojiedian'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 3271
-  score: 12.896644295302014
-  server: 160.16.63.16
-  sim_score: 2.125483508983284
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  speed: 48.04
-  type: trojan
+      Host: bpg.307986.dpdns.org
+    path: /snippetssecurity=tls
+- cipher: aes-256-cfb
+  latency: 35.87
+  name: vn|f56f|puddincat07@Telegram
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  port: 38388
+  score: 13.869528854195707
+  server: 103.186.155.15
+  sim_score: 1.6554996566002296
+  speed: 49.75
+  type: ss
+  udp: true
 - alterId: 0
-  latency: 29.9
-  name: '@proxy_kafee🇩🇪'
+  latency: 35.32
+  name: '@Daily_Configs'
   network: ws
   port: 443
-  score: 12.832775919732441
-  server: 57.129.25.22
-  sim_score: 0.9775051003717655
-  speed: 38.37
+  score: 13.677802944507363
+  server: 15.204.103.7
+  sim_score: 3.999203628657861
+  speed: 48.31
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
-- cipher: aes-256-cfb
-  latency: 36.66
-  name: raw_node
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 12.509547190398255
-  server: 185.153.197.5
-  sim_score: 0.6940136179781593
-  speed: 45.86
-  type: ss
-- cipher: aes-256-cfb
-  latency: 29.99
-  name: raw_node
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 12.464154718239415
-  server: 38.165.233.93
-  sim_score: 2.7267127837457967
-  speed: 37.38
-  type: ss
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  latency: 35.15
+  name: xx|9705|puddincat07@Telegram
+  port: 443
+  reality-opts:
+    public-key: 9qaBiJ3zMogUBKByaq71xT9xDu1dmN1b47rXOYUy6Rw
+    short-id: 6650429727ca
+  score: 13.624466571834994
+  server: ruunion.ru
+  servername: yahoo.com
+  sim_score: 2.700848847173034
+  skip-cert-verify: false
+  speed: 47.89
+  tls: true
+  type: vless
+  udp: true
+  uuid: 7f74ad83-4aaf-419b-8caf-ff66c354bcbc
 - alterId: 0
-  latency: 37.01
-  name: 🇻🇳VN-103.137.185.22-0276
+  latency: 35.94
+  name: 🇭🇰HK-47.76.233.2-5669
   network: ws
-  port: 80
-  score: 12.366927857335856
-  server: 103.137.185.22
-  sim_score: 0.6912670913113744
-  speed: 45.77
+  port: 33224
+  score: 13.572621035058432
+  server: 47.76.233.2
+  sim_score: 0.7827273626775345
+  speed: 48.78
   tls: false
   type: vmess
-  uuid: 446b42d6-5f4d-4723-f0f1-69d948ac5fda
+  uuid: ceb2fec2-90df-4cfe-a80d-e86168ba9b12
   ws-opts: {}
 - alterId: 0
-  latency: 31.72
-  name: 🏁RELAY-172.67.200.13-1039
+  latency: 35.36
+  name: All--@IRAN_V2RAY1
+  network: ws
+  port: 80
+  score: 13.464366515837105
+  server: 172.67.71.145
+  sim_score: 0.7017094177571022
+  speed: 47.61
+  tls: false
+  type: vmess
+  uuid: for-MahsaNG-vpn-00141
+  ws-opts: {}
+- latency: 36.66
+  name: '[Vless] DE_speednode_0026'
   network: ws
   port: 443
-  score: 12.336065573770494
-  server: 172.67.200.13
-  sim_score: 1.6160027233732477
-  speed: 39.13
+  score: 13.404255319148938
+  server: 91.149.223.242
+  servername: kejiland.freewarp.eu.org
+  sim_score: 1.0356155999814762
+  skip-cert-verify: false
+  speed: 49.14
+  tls: false
+  type: vless
+  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls
+- cipher: aes-256-cfb
+  latency: 36.72
+  name: '[SS] 🇰🇷 韩国|@ripaojiedian'
+  password: qwerREWQ@@
+  port: 4652
+  score: 13.368736383442268
+  server: 218.237.185.230
+  sim_score: 4.097382823462313
+  speed: 49.09
+  type: ss
+- cipher: aes-256-cfb
+  latency: 35.51
+  name: md|cf4f|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 13.323007603491977
+  server: 185.153.197.5
+  sim_score: 1.2620385969773331
+  speed: 47.31
+  type: ss
+- alterId: 0
+  latency: 35.62
+  name: '@HiByeVPNN👈⚡❤️‍🔥'
+  network: tcp
+  port: 11559
+  score: 13.231330713082539
+  server: radhan.configraybot.sbs
+  sim_score: 1.7429703209129515
+  speed: 47.13
+  tls: false
+  type: vmess
+  uuid: 5106c6de-7890-43ff-8f50-eb4ec25c801d
+  ws-opts: {}
+- alterId: 0
+  latency: 35.93
+  name: 🇺🇸 VMESS-未知>美国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-104.17.223.175:8080
+  network: ws
+  port: 8080
+  score: 13.217367102699695
+  server: 104.17.223.175
+  sim_score: 2.647018921684963
+  speed: 47.49
+  tls: false
+  type: vmess
+  uuid: 6cbc9c78-1cb1-57d4-a999-e2f4e34c1e03
+  ws-opts: {}
+- alterId: 0
+  latency: 35.77
+  name: '@Geek_Spot '
+  network: tcp
+  port: 30475
+  score: 13.105954710651384
+  server: 216.132.112.116
+  sim_score: 1.3395079926392297
+  speed: 46.88
+  tls: false
+  type: vmess
+  uuid: defa10be-f618-4b64-c815-049d2eacbd3f
+  ws-opts: {}
+- alterId: 0
+  latency: 36.69
+  name: 🇺🇸 VMESS-未知>美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-orvps2.horsenma.net:8443
+  network: ws
+  port: 8443
+  score: 12.970836740256201
+  server: orvps2.horsenma.net
+  sim_score: 0.7487532823984091
+  speed: 47.59
   tls: true
   type: vmess
-  uuid: 5f726fe3-d82e-4da5-a711-8af0cbb2b682
+  uuid: 57e595e6-ef54-4e0d-b8df-e96db9612b99
   ws-opts: {}
-- latency: 29.51
-  name: '[Vless] NL_speednode_0058'
+- alterId: 0
+  latency: 36.58
+  name: 'Channel id: @ShadowProxy66🇮🇳'
+  network: tcp
+  port: 10534
+  score: 12.741935483870968
+  server: 94.136.185.230
+  sim_score: 0.6847899908142342
+  speed: 46.61
+  tls: false
+  type: vmess
+  uuid: b01c7ef9-33ec-41f6-bfbf-77ddc4d21649
+  ws-opts: {}
+- alterId: 0
+  latency: 35.44
+  name: 🇭🇰HK-8.210.230.179-5602
   network: ws
-  port: 8000
-  score: 12.178922399186716
-  server: 176.222.53.140
-  servername: kejiland.freewarp.eu.org
-  sim_score: 1.4384258043238676
+  port: 2318
+  score: 12.56489841986456
+  server: 8.210.230.179
+  sim_score: 1.4704367163901002
+  speed: 44.53
+  tls: false
+  type: vmess
+  uuid: 55bb7a7c-c09d-47f6-a047-8472eeaadeff
+  ws-opts: {}
+- auth: biadailyconfigs
+  latency: 36.07
+  name: '[Hysteria2] @Daily_Configs #6'
+  obfs: salamander
+  obfs-password: LzmYaFxALuuWNIu3zSeRJeV4z21RU1oS
+  password: biadailyconfigs
+  port: 443
+  score: 12.306626004990298
+  server: 103.249.133.79
+  sim_score: 3.0483738956316286
   skip-cert-verify: false
-  speed: 35.94
+  sni: microsoft.com
+  speed: 44.39
+  type: hysteria2
+- latency: 35.61
+  name: '[Vless] US_speednode_0091'
+  network: ws
+  port: 443
+  score: 12.297107554057849
+  server: 198.46.143.134
+  servername: kejiland.freewarp.eu.org
+  sim_score: 1.190202981798928
+  skip-cert-verify: false
+  speed: 43.79
   tls: false
   type: vless
   uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
@@ -379,54 +248,613 @@ proxies:
       Host: kejiland.freewarp.eu.org
     path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls
 - alterId: 0
-  latency: 36.81
+  latency: 36.4
+  name: '@HiByeVPNN👈⚡❤️‍🔥'
+  network: ws
+  port: 443
+  score: 12.247252747252748
+  server: 57.129.59.199
+  sim_score: 1.5858639903081322
+  speed: 44.58
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.57
+  name: '@Rayan_Config 177'
+  network: ws
+  port: 443
+  score: 11.97976483456385
+  server: 57.129.24.132
+  sim_score: 1.7731711143483415
+  speed: 43.81
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.68
+  name: 🇭🇰HK-47.76.246.12-5695
+  network: ws
+  port: 42669
+  score: 11.86205016357688
+  server: 47.76.246.12
+  sim_score: 1.4743941812779848
+  speed: 43.51
+  tls: false
+  type: vmess
+  uuid: 13709d57-530e-4f9c-97d7-ebc774bdfc6c
+  ws-opts: {}
+- alterId: 0
+  latency: 35.37
+  name: '@Daily_Configs'
+  network: tcp
+  port: 31212
+  score: 11.665253039298841
+  server: 47.242.90.210
+  sim_score: 1.9388933053018131
+  speed: 41.26
+  tls: false
+  type: vmess
+  uuid: 3a4271fb-2718-4489-da78-80a8e7701aa5
+  ws-opts: {}
+- alterId: 0
+  latency: 40.82
+  name: 🇺🇸美国24 | ⬇️ 3.4MB/s
+  network: ws
+  port: 443
+  score: 11.555609995100442
+  server: xcf037.facai2024.com
+  sim_score: 1.0292450608294668
+  speed: 47.17
+  tls: true
+  type: vmess
+  uuid: d9863037-0463-4615-e972-36ba9662d1e9
+  ws-opts: {}
+- alterId: 0
+  latency: 35.29
+  name: 🇺🇸 美国
+  network: ws
+  port: 8443
+  score: 11.470671578350807
+  server: 141.193.213.60
+  sim_score: 2.2092700253071755
+  speed: 40.48
+  tls: true
+  type: vmess
+  uuid: 621514d0-46de-47ea-9063-21eaea0999c7
+  ws-opts: {}
+- alterId: 1
+  latency: 35.59
+  name: 🇩🇪DE-57.129.25.20-1271
+  network: ws
+  port: 443
+  score: 11.4667041303737
+  server: 57.129.25.20
+  sim_score: 1.1858847484978419
+  speed: 40.81
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 35.84
+  name: '>>@DailyV2RY::SG'
+  network: tcp
+  port: 550
+  score: 11.316964285714286
+  server: 185.250.38.63
+  sim_score: 0.698904039884916
+  speed: 40.56
+  tls: false
+  type: vmess
+  uuid: 0c6abb66-660e-4db9-9e64-3a2625639278
+  ws-opts: {}
+- alterId: 0
+  latency: 30.17
+  name: 🇭🇰HK-8.217.220.30-5631
+  network: ws
+  port: 31123
+  score: 11.166721909181305
+  server: 8.217.220.30
+  sim_score: 1.8404839975681901
+  speed: 33.69
+  tls: false
+  type: vmess
+  uuid: 12f7164b-e3e1-4264-86cc-68028902cd19
+  ws-opts: {}
+- alterId: 0
+  latency: 36.46
+  name: 🇯🇵JP-47.74.10.111-5617
+  network: ws
+  port: 46049
+  score: 11.050466264399342
+  server: 47.74.10.111
+  sim_score: 0.8107789164058231
+  speed: 40.29
+  tls: false
+  type: vmess
+  uuid: 728257b1-5158-47d9-a1a1-6ac29faab878
+  ws-opts: {}
+- alterId: 0
+  latency: 36.13
+  name: 🇭🇰HK-8.218.175.64-5632
+  network: ws
+  port: 51377
+  score: 10.830334901743704
+  server: 8.218.175.64
+  sim_score: 0.9821644310591311
+  speed: 39.13
+  tls: false
+  type: vmess
+  uuid: 45bfcaaa-f3db-4e93-8164-4203eaa2a2cc
+  ws-opts: {}
+- latency: 36.93
+  name: '[Vless] SA_speednode_0065'
+  network: ws
+  port: 2096
+  score: 10.758191172488491
+  server: 91.209.253.43
+  servername: kejiland.freewarp.eu.org
+  sim_score: 1.670985825009461
+  skip-cert-verify: false
+  speed: 39.73
+  tls: true
+  type: vless
+  uuid: 01997b9d-a1f7-e188-981a-c665b723cfef
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippetsfp=chrome
+- alterId: 0
+  latency: 36.5
+  name: '@vpnserverrr'
+  network: ws
+  port: 443
+  score: 10.657534246575342
+  server: 57.129.59.200
+  sim_score: 1.2101603555329428
+  speed: 38.9
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 43.17
+  name: 🇫🇷法国1 | ⬇️ 2.3MB/s
+  network: ws
+  port: 443
+  score: 10.641649293490849
+  server: 172.67.198.187
+  sim_score: 2.4815932053840206
+  speed: 45.94
+  tls: true
+  type: vmess
+  uuid: 93ea486a-bada-42a4-ac38-d088b320fa1e
+  ws-opts: {}
+- alterId: 0
+  latency: 36.78
+  name: 🇯🇵JP-43.246.198.134-5616
+  network: ws
+  port: 45028
+  score: 10.584556824361064
+  server: 43.246.198.134
+  sim_score: 1.7381519538292043
+  speed: 38.93
+  tls: false
+  type: vmess
+  uuid: c410fb8a-5cc4-4c4f-a475-d091dfdf6bd3
+  ws-opts: {}
+- alterId: 0
+  latency: 35.19
+  name: '@Selinc'
+  network: ws
+  port: 443
+  score: 10.48877522023302
+  server: 146.59.70.146
+  sim_score: 1.1796906064895112
+  speed: 36.91
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 31.0
+  name: 🇭🇰HK-8.217.220.30-5641
+  network: ws
+  port: 62236
+  score: 10.474193548387095
+  server: 8.217.220.30
+  sim_score: 2.875067964970843
+  speed: 32.47
+  tls: false
+  type: vmess
+  uuid: 1d250ec9-412a-4b9b-bbdc-cdfcd76620b0
+  ws-opts: {}
+- alterId: 0
+  latency: 35.65
+  name: 🇯🇵JP-43.246.198.134-5613
+  network: ws
+  port: 11683
+  score: 10.389901823281908
+  server: 43.246.198.134
+  sim_score: 1.499800364707845
+  speed: 37.04
+  tls: false
+  type: vmess
+  uuid: c040f159-377d-4b62-aaf6-994460d3ee4e
+  ws-opts: {}
+- alterId: 2
+  latency: 37.32
+  name: 🇭🇰HK-112.119.185.199-0313
+  network: ws
+  port: 80
+  score: 10.30010718113612
+  server: be4fe2f9-t3gn40-tdnzz0-1qtp7.hk3.p5pv.com
+  sim_score: 2.0271764559501877
+  speed: 38.44
+  tls: false
+  type: vmess
+  uuid: 3653c708-df72-11ee-aec1-f23c9164ca5d
+  ws-opts: {}
+- cipher: aes-256-cfb
+  latency: 46.83
+  name: raw_node
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 9.882553918428359
+  server: 38.165.233.93
+  sim_score: 1.220167947387716
+  speed: 46.28
+  type: ss
+- latency: 46.91
+  name: '[Trojan] JP_speednode_0051'
+  password: 253bc477d4e43c209f2d427272968280
+  port: 5328
+  score: 9.752717970581967
+  server: 160.16.117.182
+  sim_score: 1.6777281657774763
+  skip-cert-verify: false
+  sni: www.nintendogames.net
+  speed: 45.75
+  type: trojan
+- latency: 35.24
+  name: '[Vless] US_speednode_0088'
+  network: ws
+  port: 2096
+  score: 9.66799091940976
+  server: 103.133.1.32
+  servername: kejiland.freewarp.eu.org
+  sim_score: 0.6222928144644341
+  skip-cert-verify: false
+  speed: 34.07
+  tls: false
+  type: vless
+  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippetssecurity=tls
+- latency: 51.3
+  name: '[Vless] ES_speednode_0031'
+  network: ws
+  port: 2096
+  score: 9.617933723196883
+  server: 185.251.80.32
+  servername: kejiland.freewarp.eu.org
+  sim_score: 2.3935249357013784
+  skip-cert-verify: false
+  speed: 49.34
+  tls: true
+  type: vless
+  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippetsfp=chrome
+- cipher: aes-256-cfb
+  latency: 35.16
+  name: raw_node
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 9.502275312855517
+  server: 37.235.49.152
+  sim_score: 2.6838605184413247
+  speed: 33.41
+  type: ss
+- alterId: 0
+  latency: 45.73
+  name: 🇩🇪@FreakConfig
+  network: ws
+  port: 443
+  score: 9.265252569429258
+  server: jamekk.org
+  sim_score: 2.3801422294739245
+  speed: 42.37
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.99
+  name: 🇭🇰HK-8.218.175.64-5642
+  network: ws
+  port: 51823
+  score: 9.25925925925926
+  server: 8.218.175.64
+  sim_score: 1.2336288345023736
+  speed: 34.25
+  tls: false
+  type: vmess
+  uuid: b8ee639c-a7ac-49fa-bc49-2510e885043f
+  ws-opts: {}
+- alterId: 0
+  latency: 37.16
   name: 🇭🇰香港2 | ⬇️ 1.2MB/s
   network: ws
   port: 443
-  score: 12.110839445802771
+  score: 9.23573735199139
   server: hk2.lrzdx.uk
-  sim_score: 1.8879229747775648
-  speed: 44.58
+  sim_score: 1.7341755225285296
+  speed: 34.32
   tls: true
   type: vmess
   uuid: db69d5bc-d36c-4903-f471-74b98c5cefe5
   ws-opts: {}
-- alterId: 0
-  latency: 36.32
-  name: '>>@ShadowsocksM::XX'
+- alterId: 2
+  latency: 35.67
+  name: 🇭🇰HK-112.119.185.199-5280
   network: ws
-  port: 20086
-  score: 11.971365638766517
-  server: 91.99.185.216
-  sim_score: 1.7445690167825982
-  speed: 43.48
+  port: 80
+  score: 9.229044014578077
+  server: 54d2d7fc-t3kcg0-tdnzz0-1qtp7.hk3.p5pv.com
+  sim_score: 1.8938225504024397
+  speed: 32.92
   tls: false
   type: vmess
-  uuid: 7bd6a1ea-a220-4f1c-afed-6cfb8ab96ad9
+  uuid: 3653c708-df72-11ee-aec1-f23c9164ca5d
   ws-opts: {}
+- latency: 35.54
+  name: '[Vless] US_speednode_0086'
+  network: ws
+  port: 2096
+  score: 9.1755768148565
+  server: 209.46.30.44
+  servername: kejiland.freewarp.eu.org
+  sim_score: 0.6622192334335393
+  skip-cert-verify: false
+  speed: 32.61
+  tls: false
+  type: vless
+  uuid: 12345678-1234-1234-1234-123456789123
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippetssecurity=tls
+- cipher: chacha20-ietf-poly1305
+  latency: 51.69
+  name: xx|6293|puddincat07@Telegram
+  password: Nk9asglDzHzjktVzTkvhaA
+  port: 443
+  score: 8.97852582704585
+  server: arxfw2b78fi2q9hzylhn.freesocks.work
+  sim_score: 2.809974318779418
+  speed: 46.41
+  type: ss
 - alterId: 0
-  latency: 38.01
-  name: 🇺🇸US-157.254.227.2-5343
+  latency: 50.64
+  name: '@Rayan_Config 169'
   network: ws
   port: 443
-  score: 11.931070770849777
-  server: cpp007-2.facai20250909.com
-  sim_score: 0.9013684937199509
-  speed: 45.35
+  score: 8.949447077409163
+  server: 57.129.64.163
+  sim_score: 1.2440384981475474
+  speed: 45.32
   tls: true
   type: vmess
-  uuid: e134b5e9-4b16-4d50-b3d9-eaef652660b0
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
-- latency: 37.6
+- alterId: 0
+  latency: 35.24
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 8.898978433598185
+  server: 91.134.8.100
+  sim_score: 2.667773348935436
+  speed: 31.36
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.61
+  name: 🏁RELAY-104.21.76.158-0359
+  network: ws
+  port: 8443
+  score: 8.822726031139032
+  server: c7.620720.xyz
+  sim_score: 1.6198743417327652
+  speed: 32.3
+  tls: true
+  type: vmess
+  uuid: 516d8a7a-3f0b-41d3-bad0-246116381516
+  ws-opts: {}
+- alterId: 0
+  latency: 44.45
+  name: '@Selinc'
+  network: ws
+  port: 443
+  score: 8.704161979752529
+  server: 148.113.176.192
+  sim_score: 1.6520865490928496
+  speed: 38.69
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 47.14
+  name: '@Rayan_Config 214'
+  network: ws
+  port: 443
+  score: 8.644463300806109
+  server: 148.113.153.113
+  sim_score: 2.982825505157798
+  speed: 40.75
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- latency: 36.14
+  name: '[Vless] US_speednode_0094'
+  network: ws
+  port: 8443
+  score: 8.619258439402325
+  server: 188.114.97.202
+  servername: teslakit1.pages.dev
+  sim_score: 2.75170598420526
+  skip-cert-verify: false
+  speed: 31.15
+  tls: false
+  type: vless
+  uuid: c2e177d4-e610-4abd-85cd-1a869d158751
+  ws-opts:
+    headers:
+      Host: teslakit1.pages.dev
+    path: /security=tls
+- alterId: 0
+  latency: 36.19
+  name: 🇭🇰HK-8.217.220.30-5643
+  network: ws
+  port: 39648
+  score: 8.615639679469467
+  server: 8.217.220.30
+  sim_score: 1.914324206799596
+  speed: 31.18
+  tls: false
+  type: vmess
+  uuid: 2c2583b6-ece0-4d3d-a7f5-cf37c4a6fa8d
+  ws-opts: {}
+- alterId: 0
+  latency: 50.43
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 8.518738845925045
+  server: 57.129.28.214
+  sim_score: 2.3040178208811706
+  speed: 42.96
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 37.0
+  name: '@Rayan_Config 228'
+  network: ws
+  port: 443
+  score: 8.47027027027027
+  server: 38.60.217.146
+  sim_score: 1.2869866491356976
+  speed: 31.34
+  tls: false
+  type: vmess
+  uuid: 26ae36a4-e21f-48ae-e90b-5adf271b046e
+  ws-opts: {}
+- alterId: 0
+  latency: 36.15
+  name: '@Rayan_Config 223'
+  network: ws
+  port: 443
+  score: 8.414937759336102
+  server: 158.51.121.63
+  sim_score: 1.448658477701503
+  speed: 30.42
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 52.45
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 8.327931363203051
+  server: 146.59.55.50
+  sim_score: 1.1336464316629449
+  speed: 43.68
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 35.31
+  name: 🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرامی
+  network: tcp
+  port: 444
+  score: 8.32625318606627
+  server: 5.182.39.44
+  sim_score: 2.5145404702378737
+  speed: 29.4
+  tls: false
+  type: vmess
+  uuid: 7d52a409-aa5a-471f-aca5-e7621bf1b813
+  ws-opts: {}
+- alterId: 0
+  latency: 47.32
+  name: haniye
+  network: ws
+  port: 40873
+  score: 8.317836010143703
+  server: 47.83.162.4
+  sim_score: 2.358479395254261
+  speed: 39.36
+  tls: false
+  type: vmess
+  uuid: 3fd266bc-7691-43cf-a82f-0c9761a69bf0
+  ws-opts: {}
+- alterId: 0
+  latency: 56.58
+  name: 0|--30
+  network: ws
+  port: 443
+  score: 8.292682926829269
+  server: 38.99.82.193
+  sim_score: 0.9286543177175094
+  speed: 46.92
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- latency: 35.28
+  name: '[Vless] RU_speednode_0060'
+  network: ws
+  port: 2096
+  score: 8.259637188208616
+  server: 188.42.145.253
+  servername: gaosir.unfeeling.sbs
+  sim_score: 3.293281823971686
+  skip-cert-verify: false
+  speed: 29.14
+  tls: true
+  type: vless
+  uuid: f61a4285-7264-4d07-9408-7b9ba1922c26
+  ws-opts:
+    headers:
+      Host: gaosir.unfeeling.sbs
+    path: /TelegramU0001F1E8U0001F1F3 @WangCai2 /?ed=2560fp=chrome
+- latency: 36.65
   name: '[Vless] US_speednode_0079'
   network: ws
   port: 2096
-  score: 11.893617021276594
+  score: 8.180081855388813
   server: 104.16.161.143
   servername: baomei.pages.dev
-  sim_score: 1.6679648564409608
+  sim_score: 1.6077570204545308
   skip-cert-verify: false
-  speed: 44.72
+  speed: 29.98
   tls: false
   type: vless
   uuid: f690c2da-bdc3-4538-999e-d2bb8a541188
@@ -435,134 +863,619 @@ proxies:
       Host: baomei.pages.dev
     path: /security=tls
 - alterId: 0
-  latency: 37.65
-  name: 'Channel : tik7net_vpn 🇩🇪'
-  network: ws
-  port: 443
-  score: 11.683930942895087
-  server: 57.129.59.202
-  sim_score: 1.7137315397778536
-  speed: 43.99
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 37.56
-  name: 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  network: ws
-  port: 443
-  score: 11.674653887113951
-  server: sing-box.biz.id
-  sim_score: 1.927922373769331
-  speed: 43.85
-  tls: true
-  type: vmess
-  uuid: 2b584f5d-7edb-4dfa-836d-ecc8757e85db
-  ws-opts: {}
-- alterId: 0
-  latency: 38.51
-  name: 🇯🇵JP-47.74.10.111-5615
-  network: ws
-  port: 34029
-  score: 11.451571020514153
-  server: 47.74.10.111
-  sim_score: 2.8795048543851003
-  speed: 44.1
+  latency: 35.72
+  name: 𝗦𝗸𝘆𝗽𝗿𝗼_𝘃𝗽𝗻@
+  network: tcp
+  port: 8080
+  score: 8.16909294512878
+  server: hetz-vm1.serjio.sbs
+  sim_score: 1.7076417407100362
+  speed: 29.18
   tls: false
   type: vmess
-  uuid: 2e80d0c8-16c8-420a-b86c-c2e7e2e4f764
+  uuid: 166b8dda-9126-4ecc-8d22-6b5ba2df9c1b
   ws-opts: {}
-- alterId: 0
-  latency: 37.74
-  name: 🇭🇰HK-47.76.157.234-5678
+- latency: 48.69
+  name: '[Vless] US_speednode_0077'
   network: ws
-  port: 55125
-  score: 11.393746687864335
-  server: 47.76.157.234
-  sim_score: 2.750914519456276
-  speed: 43.0
+  port: 443
+  score: 8.098172109262682
+  server: mybb.com
+  servername: rAyAn-007.nAsTaRaN.DpDnS.OrG
+  sim_score: 1.343176894546968
+  skip-cert-verify: false
+  speed: 39.43
+  tls: true
+  type: vless
+  uuid: aebe5a70-0ca3-46ce-8208-8b5bab1346ce
+  ws-opts:
+    headers:
+      Host: rAyAn-007.nAsTaRaN.DpDnS.OrG
+    path: /?ed=2560fp=chrome
+- latency: 49.16
+  name: '[Trojan] 🇭🇰 香港6|@ripaojiedian'
+  password: 253bc477d4e43c209f2d427272968280
+  port: 4400
+  score: 8.096013018714402
+  server: 221.128.195.219
+  sim_score: 2.3483255767593434
+  skip-cert-verify: false
+  sni: www.nintendogames.net
+  speed: 39.8
+  type: trojan
+- latency: 50.53
+  name: '[Vless] FR_speednode_0037'
+  network: ws
+  port: 2096
+  score: 8.050662972491589
+  server: 141.11.203.32
+  servername: kejiland.freewarp.eu.org
+  sim_score: 2.508114428123392
+  skip-cert-verify: false
+  speed: 40.68
   tls: false
-  type: vmess
-  uuid: 87227bd9-1506-4d48-bd6b-0b80a8c2aae7
-  ws-opts: {}
+  type: vless
+  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippetssecurity=tls
 - alterId: 0
-  latency: 43.69
-  name: '@Rayan_Config 225'
+  latency: 35.04
+  name: 美国02付费推荐：https://dafei.de
   network: ws
-  port: 443
-  score: 11.295490959029525
-  server: 40.160.16.219
-  sim_score: 1.4476669673521683
-  speed: 49.35
+  port: 2053
+  score: 8.045091324200914
+  server: fastcup.net
+  sim_score: 0.7562781491757286
+  speed: 28.19
   tls: true
   type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  uuid: 82ba36ec-dafe-40eb-b9ad-0f8a98101020
   ws-opts: {}
 - alterId: 0
-  latency: 43.17
-  name: 'Channel id: @ShadowProxy66🇩🇪'
+  latency: 35.74
+  name: 🏴‍☠️@FreakConfig
   network: ws
   port: 443
-  score: 11.188325225851285
-  server: 57.129.64.238
-  sim_score: 1.4242146762320673
-  speed: 48.3
+  score: 8.027420257414661
+  server: node4.rtxconfigz.com
+  sim_score: 1.6790456734732782
+  speed: 28.69
   tls: true
   type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  uuid: 44e57485-eccc-46ef-808f-cd17ac810018
   ws-opts: {}
 - alterId: 0
-  latency: 37.2
+  latency: 45.57
   name: '@Daily_Configs'
   network: ws
   port: 443
-  score: 11.1505376344086
-  server: 146.59.55.50
-  sim_score: 0.8171431518018815
-  speed: 41.48
+  score: 7.840684660961158
+  server: 141.95.126.134
+  sim_score: 1.479873796094782
+  speed: 35.73
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- cipher: chacha20-ietf-poly1305
+  latency: 48.02
+  name: raw_node
+  password: JIhN6rBKkaEboLNXVSv5rq
+  port: 80
+  score: 7.773844231570179
+  server: 142.4.216.225
+  sim_score: 1.227352947535756
+  speed: 37.33
+  type: ss
+- alterId: 0
+  latency: 42.03
+  name: 'Channel id: @ShadowProxy66 🇭🇰'
+  network: ws
+  port: 45324
+  score: 7.734951225315251
+  server: 8.210.230.179
+  sim_score: 1.6315912055516748
+  speed: 32.51
+  tls: false
+  type: vmess
+  uuid: 88ae3410-5af6-4a76-bb0f-940d6fff4f1a
+  ws-opts: {}
+- latency: 35.81
+  name: '[Vless] NL_speednode_0058'
+  network: ws
+  port: 8000
+  score: 7.73247696174253
+  server: 176.222.53.140
+  servername: kejiland.freewarp.eu.org
+  sim_score: 2.187696897875865
+  skip-cert-verify: false
+  speed: 27.69
+  tls: false
+  type: vless
+  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls
+- alterId: 0
+  latency: 35.36
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 7.6923076923076925
+  server: 57.129.28.64
+  sim_score: 0.9025147659664191
+  speed: 27.2
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
 - alterId: 0
-  latency: 29.01
-  name: 🇭🇰HK-8.217.158.92-5630
-  network: ws
-  port: 25506
-  score: 10.906583936573595
-  server: 8.217.158.92
-  sim_score: 1.305934684203963
-  speed: 31.64
+  latency: 48.58
+  name: '@V2rayNGVPN <= کانفیگ رایگان'
+  network: tcp
+  port: 550
+  score: 7.614244545080281
+  server: 62.146.235.12
+  sim_score: 0.8869538809982074
+  speed: 36.99
   tls: false
   type: vmess
-  uuid: a3846e50-9935-4b49-bb7c-ce258f3253b2
+  uuid: 48b986d8-7da2-47a2-85de-2306c9259953
   ws-opts: {}
 - alterId: 0
-  cipher: auto
-  latency: 30.84
-  name: cn|6e69|puddincat07@Telegram
-  network: tcp
-  port: 50002
-  score: 10.813878080415048
-  server: 139.129.20.6
-  sim_score: 1.2662296492093603
-  skip-cert-verify: true
-  speed: 33.35
-  tfo: true
+  latency: 54.72
+  name: 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  network: ws
+  port: 443
+  score: 7.5475146198830405
+  server: sing-box.cloud
+  sim_score: 1.5282193065478245
+  speed: 41.3
+  tls: true
   type: vmess
-  udp: true
-  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
-- latency: 28.97
-  name: '[Vless] ES_speednode_0031'
+  uuid: 4e77e096-eb2a-4150-b861-5af638b97408
+  ws-opts: {}
+- alterId: 0
+  latency: 36.34
+  name: 🇵🇭PH-8.220.188.238-5634
+  network: ws
+  port: 33248
+  score: 7.545404512933407
+  server: 8.220.188.238
+  sim_score: 5.8668588698687
+  speed: 27.42
+  tls: false
+  type: vmess
+  uuid: 81b57c84-698f-4944-9268-db6a06a4a63a
+  ws-opts: {}
+- alterId: 0
+  latency: 52.37
+  name: '@Rayan_Config 179'
+  network: ws
+  port: 443
+  score: 7.527210234867291
+  server: 57.129.2.121
+  sim_score: 2.936581047021703
+  speed: 39.42
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 46.1
+  name: 🏴‍☠️@FreakConfig
+  network: tcp
+  port: 550
+  score: 7.501084598698481
+  server: 15.235.163.157
+  sim_score: 1.250553698999333
+  speed: 34.58
+  tls: false
+  type: vmess
+  uuid: 84481a23-eb24-4fd9-a06b-c54eaf6b905b
+  ws-opts: {}
+- alterId: 0
+  latency: 46.63
+  name: 🇨🇦CA-15.235.50.172-1645
+  network: ws
+  port: 443
+  score: 7.454428479519621
+  server: 15.235.50.172
+  sim_score: 1.6605477007868077
+  speed: 34.76
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.68
+  name: '@Rayan_Config 159'
+  network: ws
+  port: 443
+  score: 7.445474372955289
+  server: 57.129.28.68
+  sim_score: 1.5910430816404708
+  speed: 27.31
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.69
+  name: '@awlix_ir'
+  network: ws
+  port: 443
+  score: 7.4434450804033805
+  server: 172.67.170.13
+  sim_score: 0.755402486510292
+  speed: 27.31
+  tls: true
+  type: vmess
+  uuid: 76221bfb-e92f-4e80-81c5-6fe48f50ac0b
+  ws-opts: {}
+- alterId: 0
+  latency: 44.98
+  name: 🇫🇷FR-57.128.189.240-5245
+  network: ws
+  port: 443
+  score: 7.365495775900401
+  server: 57.128.189.240
+  sim_score: 1.451824524234857
+  speed: 33.13
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 44.83
+  name: 🇭🇰HK-47.238.0.200-5679
+  network: ws
+  port: 37130
+  score: 7.318759759089896
+  server: 47.238.0.200
+  sim_score: 0.7909246282005898
+  speed: 32.81
+  tls: false
+  type: vmess
+  uuid: 2090a986-fa9e-4778-948b-9eb993e0a0ef
+  ws-opts: {}
+- alterId: 0
+  latency: 49.04
+  name: '>>@ShadowsocksM::HK'
+  network: ws
+  port: 62312
+  score: 7.29404567699837
+  server: 8.217.34.12
+  sim_score: 1.169854879543623
+  speed: 35.77
+  tls: false
+  type: vmess
+  uuid: e2bdea80-bb43-4eac-a663-9d615b3a6c3f
+  ws-opts: {}
+- latency: 35.41
+  name: '[Vless] ES_speednode_0030'
   network: ws
   port: 2096
-  score: 10.807732136693131
-  server: 185.251.80.32
+  score: 7.094041231290596
+  server: 185.251.83.32
   servername: kejiland.freewarp.eu.org
-  sim_score: 1.1858745090542224
+  sim_score: 1.2592925097921328
   skip-cert-verify: false
-  speed: 31.31
+  speed: 25.12
+  tls: false
+  type: vless
+  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippetssecurity=tls
+- alterId: 0
+  latency: 35.08
+  name: '@V2rayNGVPN <= کانفیگ رایگان'
+  network: ws
+  port: 443
+  score: 6.955530216647663
+  server: 57.129.59.193
+  sim_score: 1.1931960533910373
+  speed: 24.4
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 47.79
+  name: 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  network: ws
+  port: 443
+  score: 6.9554300062774645
+  server: sing-box.pics
+  sim_score: 2.704537845355566
+  speed: 33.24
+  tls: true
+  type: vmess
+  uuid: 3fddc9a8-b3a8-4bd5-b484-784d37ef69b1
+  ws-opts: {}
+- alterId: 0
+  latency: 38.12
+  name: 🇭🇰HK-47.243.231.14-5604
+  network: ws
+  port: 4624
+  score: 6.81794333683106
+  server: 47.243.231.14
+  sim_score: 1.5464992820432775
+  speed: 25.99
+  tls: false
+  type: vmess
+  uuid: 2e015cb2-4377-476c-9ba3-f859ceb4c551
+  ws-opts: {}
+- latency: 53.84
+  name: '[Vless] GB_speednode_0040'
+  network: ws
+  port: 2096
+  score: 6.721768202080237
+  server: 185.193.31.32
+  servername: kejiland.freewarp.eu.org
+  sim_score: 3.323641288367636
+  skip-cert-verify: false
+  speed: 36.19
+  tls: false
+  type: vless
+  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippetssecurity=tls
+- alterId: 0
+  latency: 36.4
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 6.662087912087912
+  server: 57.129.28.215
+  sim_score: 1.2784260854914047
+  speed: 24.25
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 65.99
+  name: 'Channel id: @ShadowProxy66🇩🇪'
+  network: ws
+  port: 443
+  score: 6.655553871798759
+  server: 57.129.64.238
+  sim_score: 1.016788142179387
+  speed: 43.92
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- latency: 49.38
+  name: '[Vless] US_speednode_0081'
+  network: ws
+  port: 2053
+  score: 6.63426488456865
+  server: 159.255.33.66
+  servername: kejiland.freewarp.eu.org
+  sim_score: 2.771067928167347
+  skip-cert-verify: false
+  speed: 32.76
+  tls: true
+  type: vless
+  uuid: 01996549-6892-dbf0-0453-f700236936bd
+  ws-opts:
+    headers:
+      Host: kejiland.freewarp.eu.org
+    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560fp=chrome
+- alterId: 2
+  cipher: auto
+  latency: 38.58
+  name: xx|34bb|puddincat07@Telegram
+  network: ws
+  port: 80
+  score: 6.627786417833075
+  server: hkt.gotochinatown.net
+  sim_score: 2.5037500297988178
+  skip-cert-verify: false
+  speed: 25.57
+  tls: false
+  type: vmess
+  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
+  ws-opts:
+    headers:
+      Host: hkt.gotochinatown.net
+    path: /
+- cipher: chacha20-ietf-poly1305
+  latency: 36.64
+  name: raw_node
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 6.514737991266376
+  server: 193.29.139.251
+  sim_score: 0.7078326404661788
+  speed: 23.87
+  type: ss
+- alterId: 0
+  latency: 46.89
+  name: 🇭🇰HK-47.238.109.55-5690
+  network: ws
+  port: 2863
+  score: 6.498187246747707
+  server: 47.238.109.55
+  sim_score: 1.5925033089359764
+  speed: 30.47
+  tls: false
+  type: vmess
+  uuid: d427fb31-45cd-4553-8123-7eeab751dbba
+  ws-opts: {}
+- alterId: 0
+  latency: 54.42
+  name: 🇺🇸 美国
+  network: ws
+  port: 8443
+  score: 6.492098493201029
+  server: 141.193.213.135
+  sim_score: 1.4271450267764219
+  speed: 35.33
+  tls: true
+  type: vmess
+  uuid: 621514d0-46de-47ea-9063-21eaea0999c7
+  ws-opts: {}
+- alterId: 0
+  latency: 53.88
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 6.367854491462509
+  server: 57.128.216.125
+  sim_score: 3.004670198058422
+  speed: 34.31
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 32
+  latency: 48.98
+  name: 🇺🇸US-77.83.141.171-1131
+  network: ws
+  port: 443
+  score: 6.175990200081667
+  server: vc.fly.dev
+  sim_score: 1.9167570181229787
+  speed: 30.25
+  tls: true
+  type: vmess
+  uuid: 35379219-6535-4f2e-a4fe-3e44f61e0eee
+  ws-opts: {}
+- alterId: 0
+  latency: 43.2
+  name: '@V2rayNGVPN <= کانفیگ رایگان'
+  network: tcp
+  port: 16730
+  score: 6.099537037037037
+  server: 88.151.194.96
+  sim_score: 4.279441836974028
+  speed: 26.35
+  tls: false
+  type: vmess
+  uuid: 72de9632-04ca-46c7-be62-41b876c7bc8e
+  ws-opts: {}
+- alterId: 0
+  latency: 37.15
+  name: 🏁RELAY-172.67.143.87-1009
+  network: ws
+  port: 443
+  score: 6.024226110363392
+  server: a-v1.888988866.xyz
+  sim_score: 1.5803289262651832
+  speed: 22.38
+  tls: true
+  type: vmess
+  uuid: 104556c9-797c-42e9-9bb7-7a6e9974b857
+  ws-opts: {}
+- alterId: 0
+  latency: 36.65
+  name: '>>@DailyV2RY::CA'
+  network: tcp
+  port: 550
+  score: 5.994542974079127
+  server: 51.79.69.203
+  sim_score: 1.3453353784597664
+  speed: 21.97
+  tls: false
+  type: vmess
+  uuid: 5f4dc799-fa0d-47a0-946b-8ad0ef562095
+  ws-opts: {}
+- alterId: 0
+  latency: 55.21
+  name: '>>@DailyV2RY::US'
+  network: ws
+  port: 20521
+  score: 5.79605143995653
+  server: 64.81.118.54
+  sim_score: 1.5814191768988368
+  speed: 32.0
+  tls: false
+  type: vmess
+  uuid: 375c4b8f-b646-45c1-96a8-e9d86d4163e5
+  ws-opts: {}
+- alterId: 0
+  latency: 36.69
+  name: '@Rayan_Config 164'
+  network: ws
+  port: 443
+  score: 5.7127282638321075
+  server: 146.59.85.226
+  sim_score: 1.8300124589626185
+  speed: 20.96
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 35.92
+  name: 🇺🇸 美国
+  network: ws
+  port: 443
+  score: 5.5038975501113585
+  server: digitalocean.com
+  sim_score: 0.8926603096674648
+  speed: 19.77
+  tls: true
+  type: vmess
+  uuid: 621514d0-46de-47ea-9063-21eaea0999c7
+  ws-opts: {}
+- latency: 64.19
+  name: '[Trojan] 🇯🇵 日本2|@ripaojiedian'
+  password: 253bc477d4e43c209f2d427272968280
+  port: 3271
+  score: 5.48995170587319
+  server: 160.16.63.16
+  sim_score: 2.355233608610731
+  skip-cert-verify: false
+  sni: www.nintendogames.net
+  speed: 35.24
+  type: trojan
+- alterId: 0
+  latency: 46.25
+  name: 🇵🇱@FreakConfig
+  network: ws
+  port: 443
+  score: 5.478918918918919
+  server: pelang.org
+  sim_score: 0.6818476775277638
+  speed: 25.34
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 45.35
+  name: '@Rayan_Config 197'
+  network: ws
+  port: 443
+  score: 5.439911797133407
+  server: 57.129.59.194
+  sim_score: 1.6347838537903128
+  speed: 24.67
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- latency: 48.49
+  name: '[Vless] US_speednode_0083'
+  network: ws
+  port: 2096
+  score: 5.3969890699113225
+  server: 192.0.54.32
+  servername: kejiland.freewarp.eu.org
+  sim_score: 3.406003277586444
+  skip-cert-verify: false
+  speed: 26.17
   tls: true
   type: vless
   uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
@@ -571,75 +1484,85 @@ proxies:
       Host: kejiland.freewarp.eu.org
     path: /snippetsfp=chrome
 - alterId: 0
-  latency: 29.64
-  name: 🇭🇰HK-8.218.175.64-5632
-  network: ws
-  port: 51377
-  score: 10.65114709851552
-  server: 8.218.175.64
-  sim_score: 0.9548889035473382
-  speed: 31.57
-  tls: false
-  type: vmess
-  uuid: 45bfcaaa-f3db-4e93-8164-4203eaa2a2cc
-  ws-opts: {}
-- alterId: 0
-  latency: 36.8
-  name: 🇨🇦CA-15.235.50.172-1645
+  latency: 35.7
+  name: 🇨🇵@FreakConfig
   network: ws
   port: 443
-  score: 10.51086956521739
-  server: 15.235.50.172
-  sim_score: 2.2289617023980606
-  speed: 38.68
+  score: 5.324929971988795
+  server: 91.134.8.101
+  sim_score: 2.754456126917622
+  speed: 19.01
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
-- cipher: chacha20-ietf-poly1305
-  latency: 30.95
-  name: raw_node
-  password: JIhN6rBKkaEboLNXVSv5rq
-  port: 80
-  score: 10.41680129240711
-  server: 142.4.216.225
-  sim_score: 1.2511120061163885
-  speed: 32.24
-  type: ss
-- latency: 38.95
-  name: '[Trojan] JP_speednode_0051'
-  password: 253bc477d4e43c209f2d427272968280
-  port: 5328
-  score: 10.32349165596919
-  server: 160.16.117.182
-  sim_score: 1.562815420616401
-  skip-cert-verify: false
-  sni: www.nintendogames.net
-  speed: 40.21
-  type: trojan
 - alterId: 0
-  latency: 37.8
-  name: ALL@azadiiivpn⁸🎀
-  network: tcp
-  port: 550
-  score: 10.283068783068783
-  server: 51.38.191.100
-  sim_score: 1.5009093856330145
-  speed: 38.87
+  latency: 71.89
+  name: 🇭🇰HK-47.243.231.14-5594
+  network: ws
+  port: 56304
+  score: 5.181527333426068
+  server: 47.243.231.14
+  sim_score: 1.7348920562412098
+  speed: 37.25
   tls: false
   type: vmess
-  uuid: 96db7e57-5314-4560-b708-2446670dfa29
+  uuid: a960961d-3938-4dc4-abfd-3f98a4b5ce0b
   ws-opts: {}
-- latency: 30.93
-  name: '[Vless] US_speednode_0088'
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  latency: 48.99
+  name: xx|1db3|puddincat07@Telegram
+  port: 443
+  reality-opts:
+    public-key: mLmBhbVFfNuo2eUgBh6r9-5Koz9mUCn3aSzlR6IejUg
+    short-id: d3b13f31
+  score: 5.180649112063685
+  server: ru-nl01-vlr01.tcp-reset-club.net
+  servername: hls-svod.itunes.apple.com
+  sim_score: 2.2740102822436605
+  skip-cert-verify: false
+  speed: 25.38
+  tls: true
+  type: vless
+  udp: true
+  uuid: e9847818-c872-4456-9a02-e2348adf0564
+- alterId: 0
+  latency: 37.4
+  name: 🇭🇰香港3 | ⬇️ 3.1MB/s
+  network: ws
+  port: 443
+  score: 5.106951871657754
+  server: 104.17.137.127
+  sim_score: 0.7984604697219999
+  speed: 19.1
+  tls: true
+  type: vmess
+  uuid: 47eab0de-97f9-49be-f2f3-2e4eb17268e6
+  ws-opts: {}
+- alterId: 0
+  latency: 37.45
+  name: 🇭🇰HK-8.217.34.12-5627
+  network: ws
+  port: 23477
+  score: 5.065420560747663
+  server: 8.217.34.12
+  sim_score: 2.7596361008299484
+  speed: 18.97
+  tls: false
+  type: vmess
+  uuid: 80975d47-7f6a-436d-9085-4dadf4546e03
+  ws-opts: {}
+- latency: 49.05
+  name: '[Vless] US_speednode_0078'
   network: ws
   port: 2096
-  score: 10.206918849013903
-  server: 103.133.1.32
+  score: 5.051987767584098
+  server: 199.68.156.32
   servername: kejiland.freewarp.eu.org
-  sim_score: 1.6736779797340853
+  sim_score: 2.1988509056862298
   skip-cert-verify: false
-  speed: 31.57
+  speed: 24.78
   tls: false
   type: vless
   uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
@@ -647,145 +1570,237 @@ proxies:
     headers:
       Host: kejiland.freewarp.eu.org
     path: /snippetssecurity=tls
-- latency: 37.64
-  name: '[Vless] NL_speednode_0059'
-  network: ws
-  port: 443
-  score: 10.191285866099893
-  server: 91.201.113.193
-  servername: kejiland.freewarp.eu.org
-  sim_score: 3.2272806941204086
-  skip-cert-verify: false
-  speed: 38.36
-  tls: false
-  type: vless
-  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls
-- latency: 32.1
-  name: '[Vless] GB_speednode_0041'
-  network: ws
-  port: 8080
-  score: 10.046728971962617
-  server: 159.65.94.176
-  servername: kejiland.freewarp.eu.org
-  sim_score: 0.8844916684894932
-  skip-cert-verify: false
-  speed: 32.25
-  tls: false
-  type: vless
-  uuid: 01996549-6892-dbf0-0453-f700236936bd
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippets/ip=proxyip.fxxk.dedyn.io:443security=tls
-- latency: 37.63
-  name: '[Vless] US_speednode_0081'
-  network: ws
-  port: 2053
-  score: 10.0
-  server: 159.255.33.66
-  servername: kejiland.freewarp.eu.org
-  sim_score: 4.5659844063611175
-  skip-cert-verify: false
-  speed: 37.63
-  tls: true
-  type: vless
-  uuid: 01996549-6892-dbf0-0453-f700236936bd
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560fp=chrome
 - alterId: 0
-  latency: 44.03
-  name: 'Channel id: @ShadowProxy66🇮🇳'
-  network: tcp
-  port: 10534
-  score: 9.879627526686349
-  server: 94.136.185.230
-  sim_score: 1.2170320311989429
-  speed: 43.5
-  tls: false
-  type: vmess
-  uuid: b01c7ef9-33ec-41f6-bfbf-77ddc4d21649
-  ws-opts: {}
-- alterId: 0
-  latency: 36.93
-  name: 🏴‍☠️@FreakConfig
-  network: tcp
-  port: 550
-  score: 9.688600054156513
-  server: 109.123.235.244
-  sim_score: 2.0597408597828655
-  speed: 35.78
-  tls: false
-  type: vmess
-  uuid: a72dc642-56ec-456f-aa18-930a274228f5
-  ws-opts: {}
-- alterId: 0
-  latency: 36.54
-  name: '@IRAN_V2RAY1'
-  network: ws
-  port: 36703
-  score: 9.47454844006568
-  server: 47.244.120.197
-  sim_score: 1.749831860230438
-  speed: 34.62
-  tls: false
-  type: vmess
-  uuid: 45b83519-9c4f-4052-a11b-02e017b636d4
-  ws-opts: {}
-- alterId: 0
-  latency: 36.72
+  latency: 48.21
   name: 🔐 @AblNet7 🇺🇸
   network: ws
   port: 45979
-  score: 9.474400871459695
+  score: 5.050819332088778
   server: 47.253.70.234
-  sim_score: 0.621825676897773
-  speed: 34.79
+  sim_score: 1.2668063976535944
+  speed: 24.35
   tls: false
   type: vmess
   uuid: 23bdf6df-c482-46d0-c0f4-5a98d534ea11
   ws-opts: {}
 - alterId: 0
-  latency: 29.75
-  name: 🇭🇰HK-8.210.122.139-5592
-  network: ws
-  port: 30464
-  score: 9.408403361344536
-  server: 8.210.122.139
-  sim_score: 1.0813113302829889
-  speed: 27.99
-  tls: false
-  type: vmess
-  uuid: d25946c5-a32d-4873-ae55-15decaf17b7f
-  ws-opts: {}
-- alterId: 0
-  latency: 30.25
-  name: '@Daily_Configs'
+  latency: 47.79
+  name: '@Rayan_Config 222'
   network: ws
   port: 443
-  score: 9.315702479338842
-  server: 57.129.24.124
-  sim_score: 1.1400137750407975
-  speed: 28.18
+  score: 5.0073237078886805
+  server: 40.160.16.216
+  sim_score: 2.9474081504270924
+  speed: 23.93
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
-- latency: 30.51
+- alterId: 0
+  latency: 36.81
+  name: '@AblNet7 🇮🇷 نت ملی'
+  network: ws
+  port: 443
+  score: 4.903558815539256
+  server: serkat.org
+  sim_score: 2.5219245536084225
+  speed: 18.05
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 45.12
+  name: 🇺🇸 美国
+  network: ws
+  port: 443
+  score: 4.785017730496454
+  server: 141.193.213.199
+  sim_score: 1.3161546944476137
+  speed: 21.59
+  tls: true
+  type: vmess
+  uuid: 621514d0-46de-47ea-9063-21eaea0999c7
+  ws-opts: {}
+- alterId: 0
+  latency: 39.48
+  name: '@Rayan_Config 162'
+  network: ws
+  port: 443
+  score: 4.660587639311044
+  server: 15.235.85.147
+  sim_score: 1.584850778155864
+  speed: 18.4
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 52.91
+  name: 🇺🇸 VMESS-未知>美国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-104.17.176.171:8080
+  network: ws
+  port: 8080
+  score: 4.617274617274617
+  server: 104.17.176.171
+  sim_score: 3.130172197114909
+  speed: 24.43
+  tls: false
+  type: vmess
+  uuid: 6cbc9c78-1cb1-57d4-a999-e2f4e34c1e03
+  ws-opts: {}
+- alterId: 0
+  latency: 47.9
+  name: 🇯🇵JP-47.74.10.111-5615
+  network: ws
+  port: 34029
+  score: 4.49686847599165
+  server: 47.74.10.111
+  sim_score: 4.611463360968301
+  speed: 21.54
+  tls: false
+  type: vmess
+  uuid: 2e80d0c8-16c8-420a-b86c-c2e7e2e4f764
+  ws-opts: {}
+- alterId: 0
+  latency: 27.97
+  name: 🇭🇰HK-47.83.174.131-5686
+  network: ws
+  port: 19850
+  score: 4.440471934215231
+  server: 47.83.174.131
+  sim_score: 2.062028629806584
+  speed: 12.42
+  tls: false
+  type: vmess
+  uuid: cdc5c72c-9a50-4a28-ae46-89b7d398e753
+  ws-opts: {}
+- alterId: 0
+  latency: 36.09
+  name: 🇨🇵@FreakConfig
+  network: ws
+  port: 443
+  score: 4.427819340537545
+  server: 91.134.8.92
+  sim_score: 2.9956074692903316
+  speed: 15.98
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 52.77
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 4.421072579116922
+  server: 57.128.189.143
+  sim_score: 0.934806457673149
+  speed: 23.33
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.78
+  name: 🇭🇰HK-8.210.230.179-5591
+  network: ws
+  port: 12125
+  score: 4.233278955954322
+  server: 8.210.230.179
+  sim_score: 1.0665050646304106
+  speed: 15.57
+  tls: false
+  type: vmess
+  uuid: 8b0c11be-1ffe-4074-afc5-e734fe985b22
+  ws-opts: {}
+- alterId: 0
+  latency: 52.65
+  name: 🔐 @AblNet7 🇩🇪 DE
+  network: ws
+  port: 443
+  score: 4.21272554605888
+  server: 57.129.24.130
+  sim_score: 0.9244096874378432
+  speed: 22.18
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 49.35
+  name: '>>@ShadowsocksM::XX'
+  network: ws
+  port: 443
+  score: 4.162107396149949
+  server: 57.128.189.222
+  sim_score: 1.2667757189761566
+  speed: 20.54
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 56.5
+  name: 🇸🇬SG-47.237.13.208-5670
+  network: ws
+  port: 51378
+  score: 4.014159292035398
+  server: 47.237.13.208
+  sim_score: 2.024851587060491
+  speed: 22.68
+  tls: false
+  type: vmess
+  uuid: 8168bcf5-5db1-4d38-a534-a86f7bf96ac6
+  ws-opts: {}
+- alterId: 0
+  latency: 50.2
+  name: 🇸🇬SG-8.219.218.138-5640
+  network: ws
+  port: 22177
+  score: 3.8844621513944224
+  server: 8.219.218.138
+  sim_score: 1.0783240288835254
+  speed: 19.5
+  tls: false
+  type: vmess
+  uuid: 75c4ff14-7d29-43ee-bab1-577ca9a804b5
+  ws-opts: {}
+- alterId: 0
+  latency: 35.62
+  name: 'Channel id: @ShadowProxy66🇺🇸'
+  network: tcp
+  port: 15361
+  score: 3.750701852891634
+  server: 15.204.11.190
+  sim_score: 1.4214131356658042
+  speed: 13.36
+  tls: false
+  type: vmess
+  uuid: 5d7bf9e3-415c-40f3-c66d-a54ea0fd860e
+  ws-opts: {}
+- alterId: 0
+  latency: 48.75
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 3.718974358974359
+  server: 57.129.28.216
+  sim_score: 1.4066711793535305
+  speed: 18.13
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- latency: 35.77
   name: '[Vless] BG_speednode_0006'
   network: ws
   port: 2096
-  score: 9.30514585381842
+  score: 3.7181996086105675
   server: 147.78.140.44
   servername: kejiland.freewarp.eu.org
-  sim_score: 1.2373605348836278
+  sim_score: 3.4585909451023547
   skip-cert-verify: false
-  speed: 28.39
+  speed: 13.3
   tls: false
   type: vless
   uuid: 12345678-1234-1234-1234-123456789123
@@ -794,655 +1809,323 @@ proxies:
       Host: kejiland.freewarp.eu.org
     path: /snippets
 - alterId: 0
-  latency: 37.5
-  name: 🇭🇰HK-47.76.233.2-5669
-  network: ws
-  port: 33224
-  score: 9.096
-  server: 47.76.233.2
-  sim_score: 2.111071552503764
-  speed: 34.11
-  tls: false
-  type: vmess
-  uuid: ceb2fec2-90df-4cfe-a80d-e86168ba9b12
-  ws-opts: {}
-- alterId: 0
-  latency: 37.24
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 9.092373791621911
-  server: 57.129.59.195
-  sim_score: 1.3648260871306013
-  speed: 33.86
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 2
-  latency: 36.55
-  name: 🇭🇰HK-112.119.185.199-0303
-  network: ws
-  port: 80
-  score: 9.03967168262654
-  server: 697dc551-t1i9s0-tm53cm-1ol97.hk3.p5pv.com
-  sim_score: 1.1491167416238082
-  speed: 33.04
-  tls: false
-  type: vmess
-  uuid: 93fb69fc-77cf-11ee-85ee-f23c91369f2d
-  ws-opts: {}
-- alterId: 0
-  latency: 45.52
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 8.98945518453427
-  server: 57.129.28.216
-  sim_score: 0.9738526504081317
-  speed: 40.92
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 38.29
-  name: 🇭🇰HK-47.76.246.12-5695
-  network: ws
-  port: 42669
-  score: 8.863933141812483
-  server: 47.76.246.12
-  sim_score: 1.1628347244352202
-  speed: 33.94
-  tls: false
-  type: vmess
-  uuid: 13709d57-530e-4f9c-97d7-ebc774bdfc6c
-  ws-opts: {}
-- latency: 37.05
-  name: '[Vless] JP_speednode_0050'
-  network: ws
-  port: 1443
-  score: 8.86369770580297
-  server: 140.238.62.82
-  servername: kejiland.freewarp.eu.org
-  sim_score: 0.8006714701400199
-  skip-cert-verify: false
-  speed: 32.84
-  tls: false
-  type: vless
-  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls
-- alterId: 1
-  latency: 37.66
-  name: 🇬🇧GB-142.202.51.119-0952
-  network: ws
-  port: 443
-  score: 8.810408921933085
-  server: masjide.org
-  sim_score: 1.0516444221019687
-  speed: 33.18
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 47.41
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 8.79139422062856
-  server: 57.128.189.143
-  sim_score: 0.7088944471024593
-  speed: 41.68
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 38.06
-  name: v2cross.com
-  network: tcp
-  port: 37313
-  score: 8.751970572779822
-  server: 45.128.54.84
-  sim_score: 2.0132037092286854
-  speed: 33.31
-  tls: false
-  type: vmess
-  uuid: 72feb833-4196-4a70-a3f5-aeb011f7d534
-  ws-opts: {}
-- alterId: 0
-  latency: 37.42
-  name: 🇺🇸US-192.3.233.216-0283
-  network: ws
-  port: 16556
-  score: 8.637092463923036
-  server: 192.3.233.216
-  sim_score: 1.4815826531742393
-  speed: 32.32
-  tls: false
-  type: vmess
-  uuid: 600f0d3e-a25d-468b-c789-0b5baa2f52c1
-  ws-opts: {}
-- latency: 37.48
-  name: '[Vless] IN_speednode_0046'
-  network: ws
-  port: 443
-  score: 8.625933831376734
-  server: 65.20.82.22
-  servername: kejiland.freewarp.eu.org
-  sim_score: 1.143427162261627
-  skip-cert-verify: false
-  speed: 32.33
-  tls: false
-  type: vless
-  uuid: 01996549-6892-dbf0-0453-f700236936bd
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls
-- alterId: 0
-  latency: 37.41
+  latency: 54.33
   name: '>>@ShadowsocksM::XX'
   network: ws
   port: 443
-  score: 8.572574178027267
+  score: 3.714338302963372
   server: 15.235.85.156
-  sim_score: 2.689700239668906
-  speed: 32.07
+  sim_score: 1.2144067260221931
+  speed: 20.18
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
-- alterId: 0
-  latency: 37.58
-  name: 🏁RELAY-172.67.143.87-1009
-  network: ws
+- latency: 55.16
+  name: '[Trojan] US_speednode_0080'
+  password: 253bc477d4e43c209f2d427272968280
   port: 443
-  score: 8.523150612027674
-  server: a-v1.888988866.xyz
-  sim_score: 1.7257522593487589
-  speed: 32.03
-  tls: true
-  type: vmess
-  uuid: 104556c9-797c-42e9-9bb7-7a6e9974b857
-  ws-opts: {}
-- alterId: 0
-  latency: 36.68
-  name: 'Channel id: @ShadowProxy66🇩🇪'
-  network: ws
-  port: 443
-  score: 8.505997818974919
-  server: 57.129.28.65
-  sim_score: 1.021763263366236
-  speed: 31.2
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 36.13
-  name: 🇩🇪@FreakConfig
-  network: ws
-  port: 443
-  score: 8.486022695820647
-  server: jamekk.org
-  sim_score: 4.820333585347175
-  speed: 30.66
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 37.29
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 8.468758380262805
-  server: 57.129.25.26
-  sim_score: 5.378804751344594
-  speed: 31.58
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- latency: 36.67
-  name: '[Vless] DE_speednode_0026'
-  network: ws
-  port: 443
-  score: 8.440141805290427
-  server: 91.149.223.242
-  servername: kejiland.freewarp.eu.org
-  sim_score: 1.1026815285877916
+  score: 3.66751269035533
+  server: 23.227.194.19
+  sim_score: 1.2013200166701459
   skip-cert-verify: false
-  speed: 30.95
-  tls: false
+  sni: www.nintendogames.net
+  speed: 20.23
+  type: trojan
+- alterId: 0
+  cipher: auto
+  latency: 47.43
+  name: cn|fa0b|puddincat07@Telegram
+  network: tcp
+  port: 50002
+  score: 3.662239089184061
+  server: 139.129.20.6
+  sim_score: 0.5948418764494877
+  skip-cert-verify: true
+  speed: 17.37
+  tfo: true
+  type: vmess
+  udp: true
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+- latency: 42.36
+  name: '[Vless] US_speednode_0076'
+  network: ws
+  port: 443
+  score: 3.6166194523135036
+  server: adf.ly
+  servername: rAyAn-007.pArViN.DpDnS.OrG
+  sim_score: 1.8051420410702566
+  skip-cert-verify: false
+  speed: 15.32
+  tls: true
   type: vless
-  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
+  uuid: 1679af35-6dd6-4c09-ae3b-18f239217f3e
   ws-opts:
     headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippets/ip=proxyip.fxxk.dedyn.io:443?ed=2560security=tls
+      Host: rAyAn-007.pArViN.DpDnS.OrG
+    path: /?ed=2560fp=chrome
 - alterId: 0
-  latency: 36.95
+  latency: 36.98
   name: 🇺🇸US-154.9.254.63-5348
   network: ws
   port: 20521
-  score: 8.351826792963465
+  score: 3.531638723634398
   server: 154.9.254.63
-  sim_score: 3.3918492418120003
-  speed: 30.86
+  sim_score: 2.151264370873969
+  speed: 13.06
   tls: false
   type: vmess
   uuid: d824764a-954e-4c75-9116-f6e5eba944a9
   ws-opts: {}
 - alterId: 0
-  latency: 37.93
-  name: 🇵🇭PH-8.220.188.238-5634
-  network: ws
-  port: 33248
-  score: 8.223042446612181
-  server: 8.220.188.238
-  sim_score: 1.0716259718280678
-  speed: 31.19
-  tls: false
-  type: vmess
-  uuid: 81b57c84-698f-4944-9268-db6a06a4a63a
-  ws-opts: {}
-- cipher: aes-256-cfb
-  latency: 38.2
-  name: '[SS] 🇻🇳 越南|@ripaojiedian'
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  port: 38388
-  score: 8.222513089005234
-  server: 103.186.154.182
-  sim_score: 1.7236699078944142
-  speed: 31.41
-  type: ss
-- alterId: 0
-  latency: 28.65
-  name: 🇩🇪 VMESS-南非>德国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-102.132.188.3:80
-  network: ws
-  port: 80
-  score: 8.184991273996511
-  server: 102.132.188.3
-  sim_score: 0.8855016457439149
-  speed: 23.45
-  tls: false
-  type: vmess
-  uuid: e95e35ba-f874-4eb3-9600-4dbd6d099f4e
-  ws-opts: {}
-- alterId: 0
-  latency: 28.12
-  name: 🇭🇰HK-47.242.214.178-5607
-  network: ws
-  port: 24497
-  score: 8.182788051209105
-  server: 47.242.214.178
-  sim_score: 0.7806190053071362
-  speed: 23.01
-  tls: false
-  type: vmess
-  uuid: 0f62d166-39e5-4d3d-89b6-5c6490b4f4d4
-  ws-opts: {}
-- alterId: 0
-  latency: 53.72
-  name: 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  network: ws
-  port: 443
-  score: 8.153387937453463
-  server: sing-box.cloud
-  sim_score: 0.8090993021855006
-  speed: 43.8
-  tls: true
-  type: vmess
-  uuid: 4e77e096-eb2a-4150-b861-5af638b97408
-  ws-opts: {}
-- alterId: 0
-  latency: 61.51
-  name: '@AblNet7 🇮🇷 نت ملی'
-  network: ws
-  port: 35964
-  score: 7.961307104535847
-  server: 47.76.89.175
-  sim_score: 1.9313980177343226
-  speed: 48.97
-  tls: false
-  type: vmess
-  uuid: 49764ed6-084e-463e-ae08-e9e932b71020
-  ws-opts: {}
-- alterId: 0
-  latency: 58.68
-  name: All--@IRAN_V2RAY1
-  network: ws
-  port: 443
-  score: 7.839127471029311
-  server: www.speedtest.net
-  sim_score: 1.5553231280600537
-  speed: 46.0
-  tls: true
-  type: vmess
-  uuid: b7acf44f-3c3a-430c-8ed0-fb64ccc9a13a
-  ws-opts: {}
-- alterId: 0
-  latency: 52.07
-  name: 🇺🇸美国104 | ⬇️ 3.3MB/s
-  network: ws
-  port: 443
-  score: 7.824082965239102
-  server: cloudgetservice.mcloudservice.site
-  sim_score: 5.266663873401761
-  speed: 40.74
-  tls: true
-  type: vmess
-  uuid: 5428dcc2-9950-4404-b8a5-9dac82acb210
-  ws-opts: {}
-- alterId: 0
-  latency: 37.37
-  name: '@Rayan_Config 165'
-  network: ws
-  port: 443
-  score: 7.803050575327804
-  server: 141.94.155.229
-  sim_score: 0.6410115723776005
-  speed: 29.16
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 38.04
-  name: '>>@DailyV2RY::CA'
-  network: tcp
-  port: 550
-  score: 7.702418506834911
-  server: 51.79.69.203
-  sim_score: 2.0256343970768595
-  speed: 29.3
-  tls: false
-  type: vmess
-  uuid: 5f4dc799-fa0d-47a0-946b-8ad0ef562095
-  ws-opts: {}
-- alterId: 0
-  latency: 45.65
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 7.693318729463307
-  server: kampong.org
-  sim_score: 2.055373646330629
-  speed: 35.12
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 51.23
+  latency: 51.12
   name: 美国03付费推荐：https://dafei.de
   network: ws
   port: 2053
-  score: 7.470232285770058
+  score: 3.4800469483568075
   server: pubg.ac
-  sim_score: 3.9119726684806073
-  speed: 38.27
+  sim_score: 4.77904704597343
+  speed: 17.79
   tls: true
   type: vmess
   uuid: 82ba36ec-dafe-40eb-b9ad-0f8a98101020
   ws-opts: {}
 - alterId: 0
-  latency: 46.41
-  name: 👉🆔@v2ray_configs_pool📡🇨🇦®️Canada©️Toronto🅿️ping:28.09ms
+  latency: 42.79
+  name: 🇭🇰HK-47.238.0.200-5681
   network: ws
-  port: 443
-  score: 7.388493859082095
-  server: 172.67.216.29
-  sim_score: 3.5370510432064477
-  speed: 34.29
-  tls: true
-  type: vmess
-  uuid: 1052f24e-7b09-45eb-b0c5-d858eb124192
-  ws-opts: {}
-- alterId: 0
-  latency: 62.94
-  name: '@Rayan_Config 164'
-  network: ws
-  port: 443
-  score: 7.332380044486813
-  server: 146.59.85.226
-  sim_score: 1.2527536386012543
-  speed: 46.15
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 38.61
-  name: 🇭🇰HK-8.217.34.12-5628
-  network: ws
-  port: 20918
-  score: 7.223517223517224
-  server: 8.217.34.12
-  sim_score: 3.689855525872929
-  speed: 27.89
+  port: 29230
+  score: 3.4540780556204718
+  server: 47.238.0.200
+  sim_score: 1.9025919502932802
+  speed: 14.78
   tls: false
   type: vmess
-  uuid: a434fe75-2165-4652-af11-ac58403ebf86
-  ws-opts: {}
-- cipher: aes-256-gcm
-  latency: 31.04
-  name: '[SS] 🇭🇰 香港2|@ripaojiedian'
-  password: ccf426f1fe78
-  port: 443
-  score: 7.216494845360825
-  server: 103.103.245.158
-  sim_score: 1.533743855699699
-  speed: 22.4
-  type: ss
-- alterId: 0
-  latency: 36.3
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 6.97245179063361
-  server: 57.129.25.23
-  sim_score: 1.4000407690195198
-  speed: 25.31
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  uuid: 44977492-f248-46a0-b18f-ac268c2ecf43
   ws-opts: {}
 - alterId: 0
-  latency: 51.29
-  name: 🏴‍☠️@FreakConfig
+  latency: 54.86
+  name: '@i10VPN 🚀| با ما متصل بمون⚡'
   network: tcp
-  port: 550
-  score: 6.95067264573991
-  server: 15.235.163.157
-  sim_score: 1.4421928913307178
-  speed: 35.65
+  port: 100
+  score: 3.4469558877141813
+  server: cpanel.erade32.ir
+  sim_score: 3.118952700905668
+  speed: 18.91
   tls: false
   type: vmess
-  uuid: 84481a23-eb24-4fd9-a06b-c54eaf6b905b
+  uuid: f31a19d6-dafd-4239-96c7-70e38215c6f6
   ws-opts: {}
 - alterId: 0
-  latency: 38.62
-  name: 🇩🇪@FreakConfig
-  network: ws
-  port: 443
-  score: 6.853961677887105
-  server: 57.129.24.131
-  sim_score: 1.7588984450593008
-  speed: 26.47
-  tls: true
+  latency: 35.44
+  name: '@Daily_Configs'
+  network: tcp
+  port: 26619
+  score: 3.3323927765237022
+  server: 91.107.255.237
+  sim_score: 0.9058923770013763
+  speed: 11.81
+  tls: false
   type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 47.73
-  name: '>>@configV2rayNG::XX'
-  network: ws
-  port: 443
-  score: 6.783993295621204
-  server: 57.129.28.63
-  sim_score: 1.047337676287616
-  speed: 32.38
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  uuid: db5a32a6-fc14-4e01-a51f-8de7f1ec8904
   ws-opts: {}
 - alterId: 2
-  latency: 37.54
-  name: 🇭🇰HK-112.119.185.199-5280
+  latency: 36.9
+  name: 🇭🇰 香港 电讯盈科有限公司
   network: ws
-  port: 80
-  score: 6.782099094299414
-  server: 54d2d7fc-t3kcg0-tdnzz0-1qtp7.hk3.p5pv.com
-  sim_score: 2.6418552227956655
-  speed: 25.46
+  port: 30807
+  score: 3.284552845528455
+  server: v10.heduian.link
+  sim_score: 2.2887970372828566
+  speed: 12.12
   tls: false
   type: vmess
-  uuid: 3653c708-df72-11ee-aec1-f23c9164ca5d
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
   ws-opts: {}
-- alterId: 0
-  latency: 49.4
-  name: '>>@DailyV2RY::US'
-  network: ws
-  port: 20521
-  score: 6.7631578947368425
-  server: 64.81.118.54
-  sim_score: 1.7061611025648067
-  speed: 33.41
-  tls: false
-  type: vmess
-  uuid: 375c4b8f-b646-45c1-96a8-e9d86d4163e5
-  ws-opts: {}
-- alterId: 0
-  latency: 42.28
-  name: 💎کانفیگ های بیشتر در چنل تلگرام💎 Config_Rayegan@
-  network: ws
-  port: 8443
-  score: 6.691106906338694
-  server: chat.deepseek.com
-  sim_score: 1.1305887043072536
-  speed: 28.29
-  tls: true
-  type: vmess
-  uuid: 35342035-3420-4130-b120-353620313032
-  ws-opts: {}
-- alterId: 0
-  latency: 52.2
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 6.614942528735632
-  server: 57.129.64.199
-  sim_score: 3.633018074088847
-  speed: 34.53
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- latency: 30.95
-  name: '[Vless] RU_speednode_0060'
-  network: ws
-  port: 2096
-  score: 6.5880452342487885
-  server: 188.42.145.253
-  servername: gaosir.unfeeling.sbs
-  sim_score: 0.8908461310082745
-  skip-cert-verify: false
-  speed: 20.39
-  tls: true
-  type: vless
-  uuid: f61a4285-7264-4d07-9408-7b9ba1922c26
-  ws-opts:
-    headers:
-      Host: gaosir.unfeeling.sbs
-    path: /TelegramU0001F1E8U0001F1F3 @WangCai2 /?ed=2560fp=chrome
-- alterId: 0
-  latency: 47.71
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 6.516453573674283
-  server: 57.129.28.64
-  sim_score: 2.063508917056426
-  speed: 31.09
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 36.83
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 6.451262557697531
-  server: 141.94.155.228
-  sim_score: 1.2790383261441585
-  speed: 23.76
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- latency: 30.05
-  name: '[Vless] US_speednode_0092'
-  network: ws
-  port: 443
-  score: 6.4259567387687175
-  server: google.sosorg.nyc.mn
-  servername: bpg.307986.dpdns.org
-  sim_score: 2.169741876970668
-  skip-cert-verify: false
-  speed: 19.31
-  tls: false
-  type: vless
-  uuid: 0199889f-d499-8cad-99f7-7507ed9a819b
-  ws-opts:
-    headers:
-      Host: bpg.307986.dpdns.org
-    path: /snippetssecurity=tls
 - cipher: chacha20-ietf-poly1305
-  latency: 37.11
+  latency: 50.95
   name: raw_node
   password: cvII85TrW6n0OGyfpHVS1u
   port: 8080
-  score: 6.4214497440043115
+  score: 3.2345436702649657
   server: 45.87.175.199
-  sim_score: 1.6949258559373748
-  speed: 23.83
+  sim_score: 1.3058936394838796
+  speed: 16.48
   type: ss
-- latency: 34.61
-  name: '[Vless] HK_speednode_0044'
-  network: ws
-  port: 2096
-  score: 6.405663103149379
-  server: 45.192.223.44
-  servername: kejiland.freewarp.eu.org
-  sim_score: 2.168625288777138
-  skip-cert-verify: false
-  speed: 22.17
+- alterId: 0
+  latency: 37.17
+  name: '>>@ShadowsocksM::SG'
+  network: tcp
+  port: 28011
+  score: 3.22302932472424
+  server: 62.146.235.193
+  sim_score: 2.287747671812476
+  speed: 11.98
   tls: false
-  type: vless
-  uuid: 12345678-1234-1234-1234-123456789123
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippetssecurity=tls
+  type: vmess
+  uuid: cfc5a87f-3c13-4e25-b556-176cdd6b5c6a
+  ws-opts: {}
+- alterId: 0
+  latency: 47.28
+  name: All--@Iran_V2ray1
+  network: httpupgrade
+  port: 2096
+  score: 3.2000846023688663
+  server: rokna.farsonline24.ir
+  sim_score: 2.785273179776653
+  speed: 15.13
+  tls: true
+  type: vmess
+  uuid: c2dd76ba-6870-49ec-b8e5-b321f87b0521
+  ws-opts: {}
+- alterId: 0
+  latency: 35.98
+  name: '@vmesskhodam🍂 منبع پروکسی و کانفیگ'
+  network: ws
+  port: 443
+  score: 3.190661478599222
+  server: 57.129.59.201
+  sim_score: 3.2691879750827786
+  speed: 11.48
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- cipher: aes-256-cfb
+  latency: 35.63
+  name: raw_node
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 3.0760595004209934
+  server: 38.54.57.90
+  sim_score: 2.6665323264397607
+  speed: 10.96
+  type: ss
+- alterId: 0
+  latency: 47.88
+  name: 🏴‍☠️@FreakConfig
+  network: ws
+  port: 8443
+  score: 3.020050125313283
+  server: ebc.zoom.us
+  sim_score: 1.7671077485022268
+  speed: 14.46
+  tls: true
+  type: vmess
+  uuid: 44e57485-eccc-46ef-808f-cd17ac810018
+  ws-opts: {}
+- alterId: 0
+  latency: 63.53
+  name: 🇭🇰HK-47.76.157.234-5678
+  network: ws
+  port: 55125
+  score: 3.0174720604438847
+  server: 47.76.157.234
+  sim_score: 2.08409635640049
+  speed: 19.17
+  tls: false
+  type: vmess
+  uuid: 87227bd9-1506-4d48-bd6b-0b80a8c2aae7
+  ws-opts: {}
+- alterId: 0
+  latency: 36.72
+  name: 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  network: ws
+  port: 443
+  score: 2.9983660130718954
+  server: sing-box.biz.id
+  sim_score: 1.4175387508557575
+  speed: 11.01
+  tls: true
+  type: vmess
+  uuid: 2b584f5d-7edb-4dfa-836d-ecc8757e85db
+  ws-opts: {}
+- cipher: aes-256-cfb
+  latency: 48.52
+  name: '[SS] 🇻🇳 越南|@ripaojiedian'
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  port: 38388
+  score: 2.920445177246496
+  server: 103.186.154.182
+  sim_score: 1.0649822894645806
+  speed: 14.17
+  type: ss
+- alterId: 0
+  latency: 37.45
+  name: همه اپراتور ها | @skypro_vpn
+  network: tcp
+  port: 30002
+  score: 2.9158878504672896
+  server: 38.12.83.217
+  sim_score: 2.469351638441087
+  speed: 10.92
+  tls: false
+  type: vmess
+  uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+  ws-opts: {}
+- alterId: 0
+  latency: 35.22
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 2.9074389551391255
+  server: kampong.org
+  sim_score: 1.3137223159756615
+  speed: 10.24
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 37.74
+  name: '@Daily_Configs'
+  network: ws
+  port: 443
+  score: 2.859035506094329
+  server: yichueng.org
+  sim_score: 1.8276166909556721
+  speed: 10.79
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.91
+  name: '@proxy_kafee🇩🇪'
+  network: ws
+  port: 443
+  score: 2.8257924681658086
+  server: 57.129.25.22
+  sim_score: 3.9415152264463353
+  speed: 10.43
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 56.54
+  name: '@AblNet7 🇮🇷 نت ملی'
+  network: ws
+  port: 14479
+  score: 2.716660771135479
+  server: 47.76.157.234
+  sim_score: 1.233346759454911
+  speed: 15.36
+  tls: false
+  type: vmess
+  uuid: 90606c14-cba4-43ff-9586-9edd8bef21a4
+  ws-opts: {}
 - alpn:
   - h2%2Chttp/1.1
-  latency: 37.44
+  latency: 45.21
   name: '[Vless] US_speednode_0096'
   network: ws
   port: 55877
-  score: 6.39690170940171
+  score: 2.689670426896704
   server: www.wodophonex.blog
-  sim_score: 1.1837035698571723
+  sim_score: 0.7583251153942022
   skip-cert-verify: false
-  speed: 23.95
+  speed: 12.16
   tls: true
   type: vless
   uuid: 53b581f3-0bc8-4f4f-a4a2-c3011f773715
@@ -1451,1231 +2134,466 @@ proxies:
       Host: www.wodophonex.blog
     path: /
 - alterId: 0
-  latency: 36.06
-  name: 🇨🇦CA-15.235.83.228-4945
+  latency: 45.92
+  name: 🇫🇷 VMESS-未知>法国-ChatGPT-1a2d514b-37cf-499f-8d08-d017a92ab5bb.asoul-ava.top:443
   network: ws
   port: 443
-  score: 6.367165834719911
-  server: 15.235.83.228
-  sim_score: 1.9574004166293535
-  speed: 22.96
+  score: 2.6350174216027873
+  server: 1a2d514b-37cf-499f-8d08-d017a92ab5bb.asoul-ava.top
+  sim_score: 1.1013124057727888
+  speed: 12.1
   tls: true
   type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 56.02
-  name: 🏴‍☠️@FreakConfig
-  network: ws
-  port: 443
-  score: 6.358443413066761
-  server: node4.rtxconfigz.com
-  sim_score: 0.7739669932383748
-  speed: 35.62
-  tls: true
-  type: vmess
-  uuid: 44e57485-eccc-46ef-808f-cd17ac810018
-  ws-opts: {}
-- alterId: 0
-  latency: 50.65
-  name: 美国01付费推荐：https://dafei.de
-  network: ws
-  port: 2053
-  score: 6.339585389930899
-  server: csgo.com
-  sim_score: 1.5884301146396271
-  speed: 32.11
-  tls: true
-  type: vmess
-  uuid: 82ba36ec-dafe-40eb-b9ad-0f8a98101020
-  ws-opts: {}
-- alterId: 0
-  latency: 37.04
-  name: '@V2rayNGVPN <= کانفیگ رایگان'
-  network: ws
-  port: 443
-  score: 6.282397408207343
-  server: 57.129.25.24
-  sim_score: 0.5684894651636503
-  speed: 23.27
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 45.07
-  name: 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  network: ws
-  port: 443
-  score: 6.099400931883736
-  server: sing-box.website
-  sim_score: 2.7655771379509524
-  speed: 27.49
-  tls: true
-  type: vmess
-  uuid: 60aef35e-b6db-44d2-8dc5-946745be9448
-  ws-opts: {}
-- alterId: 0
-  latency: 36.91
-  name: '@Rayan_Config 228'
-  network: ws
-  port: 443
-  score: 6.087781089135735
-  server: 38.60.217.146
-  sim_score: 2.5975738749461548
-  speed: 22.47
-  tls: false
-  type: vmess
-  uuid: 26ae36a4-e21f-48ae-e90b-5adf271b046e
-  ws-opts: {}
-- alterId: 0
-  latency: 45.83
-  name: 🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرامی
-  network: tcp
-  port: 444
-  score: 5.998254418503164
-  server: 5.182.39.44
-  sim_score: 1.9589499568851205
-  speed: 27.49
-  tls: false
-  type: vmess
-  uuid: 7d52a409-aa5a-471f-aca5-e7621bf1b813
-  ws-opts: {}
-- alterId: 0
-  latency: 38.72
-  name: 🇭🇰HK-47.83.174.131-5686
-  network: ws
-  port: 19850
-  score: 5.787706611570248
-  server: 47.83.174.131
-  sim_score: 1.2430924127301375
-  speed: 22.41
-  tls: false
-  type: vmess
-  uuid: cdc5c72c-9a50-4a28-ae46-89b7d398e753
-  ws-opts: {}
-- alterId: 0
-  latency: 46.74
-  name: ✅ @vistav2ray  👈👈کانال ما
-  network: ws
-  port: 443
-  score: 5.643988018827556
-  server: 91.134.8.88
-  sim_score: 1.5109407419143082
-  speed: 26.38
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- cipher: aes-256-cfb
-  latency: 28.53
-  name: raw_node
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 5.615141955835962
-  server: 91.132.94.200
-  sim_score: 1.3722366308666498
-  speed: 16.02
-  type: ss
-- alterId: 0
-  latency: 30.35
-  name: 🇭🇰HK-47.76.118.235-5685
-  network: ws
-  port: 7775
-  score: 5.574958813838551
-  server: 47.76.118.235
-  sim_score: 0.9146477303058385
-  speed: 16.92
-  tls: false
-  type: vmess
-  uuid: 0f1c2d37-adb4-4677-9727-dbb1b8e2b794
-  ws-opts: {}
-- alterId: 0
-  latency: 39.19
-  name: 🔐 @AblNet7 🇩🇪 DE
-  network: ws
-  port: 443
-  score: 5.266649655524369
-  server: 57.129.24.130
-  sim_score: 0.6639954710343715
-  speed: 20.64
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 36.74
-  name: '>>@v2rayNG_Matsuri::US'
-  network: tcp
-  port: 6513
-  score: 5.239520958083832
-  server: 193.124.24.247
-  sim_score: 0.740415285215793
-  speed: 19.25
-  tls: false
-  type: vmess
-  uuid: 5cf7fcbc-e2c1-42c4-d0d7-79c45a7d588d
-  ws-opts: {}
-- alpn:
-  - h3
-  latency: 36.51
-  name: '[Vless] US_speednode_0075'
-  network: ws
-  port: 2083
-  score: 5.236921391399617
-  server: 162.159.142.252
-  servername: fei.634676.xyz
-  sim_score: 1.3896630207923626
-  skip-cert-verify: false
-  speed: 19.12
-  tls: true
-  type: vless
-  uuid: d2965257-0536-4811-a0d5-cdce54e90326
-  ws-opts:
-    headers:
-      Host: fei.634676.xyz
-    path: /?ed=2560fp=random
-- alterId: 0
-  latency: 50.01
-  name: '@Rayan_Config 163'
-  network: ws
-  port: 443
-  score: 4.991001799640072
-  server: 15.204.64.212
-  sim_score: 0.7774002784214504
-  speed: 24.96
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 2
-  latency: 30.12
-  name: 🇭🇰 香港 电讯盈科有限公司
-  network: ws
-  port: 30807
-  score: 4.887118193891102
-  server: v10.heduian.link
-  sim_score: 1.4808848558465437
-  speed: 14.72
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-  ws-opts: {}
-- alterId: 0
-  latency: 47.01
-  name: '@Rayan_Config 219'
-  network: ws
-  port: 443
-  score: 4.720272282493087
-  server: 146.59.118.249
-  sim_score: 2.578690091618548
-  speed: 22.19
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 30.85
-  name: '@meli_proxyy'
-  network: ws
-  port: 7151
-  score: 4.6677471636953
-  server: 45.116.78.152
-  sim_score: 1.5489510005877922
-  speed: 14.4
-  tls: false
-  type: vmess
-  uuid: a3a95415-b7f3-4f1f-9486-bee6a68feaa2
-  ws-opts: {}
-- latency: 37.38
-  name: '[Vless] LT_speednode_0054'
-  network: ws
-  port: 2096
-  score: 4.662921348314606
-  server: 86.38.214.32
-  servername: kejiland.freewarp.eu.org
-  sim_score: 3.244340925655311
-  skip-cert-verify: false
-  speed: 17.43
-  tls: false
-  type: vless
-  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippetssecurity=tls
-- alterId: 0
-  latency: 37.64
-  name: 🇯🇵JP-47.74.10.111-5614
-  network: ws
-  port: 34221
-  score: 4.322529224229543
-  server: 47.74.10.111
-  sim_score: 4.0629422361490155
-  speed: 16.27
-  tls: false
-  type: vmess
-  uuid: 07a5f229-899d-43dd-beb0-f1412a2a85fd
-  ws-opts: {}
-- alterId: 0
-  latency: 31.47
-  name: 🇭🇰HK-47.238.252.154-5672
-  network: ws
-  port: 58867
-  score: 4.3215761042262475
-  server: 47.238.252.154
-  sim_score: 0.8875226406875408
-  speed: 13.6
-  tls: false
-  type: vmess
-  uuid: 7b80e36f-b082-46fc-ae59-6bb0dd17eee8
+  uuid: 5f726fe3-d82e-4da5-a711-8af0cbb2b682
   ws-opts: {}
 - alterId: 0
   latency: 46.84
-  name: '@Rayan_Config 159'
+  name: 0|--38
   network: ws
   port: 443
-  score: 4.314688300597779
-  server: 57.129.28.68
-  sim_score: 1.253016981867644
-  speed: 20.21
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- latency: 37.7
-  name: '[Vless] US_speednode_0082'
-  network: ws
-  port: 2082
-  score: 4.206896551724137
-  server: www.speedtest.net
-  servername: novinsoft.ir.oradoshop.com.persiangsm.ir.digikala.com.abadis.ir.shad.ir.divar.ir.downloadly.com.aparat.com.cafebazar.ir.varzesh3.com.ninisite.com.abadis.ir.bama.ir.p30download.ir.telewebion.bmi.ir.shad.ir.mayket.com.ninisite.top.
-  sim_score: 0.8368157277795235
-  skip-cert-verify: false
-  speed: 15.86
-  tls: false
-  type: vless
-  uuid: befa4610-3c87-4a78-f2a3-92d323ecb4ec
-  ws-opts:
-    headers:
-      Host: novinsoft.ir.oradoshop.com.persiangsm.ir.digikala.com.abadis.ir.shad.ir.divar.ir.downloadly.com.aparat.com.cafebazar.ir.varzesh3.com.ninisite.com.abadis.ir.bama.ir.p30download.ir.telewebion.bmi.ir.shad.ir.mayket.com.ninisite.top.
-    path: /@spikevpn-@spikevpn-@spikevpn-@spikevpn-@spikevpn-@spikevpn?ed=2082
-- alterId: 0
-  latency: 30.25
-  name: 🇺🇸 VMESS-未知>美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-orvps2.horsenma.net:8443
-  network: ws
-  port: 8443
-  score: 4.052892561983471
-  server: orvps2.horsenma.net
-  sim_score: 1.4770897081612857
-  speed: 12.26
-  tls: true
-  type: vmess
-  uuid: 57e595e6-ef54-4e0d-b8df-e96db9612b99
-  ws-opts: {}
-- alterId: 0
-  latency: 36.23
-  name: haniye
-  network: ws
-  port: 40873
-  score: 4.043610267733922
-  server: 47.83.162.4
-  sim_score: 1.8632585622026754
-  speed: 14.65
-  tls: false
-  type: vmess
-  uuid: 3fd266bc-7691-43cf-a82f-0c9761a69bf0
-  ws-opts: {}
-- alterId: 0
-  latency: 36.45
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 4.021947873799726
-  server: 57.128.216.125
-  sim_score: 0.8326833770763522
-  speed: 14.66
+  score: 2.6280956447480786
+  server: 15.235.83.227
+  sim_score: 1.1089370384371209
+  speed: 12.31
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
 - alterId: 0
-  latency: 44.77
-  name: '@Rayan_Config 181'
-  network: ws
-  port: 443
-  score: 4.0205494750949295
-  server: 57.128.189.230
-  sim_score: 3.064001605699318
-  speed: 18.0
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 41.38
-  name: '@vpnserverrr'
-  network: ws
-  port: 443
-  score: 3.956017399710005
-  server: 46.246.126.154
-  sim_score: 1.411826768309528
-  speed: 16.37
-  tls: false
-  type: vmess
-  uuid: c5e46a6c-0bb6-4ac3-b375-4dc13d6cde8d
-  ws-opts: {}
-- cipher: aes-256-cfb
-  latency: 30.13
-  name: raw_node
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 3.946232990375042
-  server: 37.235.49.152
-  sim_score: 2.078370280232465
-  speed: 11.89
-  type: ss
-- latency: 31.53
-  name: '[Vless] FR_speednode_0037'
-  network: ws
-  port: 2096
-  score: 3.9232477006026
-  server: 141.11.203.32
-  servername: kejiland.freewarp.eu.org
-  sim_score: 3.1848439863450935
-  skip-cert-verify: false
-  speed: 12.37
-  tls: false
-  type: vless
-  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippetssecurity=tls
-- alterId: 0
-  latency: 51.98
-  name: 美国02付费推荐：https://dafei.de
-  network: ws
-  port: 2053
-  score: 3.9149672951135055
-  server: fastcup.net
-  sim_score: 0.7295207312955045
-  speed: 20.35
-  tls: true
-  type: vmess
-  uuid: 82ba36ec-dafe-40eb-b9ad-0f8a98101020
-  ws-opts: {}
-- latency: 30.68
-  name: '[Vless] ES_speednode_0030'
-  network: ws
-  port: 2096
-  score: 3.895045632333768
-  server: 185.251.83.32
-  servername: kejiland.freewarp.eu.org
-  sim_score: 2.1106838341580265
-  skip-cert-verify: false
-  speed: 11.95
-  tls: false
-  type: vless
-  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippetssecurity=tls
-- alterId: 0
-  latency: 45.48
-  name: '@Daily_Configs'
-  network: ws
-  port: 443
-  score: 3.880826737027265
-  server: fapeng.org
-  sim_score: 1.848304626899722
-  speed: 17.65
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 48.79
-  name: '@V2rayNGVPN <= کانفیگ رایگان'
-  network: tcp
-  port: 16730
-  score: 3.8716950194712036
-  server: 88.151.194.96
-  sim_score: 1.4832541938882582
-  speed: 18.89
-  tls: false
-  type: vmess
-  uuid: 72de9632-04ca-46c7-be62-41b876c7bc8e
-  ws-opts: {}
-- latency: 38.8
-  name: '[Vless] SA_speednode_0065'
-  network: ws
-  port: 2096
-  score: 3.8170103092783507
-  server: 91.209.253.43
-  servername: kejiland.freewarp.eu.org
-  sim_score: 0.8809170183198777
-  skip-cert-verify: false
-  speed: 14.81
-  tls: true
-  type: vless
-  uuid: 01997b9d-a1f7-e188-981a-c665b723cfef
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippetsfp=chrome
-- auth: biadailyconfigs
-  latency: 31.65
-  name: '[Hysteria2] @Daily_Configs #6'
-  obfs: salamander
-  obfs-password: LzmYaFxALuuWNIu3zSeRJeV4z21RU1oS
-  password: biadailyconfigs
-  port: 443
-  score: 3.7377567140600316
-  server: 103.249.133.79
-  sim_score: 5.050690586773442
-  skip-cert-verify: false
-  sni: microsoft.com
-  speed: 11.83
-  type: hysteria2
-- alterId: 0
-  latency: 37.53
-  name: '@vpnserverrr'
-  network: ws
-  port: 443
-  score: 3.7250199840127896
-  server: 38.54.61.21
-  sim_score: 0.9829552014671327
-  speed: 13.98
-  tls: false
-  type: vmess
-  uuid: bb420996-184d-46cd-8809-ccf772fcc349
-  ws-opts: {}
-- alterId: 0
-  latency: 45.0
-  name: All--@IRAN_V2RAY1
-  network: tcp
-  port: 39674
-  score: 3.688888888888889
-  server: 82.197.69.131
-  sim_score: 1.475387920309081
-  speed: 16.6
-  tls: false
-  type: vmess
-  uuid: 5a89386a-827b-4f54-8778-2f1b5122c6ef
-  ws-opts: {}
-- latency: 30.6
-  name: '[Vless] US_speednode_0078'
-  network: ws
-  port: 2096
-  score: 3.6470588235294117
-  server: 199.68.156.32
-  servername: kejiland.freewarp.eu.org
-  sim_score: 0.8979706276201302
-  skip-cert-verify: false
-  speed: 11.16
-  tls: false
-  type: vless
-  uuid: b65f4df7-f6af-42b2-877a-cef33f21675e
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippetssecurity=tls
-- alterId: 0
-  latency: 36.48
-  name: 🇺🇲@FreakConfig
-  network: ws
-  port: 443
-  score: 3.5307017543859653
-  server: seribus.org
-  sim_score: 0.9399812446320241
-  speed: 12.88
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 37.15
-  name: 🇨🇾CY-45.89.107.51-0259
-  network: ws
-  port: 20521
-  score: 3.5127860026917905
-  server: 45.89.107.51
-  sim_score: 0.9306061399640814
-  speed: 13.05
-  tls: false
-  type: vmess
-  uuid: 3dbaa5c3-f493-4ad1-9c5d-8525f4962a6c
-  ws-opts: {}
-- alterId: 0
-  latency: 38.04
-  name: 0|--30
-  network: ws
-  port: 443
-  score: 3.2886435331230284
-  server: 38.99.82.193
-  sim_score: 2.090397754292976
-  speed: 12.51
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 41.56
-  name: '@V2RAYROZ'
-  network: ws
-  port: 443
-  score: 3.286814244465832
-  server: 57.129.28.213
-  sim_score: 2.036096384377503
-  speed: 13.66
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 49.21
-  name: '@Rayan_Config 215'
-  network: ws
-  port: 443
-  score: 3.153830522251575
-  server: 148.113.153.112
-  sim_score: 1.9850118286936944
-  speed: 15.52
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 36.76
-  name: '@Geek_Spot '
-  network: tcp
-  port: 30475
-  score: 3.1120783460282917
-  server: 216.132.112.116
-  sim_score: 0.9575652546380297
-  speed: 11.44
-  tls: false
-  type: vmess
-  uuid: defa10be-f618-4b64-c815-049d2eacbd3f
-  ws-opts: {}
-- alterId: 0
-  latency: 62.65
-  name: 🇸🇬SG-47.237.13.208-5674
-  network: ws
-  port: 50110
-  score: 3.0598563447725464
-  server: 47.237.13.208
-  sim_score: 1.1890308750838119
-  speed: 19.17
-  tls: false
-  type: vmess
-  uuid: 6e040614-bf79-4e45-8c77-1c37278e9143
-  ws-opts: {}
-- alterId: 0
-  latency: 44.03
+  latency: 53.74
   name: All-@IRAN_V2RAY1
   network: tcp
   port: 443
-  score: 2.9956847603906427
+  score: 2.558615556382583
   server: 165.140.216.141
-  sim_score: 1.2704535720963406
-  speed: 13.19
+  sim_score: 1.5183064875927523
+  speed: 13.75
   tls: false
   type: vmess
   uuid: e7d72a8d-26f2-4b54-b366-0c43e0bcba7d
   ws-opts: {}
 - alterId: 0
-  latency: 40.72
-  name: '@Selinc ‌'
+  latency: 36.8
+  name: '>>@v2rayngvpn::XX'
   network: ws
   port: 443
-  score: 2.9887033398821217
-  server: 57.128.189.211
-  sim_score: 1.5723249937348738
-  speed: 12.17
+  score: 2.4836956521739135
+  server: 57.129.28.212
+  sim_score: 1.090059389349328
+  speed: 9.14
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
-- alterId: 0
-  latency: 44.97
-  name: '@HiByeVPNN👈⚡❤️‍🔥'
-  network: ws
-  port: 443
-  score: 2.9108294418501224
-  server: 57.129.59.199
-  sim_score: 3.1406500207044323
-  speed: 13.09
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 36.63
-  name: 🇰🇷 VMESS-未知>韩国-NF解锁韩国地区非自制剧-ChatGPT-TikTok-YouTube-time.is:80
+- alterId: 2
+  latency: 35.48
+  name: 🇭🇰HK-112.119.185.199-5279
   network: ws
   port: 80
-  score: 2.91018291018291
-  server: time.is
-  sim_score: 1.8920185408952612
-  speed: 10.66
+  score: 2.356257046223224
+  server: 9def5c5d-t398g0-tdnzz0-1qtp7.hk3.p5pv.com
+  sim_score: 1.0833917784276723
+  speed: 8.36
   tls: false
   type: vmess
-  uuid: 66ddd790-10ed-4a16-b334-0b7e3577b5b7
-  ws-opts: {}
-- alterId: 32
-  latency: 44.52
-  name: 🇺🇸US-77.83.141.171-1131
-  network: ws
-  port: 443
-  score: 2.9088050314465406
-  server: vc.fly.dev
-  sim_score: 0.5961739274555908
-  speed: 12.95
-  tls: true
-  type: vmess
-  uuid: 35379219-6535-4f2e-a4fe-3e44f61e0eee
+  uuid: 3653c708-df72-11ee-aec1-f23c9164ca5d
   ws-opts: {}
 - alterId: 0
-  latency: 44.01
-  name: 🇺🇸美国10 | ⬇️ 4.9MB/s
-  network: ws
-  port: 80
-  score: 2.7584639854578508
-  server: www.wn03.cc
-  sim_score: 3.1431585043986896
-  speed: 12.14
-  tls: false
-  type: vmess
-  uuid: 2f38f848-a899-4c87-9807-207a41615e3c
-  ws-opts: {}
-- alterId: 0
-  latency: 49.18
-  name: '@Rayan_Config 223'
-  network: ws
-  port: 443
-  score: 2.7531516876779176
-  server: 158.51.121.63
-  sim_score: 1.3770405434086355
-  speed: 13.54
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 48.32
+  latency: 47.31
   name: '@Daily_Configs'
   network: tcp
-  port: 26619
-  score: 2.677980132450331
-  server: 91.107.255.237
-  sim_score: 1.295561583717316
-  speed: 12.94
+  port: 40878
+  score: 2.268019446205876
+  server: 85.195.101.122
+  sim_score: 1.6711304613575597
+  speed: 10.73
   tls: false
   type: vmess
-  uuid: db5a32a6-fc14-4e01-a51f-8de7f1ec8904
+  uuid: f3d4167e-b15e-4e46-82e9-9286ef93fda7
   ws-opts: {}
 - alterId: 0
-  latency: 31.12
-  name: 🇫🇮 VMESS-未知>芬兰-NF解锁芬兰地区非自制剧-ChatGPT-TikTok-YouTube-104.17.223.18:80
-  network: ws
-  port: 80
-  score: 2.6092544987146526
-  server: 104.17.223.18
-  sim_score: 4.80099100353332
-  speed: 8.12
-  tls: false
-  type: vmess
-  uuid: ff2d17c6-0d96-4801-a270-9dba8334f8c6
-  ws-opts: {}
-- alterId: 0
-  latency: 36.85
-  name: 🇵🇱@FreakConfig
-  network: ws
-  port: 443
-  score: 2.5318860244233377
-  server: pelang.org
-  sim_score: 1.242299359827502
-  speed: 9.33
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 51.37
-  name: t.me/entryNET
-  network: ws
-  port: 11886
-  score: 2.5267665952890797
-  server: 47.239.141.74
-  sim_score: 1.973083433135539
-  speed: 12.98
-  tls: false
-  type: vmess
-  uuid: 0d36b017-6d7c-493d-bb12-55c34faf6efc
-  ws-opts: {}
-- alterId: 0
-  latency: 56.0
-  name: 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  network: ws
-  port: 443
-  score: 2.5214285714285714
-  server: sing-box.store
-  sim_score: 1.5529896755071406
-  speed: 14.12
-  tls: true
-  type: vmess
-  uuid: fbd8ef7a-c8d2-4066-9df4-481642ef6861
-  ws-opts: {}
-- alterId: 0
-  latency: 38.52
-  name: t.me/entryNET
-  network: ws
-  port: 11683
-  score: 2.466251298026999
-  server: 43.246.198.134
-  sim_score: 1.894980547199695
-  speed: 9.5
-  tls: false
-  type: vmess
-  uuid: c040f159-377d-4b62-aaf6-994460d3ee4e
-  ws-opts: {}
-- latency: 37.48
-  name: '[Vless] US_speednode_0084'
-  network: ws
-  port: 2096
-  score: 2.430629669156884
-  server: 155.46.167.43
-  servername: kejiland.freewarp.eu.org
-  sim_score: 1.4750731827192156
-  skip-cert-verify: false
-  speed: 9.11
-  tls: false
-  type: vless
-  uuid: 01997b9d-a1f7-e188-981a-c665b723cfef
-  ws-opts:
-    headers:
-      Host: kejiland.freewarp.eu.org
-    path: /snippetssecurity=tls
-- alterId: 0
-  latency: 36.75
-  name: '@Rayan_Config 177'
-  network: ws
-  port: 443
-  score: 2.36734693877551
-  server: 57.129.24.132
-  sim_score: 0.5968130885441107
-  speed: 8.7
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 37.49
-  name: '@Rayan_Config 197'
-  network: ws
-  port: 443
-  score: 2.341957855428114
-  server: 57.129.59.194
-  sim_score: 1.233383245104431
-  speed: 8.78
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 97.77
-  name: 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  network: ws
-  port: 443
-  score: 1.7980975759435407
-  server: sing-box.pics
-  sim_score: 1.2736895922620584
-  speed: 17.58
-  tls: true
-  type: vmess
-  uuid: 3fddc9a8-b3a8-4bd5-b484-784d37ef69b1
-  ws-opts: {}
-- alterId: 0
-  latency: 54.65
+  latency: 49.7
   name: '@Daily_Configs'
   network: ws
   port: 443
-  score: 1.7493138151875574
-  server: 15.204.103.7
-  sim_score: 1.0867078583182774
-  speed: 9.56
+  score: 2.028169014084507
+  server: fapeng.org
+  sim_score: 0.99353922375081
+  speed: 10.08
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
 - alterId: 0
-  latency: 55.19
-  name: '@Rayan_Config 222'
+  latency: 61.55
+  name: '@Daily_Configs'
   network: ws
   port: 443
-  score: 1.6832759557890922
-  server: 40.160.16.216
-  sim_score: 2.252394602773977
-  speed: 9.29
+  score: 1.998375304630382
+  server: 91.134.8.102
+  sim_score: 1.3796012678136929
+  speed: 12.3
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 124.65
+  name: 🔐 @AblNet7 🇵🇭
+  network: ws
+  port: 59134
+  score: 1.3309265944645006
+  server: 8.220.188.238
+  sim_score: 3.0168954012952303
+  speed: 16.59
+  tls: false
+  type: vmess
+  uuid: b5a82c1d-0d98-4d4d-a499-5d04e4bb114d
   ws-opts: {}
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - '[Vless] US_speednode_0077'
-  - 🇯🇵JP-43.246.198.134-5616
-  - 🇺🇸 美国
-  - xx|4037|puddincat07@Telegram
-  - '@V2ray1_Ng'
-  - 🇭🇰HK-112.119.185.199-5279
-  - 🇩🇪 VMESS-未知>德国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-188.114.98.18:80
-  - 🇺🇸 美国
-  - '[Vless] FI_speednode_0033'
-  - '[Vless] US_speednode_0076'
-  - 🇭🇰HK-8.217.220.30-5643
-  - 🇭🇰HK-8.217.34.12-5627
-  - 🇭🇰HK-47.243.231.14-5595
-  - 🇲🇾MY-47.250.85.161-5619
-  - raw_node
-  - 🇩🇪 VMESS-未知>德国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-188.114.99.18:80
-  - 🇭🇰HK-47.243.231.14-5604
-  - 🇫🇷法国1 | ⬇️ 2.3MB/s
-  - '[SS] 🇰🇷 韩国|@ripaojiedian'
-  - 🇸🇬SG-47.237.13.208-5670
-  - '[Vless] NL_speednode_0057'
-  - '[Trojan] 🇯🇵 日本2|@ripaojiedian'
-  - '@proxy_kafee🇩🇪'
-  - raw_node
-  - raw_node
-  - 🇻🇳VN-103.137.185.22-0276
-  - 🏁RELAY-172.67.200.13-1039
-  - '[Vless] NL_speednode_0058'
-  - 🇭🇰香港2 | ⬇️ 1.2MB/s
-  - '>>@ShadowsocksM::XX'
-  - 🇺🇸US-157.254.227.2-5343
-  - '[Vless] US_speednode_0079'
-  - 'Channel : tik7net_vpn 🇩🇪'
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  - 🇯🇵JP-47.74.10.111-5615
-  - 🇭🇰HK-47.76.157.234-5678
-  - '@Rayan_Config 225'
-  - 'Channel id: @ShadowProxy66🇩🇪'
+  - 🇸🇬SG-47.237.13.208-5674
+  - '[Vless] US_speednode_0092'
+  - vn|f56f|puddincat07@Telegram
   - '@Daily_Configs'
-  - 🇭🇰HK-8.217.158.92-5630
-  - cn|6e69|puddincat07@Telegram
-  - '[Vless] ES_speednode_0031'
+  - xx|9705|puddincat07@Telegram
+  - 🇭🇰HK-47.76.233.2-5669
+  - All--@IRAN_V2RAY1
+  - '[Vless] DE_speednode_0026'
+  - '[SS] 🇰🇷 韩国|@ripaojiedian'
+  - md|cf4f|puddincat07@Telegram
+  - '@HiByeVPNN👈⚡❤️‍🔥'
+  - 🇺🇸 VMESS-未知>美国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-104.17.223.175:8080
+  - '@Geek_Spot '
+  - 🇺🇸 VMESS-未知>美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-orvps2.horsenma.net:8443
+  - 'Channel id: @ShadowProxy66🇮🇳'
+  - 🇭🇰HK-8.210.230.179-5602
+  - '[Hysteria2] @Daily_Configs #6'
+  - '[Vless] US_speednode_0091'
+  - '@HiByeVPNN👈⚡❤️‍🔥'
+  - '@Rayan_Config 177'
+  - 🇭🇰HK-47.76.246.12-5695
+  - '@Daily_Configs'
+  - 🇺🇸美国24 | ⬇️ 3.4MB/s
+  - 🇺🇸 美国
+  - 🇩🇪DE-57.129.25.20-1271
+  - '>>@DailyV2RY::SG'
+  - 🇭🇰HK-8.217.220.30-5631
+  - 🇯🇵JP-47.74.10.111-5617
   - 🇭🇰HK-8.218.175.64-5632
-  - 🇨🇦CA-15.235.50.172-1645
+  - '[Vless] SA_speednode_0065'
+  - '@vpnserverrr'
+  - 🇫🇷法国1 | ⬇️ 2.3MB/s
+  - 🇯🇵JP-43.246.198.134-5616
+  - '@Selinc'
+  - 🇭🇰HK-8.217.220.30-5641
+  - 🇯🇵JP-43.246.198.134-5613
+  - 🇭🇰HK-112.119.185.199-0313
   - raw_node
   - '[Trojan] JP_speednode_0051'
-  - ALL@azadiiivpn⁸🎀
   - '[Vless] US_speednode_0088'
-  - '[Vless] NL_speednode_0059'
-  - '[Vless] GB_speednode_0041'
-  - '[Vless] US_speednode_0081'
-  - 'Channel id: @ShadowProxy66🇮🇳'
-  - 🏴‍☠️@FreakConfig
-  - '@IRAN_V2RAY1'
-  - 🔐 @AblNet7 🇺🇸
-  - 🇭🇰HK-8.210.122.139-5592
-  - '@Daily_Configs'
-  - '[Vless] BG_speednode_0006'
-  - 🇭🇰HK-47.76.233.2-5669
-  - '@Daily_Configs'
-  - 🇭🇰HK-112.119.185.199-0303
-  - '@Daily_Configs'
-  - 🇭🇰HK-47.76.246.12-5695
-  - '[Vless] JP_speednode_0050'
-  - 🇬🇧GB-142.202.51.119-0952
-  - '@Daily_Configs'
-  - v2cross.com
-  - 🇺🇸US-192.3.233.216-0283
-  - '[Vless] IN_speednode_0046'
-  - '>>@ShadowsocksM::XX'
-  - 🏁RELAY-172.67.143.87-1009
-  - 'Channel id: @ShadowProxy66🇩🇪'
+  - '[Vless] ES_speednode_0031'
+  - raw_node
   - 🇩🇪@FreakConfig
-  - '@Daily_Configs'
-  - '[Vless] DE_speednode_0026'
-  - 🇺🇸US-154.9.254.63-5348
-  - 🇵🇭PH-8.220.188.238-5634
-  - '[SS] 🇻🇳 越南|@ripaojiedian'
-  - 🇩🇪 VMESS-南非>德国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-102.132.188.3:80
-  - 🇭🇰HK-47.242.214.178-5607
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  - '@AblNet7 🇮🇷 نت ملی'
-  - All--@IRAN_V2RAY1
-  - 🇺🇸美国104 | ⬇️ 3.3MB/s
-  - '@Rayan_Config 165'
-  - '>>@DailyV2RY::CA'
-  - '@Daily_Configs'
-  - 美国03付费推荐：https://dafei.de
-  - 👉🆔@v2ray_configs_pool📡🇨🇦®️Canada©️Toronto🅿️ping:28.09ms
-  - '@Rayan_Config 164'
-  - 🇭🇰HK-8.217.34.12-5628
-  - '[SS] 🇭🇰 香港2|@ripaojiedian'
-  - '@Daily_Configs'
-  - 🏴‍☠️@FreakConfig
-  - 🇩🇪@FreakConfig
-  - '>>@configV2rayNG::XX'
+  - 🇭🇰HK-8.218.175.64-5642
+  - 🇭🇰香港2 | ⬇️ 1.2MB/s
   - 🇭🇰HK-112.119.185.199-5280
-  - '>>@DailyV2RY::US'
-  - 💎کانفیگ های بیشتر در چنل تلگرام💎 Config_Rayegan@
+  - '[Vless] US_speednode_0086'
+  - xx|6293|puddincat07@Telegram
+  - '@Rayan_Config 169'
   - '@Daily_Configs'
-  - '[Vless] RU_speednode_0060'
+  - 🏁RELAY-104.21.76.158-0359
+  - '@Selinc'
+  - '@Rayan_Config 214'
+  - '[Vless] US_speednode_0094'
+  - 🇭🇰HK-8.217.220.30-5643
   - '@Daily_Configs'
-  - '@Daily_Configs'
-  - '[Vless] US_speednode_0092'
-  - raw_node
-  - '[Vless] HK_speednode_0044'
-  - '[Vless] US_speednode_0096'
-  - 🇨🇦CA-15.235.83.228-4945
-  - 🏴‍☠️@FreakConfig
-  - 美国01付费推荐：https://dafei.de
-  - '@V2rayNGVPN <= کانفیگ رایگان'
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
   - '@Rayan_Config 228'
-  - 🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرامی
-  - 🇭🇰HK-47.83.174.131-5686
-  - ✅ @vistav2ray  👈👈کانال ما
-  - raw_node
-  - 🇭🇰HK-47.76.118.235-5685
-  - 🔐 @AblNet7 🇩🇪 DE
-  - '>>@v2rayNG_Matsuri::US'
-  - '[Vless] US_speednode_0075'
-  - '@Rayan_Config 163'
-  - 🇭🇰 香港 电讯盈科有限公司
-  - '@Rayan_Config 219'
-  - '@meli_proxyy'
-  - '[Vless] LT_speednode_0054'
-  - 🇯🇵JP-47.74.10.111-5614
-  - 🇭🇰HK-47.238.252.154-5672
-  - '@Rayan_Config 159'
-  - '[Vless] US_speednode_0082'
-  - 🇺🇸 VMESS-未知>美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-orvps2.horsenma.net:8443
-  - haniye
-  - '@Daily_Configs'
-  - '@Rayan_Config 181'
-  - '@vpnserverrr'
-  - raw_node
-  - '[Vless] FR_speednode_0037'
-  - 美国02付费推荐：https://dafei.de
-  - '[Vless] ES_speednode_0030'
-  - '@Daily_Configs'
-  - '@V2rayNGVPN <= کانفیگ رایگان'
-  - '[Vless] SA_speednode_0065'
-  - '[Hysteria2] @Daily_Configs #6'
-  - '@vpnserverrr'
-  - All--@IRAN_V2RAY1
-  - '[Vless] US_speednode_0078'
-  - 🇺🇲@FreakConfig
-  - 🇨🇾CY-45.89.107.51-0259
-  - 0|--30
-  - '@V2RAYROZ'
-  - '@Rayan_Config 215'
-  - '@Geek_Spot '
-  - 🇸🇬SG-47.237.13.208-5674
-  - All-@IRAN_V2RAY1
-  - '@Selinc ‌'
-  - '@HiByeVPNN👈⚡❤️‍🔥'
-  - 🇰🇷 VMESS-未知>韩国-NF解锁韩国地区非自制剧-ChatGPT-TikTok-YouTube-time.is:80
-  - 🇺🇸US-77.83.141.171-1131
-  - 🇺🇸美国10 | ⬇️ 4.9MB/s
   - '@Rayan_Config 223'
   - '@Daily_Configs'
-  - 🇫🇮 VMESS-未知>芬兰-NF解锁芬兰地区非自制剧-ChatGPT-TikTok-YouTube-104.17.223.18:80
-  - 🇵🇱@FreakConfig
-  - t.me/entryNET
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  - t.me/entryNET
-  - '[Vless] US_speednode_0084'
-  - '@Rayan_Config 177'
-  - '@Rayan_Config 197'
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  - 🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرامی
+  - haniye
+  - 0|--30
+  - '[Vless] RU_speednode_0060'
+  - '[Vless] US_speednode_0079'
+  - 𝗦𝗸𝘆𝗽𝗿𝗼_𝘃𝗽𝗻@
+  - '[Vless] US_speednode_0077'
+  - '[Trojan] 🇭🇰 香港6|@ripaojiedian'
+  - '[Vless] FR_speednode_0037'
+  - 美国02付费推荐：https://dafei.de
+  - 🏴‍☠️@FreakConfig
   - '@Daily_Configs'
+  - raw_node
+  - 'Channel id: @ShadowProxy66 🇭🇰'
+  - '[Vless] NL_speednode_0058'
+  - '@Daily_Configs'
+  - '@V2rayNGVPN <= کانفیگ رایگان'
+  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  - 🇵🇭PH-8.220.188.238-5634
+  - '@Rayan_Config 179'
+  - 🏴‍☠️@FreakConfig
+  - 🇨🇦CA-15.235.50.172-1645
+  - '@Rayan_Config 159'
+  - '@awlix_ir'
+  - 🇫🇷FR-57.128.189.240-5245
+  - 🇭🇰HK-47.238.0.200-5679
+  - '>>@ShadowsocksM::HK'
+  - '[Vless] ES_speednode_0030'
+  - '@V2rayNGVPN <= کانفیگ رایگان'
+  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  - 🇭🇰HK-47.243.231.14-5604
+  - '[Vless] GB_speednode_0040'
+  - '@Daily_Configs'
+  - 'Channel id: @ShadowProxy66🇩🇪'
+  - '[Vless] US_speednode_0081'
+  - xx|34bb|puddincat07@Telegram
+  - raw_node
+  - 🇭🇰HK-47.238.109.55-5690
+  - 🇺🇸 美国
+  - '@Daily_Configs'
+  - 🇺🇸US-77.83.141.171-1131
+  - '@V2rayNGVPN <= کانفیگ رایگان'
+  - 🏁RELAY-172.67.143.87-1009
+  - '>>@DailyV2RY::CA'
+  - '>>@DailyV2RY::US'
+  - '@Rayan_Config 164'
+  - 🇺🇸 美国
+  - '[Trojan] 🇯🇵 日本2|@ripaojiedian'
+  - 🇵🇱@FreakConfig
+  - '@Rayan_Config 197'
+  - '[Vless] US_speednode_0083'
+  - 🇨🇵@FreakConfig
+  - 🇭🇰HK-47.243.231.14-5594
+  - xx|1db3|puddincat07@Telegram
+  - 🇭🇰香港3 | ⬇️ 3.1MB/s
+  - 🇭🇰HK-8.217.34.12-5627
+  - '[Vless] US_speednode_0078'
+  - 🔐 @AblNet7 🇺🇸
   - '@Rayan_Config 222'
+  - '@AblNet7 🇮🇷 نت ملی'
+  - 🇺🇸 美国
+  - '@Rayan_Config 162'
+  - 🇺🇸 VMESS-未知>美国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-104.17.176.171:8080
+  - 🇯🇵JP-47.74.10.111-5615
+  - 🇭🇰HK-47.83.174.131-5686
+  - 🇨🇵@FreakConfig
+  - '@Daily_Configs'
+  - 🇭🇰HK-8.210.230.179-5591
+  - 🔐 @AblNet7 🇩🇪 DE
+  - '>>@ShadowsocksM::XX'
+  - 🇸🇬SG-47.237.13.208-5670
+  - 🇸🇬SG-8.219.218.138-5640
+  - 'Channel id: @ShadowProxy66🇺🇸'
+  - '@Daily_Configs'
+  - '[Vless] BG_speednode_0006'
+  - '>>@ShadowsocksM::XX'
+  - '[Trojan] US_speednode_0080'
+  - cn|fa0b|puddincat07@Telegram
+  - '[Vless] US_speednode_0076'
+  - 🇺🇸US-154.9.254.63-5348
+  - 美国03付费推荐：https://dafei.de
+  - 🇭🇰HK-47.238.0.200-5681
+  - '@i10VPN 🚀| با ما متصل بمون⚡'
+  - '@Daily_Configs'
+  - 🇭🇰 香港 电讯盈科有限公司
+  - raw_node
+  - '>>@ShadowsocksM::SG'
+  - All--@Iran_V2ray1
+  - '@vmesskhodam🍂 منبع پروکسی و کانفیگ'
+  - raw_node
+  - 🏴‍☠️@FreakConfig
+  - 🇭🇰HK-47.76.157.234-5678
+  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  - '[SS] 🇻🇳 越南|@ripaojiedian'
+  - همه اپراتور ها | @skypro_vpn
+  - '@Daily_Configs'
+  - '@Daily_Configs'
+  - '@proxy_kafee🇩🇪'
+  - '@AblNet7 🇮🇷 نت ملی'
+  - '[Vless] US_speednode_0096'
+  - 🇫🇷 VMESS-未知>法国-ChatGPT-1a2d514b-37cf-499f-8d08-d017a92ab5bb.asoul-ava.top:443
+  - 0|--38
+  - All-@IRAN_V2RAY1
+  - '>>@v2rayngvpn::XX'
+  - 🇭🇰HK-112.119.185.199-5279
+  - '@Daily_Configs'
+  - '@Daily_Configs'
+  - '@Daily_Configs'
+  - 🔐 @AblNet7 🇵🇭
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - '[Vless] US_speednode_0077'
-  - 🇯🇵JP-43.246.198.134-5616
-  - 🇺🇸 美国
-  - xx|4037|puddincat07@Telegram
-  - '@V2ray1_Ng'
-  - 🇭🇰HK-112.119.185.199-5279
-  - 🇩🇪 VMESS-未知>德国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-188.114.98.18:80
-  - 🇺🇸 美国
-  - '[Vless] FI_speednode_0033'
-  - '[Vless] US_speednode_0076'
-  - 🇭🇰HK-8.217.220.30-5643
-  - 🇭🇰HK-8.217.34.12-5627
-  - 🇭🇰HK-47.243.231.14-5595
-  - 🇲🇾MY-47.250.85.161-5619
-  - raw_node
-  - 🇩🇪 VMESS-未知>德国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-188.114.99.18:80
-  - 🇭🇰HK-47.243.231.14-5604
-  - 🇫🇷法国1 | ⬇️ 2.3MB/s
-  - '[SS] 🇰🇷 韩国|@ripaojiedian'
-  - 🇸🇬SG-47.237.13.208-5670
-  - '[Vless] NL_speednode_0057'
-  - '[Trojan] 🇯🇵 日本2|@ripaojiedian'
-  - '@proxy_kafee🇩🇪'
-  - raw_node
-  - raw_node
-  - 🇻🇳VN-103.137.185.22-0276
-  - 🏁RELAY-172.67.200.13-1039
-  - '[Vless] NL_speednode_0058'
-  - 🇭🇰香港2 | ⬇️ 1.2MB/s
-  - '>>@ShadowsocksM::XX'
-  - 🇺🇸US-157.254.227.2-5343
-  - '[Vless] US_speednode_0079'
-  - 'Channel : tik7net_vpn 🇩🇪'
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  - 🇯🇵JP-47.74.10.111-5615
-  - 🇭🇰HK-47.76.157.234-5678
-  - '@Rayan_Config 225'
-  - 'Channel id: @ShadowProxy66🇩🇪'
+  - 🇸🇬SG-47.237.13.208-5674
+  - '[Vless] US_speednode_0092'
+  - vn|f56f|puddincat07@Telegram
   - '@Daily_Configs'
-  - 🇭🇰HK-8.217.158.92-5630
-  - cn|6e69|puddincat07@Telegram
-  - '[Vless] ES_speednode_0031'
+  - xx|9705|puddincat07@Telegram
+  - 🇭🇰HK-47.76.233.2-5669
+  - All--@IRAN_V2RAY1
+  - '[Vless] DE_speednode_0026'
+  - '[SS] 🇰🇷 韩国|@ripaojiedian'
+  - md|cf4f|puddincat07@Telegram
+  - '@HiByeVPNN👈⚡❤️‍🔥'
+  - 🇺🇸 VMESS-未知>美国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-104.17.223.175:8080
+  - '@Geek_Spot '
+  - 🇺🇸 VMESS-未知>美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-orvps2.horsenma.net:8443
+  - 'Channel id: @ShadowProxy66🇮🇳'
+  - 🇭🇰HK-8.210.230.179-5602
+  - '[Hysteria2] @Daily_Configs #6'
+  - '[Vless] US_speednode_0091'
+  - '@HiByeVPNN👈⚡❤️‍🔥'
+  - '@Rayan_Config 177'
+  - 🇭🇰HK-47.76.246.12-5695
+  - '@Daily_Configs'
+  - 🇺🇸美国24 | ⬇️ 3.4MB/s
+  - 🇺🇸 美国
+  - 🇩🇪DE-57.129.25.20-1271
+  - '>>@DailyV2RY::SG'
+  - 🇭🇰HK-8.217.220.30-5631
+  - 🇯🇵JP-47.74.10.111-5617
   - 🇭🇰HK-8.218.175.64-5632
-  - 🇨🇦CA-15.235.50.172-1645
+  - '[Vless] SA_speednode_0065'
+  - '@vpnserverrr'
+  - 🇫🇷法国1 | ⬇️ 2.3MB/s
+  - 🇯🇵JP-43.246.198.134-5616
+  - '@Selinc'
+  - 🇭🇰HK-8.217.220.30-5641
+  - 🇯🇵JP-43.246.198.134-5613
+  - 🇭🇰HK-112.119.185.199-0313
   - raw_node
   - '[Trojan] JP_speednode_0051'
-  - ALL@azadiiivpn⁸🎀
   - '[Vless] US_speednode_0088'
-  - '[Vless] NL_speednode_0059'
-  - '[Vless] GB_speednode_0041'
-  - '[Vless] US_speednode_0081'
-  - 'Channel id: @ShadowProxy66🇮🇳'
-  - 🏴‍☠️@FreakConfig
-  - '@IRAN_V2RAY1'
-  - 🔐 @AblNet7 🇺🇸
-  - 🇭🇰HK-8.210.122.139-5592
-  - '@Daily_Configs'
-  - '[Vless] BG_speednode_0006'
-  - 🇭🇰HK-47.76.233.2-5669
-  - '@Daily_Configs'
-  - 🇭🇰HK-112.119.185.199-0303
-  - '@Daily_Configs'
-  - 🇭🇰HK-47.76.246.12-5695
-  - '[Vless] JP_speednode_0050'
-  - 🇬🇧GB-142.202.51.119-0952
-  - '@Daily_Configs'
-  - v2cross.com
-  - 🇺🇸US-192.3.233.216-0283
-  - '[Vless] IN_speednode_0046'
-  - '>>@ShadowsocksM::XX'
-  - 🏁RELAY-172.67.143.87-1009
-  - 'Channel id: @ShadowProxy66🇩🇪'
+  - '[Vless] ES_speednode_0031'
+  - raw_node
   - 🇩🇪@FreakConfig
-  - '@Daily_Configs'
-  - '[Vless] DE_speednode_0026'
-  - 🇺🇸US-154.9.254.63-5348
-  - 🇵🇭PH-8.220.188.238-5634
-  - '[SS] 🇻🇳 越南|@ripaojiedian'
-  - 🇩🇪 VMESS-南非>德国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-102.132.188.3:80
-  - 🇭🇰HK-47.242.214.178-5607
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  - '@AblNet7 🇮🇷 نت ملی'
-  - All--@IRAN_V2RAY1
-  - 🇺🇸美国104 | ⬇️ 3.3MB/s
-  - '@Rayan_Config 165'
-  - '>>@DailyV2RY::CA'
-  - '@Daily_Configs'
-  - 美国03付费推荐：https://dafei.de
-  - 👉🆔@v2ray_configs_pool📡🇨🇦®️Canada©️Toronto🅿️ping:28.09ms
-  - '@Rayan_Config 164'
-  - 🇭🇰HK-8.217.34.12-5628
-  - '[SS] 🇭🇰 香港2|@ripaojiedian'
-  - '@Daily_Configs'
-  - 🏴‍☠️@FreakConfig
-  - 🇩🇪@FreakConfig
-  - '>>@configV2rayNG::XX'
+  - 🇭🇰HK-8.218.175.64-5642
+  - 🇭🇰香港2 | ⬇️ 1.2MB/s
   - 🇭🇰HK-112.119.185.199-5280
-  - '>>@DailyV2RY::US'
-  - 💎کانفیگ های بیشتر در چنل تلگرام💎 Config_Rayegan@
+  - '[Vless] US_speednode_0086'
+  - xx|6293|puddincat07@Telegram
+  - '@Rayan_Config 169'
   - '@Daily_Configs'
-  - '[Vless] RU_speednode_0060'
+  - 🏁RELAY-104.21.76.158-0359
+  - '@Selinc'
+  - '@Rayan_Config 214'
+  - '[Vless] US_speednode_0094'
+  - 🇭🇰HK-8.217.220.30-5643
   - '@Daily_Configs'
-  - '@Daily_Configs'
-  - '[Vless] US_speednode_0092'
-  - raw_node
-  - '[Vless] HK_speednode_0044'
-  - '[Vless] US_speednode_0096'
-  - 🇨🇦CA-15.235.83.228-4945
-  - 🏴‍☠️@FreakConfig
-  - 美国01付费推荐：https://dafei.de
-  - '@V2rayNGVPN <= کانفیگ رایگان'
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
   - '@Rayan_Config 228'
-  - 🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرامی
-  - 🇭🇰HK-47.83.174.131-5686
-  - ✅ @vistav2ray  👈👈کانال ما
-  - raw_node
-  - 🇭🇰HK-47.76.118.235-5685
-  - 🔐 @AblNet7 🇩🇪 DE
-  - '>>@v2rayNG_Matsuri::US'
-  - '[Vless] US_speednode_0075'
-  - '@Rayan_Config 163'
-  - 🇭🇰 香港 电讯盈科有限公司
-  - '@Rayan_Config 219'
-  - '@meli_proxyy'
-  - '[Vless] LT_speednode_0054'
-  - 🇯🇵JP-47.74.10.111-5614
-  - 🇭🇰HK-47.238.252.154-5672
-  - '@Rayan_Config 159'
-  - '[Vless] US_speednode_0082'
-  - 🇺🇸 VMESS-未知>美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-orvps2.horsenma.net:8443
-  - haniye
-  - '@Daily_Configs'
-  - '@Rayan_Config 181'
-  - '@vpnserverrr'
-  - raw_node
-  - '[Vless] FR_speednode_0037'
-  - 美国02付费推荐：https://dafei.de
-  - '[Vless] ES_speednode_0030'
-  - '@Daily_Configs'
-  - '@V2rayNGVPN <= کانفیگ رایگان'
-  - '[Vless] SA_speednode_0065'
-  - '[Hysteria2] @Daily_Configs #6'
-  - '@vpnserverrr'
-  - All--@IRAN_V2RAY1
-  - '[Vless] US_speednode_0078'
-  - 🇺🇲@FreakConfig
-  - 🇨🇾CY-45.89.107.51-0259
-  - 0|--30
-  - '@V2RAYROZ'
-  - '@Rayan_Config 215'
-  - '@Geek_Spot '
-  - 🇸🇬SG-47.237.13.208-5674
-  - All-@IRAN_V2RAY1
-  - '@Selinc ‌'
-  - '@HiByeVPNN👈⚡❤️‍🔥'
-  - 🇰🇷 VMESS-未知>韩国-NF解锁韩国地区非自制剧-ChatGPT-TikTok-YouTube-time.is:80
-  - 🇺🇸US-77.83.141.171-1131
-  - 🇺🇸美国10 | ⬇️ 4.9MB/s
   - '@Rayan_Config 223'
   - '@Daily_Configs'
-  - 🇫🇮 VMESS-未知>芬兰-NF解锁芬兰地区非自制剧-ChatGPT-TikTok-YouTube-104.17.223.18:80
-  - 🇵🇱@FreakConfig
-  - t.me/entryNET
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
-  - t.me/entryNET
-  - '[Vless] US_speednode_0084'
-  - '@Rayan_Config 177'
-  - '@Rayan_Config 197'
-  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  - 🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرامی
+  - haniye
+  - 0|--30
+  - '[Vless] RU_speednode_0060'
+  - '[Vless] US_speednode_0079'
+  - 𝗦𝗸𝘆𝗽𝗿𝗼_𝘃𝗽𝗻@
+  - '[Vless] US_speednode_0077'
+  - '[Trojan] 🇭🇰 香港6|@ripaojiedian'
+  - '[Vless] FR_speednode_0037'
+  - 美国02付费推荐：https://dafei.de
+  - 🏴‍☠️@FreakConfig
   - '@Daily_Configs'
+  - raw_node
+  - 'Channel id: @ShadowProxy66 🇭🇰'
+  - '[Vless] NL_speednode_0058'
+  - '@Daily_Configs'
+  - '@V2rayNGVPN <= کانفیگ رایگان'
+  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  - 🇵🇭PH-8.220.188.238-5634
+  - '@Rayan_Config 179'
+  - 🏴‍☠️@FreakConfig
+  - 🇨🇦CA-15.235.50.172-1645
+  - '@Rayan_Config 159'
+  - '@awlix_ir'
+  - 🇫🇷FR-57.128.189.240-5245
+  - 🇭🇰HK-47.238.0.200-5679
+  - '>>@ShadowsocksM::HK'
+  - '[Vless] ES_speednode_0030'
+  - '@V2rayNGVPN <= کانفیگ رایگان'
+  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  - 🇭🇰HK-47.243.231.14-5604
+  - '[Vless] GB_speednode_0040'
+  - '@Daily_Configs'
+  - 'Channel id: @ShadowProxy66🇩🇪'
+  - '[Vless] US_speednode_0081'
+  - xx|34bb|puddincat07@Telegram
+  - raw_node
+  - 🇭🇰HK-47.238.109.55-5690
+  - 🇺🇸 美国
+  - '@Daily_Configs'
+  - 🇺🇸US-77.83.141.171-1131
+  - '@V2rayNGVPN <= کانفیگ رایگان'
+  - 🏁RELAY-172.67.143.87-1009
+  - '>>@DailyV2RY::CA'
+  - '>>@DailyV2RY::US'
+  - '@Rayan_Config 164'
+  - 🇺🇸 美国
+  - '[Trojan] 🇯🇵 日本2|@ripaojiedian'
+  - 🇵🇱@FreakConfig
+  - '@Rayan_Config 197'
+  - '[Vless] US_speednode_0083'
+  - 🇨🇵@FreakConfig
+  - 🇭🇰HK-47.243.231.14-5594
+  - xx|1db3|puddincat07@Telegram
+  - 🇭🇰香港3 | ⬇️ 3.1MB/s
+  - 🇭🇰HK-8.217.34.12-5627
+  - '[Vless] US_speednode_0078'
+  - 🔐 @AblNet7 🇺🇸
   - '@Rayan_Config 222'
+  - '@AblNet7 🇮🇷 نت ملی'
+  - 🇺🇸 美国
+  - '@Rayan_Config 162'
+  - 🇺🇸 VMESS-未知>美国-NF解锁德国地区非自制剧-ChatGPT-TikTok-YouTube-104.17.176.171:8080
+  - 🇯🇵JP-47.74.10.111-5615
+  - 🇭🇰HK-47.83.174.131-5686
+  - 🇨🇵@FreakConfig
+  - '@Daily_Configs'
+  - 🇭🇰HK-8.210.230.179-5591
+  - 🔐 @AblNet7 🇩🇪 DE
+  - '>>@ShadowsocksM::XX'
+  - 🇸🇬SG-47.237.13.208-5670
+  - 🇸🇬SG-8.219.218.138-5640
+  - 'Channel id: @ShadowProxy66🇺🇸'
+  - '@Daily_Configs'
+  - '[Vless] BG_speednode_0006'
+  - '>>@ShadowsocksM::XX'
+  - '[Trojan] US_speednode_0080'
+  - cn|fa0b|puddincat07@Telegram
+  - '[Vless] US_speednode_0076'
+  - 🇺🇸US-154.9.254.63-5348
+  - 美国03付费推荐：https://dafei.de
+  - 🇭🇰HK-47.238.0.200-5681
+  - '@i10VPN 🚀| با ما متصل بمون⚡'
+  - '@Daily_Configs'
+  - 🇭🇰 香港 电讯盈科有限公司
+  - raw_node
+  - '>>@ShadowsocksM::SG'
+  - All--@Iran_V2ray1
+  - '@vmesskhodam🍂 منبع پروکسی و کانفیگ'
+  - raw_node
+  - 🏴‍☠️@FreakConfig
+  - 🇭🇰HK-47.76.157.234-5678
+  - 🔥@AblNet7 🇮🇷 نت ملی 🔥
+  - '[SS] 🇻🇳 越南|@ripaojiedian'
+  - همه اپراتور ها | @skypro_vpn
+  - '@Daily_Configs'
+  - '@Daily_Configs'
+  - '@proxy_kafee🇩🇪'
+  - '@AblNet7 🇮🇷 نت ملی'
+  - '[Vless] US_speednode_0096'
+  - 🇫🇷 VMESS-未知>法国-ChatGPT-1a2d514b-37cf-499f-8d08-d017a92ab5bb.asoul-ava.top:443
+  - 0|--38
+  - All-@IRAN_V2RAY1
+  - '>>@v2rayngvpn::XX'
+  - 🇭🇰HK-112.119.185.199-5279
+  - '@Daily_Configs'
+  - '@Daily_Configs'
+  - '@Daily_Configs'
+  - 🔐 @AblNet7 🇵🇭
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
