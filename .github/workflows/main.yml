@@ -8,7 +8,7 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 60     # 防止长任务被 GitHub 自动终止
+    timeout-minutes: 60
     continue-on-error: false
 
     steps:
@@ -68,3 +68,4 @@ jobs:
           else
             git commit -m "🚀 Auto update subscriptions on $(date +'%Y-%m-%d %H:%M:%S')"
             git push
+          fi
