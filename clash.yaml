@@ -3,1380 +3,1308 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 32
-  latency: 31.03
-  name: 🇺🇸US-77.83.141.171-1131
-  network: ws
-  port: 443
-  score: 15.932968095391555
-  server: vc.fly.dev
-  sim_score: 1.7231156016595863
-  speed: 49.44
-  tls: true
-  type: vmess
-  uuid: 35379219-6535-4f2e-a4fe-3e44f61e0eee
-  ws-opts: {}
 - alterId: 0
-  latency: 31.16
-  name: '>>@v2ray_configs_pool::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::TR::TR::TR::TR::TR::TR::TR::TR::TR::TR::TR'
-  network: tcp
-  port: 39651
-  score: 15.39152759948652
-  server: 45.89.52.207
-  sim_score: 2.8722330641955622
-  speed: 47.96
-  tls: false
-  type: vmess
-  uuid: ac4c12c5-45f2-4398-a718-9983941ede2b
-  ws-opts: {}
-- cipher: chacha20-ietf-poly1305
-  latency: 32.16
-  name: nl|37c0|puddincat07@Telegram
-  password: 4a2rfixophdjffa8KVA4Aa
-  port: 8080
-  score: 15.108830845771147
-  server: 193.29.139.157
-  sim_score: 0.8904290311838114
-  speed: 48.59
-  type: ss
-- alterId: 0
-  latency: 30.53
-  name: 未知20
-  network: ws
-  port: 443
-  score: 14.739600393056008
-  server: 57.129.64.238
-  sim_score: 1.1021670044323773
-  speed: 45.0
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 33.19
-  name: 🇦🇺 VMESS-未知>澳大利亚-NF解锁澳大利亚自制剧-ChatGPT-TikTok-YouTube-sy4.620720.xyz:443
-  network: ws
-  port: 443
-  score: 14.5013558300693
-  server: sy4.620720.xyz
-  sim_score: 1.0427358407341893
-  speed: 48.13
-  tls: true
-  type: vmess
-  uuid: 516d8a7a-3f0b-41d3-bad0-246116381516
-  ws-opts: {}
-- latency: 29.8
-  name: us|dbef|puddincat07@Telegram
-  password: 1883668e14d4a92
-  port: 2053
-  score: 14.006711409395972
-  server: 172.67.175.243
-  sim_score: 0.9194590132086154
-  skip-cert-verify: true
-  sni: frankfoortvip.followprovider.ir
-  speed: 41.74
-  type: trojan
-  udp: true
-- alterId: 0
-  latency: 32.14
-  name: 🇹🇷@v2_mod_shop
-  network: ws
-  port: 80
-  score: 13.963907902924706
-  server: tr1-smart.adelping.com
-  sim_score: 2.376183152865204
-  speed: 44.88
-  tls: false
-  type: vmess
-  uuid: 43dcdce1-3cea-4193-bc8d-90b92071d779
-  ws-opts: {}
-- alterId: 0
-  latency: 30.39
-  name: ⚡Telegram = @prrofile_purple
-  network: tcp
-  port: 2089
-  score: 13.823626192826586
-  server: s3.fastly4wards.com
-  sim_score: 1.6136690315177427
-  speed: 42.01
-  tls: false
-  type: vmess
-  uuid: 014c4671-b0f9-4419-0ff5-5e01647ce34f
-  ws-opts: {}
-- alterId: 0
-  latency: 30.81
-  name: 🇺🇸 美国 V2CROSS.COM
-  network: ws
-  port: 2053
-  score: 13.774748458292763
-  server: nextmi.hajmyab.ir
-  sim_score: 0.8221928729270339
-  speed: 42.44
-  tls: true
-  type: vmess
-  uuid: 9585636a-54bc-419a-90a1-76c5c6ec74df
-  ws-opts: {}
-- alterId: 0
-  latency: 29.57
-  name: '@NIGHTGEMSHOP'
-  network: ws
-  port: 443
-  score: 13.432532972607373
-  server: cdn.nightgemshop.com
-  sim_score: 1.8443367419288739
-  speed: 39.72
-  tls: true
-  type: vmess
-  uuid: 5f26fdfd-ecb6-48a5-adab-c691bdeefe7c
-  ws-opts: {}
-- alterId: 0
-  latency: 29.99
-  name: 🇨🇦 VMESS-加拿大-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-51.79.102.253:80
-  network: ws
-  port: 80
-  score: 13.04768256085362
-  server: 51.79.102.253
-  sim_score: 1.1206610399447927
-  speed: 39.13
-  tls: false
-  type: vmess
-  uuid: 58fe1542-5290-40ad-815a-77707a81afe5
-  ws-opts: {}
-- alterId: 0
-  latency: 29.76
-  name: 'channel : @freedomofinfor'
-  network: tcp
-  port: 1074
-  score: 12.956989247311828
-  server: s1.connect.bloroxy.net
-  sim_score: 1.3294192388286379
-  speed: 38.56
-  tls: false
-  type: vmess
-  uuid: 343bfa1a-f8c1-49e1-9bd8-e2f2360f5a7b
-  ws-opts: {}
-- alterId: 0
-  latency: 29.55
-  name: 🇺🇸 美国 CloudFlare节点
-  network: ws
-  port: 80
-  score: 12.940778341793571
-  server: gf.usa2030.indevs.in
-  sim_score: 1.486430528314445
-  speed: 38.24
-  tls: false
-  type: vmess
-  uuid: 5196aae7-1479-4f3c-978b-68e74977b509
-  ws-opts: {}
-- alterId: 0
-  latency: 31.58
-  name: 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-cg1c01.waimaojd.com:443
-  network: ws
-  port: 443
-  score: 12.938568714376188
-  server: cg1c01.waimaojd.com
-  sim_score: 2.2817961537615394
-  speed: 40.86
-  tls: true
-  type: vmess
-  uuid: be8e3136-b874-4085-bd23-ec3699300490
-  ws-opts: {}
-- alterId: 0
-  latency: 31.67
-  name: 0|--86
-  network: ws
-  port: 443
-  score: 12.851278812756552
-  server: 57.129.24.124
-  sim_score: 1.9393347761914832
-  speed: 40.7
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 1
-  latency: 32.78
-  name: 🇩🇪DE-57.129.25.20-1271
-  network: ws
-  port: 443
-  score: 12.785234899328856
-  server: 57.129.25.20
-  sim_score: 0.9754676063974527
-  speed: 41.91
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 31.87
-  name: '@proxy_kafee🇩🇪'
-  network: ws
-  port: 443
-  score: 12.629432067775337
-  server: 57.129.25.22
-  sim_score: 3.2695801286112376
-  speed: 40.25
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 30.65
-  name: 🇨🇦CA-15.235.50.172-1645
-  network: ws
-  port: 443
-  score: 12.35236541598695
-  server: 15.235.50.172
-  sim_score: 1.0240801754997115
-  speed: 37.86
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 29.77
-  name: 'Telegram : @V2ynpv'
-  network: tcp
-  port: 31769
-  score: 12.240510581121935
-  server: 8.217.13.74
-  sim_score: 0.8624539257111761
-  speed: 36.44
-  tls: false
-  type: vmess
-  uuid: cf1ad6c7-5987-4314-82bb-b4399040d047
-  ws-opts: {}
-- alterId: 0
-  latency: 30.38
-  name: 🏁RELAY-172.67.197.47-0435
-  network: ws
-  port: 8443
-  score: 12.17577353522054
-  server: c7.620720.xyz
-  sim_score: 1.5632486832187318
-  speed: 36.99
-  tls: true
-  type: vmess
-  uuid: 516d8a7a-3f0b-41d3-bad0-246116381516
-  ws-opts: {}
-- alterId: 0
-  latency: 29.69
-  name: '[🏁]t.me/ConfigsHub'
-  network: ws
-  port: 80
-  score: 12.172448635904345
-  server: 57.129.132.223
-  sim_score: 1.0278622448788035
-  speed: 36.14
-  tls: false
-  type: vmess
-  uuid: a25cbf11-2908-4a1b-a3a8-9a571777dca3
-  ws-opts: {}
-- alterId: 0
-  latency: 29.72
-  name: 🇺🇸 美国 CloudFlare节点
-  network: ws
-  port: 443
-  score: 12.076043068640647
-  server: BbBBBBBh.hUAngsHANg.OnLINe
-  sim_score: 2.7557923179931203
-  speed: 35.89
-  tls: true
-  type: vmess
-  uuid: 98b419ef-83a2-4d1b-a23d-566b7f24477b
-  ws-opts: {}
-- alterId: 0
-  latency: 33.55
-  name: 🇨🇦TM (@AZARBAYJAB1)
-  network: ws
-  port: 8880
-  score: 12.074515648286141
-  server: Tm-azarbayjab1.1x1.workers.dev
-  sim_score: 1.6974609136036065
-  speed: 40.51
-  tls: false
-  type: vmess
-  uuid: bf67437e-6c90-45ca-abc2-c7240a5ce2aa
-  ws-opts: {}
-- alterId: 0
-  latency: 40.03
-  name: 美国东部阿什本1 | 0.5x_1
-  network: ws
-  port: 2052
-  score: 11.873594803897076
-  server: apkwvctghw.114514782.xyz
-  sim_score: 1.0043903002030723
-  speed: 47.53
-  tls: false
-  type: vmess
-  uuid: 5f9c7bda-33f9-3dd0-bcf5-aca324418e31
-  ws-opts: {}
-- alterId: 0
-  latency: 30.68
-  name: 🇺🇸 VMESS-美国>德国-NF解锁印度地区非自制剧-ChatGPT-TikTok-YouTube-support.zoom.us:8080
-  network: ws
-  port: 8080
-  score: 11.64928292046936
-  server: support.zoom.us
-  sim_score: 3.00022275970968
-  speed: 35.74
-  tls: false
-  type: vmess
-  uuid: 44e57485-eccc-46ef-808f-cd17ac810018
-  ws-opts: {}
-- alterId: 0
-  latency: 33.17
-  name: '[96419] - Telegram : @V2All'
-  network: ws
-  port: 443
-  score: 11.555622550497436
-  server: 91.134.8.100
-  sim_score: 1.2780390187589359
-  speed: 38.33
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 31.14
-  name: '@Hope_Net-join-us-on-Telegram'
-  network: ws
-  port: 8080
-  score: 11.252408477842003
-  server: 172.67.199.221
-  sim_score: 1.2220073353305818
-  speed: 35.04
-  tls: false
-  type: vmess
-  uuid: b551aa22-22af-11ee-b8d8-f23c932eb68d
-  ws-opts: {}
-- alterId: 0
-  latency: 29.94
-  name: '>>@configV2rayNG::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE'
-  network: tcp
-  port: 550
-  score: 11.205744822979291
-  server: 162.19.248.238
-  sim_score: 1.2366386901350916
-  speed: 33.55
-  tls: false
-  type: vmess
-  uuid: ede27a79-b039-490b-932c-495de4b68880
-  ws-opts: {}
-- latency: 33.05
-  name: jp|6fb9|puddincat07@Telegram
-  password: d22c4619-9dd1-41b1-a00e-c565a09066c8
-  port: 443
-  score: 11.177004538577913
-  server: 139.162.91.35
-  sim_score: 5.158191255186763
-  skip-cert-verify: true
-  speed: 36.94
-  type: trojan
-  udp: true
-- alterId: 0
-  latency: 30.91
-  name: '>>@prrofile_purple::US::XX::US::US::US::US::US::US::US::XX::XX::XX::XX'
-  network: tcp
-  port: 14102
-  score: 11.099967648010354
-  server: 172.233.229.91
-  sim_score: 1.3114110652180875
-  speed: 34.31
-  tls: false
-  type: vmess
-  uuid: 27ba87fc-583f-4763-9060-83cf0b9264db
-  ws-opts: {}
-- alterId: 0
-  latency: 32.47
-  name: 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  network: ws
-  port: 443
-  score: 10.77610101632276
-  server: jjjk.191268.xyz
-  sim_score: 1.6178155367593101
-  speed: 34.99
-  tls: true
-  type: vmess
-  uuid: 5cccb4da-8aee-4b01-be84-2056265e52dc
-  ws-opts: {}
-- alterId: 0
-  latency: 30.43
-  name: 🇺🇸 美国 CloudFlare节点
-  network: ws
-  port: 80
-  score: 10.676963522839305
-  server: CCCVFffF.191288.Xyz
-  sim_score: 4.459369335502978
-  speed: 32.49
-  tls: false
-  type: vmess
-  uuid: 4a7baca1-8048-4a91-8316-595b36657a54
-  ws-opts: {}
-- alterId: 0
-  latency: 42.55
-  name: '>>@oneclickvpnkeys::US::US::US::US::US::US::US::US::US::US'
-  network: tcp
-  port: 27641
-  score: 10.611045828437133
-  server: 192.227.249.227
-  sim_score: 3.3942103439959057
-  speed: 45.15
-  tls: false
-  type: vmess
-  uuid: 3b134252-e7c2-43df-98b7-da204104aa79
-  ws-opts: {}
-- alterId: 0
-  latency: 32.74
-  name: '@NIGHTGEMSHOP'
-  network: ws
-  port: 443
-  score: 10.571166768478923
-  server: nl-cdn2.nigtgemshopnew.org
-  sim_score: 1.4582012315705775
-  speed: 34.61
-  tls: true
-  type: vmess
-  uuid: 31b7fbb4-2511-4e96-8461-be5ae7b6c56a
-  ws-opts: {}
-- alterId: 0
-  latency: 31.4
-  name: '@v2rays_ha 7253'
-  network: ws
-  port: 2086
-  score: 10.547770700636942
-  server: 104.19.46.63
-  sim_score: 1.302943698722052
-  speed: 33.12
-  tls: false
-  type: vmess
-  uuid: e9e3cc13-db48-4cc1-8c24-7626439a5339
-  ws-opts: {}
-- alterId: 0
-  latency: 30.9
-  name: t.me/entryNET
-  network: ws
-  port: 2082
-  score: 10.524271844660195
-  server: 45.142.120.10
-  sim_score: 0.7999689638821497
-  speed: 32.52
-  tls: false
-  type: vmess
-  uuid: ededf98c-9364-4a4b-a718-6cd4d183e34c
-  ws-opts: {}
-- alterId: 0
-  latency: 29.7
-  name: 🇨🇦 CA加拿大(mibei77.com 米贝节点分享)
-  network: ws
-  port: 443
-  score: 10.333333333333334
-  server: YyYYuUI.iRAn1912.dpDNs.oRG
-  sim_score: 1.203406740205109
-  speed: 30.69
-  tls: true
-  type: vmess
-  uuid: 4a7baca1-8048-4a91-8316-595b36657a54
-  ws-opts: {}
-- alterId: 0
-  latency: 41.33
-  name: '>>@oneclickvpnkeys::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR'
-  network: tcp
-  port: 45653
-  score: 10.225018146624727
-  server: 94.232.247.165
-  sim_score: 1.0101078331144528
-  speed: 42.26
-  tls: false
-  type: vmess
-  uuid: 9e91d19a-c73f-4276-adbc-b337c374259c
-  ws-opts: {}
-- alterId: 0
-  latency: 31.72
-  name: 'Telegram : @V2ynpv'
-  network: tcp
-  port: 2078
-  score: 10.20176544766709
-  server: 81.12.33.180
-  sim_score: 2.263577794643403
-  speed: 32.36
-  tls: false
-  type: vmess
-  uuid: c92b7747-4222-4aa0-8c91-5753b8c759f4
-  ws-opts: {}
-- alterId: 0
-  latency: 32.03
-  name: 'تلٯرام : @V2ynpv'
-  network: tcp
-  port: 42899
-  score: 10.140493287542927
-  server: 47.251.91.241
-  sim_score: 1.458765325378398
-  speed: 32.48
-  tls: false
-  type: vmess
-  uuid: 0925b355-2bcd-4eae-9720-d2709e4f7e36
-  ws-opts: {}
-- alterId: 0
-  latency: 33.08
-  name: 🇫🇷FR-91.134.8.101-4758
-  network: ws
-  port: 443
-  score: 10.030229746070134
-  server: 91.134.8.101
-  sim_score: 3.814659612547062
-  speed: 33.18
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 28.77
-  name: '>>@oneclickvpnkeys::US::US::US::US::US'
-  network: ws
-  port: 24943
-  score: 9.892248870351061
-  server: 69.63.210.35
-  sim_score: 2.308859732894428
-  speed: 28.46
-  tls: false
-  type: vmess
-  uuid: a89feda9-ec30-48c1-ae6b-1a6f5b573f6b
-  ws-opts: {}
-- alterId: 0
-  latency: 33.63
-  name: '@ho3ino00 آخوند ریقو🤣'
-  network: ws
-  port: 443
-  score: 9.83645554564377
-  server: 45.85.118.88
-  sim_score: 2.2768250993736294
-  speed: 33.08
-  tls: true
-  type: vmess
-  uuid: ee30d3ff-da14-4ea8-bcd2-02e8ee3667de
-  ws-opts: {}
-- alterId: 0
-  latency: 31.71
-  name: ⚡Telegram = @prrofile_purple
-  network: tcp
-  port: 2028
-  score: 9.731945758435824
-  server: 81.12.33.180
-  sim_score: 1.1727784382228026
-  speed: 30.86
-  tls: false
-  type: vmess
-  uuid: 5b947df3-5e73-47e4-a2d3-fdbb2a3ed1ac
-  ws-opts: {}
-- alterId: 0
-  latency: 30.25
-  name: 🇬🇧 英国 V2CROSS.COM
-  network: tcp
-  port: 180
-  score: 9.229752066115703
-  server: 82.198.246.97
-  sim_score: 1.1733765010894095
-  speed: 27.92
-  tls: false
-  type: vmess
-  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-  ws-opts: {}
-- alterId: 0
-  latency: 29.46
-  name: '@v2rayngzendegimamad🕊️'
-  network: ws
-  port: 443
-  score: 9.127630685675491
-  server: 162.159.152.4
-  sim_score: 1.482118687790031
-  speed: 26.89
-  tls: true
-  type: vmess
-  uuid: e786a916-f37b-4858-f6f1-1acc65b19ce5
-  ws-opts: {}
-- alterId: 0
-  latency: 29.56
-  name: (@VmessProtocol)برای خرید و اتصال دائمی جوین شو🇩🇪
-  network: ws
-  port: 443
-  score: 8.897158322056834
-  server: 57.129.28.63
-  sim_score: 1.396206877977464
-  speed: 26.3
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 34.33
-  name: '@v2rays_ha 7265'
-  network: tcp
-  port: 2020
-  score: 8.729973783862512
-  server: cip.ertebatgoostar.ir
-  sim_score: 1.919497601288382
-  speed: 29.97
-  tls: false
-  type: vmess
-  uuid: 076928f9-8df8-4a71-9e1c-c75658fe3140
-  ws-opts: {}
-- latency: 30.52
-  name: gb|805e|puddincat07@Telegram
-  password: 57afed5a-5a70-4a8b-bb40-4d81c26e65dd
-  port: 443
-  score: 8.666448230668415
-  server: 198.244.190.189
-  sim_score: 1.1476040867050712
-  skip-cert-verify: true
-  speed: 26.45
-  type: trojan
-  udp: true
-- alterId: 0
-  latency: 32.36
-  name: horn_proxy 3
-  network: tcp
-  port: 8595
-  score: 8.241656365883808
-  server: 81.12.33.180
-  sim_score: 1.8823128506130917
-  speed: 26.67
-  tls: false
-  type: vmess
-  uuid: 5b947df3-5e73-47e4-a2d3-fdbb2a3ed1ac
-  ws-opts: {}
-- alterId: 0
-  latency: 29.54
-  name: MCi-@V2rayAlpha-12
-  network: tcp
-  port: 33953
-  score: 8.209207853757617
-  server: farzad.vipgsmteam.info
-  sim_score: 0.8203490255389934
-  speed: 24.25
-  tls: false
-  type: vmess
-  uuid: 3db07745-4ba5-4663-8eb4-c7796d67e9e6
-  ws-opts: {}
-- alterId: 0
-  latency: 30.89
-  name: 'تلگرنام : V2ynpv@'
-  network: ws
-  port: 443
-  score: 8.164454516024604
-  server: cloud.nexun.ir
-  sim_score: 1.0788160516589045
-  speed: 25.22
-  tls: true
-  type: vmess
-  uuid: cf000403-1a6b-43c5-b07f-5e7c7949b4dc
-  ws-opts: {}
-- alterId: 0
-  latency: 40.66
-  name: 🇨🇦TM (@AZARBAYJAB1)
-  network: ws
-  port: 8080
-  score: 8.157894736842106
-  server: 104.24.169.183
-  sim_score: 3.027305330709875
-  speed: 33.17
-  tls: false
-  type: vmess
-  uuid: nasnet
-  ws-opts: {}
-- alterId: 0
-  latency: 52.22
+  latency: 36.05
   name: 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
   network: ws
   port: 443
-  score: 8.06396016851781
-  server: 57.129.28.213
-  sim_score: 3.7867183125161725
-  speed: 42.11
-  tls: true
-  type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- cipher: chacha20-ietf-poly1305
-  latency: 35.11
-  name: gb|e797|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 8080
-  score: 7.875249216747365
-  server: 82.38.31.82
-  sim_score: 1.8859938778104421
-  speed: 27.65
-  type: ss
-- alterId: 0
-  latency: 29.85
-  name: 🇮🇷 伊朗 V2CROSS.COM
-  network: tcp
-  port: 33014
-  score: 7.54103852596315
-  server: sophia.sub-info.com
-  sim_score: 1.1499117617682868
-  speed: 22.51
-  tls: false
-  type: vmess
-  uuid: 1aa24877-10da-ba0d-6c3b-cbd936f27aed
-  ws-opts: {}
-- alterId: 0
-  latency: 31.52
-  name: 未知3 789.8KB/s
-  network: ws
-  port: 80
-  score: 7.490482233502538
-  server: 51.79.103.76
-  sim_score: 1.537852858245813
-  speed: 23.61
-  tls: false
-  type: vmess
-  uuid: 58fe1542-5290-40ad-815a-77707a81afe5
-  ws-opts: {}
-- alterId: 0
-  latency: 44.13
-  name: 🇬🇧TM (@AZARBAYJAB1)
-  network: ws
-  port: 2086
-  score: 7.441649671425335
-  server: 141.101.123.123
-  sim_score: 1.405957209049782
-  speed: 32.84
-  tls: false
-  type: vmess
-  uuid: bf67437e-6c90-45ca-abc2-c7240a5ce2aa
-  ws-opts: {}
-- alterId: 0
-  latency: 32.45
-  name: ☮️77@oneclickvpnkeys
-  network: ws
-  port: 443
-  score: 7.100154083204929
-  server: 148.113.153.109
-  sim_score: 1.7546058366383948
-  speed: 23.04
+  score: 13.079056865464633
+  server: 57.129.24.130
+  sim_score: 2.145353813948721
+  speed: 47.15
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
 - alterId: 0
-  latency: 28.72
-  name: '@v2rays_ha 7295'
-  network: ws
-  port: 8080
-  score: 6.887186629526463
-  server: 188.114.98.0
-  sim_score: 1.0364461281945294
-  speed: 19.78
-  tls: false
-  type: vmess
-  uuid: nasnet
-  ws-opts: {}
-- alterId: 0
-  latency: 44.5
-  name: 🇭🇰HK-47.243.244.164-4820
-  network: ws
-  port: 443
-  score: 6.786516853932584
-  server: n1761214908.wpg27.xyz
-  sim_score: 1.32569952396801
-  speed: 30.2
-  tls: true
-  type: vmess
-  uuid: 3514a93f-bb26-4442-8f99-971b2ff3388a
-  ws-opts: {}
-- alterId: 0
-  latency: 30.54
-  name: '@appsooner کانال تلگرام 🕊️'
-  network: tcp
-  port: 2087
-  score: 6.627373935821873
-  server: s1.fastly4wards.com
-  sim_score: 4.3409520391542
-  speed: 20.24
-  tls: false
-  type: vmess
-  uuid: d3ab9be0-dbeb-4709-ed1b-c5315fff9844
-  ws-opts: {}
-- alterId: 0
-  latency: 32.98
-  name: '>>@prrofile_purple::IN'
-  network: tcp
-  port: 15834
-  score: 6.522134627046697
-  server: 20.193.153.19
-  sim_score: 1.152620289143866
-  speed: 21.51
-  tls: false
-  type: vmess
-  uuid: 39a8c374-76b1-4e90-ab85-85cd9a42ded2
-  ws-opts: {}
-- alterId: 0
-  latency: 48.54
+  latency: 36.95
   name: '@v2rayngzendegimamad🕊️'
   network: tcp
   port: 10001
-  score: 6.398846312319736
+  score: 12.922868741542624
   server: 172.234.132.232
-  sim_score: 3.085709367138972
-  speed: 31.06
+  sim_score: 1.7172098814571872
+  speed: 47.75
   tls: false
   type: vmess
   uuid: a6b99c05-8e0a-4f7e-bf7b-e4b9febb9589
   ws-opts: {}
 - alterId: 0
-  latency: 50.26
-  name: '@v2rayngzendegimamad🕊️'
+  latency: 39.44
+  name: (@VmessProtocol)برای خرید و اتصال دائمی جوین شو🇩🇪
   network: ws
   port: 443
-  score: 6.285316354954238
-  server: 148.113.176.192
-  sim_score: 0.9103749323542816
-  speed: 31.59
+  score: 12.352941176470589
+  server: 57.129.28.63
+  sim_score: 0.7486216989418144
+  speed: 48.72
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
-- latency: 32.29
-  name: us|f79c|puddincat07@Telegram
-  password: f0eb8c92ce8946aaba856569cff1a16b
-  port: 443
-  score: 6.1752864663982665
-  server: 104.16.192.158
-  sim_score: 3.0078599477862933
-  skip-cert-verify: true
-  sni: jobscareerforlawyers.com
-  speed: 19.94
-  type: trojan
-  udp: true
 - alterId: 0
-  latency: 48.84
-  name: 🇲🇾MY-47.250.45.234-5028
+  latency: 40.44
+  name: 🇨🇦@FreakConfig
   network: ws
-  port: 8613
-  score: 6.105651105651106
-  server: 47.250.45.234
-  sim_score: 1.3043361499379729
-  speed: 29.82
-  tls: false
+  port: 443
+  score: 12.25519287833828
+  server: 158.51.121.63
+  sim_score: 4.276531555674622
+  speed: 49.56
+  tls: true
   type: vmess
-  uuid: 80039b4d-bac0-4f89-82c7-54fad3b0a1ea
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
 - alterId: 0
-  latency: 30.07
-  name: 'Telegram : @V2ynpv'
+  latency: 41.69
+  name: ☬SHΞN™
+  network: ws
+  port: 8443
+  score: 11.650275845526505
+  server: 217.217.255.99
+  sim_score: 0.7639317883872758
+  speed: 48.57
+  tls: false
+  type: vmess
+  uuid: 83049bda-8d53-44bc-f71c-f6b03c1ca482
+  ws-opts: {}
+- alterId: 0
+  latency: 36.19
+  name: 🇺🇸 ConfigV2RayNG
   network: tcp
-  port: 2020
-  score: 6.045892916528101
-  server: 81.12.33.180
-  sim_score: 0.9222122856625843
-  speed: 18.18
+  port: 33020
+  score: 11.254490190660402
+  server: harper.sub-info.com
+  sim_score: 4.979184595959081
+  speed: 40.73
   tls: false
   type: vmess
-  uuid: c92b7747-4222-4aa0-8c91-5753b8c759f4
+  uuid: 76a837fa-a90f-4aee-9025-bc8d9d2943c6
+  ws-opts: {}
+- cipher: chacha20-ietf-poly1305
+  latency: 37.61
+  name: xx|7a15|puddincat07@Telegram
+  password: 23sUrwRcTBEAvxLS6VM6Aay57KQbws1upDAxr7Btf4hXu4gaUQW4BPbComjJjStM2JqJLDwVkteXL8V33k8eWkZR4UB8intz
+  port: 43669
+  score: 11.212443499069398
+  server: portal.ninemakeda.cfd
+  sim_score: 1.4029391524959904
+  speed: 42.17
+  type: ss
+- alterId: 0
+  latency: 36.94
+  name: '@v2raychannel          عضو شید'
+  network: ws
+  port: 80
+  score: 11.177585273416351
+  server: 162.159.58.88
+  sim_score: 1.685106982203897
+  speed: 41.29
+  tls: false
+  type: vmess
+  uuid: a406b612-26f7-4bf0-8652-816970a1c122
   ws-opts: {}
 - alterId: 0
-  latency: 57.65
-  name: HK
+  latency: 36.35
+  name: '@ho3ino00👳🏽‍♂️ آخوندک'
   network: ws
-  port: 11655
-  score: 5.810928013876842
-  server: 131.186.63.89
-  sim_score: 1.4970360556106985
-  speed: 33.5
+  port: 2053
+  score: 11.086657496561209
+  server: 45.85.119.48
+  sim_score: 2.421766512103046
+  speed: 40.3
   tls: true
   type: vmess
-  uuid: 4bf075f5-4d5e-4d39-f5ab-b32a86250f0e
+  uuid: 72f76c36-3e3c-45b3-a61f-d8f017345958
   ws-opts: {}
 - alterId: 0
-  latency: 32.45
-  name: 🇺🇸 VMESS-美国-ChatGPT-TikTok-YouTube-cg1c14.waimaojd.com:443
+  latency: 36.93
+  name: 'تلٯرام : @V2ynpv'
+  network: tcp
+  port: 42899
+  score: 10.9017059301381
+  server: 47.251.91.241
+  sim_score: 1.0384171193481158
+  speed: 40.26
+  tls: false
+  type: vmess
+  uuid: 0925b355-2bcd-4eae-9720-d2709e4f7e36
+  ws-opts: {}
+- alterId: 0
+  latency: 36.32
+  name: '@appsooner کانال تلگرام 🕊️'
+  network: tcp
+  port: 2087
+  score: 10.674559471365638
+  server: s1.fastly4wards.com
+  sim_score: 1.8258132003032055
+  speed: 38.77
+  tls: false
+  type: vmess
+  uuid: d3ab9be0-dbeb-4709-ed1b-c5315fff9844
+  ws-opts: {}
+- alterId: 0
+  latency: 42.81
+  name: 🇫🇷FR-91.134.8.101-4758
   network: ws
   port: 443
-  score: 5.701078582434515
-  server: cg1c14.waimaojd.com
-  sim_score: 0.7100917879062986
-  speed: 18.5
+  score: 10.490539593552908
+  server: 91.134.8.101
+  sim_score: 2.016206317256709
+  speed: 44.91
   tls: true
   type: vmess
-  uuid: be8e3136-b874-4085-bd23-ec3699300490
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
 - alterId: 0
-  latency: 29.38
-  name: TM (@AZARBAYJAB1)
-  network: ws
-  port: 2082
-  score: 5.6671204901293395
-  server: 5.196.29.123
-  sim_score: 4.008443796372745
-  speed: 16.65
-  tls: false
-  type: vmess
-  uuid: 112ac36f-3f53-4e26-8371-d25c028e1b9a
-  ws-opts: {}
-- alterId: 0
-  latency: 30.56
+  latency: 41.37
   name: 🇺🇸 美国 CloudFlare节点
   network: ws
   port: 443
-  score: 5.582460732984293
-  server: eed4.7777125.xyz
-  sim_score: 1.107026468054638
-  speed: 17.06
+  score: 10.48102489726855
+  server: BbBBBBBh.hUAngsHANg.OnLINe
+  sim_score: 2.847585566054383
+  speed: 43.36
   tls: true
   type: vmess
-  uuid: fc3704d6-8e5e-443a-bd5b-20ec7cfbe990
+  uuid: 98b419ef-83a2-4d1b-a23d-566b7f24477b
   ws-opts: {}
 - alterId: 0
-  latency: 29.14
-  name: 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  network: ws
-  port: 80
-  score: 5.32258064516129
-  server: gggnnjui.191292.xyz
-  sim_score: 2.36640168913271
-  speed: 15.51
+  latency: 35.85
+  name: '>>@oneclickvpnkeys::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE'
+  network: tcp
+  port: 443
+  score: 10.231520223152021
+  server: 89.31.120.192
+  sim_score: 2.7459307932868264
+  speed: 36.68
   tls: false
   type: vmess
-  uuid: b9bb332d-5e0d-41af-adac-49362dde8661
+  uuid: 44537595-9ccc-4b83-8936-5f9ad3229019
   ws-opts: {}
 - alterId: 0
-  latency: 52.92
-  name: 🇬🇧TM (@AZARBAYJAB1)
+  latency: 43.08
+  name: 🇺🇸US美国8
   network: ws
   port: 8080
-  score: 5.285336356764928
-  server: 141.101.122.122
-  sim_score: 2.919709477127341
-  speed: 27.97
+  score: 10.229805013927578
+  server: digitalocean.com
+  sim_score: 0.6361092311104998
+  speed: 44.07
+  tls: false
+  type: vmess
+  uuid: nasnet
+  ws-opts: {}
+- alterId: 0
+  latency: 44.08
+  name: 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  network: ws
+  port: 443
+  score: 9.925136116152451
+  server: 57.128.189.241
+  sim_score: 1.9615188358795155
+  speed: 43.75
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 42.09
+  name: 🇺🇸 美国 CloudFlare节点
+  network: ws
+  port: 80
+  score: 9.826562128771679
+  server: vvbght.932.pp.ua
+  sim_score: 1.346140630832315
+  speed: 41.36
+  tls: false
+  type: vmess
+  uuid: 4115f84d-3b03-4b03-babf-21b36b2f9c03
+  ws-opts: {}
+- alterId: 0
+  latency: 42.66
+  name: 🇨🇦TM (@AZARBAYJAB1)
+  network: ws
+  port: 8880
+  score: 9.664791373652132
+  server: Tm-azarbayjab1.1x1.workers.dev
+  sim_score: 2.171568634825585
+  speed: 41.23
   tls: false
   type: vmess
   uuid: bf67437e-6c90-45ca-abc2-c7240a5ce2aa
   ws-opts: {}
 - alterId: 0
-  latency: 29.63
-  name: 🇺🇸 US美国(mibei77.com 米贝节点分享)
+  latency: 36.67
+  name: 🇺🇸 美国 CloudFlare节点
   network: ws
-  port: 443
-  score: 5.08268646641917
-  server: bBbNHJ.890634.xyz
-  sim_score: 1.1717946197201214
-  speed: 15.06
-  tls: true
+  port: 80
+  score: 9.65366784837742
+  server: vVVbNHj.191288.xYz
+  sim_score: 4.887668722076672
+  speed: 35.4
+  tls: false
   type: vmess
   uuid: 5cccb4da-8aee-4b01-be84-2056265e52dc
   ws-opts: {}
 - alterId: 0
-  latency: 40.29
-  name: '@vpnbaz 🎯'
-  network: ws
-  port: 80
-  score: 5.058327128319682
-  server: ccddfvgb.un2027.indevs.in
-  sim_score: 0.5857851057545791
-  speed: 20.38
+  latency: 44.52
+  name: '>>@prrofile_purple::IN'
+  network: tcp
+  port: 15834
+  score: 9.530548068283917
+  server: 20.193.153.19
+  sim_score: 0.9712198840761164
+  speed: 42.43
   tls: false
   type: vmess
-  uuid: 827beb2a-f97a-4b23-b733-adef30c98e17
+  uuid: 39a8c374-76b1-4e90-ab85-85cd9a42ded2
   ws-opts: {}
 - alterId: 0
-  latency: 47.46
-  name: ✅ @ShadowSocks_S
+  latency: 43.86
+  name: 🇺🇸US美国9
   network: ws
-  port: 8443
-  score: 5.050568900126422
-  server: 45.85.118.88
-  sim_score: 2.3289783875394696
-  speed: 23.97
-  tls: true
+  port: 8080
+  score: 9.263565891472869
+  server: tgju.org
+  sim_score: 0.5431843154012227
+  speed: 40.63
+  tls: false
   type: vmess
-  uuid: 9ae8b6c1-744f-4afe-c27d-f3b38e79d975
+  uuid: nasnet
   ws-opts: {}
 - alterId: 0
-  latency: 31.22
-  name: 'Channel id: @ShadowProxy66🇩🇪'
+  latency: 35.54
+  name: ⚡Telegram = @prrofile_purple
+  network: tcp
+  port: 2022
+  score: 9.226223972988182
+  server: 81.12.33.180
+  sim_score: 1.7238516584562105
+  speed: 32.79
+  tls: false
+  type: vmess
+  uuid: f993b24a-015f-4127-9bb1-ad5272f81961
+  ws-opts: {}
+- alterId: 0
+  latency: 42.71
+  name: ⚡️Telegram = @SOSkeyNET
+  network: ws
+  port: 8080
+  score: 9.049402950128776
+  server: 172.64.149.182
+  sim_score: 1.0702497568058866
+  speed: 38.65
+  tls: false
+  type: vmess
+  uuid: nasnet
+  ws-opts: {}
+- alterId: 0
+  latency: 44.47
+  name: 🇺🇸 VMESS-美国>德国-NF解锁印度地区非自制剧-ChatGPT-TikTok-YouTube-support.zoom.us:8080
+  network: ws
+  port: 8080
+  score: 9.02855857881718
+  server: support.zoom.us
+  sim_score: 1.3910697934866243
+  speed: 40.15
+  tls: false
+  type: vmess
+  uuid: 44e57485-eccc-46ef-808f-cd17ac810018
+  ws-opts: {}
+- alterId: 0
+  latency: 39.19
+  name: 🟣🔥+Channel+Server+Free+@Farah_VPN
   network: ws
   port: 443
-  score: 5.038436899423447
-  server: 57.129.28.65
-  sim_score: 2.364256278566556
-  speed: 15.73
+  score: 8.953814748660374
+  server: seoul03.zgjok.com
+  sim_score: 3.454072840046219
+  speed: 35.09
   tls: true
   type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  uuid: 72a0dac4-9689-4a57-b164-5c65bfa94772
   ws-opts: {}
-- cipher: chacha20-ietf-poly1305
-  latency: 31.93
-  name: raw_node
-  password: JJf2SrUOE4ellIwynkbUxt
-  port: 65262
-  score: 4.913874099592859
-  server: h110vpntr.outlinekeys.net
-  sim_score: 2.854460060969183
-  speed: 15.69
-  type: ss
 - alterId: 0
-  latency: 28.63
-  name: 🇺🇸 US美国(mibei77.com 米贝节点分享)
+  latency: 39.35
+  name: '@Hope_Net-join-us-on-Telegram'
   network: ws
-  port: 80
-  score: 4.903946908836884
-  server: 90.890624.xyz
-  sim_score: 0.8647887887843271
-  speed: 14.04
+  port: 8080
+  score: 8.84879288437103
+  server: 172.67.199.221
+  sim_score: 1.3780264792674455
+  speed: 34.82
   tls: false
   type: vmess
-  uuid: b020865b-7404-4894-ba65-a7414b10cda3
+  uuid: b551aa22-22af-11ee-b8d8-f23c932eb68d
   ws-opts: {}
 - alterId: 0
-  latency: 41.88
+  latency: 38.73
   name: کانال ما @vpnmasi
   network: ws
-  port: 2052
-  score: 4.887774594078318
-  server: 45.85.118.83
-  sim_score: 2.163228200762592
-  speed: 20.47
-  tls: false
-  type: vmess
-  uuid: 6066abf1-cdb1-4818-d35a-7c8e0ee90320
-  ws-opts: {}
-- alterId: 0
-  latency: 31.38
-  name: 未知7
-  network: ws
   port: 443
-  score: 4.866156787762907
-  server: 15.235.85.156
-  sim_score: 0.7012637396014643
-  speed: 15.27
+  score: 8.582494190549962
+  server: 45.85.118.1
+  sim_score: 3.8420897977027386
+  speed: 33.24
   tls: true
   type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  uuid: A59E320C-BAC6-45E3-8A27-1518610708D0
   ws-opts: {}
+- cipher: aes-256-cfb
+  latency: 37.59
+  name: pt|6ec4|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 8.435754189944134
+  server: 185.231.233.112
+  sim_score: 2.1805806695516075
+  speed: 31.71
+  type: ss
 - alterId: 0
-  latency: 55.21
-  name: 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  latency: 41.01
+  name: 🇺🇸 美国 CloudFlare节点
   network: ws
-  port: 443
-  score: 4.732838253939503
-  server: 57.128.189.241
-  sim_score: 0.6604232262513192
-  speed: 26.13
+  port: 8443
+  score: 8.40039014874421
+  server: 162.159.152.4
+  sim_score: 5.908360990858755
+  speed: 34.45
   tls: true
   type: vmess
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  ws-opts: {}
-- alterId: 0
-  latency: 30.45
-  name: 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  network: ws
-  port: 80
-  score: 4.620689655172415
-  server: mmmju.890634.xyz
-  sim_score: 4.456213327482866
-  speed: 14.07
-  tls: false
-  type: vmess
-  uuid: b9bb332d-5e0d-41af-adac-49362dde8661
+  uuid: 19e52bf4-1b7d-4bd4-ae66-6ca024436c17
   ws-opts: {}
 - alterId: 2
-  latency: 35.8
-  name: 🇭🇰HK-219.79.187.188-5056
-  network: ws
+  latency: 45.07
+  name: 🇭🇰 香港|@ripaojiedian
+  network: tcp
   port: 30807
-  score: 4.346368715083799
-  server: v10.heduian.link
-  sim_score: 0.6677180354317416
-  speed: 15.56
+  score: 8.187264255602395
+  server: v10.hdacd.com
+  sim_score: 1.134034651345227
+  speed: 36.9
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
   ws-opts: {}
 - alterId: 0
-  latency: 44.26
-  name: 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  latency: 42.8
+  name: 🇦🇺 VMESS-未知>澳大利亚-NF解锁澳大利亚自制剧-ChatGPT-TikTok-YouTube-sy4.620720.xyz:443
   network: ws
   port: 443
-  score: 4.340262087663805
-  server: 141.95.126.134
-  sim_score: 4.480877898259485
-  speed: 19.21
+  score: 8.177570093457945
+  server: sy4.620720.xyz
+  sim_score: 1.2152020001710546
+  speed: 35.0
+  tls: true
+  type: vmess
+  uuid: 516d8a7a-3f0b-41d3-bad0-246116381516
+  ws-opts: {}
+- cipher: chacha20-ietf-poly1305
+  latency: 37.81
+  name: xx|4939|puddincat07@Telegram
+  password: kaQH3hGdcP80XEDI
+  port: 443
+  score: 7.950277704311029
+  server: admin.c2.havij.co
+  sim_score: 3.4441385548738355
+  speed: 30.06
+  type: ss
+- cipher: aes-256-cfb
+  latency: 37.31
+  name: ru|5599|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 7.837041007772713
+  server: 38.60.223.8
+  sim_score: 1.251464762097959
+  speed: 29.24
+  type: ss
+- alterId: 0
+  latency: 39.36
+  name: 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-209.126.84.189:443
+  network: ws
+  port: 443
+  score: 7.807418699186992
+  server: 209.126.84.189
+  sim_score: 3.063417566217042
+  speed: 30.73
+  tls: false
+  type: vmess
+  uuid: 2c981164-9b93-4bca-94ff-b78d3f8498d7
+  ws-opts: {}
+- alterId: 0
+  latency: 35.26
+  name: 美国 v2rayfree.eu.org
+  network: ws
+  port: 443
+  score: 7.305728871242202
+  server: 23.162.200.227
+  sim_score: 1.3237561310578905
+  speed: 25.76
   tls: true
   type: vmess
   uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
 - alterId: 0
-  latency: 30.92
-  name: 🇺🇸 US美国(mibei77.com 米贝节点分享)
+  latency: 47.08
+  name: 🇲🇾MY-47.250.45.234-5029
   network: ws
-  port: 80
-  score: 3.8292367399741267
-  server: mMmKi.890634.xyZ
-  sim_score: 3.2503891995430347
-  speed: 11.84
+  port: 43063
+  score: 7.153780798640613
+  server: 47.250.45.234
+  sim_score: 0.8577403217167732
+  speed: 33.68
   tls: false
   type: vmess
-  uuid: 5cccb4da-8aee-4b01-be84-2056265e52dc
+  uuid: c77f48f5-4be3-4461-b52b-49998e7b897b
   ws-opts: {}
 - alterId: 0
-  latency: 28.29
-  name: 🇺🇸 US美国(mibei77.com 米贝节点分享)
+  latency: 40.92
+  name: '@Hope_Net-join-us-on-Telegram'
   network: ws
-  port: 80
-  score: 3.5949098621421
-  server: eEfrT.890699.xYz
-  sim_score: 1.159807218833713
-  speed: 10.17
+  port: 443
+  score: 7.138318670576735
+  server: 104.21.75.142
+  sim_score: 1.4569715410569897
+  speed: 29.21
+  tls: true
+  type: vmess
+  uuid: 251780c1-1501-43b3-be2a-d144a20d479a
+  ws-opts: {}
+- alterId: 0
+  latency: 36.63
+  name: '>>@configV2rayNG::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE'
+  network: tcp
+  port: 550
+  score: 7.0133770133770135
+  server: 162.19.248.238
+  sim_score: 1.1611821826756237
+  speed: 25.69
   tls: false
   type: vmess
-  uuid: 98b419ef-83a2-4d1b-a23d-566b7f24477b
+  uuid: ede27a79-b039-490b-932c-495de4b68880
   ws-opts: {}
 - alterId: 0
-  latency: 30.08
+  latency: 44.41
+  name: 🇭🇰HK-47.244.120.197-5014
+  network: ws
+  port: 36703
+  score: 6.996172033325828
+  server: 47.244.120.197
+  sim_score: 1.3883119624279368
+  speed: 31.07
+  tls: false
+  type: vmess
+  uuid: 45b83519-9c4f-4052-a11b-02e017b636d4
+  ws-opts: {}
+- alterId: 0
+  latency: 41.84
+  name: 🇺🇸 美国 CloudFlare节点
+  network: ws
+  port: 443
+  score: 6.7208413001912035
+  server: 6c00bf1f-a569-4d54-9f71-a13611801867.661.qzz.io
+  sim_score: 1.074270943425014
+  speed: 28.12
+  tls: true
+  type: vmess
+  uuid: 0c6b96bc-5e3a-4500-8497-6dead1965609
+  ws-opts: {}
+- alterId: 0
+  latency: 36.67
+  name: '@v2rays_ha 7265'
+  network: tcp
+  port: 2020
+  score: 6.471229888191983
+  server: cip.ertebatgoostar.ir
+  sim_score: 2.1014428888914036
+  speed: 23.73
+  tls: false
+  type: vmess
+  uuid: 076928f9-8df8-4a71-9e1c-c75658fe3140
+  ws-opts: {}
+- alterId: 0
+  latency: 39.0
+  name: کانال ما @vpnmasi
+  network: ws
+  port: 2052
+  score: 6.410256410256411
+  server: 45.85.118.83
+  sim_score: 0.8475929485199395
+  speed: 25.0
+  tls: false
+  type: vmess
+  uuid: 6066abf1-cdb1-4818-d35a-7c8e0ee90320
+  ws-opts: {}
+- alterId: 0
+  latency: 36.74
+  name: ✅ @ShadowSocks_S
+  network: ws
+  port: 8443
+  score: 6.175830157866086
+  server: 45.85.118.88
+  sim_score: 2.0829801602362403
+  speed: 22.69
+  tls: true
+  type: vmess
+  uuid: 9ae8b6c1-744f-4afe-c27d-f3b38e79d975
+  ws-opts: {}
+- alterId: 32
+  latency: 37.29
+  name: 🇺🇸US-77.83.141.171-1131
+  network: ws
+  port: 443
+  score: 6.143738267632073
+  server: vc.fly.dev
+  sim_score: 2.225927902558471
+  speed: 22.91
+  tls: true
+  type: vmess
+  uuid: 35379219-6535-4f2e-a4fe-3e44f61e0eee
+  ws-opts: {}
+- alterId: 0
+  cipher: auto
+  client-fingerprint: chrome
+  latency: 38.85
+  name: ca|5f1a|puddincat07@Telegram
+  network: ws
+  port: 80
+  score: 6.082368082368081
+  server: 51.79.102.253
+  sim_score: 2.943550926573311
+  skip-cert-verify: true
+  speed: 23.63
+  tls: false
+  type: vmess
+  uuid: 58fe1542-5290-40ad-815a-77707a81afe5
+  ws-opts:
+    headers:
+      host: ''
+    path: /IOebhLMhl1CTbFHbL95myfRX2
+- alterId: 0
+  latency: 42.65
+  name: 0|--86
+  network: ws
+  port: 443
+  score: 5.917936694021102
+  server: 57.129.24.124
+  sim_score: 1.182375788263342
+  speed: 25.24
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 35.94
+  name: 0|--38
+  network: ws
+  port: 443
+  score: 5.726210350584307
+  server: 15.235.83.227
+  sim_score: 2.144931527820261
+  speed: 20.58
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 38.13
+  name: '@v2rayngzendegimamad🕊️'
+  network: ws
+  port: 443
+  score: 5.656963021243115
+  server: 141.94.155.229
+  sim_score: 1.1998190146026877
+  speed: 21.57
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 50.97
+  name: 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-v2ray.codefyinc.com:443
+  network: ws
+  port: 443
+  score: 5.309005297233666
+  server: v2ray.codefyinc.com
+  sim_score: 0.9984863702037851
+  speed: 27.06
+  tls: false
+  type: vmess
+  uuid: 2c981164-9b93-4bca-94ff-b78d3f8498d7
+  ws-opts: {}
+- alterId: 0
+  latency: 36.0
+  name: 'channel : @freedomofinfor'
+  network: ws
+  port: 8443
+  score: 5.222222222222222
+  server: 162.159.5.245
+  sim_score: 1.197307077719951
+  speed: 18.8
+  tls: true
+  type: vmess
+  uuid: 6bad5162-c626-43ce-a4da-f8c7d9e6846f
+  ws-opts: {}
+- alterId: 0
+  latency: 43.81
+  name: '@v2rays_ha 7267'
+  network: ws
+  port: 443
+  score: 5.1609221638895235
+  server: www.visa.com.hk
+  sim_score: 1.9444496243046736
+  speed: 22.61
+  tls: true
+  type: vmess
+  uuid: 95037be4-a578-4d31-a0a0-951cb09c746f
+  ws-opts: {}
+- alterId: 0
+  latency: 40.74
+  name: 🇯🇵JP-47.74.52.195-0432
+  network: ws
+  port: 443
+  score: 4.982817869415808
+  server: n1753598448.74qxv.top
+  sim_score: 0.7826389441379866
+  speed: 20.3
+  tls: true
+  type: vmess
+  uuid: 3cd6f849-078e-4da9-8080-a2791b51b766
+  ws-opts: {}
+- alterId: 0
+  latency: 37.3
+  name: 'Channel id: @ShadowProxy66🇩🇪'
+  network: ws
+  port: 443
+  score: 4.978552278820375
+  server: 57.129.64.238
+  sim_score: 1.3763268566401123
+  speed: 18.57
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 35.95
+  name: 🇺🇸 美国 CloudFlare节点
+  network: ws
+  port: 80
+  score: 4.873435326842836
+  server: fffffg.890602.pp.ua
+  sim_score: 0.8542189126125894
+  speed: 17.52
+  tls: false
+  type: vmess
+  uuid: 4a7baca1-8048-4a91-8316-595b36657a54
+  ws-opts: {}
+- alterId: 0
+  latency: 36.91
+  name: 🇬🇧TM (@AZARBAYJAB1)
+  network: ws
+  port: 2086
+  score: 4.781901923597941
+  server: 141.101.123.123
+  sim_score: 1.9710481174221537
+  speed: 17.65
+  tls: false
+  type: vmess
+  uuid: bf67437e-6c90-45ca-abc2-c7240a5ce2aa
+  ws-opts: {}
+- alterId: 0
+  latency: 37.59
+  name: 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  network: ws
+  port: 443
+  score: 4.642192072359669
+  server: 57.129.28.213
+  sim_score: 1.466371485242559
+  speed: 17.45
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.92
+  name: 🇰🇷KR-146.56.136.237-0359
+  network: ws
+  port: 443
+  score: 4.572047670639219
+  server: seoul02.zgjok.com
+  sim_score: 0.7670627401901874
+  speed: 16.88
+  tls: true
+  type: vmess
+  uuid: 1a1e5196-eab4-4772-9012-65c27f19a524
+  ws-opts: {}
+- alterId: 0
+  latency: 39.34
+  name: '>>@configV2rayNG::DE'
+  network: tcp
+  port: 2087
+  score: 4.56532791052364
+  server: servers.xvon.in
+  sim_score: 1.4392792532040644
+  speed: 17.96
+  tls: true
+  type: vmess
+  uuid: 43a7c6fd-c52d-4e1a-ba2b-b7a5d393bea0
+  ws-opts: {}
+- alterId: 0
+  latency: 36.78
+  name: 'channel : @freedomofinfor'
+  network: tcp
+  port: 1074
+  score: 4.564980967917346
+  server: s1.connect.bloroxy.net
+  sim_score: 2.8493933347071514
+  speed: 16.79
+  tls: false
+  type: vmess
+  uuid: 343bfa1a-f8c1-49e1-9bd8-e2f2360f5a7b
+  ws-opts: {}
+- alterId: 0
+  latency: 51.02
+  name: 'Telegram : @V2ynpv'
+  network: tcp
+  port: 2024
+  score: 4.541356330850647
+  server: 81.12.33.180
+  sim_score: 2.2981977757336502
+  speed: 23.17
+  tls: false
+  type: vmess
+  uuid: c92b7747-4222-4aa0-8c91-5753b8c759f4
+  ws-opts: {}
+- alterId: 0
+  latency: 42.92
   name: '[🏁]t.me/ConfigsHub'
   network: ws
   port: 443
-  score: 3.4807180851063837
+  score: 4.443150046598323
   server: chatgpt.com
-  sim_score: 1.2162274811510025
-  speed: 10.47
+  sim_score: 0.9011755103855755
+  speed: 19.07
   tls: true
   type: vmess
   uuid: c536cef5-0421-4021-a2cf-29e3759a7463
   ws-opts: {}
 - alterId: 0
-  latency: 103.59
-  name: 🇭🇰@FreakConfig
-  network: ws
-  port: 55185
-  score: 3.3835312288830965
-  server: 8.210.79.212
-  sim_score: 2.480313453367855
-  speed: 35.05
-  tls: false
-  type: vmess
-  uuid: aa3c3018-288b-46f3-af1c-9044e18d6e5b
-  ws-opts: {}
-- alterId: 0
-  latency: 39.47
-  name: 🇺🇸 US美国(mibei77.com 米贝节点分享)
+  latency: 43.34
+  name: 🇺🇸 美国 CloudFlare节点
   network: ws
   port: 8443
-  score: 3.28350646060299
+  score: 4.439317028149515
   server: 172.64.152.23
-  sim_score: 0.8988373454822154
-  speed: 12.96
+  sim_score: 1.6683277954222129
+  speed: 19.24
   tls: true
   type: vmess
   uuid: 19e52bf4-1b7d-4bd4-ae66-6ca024436c17
   ws-opts: {}
 - alterId: 0
-  latency: 68.61
-  name: 🇭🇰HK-47.242.31.79-4867
+  latency: 36.75
+  name: N/A-@V2rayAlpha-8
+  network: ws
+  port: 8080
+  score: 4.274829931972789
+  server: 104.21.69.44
+  sim_score: 3.2232327690902367
+  speed: 15.71
+  tls: false
+  type: vmess
+  uuid: nasnet
+  ws-opts: {}
+- alterId: 0
+  latency: 42.29
+  name: 🇹🇷@v2_mod_shop
+  network: ws
+  port: 80
+  score: 4.164104989359187
+  server: tr1-smart.adelping.com
+  sim_score: 1.8928011645675455
+  speed: 17.61
+  tls: false
+  type: vmess
+  uuid: 43dcdce1-3cea-4193-bc8d-90b92071d779
+  ws-opts: {}
+- alterId: 0
+  latency: 37.14
+  name: 🇨🇦 VMESS-加拿大-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-15.235.41.200:80
+  network: ws
+  port: 80
+  score: 4.076467420570814
+  server: 15.235.41.200
+  sim_score: 2.2111066934256023
+  speed: 15.14
+  tls: false
+  type: vmess
+  uuid: 58fe1542-5290-40ad-815a-77707a81afe5
+  ws-opts: {}
+- alterId: 0
+  latency: 41.53
+  name: '>>@oneclickvpnkeys::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR'
+  network: tcp
+  port: 45653
+  score: 4.026005297375391
+  server: 94.232.247.165
+  sim_score: 2.0461854016220644
+  speed: 16.72
+  tls: false
+  type: vmess
+  uuid: 9e91d19a-c73f-4276-adbc-b337c374259c
+  ws-opts: {}
+- alterId: 0
+  latency: 41.32
+  name: 🇨🇦 Canada
   network: ws
   port: 443
-  score: 2.254773356653549
-  server: n1761214904.wpg27.xyz
-  sim_score: 2.482136529399315
-  speed: 15.47
+  score: 3.9666021297192646
+  server: 15.235.83.228
+  sim_score: 0.8034990767651505
+  speed: 16.39
   tls: true
   type: vmess
-  uuid: 7f6f64ae-3778-434c-adfc-95cb67ee8b73
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 41.33
+  name: '@NIGHTGEMSHOP'
+  network: ws
+  port: 443
+  score: 3.9148318412775223
+  server: nl-cdn2.nigtgemshopnew.org
+  sim_score: 1.3631006456508539
+  speed: 16.18
+  tls: true
+  type: vmess
+  uuid: 31b7fbb4-2511-4e96-8461-be5ae7b6c56a
+  ws-opts: {}
+- alterId: 0
+  latency: 42.89
+  name: 北美地区 v2rayfree.eu.org
+  network: ws
+  port: 443
+  score: 3.8423875029144323
+  server: 134.195.198.147
+  sim_score: 0.6665281597497265
+  speed: 16.48
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 37.15
+  name: horn_proxy 3
+  network: tcp
+  port: 8595
+  score: 3.7927321668909824
+  server: 81.12.33.180
+  sim_score: 0.9645246742174753
+  speed: 14.09
+  tls: false
+  type: vmess
+  uuid: 5b947df3-5e73-47e4-a2d3-fdbb2a3ed1ac
+  ws-opts: {}
+- alterId: 2
+  latency: 36.57
+  name: 🇭🇰HK-219.79.187.188-5056
+  network: ws
+  port: 30807
+  score: 3.770850423844681
+  server: v10.heduian.link
+  sim_score: 2.797222019656203
+  speed: 13.79
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  ws-opts: {}
+- alterId: 0
+  latency: 40.67
+  name: 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  network: ws
+  port: 443
+  score: 3.5234816818293577
+  server: 57.129.59.199
+  sim_score: 0.854529740266567
+  speed: 14.33
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 41.14
+  name: 'تلگرنام : V2ynpv@'
+  network: ws
+  port: 443
+  score: 3.393291200777832
+  server: cloud.nexun.ir
+  sim_score: 1.2412795557662957
+  speed: 13.96
+  tls: true
+  type: vmess
+  uuid: cf000403-1a6b-43c5-b07f-5e7c7949b4dc
+  ws-opts: {}
+- alterId: 0
+  latency: 36.51
+  name: 未知13
+  network: ws
+  port: 80
+  score: 3.2840317721172285
+  server: 57.129.132.223
+  sim_score: 1.6664185775813045
+  speed: 11.99
+  tls: false
+  type: vmess
+  uuid: a25cbf11-2908-4a1b-a3a8-9a571777dca3
+  ws-opts: {}
+- cipher: aes-128-gcm
+  latency: 43.65
+  name: us|7058|puddincat07@Telegram
+  password: shadowsocks
+  port: 443
+  score: 3.179839633447881
+  server: 156.146.38.167
+  sim_score: 1.1856417095284848
+  speed: 13.88
+  type: ss
+- alterId: 0
+  latency: 60.94
+  name: 🇺🇸 美国 Cloudinnovation数据中心
+  network: ws
+  port: 2086
+  score: 3.0685920577617325
+  server: 154.83.2.156
+  sim_score: 1.9419277783100306
+  speed: 18.7
+  tls: false
+  type: vmess
+  uuid: 92373ed1-78a8-4cbe-aa06-54af1edd0471
+  ws-opts: {}
+- alterId: 0
+  latency: 48.98
+  name: 🇺🇸 美国 CloudFlare节点
+  network: ws
+  port: 443
+  score: 2.8664761126990608
+  server: jjjk.191268.xyz
+  sim_score: 1.749819992924103
+  speed: 14.04
+  tls: true
+  type: vmess
+  uuid: 5cccb4da-8aee-4b01-be84-2056265e52dc
+  ws-opts: {}
+- alterId: 0
+  latency: 41.9
+  name: '@appsooner کانال تلگرام 🕊️'
+  network: tcp
+  port: 2021
+  score: 2.725536992840096
+  server: 81.12.33.180
+  sim_score: 1.1676656068853077
+  speed: 11.42
+  tls: false
+  type: vmess
+  uuid: 5b947df3-5e73-47e4-a2d3-fdbb2a3ed1ac
+  ws-opts: {}
+- cipher: chacha20-ietf-poly1305
+  latency: 38.14
+  name: gb|e687|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: 8080
+  score: 2.593078133193498
+  server: 82.38.31.208
+  sim_score: 1.9481984027869643
+  speed: 9.89
+  type: ss
+- alterId: 0
+  latency: 42.79
+  name: '>>@oneclickvpnkeys::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA'
+  network: ws
+  port: 80
+  score: 2.5052582379060526
+  server: 51.79.103.76
+  sim_score: 1.7215757187519862
+  speed: 10.72
+  tls: false
+  type: vmess
+  uuid: 58fe1542-5290-40ad-815a-77707a81afe5
+  ws-opts: {}
+- alterId: 0
+  latency: 35.81
+  name: ➤ @netshekan99
+  network: ws
+  port: 8080
+  score: 2.5048869030996928
+  server: 172.67.204.84
+  sim_score: 0.9227557257051249
+  speed: 8.97
+  tls: false
+  type: vmess
+  uuid: nasnet
+  ws-opts: {}
+- alterId: 0
+  latency: 36.36
+  name: 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  network: ws
+  port: 443
+  score: 2.411991199119912
+  server: 57.129.59.193
+  sim_score: 3.7880707675676764
+  speed: 8.77
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 36.16
+  name: 🇨🇦TM (@AZARBAYJAB1)
+  network: ws
+  port: 8080
+  score: 2.3285398230088497
+  server: 104.24.169.183
+  sim_score: 3.3816375803021343
+  speed: 8.42
+  tls: false
+  type: vmess
+  uuid: nasnet
+  ws-opts: {}
+- alterId: 0
+  latency: 40.67
+  name: 🇫🇷FR-57.128.189.240-4733
+  network: ws
+  port: 443
+  score: 2.1686746987951806
+  server: 57.128.189.240
+  sim_score: 2.7093822545557824
+  speed: 8.82
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+  ws-opts: {}
+- alterId: 0
+  latency: 43.05
+  name: 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-cg1c07.waimaojd.com:443
+  network: ws
+  port: 443
+  score: 2.1602787456445998
+  server: cg1c07.waimaojd.com
+  sim_score: 1.214654671618923
+  speed: 9.3
+  tls: true
+  type: vmess
+  uuid: be8e3136-b874-4085-bd23-ec3699300490
+  ws-opts: {}
+- alterId: 0
+  latency: 43.41
+  name: 🇧🇷BR巴西
+  network: ws
+  port: 8080
+  score: 2.024879060124395
+  server: 188.114.98.0
+  sim_score: 1.8757910466708316
+  speed: 8.79
+  tls: false
+  type: vmess
+  uuid: nasnet
+  ws-opts: {}
+- alterId: 0
+  latency: 43.44
+  name: 'Channel id: @ShadowProxy66🇩🇪'
+  network: ws
+  port: 443
+  score: 1.9452117863720073
+  server: 57.129.28.65
+  sim_score: 2.3115125957543996
+  speed: 8.45
+  tls: true
+  type: vmess
+  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
   ws-opts: {}
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - 🇺🇸US-77.83.141.171-1131
-  - '>>@v2ray_configs_pool::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::TR::TR::TR::TR::TR::TR::TR::TR::TR::TR::TR'
-  - nl|37c0|puddincat07@Telegram
-  - 未知20
-  - 🇦🇺 VMESS-未知>澳大利亚-NF解锁澳大利亚自制剧-ChatGPT-TikTok-YouTube-sy4.620720.xyz:443
-  - us|dbef|puddincat07@Telegram
-  - 🇹🇷@v2_mod_shop
-  - ⚡Telegram = @prrofile_purple
-  - 🇺🇸 美国 V2CROSS.COM
-  - '@NIGHTGEMSHOP'
-  - 🇨🇦 VMESS-加拿大-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-51.79.102.253:80
-  - 'channel : @freedomofinfor'
-  - 🇺🇸 美国 CloudFlare节点
-  - 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-cg1c01.waimaojd.com:443
-  - 0|--86
-  - 🇩🇪DE-57.129.25.20-1271
-  - '@proxy_kafee🇩🇪'
-  - 🇨🇦CA-15.235.50.172-1645
-  - 'Telegram : @V2ynpv'
-  - 🏁RELAY-172.67.197.47-0435
-  - '[🏁]t.me/ConfigsHub'
-  - 🇺🇸 美国 CloudFlare节点
-  - 🇨🇦TM (@AZARBAYJAB1)
-  - 美国东部阿什本1 | 0.5x_1
-  - 🇺🇸 VMESS-美国>德国-NF解锁印度地区非自制剧-ChatGPT-TikTok-YouTube-support.zoom.us:8080
-  - '[96419] - Telegram : @V2All'
-  - '@Hope_Net-join-us-on-Telegram'
-  - '>>@configV2rayNG::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE'
-  - jp|6fb9|puddincat07@Telegram
-  - '>>@prrofile_purple::US::XX::US::US::US::US::US::US::US::XX::XX::XX::XX'
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - 🇺🇸 美国 CloudFlare节点
-  - '>>@oneclickvpnkeys::US::US::US::US::US::US::US::US::US::US'
-  - '@NIGHTGEMSHOP'
-  - '@v2rays_ha 7253'
-  - t.me/entryNET
-  - 🇨🇦 CA加拿大(mibei77.com 米贝节点分享)
-  - '>>@oneclickvpnkeys::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR'
-  - 'Telegram : @V2ynpv'
-  - 'تلٯرام : @V2ynpv'
-  - 🇫🇷FR-91.134.8.101-4758
-  - '>>@oneclickvpnkeys::US::US::US::US::US'
-  - '@ho3ino00 آخوند ریقو🤣'
-  - ⚡Telegram = @prrofile_purple
-  - 🇬🇧 英国 V2CROSS.COM
+  - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
   - '@v2rayngzendegimamad🕊️'
   - (@VmessProtocol)برای خرید و اتصال دائمی جوین شو🇩🇪
-  - '@v2rays_ha 7265'
-  - gb|805e|puddincat07@Telegram
-  - horn_proxy 3
-  - MCi-@V2rayAlpha-12
-  - 'تلگرنام : V2ynpv@'
-  - 🇨🇦TM (@AZARBAYJAB1)
-  - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
-  - gb|e797|puddincat07@Telegram
-  - 🇮🇷 伊朗 V2CROSS.COM
-  - 未知3 789.8KB/s
-  - 🇬🇧TM (@AZARBAYJAB1)
-  - ☮️77@oneclickvpnkeys
-  - '@v2rays_ha 7295'
-  - 🇭🇰HK-47.243.244.164-4820
+  - 🇨🇦@FreakConfig
+  - ☬SHΞN™
+  - 🇺🇸 ConfigV2RayNG
+  - xx|7a15|puddincat07@Telegram
+  - '@v2raychannel          عضو شید'
+  - '@ho3ino00👳🏽‍♂️ آخوندک'
+  - 'تلٯرام : @V2ynpv'
   - '@appsooner کانال تلگرام 🕊️'
-  - '>>@prrofile_purple::IN'
-  - '@v2rayngzendegimamad🕊️'
-  - '@v2rayngzendegimamad🕊️'
-  - us|f79c|puddincat07@Telegram
-  - 🇲🇾MY-47.250.45.234-5028
-  - 'Telegram : @V2ynpv'
-  - HK
-  - 🇺🇸 VMESS-美国-ChatGPT-TikTok-YouTube-cg1c14.waimaojd.com:443
-  - TM (@AZARBAYJAB1)
+  - 🇫🇷FR-91.134.8.101-4758
   - 🇺🇸 美国 CloudFlare节点
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - 🇬🇧TM (@AZARBAYJAB1)
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - '@vpnbaz 🎯'
-  - ✅ @ShadowSocks_S
-  - 'Channel id: @ShadowProxy66🇩🇪'
-  - raw_node
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - کانال ما @vpnmasi
-  - 未知7
+  - '>>@oneclickvpnkeys::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE'
+  - 🇺🇸US美国8
   - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
+  - 🇺🇸 美国 CloudFlare节点
+  - 🇨🇦TM (@AZARBAYJAB1)
+  - 🇺🇸 美国 CloudFlare节点
+  - '>>@prrofile_purple::IN'
+  - 🇺🇸US美国9
+  - ⚡Telegram = @prrofile_purple
+  - ⚡️Telegram = @SOSkeyNET
+  - 🇺🇸 VMESS-美国>德国-NF解锁印度地区非自制剧-ChatGPT-TikTok-YouTube-support.zoom.us:8080
+  - 🟣🔥+Channel+Server+Free+@Farah_VPN
+  - '@Hope_Net-join-us-on-Telegram'
+  - کانال ما @vpnmasi
+  - pt|6ec4|puddincat07@Telegram
+  - 🇺🇸 美国 CloudFlare节点
+  - 🇭🇰 香港|@ripaojiedian
+  - 🇦🇺 VMESS-未知>澳大利亚-NF解锁澳大利亚自制剧-ChatGPT-TikTok-YouTube-sy4.620720.xyz:443
+  - xx|4939|puddincat07@Telegram
+  - ru|5599|puddincat07@Telegram
+  - 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-209.126.84.189:443
+  - 美国 v2rayfree.eu.org
+  - 🇲🇾MY-47.250.45.234-5029
+  - '@Hope_Net-join-us-on-Telegram'
+  - '>>@configV2rayNG::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE'
+  - 🇭🇰HK-47.244.120.197-5014
+  - 🇺🇸 美国 CloudFlare节点
+  - '@v2rays_ha 7265'
+  - کانال ما @vpnmasi
+  - ✅ @ShadowSocks_S
+  - 🇺🇸US-77.83.141.171-1131
+  - ca|5f1a|puddincat07@Telegram
+  - 0|--86
+  - 0|--38
+  - '@v2rayngzendegimamad🕊️'
+  - 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-v2ray.codefyinc.com:443
+  - 'channel : @freedomofinfor'
+  - '@v2rays_ha 7267'
+  - 🇯🇵JP-47.74.52.195-0432
+  - 'Channel id: @ShadowProxy66🇩🇪'
+  - 🇺🇸 美国 CloudFlare节点
+  - 🇬🇧TM (@AZARBAYJAB1)
+  - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  - 🇰🇷KR-146.56.136.237-0359
+  - '>>@configV2rayNG::DE'
+  - 'channel : @freedomofinfor'
+  - 'Telegram : @V2ynpv'
+  - '[🏁]t.me/ConfigsHub'
+  - 🇺🇸 美国 CloudFlare节点
+  - N/A-@V2rayAlpha-8
+  - 🇹🇷@v2_mod_shop
+  - 🇨🇦 VMESS-加拿大-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-15.235.41.200:80
+  - '>>@oneclickvpnkeys::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR'
+  - 🇨🇦 Canada
+  - '@NIGHTGEMSHOP'
+  - 北美地区 v2rayfree.eu.org
+  - horn_proxy 3
   - 🇭🇰HK-219.79.187.188-5056
   - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - '[🏁]t.me/ConfigsHub'
-  - 🇭🇰@FreakConfig
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - 🇭🇰HK-47.242.31.79-4867
+  - 'تلگرنام : V2ynpv@'
+  - 未知13
+  - us|7058|puddincat07@Telegram
+  - 🇺🇸 美国 Cloudinnovation数据中心
+  - 🇺🇸 美国 CloudFlare节点
+  - '@appsooner کانال تلگرام 🕊️'
+  - gb|e687|puddincat07@Telegram
+  - '>>@oneclickvpnkeys::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA'
+  - ➤ @netshekan99
+  - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  - 🇨🇦TM (@AZARBAYJAB1)
+  - 🇫🇷FR-57.128.189.240-4733
+  - 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-cg1c07.waimaojd.com:443
+  - 🇧🇷BR巴西
+  - 'Channel id: @ShadowProxy66🇩🇪'
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - 🇺🇸US-77.83.141.171-1131
-  - '>>@v2ray_configs_pool::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::TR::TR::TR::TR::TR::TR::TR::TR::TR::TR::TR'
-  - nl|37c0|puddincat07@Telegram
-  - 未知20
-  - 🇦🇺 VMESS-未知>澳大利亚-NF解锁澳大利亚自制剧-ChatGPT-TikTok-YouTube-sy4.620720.xyz:443
-  - us|dbef|puddincat07@Telegram
-  - 🇹🇷@v2_mod_shop
-  - ⚡Telegram = @prrofile_purple
-  - 🇺🇸 美国 V2CROSS.COM
-  - '@NIGHTGEMSHOP'
-  - 🇨🇦 VMESS-加拿大-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-51.79.102.253:80
-  - 'channel : @freedomofinfor'
-  - 🇺🇸 美国 CloudFlare节点
-  - 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-cg1c01.waimaojd.com:443
-  - 0|--86
-  - 🇩🇪DE-57.129.25.20-1271
-  - '@proxy_kafee🇩🇪'
-  - 🇨🇦CA-15.235.50.172-1645
-  - 'Telegram : @V2ynpv'
-  - 🏁RELAY-172.67.197.47-0435
-  - '[🏁]t.me/ConfigsHub'
-  - 🇺🇸 美国 CloudFlare节点
-  - 🇨🇦TM (@AZARBAYJAB1)
-  - 美国东部阿什本1 | 0.5x_1
-  - 🇺🇸 VMESS-美国>德国-NF解锁印度地区非自制剧-ChatGPT-TikTok-YouTube-support.zoom.us:8080
-  - '[96419] - Telegram : @V2All'
-  - '@Hope_Net-join-us-on-Telegram'
-  - '>>@configV2rayNG::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE'
-  - jp|6fb9|puddincat07@Telegram
-  - '>>@prrofile_purple::US::XX::US::US::US::US::US::US::US::XX::XX::XX::XX'
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - 🇺🇸 美国 CloudFlare节点
-  - '>>@oneclickvpnkeys::US::US::US::US::US::US::US::US::US::US'
-  - '@NIGHTGEMSHOP'
-  - '@v2rays_ha 7253'
-  - t.me/entryNET
-  - 🇨🇦 CA加拿大(mibei77.com 米贝节点分享)
-  - '>>@oneclickvpnkeys::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR'
-  - 'Telegram : @V2ynpv'
-  - 'تلٯرام : @V2ynpv'
-  - 🇫🇷FR-91.134.8.101-4758
-  - '>>@oneclickvpnkeys::US::US::US::US::US'
-  - '@ho3ino00 آخوند ریقو🤣'
-  - ⚡Telegram = @prrofile_purple
-  - 🇬🇧 英国 V2CROSS.COM
+  - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
   - '@v2rayngzendegimamad🕊️'
   - (@VmessProtocol)برای خرید و اتصال دائمی جوین شو🇩🇪
-  - '@v2rays_ha 7265'
-  - gb|805e|puddincat07@Telegram
-  - horn_proxy 3
-  - MCi-@V2rayAlpha-12
-  - 'تلگرنام : V2ynpv@'
-  - 🇨🇦TM (@AZARBAYJAB1)
-  - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
-  - gb|e797|puddincat07@Telegram
-  - 🇮🇷 伊朗 V2CROSS.COM
-  - 未知3 789.8KB/s
-  - 🇬🇧TM (@AZARBAYJAB1)
-  - ☮️77@oneclickvpnkeys
-  - '@v2rays_ha 7295'
-  - 🇭🇰HK-47.243.244.164-4820
+  - 🇨🇦@FreakConfig
+  - ☬SHΞN™
+  - 🇺🇸 ConfigV2RayNG
+  - xx|7a15|puddincat07@Telegram
+  - '@v2raychannel          عضو شید'
+  - '@ho3ino00👳🏽‍♂️ آخوندک'
+  - 'تلٯرام : @V2ynpv'
   - '@appsooner کانال تلگرام 🕊️'
-  - '>>@prrofile_purple::IN'
-  - '@v2rayngzendegimamad🕊️'
-  - '@v2rayngzendegimamad🕊️'
-  - us|f79c|puddincat07@Telegram
-  - 🇲🇾MY-47.250.45.234-5028
-  - 'Telegram : @V2ynpv'
-  - HK
-  - 🇺🇸 VMESS-美国-ChatGPT-TikTok-YouTube-cg1c14.waimaojd.com:443
-  - TM (@AZARBAYJAB1)
+  - 🇫🇷FR-91.134.8.101-4758
   - 🇺🇸 美国 CloudFlare节点
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - 🇬🇧TM (@AZARBAYJAB1)
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - '@vpnbaz 🎯'
-  - ✅ @ShadowSocks_S
-  - 'Channel id: @ShadowProxy66🇩🇪'
-  - raw_node
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - کانال ما @vpnmasi
-  - 未知7
+  - '>>@oneclickvpnkeys::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE::AE'
+  - 🇺🇸US美国8
   - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
+  - 🇺🇸 美国 CloudFlare节点
+  - 🇨🇦TM (@AZARBAYJAB1)
+  - 🇺🇸 美国 CloudFlare节点
+  - '>>@prrofile_purple::IN'
+  - 🇺🇸US美国9
+  - ⚡Telegram = @prrofile_purple
+  - ⚡️Telegram = @SOSkeyNET
+  - 🇺🇸 VMESS-美国>德国-NF解锁印度地区非自制剧-ChatGPT-TikTok-YouTube-support.zoom.us:8080
+  - 🟣🔥+Channel+Server+Free+@Farah_VPN
+  - '@Hope_Net-join-us-on-Telegram'
+  - کانال ما @vpnmasi
+  - pt|6ec4|puddincat07@Telegram
+  - 🇺🇸 美国 CloudFlare节点
+  - 🇭🇰 香港|@ripaojiedian
+  - 🇦🇺 VMESS-未知>澳大利亚-NF解锁澳大利亚自制剧-ChatGPT-TikTok-YouTube-sy4.620720.xyz:443
+  - xx|4939|puddincat07@Telegram
+  - ru|5599|puddincat07@Telegram
+  - 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-209.126.84.189:443
+  - 美国 v2rayfree.eu.org
+  - 🇲🇾MY-47.250.45.234-5029
+  - '@Hope_Net-join-us-on-Telegram'
+  - '>>@configV2rayNG::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::XX::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE::DE'
+  - 🇭🇰HK-47.244.120.197-5014
+  - 🇺🇸 美国 CloudFlare节点
+  - '@v2rays_ha 7265'
+  - کانال ما @vpnmasi
+  - ✅ @ShadowSocks_S
+  - 🇺🇸US-77.83.141.171-1131
+  - ca|5f1a|puddincat07@Telegram
+  - 0|--86
+  - 0|--38
+  - '@v2rayngzendegimamad🕊️'
+  - 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-v2ray.codefyinc.com:443
+  - 'channel : @freedomofinfor'
+  - '@v2rays_ha 7267'
+  - 🇯🇵JP-47.74.52.195-0432
+  - 'Channel id: @ShadowProxy66🇩🇪'
+  - 🇺🇸 美国 CloudFlare节点
+  - 🇬🇧TM (@AZARBAYJAB1)
+  - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  - 🇰🇷KR-146.56.136.237-0359
+  - '>>@configV2rayNG::DE'
+  - 'channel : @freedomofinfor'
+  - 'Telegram : @V2ynpv'
+  - '[🏁]t.me/ConfigsHub'
+  - 🇺🇸 美国 CloudFlare节点
+  - N/A-@V2rayAlpha-8
+  - 🇹🇷@v2_mod_shop
+  - 🇨🇦 VMESS-加拿大-NF解锁加拿大地区非自制剧-ChatGPT-TikTok-YouTube-15.235.41.200:80
+  - '>>@oneclickvpnkeys::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR::FR'
+  - 🇨🇦 Canada
+  - '@NIGHTGEMSHOP'
+  - 北美地区 v2rayfree.eu.org
+  - horn_proxy 3
   - 🇭🇰HK-219.79.187.188-5056
   - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - '[🏁]t.me/ConfigsHub'
-  - 🇭🇰@FreakConfig
-  - 🇺🇸 US美国(mibei77.com 米贝节点分享)
-  - 🇭🇰HK-47.242.31.79-4867
+  - 'تلگرنام : V2ynpv@'
+  - 未知13
+  - us|7058|puddincat07@Telegram
+  - 🇺🇸 美国 Cloudinnovation数据中心
+  - 🇺🇸 美国 CloudFlare节点
+  - '@appsooner کانال تلگرام 🕊️'
+  - gb|e687|puddincat07@Telegram
+  - '>>@oneclickvpnkeys::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA::CA'
+  - ➤ @netshekan99
+  - 💜𝒄𝒉𝒂𝒏𝒏𝒆𝒍 👉 @Kia_Net 💜
+  - 🇨🇦TM (@AZARBAYJAB1)
+  - 🇫🇷FR-57.128.189.240-4733
+  - 🇺🇸 VMESS-美国-NF解锁自制剧-ChatGPT-TikTok-YouTube-cg1c07.waimaojd.com:443
+  - 🇧🇷BR巴西
+  - 'Channel id: @ShadowProxy66🇩🇪'
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
