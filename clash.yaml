@@ -3,55 +3,65 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-cfb
-  latency: 31.15
-  name: hk|3158|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 8.109149277688605
-  server: 203.23.128.33
-  sim_score: 1.9418623658832792
-  speed: 25.26
+- cipher: chacha20-ietf-poly1305
+  latency: 29.93
+  name: xx|14c2|puddincat07@Telegram
+  password: kaQH3hGdcP80XEDI
+  port: 443
+  score: 14.473772134981624
+  server: admin.c2.havij.co
+  sim_score: 1.2946647141351422
+  speed: 43.32
   type: ss
-- cipher: rc4-md5
-  latency: 43.41
-  name: ca|d2b5|puddincat07@Telegram
-  password: 14fFPrbezE3HDZzsMOr6
-  port: 8080
-  score: 7.668739921677034
-  server: 137.184.174.93
-  sim_score: 1.0002736708199342
-  speed: 33.29
-  type: ss
-- alterId: 0
-  latency: 47.88
-  name: xx|f938|puddincat07@Telegram
-  password: 4250b3bb-d1ae-4e77-bf71-4069e0d2c383
+- latency: 36.8
+  name: tw|9f30|puddincat07@Telegram
+  password: 0a169d7d-a30f-4d90-af1b-55f6ef6afcb7
   port: 31103
-  score: 2.7422723475355055
-  server: green2.cdntencentmusic.com
-  sim_score: 3.3615049120780247
-  skip-cert-verify: true
+  score: 9.353260869565219
+  server: 220.130.58.136
+  sim_score: 1.3003799020961497
+  skip-cert-verify: false
   sni: green2.cdntencentmusic.com
-  speed: 13.13
-  tls: true
+  speed: 34.42
+  type: trojan
+- latency: 33.51
+  name: gb|832c|puddincat07@Telegram
+  password: 57afed5a-5a70-4a8b-bb40-4d81c26e65dd
+  port: 443
+  score: 5.8698895851984485
+  server: 198.244.190.189
+  sim_score: 0.7940556648215774
+  skip-cert-verify: true
+  speed: 19.67
   type: trojan
   udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 30.98
+  name: xx|dba2|puddincat07@Telegram
+  password: LMSNh21TrXjR2ok25Q2nE8ENT2zoBmPvka3RCCUAHZELCnWoekVjvaf89qwcRkdbxEfep2bc2aUtmnxqvF1ayQRez1JHjULj
+  port: 52952
+  score: 5.806972240154939
+  server: exchange.gameaurela.click
+  sim_score: 1.3648693604837567
+  speed: 17.99
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - hk|3158|puddincat07@Telegram
-  - ca|d2b5|puddincat07@Telegram
-  - xx|f938|puddincat07@Telegram
+  - xx|14c2|puddincat07@Telegram
+  - tw|9f30|puddincat07@Telegram
+  - gb|832c|puddincat07@Telegram
+  - xx|dba2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - hk|3158|puddincat07@Telegram
-  - ca|d2b5|puddincat07@Telegram
-  - xx|f938|puddincat07@Telegram
+  - xx|14c2|puddincat07@Telegram
+  - tw|9f30|puddincat07@Telegram
+  - gb|832c|puddincat07@Telegram
+  - xx|dba2|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
