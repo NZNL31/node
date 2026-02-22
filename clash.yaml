@@ -4,26 +4,26 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 31.4
+  latency: 59.57
   name: xx|2487|puddincat07@Telegram
   password: kaQH3hGdcP80XEDI
   port: 443
-  score: 14.777070063694268
+  score: 8.099714621453751
   server: admin.c2.havij.co
-  sim_score: 1.1441842565266536
-  speed: 46.4
+  sim_score: 0.69507549124546
+  speed: 48.25
   type: ss
 - alterId: 0
   cipher: chacha20-ietf-poly1305
-  latency: 35.24
+  latency: 41.1
   name: gb|c7ae|puddincat07@Telegram
   password: kaQH3hGdcP80XEDI
   port: 443
-  score: 12.35244040862656
+  score: 4.019464720194647
   server: 51.105.48.144
-  sim_score: 2.687657288724665
+  sim_score: 1.2625986522683121
   skip-cert-verify: true
-  speed: 43.53
+  speed: 16.52
   tls: true
   type: ss
 proxy-groups:
@@ -39,6 +39,6 @@ proxy-groups:
   - xx|2487|puddincat07@Telegram
   - gb|c7ae|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
