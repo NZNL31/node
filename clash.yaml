@@ -2,41 +2,16 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 63.47
-  name: xx|de8a|puddincat07@Telegram
-  password: kaQH3hGdcP80XEDI
-  port: 443
-  score: 2.2057665038600915
-  server: admin.c2.havij.co
-  sim_score: 1.6892403247552747
-  speed: 14.0
-  type: ss
-- cipher: aes-256-gcm
-  latency: 87.42
-  name: xx|a12c|puddincat07@Telegram
-  password: e6f8da28-345b-46aa-9ef8-edf27777a533
-  port: 48009
-  score: 1.2354152367879205
-  server: k9.b99.buzz
-  sim_score: 1.3740481688401545
-  speed: 10.8
-  type: ss
-  udp: true
+proxies: []
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|de8a|puddincat07@Telegram
-  - xx|a12c|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies:
-  - xx|de8a|puddincat07@Telegram
-  - xx|a12c|puddincat07@Telegram
+  proxies: []
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
