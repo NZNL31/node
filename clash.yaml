@@ -4,64 +4,39 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 29.93
-  name: xx|14c2|puddincat07@Telegram
+  latency: 63.47
+  name: xx|de8a|puddincat07@Telegram
   password: kaQH3hGdcP80XEDI
   port: 443
-  score: 14.473772134981624
+  score: 2.2057665038600915
   server: admin.c2.havij.co
-  sim_score: 1.2946647141351422
-  speed: 43.32
+  sim_score: 1.6892403247552747
+  speed: 14.0
   type: ss
-- latency: 36.8
-  name: tw|9f30|puddincat07@Telegram
-  password: 0a169d7d-a30f-4d90-af1b-55f6ef6afcb7
-  port: 31103
-  score: 9.353260869565219
-  server: 220.130.58.136
-  sim_score: 1.3003799020961497
-  skip-cert-verify: false
-  sni: green2.cdntencentmusic.com
-  speed: 34.42
-  type: trojan
-- latency: 33.51
-  name: gb|832c|puddincat07@Telegram
-  password: 57afed5a-5a70-4a8b-bb40-4d81c26e65dd
-  port: 443
-  score: 5.8698895851984485
-  server: 198.244.190.189
-  sim_score: 0.7940556648215774
-  skip-cert-verify: true
-  speed: 19.67
-  type: trojan
+- cipher: aes-256-gcm
+  latency: 87.42
+  name: xx|a12c|puddincat07@Telegram
+  password: e6f8da28-345b-46aa-9ef8-edf27777a533
+  port: 48009
+  score: 1.2354152367879205
+  server: k9.b99.buzz
+  sim_score: 1.3740481688401545
+  speed: 10.8
+  type: ss
   udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 30.98
-  name: xx|dba2|puddincat07@Telegram
-  password: LMSNh21TrXjR2ok25Q2nE8ENT2zoBmPvka3RCCUAHZELCnWoekVjvaf89qwcRkdbxEfep2bc2aUtmnxqvF1ayQRez1JHjULj
-  port: 52952
-  score: 5.806972240154939
-  server: exchange.gameaurela.click
-  sim_score: 1.3648693604837567
-  speed: 17.99
-  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|14c2|puddincat07@Telegram
-  - tw|9f30|puddincat07@Telegram
-  - gb|832c|puddincat07@Telegram
-  - xx|dba2|puddincat07@Telegram
+  - xx|de8a|puddincat07@Telegram
+  - xx|a12c|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|14c2|puddincat07@Telegram
-  - tw|9f30|puddincat07@Telegram
-  - gb|832c|puddincat07@Telegram
-  - xx|dba2|puddincat07@Telegram
+  - xx|de8a|puddincat07@Telegram
+  - xx|a12c|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
