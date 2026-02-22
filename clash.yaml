@@ -4,41 +4,26 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 30.36
+  latency: 46.09
   name: xx|2487|puddincat07@Telegram
   password: kaQH3hGdcP80XEDI
   port: 443
-  score: 12.338603425559949
+  score: 6.773703623345627
   server: admin.c2.havij.co
-  sim_score: 1.3532197457283215
-  speed: 37.46
-  type: ss
-- alterId: 0
-  cipher: chacha20-ietf-poly1305
-  latency: 27.88
-  name: gb|c7ae|puddincat07@Telegram
-  password: kaQH3hGdcP80XEDI
-  port: 443
-  score: 8.866571018651362
-  server: 51.105.48.144
-  sim_score: 1.2737049245330965
-  skip-cert-verify: true
-  speed: 24.72
-  tls: true
+  sim_score: 5.397143099490003
+  speed: 31.22
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - xx|2487|puddincat07@Telegram
-  - gb|c7ae|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - xx|2487|puddincat07@Telegram
-  - gb|c7ae|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
