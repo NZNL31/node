@@ -2,16 +2,28 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies: []
+proxies:
+- cipher: chacha20-ietf-poly1305
+  latency: 100.22
+  name: xx|2487|puddincat07@Telegram
+  password: kaQH3hGdcP80XEDI
+  port: 443
+  score: 2.50648573139094
+  server: admin.c2.havij.co
+  sim_score: 1.5150100941961533
+  speed: 25.12
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - xx|2487|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies: []
+  proxies:
+  - xx|2487|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
