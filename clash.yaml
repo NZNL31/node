@@ -4,14 +4,14 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 40.8
+  latency: 65.06
   name: xx|2487|puddincat07@Telegram
   password: kaQH3hGdcP80XEDI
   port: 443
-  score: 9.573529411764707
+  score: 4.78173993237012
   server: admin.c2.havij.co
-  sim_score: 3.0119056871217227
-  speed: 39.06
+  sim_score: 1.0645579149828044
+  speed: 31.11
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
@@ -24,6 +24,6 @@ proxy-groups:
   proxies:
   - xx|2487|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
