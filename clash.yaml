@@ -3,51 +3,96 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 29.76
-  name: xx|492d|puddincat07@Telegram
-  password: W74XFALLLuw6m5IA
-  port: 443
-  score: 14.674059139784944
-  server: series-a1.samanehha.co
-  sim_score: 0.5871362384034253
-  speed: 43.67
+- cipher: aes-256-cfb
+  latency: 44.37
+  name: pt|f4c5|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 10.41018706333108
+  server: 185.231.233.112
+  sim_score: 0.8189364027023525
+  speed: 46.19
   type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 40.51
+  name: tr|9f69|puddincat07@Telegram
+  password: iy8HtZILMHFwxH16LYFqkS
+  port: 65262
+  score: 7.501851394717354
+  server: 62.133.63.21
+  sim_score: 1.9594563422006175
+  speed: 30.39
+  type: ss
+- latency: 44.68
+  name: us|e1a5|puddincat07@Telegram
+  network: ws
+  password: 7f2782e1-1f1a-4c5b-b4ae-cead54b8c381
+  port: 443
+  score: 6.1548791405550585
+  server: 172.67.191.234
+  sim_score: 2.0710029472515776
+  skip-cert-verify: true
+  sni: nl1.tRojANVpN.xYZ
+  speed: 27.5
+  type: trojan
   udp: true
+  ws-opts:
+    headers:
+      Host: nl1.tRojANVpN.xYZ
+    path: '%25252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252F'
 - cipher: chacha20-ietf-poly1305
-  latency: 30.44
-  name: xx|0c0b|puddincat07@Telegram
-  password: W74XFALLLuw6m5IA
-  port: 443
-  score: 5.091984231274639
-  server: series-a2.samanehha.co
-  sim_score: 1.1470710512079831
-  speed: 15.5
+  latency: 46.41
+  name: gb|716a|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: 8080
+  score: 5.826330532212886
+  server: 82.38.31.218
+  sim_score: 1.0206124005905322
+  speed: 27.04
+  type: ss
+- alterId: 0
+  cipher: chacha20-ietf-poly1305
+  latency: 41.41
+  name: ca|8054|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 990
+  score: 4.460275295822266
+  server: 79.127.233.170
+  sim_score: 1.6688744793126873
+  skip-cert-verify: true
+  speed: 18.47
+  tls: true
   type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 35.12
-  name: xx|d10a|puddincat07@Telegram
-  password: kaQH3hGdcP80XEDI
-  port: 443
-  score: 4.085990888382688
-  server: admin.c2.havij.co
-  sim_score: 1.1783091825668
-  speed: 14.35
+  latency: 44.66
+  name: fi|8726|puddincat07@Telegram
+  password: Kbm3xoK04p4OhoqVpEzdlj
+  port: 53829
+  score: 2.9220779220779223
+  server: 95.164.113.198
+  sim_score: 1.2130972560227065
+  speed: 13.05
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|492d|puddincat07@Telegram
-  - xx|0c0b|puddincat07@Telegram
-  - xx|d10a|puddincat07@Telegram
+  - pt|f4c5|puddincat07@Telegram
+  - tr|9f69|puddincat07@Telegram
+  - us|e1a5|puddincat07@Telegram
+  - gb|716a|puddincat07@Telegram
+  - ca|8054|puddincat07@Telegram
+  - fi|8726|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|492d|puddincat07@Telegram
-  - xx|0c0b|puddincat07@Telegram
-  - xx|d10a|puddincat07@Telegram
+  - pt|f4c5|puddincat07@Telegram
+  - tr|9f69|puddincat07@Telegram
+  - us|e1a5|puddincat07@Telegram
+  - gb|716a|puddincat07@Telegram
+  - ca|8054|puddincat07@Telegram
+  - fi|8726|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
