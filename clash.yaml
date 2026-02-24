@@ -4,26 +4,26 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 77.31
-  name: xx|e6e8|puddincat07@Telegram
-  password: kaQH3hGdcP80XEDI
+  latency: 71.63
+  name: xx|b41e|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
   port: 443
-  score: 4.805329194153408
-  server: admin.c2.havij.co
-  sim_score: 1.9700014124720975
-  speed: 37.15
+  score: 5.538182325841129
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 4.006446308563806
+  speed: 39.67
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|e6e8|puddincat07@Telegram
+  - xx|b41e|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|e6e8|puddincat07@Telegram
+  - xx|b41e|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
