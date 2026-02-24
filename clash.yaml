@@ -3,65 +3,26 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 40.82
-  name: us|cf09|puddincat07@Telegram
-  password: 5041df4c-b3ae-481d-adf9-79b39f4810f2
-  port: 2083
-  score: 11.75404213620774
-  server: 172.67.148.211
-  sim_score: 1.6918332234257139
-  skip-cert-verify: true
-  sni: taqboostan.zagros.top
-  speed: 47.98
-  type: trojan
-  udp: true
-- cipher: aes-256-cfb
-  latency: 40.16
-  name: pt|3794|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 8.620517928286853
-  server: 185.231.233.112
-  sim_score: 1.2074940599722785
-  speed: 34.62
-  type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 39.11
-  name: xx|efe2|puddincat07@Telegram
+  latency: 77.31
+  name: xx|e6e8|puddincat07@Telegram
   password: kaQH3hGdcP80XEDI
   port: 443
-  score: 2.8176936844796723
+  score: 4.805329194153408
   server: admin.c2.havij.co
-  sim_score: 1.8184361493143153
-  speed: 11.02
+  sim_score: 1.9700014124720975
+  speed: 37.15
   type: ss
-- latency: 67.63
-  name: pt|1299|puddincat07@Telegram
-  password: wp9IsiY82uQhcmgNC1eoBM
-  port: 12420
-  score: 1.5185568534673963
-  server: 80.173.231.254
-  sim_score: 1.9104182989850338
-  skip-cert-verify: true
-  sni: www.semanticstaplegun.click
-  speed: 10.27
-  type: trojan
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|cf09|puddincat07@Telegram
-  - pt|3794|puddincat07@Telegram
-  - xx|efe2|puddincat07@Telegram
-  - pt|1299|puddincat07@Telegram
+  - xx|e6e8|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|cf09|puddincat07@Telegram
-  - pt|3794|puddincat07@Telegram
-  - xx|efe2|puddincat07@Telegram
-  - pt|1299|puddincat07@Telegram
+  - xx|e6e8|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
