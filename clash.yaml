@@ -4,50 +4,26 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 41.53
-  name: nl|21d4|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 8080
-  score: 10.07946063086925
-  server: 193.29.139.235
-  sim_score: 1.5594916111366122
-  speed: 41.86
-  type: ss
-- cipher: aes-256-cfb
-  latency: 36.33
-  name: vn|5b86|puddincat07@Telegram
-  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
-  port: 38388
-  score: 9.966969446738233
-  server: 103.186.155.85
-  sim_score: 0.9035187751072435
-  speed: 36.21
-  type: ss
-- cipher: aes-256-cfb
-  latency: 37.79
-  name: pt|39ce|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 7.594601746493781
-  server: 185.231.233.112
-  sim_score: 2.2358040585087515
-  speed: 28.7
+  latency: 32.51
+  name: xx|1828|puddincat07@Telegram
+  password: LYW2w9fwdrwj2qC9NyTBuBNKQJUvkKnCp9UxVnFW6LqeSpiCcnzV1cMohBUnCCWBkjkp83rV9wWeYQQqUZwMuYu1YyCt17tW
+  port: 40521
+  score: 5.281451860965857
+  server: media.mothyleela.cfd
+  sim_score: 2.039823787905299
+  speed: 17.17
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - nl|21d4|puddincat07@Telegram
-  - vn|5b86|puddincat07@Telegram
-  - pt|39ce|puddincat07@Telegram
+  - xx|1828|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - nl|21d4|puddincat07@Telegram
-  - vn|5b86|puddincat07@Telegram
-  - pt|39ce|puddincat07@Telegram
+  - xx|1828|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
