@@ -3,65 +3,118 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-cfb
-  latency: 41.55
-  name: lt|314f|puddincat07@Telegram
-  password: qYEN5HX4JKeVCdEC
-  port: 9039
-  score: 10.24548736462094
-  server: 195.238.126.84
-  sim_score: 3.97466950934461
-  speed: 42.57
-  type: ss
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 40.5
-  name: us|d186|puddincat07@Telegram
-  password: R9Xc4dHXGv3c
+- latency: 60.69
+  name: xx|b8ca|puddincat07@Telegram
+  network: tcp
+  password: 984c7793-1447-4af5-9200-d514ad6fe329
+  port: 40393
+  score: 7.591036414565827
+  server: us02.jsyjiedian8.com
+  sim_score: 1.014687851822465
+  skip-cert-verify: true
+  sni: jsygouer.weixin-baidu-qq.com
+  speed: 46.07
+  type: trojan
+- alterId: 0
+  cipher: auto
+  client-fingerprint: chrome
+  latency: 57.74
+  name: xx|7d2f|puddincat07@Telegram
+  network: ws
+  port: 80
+  score: 7.490474541046068
+  server: test3.flha.ru
+  sim_score: 1.1603439588909106
+  skip-cert-verify: true
+  speed: 43.25
+  tls: false
+  type: vmess
+  uuid: 9a81340d-f81b-4c76-8abb-f4d305c535c0
+  ws-opts:
+    headers:
+      host: test3.flha.ru
+    path: /9a81340d-f81b-4c76-8abb-f4d305c535c0-vmess
+- latency: 66.42
+  name: us|90e9|puddincat07@Telegram
+  password: 71409d3e488548e8bb076d229778f008
   port: 443
-  score: 9.498765432098764
-  server: 205.134.180.143
-  sim_score: 1.3798302709711057
-  speed: 38.47
+  score: 7.302017464619091
+  server: 104.17.147.2
+  sim_score: 2.310865501370492
+  skip-cert-verify: true
+  sni: jobscareerfortoday.com
+  speed: 48.5
+  type: trojan
+  udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 58.09
+  name: xx|8bd1|puddincat07@Telegram
+  password: u17T3BvpYaaiuW2c
+  port: 443
+  score: 6.109485281459803
+  server: series-a2-mec.varzesh360.co
+  sim_score: 0.940285622289903
+  speed: 35.49
   type: ss
   udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 47.51
-  name: gb|0b47|puddincat07@Telegram
+  latency: 68.34
+  name: gb|f2ee|puddincat07@Telegram
   password: k1dBOmOB4oqi7Ump37a1bQ
   port: 8080
-  score: 8.06356556514418
-  server: 82.38.31.194
-  sim_score: 0.9440299449199013
-  speed: 38.31
+  score: 5.8530875036581795
+  server: 82.38.31.205
+  sim_score: 1.8847254449635422
+  speed: 40.0
   type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 42.02
-  name: nl|83f2|puddincat07@Telegram
-  password: 4a2rfixophdjffa8KVA4Aa
-  port: 8080
-  score: 6.97049024274155
-  server: 193.29.139.157
-  sim_score: 4.152310708474628
-  speed: 29.29
-  type: ss
+- alterId: 0
+  latency: 60.66
+  name: xx|a915|puddincat07@Telegram
+  password: 984c7793-1447-4af5-9200-d514ad6fe329
+  port: 45005
+  score: 2.1826574348829544
+  server: sg05.stimaysmhy8.com
+  sim_score: 1.39212455775632
+  skip-cert-verify: true
+  sni: jsygouer.weixin-baidu-qq.com
+  speed: 13.24
+  tls: true
+  type: trojan
+  udp: true
+- latency: 60.55
+  name: xx|67e4|puddincat07@Telegram
+  password: 507ca9a0-2d8e-4b65-8763-82dfbdbd599f
+  port: 443
+  score: 1.9735755573905864
+  server: hkjs.lydurlclub.top
+  sim_score: 1.684937306794827
+  skip-cert-verify: true
+  speed: 11.95
+  type: trojan
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - lt|314f|puddincat07@Telegram
-  - us|d186|puddincat07@Telegram
-  - gb|0b47|puddincat07@Telegram
-  - nl|83f2|puddincat07@Telegram
+  - xx|b8ca|puddincat07@Telegram
+  - xx|7d2f|puddincat07@Telegram
+  - us|90e9|puddincat07@Telegram
+  - xx|8bd1|puddincat07@Telegram
+  - gb|f2ee|puddincat07@Telegram
+  - xx|a915|puddincat07@Telegram
+  - xx|67e4|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - lt|314f|puddincat07@Telegram
-  - us|d186|puddincat07@Telegram
-  - gb|0b47|puddincat07@Telegram
-  - nl|83f2|puddincat07@Telegram
+  - xx|b8ca|puddincat07@Telegram
+  - xx|7d2f|puddincat07@Telegram
+  - us|90e9|puddincat07@Telegram
+  - xx|8bd1|puddincat07@Telegram
+  - gb|f2ee|puddincat07@Telegram
+  - xx|a915|puddincat07@Telegram
+  - xx|67e4|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
