@@ -3,100 +3,39 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-cfb
-  latency: 66.89
-  name: kr|162e|puddincat07@Telegram
-  password: qwerREWQ@@
-  port: 4652
-  score: 6.246075646583944
-  server: 218.237.185.230
-  sim_score: 2.7339064189477242
-  speed: 41.78
-  type: ss
-- cipher: aes-128-gcm
-  latency: 66.87
-  name: us|7d21|puddincat07@Telegram
-  password: shadowsocks
-  port: 443
-  score: 6.180649020487512
-  server: 156.146.38.167
-  sim_score: 5.7455754991062555
-  speed: 41.33
-  type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 68.36
-  name: xx|f82a|puddincat07@Telegram
-  password: 1kVr0KATIJI7mwOF
-  port: 443
-  score: 6.0020479812756005
-  server: admin.c1.havij.co
-  sim_score: 1.5158037103110698
-  speed: 41.03
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 66.99
-  name: xx|a7e0|puddincat07@Telegram
+  latency: 43.31
+  name: xx|c438|puddincat07@Telegram
   password: W74XFALLLuw6m5IA
   port: 443
-  score: 4.376772652634722
-  server: series-a1.samanehha.co
-  sim_score: 1.5707268669742924
-  speed: 29.32
-  type: ss
-- latency: 67.08
-  name: xx|a4cc|puddincat07@Telegram
-  password: cd7239af-77ad-4628-a871-00acfa219f02
-  port: 56379
-  score: 3.2528324388789507
-  server: ip0axv1bbsu02k7-vn.1ytnode.com
-  sim_score: 0.9393708684562063
-  skip-cert-verify: true
-  speed: 21.82
-  type: trojan
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 103.24
-  name: gb|9da7|puddincat07@Telegram
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  port: 8080
-  score: 1.4393645873692367
-  server: 82.38.31.191
-  sim_score: 0.7844326941054024
-  speed: 14.86
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 94.94
-  name: xx|ae54|puddincat07@Telegram
-  password: W74XFALLLuw6m5IA
-  port: 443
-  score: 0.9237413103012428
+  score: 10.050796582775341
   server: admin.c1.webramz.co
-  sim_score: 2.6059870361889104
-  speed: 8.77
+  sim_score: 3.103162244778506
+  speed: 43.53
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 41.09
+  name: xx|6431|puddincat07@Telegram
+  password: W74XFALLLuw6m5IA
+  port: 443
+  score: 5.320029204185933
+  server: series-a1.samanehha.co
+  sim_score: 0.6988829551872282
+  speed: 21.86
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - kr|162e|puddincat07@Telegram
-  - us|7d21|puddincat07@Telegram
-  - xx|f82a|puddincat07@Telegram
-  - xx|a7e0|puddincat07@Telegram
-  - xx|a4cc|puddincat07@Telegram
-  - gb|9da7|puddincat07@Telegram
-  - xx|ae54|puddincat07@Telegram
+  - xx|c438|puddincat07@Telegram
+  - xx|6431|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - kr|162e|puddincat07@Telegram
-  - us|7d21|puddincat07@Telegram
-  - xx|f82a|puddincat07@Telegram
-  - xx|a7e0|puddincat07@Telegram
-  - xx|a4cc|puddincat07@Telegram
-  - gb|9da7|puddincat07@Telegram
-  - xx|ae54|puddincat07@Telegram
+  - xx|c438|puddincat07@Telegram
+  - xx|6431|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
