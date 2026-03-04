@@ -3,126 +3,55 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-128-gcm
-  latency: 38.71
-  name: us|1570|puddincat07@Telegram
-  password: shadowsocks
+- alpn:
+  - h3%2Ch2%2Chttp%2F1.1
+  latency: 64.58
+  name: us|b957|puddincat07@Telegram
+  network: ws
+  password: 823cbccd-3a71-4248-ac3c-3c460de1552d
   port: 443
-  score: 8.989925083957633
-  server: 156.146.38.167
-  sim_score: 0.6361338328018827
-  speed: 34.8
-  type: ss
-- latency: 41.2
-  name: xx|a7c1|puddincat07@Telegram
-  password: 01278779-3f58-4477-8ae7-7b82033a5d2e
-  port: 443
-  score: 8.094660194174757
-  server: hk-full.privateip.net
-  sim_score: 2.865465525796817
+  score: 3.8696190771136574
+  server: 104.17.137.155
+  sim_score: 1.4625028171272478
   skip-cert-verify: true
-  speed: 33.35
+  sni: sg680.pages.dev
+  speed: 24.99
   type: trojan
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 41.37
-  name: tr|355b|puddincat07@Telegram
-  password: AVLbEUEtBD59FsRqcNyEib
-  port: 60299
-  score: 7.802755620014504
-  server: 203.202.232.78
-  sim_score: 1.8156708477086263
-  speed: 32.28
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 41.91
-  name: xx|9fd2|puddincat07@Telegram
-  password: wwzVn2ZnHfqYa6l8EWh3eY
+  ws-opts:
+    headers:
+      Host: sg680.pages.dev
+    path: '%2F'
+- alpn:
+  - h3%2Ch2%2Chttp%2F1.1
+  latency: 72.82
+  name: us|dcd2|puddincat07@Telegram
+  network: ws
+  password: 823cbccd-3a71-4248-ac3c-3c460de1552d
   port: 443
-  score: 7.451682176091625
-  server: switcher-nick-croquet.freesocks.work
-  sim_score: 2.2840583960938443
-  speed: 31.23
-  type: ss
-- cipher: aes-256-cfb
-  latency: 41.92
-  name: pt|7f94|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 6.808206106870228
-  server: 185.231.233.112
-  sim_score: 1.7490086136122385
-  speed: 28.54
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 69.81
-  name: xx|8816|puddincat07@Telegram
-  password: p78naCf2EfOlRSLTX0wFVx
-  port: 443
-  score: 6.189657642171609
-  server: pupas-shirting-unsung.freesocks.work
-  sim_score: 4.370114169095495
-  speed: 43.21
-  type: ss
-- latency: 44.98
-  name: us|f95a|puddincat07@Telegram
-  password: 4732adfa16c6450bbef87264e41332db
-  port: 443
-  score: 6.116051578479325
-  server: 104.17.147.4
-  sim_score: 0.6299815274512826
+  score: 1.7769843449601757
+  server: 104.16.158.249
+  sim_score: 1.90282760862134
   skip-cert-verify: true
-  sni: jobscareertoday.com
-  speed: 27.51
+  sni: sg680.pages.dev
+  speed: 12.94
   type: trojan
-  udp: true
-- cipher: aes-256-cfb
-  latency: 41.53
-  name: mx|253a|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 5.557428365037323
-  server: 147.78.1.230
-  sim_score: 2.0266981681842187
-  speed: 23.08
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 41.9
-  name: xx|2c3b|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  port: 443
-  score: 2.1431980906921244
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 1.586510117402469
-  speed: 8.98
-  type: ss
+  ws-opts:
+    headers:
+      Host: sg680.pages.dev
+    path: '%2F'
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|1570|puddincat07@Telegram
-  - xx|a7c1|puddincat07@Telegram
-  - tr|355b|puddincat07@Telegram
-  - xx|9fd2|puddincat07@Telegram
-  - pt|7f94|puddincat07@Telegram
-  - xx|8816|puddincat07@Telegram
-  - us|f95a|puddincat07@Telegram
-  - mx|253a|puddincat07@Telegram
-  - xx|2c3b|puddincat07@Telegram
+  - us|b957|puddincat07@Telegram
+  - us|dcd2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|1570|puddincat07@Telegram
-  - xx|a7c1|puddincat07@Telegram
-  - tr|355b|puddincat07@Telegram
-  - xx|9fd2|puddincat07@Telegram
-  - pt|7f94|puddincat07@Telegram
-  - xx|8816|puddincat07@Telegram
-  - us|f95a|puddincat07@Telegram
-  - mx|253a|puddincat07@Telegram
-  - xx|2c3b|puddincat07@Telegram
+  - us|b957|puddincat07@Telegram
+  - us|dcd2|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
