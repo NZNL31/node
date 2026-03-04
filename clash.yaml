@@ -6,15 +6,15 @@ proxies:
 - alterId: 32
   cipher: auto
   client-fingerprint: chrome
-  latency: 30.61
-  name: xx|4070|puddincat07@Telegram
+  latency: 59.92
+  name: xx|5245|puddincat07@Telegram
   network: ws
   port: 443
-  score: 15.338124795818363
+  score: 4.524365821094793
   server: vc.fly.dev
-  sim_score: 1.5419282763701683
+  sim_score: 0.9092017980381963
   skip-cert-verify: true
-  speed: 46.95
+  speed: 27.11
   tls: true
   type: vmess
   uuid: 35379219-6535-4f2e-a4fe-3e44f61e0eee
@@ -22,42 +22,32 @@ proxies:
     headers:
       host: vc.fly.dev
     path: /vc
-- cipher: aes-256-cfb
-  latency: 33.01
-  name: mk|a81d|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 9.133595880036353
-  server: 46.183.185.37
-  sim_score: 1.7907108336476432
-  speed: 30.15
-  type: ss
-- latency: 32.53
-  name: xx|cc7e|puddincat07@Telegram
-  password: cd7239af-77ad-4628-a871-00acfa219f02
-  port: 56353
-  score: 8.072548416845988
-  server: ip0axv1bbsu02k7-us.1ytnode.com
-  sim_score: 1.8718162545611494
+- alterId: 0
+  cipher: chacha20-ietf-poly1305
+  latency: 52.71
+  name: xx|0f47|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  port: 443
+  score: 3.4661354581673303
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 1.2152844001179535
   skip-cert-verify: true
-  speed: 26.26
-  type: trojan
-  udp: true
+  speed: 18.27
+  tls: true
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|4070|puddincat07@Telegram
-  - mk|a81d|puddincat07@Telegram
-  - xx|cc7e|puddincat07@Telegram
+  - xx|5245|puddincat07@Telegram
+  - xx|0f47|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|4070|puddincat07@Telegram
-  - mk|a81d|puddincat07@Telegram
-  - xx|cc7e|puddincat07@Telegram
+  - xx|5245|puddincat07@Telegram
+  - xx|0f47|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
