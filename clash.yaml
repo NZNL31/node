@@ -3,96 +3,91 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 0
-  cipher: aes-256-gcm
-  latency: 30.02
-  name: ca|c88b|puddincat07@Telegram
-  password: 8JCsPssfgS8tiRwiMlhARg==
-  port: 12000
-  score: 16.555629580279813
-  server: 144.217.164.29
-  sim_score: 1.5330108114260939
-  skip-cert-verify: true
-  speed: 49.7
-  tls: true
+- cipher: chacha20-ietf-poly1305
+  latency: 41.14
+  name: gb|e2ae|puddincat07@Telegram
+  password: k1v5g9FefdoO
+  port: 8388
+  score: 11.750121536217794
+  server: 57.129.140.88
+  sim_score: 2.8414585280775446
+  speed: 48.34
   type: ss
-- latency: 31.13
-  name: xx|2811|puddincat07@Telegram
-  password: cd7239af-77ad-4628-a871-00acfa219f02
-  port: 56353
-  score: 14.77674269193704
-  server: ip0axv1bbsu02k7-us.1ytnode.com
-  sim_score: 1.2855585573316182
+- latency: 41.3
+  name: us|a89f|puddincat07@Telegram
+  password: 4aec4e7f8cf8454ea4613659822e1a61
+  port: 443
+  score: 7.920096852300242
+  server: 104.16.159.112
+  sim_score: 1.5071369196454365
   skip-cert-verify: true
-  speed: 46.0
+  sni: jobscareertoday.com
+  speed: 32.71
   type: trojan
   udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 31.47
-  name: de|cd45|puddincat07@Telegram
-  password: xCoBqYZGaMivNlzIhjpIH5
-  port: 31212
-  score: 11.855735621226566
-  server: 85.192.63.92
-  sim_score: 2.409401389277283
-  speed: 37.31
-  type: ss
-  udp: true
-- latency: 32.5
-  name: us|c5cc|puddincat07@Telegram
-  password: 241f01b9-8dfc-474f-8342-3fbd5c46417e
-  port: 2087
-  score: 9.421538461538463
-  server: 104.21.51.242
-  sim_score: 4.817368051515494
+- latency: 41.26
+  name: us|d7a2|puddincat07@Telegram
+  password: 669d0ac7b5b64ebbb1abb75d5d540a5c
+  port: 443
+  score: 6.890450799806108
+  server: 104.16.159.6
+  sim_score: 0.9359750848809628
   skip-cert-verify: true
-  sni: grpcfr.arminhadadi.site
-  speed: 30.62
+  sni: bangladeshipatri.com
+  speed: 28.43
   type: trojan
   udp: true
+- cipher: aes-256-cfb
+  latency: 42.81
+  name: pt|42f2|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 5.895818733940668
+  server: 185.231.233.112
+  sim_score: 3.5085439056654693
+  speed: 25.24
+  type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 29.47
-  name: nl|420b|puddincat07@Telegram
+  latency: 40.17
+  name: gb|9f4a|puddincat07@Telegram
   password: oZIoA69Q8yhcQV8ka3Pa3A
   port: 8080
-  score: 9.182219205972174
-  server: 193.29.139.235
-  sim_score: 1.892038088643393
-  speed: 27.06
+  score: 4.993776450087129
+  server: 82.38.31.99
+  sim_score: 1.582088489843121
+  speed: 20.06
   type: ss
-- latency: 31.61
-  name: us|4461|puddincat07@Telegram
-  password: b4e8771997c94732acbc9ec4d19c2589
-  port: 443
-  score: 3.2584625118633346
-  server: 104.17.215.6
-  sim_score: 4.435796028779011
-  skip-cert-verify: true
-  sni: jobscareerfortoday.com
-  speed: 10.3
-  type: trojan
-  udp: true
+- cipher: aes-256-cfb
+  latency: 39.59
+  name: hk|c20d|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 41632
+  score: 3.3619600909320537
+  server: 112.213.102.188
+  sim_score: 6.221439819038034
+  speed: 13.31
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - ca|c88b|puddincat07@Telegram
-  - xx|2811|puddincat07@Telegram
-  - de|cd45|puddincat07@Telegram
-  - us|c5cc|puddincat07@Telegram
-  - nl|420b|puddincat07@Telegram
-  - us|4461|puddincat07@Telegram
+  - gb|e2ae|puddincat07@Telegram
+  - us|a89f|puddincat07@Telegram
+  - us|d7a2|puddincat07@Telegram
+  - pt|42f2|puddincat07@Telegram
+  - gb|9f4a|puddincat07@Telegram
+  - hk|c20d|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - ca|c88b|puddincat07@Telegram
-  - xx|2811|puddincat07@Telegram
-  - de|cd45|puddincat07@Telegram
-  - us|c5cc|puddincat07@Telegram
-  - nl|420b|puddincat07@Telegram
-  - us|4461|puddincat07@Telegram
+  - gb|e2ae|puddincat07@Telegram
+  - us|a89f|puddincat07@Telegram
+  - us|d7a2|puddincat07@Telegram
+  - pt|42f2|puddincat07@Telegram
+  - gb|9f4a|puddincat07@Telegram
+  - hk|c20d|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
