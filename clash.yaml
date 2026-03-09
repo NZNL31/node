@@ -2,40 +2,15 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 27.61
-  name: xx|d5ab|puddincat07@Telegram
-  password: W74XFALLLuw6m5IA
-  port: 443
-  score: 17.06990220934444
-  server: series-a1.samanehha.co
-  sim_score: 1.0935629667619253
-  speed: 47.13
-  type: ss
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 41.29
-  name: xx|8776|puddincat07@Telegram
-  password: W74XFALLLuw6m5IA
-  port: 443
-  score: 8.609832889319447
-  server: admin.c1.webramz.co
-  sim_score: 0.8039903959209824
-  speed: 35.55
-  type: ss
+proxies: []
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|d5ab|puddincat07@Telegram
-  - xx|8776|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies:
-  - xx|d5ab|puddincat07@Telegram
-  - xx|8776|puddincat07@Telegram
+  proxies: []
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
