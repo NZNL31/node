@@ -4,38 +4,39 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 44.37
-  name: xx|f6db|puddincat07@Telegram
-  password: 1kVr0KATIJI7mwOF
-  port: 443
-  score: 1.985575839531215
-  server: admin.c1.havij.co
-  sim_score: 2.6251130204951663
-  speed: 8.81
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 180.5
-  name: xx|7118|puddincat07@Telegram
+  latency: 28.55
+  name: xx|fc02|puddincat07@Telegram
   password: W74XFALLLuw6m5IA
   port: 443
-  score: 0.6670360110803324
-  server: series-a2.samanehha.co
-  sim_score: 1.734864072167023
-  speed: 12.04
+  score: 10.021015761821365
+  server: series-a1.samanehha.co
+  sim_score: 0.9025675654246965
+  speed: 28.61
+  type: ss
+  udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 30.7
+  name: xx|fcef|puddincat07@Telegram
+  password: 1kVr0KATIJI7mwOF
+  port: 443
+  score: 6.325732899022802
+  server: admin.c1.havij.co
+  sim_score: 2.381534609593432
+  speed: 19.42
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|f6db|puddincat07@Telegram
-  - xx|7118|puddincat07@Telegram
+  - xx|fc02|puddincat07@Telegram
+  - xx|fcef|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|f6db|puddincat07@Telegram
-  - xx|7118|puddincat07@Telegram
+  - xx|fc02|puddincat07@Telegram
+  - xx|fcef|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
