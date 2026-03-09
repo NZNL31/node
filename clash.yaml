@@ -2,16 +2,40 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies: []
+proxies:
+- cipher: chacha20-ietf-poly1305
+  latency: 44.37
+  name: xx|f6db|puddincat07@Telegram
+  password: 1kVr0KATIJI7mwOF
+  port: 443
+  score: 1.985575839531215
+  server: admin.c1.havij.co
+  sim_score: 2.6251130204951663
+  speed: 8.81
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 180.5
+  name: xx|7118|puddincat07@Telegram
+  password: W74XFALLLuw6m5IA
+  port: 443
+  score: 0.6670360110803324
+  server: series-a2.samanehha.co
+  sim_score: 1.734864072167023
+  speed: 12.04
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - xx|f6db|puddincat07@Telegram
+  - xx|7118|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies: []
+  proxies:
+  - xx|f6db|puddincat07@Telegram
+  - xx|7118|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
