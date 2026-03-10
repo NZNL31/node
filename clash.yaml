@@ -4,39 +4,63 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 28.55
-  name: xx|fc02|puddincat07@Telegram
+  latency: 31.53
+  name: ca|6de8|puddincat07@Telegram
+  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+  port: 990
+  score: 11.915635902315255
+  server: 45.154.204.7
+  sim_score: 0.9115256004517515
+  speed: 37.57
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 53.23
+  name: xx|976a|puddincat07@Telegram
   password: W74XFALLLuw6m5IA
   port: 443
-  score: 10.021015761821365
+  score: 7.542739056922788
   server: series-a1.samanehha.co
-  sim_score: 0.9025675654246965
-  speed: 28.61
+  sim_score: 2.401455774264933
+  speed: 40.15
   type: ss
   udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 30.7
-  name: xx|fcef|puddincat07@Telegram
-  password: 1kVr0KATIJI7mwOF
+  latency: 50.82
+  name: xx|7d80|puddincat07@Telegram
+  password: W74XFALLLuw6m5IA
   port: 443
-  score: 6.325732899022802
-  server: admin.c1.havij.co
-  sim_score: 2.381534609593432
-  speed: 19.42
+  score: 5.041322314049586
+  server: series-a2.samanehha.co
+  sim_score: 0.7329391041740343
+  speed: 25.62
+  type: ss
+- cipher: aes-256-gcm
+  latency: 50.94
+  name: kr|6f91|puddincat07@Telegram
+  password: RexnBgU7EV5ADxG
+  port: 7001
+  score: 4.707499018453082
+  server: 141.164.45.187
+  sim_score: 1.2488443748627975
+  speed: 23.98
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|fc02|puddincat07@Telegram
-  - xx|fcef|puddincat07@Telegram
+  - ca|6de8|puddincat07@Telegram
+  - xx|976a|puddincat07@Telegram
+  - xx|7d80|puddincat07@Telegram
+  - kr|6f91|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|fc02|puddincat07@Telegram
-  - xx|fcef|puddincat07@Telegram
+  - ca|6de8|puddincat07@Telegram
+  - xx|976a|puddincat07@Telegram
+  - xx|7d80|puddincat07@Telegram
+  - kr|6f91|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
