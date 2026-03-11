@@ -3,94 +3,36 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 0
-  cipher: chacha20-ietf-poly1305
-  latency: 30.73
-  name: xx|b59b|puddincat07@Telegram
-  password: RFK38Cg7APneSB5cWDcpbm
+- alterId: 32
+  cipher: auto
+  client-fingerprint: chrome
+  latency: 65.89
+  name: xx|1b0c|puddincat07@Telegram
+  network: ws
   port: 443
-  score: 15.424666449723397
-  server: switcher-nick-croquet.freesocks.work
-  sim_score: 1.4330222491508013
+  score: 2.872970101684626
+  server: vc.fly.dev
+  sim_score: 4.182813380940316
   skip-cert-verify: true
-  speed: 47.4
+  speed: 18.93
   tls: true
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 28.8
-  name: gb|6c85|puddincat07@Telegram
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  port: 8080
-  score: 11.11111111111111
-  server: 82.38.31.194
-  sim_score: 1.0479440588497446
-  speed: 32.0
-  type: ss
-- alterId: 0
-  latency: 28.38
-  name: pt|6717|puddincat07@Telegram
-  password: a5inYFE=JGV89+hjxIqgDp1tcWBd6
-  port: 26279
-  score: 8.851303735024667
-  server: 80.173.230.196
-  sim_score: 1.7073155013535897
-  skip-cert-verify: true
-  sni: io.ozone.ru
-  speed: 25.12
-  tls: true
-  type: trojan
-  udp: true
-- cipher: aes-256-cfb
-  latency: 30.0
-  name: pt|5b4c|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 7.0
-  server: 185.231.233.112
-  sim_score: 3.4646951446200545
-  speed: 21.0
-  type: ss
-- cipher: aes-256-cfb
-  latency: 28.34
-  name: py|742a|puddincat07@Telegram
-  password: f8f7aCzcPKbsF8p3
-  port: 989
-  score: 5.811573747353563
-  server: 38.165.233.93
-  sim_score: 3.8614822856260633
-  speed: 16.47
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 41.79
-  name: xx|4745|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  port: 443
-  score: 3.2663316582914574
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 1.0695516714354762
-  speed: 13.65
-  type: ss
+  type: vmess
+  uuid: 35379219-6535-4f2e-a4fe-3e44f61e0eee
+  ws-opts:
+    headers:
+      host: vc.fly.dev
+    path: /vc
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|b59b|puddincat07@Telegram
-  - gb|6c85|puddincat07@Telegram
-  - pt|6717|puddincat07@Telegram
-  - pt|5b4c|puddincat07@Telegram
-  - py|742a|puddincat07@Telegram
-  - xx|4745|puddincat07@Telegram
+  - xx|1b0c|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|b59b|puddincat07@Telegram
-  - gb|6c85|puddincat07@Telegram
-  - pt|6717|puddincat07@Telegram
-  - pt|5b4c|puddincat07@Telegram
-  - py|742a|puddincat07@Telegram
-  - xx|4745|puddincat07@Telegram
+  - xx|1b0c|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
