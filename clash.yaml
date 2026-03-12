@@ -3,52 +3,66 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 42.51
-  name: xx|4e63|puddincat07@Telegram
-  password: d5fa43f9-1ace-4b8f-b865-627e67b1fe37
-  port: 31500
-  score: 11.641966596095036
-  server: tw05.stimaysmhy8.com
-  sim_score: 1.5483757042323474
-  skip-cert-verify: true
-  sni: jsygouer.weixin-baidu-qq.com
-  speed: 49.49
-  type: trojan
-- cipher: chacha20-ietf-poly1305
-  latency: 40.71
-  name: za|c25d|puddincat07@Telegram
-  password: RoHaFyD4IpW8W2LC
-  port: 443
-  score: 8.528617047408499
-  server: 102.37.237.190
-  sim_score: 2.4720451085213453
-  speed: 34.72
+- cipher: aes-256-cfb
+  latency: 42.58
+  name: in|9e47|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 11.528886801315172
+  server: 134.209.147.198
+  sim_score: 1.8584977676742434
+  speed: 49.09
   type: ss
-- latency: 47.83
-  name: xx|423f|puddincat07@Telegram
-  password: d5fa43f9-1ace-4b8f-b865-627e67b1fe37
-  port: 35902
-  score: 1.9945640811206355
-  server: sg03.stimaysmhy8.com
-  sim_score: 0.8402978210913243
+- alterId: 0
+  latency: 49.32
+  name: hk|7594|puddincat07@Telegram
+  password: BxceQaOe
+  port: 443
+  score: 10.030413625304135
+  server: 58.152.25.253
+  sim_score: 1.4290008718030554
   skip-cert-verify: true
-  sni: jsygouer.weixin-baidu-qq.com
-  speed: 9.54
+  sni: t.me%2Fripaojiedian
+  speed: 49.47
+  tls: true
   type: trojan
+  udp: true
+- cipher: aes-256-cfb
+  latency: 43.77
+  name: pt|beb3|puddincat07@Telegram
+  password: f8f7aCzcPKbsF8p3
+  port: 989
+  score: 8.24537354352296
+  server: 185.231.233.112
+  sim_score: 1.4288021677224052
+  speed: 36.09
+  type: ss
+- cipher: chacha20-ietf
+  latency: 41.88
+  name: sg|87e6|puddincat07@Telegram
+  password: asd123456
+  port: 8388
+  score: 5.931232091690544
+  server: 103.36.91.32
+  sim_score: 2.675568035767186
+  speed: 24.84
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|4e63|puddincat07@Telegram
-  - za|c25d|puddincat07@Telegram
-  - xx|423f|puddincat07@Telegram
+  - in|9e47|puddincat07@Telegram
+  - hk|7594|puddincat07@Telegram
+  - pt|beb3|puddincat07@Telegram
+  - sg|87e6|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|4e63|puddincat07@Telegram
-  - za|c25d|puddincat07@Telegram
-  - xx|423f|puddincat07@Telegram
+  - in|9e47|puddincat07@Telegram
+  - hk|7594|puddincat07@Telegram
+  - pt|beb3|puddincat07@Telegram
+  - sg|87e6|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
