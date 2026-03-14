@@ -3,88 +3,53 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 47.33
-  name: us|a8bf|puddincat07@Telegram
-  password: 01a7ed92-3ff7-4872-84a8-fcb4757783c7
-  port: 443
-  score: 10.285231354320727
-  server: 172.67.158.153
-  sim_score: 4.398042351710299
-  skip-cert-verify: true
-  sni: rsfndc1.cpionline.us
-  speed: 48.68
-  type: trojan
-  udp: true
+- alterId: 2
+  cipher: auto
+  latency: 77.4
+  name: xx|3c38|puddincat07@Telegram
+  port: 30807
+  score: 5.607235142118863
+  server: v10.hdacd.com
+  sim_score: 2.0798826643543524
+  skip-cert-verify: false
+  speed: 43.4
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
 - cipher: aes-256-cfb
-  latency: 43.74
-  name: hk|6fd0|puddincat07@Telegram
+  latency: 91.25
+  name: pt|65dd|puddincat07@Telegram
   password: f8f7aCzcPKbsF8p3
   port: 989
-  score: 9.147233653406492
-  server: 203.23.128.33
-  sim_score: 3.1160588877036473
-  speed: 40.01
+  score: 2.807671232876712
+  server: 185.231.233.112
+  sim_score: 0.9952808540823008
+  speed: 25.62
   type: ss
-- alterId: 0
-  latency: 52.88
-  name: hk|fd39|puddincat07@Telegram
-  password: BxceQaOe
-  port: 443
-  score: 8.390695915279878
-  server: 58.152.25.253
-  sim_score: 1.3564256532008856
-  skip-cert-verify: true
-  sni: t.me/ripaojiedian
-  speed: 44.37
-  tls: true
-  type: trojan
-  udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 38.75
-  name: nl|bb09|puddincat07@Telegram
-  password: 4a2rfixophdjffa8KVA4Aa
+  latency: 84.68
+  name: gb|778d|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
   port: 8080
-  score: 6.516129032258064
-  server: 193.29.139.206
-  sim_score: 1.8330704448653505
-  speed: 25.25
+  score: 1.374586679263108
+  server: 82.38.31.191
+  sim_score: 1.4151821027601308
+  speed: 11.64
   type: ss
-- alpn:
-  - h3%2Ch2%2Chttp%2F1.1
-  latency: 42.15
-  name: hk|c13f|puddincat07@Telegram
-  network: ws
-  password: 823cbccd-3a71-4248-ac3c-3c460de1552d
-  port: 443
-  score: 4.856465005931198
-  server: 95.40.61.115
-  sim_score: 1.5660856128393552
-  skip-cert-verify: true
-  sni: snll667.pages.dev
-  speed: 20.47
-  type: trojan
-  ws-opts:
-    headers:
-      Host: snll667.pages.dev
-    path: '%2F'
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|a8bf|puddincat07@Telegram
-  - hk|6fd0|puddincat07@Telegram
-  - hk|fd39|puddincat07@Telegram
-  - nl|bb09|puddincat07@Telegram
-  - hk|c13f|puddincat07@Telegram
+  - xx|3c38|puddincat07@Telegram
+  - pt|65dd|puddincat07@Telegram
+  - gb|778d|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|a8bf|puddincat07@Telegram
-  - hk|6fd0|puddincat07@Telegram
-  - hk|fd39|puddincat07@Telegram
-  - nl|bb09|puddincat07@Telegram
-  - hk|c13f|puddincat07@Telegram
+  - xx|3c38|puddincat07@Telegram
+  - pt|65dd|puddincat07@Telegram
+  - gb|778d|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
