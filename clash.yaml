@@ -3,29 +3,45 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-gcm
-  latency: 42.35
-  name: cn|9670|puddincat07@Telegram
-  password: PiLr13pE
-  port: 30036
-  score: 10.672963400236128
-  server: 120.233.125.33
-  sim_score: 1.2277549262040666
-  speed: 45.2
+- cipher: chacha20-ietf-poly1305
+  latency: 42.04
+  name: xx|ae88|puddincat07@Telegram
+  password: 9tqhMdIrTkgQ46PvhyAtMH
+  port: 443
+  score: 11.346336822074218
+  server: switcher-nick-croquet.freesocks.work
+  sim_score: 2.0586898792292145
+  speed: 47.7
   type: ss
+- latency: 48.11
+  name: at|d266|puddincat07@Telegram
+  network: ws
+  password: trojan
+  port: 8444
+  score: 7.000623570983163
+  server: 152.53.200.167
+  sim_score: 0.7865236312510158
+  skip-cert-verify: false
+  sni: jflsjlaf.pages.dev
+  speed: 33.68
+  type: trojan
   udp: true
+  ws-opts:
+    headers:
+      Host: jflsjlaf.pages.dev
+    path: /
 - alterId: 32
   cipher: auto
   client-fingerprint: chrome
-  latency: 42.58
-  name: xx|0509|puddincat07@Telegram
+  latency: 55.33
+  name: xx|4650|puddincat07@Telegram
   network: ws
   port: 443
-  score: 8.40770314701738
+  score: 5.087655882884511
   server: vc.fly.dev
-  sim_score: 2.2032989093858504
+  sim_score: 1.2254352416054406
   skip-cert-verify: true
-  speed: 35.8
+  speed: 28.15
   tls: true
   type: vmess
   uuid: 35379219-6535-4f2e-a4fe-3e44f61e0eee
@@ -33,67 +49,63 @@ proxies:
     headers:
       host: vc.fly.dev
     path: /vc
-- latency: 39.41
-  name: at|e5dd|puddincat07@Telegram
-  network: ws
-  password: trojan
-  port: 8444
-  score: 7.663029687896473
-  server: 152.53.200.167
-  sim_score: 1.4170605732501085
-  skip-cert-verify: false
-  sni: jflsjlaf.pages.dev
-  speed: 30.2
+- cipher: chacha20-ietf-poly1305
+  latency: 41.86
+  name: za|bdf6|puddincat07@Telegram
+  password: Xsy8Ox4yOV3xLlpxtjzs3X
+  port: 16233
+  score: 4.691829909221214
+  server: 102.133.165.160
+  sim_score: 3.288283327770205
+  speed: 19.64
+  type: ss
+- alterId: 0
+  latency: 53.16
+  name: hk|ed8a|puddincat07@Telegram
+  password: BxceQaOe
+  port: 443
+  score: 4.488337095560572
+  server: 58.152.25.253
+  sim_score: 3.188732591730025
+  skip-cert-verify: true
+  sni: t.me/ripaojiedian
+  speed: 23.86
+  tls: true
   type: trojan
   udp: true
-  ws-opts:
-    headers:
-      Host: jflsjlaf.pages.dev
-    path: /
-- alterId: 2
-  cipher: auto
-  latency: 43.75
-  name: xx|67aa|puddincat07@Telegram
-  port: 30807
-  score: 7.252571428571429
-  server: v10.hdacd.com
-  sim_score: 1.579549427071628
-  skip-cert-verify: false
-  speed: 31.73
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
 - alterId: 0
   cipher: chacha20-ietf-poly1305
-  latency: 48.93
-  name: xx|7425|puddincat07@Telegram
-  password: wwzVn2ZnHfqYa6l8EWh3eY
+  latency: 60.61
+  name: xx|cfc1|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
   port: 443
-  score: 6.319231555283058
-  server: switcher-nick-croquet.freesocks.work
-  sim_score: 1.5738910032955151
+  score: 4.441511301765385
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 4.638235626311338
   skip-cert-verify: true
-  speed: 30.92
+  speed: 26.92
   tls: true
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - cn|9670|puddincat07@Telegram
-  - xx|0509|puddincat07@Telegram
-  - at|e5dd|puddincat07@Telegram
-  - xx|67aa|puddincat07@Telegram
-  - xx|7425|puddincat07@Telegram
+  - xx|ae88|puddincat07@Telegram
+  - at|d266|puddincat07@Telegram
+  - xx|4650|puddincat07@Telegram
+  - za|bdf6|puddincat07@Telegram
+  - hk|ed8a|puddincat07@Telegram
+  - xx|cfc1|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - cn|9670|puddincat07@Telegram
-  - xx|0509|puddincat07@Telegram
-  - at|e5dd|puddincat07@Telegram
-  - xx|67aa|puddincat07@Telegram
-  - xx|7425|puddincat07@Telegram
+  - xx|ae88|puddincat07@Telegram
+  - at|d266|puddincat07@Telegram
+  - xx|4650|puddincat07@Telegram
+  - za|bdf6|puddincat07@Telegram
+  - hk|ed8a|puddincat07@Telegram
+  - xx|cfc1|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
