@@ -4,38 +4,74 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 94.44
-  name: gb|2ce6|puddincat07@Telegram
+  latency: 49.56
+  name: gb|e073|puddincat07@Telegram
   password: k1dBOmOB4oqi7Ump37a1bQ
   port: 8080
-  score: 3.2655654383735704
-  server: 82.38.31.184
-  sim_score: 1.2374915916220923
-  speed: 30.84
+  score: 8.595641646489105
+  server: 82.38.31.217
+  sim_score: 1.0492872954403512
+  speed: 42.6
   type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 76.33
-  name: us|3854|puddincat07@Telegram
-  password: R9Xc4dHXGv3c
-  port: 443
-  score: 3.018472422376523
-  server: 205.134.180.143
-  sim_score: 1.2117702269209631
-  speed: 23.04
+  latency: 49.13
+  name: ca|7bda|puddincat07@Telegram
+  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+  port: 990
+  score: 8.569102381437004
+  server: 23.95.76.59
+  sim_score: 1.943231494599217
+  speed: 42.1
   type: ss
+- cipher: aes-128-gcm
+  latency: 53.87
+  name: gb|3236|puddincat07@Telegram
+  password: shadowsocks
+  port: 443
+  score: 8.563207722294413
+  server: 141.98.101.182
+  sim_score: 1.2892383105114924
+  speed: 46.13
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 60.1
+  name: de|11d6|puddincat07@Telegram
+  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+  port: 990
+  score: 4.737104825291182
+  server: 38.60.250.107
+  sim_score: 1.6699865611601863
+  speed: 28.47
+  type: ss
+- latency: 50.78
+  name: xx|b123|puddincat07@Telegram
+  password: b3965d2d-3b82-45cc-927b-1336aca3f3fe
+  port: 443
+  score: 2.4419062623079952
+  server: sg3-full.privateip.net
+  sim_score: 2.866983352076341
+  skip-cert-verify: true
+  speed: 12.4
+  type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|2ce6|puddincat07@Telegram
-  - us|3854|puddincat07@Telegram
+  - gb|e073|puddincat07@Telegram
+  - ca|7bda|puddincat07@Telegram
+  - gb|3236|puddincat07@Telegram
+  - de|11d6|puddincat07@Telegram
+  - xx|b123|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|2ce6|puddincat07@Telegram
-  - us|3854|puddincat07@Telegram
+  - gb|e073|puddincat07@Telegram
+  - ca|7bda|puddincat07@Telegram
+  - gb|3236|puddincat07@Telegram
+  - de|11d6|puddincat07@Telegram
+  - xx|b123|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
