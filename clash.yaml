@@ -3,76 +3,128 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 49.56
-  name: gb|e073|puddincat07@Telegram
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  port: 8080
-  score: 8.595641646489105
-  server: 82.38.31.217
-  sim_score: 1.0492872954403512
-  speed: 42.6
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 49.13
-  name: ca|7bda|puddincat07@Telegram
-  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-  port: 990
-  score: 8.569102381437004
-  server: 23.95.76.59
-  sim_score: 1.943231494599217
-  speed: 42.1
-  type: ss
 - cipher: aes-128-gcm
-  latency: 53.87
-  name: gb|3236|puddincat07@Telegram
+  latency: 32.36
+  name: gb|f22f|puddincat07@Telegram
   password: shadowsocks
   port: 443
-  score: 8.563207722294413
+  score: 15.027812113720644
   server: 141.98.101.182
-  sim_score: 1.2892383105114924
-  speed: 46.13
+  sim_score: 1.3629341821538405
+  speed: 48.63
   type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 60.1
-  name: de|11d6|puddincat07@Telegram
-  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-  port: 990
-  score: 4.737104825291182
-  server: 38.60.250.107
-  sim_score: 1.6699865611601863
-  speed: 28.47
-  type: ss
-- latency: 50.78
-  name: xx|b123|puddincat07@Telegram
-  password: b3965d2d-3b82-45cc-927b-1336aca3f3fe
+- latency: 32.38
+  name: xx|454b|puddincat07@Telegram
+  password: ZY07256934
   port: 443
-  score: 2.4419062623079952
-  server: sg3-full.privateip.net
-  sim_score: 2.866983352076341
+  score: 12.699197035206915
+  server: delicate-buck.rooster465.autos
+  sim_score: 1.2117188057361397
+  skip-cert-verify: false
+  speed: 41.12
+  type: trojan
+- latency: 40.17
+  name: xx|e1df|puddincat07@Telegram
+  password: IL37892054
+  port: 443
+  score: 11.389096340552651
+  server: apt-magpie.rooster465.autos
+  sim_score: 1.3172864865608946
+  skip-cert-verify: false
+  sni: apt-magpie.rooster465.autos
+  speed: 45.75
+  type: trojan
+  udp: true
+- latency: 42.1
+  name: kr|138f|puddincat07@Telegram
+  network: ws
+  password: trojan
+  port: 11000
+  score: 9.1187648456057
+  server: 220.92.22.170
+  sim_score: 2.3988649055966342
   skip-cert-verify: true
-  speed: 12.4
+  sni: jflsjlaf.pages.dev
+  speed: 38.39
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: jflsjlaf.pages.dev
+    path: /
+- latency: 38.94
+  name: xx|02ed|puddincat07@Telegram
+  password: IL37892054
+  port: 443
+  score: 7.062146892655368
+  server: outgoing-ladybird.rooster465.autos
+  sim_score: 1.41580014059263
+  skip-cert-verify: false
+  sni: outgoing-ladybird.rooster465.autos
+  speed: 27.5
+  type: trojan
+  udp: true
+- latency: 35.19
+  name: xx|6fe6|puddincat07@Telegram
+  password: q2GRUM1-odJBWq_KV6xv2fuNvu8ed-
+  port: 443
+  score: 4.052287581699346
+  server: 8443.golden-cards.me
+  sim_score: 1.0155830877929037
+  skip-cert-verify: false
+  sni: 8443.golden-cards.me
+  speed: 14.26
+  type: trojan
+- latency: 39.32
+  name: nl|d873|puddincat07@Telegram
+  network: ws
+  password: maHanVPpN
+  port: 80
+  score: 2.993387589013224
+  server: 185.176.24.84
+  sim_score: 1.1548299717874466
+  skip-cert-verify: true
+  speed: 11.77
+  type: trojan
+  udp: true
+  ws-opts:
+    path: '%252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252Fmahan'
+- latency: 32.26
+  name: xx|5f24|puddincat07@Telegram
+  password: 57afed5a-5a70-4a8b-bb40-4d81c26e65dd
+  port: 443
+  score: 2.532548047117173
+  server: uk-full.privateip.net
+  sim_score: 0.8254978900691857
+  skip-cert-verify: true
+  speed: 8.17
   type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|e073|puddincat07@Telegram
-  - ca|7bda|puddincat07@Telegram
-  - gb|3236|puddincat07@Telegram
-  - de|11d6|puddincat07@Telegram
-  - xx|b123|puddincat07@Telegram
+  - gb|f22f|puddincat07@Telegram
+  - xx|454b|puddincat07@Telegram
+  - xx|e1df|puddincat07@Telegram
+  - kr|138f|puddincat07@Telegram
+  - xx|02ed|puddincat07@Telegram
+  - xx|6fe6|puddincat07@Telegram
+  - nl|d873|puddincat07@Telegram
+  - xx|5f24|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|e073|puddincat07@Telegram
-  - ca|7bda|puddincat07@Telegram
-  - gb|3236|puddincat07@Telegram
-  - de|11d6|puddincat07@Telegram
-  - xx|b123|puddincat07@Telegram
+  - gb|f22f|puddincat07@Telegram
+  - xx|454b|puddincat07@Telegram
+  - xx|e1df|puddincat07@Telegram
+  - kr|138f|puddincat07@Telegram
+  - xx|02ed|puddincat07@Telegram
+  - xx|6fe6|puddincat07@Telegram
+  - nl|d873|puddincat07@Telegram
+  - xx|5f24|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
