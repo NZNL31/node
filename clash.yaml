@@ -3,27 +3,41 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-128-gcm
-  latency: 75.76
-  name: cn|2b7a|puddincat07@Telegram
-  password: d72781da-3ea8-4d7f-9bca-c04ed410443b
-  port: 50000
-  score: 4.052270327349524
-  server: 106.75.162.7
-  sim_score: 1.156786746852986
-  speed: 30.7
+- latency: 40.47
+  name: xx|2aa5|puddincat07@Telegram
+  password: IL37892054
+  port: 443
+  score: 11.013096120583148
+  server: outgoing-ladybird.rooster465.autos
+  sim_score: 2.1338222427700675
+  skip-cert-verify: false
+  sni: outgoing-ladybird.rooster465.autos
+  speed: 44.57
+  type: trojan
+  udp: true
+- cipher: rc4-md5
+  latency: 37.32
+  name: jp|188b|puddincat07@Telegram
+  password: 14fFPrbezE3HDZzsMOr6
+  port: 8080
+  score: 7.741157556270096
+  server: 172.105.199.111
+  sim_score: 1.836972329286923
+  speed: 28.89
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - cn|2b7a|puddincat07@Telegram
+  - xx|2aa5|puddincat07@Telegram
+  - jp|188b|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - cn|2b7a|puddincat07@Telegram
+  - xx|2aa5|puddincat07@Telegram
+  - jp|188b|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
