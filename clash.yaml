@@ -3,60 +3,59 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 0
-  latency: 52.57
-  name: xx|1a40|puddincat07@Telegram
-  password: IL37892054
-  port: 443
-  score: 9.362754422674529
-  server: engaged-ram.rooster465.autos
-  sim_score: 2.124499374268039
-  skip-cert-verify: true
-  speed: 49.22
-  tls: true
-  type: trojan
-  udp: true
-- cipher: aes-128-gcm
-  latency: 43.43
-  name: cn|deb4|puddincat07@Telegram
-  password: d72781da-3ea8-4d7f-9bca-c04ed410443b
-  port: 50000
-  score: 4.278148745107068
-  server: 106.75.162.7
-  sim_score: 0.6587534219954638
-  speed: 18.58
-  type: ss
-- latency: 42.18
-  name: kr|725c|puddincat07@Telegram
+- latency: 41.35
+  name: kr|2f02|puddincat07@Telegram
   network: ws
   password: trojan
   port: 11000
-  score: 4.253200568990043
+  score: 9.864570737605803
   server: 220.92.22.170
-  sim_score: 1.5482478423062322
+  sim_score: 1.1014006135091827
   skip-cert-verify: true
   sni: jflsjlaf.pages.dev
-  speed: 17.94
+  speed: 40.79
   type: trojan
   udp: true
   ws-opts:
     headers:
       Host: jflsjlaf.pages.dev
     path: /
+- cipher: aes-128-gcm
+  latency: 54.23
+  name: cn|eb53|puddincat07@Telegram
+  password: d72781da-3ea8-4d7f-9bca-c04ed410443b
+  port: 50000
+  score: 5.959800848238983
+  server: 106.75.162.7
+  sim_score: 2.104184731746104
+  speed: 32.32
+  type: ss
+- latency: 41.78
+  name: xx|8b83|puddincat07@Telegram
+  password: IL37892054
+  port: 443
+  score: 2.079942556247008
+  server: outgoing-ladybird.rooster465.autos
+  sim_score: 1.0143060448317918
+  skip-cert-verify: false
+  sni: outgoing-ladybird.rooster465.autos
+  speed: 8.69
+  type: trojan
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|1a40|puddincat07@Telegram
-  - cn|deb4|puddincat07@Telegram
-  - kr|725c|puddincat07@Telegram
+  - kr|2f02|puddincat07@Telegram
+  - cn|eb53|puddincat07@Telegram
+  - xx|8b83|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|1a40|puddincat07@Telegram
-  - cn|deb4|puddincat07@Telegram
-  - kr|725c|puddincat07@Telegram
+  - kr|2f02|puddincat07@Telegram
+  - cn|eb53|puddincat07@Telegram
+  - xx|8b83|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
