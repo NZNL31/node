@@ -2,15 +2,29 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies: []
+proxies:
+- latency: 41.45
+  name: xx|4101|puddincat07@Telegram
+  password: IL37892054
+  port: 443
+  score: 8.743063932448734
+  server: outgoing-ladybird.rooster465.autos
+  sim_score: 2.9570773623718623
+  skip-cert-verify: false
+  sni: outgoing-ladybird.rooster465.autos
+  speed: 36.24
+  type: trojan
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - xx|4101|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies: []
+  proxies:
+  - xx|4101|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
