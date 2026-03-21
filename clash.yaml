@@ -3,28 +3,40 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 41.45
-  name: xx|4101|puddincat07@Telegram
-  password: IL37892054
+- cipher: rc4-md5
+  latency: 30.74
+  name: sg|53d1|puddincat07@Telegram
+  password: 14fFPrbezE3HDZzsMOr6
+  port: 8080
+  score: 10.63109954456734
+  server: 68.183.227.4
+  sim_score: 1.3109610184056975
+  speed: 32.68
+  type: ss
+  udp: true
+- latency: 38.71
+  name: tw|f008|puddincat07@Telegram
+  password: 3ac6a6ca99f74941b1eaf892818e2ddb
   port: 443
-  score: 8.743063932448734
-  server: outgoing-ladybird.rooster465.autos
-  sim_score: 2.9570773623718623
-  skip-cert-verify: false
-  sni: outgoing-ladybird.rooster465.autos
-  speed: 36.24
+  score: 8.09609919917334
+  server: 85.237.206.249
+  sim_score: 2.053953586912377
+  skip-cert-verify: true
+  speed: 31.34
   type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|4101|puddincat07@Telegram
+  - sg|53d1|puddincat07@Telegram
+  - tw|f008|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|4101|puddincat07@Telegram
+  - sg|53d1|puddincat07@Telegram
+  - tw|f008|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
