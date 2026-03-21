@@ -4,40 +4,73 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 40.87
-  name: xx|f432|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  port: 443
-  score: 8.874480058722781
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 1.3464023084486556
-  speed: 36.27
+  latency: 66.83
+  name: nl|6789|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 6.242705371838994
+  server: 193.29.139.202
+  sim_score: 1.0075325631054668
+  speed: 41.72
   type: ss
-- latency: 41.95
-  name: xx|7a65|puddincat07@Telegram
-  password: IL37892054
+- cipher: aes-128-gcm
+  latency: 95.0
+  name: us|59aa|puddincat07@Telegram
+  password: 9m^d3iEa9gWv
+  plugin: v2ray-plugin
+  plugin-opts:
+    host: v2.fjdd.shop
+    mode: websocket
+    mux: false
+    path: ''
+    skip-cert-verify: true
+    tls: false
   port: 443
-  score: 7.554231227651966
-  server: outgoing-ladybird.rooster465.autos
-  sim_score: 0.7535601776972854
-  skip-cert-verify: false
-  sni: outgoing-ladybird.rooster465.autos
-  speed: 31.69
+  score: 2.4631578947368418
+  server: 104.16.96.139
+  sim_score: 0.8320067068484456
+  speed: 23.4
+  type: ss
+  udp: true
+- latency: 87.05
+  name: us|5136|puddincat07@Telegram
+  password: 4aec4e7f8cf8454ea4613659822e1a61
+  port: 443
+  score: 1.9827685238368755
+  server: 104.17.147.8
+  sim_score: 3.1223898495231595
+  skip-cert-verify: true
+  sni: jobscareerforstudent.com
+  speed: 17.26
   type: trojan
   udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 68.05
+  name: sg|bd95|puddincat07@Telegram
+  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+  port: 990
+  score: 1.8251285819250551
+  server: 38.89.142.56
+  sim_score: 1.6601120181588858
+  speed: 12.42
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|f432|puddincat07@Telegram
-  - xx|7a65|puddincat07@Telegram
+  - nl|6789|puddincat07@Telegram
+  - us|59aa|puddincat07@Telegram
+  - us|5136|puddincat07@Telegram
+  - sg|bd95|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|f432|puddincat07@Telegram
-  - xx|7a65|puddincat07@Telegram
+  - nl|6789|puddincat07@Telegram
+  - us|59aa|puddincat07@Telegram
+  - us|5136|puddincat07@Telegram
+  - sg|bd95|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
