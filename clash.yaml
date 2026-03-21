@@ -3,88 +3,53 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 38.98
-  name: il|b2ec|puddincat07@Telegram
+- latency: 32.86
+  name: il|2f58|puddincat07@Telegram
   password: 3ac6a6ca99f74941b1eaf892818e2ddb
   port: 443
-  score: 11.944586967675733
+  score: 12.10590383444918
   server: 89.221.225.71
-  sim_score: 0.8518834445516794
+  sim_score: 1.0460991562235094
   skip-cert-verify: true
-  speed: 46.56
+  speed: 39.78
   type: trojan
   udp: true
-- latency: 38.4
-  name: tw|11ee|puddincat07@Telegram
+- latency: 42.63
+  name: tw|7608|puddincat07@Telegram
   password: 3ac6a6ca99f74941b1eaf892818e2ddb
   port: 443
-  score: 7.382812500000001
+  score: 6.479005395261552
   server: 85.237.206.249
-  sim_score: 1.2588736810522474
+  sim_score: 1.1914182678026466
   skip-cert-verify: true
-  speed: 28.35
+  speed: 27.62
   type: trojan
   udp: true
-- cipher: aes-128-gcm
-  latency: 38.42
-  name: us|2312|puddincat07@Telegram
-  password: g12sQi#ss#&1
-  plugin: v2ray-plugin
-  plugin-opts:
-    host: j1.pplo.online
-    mode: websocket
-    mux: false
-    path: ''
-    skip-cert-verify: true
-    tls: false
+- latency: 41.92
+  name: sg|5fd7|puddincat07@Telegram
+  password: 3ac6a6ca99f74941b1eaf892818e2ddb
   port: 443
-  score: 6.030713170223842
-  server: 172.67.192.10
-  sim_score: 1.7194212654019183
-  speed: 23.17
-  type: ss
-  udp: true
-- latency: 39.17
-  name: xx|e3d0|puddincat07@Telegram
-  password: IL37892054
-  port: 443
-  score: 3.974980852693388
-  server: fluent-stingray.crayfish192.xyz
-  sim_score: 1.0228798907368963
+  score: 2.82442748091603
+  server: 185.151.146.40
+  sim_score: 1.780482092245819
   skip-cert-verify: true
-  speed: 15.57
-  type: trojan
-  udp: true
-- latency: 48.87
-  name: xx|f139|puddincat07@Telegram
-  password: IL37892054
-  port: 443
-  score: 1.798649478207489
-  server: enhanced-crayfish.rooster465.autos
-  sim_score: 4.082059235131867
-  skip-cert-verify: false
-  sni: enhanced-crayfish.rooster465.autos
-  speed: 8.79
+  speed: 11.84
   type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - il|b2ec|puddincat07@Telegram
-  - tw|11ee|puddincat07@Telegram
-  - us|2312|puddincat07@Telegram
-  - xx|e3d0|puddincat07@Telegram
-  - xx|f139|puddincat07@Telegram
+  - il|2f58|puddincat07@Telegram
+  - tw|7608|puddincat07@Telegram
+  - sg|5fd7|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - il|b2ec|puddincat07@Telegram
-  - tw|11ee|puddincat07@Telegram
-  - us|2312|puddincat07@Telegram
-  - xx|e3d0|puddincat07@Telegram
-  - xx|f139|puddincat07@Telegram
+  - il|2f58|puddincat07@Telegram
+  - tw|7608|puddincat07@Telegram
+  - sg|5fd7|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
