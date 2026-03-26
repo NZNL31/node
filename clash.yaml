@@ -4,131 +4,158 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 32.79
-  name: gb|6178|puddincat07@Telegram
-  password: k1dBOmOB4oqi7Ump37a1bQ
+  latency: 32.71
+  name: za|bfc4|puddincat07@Telegram
+  password: aduB9HGxQHjA2SBMRjkHX6
+  port: 443
+  score: 15.224701926016508
+  server: 102.37.156.224
+  sim_score: 2.7914584538110527
+  speed: 49.8
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 34.5
+  name: gb|941d|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   port: 8080
-  score: 12.38182372674596
-  server: 82.38.31.208
-  sim_score: 2.9910565681693284
-  speed: 40.6
+  score: 13.83768115942029
+  server: 82.38.31.82
+  sim_score: 1.7958986718563814
+  speed: 47.74
   type: ss
-- cipher: aes-256-cfb
-  latency: 30.45
-  name: hk|4cca|puddincat07@Telegram
-  password: qwerREWQ@@
-  port: 41632
-  score: 6.791461412151067
-  server: 112.213.102.188
-  sim_score: 0.7393493754598526
-  speed: 20.68
-  type: ss
+- latency: 32.23
+  name: xx|382c|puddincat07@Telegram
+  password: 0fe4bbdb-2854-4cc5-986c-f62dbb900bc5
+  port: 443
+  score: 11.811976419484953
+  server: fr-full.privateip.net
+  sim_score: 0.6275559498248139
+  skip-cert-verify: true
+  speed: 38.07
+  type: trojan
+  udp: true
 - alterId: 2
   cipher: auto
-  latency: 36.36
-  name: xx|e330|puddincat07@Telegram
+  latency: 43.92
+  name: xx|fb2c|puddincat07@Telegram
   port: 30807
-  score: 6.655665566556656
+  score: 9.838342440801458
   server: v10.hdacd.com
-  sim_score: 1.0131330886203573
+  sim_score: 2.8444589026440297
   skip-cert-verify: false
-  speed: 24.2
+  speed: 43.21
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- latency: 32.59
-  name: gb|8c40|puddincat07@Telegram
-  password: 1d7692c0-f51c-11ee-91eb-1239d0255272
-  port: 443
-  score: 5.173366063209572
-  server: 51.38.65.155
-  sim_score: 1.67994166461125
+- latency: 31.73
+  name: cf|95a7|puddincat07@Telegram
+  network: ws
+  password: dGKXcHgs3P
+  port: 80
+  score: 9.773085408131108
+  server: 23.227.60.186
+  sim_score: 2.060618851379308
   skip-cert-verify: true
-  speed: 16.86
+  speed: 31.01
   type: trojan
   udp: true
+  ws-opts:
+    path: '%25252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252F%25252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252525252CTurk'
+- latency: 48.41
+  name: us|e036|puddincat07@Telegram
+  password: 29ea82cf-f956-42b2-a5dc-35feea39e7ff
+  port: 443
+  score: 7.665771534806859
+  server: 104.21.39.134
+  sim_score: 1.4096436243502128
+  skip-cert-verify: true
+  sni: glc-tw1.windowsupdatea.com
+  speed: 37.11
+  type: trojan
+  udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 33.95
+  name: us|1533|puddincat07@Telegram
+  password: p78naCf2EfOlRSLTX0wFVx
+  port: 443
+  score: 7.151693667157585
+  server: 71.19.148.143
+  sim_score: 0.9501322874298824
+  speed: 24.28
+  type: ss
 - cipher: aes-256-cfb
-  latency: 30.84
-  name: tw|c32e|puddincat07@Telegram
+  latency: 31.4
+  name: hk|3f02|puddincat07@Telegram
   password: qwerREWQ@@
   port: 41632
-  score: 5.038910505836576
-  server: 185.189.160.105
-  sim_score: 0.8562533057449804
-  speed: 15.54
+  score: 4.401273885350319
+  server: 112.213.102.188
+  sim_score: 2.3898272346624756
+  speed: 13.82
+  type: ss
+- latency: 31.07
+  name: us|c41f|puddincat07@Telegram
+  password: 5041df4c-b3ae-481d-adf9-79b39f4810f2
+  port: 2083
+  score: 3.9523656260057933
+  server: 104.26.14.85
+  sim_score: 3.019938321361595
+  skip-cert-verify: true
+  sni: taqboostan.zagros.top
+  speed: 12.28
+  type: trojan
+  udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 34.75
+  name: za|b118|puddincat07@Telegram
+  password: Xsy8Ox4yOV3xLlpxtjzs3X
+  port: 16233
+  score: 2.966906474820144
+  server: 102.133.165.160
+  sim_score: 1.2099696160092752
+  speed: 10.31
   type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 37.82
-  name: gb|a109|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
+  latency: 50.88
+  name: gb|4785|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
   port: 8080
-  score: 4.304600740349022
-  server: 82.38.31.124
-  sim_score: 2.436619253892751
-  speed: 16.28
-  type: ss
-- latency: 31.77
-  name: xx|7dfe|puddincat07@Telegram
-  password: cd7239af-77ad-4628-a871-00acfa219f02
-  port: 56381
-  score: 3.9534151715454833
-  server: ip0axv1bbsu02k7-ph.1ytnode.com
-  sim_score: 0.5615735102741508
-  skip-cert-verify: true
-  speed: 12.56
-  type: trojan
-  udp: true
-- latency: 29.52
-  name: xx|e0ff|puddincat07@Telegram
-  password: 5eb5bdf9-4a70-4890-b2ca-8b2b79792639
-  port: 10443
-  score: 3.3299457994579944
-  server: macau.hapchung.com
-  sim_score: 3.744970821260502
-  skip-cert-verify: true
-  speed: 9.83
-  type: trojan
-  udp: true
-- alterId: 0
-  cipher: chacha20-ietf-poly1305
-  latency: 32.34
-  name: xx|bd14|puddincat07@Telegram
-  password: W74XFALLLuw6m5IA
-  port: 443
-  score: 3.0055658627087194
-  server: series-a1.samanehha.co
-  sim_score: 3.088367147918839
-  skip-cert-verify: true
-  speed: 9.72
-  tls: true
+  score: 2.7476415094339623
+  server: 82.38.31.194
+  sim_score: 4.003903736628453
+  speed: 13.98
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|6178|puddincat07@Telegram
-  - hk|4cca|puddincat07@Telegram
-  - xx|e330|puddincat07@Telegram
-  - gb|8c40|puddincat07@Telegram
-  - tw|c32e|puddincat07@Telegram
-  - gb|a109|puddincat07@Telegram
-  - xx|7dfe|puddincat07@Telegram
-  - xx|e0ff|puddincat07@Telegram
-  - xx|bd14|puddincat07@Telegram
+  - za|bfc4|puddincat07@Telegram
+  - gb|941d|puddincat07@Telegram
+  - xx|382c|puddincat07@Telegram
+  - xx|fb2c|puddincat07@Telegram
+  - cf|95a7|puddincat07@Telegram
+  - us|e036|puddincat07@Telegram
+  - us|1533|puddincat07@Telegram
+  - hk|3f02|puddincat07@Telegram
+  - us|c41f|puddincat07@Telegram
+  - za|b118|puddincat07@Telegram
+  - gb|4785|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|6178|puddincat07@Telegram
-  - hk|4cca|puddincat07@Telegram
-  - xx|e330|puddincat07@Telegram
-  - gb|8c40|puddincat07@Telegram
-  - tw|c32e|puddincat07@Telegram
-  - gb|a109|puddincat07@Telegram
-  - xx|7dfe|puddincat07@Telegram
-  - xx|e0ff|puddincat07@Telegram
-  - xx|bd14|puddincat07@Telegram
+  - za|bfc4|puddincat07@Telegram
+  - gb|941d|puddincat07@Telegram
+  - xx|382c|puddincat07@Telegram
+  - xx|fb2c|puddincat07@Telegram
+  - cf|95a7|puddincat07@Telegram
+  - us|e036|puddincat07@Telegram
+  - us|1533|puddincat07@Telegram
+  - hk|3f02|puddincat07@Telegram
+  - us|c41f|puddincat07@Telegram
+  - za|b118|puddincat07@Telegram
+  - gb|4785|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
