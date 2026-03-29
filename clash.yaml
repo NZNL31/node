@@ -3,68 +3,70 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 38.46
-  name: lv|b74b|puddincat07@Telegram
-  password: strong-secret-pass-777
-  port: 4443
-  score: 12.34529381175247
-  server: 103.231.73.181
-  sim_score: 2.6478146377017686
-  skip-cert-verify: true
-  speed: 47.48
-  type: trojan
-  udp: true
-- alterId: 0
-  cipher: chacha20-ietf-poly1305
-  latency: 37.18
-  name: gb|c1b5|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 8080
-  score: 7.417966648735879
-  server: 82.38.31.101
-  sim_score: 2.6111101041725844
-  skip-cert-verify: true
-  speed: 27.58
-  tls: true
-  type: ss
 - cipher: aes-256-cfb
-  latency: 41.42
-  name: vn|61d4|puddincat07@Telegram
+  latency: 38.73
+  name: vn|34a0|puddincat07@Telegram
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   port: 38388
-  score: 6.607918879768228
+  score: 11.476891298734833
   server: 103.186.155.85
-  sim_score: 3.006433408278281
-  speed: 27.37
+  sim_score: 2.4800620283278896
+  speed: 44.45
   type: ss
-- latency: 30.53
-  name: nl|89eb|puddincat07@Telegram
+- alterId: 0
+  cipher: chacha20-ietf-poly1305
+  latency: 31.9
+  name: xx|4245|puddincat07@Telegram
+  password: W74XFALLLuw6m5IA
+  port: 443
+  score: 11.401253918495298
+  server: series-a2.samanehha.co
+  sim_score: 1.2833963857692043
+  skip-cert-verify: true
+  speed: 36.37
+  tls: true
+  type: ss
+- alterId: 0
+  cipher: chacha20-ietf-poly1305
+  latency: 37.82
+  name: xx|927b|puddincat07@Telegram
+  password: W74XFALLLuw6m5IA
+  port: 443
+  score: 11.232152300370172
+  server: series-a1.samanehha.co
+  sim_score: 2.269270283480724
+  skip-cert-verify: true
+  speed: 42.48
+  tls: true
+  type: ss
+- latency: 41.03
+  name: nl|cfdc|puddincat07@Telegram
   password: strong-secret-pass-777
   port: 4443
-  score: 2.9446446118571896
+  score: 5.537411650012186
   server: 94.131.105.125
-  sim_score: 0.9314704551616769
+  sim_score: 1.3696920017383005
   skip-cert-verify: true
-  speed: 8.99
+  speed: 22.72
   type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - lv|b74b|puddincat07@Telegram
-  - gb|c1b5|puddincat07@Telegram
-  - vn|61d4|puddincat07@Telegram
-  - nl|89eb|puddincat07@Telegram
+  - vn|34a0|puddincat07@Telegram
+  - xx|4245|puddincat07@Telegram
+  - xx|927b|puddincat07@Telegram
+  - nl|cfdc|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - lv|b74b|puddincat07@Telegram
-  - gb|c1b5|puddincat07@Telegram
-  - vn|61d4|puddincat07@Telegram
-  - nl|89eb|puddincat07@Telegram
+  - vn|34a0|puddincat07@Telegram
+  - xx|4245|puddincat07@Telegram
+  - xx|927b|puddincat07@Telegram
+  - nl|cfdc|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
