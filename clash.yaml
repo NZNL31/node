@@ -5,59 +5,31 @@ port: 7890
 proxies:
 - alterId: 0
   cipher: chacha20-ietf-poly1305
-  latency: 31.07
-  name: gb|e90b|puddincat07@Telegram
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  port: 8080
-  score: 15.867396202124235
-  server: 82.38.31.208
-  sim_score: 1.569714429243629
+  latency: 31.5
+  name: xx|2a73|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  port: 443
+  score: 15.593650793650793
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 2.4652048276705156
   skip-cert-verify: true
-  speed: 49.3
+  speed: 49.12
   tls: true
   type: ss
-- cipher: aes-256-cfb
-  latency: 33.73
-  name: fr|a944|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 13.871924103172251
-  server: 13.38.70.87
-  sim_score: 1.7787780586960302
-  speed: 46.79
-  type: ss
-- alterId: 32
-  cipher: auto
-  client-fingerprint: chrome
-  latency: 43.77
-  name: xx|9193|puddincat07@Telegram
-  network: ws
-  port: 443
-  score: 11.021247429746401
-  server: vc.fly.dev
-  sim_score: 1.261568547757651
+- latency: 33.36
+  name: nl|fe22|puddincat07@Telegram
+  password: strong-secret-pass-777
+  port: 4443
+  score: 12.658872901678658
+  server: 94.131.105.125
+  sim_score: 1.730283890234693
   skip-cert-verify: true
-  speed: 48.24
-  tls: true
-  type: vmess
-  uuid: 35379219-6535-4f2e-a4fe-3e44f61e0eee
-  ws-opts:
-    headers:
-      host: vc.fly.dev
-    path: /vc
-- cipher: chacha20-ietf-poly1305
-  latency: 47.86
-  name: xx|17da|puddincat07@Telegram
-  password: wwzVn2ZnHfqYa6l8EWh3eY
-  port: 443
-  score: 9.674049310488925
-  server: switcher-nick-croquet.freesocks.work
-  sim_score: 2.290864113846014
-  speed: 46.3
-  type: ss
+  speed: 42.23
+  type: trojan
+  udp: true
 - cipher: none
-  latency: 55.33
-  name: xx|c9ca|puddincat07@Telegram
+  latency: 32.31
+  name: xx|1145|puddincat07@Telegram
   password: 3e96ef7d-8637-42c2-ac73-75182196e755
   plugin: v2ray-plugin
   plugin-opts:
@@ -67,30 +39,26 @@ proxies:
     path: /3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
     tls: true
   port: 443
-  score: 8.311946502801375
+  score: 7.1402042711234905
   server: store.ubi.com
-  sim_score: 4.543587350477375
-  speed: 45.99
+  sim_score: 2.1316082866295103
+  speed: 23.07
   type: ss
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|e90b|puddincat07@Telegram
-  - fr|a944|puddincat07@Telegram
-  - xx|9193|puddincat07@Telegram
-  - xx|17da|puddincat07@Telegram
-  - xx|c9ca|puddincat07@Telegram
+  - xx|2a73|puddincat07@Telegram
+  - nl|fe22|puddincat07@Telegram
+  - xx|1145|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|e90b|puddincat07@Telegram
-  - fr|a944|puddincat07@Telegram
-  - xx|9193|puddincat07@Telegram
-  - xx|17da|puddincat07@Telegram
-  - xx|c9ca|puddincat07@Telegram
+  - xx|2a73|puddincat07@Telegram
+  - nl|fe22|puddincat07@Telegram
+  - xx|1145|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
