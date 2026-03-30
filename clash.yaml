@@ -3,65 +3,85 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: none
-  latency: 42.9
-  name: xx|a216|puddincat07@Telegram
-  password: 3e96ef7d-8637-42c2-ac73-75182196e755
-  plugin: v2ray-plugin
-  plugin-opts:
-    host: mfvpn.fuchen.indevs.in
-    mode: websocket
-    mux: false
-    path: /3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
-    tls: true
-  port: 443
-  score: 9.006993006993007
-  server: store.ubi.com
-  sim_score: 2.5713781822739366
-  speed: 38.64
-  type: ss
+- latency: 41.9
+  name: nl|9e97|puddincat07@Telegram
+  password: strong-secret-pass-777
+  port: 4443
+  score: 9.264916467780429
+  server: 94.131.105.125
+  sim_score: 1.2599301304765302
+  skip-cert-verify: true
+  speed: 38.82
+  type: trojan
   udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 49.3
+  name: xx|25cf|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  port: 443
+  score: 9.05476673427992
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 1.2524320656705088
+  speed: 44.64
+  type: ss
 - alterId: 0
   cipher: chacha20-ietf-poly1305
-  latency: 43.32
-  name: xx|db5f|puddincat07@Telegram
+  latency: 40.35
+  name: xx|63d3|puddincat07@Telegram
   password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
   port: 50099
-  score: 7.76084949215143
+  score: 9.021065675340768
   server: n8mrcg004732fk8.cybervena.com
-  sim_score: 2.15318260612032
+  sim_score: 0.7603706246106862
   skip-cert-verify: true
-  speed: 33.62
+  speed: 36.4
   tls: true
   type: ss
 - alterId: 0
   cipher: chacha20-ietf-poly1305
-  latency: 43.28
-  name: xx|2392|puddincat07@Telegram
+  latency: 47.2
+  name: gb|a84b|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: 8080
+  score: 7.415254237288135
+  server: 82.38.31.208
+  sim_score: 0.7544021299332746
+  skip-cert-verify: true
+  speed: 35.0
+  tls: true
+  type: ss
+- alterId: 0
+  cipher: chacha20-ietf-poly1305
+  latency: 39.83
+  name: xx|c525|puddincat07@Telegram
   password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
   port: 50099
-  score: 7.657116451016636
+  score: 2.10896309314587
   server: r3mrcg007168e8p.cybervena.com
-  sim_score: 1.8261051381810975
+  sim_score: 1.2071408188872106
   skip-cert-verify: true
-  speed: 33.14
+  speed: 8.4
   tls: true
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|a216|puddincat07@Telegram
-  - xx|db5f|puddincat07@Telegram
-  - xx|2392|puddincat07@Telegram
+  - nl|9e97|puddincat07@Telegram
+  - xx|25cf|puddincat07@Telegram
+  - xx|63d3|puddincat07@Telegram
+  - gb|a84b|puddincat07@Telegram
+  - xx|c525|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|a216|puddincat07@Telegram
-  - xx|db5f|puddincat07@Telegram
-  - xx|2392|puddincat07@Telegram
+  - nl|9e97|puddincat07@Telegram
+  - xx|25cf|puddincat07@Telegram
+  - xx|63d3|puddincat07@Telegram
+  - gb|a84b|puddincat07@Telegram
+  - xx|c525|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
