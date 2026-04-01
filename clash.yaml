@@ -4,8 +4,26 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: none
-  latency: 38.88
-  name: xx|7fcb|puddincat07@Telegram
+  latency: 28.3
+  name: cf|1b2e|puddincat07@Telegram
+  password: 3e96ef7d-8637-42c2-ac73-75182196e755
+  plugin: v2ray-plugin
+  plugin-opts:
+    host: mfvpn.fuchen.indevs.in
+    mode: websocket
+    mux: false
+    path: 3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
+    tls: true
+  port: 443
+  score: 10.063604240282686
+  server: 199.181.197.38
+  sim_score: 1.4716691850005734
+  speed: 28.48
+  type: ss
+  udp: true
+- cipher: none
+  latency: 28.13
+  name: xx|bbd0|puddincat07@Telegram
   password: 3e96ef7d-8637-42c2-ac73-75182196e755
   plugin: v2ray-plugin
   plugin-opts:
@@ -15,36 +33,25 @@ proxies:
     path: /3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
     tls: true
   port: 443
-  score: 10.504115226337449
+  score: 9.751155350159971
   server: store.ubi.com
-  sim_score: 1.6510506413346495
-  speed: 40.84
+  sim_score: 1.7626970149030619
+  speed: 27.43
   type: ss
-  udp: true
-- latency: 30.69
-  name: nl|9eb1|puddincat07@Telegram
-  password: strong-secret-pass-777
-  port: 4443
-  score: 4.952753339850114
-  server: 94.131.105.125
-  sim_score: 1.222154550881652
-  skip-cert-verify: true
-  speed: 15.2
-  type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|7fcb|puddincat07@Telegram
-  - nl|9eb1|puddincat07@Telegram
+  - cf|1b2e|puddincat07@Telegram
+  - xx|bbd0|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|7fcb|puddincat07@Telegram
-  - nl|9eb1|puddincat07@Telegram
+  - cf|1b2e|puddincat07@Telegram
+  - xx|bbd0|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
