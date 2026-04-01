@@ -3,35 +3,43 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: none
-  latency: 102.57
-  name: cf|cd5d|puddincat07@Telegram
-  password: 3e96ef7d-8637-42c2-ac73-75182196e755
-  plugin: v2ray-plugin
-  plugin-opts:
-    host: mfvpn.fuchen.indevs.in
-    mode: websocket
-    mux: false
-    path: 3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
-    tls: true
+- latency: 103.87
+  name: nl|19e2|puddincat07@Telegram
+  password: strong-secret-pass-777
+  port: 4443
+  score: 3.39559064214884
+  server: 94.131.105.125
+  sim_score: 2.0423671602705675
+  skip-cert-verify: true
+  speed: 35.27
+  type: trojan
+  udp: true
+- alterId: 0
+  latency: 96.1
+  name: hk|9e85|puddincat07@Telegram
+  password: BxceQaOe
   port: 443
-  score: 4.2293068148581465
-  server: 199.181.197.38
-  sim_score: 0.7292019926354444
-  speed: 43.38
-  type: ss
+  score: 2.6305931321540066
+  server: 58.152.25.253
+  sim_score: 1.9125449697195818
+  skip-cert-verify: true
+  speed: 25.28
+  tls: true
+  type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - cf|cd5d|puddincat07@Telegram
+  - nl|19e2|puddincat07@Telegram
+  - hk|9e85|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - cf|cd5d|puddincat07@Telegram
+  - nl|19e2|puddincat07@Telegram
+  - hk|9e85|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
