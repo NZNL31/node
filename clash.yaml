@@ -3,27 +3,30 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: none
-  latency: 28.3
-  name: cf|1b2e|puddincat07@Telegram
-  password: 3e96ef7d-8637-42c2-ac73-75182196e755
-  plugin: v2ray-plugin
-  plugin-opts:
-    host: mfvpn.fuchen.indevs.in
-    mode: websocket
-    mux: false
-    path: 3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
-    tls: true
-  port: 443
-  score: 10.063604240282686
-  server: 199.181.197.38
-  sim_score: 1.4716691850005734
-  speed: 28.48
+- cipher: chacha20-ietf-poly1305
+  latency: 44.39
+  name: gb|1aa0|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 10.545167830592476
+  server: 82.38.31.101
+  sim_score: 1.4444960912878284
+  speed: 46.81
   type: ss
+- latency: 34.66
+  name: nl|a376|puddincat07@Telegram
+  password: strong-secret-pass-777
+  port: 4443
+  score: 10.513560300057703
+  server: 94.131.105.125
+  sim_score: 1.2603397510870256
+  skip-cert-verify: true
+  speed: 36.44
+  type: trojan
   udp: true
 - cipher: none
-  latency: 28.13
-  name: xx|bbd0|puddincat07@Telegram
+  latency: 46.86
+  name: xx|0f0a|puddincat07@Telegram
   password: 3e96ef7d-8637-42c2-ac73-75182196e755
   plugin: v2ray-plugin
   plugin-opts:
@@ -33,25 +36,39 @@ proxies:
     path: /3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
     tls: true
   port: 443
-  score: 9.751155350159971
+  score: 5.034144259496372
   server: store.ubi.com
-  sim_score: 1.7626970149030619
-  speed: 27.43
+  sim_score: 1.5641606735106997
+  speed: 23.59
   type: ss
   udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 59.2
+  name: pk|2e18|puddincat07@Telegram
+  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+  port: 990
+  score: 2.6486486486486482
+  server: 156.59.243.6
+  sim_score: 4.861965016401523
+  speed: 15.68
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - cf|1b2e|puddincat07@Telegram
-  - xx|bbd0|puddincat07@Telegram
+  - gb|1aa0|puddincat07@Telegram
+  - nl|a376|puddincat07@Telegram
+  - xx|0f0a|puddincat07@Telegram
+  - pk|2e18|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - cf|1b2e|puddincat07@Telegram
-  - xx|bbd0|puddincat07@Telegram
+  - gb|1aa0|puddincat07@Telegram
+  - nl|a376|puddincat07@Telegram
+  - xx|0f0a|puddincat07@Telegram
+  - pk|2e18|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
