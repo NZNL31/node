@@ -4,73 +4,38 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 40.75
-  name: gb|43d5|puddincat07@Telegram
-  password: k1dBOmOB4oqi7Ump37a1bQ
+  latency: 38.72
+  name: nl|1843|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   port: 8080
-  score: 10.076073619631902
-  server: 82.38.31.202
-  sim_score: 0.6442610169896383
-  speed: 41.06
+  score: 7.802169421487603
+  server: 193.29.139.235
+  sim_score: 1.2064067512295722
+  speed: 30.21
   type: ss
-- alterId: 2
-  cipher: auto
-  latency: 43.61
-  name: xx|b49a|puddincat07@Telegram
-  port: 30807
-  score: 7.8651685393258415
-  server: v10.hdacd.com
-  sim_score: 1.6140578092784605
-  skip-cert-verify: false
-  speed: 34.3
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- cipher: aes-128-gcm
-  latency: 41.03
-  name: us|7481|puddincat07@Telegram
-  password: shadowsocks
-  port: 443
-  score: 7.3677796734097
-  server: 37.19.198.236
-  sim_score: 5.9375323951585655
-  speed: 30.23
+- cipher: chacha20-ietf-poly1305
+  latency: 41.33
+  name: nl|bd49|puddincat07@Telegram
+  password: cvII85TrW6n0OGyfpHVS1u
+  port: 8080
+  score: 3.0583111541253327
+  server: 193.29.139.179
+  sim_score: 1.1119070856404367
+  speed: 12.64
   type: ss
-- cipher: none
-  latency: 43.7
-  name: xx|1f4b|puddincat07@Telegram
-  password: 3e96ef7d-8637-42c2-ac73-75182196e755
-  plugin: v2ray-plugin
-  plugin-opts:
-    host: mfvpn.fuchen.indevs.in
-    mode: websocket
-    mux: false
-    path: /3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
-    tls: true
-  port: 443
-  score: 6.37070938215103
-  server: store.ubi.com
-  sim_score: 2.450979579931207
-  speed: 27.84
-  type: ss
-  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|43d5|puddincat07@Telegram
-  - xx|b49a|puddincat07@Telegram
-  - us|7481|puddincat07@Telegram
-  - xx|1f4b|puddincat07@Telegram
+  - nl|1843|puddincat07@Telegram
+  - nl|bd49|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|43d5|puddincat07@Telegram
-  - xx|b49a|puddincat07@Telegram
-  - us|7481|puddincat07@Telegram
-  - xx|1f4b|puddincat07@Telegram
+  - nl|1843|puddincat07@Telegram
+  - nl|bd49|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
