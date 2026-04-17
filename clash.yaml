@@ -4,7 +4,70 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: none
-  latency: 58.28
+  latency: 31.25
+  name: xx|1f4b|puddincat07@Telegram
+  password: 3e96ef7d-8637-42c2-ac73-75182196e755
+  plugin: v2ray-plugin
+  plugin-opts:
+    host: mfvpn.fuchen.indevs.in
+    mode: websocket
+    mux: false
+    path: /3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
+    tls: true
+  port: 443
+  score: 11.0368
+  server: store.ubi.com
+  sim_score: 4.1411071421489325
+  speed: 34.49
+  type: ss
+  udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 37.83
+  name: gb|b0cc|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: 8080
+  score: 9.666931007137192
+  server: 82.38.31.184
+  sim_score: 0.6335432108722001
+  speed: 36.57
+  type: ss
+- latency: 32.55
+  name: at|e381|puddincat07@Telegram
+  network: ws
+  password: trojan
+  port: 8444
+  score: 8.930875576036868
+  server: 152.53.200.167
+  sim_score: 1.6239602976968244
+  skip-cert-verify: false
+  sni: jflsjlaf.pages.dev
+  speed: 29.07
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: jflsjlaf.pages.dev
+    path: /
+- cipher: none
+  latency: 36.98
+  name: hk|ff90|puddincat07@Telegram
+  password: 3e96ef7d-8637-42c2-ac73-75182196e755
+  plugin: v2ray-plugin
+  plugin-opts:
+    host: mfvpn.fuchen.indevs.in
+    mode: websocket
+    mux: false
+    path: 3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
+    tls: true
+  port: 443
+  score: 8.50730124391563
+  server: 47.57.182.141
+  sim_score: 1.146254180308302
+  speed: 31.46
+  type: ss
+  udp: true
+- cipher: none
+  latency: 32.01
   name: cf|a0e1|puddincat07@Telegram
   password: 3e96ef7d-8637-42c2-ac73-75182196e755
   plugin: v2ray-plugin
@@ -15,66 +78,51 @@ proxies:
     path: 3e96ef7d-8637-42c2-ac73-75182196e755/?ed=2560
     tls: true
   port: 443
-  score: 6.932052161976664
+  score: 5.860668541080914
   server: 199.181.197.38
-  sim_score: 1.1003097397673662
-  speed: 40.4
+  sim_score: 1.4048754108664105
+  speed: 18.76
   type: ss
   udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 58.59
-  name: xx|de2e|puddincat07@Telegram
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-  port: 50099
-  score: 6.487455197132616
-  server: r3mrcg001286ek2.cybervena.com
-  sim_score: 4.578275936493943
-  speed: 38.01
+- cipher: none
+  latency: 33.62
+  name: us|c201|puddincat07@Telegram
+  password: 14b02e2a-8930-4afb-8412-ea4a4954ca5b
+  plugin: v2ray-plugin
+  plugin-opts:
+    host: ylnhh.us.ci
+    mode: websocket
+    mux: false
+    path: /14b02e2a-8930-4afb-8412-ea4a4954ca5b/?ed=2560
+    tls: true
+  port: 443
+  score: 2.4390243902439024
+  server: 198.12.144.16
+  sim_score: 0.8875797365346837
+  speed: 8.2
   type: ss
-- latency: 54.99
-  name: at|e67b|puddincat07@Telegram
-  network: ws
-  password: trojan
-  port: 8444
-  score: 5.90834697217676
-  server: 152.53.200.167
-  sim_score: 0.9538647037515713
-  skip-cert-verify: false
-  sni: jflsjlaf.pages.dev
-  speed: 32.49
-  type: trojan
   udp: true
-  ws-opts:
-    headers:
-      Host: jflsjlaf.pages.dev
-    path: /
-- cipher: rc4-md5
-  latency: 60.06
-  name: ca|0b7f|puddincat07@Telegram
-  password: 14fFPrbezE3HDZzsMOr6
-  port: 8080
-  score: 2.6640026640026635
-  server: 137.184.174.93
-  sim_score: 0.8401146374706409
-  speed: 16.0
-  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - xx|1f4b|puddincat07@Telegram
+  - gb|b0cc|puddincat07@Telegram
+  - at|e381|puddincat07@Telegram
+  - hk|ff90|puddincat07@Telegram
   - cf|a0e1|puddincat07@Telegram
-  - xx|de2e|puddincat07@Telegram
-  - at|e67b|puddincat07@Telegram
-  - ca|0b7f|puddincat07@Telegram
+  - us|c201|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - xx|1f4b|puddincat07@Telegram
+  - gb|b0cc|puddincat07@Telegram
+  - at|e381|puddincat07@Telegram
+  - hk|ff90|puddincat07@Telegram
   - cf|a0e1|puddincat07@Telegram
-  - xx|de2e|puddincat07@Telegram
-  - at|e67b|puddincat07@Telegram
-  - ca|0b7f|puddincat07@Telegram
+  - us|c201|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
