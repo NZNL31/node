@@ -3,39 +3,131 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alpn:
-  - http/1.1
-  latency: 63.23
-  name: us|fb84|puddincat07@Telegram
+- latency: 26.3
+  name: fi|5a11|puddincat07@Telegram
   network: ws
-  password: mSzFVhUczD
-  port: '443'
-  score: 7.13585323422426
-  server: 104.20.5.134
-  sim_score: 2.182531093393312
-  skip-cert-verify: false
-  sni: abest.api-tel.xyz
-  speed: 45.12
+  password: 8r<[9'l6hAO#8ZQi
+  port: 8443
+  score: 17.55513307984791
+  server: 217.11.167.62
+  sim_score: 2.250954744451261
+  skip-cert-verify: true
+  sni: Koma-YT.PAGeS.Dev
+  speed: 46.17
+  tls: true
   type: trojan
-  udp: true
   ws-opts:
     headers:
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/59.0.3071.115 Safari/537.36
-    path: /
+      Host: Koma-YT.PAGeS.Dev
+    path: /trTelegram🇨🇳 @WangCai2
+- alterId: 0
+  cipher: auto
+  latency: 26.1
+  name: de|90ed|puddincat07@Telegram
+  network: tcp
+  port: 180
+  score: 15.72030651340996
+  server: 82.198.246.9
+  sim_score: 1.012117437847475
+  skip-cert-verify: true
+  speed: 41.03
+  tls: false
+  type: vmess
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+  ws-headers:
+    Host: 82.198.246.9
+  ws-path: /
+- alterId: 0
+  cipher: auto
+  latency: 29.17
+  name: de|4d74|puddincat07@Telegram
+  network: tcp
+  port: 180
+  score: 13.167637984230371
+  server: 82.198.246.214
+  sim_score: 1.4698485341464202
+  skip-cert-verify: true
+  speed: 38.41
+  tls: false
+  type: vmess
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+  ws-headers:
+    Host: 82.198.246.214
+  ws-path: /
+- alterId: 0
+  cipher: auto
+  latency: 26.23
+  name: de|ce3d|puddincat07@Telegram
+  network: tcp
+  port: 180
+  score: 12.905070529927565
+  server: 82.198.246.233
+  sim_score: 2.8473828805270553
+  skip-cert-verify: true
+  speed: 33.85
+  tls: false
+  type: vmess
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+  ws-headers:
+    Host: 82.198.246.233
+  ws-path: /
+- cipher: aes-256-cfb
+  latency: 26.86
+  name: kr|9f11|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 6123
+  score: 12.434847356664186
+  server: 211.178.105.134
+  sim_score: 0.9683516041936957
+  speed: 33.4
+  type: ss
+- latency: 24.81
+  name: de|dc85|puddincat07@Telegram
+  network: ws
+  password: 8r<[9'l6hAO#8ZQi
+  port: 443
+  score: 11.116485288190246
+  server: 64.188.93.200
+  sim_score: 1.9354412677515924
+  skip-cert-verify: true
+  sni: Koma-YT.PAGeS.Dev
+  speed: 27.58
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: Koma-YT.PAGeS.Dev
+    path: /trTelegram🇨🇳 @WangCai2
+- latency: 25.61
+  name: jp|1d67|puddincat07@Telegram
+  network: ws
+  password: 8r<[9'l6hAO#8ZQi
+  port: 4196
+  score: 9.992190550566185
+  server: 185.184.223.138
+  sim_score: 0.9507284843509599
+  skip-cert-verify: true
+  sni: Koma-YT.PAGeS.Dev
+  speed: 25.59
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: Koma-YT.PAGeS.Dev
+    path: /trTelegram🇨🇳 @WangCai2
 - alpn:
   - http/1.1
-  latency: 63.41
+  latency: 27.47
   name: us|895f|puddincat07@Telegram
   network: ws
   password: mSzFVhUczD
   port: '443'
-  score: 6.215108027125059
+  score: 7.786676374226429
   server: 104.20.6.134
-  sim_score: 1.2305446483610885
+  sim_score: 1.3911630381378859
   skip-cert-verify: false
   sni: abest.api-tel.xyz
-  speed: 39.41
+  speed: 21.39
   type: trojan
   udp: true
   ws-opts:
@@ -43,96 +135,17 @@ proxies:
       User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like
         Gecko) Chrome/26.0.1410.64 Safari/537.31
     path: /
-- latency: 63.1
-  name: fi|5a11|puddincat07@Telegram
-  network: ws
-  password: 8r<[9'l6hAO#8ZQi
-  port: 8443
-  score: 5.082408874801901
-  server: 217.11.167.62
-  sim_score: 1.5095423900462852
-  skip-cert-verify: true
-  sni: Koma-YT.PAGeS.Dev
-  speed: 32.07
-  tls: true
-  type: trojan
-  ws-opts:
-    headers:
-      Host: Koma-YT.PAGeS.Dev
-    path: /trTelegram🇨🇳 @WangCai2
-- cipher: chacha20-ietf-poly1305
-  latency: 67.1
-  name: xx|9f9d|puddincat07@Telegram
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-  port: 50099
-  score: 5.055141579731744
-  server: r3mrcg007147vhp.cybervena.com
-  sim_score: 1.5102661956051038
-  speed: 33.92
-  type: ss
 - alterId: 0
   cipher: auto
-  latency: 77.16
-  name: de|4d74|puddincat07@Telegram
-  network: tcp
-  port: 180
-  score: 4.653965785381026
-  server: 82.198.246.214
-  sim_score: 0.7414032938565154
-  skip-cert-verify: true
-  speed: 35.91
-  tls: false
-  type: vmess
-  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-  ws-headers:
-    Host: 82.198.246.214
-  ws-path: /
-- latency: 101.84
-  name: fi|0a4b|puddincat07@Telegram
-  network: ws
-  password: 8r<[9'l6hAO#8ZQi
-  port: 443
-  score: 4.416732128829536
-  server: 84.19.3.83
-  sim_score: 1.0736139436976881
-  skip-cert-verify: true
-  sni: Koma-YT.PAGeS.Dev
-  speed: 44.98
-  tls: true
-  type: trojan
-  ws-opts:
-    headers:
-      Host: Koma-YT.PAGeS.Dev
-    path: /trTelegram🇨🇳 @WangCai2
-- latency: 84.38
-  name: sg|d56a|puddincat07@Telegram
-  network: ws
-  password: 8r<[9'l6hAO#8ZQi
-  port: 443
-  score: 4.261673382318085
-  server: 178.128.209.190
-  sim_score: 2.056101769116193
-  skip-cert-verify: true
-  sni: Koma-YT.PAGeS.Dev
-  speed: 35.96
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Linux; Android 6.0; vivo 1610 Build/MMB29M) AppleWebKit/537.36
-        (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36
-    path: /trTelegram🇨🇳 @WangCai2
-- alterId: 0
-  cipher: auto
-  latency: 92.57
+  latency: 28.43
   name: de|2231|puddincat07@Telegram
   network: tcp
   port: 180
-  score: 4.260559576536675
+  score: 3.3872669715089696
   server: 82.198.246.37
-  sim_score: 2.3799007393714606
+  sim_score: 1.3472150442524036
   skip-cert-verify: true
-  speed: 39.44
+  speed: 9.63
   tls: false
   type: vmess
   uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
@@ -143,27 +156,29 @@ proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|fb84|puddincat07@Telegram
-  - us|895f|puddincat07@Telegram
   - fi|5a11|puddincat07@Telegram
-  - xx|9f9d|puddincat07@Telegram
+  - de|90ed|puddincat07@Telegram
   - de|4d74|puddincat07@Telegram
-  - fi|0a4b|puddincat07@Telegram
-  - sg|d56a|puddincat07@Telegram
+  - de|ce3d|puddincat07@Telegram
+  - kr|9f11|puddincat07@Telegram
+  - de|dc85|puddincat07@Telegram
+  - jp|1d67|puddincat07@Telegram
+  - us|895f|puddincat07@Telegram
   - de|2231|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|fb84|puddincat07@Telegram
-  - us|895f|puddincat07@Telegram
   - fi|5a11|puddincat07@Telegram
-  - xx|9f9d|puddincat07@Telegram
+  - de|90ed|puddincat07@Telegram
   - de|4d74|puddincat07@Telegram
-  - fi|0a4b|puddincat07@Telegram
-  - sg|d56a|puddincat07@Telegram
+  - de|ce3d|puddincat07@Telegram
+  - kr|9f11|puddincat07@Telegram
+  - de|dc85|puddincat07@Telegram
+  - jp|1d67|puddincat07@Telegram
+  - us|895f|puddincat07@Telegram
   - de|2231|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
