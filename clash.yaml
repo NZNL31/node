@@ -3,97 +3,97 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-gcm
-  latency: 30.81
-  name: kr|cd09|puddincat07@Telegram
-  password: 63d7c17506d1f48b
-  port: 20129
-  score: 14.699772801038623
-  server: 203.32.26.24
-  sim_score: 1.4065714079237492
-  speed: 45.29
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 30.63
-  name: xx|3b35|puddincat07@Telegram
-  password: XUMTygEM1jVYIvysXKqA5T
-  port: 443
-  score: 12.588965066927848
-  server: hackney-latest-strike.freesocks.work
-  sim_score: 5.056726949520328
-  speed: 38.56
-  type: ss
-- cipher: aes-256-cfb
-  latency: 28.84
-  name: tw|e22d|puddincat07@Telegram
-  password: qwerREWQ@@
-  port: 41632
-  score: 9.885575589459085
-  server: 185.189.160.105
-  sim_score: 3.523995935040975
-  speed: 28.51
-  type: ss
-- latency: 27.73
-  name: sg|d56a|puddincat07@Telegram
+- latency: 25.33
+  name: us|3336|puddincat07@Telegram
   network: ws
   password: 8r<[9'l6hAO#8ZQi
-  port: 443
-  score: 6.664262531554273
-  server: 178.128.209.190
-  sim_score: 1.37156434146376
+  port: 2096
+  score: 16.774575602052902
+  server: 172.64.147.106
+  sim_score: 4.228357171654367
   skip-cert-verify: true
   sni: Koma-YT.PAGeS.Dev
-  speed: 18.48
+  speed: 42.49
   type: trojan
-  udp: true
   ws-opts:
     headers:
-      User-Agent: Mozilla/5.0 (Linux; Android 6.0; vivo 1610 Build/MMB29M) AppleWebKit/537.36
-        (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36
-    path: /trTelegram🇨🇳 @WangCai2
+      Host: Koma-YT.PAGeS.Dev
+    path: /tr
 - cipher: aes-256-cfb
-  latency: 35.04
+  latency: 30.66
   name: vn|4be1|puddincat07@Telegram
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   port: 38388
-  score: 5.156963470319635
+  score: 11.539465101108936
   server: 103.186.155.115
-  sim_score: 4.259050728542161
+  sim_score: 1.7203704642585038
   skip-cert-verify: false
-  speed: 18.07
+  speed: 35.38
   type: ss
   udp: false
+- cipher: aes-256-gcm
+  latency: 35.71
+  name: kr|53fa|puddincat07@Telegram
+  password: 63d7c17506d1f48b
+  port: 20129
+  score: 8.213385606272752
+  server: 203.32.26.24
+  sim_score: 1.3551133708062975
+  speed: 29.33
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 35.4
+  name: gb|df7d|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: 8080
+  score: 7.242937853107345
+  server: 82.38.31.186
+  sim_score: 3.1506553277233
+  speed: 25.64
+  type: ss
 - cipher: aes-256-cfb
-  latency: 29.37
-  name: vn|e056|puddincat07@Telegram
+  latency: 27.41
+  name: vn|0d88|puddincat07@Telegram
   password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
   port: 38388
-  score: 3.758937691521961
+  score: 7.0375775264502005
   server: 103.186.154.59
-  sim_score: 3.145318977054456
-  speed: 11.04
+  sim_score: 1.574547731340862
+  speed: 19.29
   type: ss
+- cipher: aes-256-cfb
+  latency: 29.56
+  name: vn|4f69|puddincat07@Telegram
+  password: Xn8jKdmDM00IeO%#$#fJAMtsEAEUOpH/YWYtYqDFnT0SV
+  port: 38388
+  score: 2.936400541271989
+  server: 103.186.155.150
+  sim_score: 1.28017095892959
+  skip-cert-verify: false
+  speed: 8.68
+  type: ss
+  udp: false
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - kr|cd09|puddincat07@Telegram
-  - xx|3b35|puddincat07@Telegram
-  - tw|e22d|puddincat07@Telegram
-  - sg|d56a|puddincat07@Telegram
+  - us|3336|puddincat07@Telegram
   - vn|4be1|puddincat07@Telegram
-  - vn|e056|puddincat07@Telegram
+  - kr|53fa|puddincat07@Telegram
+  - gb|df7d|puddincat07@Telegram
+  - vn|0d88|puddincat07@Telegram
+  - vn|4f69|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - kr|cd09|puddincat07@Telegram
-  - xx|3b35|puddincat07@Telegram
-  - tw|e22d|puddincat07@Telegram
-  - sg|d56a|puddincat07@Telegram
+  - us|3336|puddincat07@Telegram
   - vn|4be1|puddincat07@Telegram
-  - vn|e056|puddincat07@Telegram
+  - kr|53fa|puddincat07@Telegram
+  - gb|df7d|puddincat07@Telegram
+  - vn|0d88|puddincat07@Telegram
+  - vn|4f69|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
