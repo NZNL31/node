@@ -3,114 +3,80 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: rc4-md5
-  latency: 25.76
-  name: ca|b2d8|puddincat07@Telegram
-  password: 14fFPrbezE3HDZzsMOr6
-  port: 8080
-  score: 18.7305900621118
-  server: 137.184.174.93
-  sim_score: 0.9477391193589263
-  speed: 48.25
-  type: ss
 - cipher: aes-256-cfb
-  latency: 26.67
-  name: ca|5c6a|puddincat07@Telegram
+  latency: 27.43
+  name: ca|ce20|puddincat07@Telegram
   password: amazonskr05
   port: 443
-  score: 18.132733408323958
-  server: 35.183.129.131
-  sim_score: 1.6900922206452011
-  speed: 48.36
+  score: 17.641268683922714
+  server: 35.183.96.211
+  sim_score: 2.0547178276844305
+  speed: 48.39
+  type: ss
+- cipher: aes-256-cfb
+  latency: 32.69
+  name: tw|511f|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 41632
+  score: 14.79963291526461
+  server: 185.189.160.105
+  sim_score: 0.8122968931842923
+  speed: 48.38
   type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 26.31
-  name: us|c3fd|puddincat07@Telegram
+  latency: 30.5
+  name: us|10ed|puddincat07@Telegram
   password: gqkUCvmeOTghYJXF1YIuk5
   port: 443
-  score: 17.40782972253896
+  score: 13.406557377049179
   server: 71.19.148.74
-  sim_score: 1.4094681069425223
-  speed: 45.8
-  type: ss
-- cipher: aes-256-cfb
-  latency: 26.08
-  name: us|120c|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 15.226226993865033
-  server: 13.218.172.80
-  sim_score: 2.3537857619308964
-  speed: 39.71
-  type: ss
-- cipher: aes-256-cfb
-  latency: 25.12
-  name: ca|b58c|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 12.34076433121019
-  server: 15.157.68.13
-  sim_score: 1.8884957031266638
-  speed: 31.0
-  type: ss
-- latency: 40.14
-  name: tw|3076|puddincat07@Telegram
-  password: gcuCpQfaiVeDBdWG
-  port: 19128
-  score: 11.150971599402093
-  server: 211.76.176.98
-  sim_score: 0.9000859442787451
-  sni: yazhou10.dynu.net
-  speed: 44.76
-  tls: true
-  type: trojan
-- alterId: 0
-  latency: 38.43
-  name: xx|ea47|puddincat07@Telegram
-  password: gcuCpQfaiVeDBdWG
-  port: 19128
-  score: 9.000780640124903
-  server: jpbgp.netvigor.cc
-  sim_score: 3.9554893557110016
-  skip-cert-verify: true
-  sni: yazhou10.dynu.net
-  speed: 34.59
-  tls: true
-  type: trojan
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 37.54
-  name: ca|977f|puddincat07@Telegram
-  password: GyZ5Xo0ht41vYmW3H4
-  port: 816
-  score: 6.71550346297283
-  server: 149.28.255.6
-  sim_score: 2.0140257865067706
-  speed: 25.21
-  type: ss
-- cipher: aes-128-gcm
-  latency: 38.41
-  name: us|69e1|puddincat07@Telegram
-  password: shadowsocks
-  port: 443
-  score: 6.237958864878939
-  server: 156.146.38.167
-  sim_score: 1.1056106911889443
-  speed: 23.96
+  sim_score: 1.272779767650749
+  speed: 40.89
   type: ss
 - alpn:
   - http/1.1
-  latency: 170.77
-  name: us|54f3|puddincat07@Telegram
+  latency: 46.35
+  name: sc|64da|puddincat07@Telegram
   network: ws
   password: mitivpn
   port: '443'
-  score: 0.9902207647713299
-  server: 14.102.228.76
-  sim_score: 1.4595668224213818
+  score: 9.43042071197411
+  server: 45.130.125.76
+  sim_score: 0.8147482106132171
   skip-cert-verify: true
   sni: www.app-cloud.ir
-  speed: 16.91
+  speed: 43.71
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/52.0.2743.116 Safari/537.36
+    path: /?ed=2048
+- cipher: chacha20-ietf-poly1305
+  latency: 29.03
+  name: xx|2eb9|puddincat07@Telegram
+  password: XUMTygEM1jVYIvysXKqA5T
+  port: 443
+  score: 9.293833964863934
+  server: hackney-latest-strike.freesocks.work
+  sim_score: 2.5647603149753797
+  speed: 26.98
+  type: ss
+- alpn:
+  - http/1.1
+  latency: 44.9
+  name: us|91ae|puddincat07@Telegram
+  network: ws
+  password: mitivpn
+  port: '443'
+  score: 9.162583518930958
+  server: 14.102.228.76
+  sim_score: 1.603517456915759
+  skip-cert-verify: true
+  sni: www.app-cloud.ir
+  speed: 41.14
   tls: true
   type: trojan
   udp: true
@@ -120,35 +86,52 @@ proxies:
         AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile
         Safari/537.36
     path: /?ed=2048
+- latency: 47.85
+  name: tw|3076|puddincat07@Telegram
+  password: gcuCpQfaiVeDBdWG
+  port: 19128
+  score: 7.276907001044933
+  server: 211.76.176.98
+  sim_score: 1.4608991182774185
+  sni: yazhou10.dynu.net
+  speed: 34.82
+  tls: true
+  type: trojan
+- cipher: aes-256-cfb
+  latency: 48.52
+  name: ca|3027|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 7.046578730420444
+  server: 35.183.129.131
+  sim_score: 0.903095137786647
+  speed: 34.19
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - ca|b2d8|puddincat07@Telegram
-  - ca|5c6a|puddincat07@Telegram
-  - us|c3fd|puddincat07@Telegram
-  - us|120c|puddincat07@Telegram
-  - ca|b58c|puddincat07@Telegram
+  - ca|ce20|puddincat07@Telegram
+  - tw|511f|puddincat07@Telegram
+  - us|10ed|puddincat07@Telegram
+  - sc|64da|puddincat07@Telegram
+  - xx|2eb9|puddincat07@Telegram
+  - us|91ae|puddincat07@Telegram
   - tw|3076|puddincat07@Telegram
-  - xx|ea47|puddincat07@Telegram
-  - ca|977f|puddincat07@Telegram
-  - us|69e1|puddincat07@Telegram
-  - us|54f3|puddincat07@Telegram
+  - ca|3027|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - ca|b2d8|puddincat07@Telegram
-  - ca|5c6a|puddincat07@Telegram
-  - us|c3fd|puddincat07@Telegram
-  - us|120c|puddincat07@Telegram
-  - ca|b58c|puddincat07@Telegram
+  - ca|ce20|puddincat07@Telegram
+  - tw|511f|puddincat07@Telegram
+  - us|10ed|puddincat07@Telegram
+  - sc|64da|puddincat07@Telegram
+  - xx|2eb9|puddincat07@Telegram
+  - us|91ae|puddincat07@Telegram
   - tw|3076|puddincat07@Telegram
-  - xx|ea47|puddincat07@Telegram
-  - ca|977f|puddincat07@Telegram
-  - us|69e1|puddincat07@Telegram
-  - us|54f3|puddincat07@Telegram
+  - ca|3027|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
