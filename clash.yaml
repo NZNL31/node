@@ -3,78 +3,28 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-cfb
-  latency: 25.99
-  name: ca|bc3c|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 18.349365140438632
-  server: 15.157.68.13
-  sim_score: 1.4296891953085566
-  speed: 47.69
+- cipher: chacha20-ietf-poly1305
+  latency: 35.89
+  name: de|fb02|puddincat07@Telegram
+  password: 453u6Gcei04NyXbrWLKa0M
+  port: '443'
+  score: 9.640568403455003
+  server: 5.230.184.16
+  sim_score: 4.155512211478228
+  speed: 34.6
   type: ss
-- cipher: chacha20-ietf
-  latency: 23.11
-  name: xx|554c|puddincat07@Telegram
-  obfs: tls1.2_ticket_auth
-  obfs-param: ''
-  password: dongtaiwang.com
-  port: 33336
-  protocol: auth_chain_a
-  protocol-param: ''
-  score: 18.122025097360453
-  server: ssr2.762988.xyz
-  sim_score: 1.1067729964025759
-  speed: 41.88
-  type: ssr
-  udp: true
-- latency: 22.35
-  name: kr|ac31|puddincat07@Telegram
-  network: ws
-  password: 433e785b-2077-47f7-a43d-985f63dd18d1
-  port: 18000
-  score: 14.24608501118568
-  server: 121.154.96.50
-  sim_score: 0.6355469965875669
-  sni: vpn.rnmcnm.com
-  speed: 31.84
-  tls: true
-  type: trojan
-  ws-opts:
-    headers:
-      Host: vpn.rnmcnm.com
-    path: /trojan
-- alterId: 0
-  latency: 25.37
-  name: tw|83c7|puddincat07@Telegram
-  password: gcuCpQfaiVeDBdWG
-  port: 19128
-  score: 11.69097359085534
-  server: 211.76.176.98
-  sim_score: 2.296480670333743
-  skip-cert-verify: true
-  sni: yazhou10.dynu.net
-  speed: 29.66
-  tls: true
-  type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - ca|bc3c|puddincat07@Telegram
-  - xx|554c|puddincat07@Telegram
-  - kr|ac31|puddincat07@Telegram
-  - tw|83c7|puddincat07@Telegram
+  - de|fb02|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - ca|bc3c|puddincat07@Telegram
-  - xx|554c|puddincat07@Telegram
-  - kr|ac31|puddincat07@Telegram
-  - tw|83c7|puddincat07@Telegram
+  - de|fb02|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
