@@ -4,93 +4,94 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 38.15
-  name: de|8839|puddincat07@Telegram
-  password: PWpjPo3tqhPN4yRZ
-  port: 20001
-  score: 11.2608125819135
-  server: 8.209.74.72
-  sim_score: 0.8789515315031443
-  speed: 42.96
+  latency: 38.24
+  name: za|fee8|puddincat07@Telegram
+  password: aduB9HGxQHjA2SBMRjkHX6
+  port: 443
+  score: 12.761506276150627
+  server: 102.37.156.224
+  sim_score: 1.2302861918237105
+  speed: 48.8
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 41.5
+  name: xx|ca34|puddincat07@Telegram
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  port: 50099
+  score: 11.751807228915663
+  server: r3mrcg001286ek2.cybervena.com
+  sim_score: 2.5907687930838508
+  speed: 48.77
   type: ss
 - alterId: 0
-  latency: 38.02
-  name: xx|89c1|puddincat07@Telegram
-  network: tcp
+  latency: 39.12
+  name: tw|a01a|puddincat07@Telegram
   password: gcuCpQfaiVeDBdWG
   port: 19128
-  score: 9.334560757496055
-  server: jpbgp.netvigor.cc
-  sim_score: 2.4680825691462265
+  score: 5.414110429447852
+  server: 211.76.176.98
+  sim_score: 1.5725077908988556
   skip-cert-verify: true
   sni: yazhou10.dynu.net
-  speed: 35.49
+  speed: 21.18
   tls: true
   type: trojan
   udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 37.12
-  name: gb|decf|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 8080
-  score: 7.122844827586208
-  server: 82.38.31.155
-  sim_score: 1.0931420934830929
-  speed: 26.44
-  type: ss
-- latency: 40.62
-  name: de|858f|puddincat07@Telegram
-  password: r-_YbwF.j0TtHVewoFIppramjAnmSfqYzJ
-  port: 443
-  score: 6.809453471196455
-  server: 172.238.120.124
-  sim_score: 2.5502740630008818
-  skip-cert-verify: false
-  speed: 27.66
+- alpn:
+  - http/1.1
+  latency: 38.04
+  name: us|5075|puddincat07@Telegram
+  network: tcp
+  password: 4f4d1167-ef14-4304-9bce-0740472503ef
+  port: 45619
+  score: 5.402208201892745
+  server: 155.117.198.83
+  sim_score: 0.7041104291611139
+  skip-cert-verify: true
+  sni: fr.01.naiun.bilibili.com
+  speed: 20.55
   type: trojan
-- latency: 37.05
-  name: de|cee5|puddincat07@Telegram
+- latency: 39.93
+  name: de|26dd|puddincat07@Telegram
   password: VPTFm=oZ++SuNT+jMRqGZqrAnWq-r8KJyY
   port: 443
-  score: 4.847503373819164
+  score: 4.773353368394691
   server: 172.104.237.100
-  sim_score: 2.2191461629268168
+  sim_score: 2.9917586925689776
   skip-cert-verify: false
   sni: 172.104.237.100
-  speed: 17.96
+  speed: 19.06
   type: trojan
-- latency: 58.67
-  name: hk|4e37|puddincat07@Telegram
-  password: BxceQaOe
-  port: 2520
-  score: 3.448099539798875
-  server: 95.40.4.37
-  sim_score: 3.2345949989786087
-  skip-cert-verify: true
-  sni: t.me%2Fripaojiedian
-  speed: 20.23
-  type: trojan
-  udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 39.15
+  name: xx|a286|puddincat07@Telegram
+  password: mzeMYBJYp4Bo7nA1qYLvv7QG73igtAA85nt4pr8A9ntx2qhDfYgRtiJ7iH7VrcneQKNmtvpbsvvFKPaUATYELi18iH56Ttr4
+  port: 56594
+  score: 4.068965517241379
+  server: download.riferoser.icu
+  sim_score: 5.269639850956479
+  speed: 15.93
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - de|8839|puddincat07@Telegram
-  - xx|89c1|puddincat07@Telegram
-  - gb|decf|puddincat07@Telegram
-  - de|858f|puddincat07@Telegram
-  - de|cee5|puddincat07@Telegram
-  - hk|4e37|puddincat07@Telegram
+  - za|fee8|puddincat07@Telegram
+  - xx|ca34|puddincat07@Telegram
+  - tw|a01a|puddincat07@Telegram
+  - us|5075|puddincat07@Telegram
+  - de|26dd|puddincat07@Telegram
+  - xx|a286|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - de|8839|puddincat07@Telegram
-  - xx|89c1|puddincat07@Telegram
-  - gb|decf|puddincat07@Telegram
-  - de|858f|puddincat07@Telegram
-  - de|cee5|puddincat07@Telegram
-  - hk|4e37|puddincat07@Telegram
+  - za|fee8|puddincat07@Telegram
+  - xx|ca34|puddincat07@Telegram
+  - tw|a01a|puddincat07@Telegram
+  - us|5075|puddincat07@Telegram
+  - de|26dd|puddincat07@Telegram
+  - xx|a286|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
