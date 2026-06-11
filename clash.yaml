@@ -3,104 +3,89 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
+- latency: 76.41
+  name: de|df69|puddincat07@Telegram
+  password: I1vtf6pjYsAu-nFnraWAMjKTy90AHitdAz
+  port: 443
+  score: 5.001963093835885
+  server: 91.233.8.25
+  sim_score: 1.8650426067696333
+  skip-cert-verify: false
+  sni: fra34.tracker-ws.click
+  speed: 38.22
+  type: trojan
 - cipher: chacha20-ietf-poly1305
-  latency: 30.71
-  name: gb|fbac|puddincat07@Telegram
+  latency: 79.68
+  name: xx|4aac|puddincat07@Telegram
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  port: 50099
+  score: 4.568273092369478
+  server: r3mrcg001269pz2.cybervena.com
+  sim_score: 0.9658021532616621
+  speed: 36.4
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 63.21
+  name: xx|96c0|puddincat07@Telegram
+  password: a5115845-cc23-4082-905e-869fe212dfef
+  port: 38320
+  score: 3.9661445973738334
+  server: account-center.zzdy25.com
+  sim_score: 1.0640524699912743
+  speed: 25.07
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 61.81
+  name: nl|1ed7|puddincat07@Telegram
   password: oZIoA69Q8yhcQV8ka3Pa3A
   port: 8080
-  score: 12.197981113643763
-  server: 82.38.31.35
-  sim_score: 1.3376006672175627
-  speed: 37.46
+  score: 3.470312247209189
+  server: 193.29.139.204
+  sim_score: 0.8948324154873879
+  speed: 21.45
   type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 28.08
-  name: no|d2fc|puddincat07@Telegram
-  password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-  port: 990
-  score: 7.71011396011396
-  server: 185.213.23.63
-  sim_score: 1.2275549940262545
-  speed: 21.65
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 67.66
-  name: xx|cec6|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
+  latency: 64.05
+  name: us|e2e5|puddincat07@Telegram
+  password: gqkUCvmeOTghYJXF1YIuk5
   port: 443
-  score: 6.924327519952706
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 2.956234054132532
-  speed: 46.85
+  score: 1.7142857142857144
+  server: 71.19.148.74
+  sim_score: 1.0585923227235199
+  speed: 10.98
   type: ss
-- cipher: aes-256-gcm
-  latency: 67.01
-  name: de|45e0|puddincat07@Telegram
-  password: RexnBgU7EV5ADxG
-  port: 7001
-  score: 6.181166990001492
-  server: 213.202.208.199
-  sim_score: 4.753931264335158
-  speed: 41.42
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 66.82
-  name: de|5dab|puddincat07@Telegram
-  password: 1hhrqrokj3ag
-  port: 8388
-  score: 4.794971565399581
-  server: 209.46.102.22
-  sim_score: 2.5467498457812847
-  speed: 32.04
-  type: ss
-- latency: 66.89
-  name: de|9e11|puddincat07@Telegram
-  password: s_WEN9lMmufG+qDIsn-4C7JOVAnDdbS3Ui
-  port: 443
-  score: 3.4369860965764687
-  server: 172.236.220.10
-  sim_score: 1.43275426122268
-  skip-cert-verify: true
-  sni: 172.236.220.10
-  speed: 22.99
-  type: trojan
-- alterId: 0
-  latency: 66.08
-  name: de|4302|puddincat07@Telegram
+- latency: 78.11
+  name: us|2d69|puddincat07@Telegram
   network: tcp
-  password: hxn2jK9Uzezogua0oHuq9Y8viN=UCe.2Jd
-  port: 443
-  score: 1.5269370460048426
-  server: 185.137.157.254
-  sim_score: 2.064059322145646
+  password: 4f4d1167-ef14-4304-9bce-0740472503ef
+  port: 47909
+  score: 1.3660222762770453
+  server: 155.117.198.85
+  sim_score: 1.0824989736458281
   skip-cert-verify: true
-  sni: www.directorypipeline.click
-  speed: 10.09
-  tls: true
+  sni: is.01.naiun.bilibili.com
+  speed: 10.67
   type: trojan
-  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|fbac|puddincat07@Telegram
-  - no|d2fc|puddincat07@Telegram
-  - xx|cec6|puddincat07@Telegram
-  - de|45e0|puddincat07@Telegram
-  - de|5dab|puddincat07@Telegram
-  - de|9e11|puddincat07@Telegram
-  - de|4302|puddincat07@Telegram
+  - de|df69|puddincat07@Telegram
+  - xx|4aac|puddincat07@Telegram
+  - xx|96c0|puddincat07@Telegram
+  - nl|1ed7|puddincat07@Telegram
+  - us|e2e5|puddincat07@Telegram
+  - us|2d69|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|fbac|puddincat07@Telegram
-  - no|d2fc|puddincat07@Telegram
-  - xx|cec6|puddincat07@Telegram
-  - de|45e0|puddincat07@Telegram
-  - de|5dab|puddincat07@Telegram
-  - de|9e11|puddincat07@Telegram
-  - de|4302|puddincat07@Telegram
+  - de|df69|puddincat07@Telegram
+  - xx|4aac|puddincat07@Telegram
+  - xx|96c0|puddincat07@Telegram
+  - nl|1ed7|puddincat07@Telegram
+  - us|e2e5|puddincat07@Telegram
+  - us|2d69|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
