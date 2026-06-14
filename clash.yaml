@@ -4,51 +4,92 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: aes-256-gcm
-  latency: 93.55
-  name: gb|cf29|puddincat07@Telegram
-  password: RexnBgU7EV5ADxG
-  port: 7001
-  score: 5.268840192410476
-  server: 94.156.250.148
-  sim_score: 1.0619489837277611
-  speed: 49.29
+  latency: 37.28
+  name: kr|942a|puddincat07@Telegram
+  password: TEzjfAYq2IjtuoS
+  port: 6679
+  score: 12.733369098712446
+  server: 141.164.45.187
+  sim_score: 1.0508592898612221
+  speed: 47.47
   type: ss
-- latency: 79.53
+- alterId: 0
+  cipher: chacha20-ietf-poly1305
+  latency: 37.85
+  name: xx|e2b9|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  port: 443
+  score: 10.507265521796565
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 1.5073072703434662
+  skip-cert-verify: true
+  speed: 39.77
+  tls: true
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 41.61
+  name: us|39e4|puddincat07@Telegram
+  password: 4e287631dc4fc8fc
+  port: 12012
+  score: 8.714251381879356
+  server: 62.146.231.112
+  sim_score: 2.4700581559544994
+  speed: 36.26
+  type: ss
+- latency: 24.1
+  name: xx|3049|puddincat07@Telegram
+  password: LYaEYwjN8LjWTRJdCCTzW7V6gK7atJVu
+  port: 9443
+  score: 5.821576763485476
+  server: de-1.hysteria.ltd
+  sim_score: 3.7590832597731367
+  skip-cert-verify: false
+  sni: de-1.hysteria.ltd
+  speed: 14.03
+  type: trojan
+  udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 26.16
+  name: gb|bcfe|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: 8080
+  score: 5.795107033639145
+  server: 82.38.31.191
+  sim_score: 1.8687966415287343
+  speed: 15.16
+  type: ss
+- latency: 24.67
   name: hk|9760|puddincat07@Telegram
   network: tcp
   password: 4f4d1167-ef14-4304-9bce-0740472503ef
   port: 45619
-  score: 4.668678486105872
+  score: 3.64410214835833
   server: 103.177.136.45
-  sim_score: 1.807086805707089
+  sim_score: 1.288649947932035
   skip-cert-verify: true
   sni: fr.01.naiun.bilibili.com
-  speed: 37.13
+  speed: 8.99
   type: trojan
-- cipher: chacha20-ietf-poly1305
-  latency: 79.03
-  name: xx|e2b9|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  port: 443
-  score: 3.4316082500316334
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 0.626916905546486
-  speed: 27.12
-  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|cf29|puddincat07@Telegram
-  - hk|9760|puddincat07@Telegram
+  - kr|942a|puddincat07@Telegram
   - xx|e2b9|puddincat07@Telegram
+  - us|39e4|puddincat07@Telegram
+  - xx|3049|puddincat07@Telegram
+  - gb|bcfe|puddincat07@Telegram
+  - hk|9760|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|cf29|puddincat07@Telegram
-  - hk|9760|puddincat07@Telegram
+  - kr|942a|puddincat07@Telegram
   - xx|e2b9|puddincat07@Telegram
+  - us|39e4|puddincat07@Telegram
+  - xx|3049|puddincat07@Telegram
+  - gb|bcfe|puddincat07@Telegram
+  - hk|9760|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
