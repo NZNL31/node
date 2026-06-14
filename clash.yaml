@@ -3,57 +3,82 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 37.61
+- latency: 25.56
+  name: xx|9fcb|puddincat07@Telegram
+  password: cd7239af-77ad-4628-a871-00acfa219f02
+  port: 56385
+  score: 16.62363067292645
+  server: ip0axv1bbsu02k7-tr.1ytnode.com
+  sim_score: 2.0783961913694777
+  skip-cert-verify: true
+  speed: 42.49
+  type: trojan
+  udp: true
+- latency: 26.42
+  name: xx|3049|puddincat07@Telegram
+  password: LYaEYwjN8LjWTRJdCCTzW7V6gK7atJVu
+  port: 9443
+  score: 13.535200605601815
+  server: de-1.hysteria.ltd
+  sim_score: 4.28913367950099
+  skip-cert-verify: false
+  sni: de-1.hysteria.ltd
+  speed: 35.76
+  type: trojan
+  udp: true
+- latency: 37.42
   name: hk|9760|puddincat07@Telegram
   network: tcp
   password: 4f4d1167-ef14-4304-9bce-0740472503ef
   port: 45619
-  score: 4.812549853762298
+  score: 9.321218599679316
   server: 103.177.136.45
-  sim_score: 1.3861836487971604
+  sim_score: 2.229512220183424
   skip-cert-verify: true
   sni: fr.01.naiun.bilibili.com
-  speed: 18.1
+  speed: 34.88
   type: trojan
-- latency: 36.06
-  name: xx|3049|puddincat07@Telegram
-  password: LYaEYwjN8LjWTRJdCCTzW7V6gK7atJVu
-  port: 9443
-  score: 3.8435940099833603
-  server: de-1.hysteria.ltd
-  sim_score: 0.8921800718978089
-  skip-cert-verify: false
-  sni: de-1.hysteria.ltd
-  speed: 13.86
+- cipher: chacha20-ietf-poly1305
+  latency: 43.23
+  name: nl|8f90|puddincat07@Telegram
+  password: cvII85TrW6n0OGyfpHVS1u
+  port: 8080
+  score: 8.656025907934307
+  server: 193.29.139.189
+  sim_score: 1.747415738124146
+  speed: 37.42
+  type: ss
+- latency: 36.56
+  name: us|aa7c|puddincat07@Telegram
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  port: 443
+  score: 3.777352297592998
+  server: 104.17.147.1
+  sim_score: 3.951016132822467
+  skip-cert-verify: true
+  sni: jobscareerforstudent.com
+  speed: 13.81
   type: trojan
   udp: true
-- cipher: aes-256-cfb
-  latency: 38.16
-  name: de|9489|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 2.9612159329140466
-  server: 63.183.200.172
-  sim_score: 1.8226671317167111
-  skip-cert-verify: false
-  speed: 11.3
-  type: ss
-  udp: false
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - hk|9760|puddincat07@Telegram
+  - xx|9fcb|puddincat07@Telegram
   - xx|3049|puddincat07@Telegram
-  - de|9489|puddincat07@Telegram
+  - hk|9760|puddincat07@Telegram
+  - nl|8f90|puddincat07@Telegram
+  - us|aa7c|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - hk|9760|puddincat07@Telegram
+  - xx|9fcb|puddincat07@Telegram
   - xx|3049|puddincat07@Telegram
-  - de|9489|puddincat07@Telegram
+  - hk|9760|puddincat07@Telegram
+  - nl|8f90|puddincat07@Telegram
+  - us|aa7c|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
