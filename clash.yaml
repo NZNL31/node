@@ -3,124 +3,54 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 25.55
-  name: us|dcb7|puddincat07@Telegram
-  network: ws
-  password: 71409d3e488548e8bb076d229778f008
-  port: 443
-  score: 17.42074363992172
-  server: 104.17.147.77
-  sim_score: 0.9944669166644804
-  skip-cert-verify: true
-  sni: bangladeshipatri.com
-  speed: 44.51
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: bangladeshipatri.com
-    path: 6b777a91
-- cipher: aes-128-gcm
-  latency: 26.32
-  name: fi|e762|puddincat07@Telegram
-  password: tijsjk3iwzc6b10azb0y
-  port: 18284
-  score: 12.784954407294833
-  server: 77.83.247.206
-  sim_score: 2.060362198511948
-  speed: 33.65
-  type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 37.29
-  name: xx|9f28|puddincat07@Telegram
-  password: W74XFALLLuw6m5IA
+  latency: 40.65
+  name: gb|b810|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   port: 443
-  score: 12.748726200053632
-  server: series-a1.samanehha.co
-  sim_score: 1.5329330835574084
-  speed: 47.54
+  score: 10.757687576875767
+  server: 82.38.31.15
+  sim_score: 1.1614083223323022
+  speed: 43.73
   type: ss
-  udp: true
-- cipher: aes-256-cfb
-  latency: 24.91
-  name: kr|a0b3|puddincat07@Telegram
-  password: qwerREWQ@@
-  port: 6123
-  score: 11.296668004817343
-  server: 211.178.105.134
-  sim_score: 1.9307676520184986
-  speed: 28.14
+- cipher: rc4-md5
+  latency: 42.23
+  name: ca|4230|puddincat07@Telegram
+  password: 14fFPrbezE3HDZzsMOr6
+  port: 8080
+  score: 10.234430499644802
+  server: 137.184.174.93
+  sim_score: 1.4659564812917127
+  speed: 43.22
   type: ss
-- latency: 28.22
-  name: hk|9760|puddincat07@Telegram
-  network: tcp
-  password: 4f4d1167-ef14-4304-9bce-0740472503ef
-  port: '46424'
-  score: 11.19773210489015
-  server: 103.177.136.45
-  sim_score: 0.6997971578309746
-  skip-cert-verify: true
-  sni: de.01.naiun.bilibili.com
-  speed: 31.6
-  type: trojan
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 27.33
-  name: za|d18d|puddincat07@Telegram
-  password: Xsy8Ox4yOV3xLlpxtjzs3X
-  port: 16233
-  score: 9.839004756677644
-  server: 102.133.165.160
-  sim_score: 1.294521955376442
-  speed: 26.89
-  type: ss
-- latency: 40.2
-  name: xx|6079|puddincat07@Telegram
-  password: cd7239af-77ad-4628-a871-00acfa219f02
-  port: 56379
-  score: 9.191542288557214
-  server: ip0axv1bbsu02k7-vn.1ytnode.com
-  sim_score: 2.0715925039758103
-  skip-cert-verify: true
-  speed: 36.95
-  type: trojan
-  udp: true
-- latency: 30.9
-  name: sg|1dbe|puddincat07@Telegram
-  password: b3965d2d-3b82-45cc-927b-1336aca3f3fe
-  port: 443
-  score: 5.51779935275081
-  server: 139.162.49.215
-  sim_score: 1.2452346869166877
-  skip-cert-verify: true
-  speed: 17.05
-  type: trojan
-  udp: true
+- alterId: 2
+  cipher: auto
+  latency: 39.88
+  name: xx|8151|puddincat07@Telegram
+  port: 30807
+  score: 6.547141424272818
+  server: v10.hdacd.com
+  sim_score: 0.9733334600366644
+  skip-cert-verify: false
+  speed: 26.11
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|dcb7|puddincat07@Telegram
-  - fi|e762|puddincat07@Telegram
-  - xx|9f28|puddincat07@Telegram
-  - kr|a0b3|puddincat07@Telegram
-  - hk|9760|puddincat07@Telegram
-  - za|d18d|puddincat07@Telegram
-  - xx|6079|puddincat07@Telegram
-  - sg|1dbe|puddincat07@Telegram
+  - gb|b810|puddincat07@Telegram
+  - ca|4230|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|dcb7|puddincat07@Telegram
-  - fi|e762|puddincat07@Telegram
-  - xx|9f28|puddincat07@Telegram
-  - kr|a0b3|puddincat07@Telegram
-  - hk|9760|puddincat07@Telegram
-  - za|d18d|puddincat07@Telegram
-  - xx|6079|puddincat07@Telegram
-  - sg|1dbe|puddincat07@Telegram
+  - gb|b810|puddincat07@Telegram
+  - ca|4230|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
