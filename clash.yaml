@@ -3,84 +3,109 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 2
-  cipher: auto
-  latency: 61.59
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 7.58564702062023
-  server: v10.hdacd.com
-  sim_score: 2.474638973630389
+- latency: 32.08
+  name: jp|a528|puddincat07@Telegram
+  network: ws
+  password: eeb6823c-b926-4ea2-866a-5542edd26e59
+  port: '443'
+  score: 14.142768079800499
+  server: 64.110.101.250
+  sim_score: 2.048265061957731
   skip-cert-verify: false
-  speed: 46.72
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- alterId: 0
-  cipher: chacha20-ietf-poly1305
-  latency: 93.17
-  name: xx|e2b9|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  port: 443
-  score: 4.31684018460878
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 0.7482341988444343
-  skip-cert-verify: true
-  speed: 40.22
-  tls: true
-  type: ss
-- cipher: aes-256-gcm
-  latency: 62.46
-  name: jp|ba8e|puddincat07@Telegram
-  password: GTZI5AbjNAeWQG0oVNptvWJogHNKiiKA
-  port: 40003
-  score: 4.065001601024656
-  server: 47.79.144.115
-  sim_score: 2.1501690957257127
-  speed: 25.39
-  type: ss
-- latency: 74.93
-  name: us|1636|puddincat07@Telegram
-  password: ks3og6wZ9kH8UJv1bmpvwXbfgDNNaTd1Lk
-  port: 443
-  score: 4.027759241959162
-  server: 38.54.64.247
-  sim_score: 1.6466465349822312
-  skip-cert-verify: false
-  speed: 30.18
+  sni: hhcm.hhxaf.cc.cd
+  speed: 45.37
   type: trojan
-- latency: 75.08
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/41.0.2272.101 Safari/537.36
+    path: /
+- cipher: aes-256-cfb
+  latency: 28.34
+  name: kr|8c58|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 4652
+  score: 6.139731827805221
+  server: 218.237.185.230
+  sim_score: 1.0628503691082132
+  speed: 17.4
+  type: ss
+- alterId: 0
+  latency: 37.64
+  name: de|7675|puddincat07@Telegram
+  network: tcp
+  password: n-S5Kuz58YgwljisuLEJltip2OWf1ourWz
+  port: 443
+  score: 5.836875664187034
+  server: 185.137.157.154
+  sim_score: 2.7232877514797202
+  skip-cert-verify: true
+  sni: fra154.clientfirewall.click
+  speed: 21.97
+  tls: true
+  type: trojan
+  udp: true
+- latency: 38.43
   name: hk|9760|puddincat07@Telegram
   network: tcp
   password: 4f4d1167-ef14-4304-9bce-0740472503ef
   port: '46424'
-  score: 2.4600426212040487
+  score: 5.318761384335156
   server: 103.177.136.45
-  sim_score: 4.16209590496678
+  sim_score: 1.2177105654163674
   skip-cert-verify: true
   sni: de.01.naiun.bilibili.com
-  speed: 18.47
+  speed: 20.44
+  type: trojan
+  udp: true
+- cipher: rc4-md5
+  latency: 25.6
+  name: us|c950|puddincat07@Telegram
+  obfs: plain
+  password: 14fFPrbezE3HDZzsMOr6
+  port: 8080
+  protocol: origin
+  score: 3.7421875
+  server: 107.151.182.253
+  sim_score: 2.196304854799292
+  speed: 9.58
+  type: ssr
+- alterId: 0
+  latency: 39.98
+  name: us|1636|puddincat07@Telegram
+  password: ks3og6wZ9kH8UJv1bmpvwXbfgDNNaTd1Lk
+  port: 443
+  score: 2.8214107053526765
+  server: 38.54.64.247
+  sim_score: 0.9828399637426388
+  skip-cert-verify: true
+  sni: ''
+  speed: 11.28
+  tls: true
   type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|8151|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
-  - jp|ba8e|puddincat07@Telegram
-  - us|1636|puddincat07@Telegram
+  - jp|a528|puddincat07@Telegram
+  - kr|8c58|puddincat07@Telegram
+  - de|7675|puddincat07@Telegram
   - hk|9760|puddincat07@Telegram
+  - us|c950|puddincat07@Telegram
+  - us|1636|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|8151|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
-  - jp|ba8e|puddincat07@Telegram
-  - us|1636|puddincat07@Telegram
+  - jp|a528|puddincat07@Telegram
+  - kr|8c58|puddincat07@Telegram
+  - de|7675|puddincat07@Telegram
   - hk|9760|puddincat07@Telegram
+  - us|c950|puddincat07@Telegram
+  - us|1636|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
