@@ -3,54 +3,86 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 40.65
-  name: gb|b810|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
+- alterId: 0
+  cipher: chacha20-ietf-poly1305
+  latency: 27.66
+  name: xx|e2b9|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
   port: 443
-  score: 10.757687576875767
-  server: 82.38.31.15
-  sim_score: 1.1614083223323022
-  speed: 43.73
+  score: 13.944323933477946
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 1.6915180214861305
+  skip-cert-verify: true
+  speed: 38.57
+  tls: true
   type: ss
-- cipher: rc4-md5
-  latency: 42.23
-  name: ca|4230|puddincat07@Telegram
-  password: 14fFPrbezE3HDZzsMOr6
-  port: 8080
-  score: 10.234430499644802
-  server: 137.184.174.93
-  sim_score: 1.4659564812917127
-  speed: 43.22
-  type: ss
-- alterId: 2
+- alterId: 0
   cipher: auto
-  latency: 39.88
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 6.547141424272818
-  server: v10.hdacd.com
-  sim_score: 0.9733334600366644
-  skip-cert-verify: false
-  speed: 26.11
+  client-fingerprint: chrome
+  latency: 31.07
+  name: xx|163f|puddincat07@Telegram
+  network: ws
+  port: 443
+  score: 13.347280334728033
+  server: www.speedtest.net
+  sim_score: 0.5804507975931799
+  skip-cert-verify: true
+  speed: 41.47
+  tls: true
+  type: vmess
+  uuid: e2fb28b8-a457-4bd2-801e-56fdcccbd88e
+  ws-opts:
+    headers:
+      host: blaze-cana-126.blazeservers1.site
+    path: /
+- alterId: 0
+  cipher: auto
+  client-fingerprint: chrome
+  latency: 29.81
+  name: xx|90a2|puddincat07@Telegram
+  network: ws
+  port: 80
+  score: 13.015766521301577
+  server: test3.flha.ru
+  sim_score: 0.7320830140268831
+  skip-cert-verify: true
+  speed: 38.8
   tls: false
   type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  uuid: 9a81340d-f81b-4c76-8abb-f4d305c535c0
+  ws-opts:
+    headers:
+      host: test3.flha.ru
+    path: /9a81340d-f81b-4c76-8abb-f4d305c535c0-vmess
+- latency: 28.2
+  name: us|9fbd|puddincat07@Telegram
+  password: 4732adfa16c6450bbef87264e41332db
+  port: 443
+  score: 7.826241134751774
+  server: 104.16.159.7
+  sim_score: 2.5722614925225393
+  skip-cert-verify: true
+  sni: bangladeshipatri.com
+  speed: 22.07
+  type: trojan
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|b810|puddincat07@Telegram
-  - ca|4230|puddincat07@Telegram
-  - xx|8151|puddincat07@Telegram
+  - xx|e2b9|puddincat07@Telegram
+  - xx|163f|puddincat07@Telegram
+  - xx|90a2|puddincat07@Telegram
+  - us|9fbd|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|b810|puddincat07@Telegram
-  - ca|4230|puddincat07@Telegram
-  - xx|8151|puddincat07@Telegram
+  - xx|e2b9|puddincat07@Telegram
+  - xx|163f|puddincat07@Telegram
+  - xx|90a2|puddincat07@Telegram
+  - us|9fbd|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
