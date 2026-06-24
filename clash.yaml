@@ -3,55 +3,56 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 49.78
-  name: xx|e2b9|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  port: 443
-  score: 7.874648453194054
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 1.8942136402399798
-  speed: 39.2
-  type: ss
-- latency: 49.53
-  name: xx|9fcb|puddincat07@Telegram
-  password: cd7239af-77ad-4628-a871-00acfa219f02
-  port: 56385
-  score: 3.914799111649505
-  server: ip0axv1bbsu02k7-tr.1ytnode.com
-  sim_score: 1.0000533170102752
-  skip-cert-verify: true
-  speed: 19.39
-  type: trojan
-  udp: true
-- latency: 59.59
+- cipher: rc4-md5
+  latency: 26.41
+  name: us|c950|puddincat07@Telegram
+  obfs: plain
+  password: 14fFPrbezE3HDZzsMOr6
+  port: 8080
+  protocol: origin
+  score: 18.36804240817872
+  server: 107.151.182.253
+  sim_score: 0.7876192333135907
+  speed: 48.51
+  type: ssr
+- latency: 27.3
   name: hk|9760|puddincat07@Telegram
   network: tcp
   password: 4f4d1167-ef14-4304-9bce-0740472503ef
-  port: '46424'
-  score: 2.3913408289981537
+  port: 46424
+  score: 16.805860805860807
   server: 103.177.136.45
-  sim_score: 0.9594295009609956
+  sim_score: 1.2708015673940234
   skip-cert-verify: true
   sni: de.01.naiun.bilibili.com
-  speed: 14.25
+  speed: 45.88
   type: trojan
   udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 24.78
+  name: us|bb53|puddincat07@Telegram
+  password: yKVMoB3AwiTEznpnoq2FYR
+  port: 28687
+  score: 12.526230831315576
+  server: 193.47.60.186
+  sim_score: 2.734926568178592
+  speed: 31.04
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|e2b9|puddincat07@Telegram
-  - xx|9fcb|puddincat07@Telegram
+  - us|c950|puddincat07@Telegram
   - hk|9760|puddincat07@Telegram
+  - us|bb53|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|e2b9|puddincat07@Telegram
-  - xx|9fcb|puddincat07@Telegram
+  - us|c950|puddincat07@Telegram
   - hk|9760|puddincat07@Telegram
+  - us|bb53|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
