@@ -3,56 +3,39 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- allowInsecure: '1'
-  latency: 38.17
-  name: cf|573e|puddincat07@Telegram
-  network: ws
-  password: humanity
-  port: 443
-  score: 10.649724914854596
-  server: 141.193.213.11
-  sim_score: 4.453508950026696
-  skip-cert-verify: true
-  sni: www.calmloud.com
-  speed: 40.65
-  tls: true
-  type: trojan
-  ws-opts:
-    headers:
-      Host: www.calmloud.com
-    path: /assignment
-- client-fingerprint: chrome
-  latency: 25.91
-  name: xx|1e03|puddincat07@Telegram
-  network: ws
-  password: eeb6823c-b926-4ea2-866a-5542edd26e59
-  port: 443
-  score: 8.6530297182555
-  server: www.shopify.com
-  sim_score: 2.4770290876555605
-  sni: tjsp.hhxaf.cc.cd
-  speed: 22.42
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: tjsp.hhxaf.cc.cd
-      User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/70.0.3538.102 Safari/537.36
-    path: /
+- cipher: aes-256-gcm
+  latency: 56.83
+  name: jp|ba8e|puddincat07@Telegram
+  password: GTZI5AbjNAeWQG0oVNptvWJogHNKiiKA
+  port: 40003
+  score: 2.4458912546190397
+  server: 47.79.144.115
+  sim_score: 1.0501339795071105
+  speed: 13.9
+  type: ss
+- cipher: rc4-md5
+  latency: 88.09
+  name: gb|1af8|puddincat07@Telegram
+  password: 14fFPrbezE3HDZzsMOr6
+  port: 8080
+  score: 1.1363378363037802
+  server: 146.70.61.37
+  sim_score: 2.008666392859414
+  speed: 10.01
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - cf|573e|puddincat07@Telegram
-  - xx|1e03|puddincat07@Telegram
+  - jp|ba8e|puddincat07@Telegram
+  - gb|1af8|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - cf|573e|puddincat07@Telegram
-  - xx|1e03|puddincat07@Telegram
+  - jp|ba8e|puddincat07@Telegram
+  - gb|1af8|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
