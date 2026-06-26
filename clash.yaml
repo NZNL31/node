@@ -3,99 +3,96 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 0
-  latency: 39.58
-  name: xx|2c29|puddincat07@Telegram
-  password: gcuCpQfaiVeDBdWG
-  port: 19128
-  score: 10.474987367357251
-  server: jpbgp.netvigor.cc
-  sim_score: 1.2279702922039146
+- cipher: chacha20-ietf-poly1305
+  latency: 36.72
+  name: us|904d|puddincat07@Telegram
+  password: Ll6cYfXM5DzQbdtMMb72A_jqVnNljU3yqe
+  port: 21273
+  score: 7.510893246187363
+  server: 149.104.109.74
+  sim_score: 0.9511182326242912
+  speed: 27.58
+  type: ss
+- latency: 35.04
+  name: hk|9760|puddincat07@Telegram
+  network: tcp
+  password: 4f4d1167-ef14-4304-9bce-0740472503ef
+  port: 46424
+  score: 7.268835616438356
+  server: 103.177.136.45
+  sim_score: 1.7108836057103927
   skip-cert-verify: true
-  sni: yazhou10.dynu.net
-  speed: 41.46
-  tls: true
+  sni: de.01.naiun.bilibili.com
+  speed: 25.47
   type: trojan
   udp: true
-- alterId: 0
-  latency: 46.65
-  name: us|9768|puddincat07@Telegram
-  network: ws
-  password: f922fa0f-3311-4368-85ff-cf65e727c854
-  port: 443
-  score: 9.642015005359056
-  server: 104.17.121.43
-  sim_score: 1.6808110207198697
-  skip-cert-verify: true
-  sni: space.byu.id.yxls.eu.cc
-  speed: 44.98
-  tls: true
-  type: trojan
-  udp: true
-- client-fingerprint: chrome
-  latency: 40.85
-  name: jp|b264|puddincat07@Telegram
+- latency: 43.62
+  name: kr|76da|puddincat07@Telegram
   network: ws
   password: eeb6823c-b926-4ea2-866a-5542edd26e59
   port: 443
-  score: 9.326805385556916
-  server: 38.47.105.76
-  sim_score: 0.784065361185625
-  sni: tjsp.hhxaf.cc.cd
-  speed: 38.1
+  score: 5.167354424575883
+  server: 211.49.57.178
+  sim_score: 1.7082540444220342
+  skip-cert-verify: false
+  sni: hhcm.hhxaf.cc.cd
+  speed: 22.54
   type: trojan
-  udp: true
   ws-opts:
     headers:
-      Host: tjsp.hhxaf.cc.cd
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/58.0.3029.81 Safari/537.36
+      Host: hhcm.hhxaf.cc.cd
     path: /
-- latency: 39.46
-  name: jp|36b5|puddincat07@Telegram
+- latency: 38.99
+  name: xx|1e03|puddincat07@Telegram
   network: ws
   password: eeb6823c-b926-4ea2-866a-5542edd26e59
   port: 443
-  score: 5.6512924480486575
-  server: 108.160.132.132
-  sim_score: 1.3700017176759465
+  score: 3.6137471146447804
+  server: www.shopify.com
+  sim_score: 2.78806341231491
   skip-cert-verify: false
   sni: tjsp.hhxaf.cc.cd
-  speed: 22.3
+  speed: 14.09
   type: trojan
   ws-opts:
     headers:
       Host: tjsp.hhxaf.cc.cd
     path: /
-- cipher: chacha20-ietf-poly1305
-  latency: 28.92
-  name: za|d18d|puddincat07@Telegram
-  password: Xsy8Ox4yOV3xLlpxtjzs3X
-  port: 16233
-  score: 3.6860304287690178
-  server: 102.133.165.160
-  sim_score: 1.1667476817425766
-  speed: 10.66
-  type: ss
+- latency: 35.63
+  name: xx|a058|puddincat07@Telegram
+  network: ws
+  password: eeb6823c-b926-4ea2-866a-5542edd26e59
+  port: 443
+  score: 2.671905697445972
+  server: saas.sin.fan
+  sim_score: 0.9415445952308452
+  skip-cert-verify: false
+  sni: hhcm.hhxaf.cc.cd
+  speed: 9.52
+  type: trojan
+  ws-opts:
+    headers:
+      Host: hhcm.hhxaf.cc.cd
+    path: /
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|2c29|puddincat07@Telegram
-  - us|9768|puddincat07@Telegram
-  - jp|b264|puddincat07@Telegram
-  - jp|36b5|puddincat07@Telegram
-  - za|d18d|puddincat07@Telegram
+  - us|904d|puddincat07@Telegram
+  - hk|9760|puddincat07@Telegram
+  - kr|76da|puddincat07@Telegram
+  - xx|1e03|puddincat07@Telegram
+  - xx|a058|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|2c29|puddincat07@Telegram
-  - us|9768|puddincat07@Telegram
-  - jp|b264|puddincat07@Telegram
-  - jp|36b5|puddincat07@Telegram
-  - za|d18d|puddincat07@Telegram
+  - us|904d|puddincat07@Telegram
+  - hk|9760|puddincat07@Telegram
+  - kr|76da|puddincat07@Telegram
+  - xx|1e03|puddincat07@Telegram
+  - xx|a058|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
