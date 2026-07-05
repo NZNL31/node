@@ -3,81 +3,66 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 0
-  cipher: auto
-  client-fingerprint: chrome
-  latency: 61.05
-  name: xx|90a2|puddincat07@Telegram
-  network: ws
-  port: 80
-  score: 6.266994266994267
-  server: test3.flha.ru
-  sim_score: 1.1509633962887929
-  skip-cert-verify: true
-  speed: 38.26
-  tls: false
-  type: vmess
-  uuid: 9a81340d-f81b-4c76-8abb-f4d305c535c0
-  ws-opts:
-    headers:
-      host: test3.flha.ru
-    path: /9a81340d-f81b-4c76-8abb-f4d305c535c0-vmess
-- latency: 63.53
+- latency: 33.36
   name: nl|c163|puddincat07@Telegram
   obfs: salamander
   obfs-password: EsimObfs_9mK2x7
   password: EsimHy2Game_7xK9mPq2
   port: 443
-  score: 3.662836455218007
+  score: 14.154676258992806
   server: 198.105.112.118
-  sim_score: 1.3737398209157932
+  sim_score: 3.3195560209394803
   skip-cert-verify: true
   sni: nl.esimpson.org
-  speed: 23.27
+  speed: 47.22
   type: hysteria2
   udp: true
-- latency: 72.31
-  name: xx|06ce|puddincat07@Telegram
-  network: ws
-  password: afbcd89a-5a90-4a44-a42a-be08f444aa3f
+- cipher: chacha20-ietf-poly1305
+  latency: 37.69
+  name: xx|e2b9|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
   port: 443
-  score: 2.404923247130411
-  server: blog.webex.com
-  sim_score: 1.9772938457853377
-  skip-cert-verify: false
-  sni: unnes.ac.id.yxls.eu.cc
-  speed: 17.39
-  type: trojan
-  ws-opts:
-    headers:
-      Host: unnes.ac.id.yxls.eu.cc
-    path: /br-orcl
-- cipher: rc4-md5
-  latency: 76.23
-  name: us|a9af|puddincat07@Telegram
-  password: 14fFPrbezE3HDZzsMOr6
-  port: 8080
-  score: 2.1199003017184834
-  server: 107.151.182.253
-  sim_score: 1.1444356879403237
-  speed: 16.16
+  score: 11.005571769700186
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 0.8090158681223811
+  speed: 41.48
   type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 27.54
+  name: gb|8507|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 8.602033405954975
+  server: 82.38.31.35
+  sim_score: 1.6545221104402978
+  speed: 23.69
+  type: ss
+- latency: 39.85
+  name: xx|8bb8|puddincat07@Telegram
+  password: PI36027154
+  port: 443
+  score: 2.8732747804265997
+  server: large-baboon.rooster465.autos
+  sim_score: 2.141683879436573
+  skip-cert-verify: false
+  speed: 11.45
+  type: trojan
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|90a2|puddincat07@Telegram
   - nl|c163|puddincat07@Telegram
-  - xx|06ce|puddincat07@Telegram
-  - us|a9af|puddincat07@Telegram
+  - xx|e2b9|puddincat07@Telegram
+  - gb|8507|puddincat07@Telegram
+  - xx|8bb8|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|90a2|puddincat07@Telegram
   - nl|c163|puddincat07@Telegram
-  - xx|06ce|puddincat07@Telegram
-  - us|a9af|puddincat07@Telegram
+  - xx|e2b9|puddincat07@Telegram
+  - gb|8507|puddincat07@Telegram
+  - xx|8bb8|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
