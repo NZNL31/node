@@ -3,81 +3,78 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 61.75
-  name: xx|badf|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=
-  password: f7cb07a0-e6f9-4d22-a60e-c61854450c89
-  port: 443
-  score: 7.473684210526316
-  server: ff2.yuntong.click
-  sim_score: 1.6812244726285017
+- alterId: 2
+  cipher: auto
+  latency: 29.96
+  name: xx|8151|puddincat07@Telegram
+  network: tcp
+  port: 30807
+  score: 13.424566088117489
+  server: v10.hdacd.com
+  sim_score: 1.3420871281900952
   skip-cert-verify: true
-  sni: ff2.yuntong.click
-  speed: 46.15
-  type: hysteria2
+  speed: 40.22
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  ws-headers:
+    Host: v10.hdacd.com
+  ws-path: /
+- cipher: chacha20-ietf-poly1305
+  latency: 27.68
+  name: br|0880|puddincat07@Telegram
+  password: bwjNPcwgz5+1gCyi+rB+nfqugw38B7tqVa
+  port: 17283
+  score: 12.76734104046243
+  server: 38.180.221.143
+  sim_score: 3.285756454163065
+  speed: 35.34
+  type: ss
+- alterId: 0
+  latency: 31.53
+  name: xx|2c29|puddincat07@Telegram
+  password: OccIqeORGQwiNkwS
+  port: 19128
+  score: 7.8655248969235645
+  server: jpbgp.netvigor.cc
+  sim_score: 3.6964869925950867
+  skip-cert-verify: true
+  sni: yazhou10.dynu.net
+  speed: 24.8
+  tls: true
+  type: trojan
   udp: true
-- latency: 61.54
+- latency: 28.72
   name: nl|c163|puddincat07@Telegram
   obfs: salamander
   obfs-password: EsimObfs_9mK2x7
   password: EsimHy2Game_7xK9mPq2
   port: 443
-  score: 6.043223919402014
+  score: 5.8043175487465195
   server: 198.105.112.118
-  sim_score: 1.4329676419693205
+  sim_score: 2.906593174120738
   skip-cert-verify: true
   sni: nl.esimpson.org
-  speed: 37.19
+  speed: 16.67
   type: hysteria2
   udp: true
-- client-fingerprint: chrome
-  latency: 73.66
-  name: xx|2c29|puddincat07@Telegram
-  network: tcp
-  password: OccIqeORGQwiNkwS
-  port: 19128
-  score: 3.7903882704317136
-  server: jpbgp.netvigor.cc
-  sim_score: 1.1069390110644217
-  sni: yazhou10.dynu.net
-  speed: 27.92
-  type: trojan
-  udp: true
-- alterId: 0
-  cipher: auto
-  latency: 76.62
-  name: xx|5357|puddincat07@Telegram
-  network: tcp
-  port: 18339
-  score: 2.7094753328112766
-  server: c87s5.portablesubmarines.com
-  sim_score: 1.9688918416288597
-  skip-cert-verify: true
-  speed: 20.76
-  tls: false
-  type: vmess
-  uuid: 3cd9077d-76f7-4104-bd82-eb6916b89d43
-  ws-headers:
-    Host: c87s5.portablesubmarines.com
-  ws-path: /
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|badf|puddincat07@Telegram
-  - nl|c163|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - br|0880|puddincat07@Telegram
   - xx|2c29|puddincat07@Telegram
-  - xx|5357|puddincat07@Telegram
+  - nl|c163|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|badf|puddincat07@Telegram
-  - nl|c163|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - br|0880|puddincat07@Telegram
   - xx|2c29|puddincat07@Telegram
-  - xx|5357|puddincat07@Telegram
+  - nl|c163|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
