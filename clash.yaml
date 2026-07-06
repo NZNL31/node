@@ -5,99 +5,119 @@ port: 7890
 proxies:
 - alterId: 2
   cipher: auto
-  latency: 34.77
+  latency: 45.08
   name: xx|8151|puddincat07@Telegram
   port: 30807
-  score: 10.123669830313489
+  score: 10.880656610470274
   server: v10.hdacd.com
-  sim_score: 1.6061817758525958
+  sim_score: 0.7581981496840428
   skip-cert-verify: false
-  speed: 35.2
+  speed: 49.05
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- cipher: chacha20-ietf-poly1305
-  latency: 29.6
-  name: za|ed8c|puddincat07@Telegram
-  password: aduB9HGxQHjA2SBMRjkHX6
-  port: 443
-  score: 8.895270270270268
-  server: 102.37.156.224
-  sim_score: 1.6111602215434326
-  speed: 26.33
-  type: ss
-- latency: 37.88
+- latency: 38.24
   name: xx|badf|puddincat07@Telegram
   obfs: salamander
   obfs-password: eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=
   password: f7cb07a0-e6f9-4d22-a60e-c61854450c89
   port: 443
-  score: 8.561246040126715
+  score: 8.922594142259413
   server: ff2.yuntong.click
-  sim_score: 1.1109314099117533
+  sim_score: 2.300505785393931
   skip-cert-verify: true
   sni: ff2.yuntong.click
-  speed: 32.43
+  speed: 34.12
   type: hysteria2
   udp: true
-- cipher: aes-256-gcm
-  latency: 29.99
-  name: xx|1a1c|puddincat07@Telegram
-  password: gXtfJmxrZ8Qkkd2k
-  port: '16025'
-  score: 6.252084028009337
-  server: c722s2.portablesubmarines.com
-  sim_score: 1.273529645013887
-  speed: 18.75
+- latency: 42.22
+  name: nl|c163|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: EsimObfs_9mK2x7
+  password: EsimHy2Game_7xK9mPq2
+  port: 443
+  score: 7.711984841307437
+  server: 198.105.112.118
+  sim_score: 1.6239182309209643
+  skip-cert-verify: true
+  sni: nl.esimpson.org
+  speed: 32.56
+  type: hysteria2
+  udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 38.57
+  name: xx|e2b9|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
+  port: 443
+  score: 6.274306455794659
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 1.288792446942264
+  speed: 24.2
   type: ss
+- client-fingerprint: chrome
+  latency: 37.94
+  name: xx|2c29|puddincat07@Telegram
+  network: tcp
+  password: OccIqeORGQwiNkwS
+  port: 19128
+  score: 4.488666315234581
+  server: jpbgp.netvigor.cc
+  sim_score: 2.369914903532509
+  sni: yazhou10.dynu.net
+  speed: 17.03
+  type: trojan
   udp: true
 - alterId: 0
   cipher: auto
-  latency: 37.53
+  latency: 38.69
   name: kr|86eb|puddincat07@Telegram
   network: http
   port: 80
-  score: 6.216360245137222
+  score: 3.5435513052468344
   server: 217.142.138.61
-  sim_score: 2.910313573035735
+  sim_score: 4.066256852390747
   skip-cert-verify: true
-  speed: 23.33
+  speed: 13.71
   tls: false
   type: vmess
   uuid: ac1b933d-afff-4487-93ef-f57130a55dff
   ws-headers:
     Host: 217.142.138.61
   ws-path: /
-- cipher: chacha20-ietf-poly1305
-  latency: 30.27
-  name: xx|e2b9|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
+- latency: 38.45
+  name: nl|f4a6|puddincat07@Telegram
+  password: LzMWgm6LaNWCm11bFTbynDPq2TqQj03t
   port: 443
-  score: 5.8275520317145695
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 3.102371910838453
-  speed: 17.64
-  type: ss
+  score: 2.3511053315994794
+  server: 5.255.102.165
+  sim_score: 1.1756481447252216
+  skip-cert-verify: true
+  sni: www.microsoft.com
+  speed: 9.04
+  type: hysteria2
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - xx|8151|puddincat07@Telegram
-  - za|ed8c|puddincat07@Telegram
   - xx|badf|puddincat07@Telegram
-  - xx|1a1c|puddincat07@Telegram
-  - kr|86eb|puddincat07@Telegram
+  - nl|c163|puddincat07@Telegram
   - xx|e2b9|puddincat07@Telegram
+  - xx|2c29|puddincat07@Telegram
+  - kr|86eb|puddincat07@Telegram
+  - nl|f4a6|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - xx|8151|puddincat07@Telegram
-  - za|ed8c|puddincat07@Telegram
   - xx|badf|puddincat07@Telegram
-  - xx|1a1c|puddincat07@Telegram
-  - kr|86eb|puddincat07@Telegram
+  - nl|c163|puddincat07@Telegram
   - xx|e2b9|puddincat07@Telegram
+  - xx|2c29|puddincat07@Telegram
+  - kr|86eb|puddincat07@Telegram
+  - nl|f4a6|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
