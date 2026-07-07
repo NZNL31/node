@@ -3,122 +3,117 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 2
-  cipher: auto
-  latency: 45.08
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 10.880656610470274
-  server: v10.hdacd.com
-  sim_score: 0.7581981496840428
-  skip-cert-verify: false
-  speed: 49.05
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- latency: 38.24
-  name: xx|badf|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=
-  password: f7cb07a0-e6f9-4d22-a60e-c61854450c89
-  port: 443
-  score: 8.922594142259413
-  server: ff2.yuntong.click
-  sim_score: 2.300505785393931
-  skip-cert-verify: true
-  sni: ff2.yuntong.click
-  speed: 34.12
-  type: hysteria2
-  udp: true
-- latency: 42.22
-  name: nl|c163|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: EsimObfs_9mK2x7
-  password: EsimHy2Game_7xK9mPq2
-  port: 443
-  score: 7.711984841307437
-  server: 198.105.112.118
-  sim_score: 1.6239182309209643
-  skip-cert-verify: true
-  sni: nl.esimpson.org
-  speed: 32.56
-  type: hysteria2
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 38.57
-  name: xx|e2b9|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  port: 443
-  score: 6.274306455794659
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 1.288792446942264
-  speed: 24.2
-  type: ss
-- client-fingerprint: chrome
-  latency: 37.94
-  name: xx|2c29|puddincat07@Telegram
-  network: tcp
-  password: OccIqeORGQwiNkwS
-  port: 19128
-  score: 4.488666315234581
-  server: jpbgp.netvigor.cc
-  sim_score: 2.369914903532509
-  sni: yazhou10.dynu.net
-  speed: 17.03
-  type: trojan
-  udp: true
 - alterId: 0
   cipher: auto
-  latency: 38.69
+  latency: 82.69
   name: kr|86eb|puddincat07@Telegram
   network: http
   port: 80
-  score: 3.5435513052468344
+  score: 5.414197605514573
   server: 217.142.138.61
-  sim_score: 4.066256852390747
+  sim_score: 0.8585658999225999
   skip-cert-verify: true
-  speed: 13.71
+  speed: 44.77
   tls: false
   type: vmess
   uuid: ac1b933d-afff-4487-93ef-f57130a55dff
   ws-headers:
     Host: 217.142.138.61
   ws-path: /
-- latency: 38.45
+- latency: 77.61
   name: nl|f4a6|puddincat07@Telegram
   password: LzMWgm6LaNWCm11bFTbynDPq2TqQj03t
   port: 443
-  score: 2.3511053315994794
+  score: 4.965854915603659
   server: 5.255.102.165
-  sim_score: 1.1756481447252216
+  sim_score: 0.863883905669489
   skip-cert-verify: true
   sni: www.microsoft.com
-  speed: 9.04
+  speed: 38.54
   type: hysteria2
   udp: true
+- latency: 101.44
+  name: us|ee73|puddincat07@Telegram
+  password: tUtK5TKdjxsPnOyritLtv8OQWHAK8f8yNR
+  port: 443
+  score: 4.791009463722398
+  server: 130.94.94.15
+  sim_score: 1.078541523984722
+  skip-cert-verify: false
+  sni: 130.94.94.15
+  speed: 48.6
+  type: trojan
+- latency: 101.21
+  name: xx|ea40|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=
+  password: f7cb07a0-e6f9-4d22-a60e-c61854450c89
+  port: 443
+  score: 4.148799525738564
+  server: vn2.yuntong.click
+  sim_score: 3.427133171068808
+  skip-cert-verify: true
+  sni: vn2.yuntong.click
+  speed: 41.99
+  type: hysteria2
+  udp: true
+- latency: 78.48
+  name: nl|c163|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: EsimObfs_9mK2x7
+  password: EsimHy2Game_7xK9mPq2
+  port: 443
+  score: 3.031345565749235
+  server: 198.105.112.118
+  sim_score: 2.1144182941082375
+  skip-cert-verify: true
+  sni: nl.esimpson.org
+  speed: 23.79
+  type: hysteria2
+  udp: true
+- latency: 77.07
+  name: de|885b|puddincat07@Telegram
+  password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
+  port: 443
+  score: 2.129233164655508
+  server: 185.137.157.128
+  sim_score: 2.3332939622153814
+  skip-cert-verify: false
+  speed: 16.41
+  type: trojan
+- latency: 92.84
+  name: us|45df|puddincat07@Telegram
+  password: NX7LOtiM.=RdQTq..yxi-dm6OcQrkgE5rg
+  port: 443
+  score: 1.036191296854804
+  server: 149.104.87.141
+  sim_score: 1.390458672748697
+  skip-cert-verify: false
+  speed: 9.62
+  type: trojan
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|8151|puddincat07@Telegram
-  - xx|badf|puddincat07@Telegram
-  - nl|c163|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
-  - xx|2c29|puddincat07@Telegram
   - kr|86eb|puddincat07@Telegram
   - nl|f4a6|puddincat07@Telegram
+  - us|ee73|puddincat07@Telegram
+  - xx|ea40|puddincat07@Telegram
+  - nl|c163|puddincat07@Telegram
+  - de|885b|puddincat07@Telegram
+  - us|45df|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|8151|puddincat07@Telegram
-  - xx|badf|puddincat07@Telegram
-  - nl|c163|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
-  - xx|2c29|puddincat07@Telegram
   - kr|86eb|puddincat07@Telegram
   - nl|f4a6|puddincat07@Telegram
+  - us|ee73|puddincat07@Telegram
+  - xx|ea40|puddincat07@Telegram
+  - nl|c163|puddincat07@Telegram
+  - de|885b|puddincat07@Telegram
+  - us|45df|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
