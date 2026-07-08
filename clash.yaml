@@ -3,56 +3,103 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 26.34
-  name: fr|3b50|puddincat07@Telegram
-  password: Lw_DP4+W.J5K33MD2Jy5zQVuT5n71+=BcD
+- latency: 34.89
+  name: nl|c163|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: EsimObfs_9mK2x7
+  password: EsimHy2Game_7xK9mPq2
   port: 443
-  score: 11.180713743356112
-  server: 38.60.168.129
-  sim_score: 1.220017033383949
-  skip-cert-verify: false
-  speed: 29.45
-  type: trojan
-- alterId: 0
-  latency: 39.31
-  name: xx|2c29|puddincat07@Telegram
-  password: OccIqeORGQwiNkwS
-  port: 19128
-  score: 8.206563215466801
-  server: jpbgp.netvigor.cc
-  sim_score: 2.204933930567984
+  score: 13.241616509028376
+  server: 198.105.112.118
+  sim_score: 1.570850373305981
   skip-cert-verify: true
-  sni: yazhou10.dynu.net
-  speed: 32.26
-  tls: true
+  sni: nl.esimpson.org
+  speed: 46.2
+  type: hysteria2
+  udp: true
+- latency: 35.31
+  name: us|16e1|puddincat07@Telegram
+  password: dba20dcb635e430fa4d3bfc303a149d2
+  port: 443
+  score: 11.166808269612007
+  server: 104.17.61.9
+  sim_score: 0.6688027821056369
+  skip-cert-verify: true
+  sni: jobscareerforlawyers.com
+  speed: 39.43
   type: trojan
   udp: true
-- latency: 42.0
-  name: nl|f4a6|puddincat07@Telegram
-  password: LzMWgm6LaNWCm11bFTbynDPq2TqQj03t
+- latency: 34.25
+  name: xx|ea40|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=
+  password: f7cb07a0-e6f9-4d22-a60e-c61854450c89
   port: 443
-  score: 4.10952380952381
-  server: 5.255.102.165
-  sim_score: 0.8889849537156196
+  score: 10.855474452554745
+  server: vn2.yuntong.click
+  sim_score: 0.9326194865640135
   skip-cert-verify: true
-  sni: www.microsoft.com
-  speed: 17.26
+  sni: vn2.yuntong.click
+  speed: 37.18
   type: hysteria2
+  udp: true
+- client-fingerprint: chrome
+  latency: 38.86
+  name: xx|2c29|puddincat07@Telegram
+  network: tcp
+  password: OccIqeORGQwiNkwS
+  port: 19128
+  score: 10.692228512609368
+  server: jpbgp.netvigor.cc
+  sim_score: 0.6050727092001142
+  sni: yazhou10.dynu.net
+  speed: 41.55
+  type: trojan
+  udp: true
+- cipher: chacha20-ietf-poly1305
+  latency: 35.02
+  name: de|55a3|puddincat07@Telegram
+  password: 1hhrqrokj3ag
+  port: 8388
+  score: 4.971444888635065
+  server: 209.46.102.22
+  sim_score: 2.9642941441368564
+  speed: 17.41
+  type: ss
+- client-fingerprint: chrome
+  latency: 58.78
+  name: xx|bdd2|puddincat07@Telegram
+  network: tcp
+  password: M7v%w11Se*
+  port: 443
+  score: 2.4123851650221164
+  server: qfdfsg.wsone.icu
+  sim_score: 3.4679749014110812
+  skip-cert-verify: true
+  sni: qfdfsg.wsone.icu
+  speed: 14.18
+  type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - fr|3b50|puddincat07@Telegram
+  - nl|c163|puddincat07@Telegram
+  - us|16e1|puddincat07@Telegram
+  - xx|ea40|puddincat07@Telegram
   - xx|2c29|puddincat07@Telegram
-  - nl|f4a6|puddincat07@Telegram
+  - de|55a3|puddincat07@Telegram
+  - xx|bdd2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - fr|3b50|puddincat07@Telegram
+  - nl|c163|puddincat07@Telegram
+  - us|16e1|puddincat07@Telegram
+  - xx|ea40|puddincat07@Telegram
   - xx|2c29|puddincat07@Telegram
-  - nl|f4a6|puddincat07@Telegram
+  - de|55a3|puddincat07@Telegram
+  - xx|bdd2|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
