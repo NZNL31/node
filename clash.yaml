@@ -4,73 +4,41 @@ mode: Rule
 port: 7890
 proxies:
 - client-fingerprint: chrome
-  latency: 49.51
+  latency: 77.9
   name: xx|2c29|puddincat07@Telegram
   network: tcp
   password: OccIqeORGQwiNkwS
   port: 19128
-  score: 6.580488790143405
+  score: 4.7188703465982025
   server: jpbgp.netvigor.cc
-  sim_score: 0.8851495023878133
+  sim_score: 2.550093138010771
   sni: yazhou10.dynu.net
-  speed: 32.58
-  type: trojan
-  udp: true
-- cipher: rc4-md5
-  latency: 89.83
-  name: xx|f013|puddincat07@Telegram
-  password: efanccyun
-  plugin: obfs
-  plugin-opts:
-    host: 202503181464410-9tCwc1fdZ3.download.microsoft.com
-    mode: http
-  port: 8765
-  score: 4.573082489146165
-  server: cn01.efan8867801.xyz
-  sim_score: 1.923027514123469
-  speed: 41.08
-  tfo: false
-  type: ss
-- client-fingerprint: chrome
-  latency: 63.85
-  name: de|0f76|puddincat07@Telegram
-  network: tcp
-  password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
-  port: 443
-  score: 4.435395458104933
-  server: 185.137.157.135
-  sim_score: 0.6202933754840674
-  skip-cert-verify: false
-  speed: 28.32
+  speed: 36.76
   type: trojan
   udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 83.7
+  latency: 99.2
   name: xx|e2b9|puddincat07@Telegram
   password: hbGrpfvNrJsUmKmPbR3iY2
   port: 443
-  score: 3.244922341696535
+  score: 0.9576612903225806
   server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 1.1832135352714417
-  speed: 27.16
+  sim_score: 1.4126971164747153
+  speed: 9.5
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - xx|2c29|puddincat07@Telegram
-  - xx|f013|puddincat07@Telegram
-  - de|0f76|puddincat07@Telegram
   - xx|e2b9|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - xx|2c29|puddincat07@Telegram
-  - xx|f013|puddincat07@Telegram
-  - de|0f76|puddincat07@Telegram
   - xx|e2b9|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
