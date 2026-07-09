@@ -4,66 +4,78 @@ mode: Rule
 port: 7890
 proxies:
 - alterId: 0
-  latency: 27.8
+  latency: 22.23
   name: xx|2c29|puddincat07@Telegram
   password: OccIqeORGQwiNkwS
   port: 19128
-  score: 11.503597122302159
+  score: 16.55420602789024
   server: jpbgp.netvigor.cc
-  sim_score: 1.4532299112995792
+  sim_score: 1.4678798232170003
   skip-cert-verify: true
   sni: yazhou10.dynu.net
-  speed: 31.98
+  speed: 36.8
   tls: true
   type: trojan
   udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 34.19
-  name: za|ed8c|puddincat07@Telegram
-  password: aduB9HGxQHjA2SBMRjkHX6
-  port: 443
-  score: 7.613337233109098
-  server: 102.37.156.224
-  sim_score: 2.712795941413386
-  speed: 26.03
+  latency: 34.59
+  name: xx|7a56|puddincat07@Telegram
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  port: 50099
+  score: 11.358774212200055
+  server: r3mrcg00129437x.cybervena.com
+  sim_score: 2.358859463366028
+  speed: 39.29
   type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 22.8
-  name: xx|e2b9|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  port: 443
-  score: 6.285087719298246
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 0.8830469121226434
-  speed: 14.33
+  latency: 33.3
+  name: gb|6a08|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 9.294294294294295
+  server: 82.38.31.155
+  sim_score: 5.953412791410496
+  speed: 30.95
   type: ss
+- latency: 34.48
+  name: de|9e51|puddincat07@Telegram
+  password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
+  port: 443
+  score: 4.869489559164734
+  server: 185.137.157.138
+  sim_score: 2.285756958278614
+  skip-cert-verify: false
+  speed: 16.79
+  type: trojan
 - cipher: chacha20-ietf-poly1305
-  latency: 30.34
-  name: ca|2de2|puddincat07@Telegram
-  password: G5p6ww4o67HB
-  port: 8388
-  score: 4.63744232036915
-  server: 108.181.118.10
-  sim_score: 5.284564824249189
-  speed: 14.07
+  latency: 36.34
+  name: nl|a3cf|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 3.3571821684094654
+  server: 193.29.139.204
+  sim_score: 0.9520062613287185
+  speed: 12.2
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - xx|2c29|puddincat07@Telegram
-  - za|ed8c|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
-  - ca|2de2|puddincat07@Telegram
+  - xx|7a56|puddincat07@Telegram
+  - gb|6a08|puddincat07@Telegram
+  - de|9e51|puddincat07@Telegram
+  - nl|a3cf|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - xx|2c29|puddincat07@Telegram
-  - za|ed8c|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
-  - ca|2de2|puddincat07@Telegram
+  - xx|7a56|puddincat07@Telegram
+  - gb|6a08|puddincat07@Telegram
+  - de|9e51|puddincat07@Telegram
+  - nl|a3cf|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
