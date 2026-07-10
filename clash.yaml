@@ -4,80 +4,146 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: aes-256-cfb
-  latency: 51.2
-  name: fr|a764|puddincat07@Telegram
+  latency: 37.42
+  name: jp|487a|puddincat07@Telegram
   password: amazonskr05
   port: '443'
-  score: 8.95703125
-  server: 35.180.199.237
-  sim_score: 2.10013571085705
-  speed: 45.86
+  score: 12.736504543025118
+  server: 13.192.184.199
+  sim_score: 1.1386657725029485
+  speed: 47.66
   type: ss
-  udp: true
-- latency: 53.66
-  name: xx|7393|puddincat07@Telegram
-  password: HW85960347
-  port: '443'
-  score: 3.9247111442415203
-  server: happy-monkfish.rooster465.autos
-  sim_score: 0.6615537452306377
-  skip-cert-verify: false
-  speed: 21.06
-  type: trojan
   udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 54.41
-  name: xx|e2b9|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
-  port: 443
-  score: 2.622679654475281
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 1.279497852502843
-  speed: 14.27
+  latency: 39.71
+  name: za|d18d|puddincat07@Telegram
+  password: Xsy8Ox4yOV3xLlpxtjzs3X
+  port: 16233
+  score: 12.447746159657516
+  server: 102.133.165.160
+  sim_score: 0.8098270182162384
+  speed: 49.43
   type: ss
 - cipher: aes-256-cfb
-  latency: 53.06
+  latency: 45.96
   name: us|f411|puddincat07@Telegram
   password: amazonskr05
   port: '443'
-  score: 1.6830003769317754
+  score: 10.794168842471715
   server: 13.193.101.147
-  sim_score: 1.8802316607348468
-  speed: 8.93
+  sim_score: 1.1288623959454183
+  speed: 49.61
   type: ss
   udp: true
 - client-fingerprint: chrome
-  latency: 53.72
+  latency: 40.37
+  name: xx|2c29|puddincat07@Telegram
+  network: tcp
+  password: OccIqeORGQwiNkwS
+  port: 19128
+  score: 9.036413178102551
+  server: jpbgp.netvigor.cc
+  sim_score: 2.3695640831153093
+  sni: yazhou10.dynu.net
+  speed: 36.48
+  type: trojan
+  udp: true
+- cipher: aes-256-cfb
+  latency: 52.75
+  name: jp|6fba|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 8.272985781990522
+  server: 54.238.164.53
+  sim_score: 2.1114116987392126
+  speed: 43.64
+  type: ss
+- client-fingerprint: chrome
+  latency: 39.09
   name: xx|4ca9|puddincat07@Telegram
   network: tcp
   password: XG59623478
   port: 443
-  score: 1.6753536857781088
+  score: 6.809925812228191
   server: intense-basilisk.rooster465.autos
-  sim_score: 3.853377048313787
+  sim_score: 1.5809953667621608
   skip-cert-verify: false
   sni: intense-basilisk.rooster465.autos
-  speed: 9.0
+  speed: 26.62
   type: trojan
+  udp: true
+- cipher: aes-256-cfb
+  latency: 38.21
+  name: us|55a8|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 6.260141324260665
+  server: 3.14.249.239
+  sim_score: 3.3344511381529807
+  skip-cert-verify: true
+  speed: 23.92
+  type: ss
+  udp: true
+- cipher: aes-256-cfb
+  latency: 36.06
+  name: fr|9a3e|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 5.732113144758736
+  server: 51.44.170.232
+  sim_score: 1.1490785440494062
+  speed: 20.67
+  type: ss
+- cipher: aes-256-cfb
+  latency: 37.77
+  name: us|f113|puddincat07@Telegram
+  password: amazonskr05
+  port: '443'
+  score: 5.687053216838761
+  server: 3.16.130.237
+  sim_score: 1.2902460358018575
+  speed: 21.48
+  type: ss
+  udp: true
+- cipher: aes-256-cfb
+  latency: 50.33
+  name: fr|a764|puddincat07@Telegram
+  password: amazonskr05
+  port: '443'
+  score: 2.8054838068746273
+  server: 35.180.199.237
+  sim_score: 1.069742255147089
+  speed: 14.12
+  type: ss
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - fr|a764|puddincat07@Telegram
-  - xx|7393|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
+  - jp|487a|puddincat07@Telegram
+  - za|d18d|puddincat07@Telegram
   - us|f411|puddincat07@Telegram
+  - xx|2c29|puddincat07@Telegram
+  - jp|6fba|puddincat07@Telegram
   - xx|4ca9|puddincat07@Telegram
+  - us|55a8|puddincat07@Telegram
+  - fr|9a3e|puddincat07@Telegram
+  - us|f113|puddincat07@Telegram
+  - fr|a764|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - fr|a764|puddincat07@Telegram
-  - xx|7393|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
+  - jp|487a|puddincat07@Telegram
+  - za|d18d|puddincat07@Telegram
   - us|f411|puddincat07@Telegram
+  - xx|2c29|puddincat07@Telegram
+  - jp|6fba|puddincat07@Telegram
   - xx|4ca9|puddincat07@Telegram
+  - us|55a8|puddincat07@Telegram
+  - fr|9a3e|puddincat07@Telegram
+  - us|f113|puddincat07@Telegram
+  - fr|a764|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
