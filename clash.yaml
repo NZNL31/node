@@ -3,61 +3,88 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
+- cipher: aes-256-cfb
+  latency: 68.23
+  name: us|c551|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 6.2318628169426935
+  server: 3.145.57.90
+  sim_score: 0.7334338652464177
+  speed: 42.52
+  type: ss
 - alterId: 0
-  latency: 28.09
-  name: xx|2c29|puddincat07@Telegram
-  password: OccIqeORGQwiNkwS
-  port: 19128
-  score: 10.028479886080458
-  server: jpbgp.netvigor.cc
-  sim_score: 1.2426221670411617
+  latency: 55.17
+  name: fr|3b50|puddincat07@Telegram
+  password: Lw_DP4+W.J5K33MD2Jy5zQVuT5n71+=BcD
+  port: 443
+  score: 5.858256298713068
+  server: 38.60.168.129
+  sim_score: 1.7983839062146936
   skip-cert-verify: true
-  sni: yazhou10.dynu.net
-  speed: 28.17
+  speed: 32.32
   tls: true
   type: trojan
   udp: true
-- latency: 28.68
-  name: xx|badf|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=
-  password: f7cb07a0-e6f9-4d22-a60e-c61854450c89
+- cipher: chacha20-ietf-poly1305
+  latency: 59.64
+  name: za|ed8c|puddincat07@Telegram
+  password: aduB9HGxQHjA2SBMRjkHX6
   port: 443
-  score: 7.513947001394701
-  server: ff2.yuntong.click
-  sim_score: 0.8908163061584023
+  score: 3.734071093226023
+  server: 102.37.156.224
+  sim_score: 0.9074372470733465
+  speed: 22.27
+  type: ss
+- alterId: 0
+  latency: 54.5
+  name: xx|2c29|puddincat07@Telegram
+  password: OccIqeORGQwiNkwS
+  port: 19128
+  score: 2.422018348623853
+  server: jpbgp.netvigor.cc
+  sim_score: 4.758002785078471
   skip-cert-verify: true
-  sni: ff2.yuntong.click
-  speed: 21.55
-  type: hysteria2
+  sni: yazhou10.dynu.net
+  speed: 13.2
+  tls: true
+  type: trojan
   udp: true
-- latency: 58.66
-  name: xx|4d48|puddincat07@Telegram
-  password: xtoRpl9CCisiSwbIawiZ
+- latency: 57.67
+  name: xx|f463|puddincat07@Telegram
+  network: ws
+  password: dfdse334053vuohm
   port: 443
-  score: 1.4763041254688034
-  server: haigc.shop
-  sim_score: 0.5933898033634704
-  skip-cert-verify: true
-  sni: haigc.shop
-  speed: 8.66
-  type: hysteria2
-  udp: true
+  score: 2.2056528524362755
+  server: auto.mhjstudio.ir
+  sim_score: 1.674511024590177
+  skip-cert-verify: false
+  sni: alternative.mhjstudio.ir
+  speed: 12.72
+  type: trojan
+  ws-opts:
+    headers:
+      Host: alternative.mhjstudio.ir
+    path: /
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - us|c551|puddincat07@Telegram
+  - fr|3b50|puddincat07@Telegram
+  - za|ed8c|puddincat07@Telegram
   - xx|2c29|puddincat07@Telegram
-  - xx|badf|puddincat07@Telegram
-  - xx|4d48|puddincat07@Telegram
+  - xx|f463|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - us|c551|puddincat07@Telegram
+  - fr|3b50|puddincat07@Telegram
+  - za|ed8c|puddincat07@Telegram
   - xx|2c29|puddincat07@Telegram
-  - xx|badf|puddincat07@Telegram
-  - xx|4d48|puddincat07@Telegram
+  - xx|f463|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
