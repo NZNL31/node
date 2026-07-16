@@ -3,117 +3,60 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 26.79
-  name: 🇦🇺_澳大利亚_35
-  password: KV63147582
-  port: 443
-  score: 17.670772676371783
-  server: selected-bison.rooster465.autos
-  sim_score: 2.7287290801142556
+- alterId: 0
+  cipher: auto
+  latency: 42.22
+  name: 🇨🇳_中国_83
+  port: 50011
+  score: 11.477972524869731
+  server: 36.133.78.37
+  sim_score: 1.8326620335974884
   skip-cert-verify: true
-  sni: selected-bison.rooster465.autos
-  speed: 47.34
+  speed: 48.46
+  tls: false
+  type: vmess
+  udp: true
+  uuid: 30b2c497-27e3-4da2-98a4-005322ba1242
+- latency: 40.56
+  name: 🇯🇵_日本_137
+  password: '521314'
+  port: 443
+  score: 11.16370808678501
+  server: 126.220.82.161
+  sim_score: 1.4553025399001056
+  skip-cert-verify: true
+  sni: tjplay.lxdxo.kdns.fr
+  speed: 45.28
   tls: true
   type: trojan
   udp: true
-- http-opts:
+  ws-opts:
     headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 27.83
-  name: 🇺🇸_美国_326
-  network: http
-  port: 80
-  score: 17.477542220625224
-  server: 199.232.240.195
-  sim_score: 3.4251248997089103
-  skip-cert-verify: true
-  speed: 48.64
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 26.38
-  name: 🇺🇸_美国_367
-  network: http
-  port: 80
-  score: 16.830932524639877
-  server: 199.232.240.72
-  sim_score: 1.4937726669434728
-  skip-cert-verify: true
-  speed: 44.4
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.35
-  name: 🇺🇸_美国_284
-  network: http
-  port: 80
-  score: 16.800705467372133
-  server: 199.232.240.56
-  sim_score: 0.9984477820856551
-  skip-cert-verify: true
-  speed: 47.63
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  latency: 26.9
-  name: 🇷🇺_俄罗斯_18
+      Host: tjplay.lxdxo.kdns.fr
+    path: /
+- latency: 40.7
+  name: 🇸🇬_新加坡_7
+  password: CF68213490
   port: 443
-  reality-opts:
-    public-key: KYNrRy0ElOU9Hg5tmWRwpf-Ff3R8Gjcjdk91jZt2nGg
-    short-id: bb6c8a1e7c
-  score: 16.776951672862456
-  server: 51.250.46.89
-  servername: cdn.tracker.yandex.net
-  sim_score: 0.6738747762979465
+  score: 10.64864864864865
+  server: gentle-raptor.rooster465.autos
+  sim_score: 2.133132123769181
   skip-cert-verify: true
-  speed: 45.13
-  tls: true
-  type: vless
-  udp: true
-  uuid: 4392b776-41a2-4300-b545-a3d2724b605b
-- latency: 27.49
-  name: 🇺🇸_美国_95
-  password: '3632736327'
-  port: 3411
-  score: 16.686067660967623
-  server: us03180923.tmdsb.org
-  sim_score: 0.9662543791193428
-  skip-cert-verify: true
-  sni: us03180923.tmdsb.org
-  speed: 45.87
+  sni: gentle-raptor.rooster465.autos
+  speed: 43.34
   tls: true
   type: trojan
   udp: true
-- latency: 29.42
+- latency: 48.58
   name: 🏳️_未知_145
   password: a5e355b9-11fc-449a-aa7b-eb707783f25a
   port: 443
-  score: 16.617946974847044
+  score: 10.158501440922192
   server: 104.19.174.68
-  sim_score: 1.4102428083856071
+  sim_score: 2.5417466773930735
   skip-cert-verify: true
   sni: px8r9i1b4k.bpusfaster2.top
-  speed: 48.89
+  speed: 49.35
   tls: true
   type: trojan
   udp: true
@@ -121,41 +64,22 @@ proxies:
     headers:
       Host: px8r9i1b4k.bpusfaster2.top
     path: /images
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 30.01
-  name: 🇺🇸_美国_266
-  network: http
-  port: 80
-  score: 16.364545151616127
-  server: 199.232.240.103
-  sim_score: 1.1218656890506185
-  skip-cert-verify: true
-  speed: 49.11
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 29.9
-  name: 🏳️_未知_127
+- latency: 40.36
+  name: 🇦🇹_奥地利_131
   password: humanity
   port: 443
-  score: 16.187290969899667
-  server: 162.159.17.189
-  sim_score: 1.7317681419050643
+  score: 9.841427155599604
+  server: 212.183.88.136
+  sim_score: 4.798348413599223
   skip-cert-verify: true
-  sni: www.multiplydose.com
-  speed: 48.4
+  sni: www.calmlunch.com
+  speed: 39.72
   tls: true
   type: trojan
   udp: true
   ws-opts:
     headers:
-      Host: www.multiplydose.com
+      Host: www.calmlunch.com
     path: /assignment
 - http-opts:
     headers:
@@ -163,37 +87,177 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 27.85
-  name: 🇺🇸_美国_343
+  latency: 48.32
+  name: 🇺🇸_美国_355
   network: http
   port: 80
-  score: 15.982046678635546
-  server: 199.232.240.37
-  sim_score: 2.7105094440291086
+  score: 9.66680463576159
+  server: 199.232.240.170
+  sim_score: 3.2278152446281783
   skip-cert-verify: true
-  speed: 44.51
+  speed: 46.71
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- cipher: chacha20-ietf-poly1305
-  latency: 27.29
-  name: gb|2c7f|puddincat07@Telegram
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  port: 8080
-  score: 15.936240381091977
-  server: 82.38.31.176
-  sim_score: 2.2725250343740093
-  speed: 43.49
-  type: ss
-- latency: 30.77
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 50.23
+  name: 🇺🇸_美国_289
+  network: http
+  port: 80
+  score: 9.603822416882343
+  server: 199.232.240.59
+  sim_score: 1.32317548922689
+  skip-cert-verify: true
+  speed: 48.24
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 49.53
+  name: 🇬🇧_英国_230
+  network: ws
+  port: 80
+  score: 9.448818897637794
+  server: 91.193.58.160
+  sim_score: 0.8599802039860602
+  skip-cert-verify: true
+  speed: 46.8
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- latency: 53.34
+  name: 🇬🇧_英国_171
+  network: ws
+  port: 80
+  score: 9.332583427071615
+  server: 91.193.58.185
+  sim_score: 1.0501284700474844
+  skip-cert-verify: true
+  speed: 49.78
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- latency: 48.94
+  name: 🏳️_未知_135
+  password: humanity
+  port: 443
+  score: 9.331834899877402
+  server: 104.17.131.88
+  sim_score: 1.317798443078961
+  skip-cert-verify: true
+  sni: www.gossipglove.com
+  speed: 45.67
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: www.gossipglove.com
+    path: /assignment
+- latency: 48.13
+  name: 🏳️_未知_239
+  network: ws
+  port: 80
+  score: 9.22293787658425
+  server: 104.17.172.111
+  sim_score: 3.5559895229072787
+  skip-cert-verify: true
+  speed: 44.39
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /
+- latency: 48.36
+  name: 🇩🇪_德国_97
+  password: OD90375861
+  port: 443
+  score: 9.183209263854424
+  server: busy-hermit.rooster465.autos
+  sim_score: 5.960626594637072
+  skip-cert-verify: true
+  sni: busy-hermit.rooster465.autos
+  speed: 44.41
+  tls: true
+  type: trojan
+  udp: true
+- latency: 53.92
+  name: xx|f463|puddincat07@Telegram
+  network: ws
+  password: dfdse334053vuohm
+  port: 443
+  score: 9.182121661721068
+  server: auto.mhjstudio.ir
+  sim_score: 0.8976178352547032
+  skip-cert-verify: false
+  sni: alternative.mhjstudio.ir
+  speed: 49.51
+  type: trojan
+  ws-opts:
+    headers:
+      Host: alternative.mhjstudio.ir
+    path: /
+- latency: 48.91
+  name: 🏳️_未知_243
+  network: ws
+  port: 80
+  score: 9.16785933346964
+  server: 104.17.208.84
+  sim_score: 0.6340568954743108
+  skip-cert-verify: true
+  speed: 44.84
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /
+- latency: 47.95
+  name: 🇬🇧_英国_195
+  network: ws
+  port: 80
+  score: 9.071949947862356
+  server: 91.193.58.134
+  sim_score: 2.2032111303982984
+  skip-cert-verify: true
+  speed: 43.5
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- latency: 49.45
   name: 🇭🇰_香港_100
   port: 42672
-  score: 15.77835554111147
+  score: 8.964610717896864
   server: 104.171.135.184
-  sim_score: 2.494217631720006
+  sim_score: 1.0950932458961609
   skip-cert-verify: true
-  speed: 48.55
+  speed: 44.33
   tls: false
   type: vless
   udp: true
@@ -204,194 +268,123 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 28.17
-  name: 🇺🇸_美国_282
+  latency: 51.57
+  name: 🇺🇸_美国_293
   network: http
   port: 80
-  score: 15.690450834220801
-  server: 199.232.240.114
-  sim_score: 0.9160369512075592
+  score: 8.952879581151832
+  server: 199.232.240.25
+  sim_score: 1.1215816895968722
   skip-cert-verify: true
-  speed: 44.2
+  speed: 46.17
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 28.86
-  name: 🏳️_未知_239
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 55.94
+  name: 🇺🇸_美国_280
+  network: http
+  port: 80
+  score: 8.76832320343225
+  server: 199.232.240.234
+  sim_score: 0.9193941982217266
+  skip-cert-verify: true
+  speed: 49.05
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.72
+  name: 🇺🇸_美国_260
+  network: http
+  port: 80
+  score: 8.767095736122286
+  server: 199.232.240.139
+  sim_score: 1.08295106695396
+  skip-cert-verify: true
+  speed: 43.59
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 53.31
+  name: 🇺🇸_美国_300
+  network: http
+  port: 80
+  score: 8.739448508722566
+  server: 199.232.240.22
+  sim_score: 1.3997119412851076
+  skip-cert-verify: true
+  speed: 46.59
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 48.0
+  name: 🇺🇸_美国_347
+  network: http
+  port: 80
+  score: 8.670833333333333
+  server: 199.232.240.196
+  sim_score: 1.8600609669833186
+  skip-cert-verify: true
+  speed: 41.62
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.87
+  name: 🇺🇸_美国_336
+  network: http
+  port: 80
+  score: 8.664527772207741
+  server: 199.232.240.147
+  sim_score: 1.2982562641932742
+  skip-cert-verify: true
+  speed: 43.21
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 53.97
+  name: 🇬🇧_英国_215
   network: ws
   port: 80
-  score: 15.544005544005543
-  server: 104.17.172.111
-  sim_score: 2.108557309532408
+  score: 8.639985176950159
+  server: 91.193.58.251
+  sim_score: 1.522032881997786
   skip-cert-verify: true
-  speed: 44.86
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- latency: 28.43
-  name: 🏳️_未知_135
-  password: humanity
-  port: 443
-  score: 15.205768554344
-  server: 104.17.131.88
-  sim_score: 3.62203075931275
-  skip-cert-verify: true
-  sni: www.gossipglove.com
-  speed: 43.23
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.gossipglove.com
-    path: /assignment
-- latency: 27.83
-  name: 🇸🇬_新加坡_7
-  password: CF68213490
-  port: 443
-  score: 14.994610132950054
-  server: gentle-raptor.rooster465.autos
-  sim_score: 3.1274324900174433
-  skip-cert-verify: true
-  sni: gentle-raptor.rooster465.autos
-  speed: 41.73
-  tls: true
-  type: trojan
-  udp: true
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 30.09
-  name: 🇺🇸_美国_302
-  network: http
-  port: 80
-  score: 14.732469258889996
-  server: 199.232.240.86
-  sim_score: 2.327103336808332
-  skip-cert-verify: true
-  speed: 44.33
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 29.46
-  name: 🏳️_未知_134
-  password: humanity
-  port: 443
-  score: 14.460285132382893
-  server: 172.64.146.198
-  sim_score: 2.355608982105493
-  skip-cert-verify: true
-  sni: www.gossipglove.com
-  speed: 42.6
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.gossipglove.com
-    path: /assignment
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 29.11
-  name: 🇺🇸_美国_267
-  network: http
-  port: 80
-  score: 14.428031604259706
-  server: 199.232.240.246
-  sim_score: 3.027963469768424
-  skip-cert-verify: true
-  speed: 42.0
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  latency: 29.27
-  name: 🇯🇵_日本_8
-  port: 443
-  score: 14.31841475913905
-  server: s9966.ccgfw.top
-  servername: u695099u0e388253s9963.gogocs.xyz
-  sim_score: 2.4939388656520025
-  skip-cert-verify: true
-  speed: 41.91
-  tls: true
-  type: vless
-  udp: true
-  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
-- latency: 30.39
-  name: 🏳️_未知_113
-  password: humanity
-  port: 443
-  score: 14.12306679828891
-  server: 172.66.47.69
-  sim_score: 0.768844525303145
-  skip-cert-verify: true
-  sni: www.multiplydose.com
-  speed: 42.92
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.multiplydose.com
-    path: /assignment
-- latency: 27.62
-  name: 🇩🇪_德国_97
-  password: OD90375861
-  port: 443
-  score: 13.334540188269369
-  server: busy-hermit.rooster465.autos
-  sim_score: 1.1664097787626702
-  skip-cert-verify: true
-  sni: busy-hermit.rooster465.autos
-  speed: 36.83
-  tls: true
-  type: trojan
-  udp: true
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 35.63
-  name: 🇺🇸_美国_335
-  network: http
-  port: 80
-  score: 13.191131069323603
-  server: 199.232.240.127
-  sim_score: 4.539276672745015
-  skip-cert-verify: true
-  speed: 47.0
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 29.92
-  name: 🇬🇧_英国_227
-  network: ws
-  port: 80
-  score: 12.874331550802138
-  server: 91.193.58.70
-  sim_score: 5.547043333777103
-  skip-cert-verify: true
-  speed: 38.52
+  speed: 46.63
   tls: false
   type: vless
   udp: true
@@ -400,16 +393,356 @@ proxies:
     headers:
       Host: sahanwickramasinghevip.shop
     path: /?Telegram-WangCai2🇨🇳
-- latency: 36.24
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 53.18
+  name: 🇺🇸_美国_283
+  network: http
+  port: 80
+  score: 8.341481760060173
+  server: 199.232.240.121
+  sim_score: 1.3953383742997092
+  skip-cert-verify: true
+  speed: 44.36
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 52.94
+  name: 🇬🇧_英国_193
+  network: ws
+  port: 80
+  score: 8.214960332451833
+  server: 91.193.58.205
+  sim_score: 1.1003011159548528
+  skip-cert-verify: true
+  speed: 43.49
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- latency: 50.64
+  name: 🏳️_未知_241
+  network: ws
+  port: 80
+  score: 8.175355450236966
+  server: 104.16.157.54
+  sim_score: 1.3314991799250797
+  skip-cert-verify: true
+  speed: 41.4
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /
+- latency: 53.32
+  name: 🇬🇧_英国_201
+  network: ws
+  port: 80
+  score: 8.165791447861965
+  server: 91.193.58.28
+  sim_score: 1.020033823998528
+  skip-cert-verify: true
+  speed: 43.54
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  latency: 40.25
+  name: 🇻🇳_越南_23
+  port: 443
+  score: 8.074534161490682
+  server: s592.okgg.top
+  servername: u695099ub67c99c6s591.csgfw.top
+  sim_score: 1.8145615220815032
+  skip-cert-verify: true
+  speed: 32.5
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
+- latency: 58.36
+  name: 🇬🇧_英国_229
+  network: ws
+  port: 80
+  score: 8.051747772446882
+  server: 91.193.58.82
+  sim_score: 1.0255092828768944
+  skip-cert-verify: true
+  speed: 46.99
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 50.67
+  name: 🇺🇸_美国_328
+  network: http
+  port: 80
+  score: 8.020524965462798
+  server: 199.232.240.34
+  sim_score: 1.9396013013490552
+  skip-cert-verify: true
+  speed: 40.64
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 50.19
+  name: 🇺🇸_美国_315
+  network: http
+  port: 80
+  score: 8.009563658099223
+  server: 199.232.240.101
+  sim_score: 1.097257748572774
+  skip-cert-verify: true
+  speed: 40.2
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 50.63
+  name: 🏳️_未知_161
+  network: ws
+  port: 80
+  score: 8.005135295279478
+  server: 162.159.81.104
+  sim_score: 1.0028726265500416
+  skip-cert-verify: true
+  speed: 40.53
+  tls: false
+  type: vless
+  udp: true
+  uuid: 4b00d726-e072-429b-997e-f07affea3b7f
+  ws-opts:
+    headers:
+      Host: icy-darkness-8ff1.farzambia12mo.workers.dev
+    path: /eyJqdW5rIjoiUEVTdDRlR2hhc0JuYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJlZml4IiwicGFuZWxJUHMiOlsiWzI2MDI6ZmM1OTpiMDo2NDo6XSJdfQ==
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 56.85
+  name: 🇺🇸_美国_282
+  network: http
+  port: 80
+  score: 7.9876868953386095
+  server: 199.232.240.114
+  sim_score: 2.0931011200172462
+  skip-cert-verify: true
+  speed: 45.41
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.73
+  name: 🇺🇸_美国_295
+  network: http
+  port: 80
+  score: 7.932837321536297
+  server: 199.232.240.35
+  sim_score: 1.6070808662441685
+  skip-cert-verify: true
+  speed: 39.45
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.24
+  name: 🇺🇸_美国_308
+  network: http
+  port: 80
+  score: 7.8980503655564585
+  server: 199.232.240.138
+  sim_score: 2.652060768093818
+  skip-cert-verify: true
+  speed: 38.89
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 51.95
+  name: 🇬🇧_英国_217
+  network: ws
+  port: 80
+  score: 7.847930702598652
+  server: 91.193.58.217
+  sim_score: 2.5701887052265926
+  skip-cert-verify: true
+  speed: 40.77
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  latency: 39.94
+  name: 🇮🇹_意大利_21
+  port: 443
+  score: 7.799198798197296
+  server: 185.119.19.105
+  servername: u695099u8adcedd7s8746.gogocs.xyz
+  sim_score: 4.993535817007632
+  skip-cert-verify: true
+  speed: 31.15
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 53.35
+  name: 🇺🇸_美国_345
+  network: http
+  port: 80
+  score: 7.758200562324273
+  server: 199.232.240.249
+  sim_score: 1.2833807366111718
+  skip-cert-verify: true
+  speed: 41.39
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.14
+  name: 🇺🇸_美国_321
+  network: http
+  port: 80
+  score: 7.753357753357753
+  server: 199.232.240.100
+  sim_score: 3.8313607436513215
+  skip-cert-verify: true
+  speed: 38.1
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.71
+  name: 🇺🇸_美国_292
+  network: http
+  port: 80
+  score: 7.553812110239387
+  server: 199.232.240.153
+  sim_score: 1.2981128651209983
+  skip-cert-verify: true
+  speed: 37.55
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 50.55
+  name: 🇺🇸_美国_256
+  network: http
+  port: 80
+  score: 7.527200791295746
+  server: 199.232.240.228
+  sim_score: 1.0963057466023176
+  skip-cert-verify: true
+  speed: 38.05
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  latency: 49.44
+  name: 🇯🇵_日本_12
+  port: 443
+  reality-opts:
+    public-key: VToNLWgD_ieTXl5Qj7ugF3QAmij_evy_7c_-ztST50E
+    short-id: ac9fe5f6
+  score: 7.518203883495146
+  server: s2066.okgg.top
+  servername: 480a88c9s1865.gogocs.xyz
+  sim_score: 1.3408494216732911
+  skip-cert-verify: true
+  speed: 37.17
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
+- latency: 49.24
   name: 🇺🇸_美国_175
   password: '521314'
   port: 443
-  score: 12.560706401766005
+  score: 7.479691307879772
   server: 198.177.57.9
-  sim_score: 0.7410817949990884
+  sim_score: 1.4795635848866278
   skip-cert-verify: true
   sni: tjplay.lxdxo.kdns.fr
-  speed: 45.52
+  speed: 36.83
   tls: true
   type: trojan
   udp: true
@@ -417,356 +750,180 @@ proxies:
     headers:
       Host: tjplay.lxdxo.kdns.fr
     path: /Telegram🇨🇳+@WangCai2
-- latency: 29.71
-  name: 🇬🇧_英国_217
-  network: ws
-  port: 80
-  score: 12.396499495119489
-  server: 91.193.58.217
-  sim_score: 3.754076395606392
-  skip-cert-verify: true
-  speed: 36.83
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 40.77
-  name: 🇺🇸_美国_160
-  network: ws
-  port: 8880
-  score: 12.209958302673535
-  server: 192.0.54.30
-  sim_score: 1.24962701034422
-  skip-cert-verify: true
-  speed: 49.78
-  tls: false
-  type: vless
-  udp: true
-  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-  ws-opts:
-    headers:
-      Host: vms.lifetime35.workers.dev
-    path: /
-- http-opts:
-    headers:
-      Host:
-      - InternetAzadRobot31dx253.global.ssl.fastly.net
-    path:
-    - /
-  latency: 29.97
-  name: 🇺🇸_美国_253
-  network: http
-  port: 80
-  score: 12.095428762095429
-  server: 151.101.193.57
-  sim_score: 0.9706598386454919
-  skip-cert-verify: true
-  speed: 36.25
-  tls: false
-  type: vless
-  udp: true
-  uuid: InternetAzadRobot-AliKiller
 - http-opts:
     headers:
       Host:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 36.81
-  name: 🇺🇸_美国_332
+  latency: 52.06
+  name: 🇺🇸_美国_361
   network: http
   port: 80
-  score: 12.083672914968757
-  server: 199.232.240.49
-  sim_score: 1.3620687682752954
+  score: 7.464464079907799
+  server: 199.232.240.173
+  sim_score: 2.408587771793444
   skip-cert-verify: true
-  speed: 44.48
+  speed: 38.86
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 39.09
-  name: 🇺🇸_美国_159
-  network: ws
-  port: 8880
-  score: 11.941673062164234
-  server: 155.46.167.30
-  sim_score: 0.7837412353238957
-  skip-cert-verify: true
-  speed: 46.68
-  tls: false
-  type: vless
-  udp: true
-  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-  ws-opts:
-    headers:
-      Host: vms.lifetime50.workers.dev
-    path: /
-- latency: 34.27
-  name: 🇬🇧_英国_198
-  network: ws
-  port: 80
-  score: 11.940472716661803
-  server: 91.193.58.206
-  sim_score: 1.1151206942340965
-  skip-cert-verify: true
-  speed: 40.92
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 35.6
-  name: 🇹🇷_土耳其_166
-  network: ws
-  port: 80
-  score: 11.879213483146067
-  server: 91.206.71.8
-  sim_score: 2.3163995753432243
-  skip-cert-verify: true
-  speed: 42.29
-  tls: false
-  type: vless
-  udp: true
-  uuid: c20a0bcf-aa6f-4c35-9e62-a39b47b04e73
-  ws-opts:
-    headers:
-      Host: round-haze-8783.294.workers.dev
-    path: /pyip=Telegram🇨🇳+@WangCai2
-- alterId: 0
-  cipher: auto
-  latency: 38.57
-  name: 🇭🇰_香港_94
-  port: 5566
-  score: 11.848586984703138
-  server: 47.76.127.88
-  sim_score: 1.9737989741947102
-  skip-cert-verify: true
-  speed: 45.7
-  tls: false
-  type: vmess
-  udp: true
-  uuid: 44712929-c2b7-4fa4-93bd-9de332a78c8c
 - http-opts:
     headers:
       Host:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 28.74
-  name: 🇺🇸_美国_307
+  latency: 48.77
+  name: 🇺🇸_美国_337
   network: http
   port: 80
-  score: 11.840640222686151
-  server: 199.232.240.214
-  sim_score: 1.0928757404757188
+  score: 7.436948944022966
+  server: 199.232.240.206
+  sim_score: 2.587067050615457
   skip-cert-verify: true
-  speed: 34.03
+  speed: 36.27
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 29.8
-  name: 🏳️_未知_123
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.48
+  name: 🇺🇸_美国_338
+  network: http
+  port: 80
+  score: 7.413096200485045
+  server: 199.232.240.190
+  sim_score: 1.2118379053489345
+  skip-cert-verify: true
+  speed: 36.68
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 41.41
+  name: 🏳️_未知_121
   password: humanity
   port: 443
-  score: 11.812080536912752
-  server: 104.18.12.149
-  sim_score: 3.7218512966480786
+  score: 7.314658295097804
+  server: www.gossipglove.com
+  sim_score: 1.9503533214113902
   skip-cert-verify: true
-  sni: www.calmlunch.com
-  speed: 35.2
+  sni: www.gossipglove.com
+  speed: 30.29
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    path: /assignment
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 54.25
+  name: 🇺🇸_美国_306
+  network: http
+  port: 80
+  score: 7.2387096774193544
+  server: 199.232.240.181
+  sim_score: 2.5327906839774066
+  skip-cert-verify: true
+  speed: 39.27
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 56.72
+  name: 🇺🇸_美国_299
+  network: http
+  port: 80
+  score: 7.2232016925246825
+  server: 199.232.240.136
+  sim_score: 0.8413267840820242
+  skip-cert-verify: true
+  speed: 40.97
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 56.54
+  name: 🇺🇸_美国_270
+  network: http
+  port: 80
+  score: 7.210824195259994
+  server: 199.232.240.179
+  sim_score: 3.1772602761493234
+  skip-cert-verify: true
+  speed: 40.77
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 50.45
+  name: 🏳️_未知_144
+  password: a5e355b9-11fc-449a-aa7b-eb707783f25a
+  port: 443
+  score: 7.1199207135778
+  server: tw3011h8r.cloudflare.182682.xyz
+  sim_score: 1.658176570288621
+  skip-cert-verify: true
+  sni: kfb9frqf0v.bpis2026.top
+  speed: 35.92
   tls: true
   type: trojan
   udp: true
   ws-opts:
     headers:
-      Host: www.calmlunch.com
-    path: /assignment
-- latency: 41.9
-  name: 🇬🇧_英国_189
-  network: ws
+      Host: kfb9frqf0v.bpis2026.top
+    path: /images
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 50.04
+  name: 🇺🇸_美国_364
+  network: http
   port: 80
-  score: 11.66109785202864
-  server: 91.193.58.180
-  sim_score: 4.349922183023776
+  score: 7.030375699440448
+  server: 199.232.240.167
+  sim_score: 2.8820068531815988
   skip-cert-verify: true
-  speed: 48.86
+  speed: 35.18
   tls: false
   type: vless
   udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- alterId: 2
-  cipher: auto
-  latency: 29.34
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 11.618950238582142
-  server: v10.hdacd.com
-  sim_score: 2.013264970419197
-  skip-cert-verify: false
-  speed: 34.09
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- latency: 31.5
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 47.96
   name: 🇬🇧_英国_197
   network: ws
   port: 80
-  score: 11.606349206349208
+  score: 7.024603836530442
   server: 91.193.58.191
-  sim_score: 0.5850035900168702
+  sim_score: 4.9987961622882775
   skip-cert-verify: true
-  speed: 36.56
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 27.93
-  name: 🇺🇸_美国_232
-  network: ws
-  port: 443
-  score: 11.503759398496243
-  server: tg.wxgqlfx.vip
-  servername: 40t1.wxgqlfx.vip
-  sim_score: 3.688060019322515
-  skip-cert-verify: true
-  speed: 32.13
-  tls: true
-  type: vless
-  udp: true
-  uuid: 2cc91eda-071b-4f81-b788-5fae8c5c43d4
-  ws-opts:
-    headers:
-      Host: 40t1.wxgqlfx.vip
-    path: /TG@wxgqlfx
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 30.18
-  name: 🇺🇸_美国_358
-  network: http
-  port: 80
-  score: 11.47448641484427
-  server: 199.232.240.29
-  sim_score: 2.2893635465599047
-  skip-cert-verify: true
-  speed: 34.63
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 38.08
-  name: 🇺🇸_美国_354
-  network: http
-  port: 80
-  score: 11.46796218487395
-  server: 199.232.240.135
-  sim_score: 0.656043095472701
-  skip-cert-verify: true
-  speed: 43.67
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 37.12
-  name: 🇺🇸_美国_285
-  network: http
-  port: 80
-  score: 11.298491379310345
-  server: 199.232.240.19
-  sim_score: 2.6033045998692983
-  skip-cert-verify: true
-  speed: 41.94
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 38.67
-  name: 🇺🇸_美国_269
-  network: http
-  port: 80
-  score: 11.238686320144815
-  server: 199.232.240.168
-  sim_score: 1.0161789460943798
-  skip-cert-verify: true
-  speed: 43.46
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- cipher: chacha20-ietf-poly1305
-  latency: 29.29
-  name: tr|6405|puddincat07@Telegram
-  password: 0GAK2b9gkqBatuxi2cswmH
-  port: 25232
-  score: 11.208603618982586
-  server: 83.217.9.17
-  sim_score: 1.3891152114127236
-  speed: 32.83
-  type: ss
-- latency: 29.84
-  name: 🇬🇧_英国_226
-  network: ws
-  port: 80
-  score: 11.16621983914209
-  server: 91.193.58.29
-  sim_score: 2.6029736029380848
-  skip-cert-verify: true
-  speed: 33.32
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 28.21
-  name: 🇬🇧_英国_200
-  network: ws
-  port: 80
-  score: 11.162708259482452
-  server: 91.193.58.220
-  sim_score: 2.4533374977130453
-  skip-cert-verify: true
-  speed: 31.49
+  speed: 33.69
   tls: false
   type: vless
   udp: true
@@ -781,878 +938,38 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 34.89
-  name: 🇺🇸_美国_315
+  latency: 48.59
+  name: 🇺🇸_美国_262
   network: http
   port: 80
-  score: 11.15505875609057
-  server: 199.232.240.101
-  sim_score: 2.700430468571955
+  score: 6.954105783082937
+  server: 199.232.240.125
+  sim_score: 1.052646046535301
   skip-cert-verify: true
-  speed: 38.92
+  speed: 33.79
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 30.1
-  name: 🏳️_未知_112
-  password: humanity
-  port: 443
-  score: 11.069767441860465
-  server: 188.114.98.0
-  sim_score: 2.138682223495507
-  skip-cert-verify: true
-  sni: www.creationlong.org
-  speed: 33.32
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.creationlong.org
-    path: /assignment
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.4
-  name: 🇺🇸_美国_288
-  network: http
-  port: 80
-  score: 11.02112676056338
-  server: 199.232.240.178
-  sim_score: 1.6812730578558457
-  skip-cert-verify: true
-  speed: 31.3
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.69
-  name: 🇺🇸_美国_272
-  network: http
-  port: 80
-  score: 11.003834088532589
-  server: 199.232.240.243
-  sim_score: 1.1202256647064581
-  skip-cert-verify: true
-  speed: 31.57
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 40.2
-  name: 🇺🇸_美国_273
-  network: http
-  port: 80
-  score: 10.970149253731343
-  server: 199.232.240.244
-  sim_score: 1.566878153039132
-  skip-cert-verify: true
-  speed: 44.1
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 30.14
-  name: 🏳️_未知_142
-  password: a5e355b9-11fc-449a-aa7b-eb707783f25a
-  port: 443
-  score: 10.935633709356338
-  server: tt45y3.cloudflare.182682.xyz
-  sim_score: 5.528140041433664
-  skip-cert-verify: true
-  sni: tuerqitt.bper2026.top
-  speed: 32.96
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: tuerqitt.bper2026.top
-    path: /images
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 30.6
-  name: 🇺🇸_美国_265
-  network: http
-  port: 80
-  score: 10.656862745098039
-  server: 199.232.240.161
-  sim_score: 1.3551723218022016
-  skip-cert-verify: true
-  speed: 32.61
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 28.02
-  name: 🏳️_未知_115
-  password: humanity
-  port: 443
-  score: 10.574589578872233
-  server: 172.64.152.23
-  sim_score: 1.5634075345970102
-  skip-cert-verify: true
-  sni: www.calmlunch.com
-  speed: 29.63
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.calmlunch.com
-    path: /assignment
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 40.7
-  name: 🇺🇸_美国_312
-  network: http
-  port: 80
-  score: 10.562653562653564
-  server: 199.232.240.94
-  sim_score: 1.3296004326905317
-  skip-cert-verify: true
-  speed: 42.99
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 28.82
-  name: 🏳️_未知_238
-  network: ws
-  port: 80
-  score: 10.485773768216514
-  server: 172.66.144.240
-  sim_score: 1.1223792385728806
-  skip-cert-verify: true
-  speed: 30.22
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 39.79
-  name: 🇺🇸_美国_330
-  network: http
-  port: 80
-  score: 10.457401357124906
-  server: 199.232.240.60
-  sim_score: 1.9703566176437661
-  skip-cert-verify: true
-  speed: 41.61
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 37.49
-  name: 🇺🇸_美国_263
-  network: http
-  port: 80
-  score: 10.426780474793278
-  server: 199.232.240.93
-  sim_score: 1.433421592261193
-  skip-cert-verify: true
-  speed: 39.09
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 27.91
-  name: 🇺🇸_美国_355
-  network: http
-  port: 80
-  score: 10.412038695807954
-  server: 199.232.240.170
-  sim_score: 1.78217528467717
-  skip-cert-verify: true
-  speed: 29.06
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  latency: 27.6
-  name: 🇯🇵_日本_9
-  port: 443
-  score: 10.402173913043477
-  server: 167.179.76.195
-  servername: u695099u0e388253s9963.gogocs.xyz
-  sim_score: 0.7498127923188509
-  skip-cert-verify: true
-  speed: 28.71
-  tls: true
-  type: vless
-  udp: true
-  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
-- alterId: 0
-  cipher: auto
-  latency: 28.62
-  name: 🏳️_未知_248
-  network: ws
-  port: 443
-  score: 10.3424178895877
-  server: 4cdn.njkrpl.com
-  servername: 4cdn.njkrpl.com
-  sim_score: 1.7986068631911292
-  skip-cert-verify: true
-  speed: 29.6
-  tls: true
-  type: vmess
-  udp: true
-  uuid: a0449b33-d7f6-42a5-8bdc-3b5e727ec9f8
-  ws-opts:
-    path: /
-- latency: 29.7
-  name: 🇬🇧_英国_214
-  network: ws
-  port: 80
-  score: 10.239057239057239
-  server: 91.193.58.51
-  sim_score: 0.9086529861152993
-  skip-cert-verify: true
-  speed: 30.41
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 38.97
-  name: 🇬🇧_英国_195
-  network: ws
-  port: 80
-  score: 10.207852193995382
-  server: 91.193.58.134
-  sim_score: 1.100318082371444
-  skip-cert-verify: true
-  speed: 39.78
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 37.11
-  name: 🏳️_未知_146
-  network: ws
-  port: 80
-  score: 10.035030988951766
-  server: 172.67.104.40
-  sim_score: 2.6395006010605746
-  skip-cert-verify: true
-  speed: 37.24
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- latency: 28.73
-  name: 🏳️_未知_246
-  network: ws
-  port: 80
-  score: 10.017403411068571
-  server: 172.66.44.205
-  sim_score: 1.1882537149936063
-  skip-cert-verify: true
-  speed: 28.78
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 27.33
-  name: 🇺🇸_美国_322
-  network: http
-  port: 80
-  score: 9.981705085986096
-  server: 199.232.240.4
-  sim_score: 1.4033991817524742
-  skip-cert-verify: true
-  speed: 27.28
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- alterId: 0
-  cipher: auto
-  latency: 38.41
-  name: 🇨🇳_中国_88
-  port: 50017
-  score: 9.976568601926584
-  server: 36.133.78.37
-  sim_score: 1.3887036144556608
-  skip-cert-verify: true
-  speed: 38.32
-  tls: false
-  type: vmess
-  udp: true
-  uuid: 30b2c497-27e3-4da2-98a4-005322ba1242
-- latency: 36.93
-  name: 🇬🇧_英国_222
-  network: ws
-  port: 80
-  score: 9.948551313295424
-  server: 91.193.58.24
-  sim_score: 2.3025605696846485
-  skip-cert-verify: true
-  speed: 36.74
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 30.05
-  name: 🏳️_未知_104
-  password: humanity
-  port: 443
-  score: 9.793677204658902
-  server: 141.101.90.101
-  sim_score: 2.5685747621305333
-  skip-cert-verify: true
-  sni: www.ignitelimit.com
-  speed: 29.43
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.ignitelimit.com
-    path: /assignment
-- latency: 38.25
-  name: 🏳️_未知_233
-  network: ws
-  port: 80
-  score: 9.775163398692811
-  server: 172.67.192.88
-  sim_score: 1.4417106905633825
-  skip-cert-verify: true
-  speed: 37.39
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 34.65
-  name: 🇺🇸_美国_256
-  network: http
-  port: 80
-  score: 9.766233766233768
-  server: 199.232.240.228
-  sim_score: 1.2520029856224015
-  skip-cert-verify: true
-  speed: 33.84
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.42
-  name: 🇺🇸_美国_320
-  network: http
-  port: 80
-  score: 9.472202674173118
-  server: 199.232.240.36
-  sim_score: 2.402908686122198
-  skip-cert-verify: true
-  speed: 26.92
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 38.08
-  name: 🇬🇧_英国_204
-  network: ws
-  port: 80
-  score: 9.448529411764707
-  server: 91.193.58.64
-  sim_score: 2.4103491393012617
-  skip-cert-verify: true
-  speed: 35.98
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- client-fingerprint: safari
-  flow: xtls-rprx-vision
-  latency: 27.06
-  name: 🇺🇸_美国_33
-  port: 8443
-  reality-opts:
-    public-key: Y0zCjvOLHuHWgv4HUyqb9O0lSMnTrl26XO8qwnWoQXw
-    short-id: b85875a13da4
-  score: 9.43458980044346
-  server: 172.96.142.19
-  servername: room.rootvana.top
-  sim_score: 1.1960180789960841
-  skip-cert-verify: true
-  speed: 25.53
-  tls: true
-  type: vless
-  udp: true
-  uuid: a5e355b9-11fc-449a-aa7b-eb707783f25a
-- latency: 41.92
-  name: 🇬🇧_英国_171
-  network: ws
-  port: 80
-  score: 9.415553435114504
-  server: 91.193.58.185
-  sim_score: 1.0703427779063717
-  skip-cert-verify: true
-  speed: 39.47
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 38.17
-  name: 🇸🇨_塞舌尔_118
-  password: humanity
-  port: 443
-  score: 9.36075451925596
-  server: 45.130.125.126
-  sim_score: 1.0189051307783854
-  skip-cert-verify: true
-  sni: www.multiplydose.com
-  speed: 35.73
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.multiplydose.com
-    path: /assignment
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 33.37
-  name: 🇺🇸_美国_314
-  network: http
-  port: 80
-  score: 9.298771351513336
-  server: 199.232.240.201
-  sim_score: 1.1782242604339102
-  skip-cert-verify: true
-  speed: 31.03
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 31.02
-  name: 🇺🇸_美国_347
-  network: http
-  port: 80
-  score: 9.239200515796261
-  server: 199.232.240.196
-  sim_score: 2.4144973106603014
-  skip-cert-verify: true
-  speed: 28.66
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 38.66
-  name: 🇬🇧_英国_202
-  network: ws
-  port: 80
-  score: 9.148991205380238
-  server: 91.193.58.156
-  sim_score: 0.8189363054448597
-  skip-cert-verify: true
-  speed: 35.37
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 31.32
-  name: 🏳️_未知_133
-  password: humanity
-  port: 443
-  score: 9.118773946360152
-  server: 172.66.44.211
-  sim_score: 0.827491766634531
-  skip-cert-verify: true
-  sni: www.multiplydose.com
-  speed: 28.56
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.multiplydose.com
-    path: /assignment
-- latency: 28.27
-  name: 🇬🇧_英国_190
-  network: ws
-  port: 80
-  score: 8.991864166961443
-  server: 91.193.58.125
-  sim_score: 1.0437512921101193
-  skip-cert-verify: true
-  speed: 25.42
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- http-opts:
-    headers:
-      Host:
-      - InternetAzadRobot07gt745.global.ssl.fastly.net
-    path:
-    - /
-  latency: 30.41
-  name: 🇺🇸_美国_250
-  network: http
-  port: 80
-  score: 8.921407431765866
-  server: 151.101.67.57
-  sim_score: 2.79585638303355
-  skip-cert-verify: true
-  speed: 27.13
-  tls: false
-  type: vless
-  udp: true
-  uuid: TIGNAL-CRYPTO
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 41.45
-  name: 🇺🇸_美国_296
-  network: http
-  port: 80
-  score: 8.858866103739444
-  server: 199.232.240.75
-  sim_score: 1.5433129186597037
-  skip-cert-verify: true
-  speed: 36.72
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 39.99
-  name: 🇺🇸_美国_291
-  network: http
-  port: 80
-  score: 8.789697424356088
-  server: 199.232.240.254
-  sim_score: 1.1230504592004271
-  skip-cert-verify: true
-  speed: 35.15
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 39.36
-  name: 🇺🇸_美国_350
-  network: http
-  port: 80
-  score: 8.760162601626016
-  server: 199.232.240.253
-  sim_score: 2.7145324122700742
-  skip-cert-verify: true
-  speed: 34.48
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 36.69
-  name: 🏳️_未知_120
-  password: humanity
-  port: 443
-  score: 8.547288089397657
-  server: 8.6.112.0
-  sim_score: 2.6094526556518574
-  skip-cert-verify: true
-  sni: www.multiplydose.com
-  speed: 31.36
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.multiplydose.com
-    path: /assignment
-- latency: 36.96
-  name: 🇬🇧_英国_208
-  network: ws
-  port: 80
-  score: 8.511904761904761
-  server: 91.193.58.30
-  sim_score: 0.6825528778424715
-  skip-cert-verify: true
-  speed: 31.46
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 31.14
-  name: 🏳️_未知_155
-  network: ws
-  port: 80
-  score: 8.503532434168273
-  server: 172.67.168.169
-  sim_score: 4.9310670331742
-  skip-cert-verify: true
-  speed: 26.48
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 38.48
-  name: 🇺🇸_美国_324
-  network: http
-  port: 80
-  score: 8.477130977130976
-  server: 199.232.240.171
-  sim_score: 1.657460236148619
-  skip-cert-verify: true
-  speed: 32.62
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- client-fingerprint: chrome
-  latency: 30.38
-  name: 🏳️_未知_169
-  network: ws
-  port: 443
-  score: 8.413429888084266
-  server: 162.159.8.42
-  servername: t1s1.rittbo.kdns.fr
-  sim_score: 0.7412705065146825
-  skip-cert-verify: true
-  speed: 25.56
-  tls: true
-  type: vless
-  udp: true
-  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
-  ws-opts:
-    headers:
-      Host: t1s1.rittbo.kdns.fr
-    path: /
-- latency: 27.92
-  name: xx|f463|puddincat07@Telegram
-  network: ws
-  password: dfdse334053vuohm
-  port: 443
-  score: 8.413323782234956
-  server: auto.mhjstudio.ir
-  sim_score: 1.9562347902142787
+- latency: 48.85
+  name: xx|2c29|puddincat07@Telegram
+  password: OccIqeORGQwiNkwS
+  port: 19128
+  score: 6.9068577277379735
+  server: jpbgp.netvigor.cc
+  sim_score: 1.2707387467301743
   skip-cert-verify: false
-  sni: alternative.mhjstudio.ir
-  speed: 23.49
+  sni: yazhou10.dynu.net
+  speed: 33.74
   type: trojan
-  ws-opts:
-    headers:
-      Host: alternative.mhjstudio.ir
-    path: /
-- latency: 37.62
-  name: 🇬🇧_英国_164
-  network: ws
-  port: 80
-  score: 8.293460925039874
-  server: 91.193.58.3
-  sim_score: 2.8143114539895024
+- latency: 41.21
+  name: 🇱🇻_拉脱维亚_39
+  port: 2090
+  score: 6.906090754671197
+  server: fn.fifapes.monster
+  sim_score: 0.7362506207605484
   skip-cert-verify: true
-  speed: 31.2
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  latency: 28.17
-  name: 🇯🇵_日本_12
-  port: 443
-  reality-opts:
-    public-key: VToNLWgD_ieTXl5Qj7ugF3QAmij_evy_7c_-ztST50E
-    short-id: ac9fe5f6
-  score: 8.257011004614839
-  server: s2066.okgg.top
-  servername: 480a88c9s1865.gogocs.xyz
-  sim_score: 1.0790774898347215
-  skip-cert-verify: true
-  speed: 23.26
-  tls: true
-  type: vless
-  udp: true
-  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
-- latency: 37.8
-  name: 🏳️_未知_180
-  network: ws
-  port: 8880
-  score: 8.238095238095239
-  server: www.visa.com.sg
-  sim_score: 1.3236246739098907
-  skip-cert-verify: true
-  speed: 31.14
-  tls: false
-  type: vless
-  udp: true
-  uuid: 380de97f-1d87-4394-acb8-f9ad7a422ac1
-  ws-opts:
-    headers:
-      Host: proud-recipe-239d.305-0da.workers.dev
-    path: /pyip=ProxyIP.SG.CMLiussss.net
-- latency: 37.93
-  name: 🏳️_未知_149
-  password: a5e355b9-11fc-449a-aa7b-eb707783f25a
-  port: 443
-  score: 8.178223042446612
-  server: mmefi.cloudflare.182682.xyz
-  sim_score: 1.4437351907580287
-  skip-cert-verify: true
-  sni: thank.bpmalai2026.top
-  speed: 31.02
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: thank.bpmalai2026.top
-    path: /images
-- latency: 27.69
-  name: 🇱🇻_拉脱维亚_37
-  port: 8882
-  score: 8.039003250270856
-  server: gr1.fifapes.monster
-  sim_score: 2.265007840261199
-  skip-cert-verify: true
-  speed: 22.26
+  speed: 28.46
   tls: false
   type: vless
   udp: true
@@ -1663,28 +980,555 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 36.95
+  latency: 48.44
+  name: 🇺🇸_美国_296
+  network: http
+  port: 80
+  score: 6.860033030553262
+  server: 199.232.240.75
+  sim_score: 1.4417723571622671
+  skip-cert-verify: true
+  speed: 33.23
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  latency: 47.15
+  name: 每天更新，请加电报群防止失联
+  port: 443
+  score: 6.858960763520679
+  server: 103.173.155.212
+  servername: u695099ub67c99c6s591.csgfw.top
+  sim_score: 2.4835342373807854
+  skip-cert-verify: true
+  speed: 32.34
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
+- latency: 49.86
+  name: 🏳️_未知_104
+  password: humanity
+  port: 443
+  score: 6.805054151624549
+  server: 141.101.90.101
+  sim_score: 2.088761268407657
+  skip-cert-verify: true
+  sni: www.ignitelimit.com
+  speed: 33.93
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: www.ignitelimit.com
+    path: /assignment
+- latency: 51.3
+  name: 🇬🇧_英国_191
+  network: ws
+  port: 80
+  score: 6.769980506822612
+  server: 91.193.58.178
+  sim_score: 0.9517456611548358
+  skip-cert-verify: true
+  speed: 34.73
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 58.49
+  name: 🇺🇸_美国_284
+  network: http
+  port: 80
+  score: 6.7481620789878605
+  server: 199.232.240.56
+  sim_score: 0.6885359274635297
+  skip-cert-verify: true
+  speed: 39.47
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 57.36
+  name: 🇬🇧_英国_225
+  network: ws
+  port: 80
+  score: 6.694560669456067
+  server: 91.193.58.91
+  sim_score: 2.035950487133423
+  skip-cert-verify: true
+  speed: 38.4
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 53.91
   name: 🇺🇸_美国_351
   network: http
   port: 80
-  score: 7.951285520974288
+  score: 6.685216100908923
   server: 199.232.240.78
-  sim_score: 3.588168380032139
+  sim_score: 1.3401320293041108
   skip-cert-verify: true
-  speed: 29.38
+  speed: 36.04
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 29.36
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  latency: 50.04
+  name: 🇮🇹_意大利_22
+  port: 443
+  score: 6.678657074340528
+  server: s8747.csgfw.top
+  servername: u695099u8adcedd7s8746.gogocs.xyz
+  sim_score: 1.8727209952346004
+  skip-cert-verify: true
+  speed: 33.42
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 55.35
+  name: 🇺🇸_美国_319
+  network: http
+  port: 80
+  score: 6.672086720867209
+  server: 199.232.240.55
+  sim_score: 0.9217930620454506
+  skip-cert-verify: true
+  speed: 36.93
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 49.27
+  name: 🇬🇧_英国_181
+  network: ws
+  port: 80
+  score: 6.5739801096001615
+  server: 91.193.58.59
+  sim_score: 3.437251601828724
+  skip-cert-verify: true
+  speed: 32.39
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 52.81
+  name: 🇺🇸_美国_286
+  network: http
+  port: 80
+  score: 6.534747206968376
+  server: 199.232.240.83
+  sim_score: 2.844664976028847
+  skip-cert-verify: true
+  speed: 34.51
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 52.48
+  name: 🇺🇸_美国_323
+  network: http
+  port: 80
+  score: 6.511051829268293
+  server: 199.232.240.164
+  sim_score: 0.9176169297946563
+  skip-cert-verify: true
+  speed: 34.17
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 41.3
+  name: 🇹🇷_土耳其_166
+  network: ws
+  port: 80
+  score: 6.508474576271187
+  server: 91.206.71.8
+  sim_score: 0.559529791306173
+  skip-cert-verify: true
+  speed: 26.88
+  tls: false
+  type: vless
+  udp: true
+  uuid: c20a0bcf-aa6f-4c35-9e62-a39b47b04e73
+  ws-opts:
+    headers:
+      Host: round-haze-8783.294.workers.dev
+    path: /pyip=Telegram🇨🇳+@WangCai2
+- latency: 48.7
+  name: 🏳️_未知_236
+  network: ws
+  port: 80
+  score: 6.429158110882956
+  server: 172.67.135.69
+  sim_score: 3.4237428845628353
+  skip-cert-verify: true
+  speed: 31.31
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /
+- latency: 53.98
+  name: 🇬🇧_英国_219
+  network: ws
+  port: 80
+  score: 6.3856984068173395
+  server: 91.193.58.170
+  sim_score: 2.507978795719179
+  skip-cert-verify: true
+  speed: 34.47
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- http-opts:
+    headers:
+      Host:
+      - InternetAzadRobot44xd894.global.ssl.fastly.net
+    path:
+    - /
+  latency: 54.5
+  name: 🇺🇸_美国_249
+  network: http
+  port: 80
+  score: 6.38348623853211
+  server: 151.101.129.57
+  sim_score: 1.5787322738700142
+  skip-cert-verify: true
+  speed: 34.79
+  tls: false
+  type: vless
+  udp: true
+  uuid: TIGNAL-CRYPTO
+- latency: 56.92
+  name: 🇬🇧_英国_218
+  network: ws
+  port: 80
+  score: 6.372101194659171
+  server: 91.193.58.172
+  sim_score: 0.8435301048516144
+  skip-cert-verify: true
+  speed: 36.27
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- latency: 50.84
+  name: 🇸🇨_塞舌尔_118
+  password: humanity
+  port: 443
+  score: 6.302124311565695
+  server: 45.130.125.126
+  sim_score: 1.4267862217428597
+  skip-cert-verify: true
+  sni: www.multiplydose.com
+  speed: 32.04
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: www.multiplydose.com
+    path: /assignment
+- latency: 56.68
+  name: 🇬🇧_英国_207
+  network: ws
+  port: 80
+  score: 6.300282286520819
+  server: 91.193.58.41
+  sim_score: 1.2394964405851407
+  skip-cert-verify: true
+  speed: 35.71
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- latency: 40.26
+  name: 🏳️_未知_112
+  password: humanity
+  port: 443
+  score: 6.281669150521609
+  server: 188.114.98.0
+  sim_score: 0.7859588385728604
+  skip-cert-verify: true
+  sni: www.creationlong.org
+  speed: 25.29
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: www.creationlong.org
+    path: /assignment
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.68
+  name: 🇺🇸_美国_265
+  network: http
+  port: 80
+  score: 6.264090177133656
+  server: 199.232.240.161
+  sim_score: 3.7286609168765574
+  skip-cert-verify: true
+  speed: 31.12
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 48.59
+  name: 🇬🇧_英国_194
+  network: ws
+  port: 80
+  score: 6.256431364478287
+  server: 91.193.58.72
+  sim_score: 0.9016759455471536
+  skip-cert-verify: true
+  speed: 30.4
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  latency: 42.5
+  name: 免费VPN：https://tt.vg/FJOE2Mm
+  port: 443
+  score: 6.254117647058823
+  server: s148.okgfwbackxyz.xyz
+  servername: u695099u775a58bcs124.ccgfw.top
+  sim_score: 0.9547106545004386
+  skip-cert-verify: true
+  speed: 26.58
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
+- latency: 49.32
+  name: 🇹🇼_台湾_138
+  password: '521314'
+  port: 2087
+  score: 6.175993511759935
+  server: 220.135.92.105
+  sim_score: 1.0866847333535705
+  skip-cert-verify: true
+  sni: tjplay.lxdxo.kdns.fr
+  speed: 30.46
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: tjplay.lxdxo.kdns.fr
+    path: /
+- cipher: chacha20-ietf-poly1305
+  latency: 52.2
+  name: us|28e3|puddincat07@Telegram
+  password: t0srmdxrm3xyjnvqz9ewlxb2myq7rjuv
+  plugin: obfs
+  plugin-opts:
+    host: (Telegram🇨🇳 @VPNine1)6db9d46:44797
+    mode: tls
+  port: '2377'
+  score: 6.1532567049808415
+  server: 88.210.36.109
+  sim_score: 1.2331751906773156
+  speed: 32.12
+  type: ss
+  udp: true
+- latency: 47.46
+  name: 🏳️_未知_125
+  password: humanity
+  port: 443
+  score: 6.0935524652338815
+  server: www.ignitelimit.com
+  sim_score: 3.9975211920446476
+  skip-cert-verify: true
+  speed: 28.92
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    path: /assignment
+- latency: 50.07
+  name: 🇭🇰_香港_139
+  password: '521314'
+  port: 443
+  score: 6.059516676652686
+  server: 122.10.119.252
+  sim_score: 1.4482943747108683
+  skip-cert-verify: true
+  sni: tjplay.lxdxo.kdns.fr
+  speed: 30.34
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: tjplay.lxdxo.kdns.fr
+    path: /
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 54.97
+  name: 🇺🇸_美国_281
+  network: http
+  port: 80
+  score: 5.994178642896126
+  server: 199.232.240.23
+  sim_score: 1.3526579685977018
+  skip-cert-verify: true
+  speed: 32.95
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 53.82
+  name: 🇺🇸_美国_332
+  network: http
+  port: 80
+  score: 5.852842809364548
+  server: 199.232.240.49
+  sim_score: 0.8837004777491441
+  skip-cert-verify: true
+  speed: 31.5
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- cipher: chacha20-ietf-poly1305
+  latency: 49.06
+  name: za|d18d|puddincat07@Telegram
+  password: Xsy8Ox4yOV3xLlpxtjzs3X
+  port: 16233
+  score: 5.847941296371789
+  server: 102.133.165.160
+  sim_score: 1.0523649116266869
+  speed: 28.69
+  type: ss
+- latency: 49.94
+  name: 🇬🇧_英国_209
+  network: ws
+  port: 80
+  score: 5.750901081297557
+  server: 91.193.58.161
+  sim_score: 3.0392808816528536
+  skip-cert-verify: true
+  speed: 28.72
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- latency: 48.28
+  name: 🏳️_未知_126
+  password: humanity
+  port: 443
+  score: 5.673156586578293
+  server: 104.17.121.71
+  sim_score: 0.8409338828667994
+  skip-cert-verify: true
+  sni: www.multiplydose.com
+  speed: 27.39
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: www.multiplydose.com
+    path: /assignment
+- latency: 53.29
   name: 🇬🇧_英国_211
   network: ws
   port: 80
-  score: 7.932561307901907
+  score: 5.62957402889848
   server: 91.193.58.247
-  sim_score: 5.792845130604726
+  sim_score: 1.5650311084849566
   skip-cert-verify: true
-  speed: 23.29
+  speed: 30.0
   tls: false
   type: vless
   udp: true
@@ -1693,15 +1537,116 @@ proxies:
     headers:
       Host: sahanwickramasinghevip.shop
     path: /?Telegram-WangCai2🇨🇳
-- latency: 37.39
-  name: 🇬🇧_英国_210
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  latency: 40.63
+  name: 日期：07-16
+  port: 443
+  score: 5.61900073837066
+  server: s128.okgfw.top
+  servername: u695099u775a58bcs124.ccgfw.top
+  sim_score: 1.1747513338513447
+  skip-cert-verify: true
+  speed: 22.83
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.85
+  name: 🇺🇸_美国_354
+  network: http
+  port: 80
+  score: 5.616850551654965
+  server: 199.232.240.135
+  sim_score: 1.4408066248427345
+  skip-cert-verify: true
+  speed: 28.0
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- cipher: aes-256-cfb
+  latency: 50.71
+  name: us|5c3a|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 5.578781305462433
+  server: 18.190.176.112
+  sim_score: 1.3115515209587416
+  speed: 28.29
+  type: ss
+  udp: true
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 55.35
+  name: 🇺🇸_美国_302
+  network: http
+  port: 80
+  score: 5.55736224028907
+  server: 199.232.240.86
+  sim_score: 1.646107509583217
+  skip-cert-verify: true
+  speed: 30.76
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 64.78
+  name: 🇺🇸_美国_342
+  network: http
+  port: 80
+  score: 5.470824328496448
+  server: 199.232.240.192
+  sim_score: 1.7869371983954896
+  skip-cert-verify: true
+  speed: 35.44
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  latency: 51.36
+  name: 🇵🇱_波兰_17
+  port: 443
+  reality-opts:
+    public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+    short-id: ff776ff77be48b88
+  score: 5.457554517133957
+  server: pol2.helper-internet.com
+  servername: pol2.helper-internet.com
+  sim_score: 0.7796049814276363
+  skip-cert-verify: true
+  speed: 28.03
+  tls: true
+  type: vless
+  udp: true
+  uuid: 59da5351-5151-417d-b2f7-6923848b717e
+- latency: 52.71
+  name: 🇬🇧_英国_221
   network: ws
   port: 80
-  score: 7.900508157261299
-  server: 91.193.58.236
-  sim_score: 1.2527403035012203
+  score: 5.435401252134319
+  server: 91.193.58.121
+  sim_score: 1.1100734181261065
   skip-cert-verify: true
-  speed: 29.54
+  speed: 28.65
   tls: false
   type: vless
   udp: true
@@ -1710,21 +1655,121 @@ proxies:
     headers:
       Host: sahanwickramasinghevip.shop
     path: /?Telegram-WangCai2🇨🇳
+- latency: 50.09
+  name: 🏳️_未知_245
+  network: ws
+  port: 80
+  score: 5.412257935715711
+  server: 172.64.147.58
+  sim_score: 1.0346769962863314
+  skip-cert-verify: true
+  speed: 27.11
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /
 - http-opts:
     headers:
       Host:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 36.14
-  name: 🇺🇸_美国_309
+  latency: 55.97
+  name: 🇺🇸_美国_340
   network: http
   port: 80
-  score: 7.88323187603763
-  server: 199.232.240.215
-  sim_score: 1.080958850322912
+  score: 5.408254422011792
+  server: 199.232.240.166
+  sim_score: 1.1135913465596867
   skip-cert-verify: true
-  speed: 28.49
+  speed: 30.27
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- alterId: 0
+  cipher: auto
+  latency: 62.18
+  name: 🇭🇰_香港_247
+  network: ws
+  port: 443
+  score: 5.387584432293342
+  server: n1747624260.4u9ma.icu
+  sim_score: 3.4635654768525246
+  skip-cert-verify: true
+  speed: 33.5
+  tls: true
+  type: vmess
+  udp: true
+  uuid: eee8cb72-7eab-4034-a308-ed06cb07e003
+- latency: 51.26
+  name: 🇬🇧_英国_231
+  network: ws
+  port: 80
+  score: 5.327740928599297
+  server: 91.193.58.146
+  sim_score: 0.8109637654594047
+  skip-cert-verify: true
+  speed: 27.31
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- latency: 49.97
+  name: 🇺🇸_美国_36
+  password: CF68213490
+  port: 443
+  score: 5.141084650790475
+  server: polite-coyote.rooster465.autos
+  sim_score: 0.9107149272779858
+  skip-cert-verify: true
+  sni: polite-coyote.rooster465.autos
+  speed: 25.69
+  tls: true
+  type: trojan
+  udp: true
+- http-opts:
+    headers:
+      Host:
+      - InternetAzadRobot07gt745.global.ssl.fastly.net
+    path:
+    - /
+  latency: 55.41
+  name: 🇺🇸_美国_250
+  network: http
+  port: 80
+  score: 4.991878722252301
+  server: 151.101.67.57
+  sim_score: 1.8794462741103704
+  skip-cert-verify: true
+  speed: 27.66
+  tls: false
+  type: vless
+  udp: true
+  uuid: TIGNAL-CRYPTO
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 52.31
+  name: 🇺🇸_美国_346
+  network: http
+  port: 80
+  score: 4.974192315044924
+  server: 199.232.240.89
+  sim_score: 4.552128284070005
+  skip-cert-verify: true
+  speed: 26.02
   tls: false
   type: vless
   udp: true
@@ -1735,29 +1780,46 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 27.81
-  name: 🇺🇸_美国_311
+  latency: 54.54
+  name: 🇺🇸_美国_367
   network: http
   port: 80
-  score: 7.784969435454872
-  server: 199.232.240.6
-  sim_score: 1.2456858786195335
+  score: 4.941327466079941
+  server: 199.232.240.72
+  sim_score: 1.825883511006404
   skip-cert-verify: true
-  speed: 21.65
+  speed: 26.95
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 41.04
+  name: 🏳️_未知_130
+  password: humanity
+  port: 443
+  score: 4.8050682261208575
+  server: 104.16.174.36
+  sim_score: 2.6276631703521436
+  skip-cert-verify: true
+  sni: www.ignitelimit.com
+  speed: 19.72
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: www.ignitelimit.com
+    path: /assignment
 - encryption: mlkem768x25519plus.native.0rtt.w0d5QDh2kFXtrCcljpe6uvJfI7FKPavrpo1OLIJEnAE
   flow: xtls-rprx-vision
-  latency: 29.46
+  latency: 54.19
   name: 🇷🇺_俄罗斯_93
   port: 8081
-  score: 7.535641547861507
+  score: 4.641077689610629
   server: 94.228.171.171
-  sim_score: 1.05005137375873
+  sim_score: 1.3634287882059626
   skip-cert-verify: true
-  speed: 22.2
+  speed: 25.15
   tls: false
   type: vless
   udp: true
@@ -1768,15 +1830,88 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 28.08
+  latency: 54.51
+  name: 🇺🇸_美国_311
+  network: http
+  port: 80
+  score: 4.5367822417904975
+  server: 199.232.240.6
+  sim_score: 2.4375868480230816
+  skip-cert-verify: true
+  speed: 24.73
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 45.3
+  name: 🇺🇸_美国_152
+  network: ws
+  port: 443
+  score: 4.496688741721854
+  server: 1.tls.fastly.veraspeed.ir
+  servername: ssl.fastly.com
+  sim_score: 2.4976981973057417
+  skip-cert-verify: true
+  speed: 20.37
+  tls: true
+  type: vless
+  udp: true
+  uuid: 891710f4-45f3-41b1-99a6-6f1510f83c10
+  ws-opts:
+    headers:
+      Host: pan21.global.ssl.fastly.net
+    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 51.04
+  name: 🇺🇸_美国_287
+  network: http
+  port: 80
+  score: 4.429858934169279
+  server: 199.232.240.187
+  sim_score: 1.0067728296626142
+  skip-cert-verify: true
+  speed: 22.61
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 50.08
+  name: 🏳️_未知_244
+  network: ws
+  port: 80
+  score: 4.42891373801917
+  server: 173.245.59.91
+  sim_score: 0.6106075849883494
+  skip-cert-verify: true
+  speed: 22.18
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 52.95
   name: 🇺🇸_美国_274
   network: http
   port: 80
-  score: 7.521367521367522
+  score: 4.349386213408876
   server: 199.232.240.9
-  sim_score: 2.1747251207502933
+  sim_score: 1.6350275486493615
   skip-cert-verify: true
-  speed: 21.12
+  speed: 23.03
   tls: false
   type: vless
   udp: true
@@ -1787,15 +1922,15 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 39.86
-  name: 🇺🇸_美国_305
+  latency: 52.44
+  name: 🇺🇸_美国_365
   network: http
   port: 80
-  score: 7.48118414450577
-  server: 199.232.240.66
-  sim_score: 1.4476856930744542
+  score: 4.324942791762013
+  server: 199.232.240.221
+  sim_score: 1.1202553261815624
   skip-cert-verify: true
-  speed: 29.82
+  speed: 22.68
   tls: false
   type: vless
   udp: true
@@ -1806,250 +1941,82 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 29.1
-  name: 🇺🇸_美国_361
+  latency: 51.63
+  name: 🇺🇸_美国_352
   network: http
   port: 80
-  score: 7.47766323024055
-  server: 199.232.240.173
-  sim_score: 1.142749825979438
+  score: 4.183614177803603
+  server: 199.232.240.144
+  sim_score: 1.0337533904204697
   skip-cert-verify: true
-  speed: 21.76
+  speed: 21.6
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 40.82
-  name: 🇬🇧_英国_186
-  network: ws
-  port: 80
-  score: 7.430181283684468
-  server: 91.193.58.242
-  sim_score: 0.955164436201136
-  skip-cert-verify: true
-  speed: 30.33
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- flow: xtls-rprx-vision
-  latency: 36.78
-  name: 🇯🇵_日本_98
+- latency: 40.31
+  name: 🏳️_未知_120
+  password: humanity
   port: 443
-  score: 7.338227297444263
-  server: s2133.gogocs.xyz
-  sim_score: 1.1839228599760674
+  score: 4.10320019846192
+  server: 8.6.112.0
+  sim_score: 1.6655348272184602
   skip-cert-verify: true
-  speed: 26.99
+  sni: www.multiplydose.com
+  speed: 16.54
   tls: true
-  type: vless
+  type: trojan
   udp: true
-  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.83
-  name: 🇺🇸_美国_292
-  network: http
-  port: 80
-  score: 7.2944849115504695
-  server: 199.232.240.153
-  sim_score: 2.4756684983289916
-  skip-cert-verify: true
-  speed: 21.03
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 31.64
-  name: 🇬🇧_英国_216
-  network: ws
-  port: 80
-  score: 7.253476611883691
-  server: 91.193.58.212
-  sim_score: 0.6669589710865589
-  skip-cert-verify: true
-  speed: 22.95
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
   ws-opts:
     headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 28.31
-  name: 🇬🇧_英国_228
-  network: ws
-  port: 80
-  score: 7.25185446838573
-  server: 91.193.58.148
-  sim_score: 0.6704410914724974
-  skip-cert-verify: true
-  speed: 20.53
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
+      Host: www.multiplydose.com
+    path: /assignment
 - http-opts:
     headers:
       Host:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 37.68
-  name: 🇺🇸_美国_334
+  latency: 50.26
+  name: 🇺🇸_美国_353
   network: http
   port: 80
-  score: 7.239915074309979
-  server: 199.232.240.91
-  sim_score: 1.159145116662658
+  score: 4.068842021488261
+  server: 199.232.240.197
+  sim_score: 0.8635338085470128
   skip-cert-verify: true
-  speed: 27.28
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 29.06
-  name: 🇬🇧_英国_209
-  network: ws
-  port: 80
-  score: 7.216104611149347
-  server: 91.193.58.161
-  sim_score: 0.9611824545606341
-  skip-cert-verify: true
-  speed: 20.97
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 37.09
-  name: 🇺🇸_美国_317
-  network: http
-  port: 80
-  score: 7.123213804259908
-  server: 199.232.240.198
-  sim_score: 5.7734016593415
-  skip-cert-verify: true
-  speed: 26.42
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  latency: 28.98
-  name: 🇵🇱_波兰_17
-  port: 443
-  reality-opts:
-    public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-    short-id: ff776ff77be48b88
-  score: 6.987577639751553
-  server: pol2.helper-internet.com
-  servername: pol2.helper-internet.com
-  sim_score: 1.527620803346945
-  skip-cert-verify: true
-  speed: 20.25
-  tls: true
-  type: vless
-  udp: true
-  uuid: 59da5351-5151-417d-b2f7-6923848b717e
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 36.56
-  name: 🇺🇸_美国_319
-  network: http
-  port: 80
-  score: 6.911925601750547
-  server: 199.232.240.55
-  sim_score: 1.6538554061493858
-  skip-cert-verify: true
-  speed: 25.27
+  speed: 20.45
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
 - client-fingerprint: firefox
   flow: xtls-rprx-vision
-  latency: 28.61
-  name: 🇮🇹_意大利_21
+  latency: 49.94
+  name: 🇯🇵_日本_10
   port: 443
-  score: 6.854246766864732
-  server: 185.119.19.105
-  servername: u695099u8adcedd7s8746.gogocs.xyz
-  sim_score: 1.2845544362063257
+  reality-opts:
+    public-key: VToNLWgD_ieTXl5Qj7ugF3QAmij_evy_7c_-ztST50E
+    short-id: ac9fe5f6
+  score: 4.060873047657189
+  server: 167.179.94.37
+  servername: 480a88c9s1865.gogocs.xyz
+  sim_score: 3.5984617257066587
   skip-cert-verify: true
-  speed: 19.61
+  speed: 20.28
   tls: true
   type: vless
   udp: true
   uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
-- latency: 35.73
-  name: 🏳️_未知_106
-  password: humanity
-  port: 443
-  score: 6.84858662188637
-  server: 188.114.96.3
-  sim_score: 3.525637336127107
-  skip-cert-verify: true
-  sni: www.creationlong.org
-  speed: 24.47
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.creationlong.org
-    path: /assignment
-- latency: 29.69
-  name: 🏳️_未知_108
-  password: humanity
-  port: 443
-  score: 6.773324351633546
-  server: www.multiplydose.com
-  sim_score: 0.7789906727900758
-  skip-cert-verify: true
-  sni: www.multiplydose.com
-  speed: 20.11
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    path: /assignment
-- latency: 44.91
-  name: 🇬🇧_英国_207
+- latency: 48.99
+  name: 🇬🇧_英国_185
   network: ws
   port: 80
-  score: 6.671120017813406
-  server: 91.193.58.41
-  sim_score: 0.953914598473925
+  score: 4.053888548683405
+  server: 91.193.58.22
+  sim_score: 2.208535321939902
   skip-cert-verify: true
-  speed: 29.96
+  speed: 19.86
   tls: false
   type: vless
   udp: true
@@ -2058,125 +2025,83 @@ proxies:
     headers:
       Host: sahanwickramasinghevip.shop
     path: /?Telegram-WangCai2🇨🇳
-- latency: 36.36
-  name: 🏳️_未知_170
-  network: ws
-  port: 80
-  score: 6.542904290429043
-  server: 104.21.30.160
-  sim_score: 1.9308800374444501
-  skip-cert-verify: true
-  speed: 23.79
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- cipher: chacha20-ietf-poly1305
-  latency: 28.69
-  name: us|28e3|puddincat07@Telegram
-  password: t0srmdxrm3xyjnvqz9ewlxb2myq7rjuv
-  plugin: obfs
-  plugin-opts:
-    host: (Telegram🇨🇳 @VPNine1)6db9d46:44797
-    mode: tls
-  port: '2377'
-  score: 6.535378180550714
-  server: 88.210.36.109
-  sim_score: 1.4393998942634503
-  speed: 18.75
-  type: ss
-  udp: true
 - http-opts:
     headers:
       Host:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 40.5
-  name: 🇺🇸_美国_299
+  latency: 63.17
+  name: 🇺🇸_美国_264
   network: http
   port: 80
-  score: 6.530864197530865
-  server: 199.232.240.136
-  sim_score: 1.0088781062839216
+  score: 4.0303941744498974
+  server: 199.232.240.1
+  sim_score: 1.0253899984774606
   skip-cert-verify: true
-  speed: 26.45
+  speed: 25.46
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 40.86
-  name: 🏳️_未知_147
-  password: a5e355b9-11fc-449a-aa7b-eb707783f25a
+- latency: 50.36
+  name: 🇯🇵_日本_31
+  password: CF68213490
   port: 443
-  score: 6.527165932452277
-  server: jjyeye.cloudflare.182682.xyz
-  sim_score: 3.218007234187387
+  score: 4.019062748212868
+  server: wealthy-gobbler.rooster465.autos
+  sim_score: 3.6473819892007575
   skip-cert-verify: true
-  sni: bjbx8xu6iih7zht5.jptimecsgo.xyz
-  speed: 26.67
+  sni: wealthy-gobbler.rooster465.autos
+  speed: 20.24
   tls: true
   type: trojan
   udp: true
+- client-fingerprint: chrome
+  latency: 49.23
+  name: 🇺🇸_美国_154
+  network: ws
+  port: 443
+  score: 4.01787527930124
+  server: 199.232.22.39
+  servername: ssl.fastly.com
+  sim_score: 2.329942332128655
+  skip-cert-verify: true
+  speed: 19.78
+  tls: true
+  type: vless
+  udp: true
+  uuid: cbcf2255-6d66-4039-b7d6-c10d6ffc99e7
   ws-opts:
     headers:
-      Host: bjbx8xu6iih7zht5.jptimecsgo.xyz
-    path: /images
-- latency: 38.23
-  name: 🏳️_未知_241
-  network: ws
+      Host: pan1.global.ssl.fastly.net
+    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 54.59
+  name: 🇺🇸_美国_317
+  network: http
   port: 80
-  score: 6.510593774522627
-  server: 104.16.157.54
-  sim_score: 1.8024531208529084
+  score: 3.7900714416559813
+  server: 199.232.240.198
+  sim_score: 1.4044718590839982
   skip-cert-verify: true
-  speed: 24.89
+  speed: 20.69
   tls: false
   type: vless
   udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- cipher: aes-256-cfb
-  latency: 25.84
-  name: xx|6907|puddincat07@Telegram
-  password: qwerREWQ@@
-  port: 4652
-  score: 6.489938080495356
-  server: p141.panda001.net
-  sim_score: 2.1103069299781803
-  speed: 16.77
-  type: ss
-- latency: 38.03
-  name: 🇬🇧_英国_199
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 67.25
+  name: 🇺🇸_美国_177
   network: ws
   port: 80
-  score: 6.4265053904812
-  server: 91.193.58.168
-  sim_score: 1.006766221934893
-  skip-cert-verify: true
-  speed: 24.44
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 39.36
-  name: 🇬🇧_英国_182
-  network: ws
-  port: 80
-  score: 6.392276422764228
-  server: 91.193.58.94
-  sim_score: 3.4210599166323012
+  score: 3.7412639405204464
+  server: support.zoom.us
+  sim_score: 0.8988400695842471
   skip-cert-verify: true
   speed: 25.16
   tls: false
@@ -2186,134 +2111,35 @@ proxies:
   ws-opts:
     headers:
       Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
+    path: /
 - http-opts:
     headers:
       Host:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 30.27
-  name: 🇺🇸_美国_331
+  latency: 55.47
+  name: 🇺🇸_美国_349
   network: http
   port: 80
-  score: 6.35612817971589
-  server: 199.232.240.102
-  sim_score: 1.281333203784425
+  score: 3.697494140977105
+  server: 199.232.240.0
+  sim_score: 2.3623642894262793
   skip-cert-verify: true
-  speed: 19.24
+  speed: 20.51
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 37.5
-  name: 🇺🇸_美国_286
-  network: http
-  port: 80
-  score: 6.258666666666667
-  server: 199.232.240.83
-  sim_score: 2.3041253764441185
-  skip-cert-verify: true
-  speed: 23.47
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 35.9
-  name: 🇬🇧_英国_219
+- latency: 55.47
+  name: 🇬🇧_英国_188
   network: ws
   port: 80
-  score: 6.211699164345404
-  server: 91.193.58.170
-  sim_score: 3.016533034914537
+  score: 3.632594195060393
+  server: 91.193.58.104
+  sim_score: 1.9078401354324515
   skip-cert-verify: true
-  speed: 22.3
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- cipher: chacha20-ietf-poly1305
-  latency: 26.07
-  name: gb|9e5d|puddincat07@Telegram
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  port: 8080
-  score: 6.087456846950517
-  server: 82.38.31.189
-  sim_score: 4.691241406362623
-  speed: 15.87
-  type: ss
-- latency: 30.19
-  name: 🇺🇸_美国_148
-  network: ws
-  port: 80
-  score: 5.84630672408082
-  server: 141.193.27.4
-  sim_score: 2.2068075266725433
-  skip-cert-verify: true
-  speed: 17.65
-  tls: false
-  type: vless
-  udp: true
-  uuid: e403856e-4e50-49e6-9edc-d9536a803a6a
-  ws-opts:
-    headers:
-      Host: proud-cloud-5c50.113-8dc.workers.dev
-    path: /pyip=Telegram🇨🇳+@WangCai2
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.41
-  name: 🇺🇸_美国_298
-  network: http
-  port: 80
-  score: 5.8324533614924325
-  server: 199.232.240.48
-  sim_score: 0.8634486392239062
-  skip-cert-verify: true
-  speed: 16.57
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 40.54
-  name: 🇬🇧_英国_215
-  network: ws
-  port: 80
-  score: 5.757276763690182
-  server: 91.193.58.251
-  sim_score: 2.603172929137643
-  skip-cert-verify: true
-  speed: 23.34
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 38.82
-  name: 🇬🇧_英国_158
-  network: ws
-  port: 80
-  score: 5.638845955692942
-  server: 91.193.58.103
-  sim_score: 4.189813164284584
-  skip-cert-verify: true
-  speed: 21.89
+  speed: 20.15
   tls: false
   type: vless
   udp: true
@@ -2328,15 +2154,15 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 38.99
-  name: 🇺🇸_美国_346
+  latency: 52.42
+  name: 🇺🇸_美国_325
   network: http
   port: 80
-  score: 5.616824826878686
-  server: 199.232.240.89
-  sim_score: 2.6248042139195733
+  score: 3.536818008393743
+  server: 199.232.240.111
+  sim_score: 1.189981979563137
   skip-cert-verify: true
-  speed: 21.9
+  speed: 18.54
   tls: false
   type: vless
   udp: true
@@ -2347,15 +2173,15 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 27.62
-  name: 🇺🇸_美国_262
+  latency: 51.43
+  name: 🇺🇸_美国_305
   network: http
   port: 80
-  score: 5.477914554670528
-  server: 199.232.240.125
-  sim_score: 2.4425728153626864
+  score: 3.511569123079914
+  server: 199.232.240.66
+  sim_score: 3.879849315947733
   skip-cert-verify: true
-  speed: 15.13
+  speed: 18.06
   tls: false
   type: vless
   udp: true
@@ -2366,116 +2192,121 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 29.4
-  name: 🇺🇸_美国_258
+  latency: 47.05
+  name: 🇺🇸_美国_288
   network: http
   port: 80
-  score: 5.329931972789116
-  server: 199.232.240.38
-  sim_score: 1.364665512965164
+  score: 3.434643995749203
+  server: 199.232.240.178
+  sim_score: 2.3824579871851235
   skip-cert-verify: true
-  speed: 15.67
+  speed: 16.16
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 39.95
-  name: 🇦🇹_奥地利_131
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 51.3
+  name: 🇺🇸_美国_279
+  network: http
+  port: 80
+  score: 3.3528265107212474
+  server: 199.232.240.53
+  sim_score: 1.958566744229778
+  skip-cert-verify: true
+  speed: 17.2
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.33
+  name: 🇺🇸_美国_344
+  network: http
+  port: 80
+  score: 3.3123859720251367
+  server: 199.232.240.222
+  sim_score: 0.7067550734956407
+  skip-cert-verify: true
+  speed: 16.34
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 51.12
+  name: 🇺🇸_美国_261
+  network: http
+  port: 80
+  score: 3.286384976525822
+  server: 199.232.240.193
+  sim_score: 1.2085039997406724
+  skip-cert-verify: true
+  speed: 16.8
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 48.7
+  name: 🇺🇸_美国_324
+  network: http
+  port: 80
+  score: 3.1519507186858315
+  server: 199.232.240.171
+  sim_score: 1.6399627256757443
+  skip-cert-verify: true
+  speed: 15.35
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 50.72
+  name: 🏳️_未知_127
   password: humanity
   port: 443
-  score: 5.30162703379224
-  server: 212.183.88.136
-  sim_score: 1.058235639333911
+  score: 3.107255520504732
+  server: 162.159.17.189
+  sim_score: 1.1394685927345292
   skip-cert-verify: true
-  sni: www.calmlunch.com
-  speed: 21.18
+  sni: www.multiplydose.com
+  speed: 15.76
   tls: true
   type: trojan
   udp: true
   ws-opts:
     headers:
-      Host: www.calmlunch.com
+      Host: www.multiplydose.com
     path: /assignment
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.71
-  name: 🇺🇸_美国_293
-  network: http
-  port: 80
-  score: 5.283873214907697
-  server: 199.232.240.25
-  sim_score: 1.7987369470112755
-  skip-cert-verify: true
-  speed: 15.17
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- encryption: mlkem768x25519plus.native.0rtt.Yi2eu29TQnEMr0l6uYZXDSG9Q0whBPMGN5zwkPneowY
-  flow: xtls-rprx-vision
-  latency: 36.4
-  name: 🇫🇷_法国_103
-  port: 500
-  score: 5.241758241758242
-  server: 89.208.113.50
-  sim_score: 1.7395223266624047
-  skip-cert-verify: true
-  speed: 19.08
-  tls: false
-  type: vless
-  udp: true
-  uuid: bb5b4296-e7fa-42f9-9f65-64306413e00a
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 29.26
-  name: 🇺🇸_美国_281
-  network: http
-  port: 80
-  score: 5.095693779904305
-  server: 199.232.240.23
-  sim_score: 3.225814812885268
-  skip-cert-verify: true
-  speed: 14.91
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.12
-  name: 🇺🇸_美国_300
-  network: http
-  port: 80
-  score: 5.067567567567567
-  server: 199.232.240.22
-  sim_score: 1.763902954306387
-  skip-cert-verify: true
-  speed: 14.25
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 36.84
-  name: 🇬🇧_英国_203
+- latency: 56.62
+  name: 🇬🇧_英国_212
   network: ws
   port: 80
-  score: 4.9837133550488595
-  server: 91.193.58.176
-  sim_score: 1.3955384683530374
+  score: 3.071352878841399
+  server: 91.193.58.81
+  sim_score: 3.7585901907426225
   skip-cert-verify: true
-  speed: 18.36
+  speed: 17.39
   tls: false
   type: vless
   udp: true
@@ -2484,98 +2315,15 @@ proxies:
     headers:
       Host: sahanwickramasinghevip.shop
     path: /?Telegram-WangCai2🇨🇳
-- latency: 30.36
-  name: 🏳️_未知_168
-  network: ws
-  port: 443
-  score: 4.934123847167325
-  server: 104.18.152.233
-  servername: support.zoom.us.ex33r.eu.cc
-  sim_score: 1.1087358949105126
-  skip-cert-verify: true
-  speed: 14.98
-  tls: true
-  type: vless
-  udp: true
-  uuid: 08b006dc-17e4-411d-9528-4369d72ad646
-  ws-opts:
-    headers:
-      Host: support.zoom.us.ex33r.eu.cc
-    path: /sg-melbi
-- alterId: 0
-  cipher: auto
-  latency: 30.68
-  name: 🇨🇳_中国_89
-  port: 50012
-  score: 4.915254237288136
-  server: 36.133.78.37
-  sim_score: 5.152204185400091
-  skip-cert-verify: true
-  speed: 15.08
-  tls: false
-  type: vmess
-  udp: true
-  uuid: 30b2c497-27e3-4da2-98a4-005322ba1242
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.83
-  name: 🇺🇸_美国_360
-  network: http
-  port: 80
-  score: 4.908081859174471
-  server: 199.232.240.158
-  sim_score: 1.5547756931593661
-  skip-cert-verify: true
-  speed: 14.15
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 42.62
-  name: 🇺🇸_美国_177
+- latency: 56.06
+  name: 🇬🇧_英国_214
   network: ws
   port: 80
-  score: 4.856874706710465
-  server: support.zoom.us
-  sim_score: 2.1939943982943957
+  score: 3.025330003567606
+  server: 91.193.58.51
+  sim_score: 1.8792891921575334
   skip-cert-verify: true
-  speed: 20.7
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  latency: 30.41
-  name: 每天更新，请加电报群防止失联
-  port: 443
-  score: 4.784610325550806
-  server: 103.173.155.212
-  servername: u695099ub67c99c6s591.csgfw.top
-  sim_score: 1.187381277075321
-  skip-cert-verify: true
-  speed: 14.55
-  tls: true
-  type: vless
-  udp: true
-  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
-- latency: 26.68
-  name: 🇬🇧_英国_229
-  network: ws
-  port: 80
-  score: 4.7788605697151425
-  server: 91.193.58.82
-  sim_score: 0.8274320904623294
-  skip-cert-verify: true
-  speed: 12.75
+  speed: 16.96
   tls: false
   type: vless
   udp: true
@@ -2590,170 +2338,28 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 28.04
-  name: 🇺🇸_美国_366
-  network: http
-  port: 80
-  score: 4.739657631954351
-  server: 199.232.240.217
-  sim_score: 1.6898880305043624
-  skip-cert-verify: true
-  speed: 13.29
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  latency: 30.24
-  name: 🇳🇱_荷兰_5
-  port: 443
-  score: 4.540343915343915
-  server: 193.142.59.180
-  servername: u695099u775a58bcs124.ccgfw.top
-  sim_score: 1.0255307143669625
-  skip-cert-verify: true
-  speed: 13.73
-  tls: true
-  type: vless
-  udp: true
-  uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
-- latency: 29.81
-  name: 🇬🇧_英国_223
-  network: ws
-  port: 80
-  score: 4.515263334451527
-  server: 91.193.58.173
-  sim_score: 1.424061915108822
-  skip-cert-verify: true
-  speed: 13.46
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 44.88
-  name: 🇬🇧_英国_193
-  network: ws
-  port: 80
-  score: 4.507575757575758
-  server: 91.193.58.205
-  sim_score: 4.400154338440189
-  skip-cert-verify: true
-  speed: 20.23
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 27.45
-  name: 🇺🇸_美国_357
-  network: http
-  port: 80
-  score: 4.477231329690346
-  server: 199.232.240.182
-  sim_score: 1.35623351405953
-  skip-cert-verify: true
-  speed: 12.29
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 37.31
+  latency: 53.63
   name: 🇺🇸_美国_297
   network: http
   port: 80
-  score: 4.400964888769767
+  score: 2.977810926720119
   server: 199.232.240.169
-  sim_score: 1.137297570699081
+  sim_score: 1.0679328451778678
   skip-cert-verify: true
-  speed: 16.42
+  speed: 15.97
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 39.97
-  name: 🇺🇸_美国_318
-  network: http
-  port: 80
-  score: 4.163122341756317
-  server: 199.232.240.235
-  sim_score: 0.9230391237262316
-  skip-cert-verify: true
-  speed: 16.64
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 28.84
-  name: 🇺🇸_美国_294
-  network: http
-  port: 80
-  score: 3.9563106796116503
-  server: 199.232.240.241
-  sim_score: 0.7160277853946301
-  skip-cert-verify: true
-  speed: 11.41
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 27.01
-  name: 🏳️_未知_235
+- latency: 54.03
+  name: 🇬🇧_英国_198
   network: ws
   port: 80
-  score: 3.9022584228063675
-  server: 108.162.198.73
-  sim_score: 0.7556940187441719
+  score: 2.976124375347029
+  server: 91.193.58.206
+  sim_score: 0.6658627659021022
   skip-cert-verify: true
-  speed: 10.54
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /
-- latency: 34.13
-  name: 🇬🇧_英国_191
-  network: ws
-  port: 80
-  score: 3.8880750073249337
-  server: 91.193.58.178
-  sim_score: 3.2583475591193056
-  skip-cert-verify: true
-  speed: 13.27
+  speed: 16.08
   tls: false
   type: vless
   udp: true
@@ -2768,26 +2374,44 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 40.93
-  name: 🇺🇸_美国_275
+  latency: 60.79
+  name: 🇺🇸_美国_326
   network: http
   port: 80
-  score: 3.872465184461275
-  server: 199.232.240.143
-  sim_score: 0.9622288561283949
+  score: 2.9610133245599606
+  server: 199.232.240.195
+  sim_score: 1.735618143031923
   skip-cert-verify: true
-  speed: 15.85
+  speed: 18.0
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 34.72
-  name: 🇬🇧_英国_231
+- latency: 56.95
+  name: 🇺🇸_美国_178
+  network: ws
+  port: 443
+  score: 2.8217734855136083
+  server: 91.110.209.63
+  servername: edge-4cb23bf6.pages.dev
+  sim_score: 1.0459568433113038
+  skip-cert-verify: true
+  speed: 16.07
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4feb7818-dc02-46cd-b985-abf3fdd0cdc5
+  ws-opts:
+    headers:
+      Host: edge-4cb23bf6.pages.dev
+    path: /Telegram🇨🇳+@WangCai2
+- latency: 48.17
+  name: 🇬🇧_英国_205
   network: ws
   port: 80
-  score: 3.83352534562212
-  server: 91.193.58.146
-  sim_score: 2.6742091215370705
+  score: 2.7631305791986716
+  server: 91.193.58.254
+  sim_score: 1.963646456868056
   skip-cert-verify: true
   speed: 13.31
   tls: false
@@ -2804,80 +2428,58 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 29.33
-  name: 🇺🇸_美国_271
+  latency: 50.15
+  name: 🇺🇸_美国_278
   network: http
   port: 80
-  score: 3.6992840095465396
-  server: 199.232.240.18
-  sim_score: 2.1481822236318724
+  score: 2.7078763708873383
+  server: 199.232.240.145
+  sim_score: 1.3236593041569187
   skip-cert-verify: true
-  speed: 10.85
+  speed: 13.58
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 37.09
-  name: 🇺🇸_美国_163
+- latency: 49.95
+  name: 🇬🇧_英国_190
   network: ws
   port: 80
-  score: 3.6209220814235636
-  server: 45.40.155.4
-  sim_score: 2.409818585663603
+  score: 2.6766766766766765
+  server: 91.193.58.125
+  sim_score: 2.4945122624084117
   skip-cert-verify: true
-  speed: 13.43
+  speed: 13.37
   tls: false
   type: vless
   udp: true
-  uuid: e403856e-4e50-49e6-9edc-d9536a803a6a
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
   ws-opts:
     headers:
-      Host: proud-cloud-5c50.113-8dc.workers.dev
-    path: /pyip=Telegram🇨🇳+@WangCai2
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 41.86
-  name: 🇺🇸_美国_270
-  network: http
-  port: 80
-  score: 3.416149068322982
-  server: 199.232.240.179
-  sim_score: 1.4222220308878888
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- latency: 40.1
+  name: 🇦🇺_澳大利亚_35
+  password: KV63147582
+  port: 443
+  score: 2.650872817955112
+  server: selected-bison.rooster465.autos
+  sim_score: 1.5332557248887482
   skip-cert-verify: true
-  speed: 14.3
-  tls: false
-  type: vless
+  sni: selected-bison.rooster465.autos
+  speed: 10.63
+  tls: true
+  type: trojan
   udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- cipher: chacha20-ietf-poly1305
-  latency: 27.69
-  name: us|1cb5|puddincat07@Telegram
-  password: t0srmdxrm3xyjnvqz9ewlxb2myq7rjuv
-  plugin: obfs
-  plugin-opts:
-    host: (Telegram🇨🇳 @WangCai2)f6e348d:70852
-    mode: tls
-  port: 2377
-  score: 3.39472733838931
-  server: 88.210.36.106
-  sim_score: 1.0622082383630558
-  skip-cert-verify: true
-  speed: 9.4
-  type: ss
-  udp: true
-- latency: 38.55
-  name: 🇬🇧_英国_213
+- latency: 48.8
+  name: 🇬🇧_英国_186
   network: ws
   port: 80
-  score: 3.3592736705577178
-  server: 91.193.58.73
-  sim_score: 1.1035218217167044
+  score: 2.6209016393442623
+  server: 91.193.58.242
+  sim_score: 0.8647869787390112
   skip-cert-verify: true
-  speed: 12.95
+  speed: 12.79
   tls: false
   type: vless
   udp: true
@@ -2888,27 +2490,121 @@ proxies:
     path: /?Telegram-WangCai2🇨🇳
 - alterId: 0
   cipher: auto
-  latency: 37.83
-  name: 🇨🇳_中国_92
-  port: 50015
-  score: 3.333333333333333
-  server: 36.133.78.37
-  sim_score: 1.4845379527624738
+  latency: 50.27
+  name: 🇩🇪_德国_41
+  port: 180
+  score: 2.5939924408195743
+  server: 82.198.246.250
+  sim_score: 1.827714471404337
   skip-cert-verify: true
-  speed: 12.61
+  speed: 13.04
   tls: false
   type: vmess
   udp: true
-  uuid: 30b2c497-27e3-4da2-98a4-005322ba1242
-- latency: 28.75
-  name: 🏳️_未知_236
+  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  latency: 39.98
+  name: 🇷🇺_俄罗斯_18
+  port: 443
+  reality-opts:
+    public-key: KYNrRy0ElOU9Hg5tmWRwpf-Ff3R8Gjcjdk91jZt2nGg
+    short-id: bb6c8a1e7c
+  score: 2.5887943971985994
+  server: 51.250.46.89
+  servername: cdn.tracker.yandex.net
+  sim_score: 1.9856759535820414
+  skip-cert-verify: true
+  speed: 10.35
+  tls: true
+  type: vless
+  udp: true
+  uuid: 4392b776-41a2-4300-b545-a3d2724b605b
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.54
+  name: 🇺🇸_美国_309
+  network: http
+  port: 80
+  score: 2.5857892612030686
+  server: 199.232.240.215
+  sim_score: 2.209706248964869
+  skip-cert-verify: true
+  speed: 12.81
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 54.58
+  name: 🇺🇸_美国_259
+  network: http
+  port: 80
+  score: 2.5302308537925984
+  server: 199.232.240.98
+  sim_score: 1.4181631125335938
+  skip-cert-verify: true
+  speed: 13.81
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 53.53
+  name: 🇺🇸_美国_327
+  network: http
+  port: 80
+  score: 2.5275546422566784
+  server: 199.232.240.220
+  sim_score: 4.688473534833673
+  skip-cert-verify: true
+  speed: 13.53
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- client-fingerprint: chrome
+  latency: 53.24
+  name: 🏳️_未知_169
+  network: ws
+  port: 443
+  score: 2.5169045830202856
+  server: 162.159.8.42
+  servername: t1s1.rittbo.kdns.fr
+  sim_score: 1.0565548130442581
+  skip-cert-verify: true
+  speed: 13.4
+  tls: true
+  type: vless
+  udp: true
+  uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+  ws-opts:
+    headers:
+      Host: t1s1.rittbo.kdns.fr
+    path: /
+- latency: 50.84
+  name: 🇬🇧_英国_213
   network: ws
   port: 80
-  score: 3.276521739130435
-  server: 172.67.135.69
-  sim_score: 0.8461445921314934
+  score: 2.4763965381589297
+  server: 91.193.58.73
+  sim_score: 0.9963834930948592
   skip-cert-verify: true
-  speed: 9.42
+  speed: 12.59
   tls: false
   type: vless
   udp: true
@@ -2916,17 +2612,72 @@ proxies:
   ws-opts:
     headers:
       Host: sahanwickramasinghevip.shop
-    path: /
-- latency: 29.73
+    path: /?Telegram-WangCai2🇨🇳
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 52.51
+  name: 🇺🇸_美国_322
+  network: http
+  port: 80
+  score: 2.4452485240906494
+  server: 199.232.240.4
+  sim_score: 3.406187641144678
+  skip-cert-verify: true
+  speed: 12.84
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 49.58
+  name: 🇺🇸_美国_343
+  network: http
+  port: 80
+  score: 2.4041952400161355
+  server: 199.232.240.37
+  sim_score: 4.272097582270839
+  skip-cert-verify: true
+  speed: 11.92
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 50.61
   name: 🏳️_未知_140
   password: a5e355b9-11fc-449a-aa7b-eb707783f25a
   port: 443
-  score: 3.168516649848638
+  score: 2.262398735427781
   server: cdn2.bpcdn.cc
-  sim_score: 1.0599397808591062
+  sim_score: 1.7226779059559474
   skip-cert-verify: true
   sni: thank.bpmalai2026.top
-  speed: 9.42
+  speed: 11.45
+  tls: true
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      Host: thank.bpmalai2026.top
+    path: /images
+- latency: 49.56
+  name: 🏳️_未知_149
+  password: a5e355b9-11fc-449a-aa7b-eb707783f25a
+  port: 443
+  score: 2.2296206618240517
+  server: mmefi.cloudflare.182682.xyz
+  sim_score: 3.2530053715294955
+  skip-cert-verify: true
+  sni: thank.bpmalai2026.top
+  speed: 11.05
   tls: true
   type: trojan
   udp: true
@@ -2937,55 +2688,36 @@ proxies:
 - http-opts:
     headers:
       Host:
-      - InternetAzadRobot44xd894.global.ssl.fastly.net
+      - monopoli.global.ssl.fastly.net
     path:
-    - /
-  latency: 36.56
-  name: 🇺🇸_美国_249
+    - /?Telegram-WangCai2🇨🇳
+  latency: 52.74
+  name: 🇺🇸_美国_360
   network: http
   port: 80
-  score: 3.060722100656455
-  server: 151.101.129.57
-  sim_score: 0.5875973189836239
+  score: 2.049677664012135
+  server: 199.232.240.158
+  sim_score: 1.299920939698615
   skip-cert-verify: true
-  speed: 11.19
+  speed: 10.81
   tls: false
   type: vless
   udp: true
-  uuid: TIGNAL-CRYPTO
-- latency: 30.93
-  name: 🏳️_未知_162
-  network: ws
-  port: 80
-  score: 2.7158098933074686
-  server: 162.159.81.177
-  sim_score: 1.1333410502585712
-  skip-cert-verify: true
-  speed: 8.4
-  tls: false
-  type: vless
-  udp: true
-  uuid: 4b00d726-e072-429b-997e-f07affea3b7f
-  ws-opts:
-    headers:
-      Host: icy-darkness-8ff1.farzambia12mo.workers.dev
-    path: /eyJqdW5rIjoibHFUM0pwRHZXIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcmVmaXgiLCJwYW5lbElQcyI6WyJbMjYwMjpmYzU5OmIwOjY0OjpdIl19
-- latency: 36.91
-  name: 🏳️_未知_109
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 40.27
+  name: 🏳️_未知_108
   password: humanity
   port: 443
-  score: 2.6632348956922245
-  server: 104.18.139.67
-  sim_score: 4.097190029715346
+  score: 2.018872609883288
+  server: www.multiplydose.com
+  sim_score: 1.0202368500207275
   skip-cert-verify: true
-  sni: www.creationlong.org
-  speed: 9.83
+  sni: www.multiplydose.com
+  speed: 8.13
   tls: true
   type: trojan
   udp: true
   ws-opts:
-    headers:
-      Host: www.creationlong.org
     path: /assignment
 - http-opts:
     headers:
@@ -2993,34 +2725,106 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 38.84
-  name: 🇺🇸_美国_310
-  network: http
-  port: 80
-  score: 2.5025746652935115
-  server: 199.232.240.69
-  sim_score: 0.61451178826101
-  skip-cert-verify: true
-  speed: 9.72
-  tls: false
-  type: vless
-  udp: true
-  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- http-opts:
-    headers:
-      Host:
-      - monopoli.global.ssl.fastly.net
-    path:
-    - /?Telegram-WangCai2🇨🇳
-  latency: 38.82
+  latency: 60.71
   name: 🇺🇸_美国_301
   network: http
   port: 80
-  score: 2.475528078310149
+  score: 1.9601383627079558
   server: 199.232.240.216
-  sim_score: 2.2390788893851443
+  sim_score: 2.2343093219862187
   skip-cert-verify: true
-  speed: 9.61
+  speed: 11.9
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 54.81
+  name: 🇬🇧_英国_202
+  network: ws
+  port: 80
+  score: 1.9120598430943259
+  server: 91.193.58.156
+  sim_score: 2.2321344194077213
+  skip-cert-verify: true
+  speed: 10.48
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 50.57
+  name: 🇺🇸_美国_268
+  network: http
+  port: 80
+  score: 1.9062685386592841
+  server: 199.232.240.81
+  sim_score: 1.658744007519861
+  skip-cert-verify: true
+  speed: 9.64
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - InternetAzadRobot31dx253.global.ssl.fastly.net
+    path:
+    - /
+  latency: 53.22
+  name: 🇺🇸_美国_253
+  network: http
+  port: 80
+  score: 1.9052987598647126
+  server: 151.101.193.57
+  sim_score: 1.495424881425122
+  skip-cert-verify: true
+  speed: 10.14
+  tls: false
+  type: vless
+  udp: true
+  uuid: InternetAzadRobot-AliKiller
+- latency: 53.91
+  name: 🇬🇧_英国_184
+  network: ws
+  port: 80
+  score: 1.9050268966796513
+  server: 91.193.58.110
+  sim_score: 5.413996019819073
+  skip-cert-verify: true
+  speed: 10.27
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /?Telegram-WangCai2🇨🇳
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 54.44
+  name: 🇺🇸_美国_263
+  network: http
+  port: 80
+  score: 1.8570903747244671
+  server: 199.232.240.93
+  sim_score: 4.585599493268642
+  skip-cert-verify: true
+  speed: 10.11
   tls: false
   type: vless
   udp: true
@@ -3031,454 +2835,472 @@ proxies:
       - monopoli.global.ssl.fastly.net
     path:
     - /?Telegram-WangCai2🇨🇳
-  latency: 35.46
-  name: 🇺🇸_美国_277
+  latency: 61.87
+  name: 🇺🇸_美国_275
   network: http
   port: 80
-  score: 2.3068245910885503
-  server: 199.232.240.79
-  sim_score: 1.2365969774548278
+  score: 1.8312590916437692
+  server: 199.232.240.143
+  sim_score: 1.4523784755867002
   skip-cert-verify: true
-  speed: 8.18
+  speed: 11.33
   tls: false
   type: vless
   udp: true
   uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
-- latency: 38.72
-  name: 🏳️_未知_122
-  password: humanity
-  port: 443
-  score: 2.2443181818181817
-  server: 104.17.177.143
-  sim_score: 1.8037157531988666
-  skip-cert-verify: true
-  sni: www.ignitelimit.com
-  speed: 8.69
-  tls: true
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.ignitelimit.com
-    path: /assignment
-- latency: 39.07
-  name: 🇬🇧_英国_220
-  network: ws
-  port: 80
-  score: 2.2114154082416175
-  server: 91.193.58.211
-  sim_score: 2.083416991455675
-  skip-cert-verify: true
-  speed: 8.64
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
-- latency: 39.58
-  name: 🇬🇧_英国_201
-  network: ws
-  port: 80
-  score: 2.132390096008085
-  server: 91.193.58.28
-  sim_score: 0.7250008169209456
-  skip-cert-verify: true
-  speed: 8.44
-  tls: false
-  type: vless
-  udp: true
-  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
-  ws-opts:
-    headers:
-      Host: sahanwickramasinghevip.shop
-    path: /?Telegram-WangCai2🇨🇳
 - alterId: 0
-  cipher: auto
-  latency: 55.16
-  name: 🇺🇸_美国_96
+  cipher: chacha20-ietf-poly1305
+  latency: 65.01
+  name: xx|e2b9|puddincat07@Telegram
+  password: hbGrpfvNrJsUmKmPbR3iY2
   port: 443
-  score: 1.5518491660623643
-  server: guanwang.awsno.com
-  servername: gw.alicdn.com
-  sim_score: 5.217652338094326
+  score: 1.7797261959698507
+  server: tinkered-pennies-puppies.freesocks.work
+  sim_score: 3.0487141856774294
   skip-cert-verify: true
-  speed: 8.56
+  speed: 11.57
   tls: true
-  type: vmess
+  type: ss
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 51.26
+  name: 🇺🇸_美国_276
+  network: http
+  port: 80
+  score: 1.7381974248927041
+  server: 199.232.240.87
+  sim_score: 1.0471143012595072
+  skip-cert-verify: true
+  speed: 8.91
+  tls: false
+  type: vless
   udp: true
-  uuid: 6a89a215-22bf-4bd7-9642-b95b2e09583a
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 52.33
+  name: 🇺🇸_美国_313
+  network: http
+  port: 80
+  score: 1.706478119625454
+  server: 199.232.240.152
+  sim_score: 1.3854727264121331
+  skip-cert-verify: true
+  speed: 8.93
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- latency: 48.66
+  name: 🏳️_未知_246
+  network: ws
+  port: 80
+  score: 1.6646115906288532
+  server: 172.66.44.205
+  sim_score: 1.0527242744400571
+  skip-cert-verify: true
+  speed: 8.1
+  tls: false
+  type: vless
+  udp: true
+  uuid: e7b178da-65e8-45ad-8550-de40eb0a7835
+  ws-opts:
+    headers:
+      Host: sahanwickramasinghevip.shop
+    path: /
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 53.06
+  name: 🇺🇸_美国_290
+  network: http
+  port: 80
+  score: 1.6076140218620427
+  server: 199.232.240.70
+  sim_score: 1.745738198193546
+  skip-cert-verify: true
+  speed: 8.53
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
+- http-opts:
+    headers:
+      Host:
+      - monopoli.global.ssl.fastly.net
+    path:
+    - /?Telegram-WangCai2🇨🇳
+  latency: 53.37
+  name: 🇺🇸_美国_316
+  network: http
+  port: 80
+  score: 1.5177065767284992
+  server: 199.232.240.242
+  sim_score: 1.5582879998155807
+  skip-cert-verify: true
+  speed: 8.1
+  tls: false
+  type: vless
+  udp: true
+  uuid: d7955f3f-dfa3-45a0-a3ef-9693df439a0f
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - 🇦🇺_澳大利亚_35
-  - 🇺🇸_美国_326
-  - 🇺🇸_美国_367
-  - 🇺🇸_美国_284
-  - 🇷🇺_俄罗斯_18
-  - 🇺🇸_美国_95
-  - 🏳️_未知_145
-  - 🇺🇸_美国_266
-  - 🏳️_未知_127
-  - 🇺🇸_美国_343
-  - gb|2c7f|puddincat07@Telegram
-  - 🇭🇰_香港_100
-  - 🇺🇸_美国_282
-  - 🏳️_未知_239
-  - 🏳️_未知_135
+  - 🇨🇳_中国_83
+  - 🇯🇵_日本_137
   - 🇸🇬_新加坡_7
-  - 🇺🇸_美国_302
-  - 🏳️_未知_134
-  - 🇺🇸_美国_267
-  - 🇯🇵_日本_8
-  - 🏳️_未知_113
-  - 🇩🇪_德国_97
-  - 🇺🇸_美国_335
-  - 🇬🇧_英国_227
-  - 🇺🇸_美国_175
-  - 🇬🇧_英国_217
-  - 🇺🇸_美国_160
-  - 🇺🇸_美国_253
-  - 🇺🇸_美国_332
-  - 🇺🇸_美国_159
-  - 🇬🇧_英国_198
-  - 🇹🇷_土耳其_166
-  - 🇭🇰_香港_94
-  - 🇺🇸_美国_307
-  - 🏳️_未知_123
-  - 🇬🇧_英国_189
-  - xx|8151|puddincat07@Telegram
-  - 🇬🇧_英国_197
-  - 🇺🇸_美国_232
-  - 🇺🇸_美国_358
-  - 🇺🇸_美国_354
-  - 🇺🇸_美国_285
-  - 🇺🇸_美国_269
-  - tr|6405|puddincat07@Telegram
-  - 🇬🇧_英国_226
-  - 🇬🇧_英国_200
-  - 🇺🇸_美国_315
-  - 🏳️_未知_112
-  - 🇺🇸_美国_288
-  - 🇺🇸_美国_272
-  - 🇺🇸_美国_273
-  - 🏳️_未知_142
-  - 🇺🇸_美国_265
-  - 🏳️_未知_115
-  - 🇺🇸_美国_312
-  - 🏳️_未知_238
-  - 🇺🇸_美国_330
-  - 🇺🇸_美国_263
-  - 🇺🇸_美国_355
-  - 🇯🇵_日本_9
-  - 🏳️_未知_248
-  - 🇬🇧_英国_214
-  - 🇬🇧_英国_195
-  - 🏳️_未知_146
-  - 🏳️_未知_246
-  - 🇺🇸_美国_322
-  - 🇨🇳_中国_88
-  - 🇬🇧_英国_222
-  - 🏳️_未知_104
-  - 🏳️_未知_233
-  - 🇺🇸_美国_256
-  - 🇺🇸_美国_320
-  - 🇬🇧_英国_204
-  - 🇺🇸_美国_33
-  - 🇬🇧_英国_171
-  - 🇸🇨_塞舌尔_118
-  - 🇺🇸_美国_314
-  - 🇺🇸_美国_347
-  - 🇬🇧_英国_202
-  - 🏳️_未知_133
-  - 🇬🇧_英国_190
-  - 🇺🇸_美国_250
-  - 🇺🇸_美国_296
-  - 🇺🇸_美国_291
-  - 🇺🇸_美国_350
-  - 🏳️_未知_120
-  - 🇬🇧_英国_208
-  - 🏳️_未知_155
-  - 🇺🇸_美国_324
-  - 🏳️_未知_169
-  - xx|f463|puddincat07@Telegram
-  - 🇬🇧_英国_164
-  - 🇯🇵_日本_12
-  - 🏳️_未知_180
-  - 🏳️_未知_149
-  - 🇱🇻_拉脱维亚_37
-  - 🇺🇸_美国_351
-  - 🇬🇧_英国_211
-  - 🇬🇧_英国_210
-  - 🇺🇸_美国_309
-  - 🇺🇸_美国_311
-  - 🇷🇺_俄罗斯_93
-  - 🇺🇸_美国_274
-  - 🇺🇸_美国_305
-  - 🇺🇸_美国_361
-  - 🇬🇧_英国_186
-  - 🇯🇵_日本_98
-  - 🇺🇸_美国_292
-  - 🇬🇧_英国_216
-  - 🇬🇧_英国_228
-  - 🇺🇸_美国_334
-  - 🇬🇧_英国_209
-  - 🇺🇸_美国_317
-  - 🇵🇱_波兰_17
-  - 🇺🇸_美国_319
-  - 🇮🇹_意大利_21
-  - 🏳️_未知_106
-  - 🏳️_未知_108
-  - 🇬🇧_英国_207
-  - 🏳️_未知_170
-  - us|28e3|puddincat07@Telegram
-  - 🇺🇸_美国_299
-  - 🏳️_未知_147
-  - 🏳️_未知_241
-  - xx|6907|puddincat07@Telegram
-  - 🇬🇧_英国_199
-  - 🇬🇧_英国_182
-  - 🇺🇸_美国_331
-  - 🇺🇸_美国_286
-  - 🇬🇧_英国_219
-  - gb|9e5d|puddincat07@Telegram
-  - 🇺🇸_美国_148
-  - 🇺🇸_美国_298
-  - 🇬🇧_英国_215
-  - 🇬🇧_英国_158
-  - 🇺🇸_美国_346
-  - 🇺🇸_美国_262
-  - 🇺🇸_美国_258
+  - 🏳️_未知_145
   - 🇦🇹_奥地利_131
+  - 🇺🇸_美国_355
+  - 🇺🇸_美国_289
+  - 🇬🇧_英国_230
+  - 🇬🇧_英国_171
+  - 🏳️_未知_135
+  - 🏳️_未知_239
+  - 🇩🇪_德国_97
+  - xx|f463|puddincat07@Telegram
+  - 🏳️_未知_243
+  - 🇬🇧_英国_195
+  - 🇭🇰_香港_100
   - 🇺🇸_美国_293
-  - 🇫🇷_法国_103
-  - 🇺🇸_美国_281
+  - 🇺🇸_美国_280
+  - 🇺🇸_美国_260
   - 🇺🇸_美国_300
-  - 🇬🇧_英国_203
-  - 🏳️_未知_168
-  - 🇨🇳_中国_89
-  - 🇺🇸_美国_360
-  - 🇺🇸_美国_177
-  - 每天更新，请加电报群防止失联
-  - 🇬🇧_英国_229
-  - 🇺🇸_美国_366
-  - 🇳🇱_荷兰_5
-  - 🇬🇧_英国_223
+  - 🇺🇸_美国_347
+  - 🇺🇸_美国_336
+  - 🇬🇧_英国_215
+  - 🇺🇸_美国_283
   - 🇬🇧_英国_193
-  - 🇺🇸_美国_357
-  - 🇺🇸_美国_297
-  - 🇺🇸_美国_318
-  - 🇺🇸_美国_294
-  - 🏳️_未知_235
-  - 🇬🇧_英国_191
-  - 🇺🇸_美国_275
-  - 🇬🇧_英国_231
-  - 🇺🇸_美国_271
-  - 🇺🇸_美国_163
-  - 🇺🇸_美国_270
-  - us|1cb5|puddincat07@Telegram
-  - 🇬🇧_英国_213
-  - 🇨🇳_中国_92
-  - 🏳️_未知_236
-  - 🏳️_未知_140
-  - 🇺🇸_美国_249
-  - 🏳️_未知_162
-  - 🏳️_未知_109
-  - 🇺🇸_美国_310
-  - 🇺🇸_美国_301
-  - 🇺🇸_美国_277
-  - 🏳️_未知_122
-  - 🇬🇧_英国_220
+  - 🏳️_未知_241
   - 🇬🇧_英国_201
-  - 🇺🇸_美国_96
+  - 🇻🇳_越南_23
+  - 🇬🇧_英国_229
+  - 🇺🇸_美国_328
+  - 🇺🇸_美国_315
+  - 🏳️_未知_161
+  - 🇺🇸_美国_282
+  - 🇺🇸_美国_295
+  - 🇺🇸_美国_308
+  - 🇬🇧_英国_217
+  - 🇮🇹_意大利_21
+  - 🇺🇸_美国_345
+  - 🇺🇸_美国_321
+  - 🇺🇸_美国_292
+  - 🇺🇸_美国_256
+  - 🇯🇵_日本_12
+  - 🇺🇸_美国_175
+  - 🇺🇸_美国_361
+  - 🇺🇸_美国_337
+  - 🇺🇸_美国_338
+  - 🏳️_未知_121
+  - 🇺🇸_美国_306
+  - 🇺🇸_美国_299
+  - 🇺🇸_美国_270
+  - 🏳️_未知_144
+  - 🇺🇸_美国_364
+  - 🇬🇧_英国_197
+  - 🇺🇸_美国_262
+  - xx|2c29|puddincat07@Telegram
+  - 🇱🇻_拉脱维亚_39
+  - 🇺🇸_美国_296
+  - 每天更新，请加电报群防止失联
+  - 🏳️_未知_104
+  - 🇬🇧_英国_191
+  - 🇺🇸_美国_284
+  - 🇬🇧_英国_225
+  - 🇺🇸_美国_351
+  - 🇮🇹_意大利_22
+  - 🇺🇸_美国_319
+  - 🇬🇧_英国_181
+  - 🇺🇸_美国_286
+  - 🇺🇸_美国_323
+  - 🇹🇷_土耳其_166
+  - 🏳️_未知_236
+  - 🇬🇧_英国_219
+  - 🇺🇸_美国_249
+  - 🇬🇧_英国_218
+  - 🇸🇨_塞舌尔_118
+  - 🇬🇧_英国_207
+  - 🏳️_未知_112
+  - 🇺🇸_美国_265
+  - 🇬🇧_英国_194
+  - 免费VPN：https://tt.vg/FJOE2Mm
+  - 🇹🇼_台湾_138
+  - us|28e3|puddincat07@Telegram
+  - 🏳️_未知_125
+  - 🇭🇰_香港_139
+  - 🇺🇸_美国_281
+  - 🇺🇸_美国_332
+  - za|d18d|puddincat07@Telegram
+  - 🇬🇧_英国_209
+  - 🏳️_未知_126
+  - 🇬🇧_英国_211
+  - 日期：07-16
+  - 🇺🇸_美国_354
+  - us|5c3a|puddincat07@Telegram
+  - 🇺🇸_美国_302
+  - 🇺🇸_美国_342
+  - 🇵🇱_波兰_17
+  - 🇬🇧_英国_221
+  - 🏳️_未知_245
+  - 🇺🇸_美国_340
+  - 🇭🇰_香港_247
+  - 🇬🇧_英国_231
+  - 🇺🇸_美国_36
+  - 🇺🇸_美国_250
+  - 🇺🇸_美国_346
+  - 🇺🇸_美国_367
+  - 🏳️_未知_130
+  - 🇷🇺_俄罗斯_93
+  - 🇺🇸_美国_311
+  - 🇺🇸_美国_152
+  - 🇺🇸_美国_287
+  - 🏳️_未知_244
+  - 🇺🇸_美国_274
+  - 🇺🇸_美国_365
+  - 🇺🇸_美国_352
+  - 🏳️_未知_120
+  - 🇺🇸_美国_353
+  - 🇯🇵_日本_10
+  - 🇬🇧_英国_185
+  - 🇺🇸_美国_264
+  - 🇯🇵_日本_31
+  - 🇺🇸_美国_154
+  - 🇺🇸_美国_317
+  - 🇺🇸_美国_177
+  - 🇺🇸_美国_349
+  - 🇬🇧_英国_188
+  - 🇺🇸_美国_325
+  - 🇺🇸_美国_305
+  - 🇺🇸_美国_288
+  - 🇺🇸_美国_279
+  - 🇺🇸_美国_344
+  - 🇺🇸_美国_261
+  - 🇺🇸_美国_324
+  - 🏳️_未知_127
+  - 🇬🇧_英国_212
+  - 🇬🇧_英国_214
+  - 🇺🇸_美国_297
+  - 🇬🇧_英国_198
+  - 🇺🇸_美国_326
+  - 🇺🇸_美国_178
+  - 🇬🇧_英国_205
+  - 🇺🇸_美国_278
+  - 🇬🇧_英国_190
+  - 🇦🇺_澳大利亚_35
+  - 🇬🇧_英国_186
+  - 🇩🇪_德国_41
+  - 🇷🇺_俄罗斯_18
+  - 🇺🇸_美国_309
+  - 🇺🇸_美国_259
+  - 🇺🇸_美国_327
+  - 🏳️_未知_169
+  - 🇬🇧_英国_213
+  - 🇺🇸_美国_322
+  - 🇺🇸_美国_343
+  - 🏳️_未知_140
+  - 🏳️_未知_149
+  - 🇺🇸_美国_360
+  - 🏳️_未知_108
+  - 🇺🇸_美国_301
+  - 🇬🇧_英国_202
+  - 🇺🇸_美国_268
+  - 🇺🇸_美国_253
+  - 🇬🇧_英国_184
+  - 🇺🇸_美国_263
+  - 🇺🇸_美国_275
+  - xx|e2b9|puddincat07@Telegram
+  - 🇺🇸_美国_276
+  - 🇺🇸_美国_313
+  - 🏳️_未知_246
+  - 🇺🇸_美国_290
+  - 🇺🇸_美国_316
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - 🇦🇺_澳大利亚_35
-  - 🇺🇸_美国_326
-  - 🇺🇸_美国_367
-  - 🇺🇸_美国_284
-  - 🇷🇺_俄罗斯_18
-  - 🇺🇸_美国_95
-  - 🏳️_未知_145
-  - 🇺🇸_美国_266
-  - 🏳️_未知_127
-  - 🇺🇸_美国_343
-  - gb|2c7f|puddincat07@Telegram
-  - 🇭🇰_香港_100
-  - 🇺🇸_美国_282
-  - 🏳️_未知_239
-  - 🏳️_未知_135
+  - 🇨🇳_中国_83
+  - 🇯🇵_日本_137
   - 🇸🇬_新加坡_7
-  - 🇺🇸_美国_302
-  - 🏳️_未知_134
-  - 🇺🇸_美国_267
-  - 🇯🇵_日本_8
-  - 🏳️_未知_113
-  - 🇩🇪_德国_97
-  - 🇺🇸_美国_335
-  - 🇬🇧_英国_227
-  - 🇺🇸_美国_175
-  - 🇬🇧_英国_217
-  - 🇺🇸_美国_160
-  - 🇺🇸_美国_253
-  - 🇺🇸_美国_332
-  - 🇺🇸_美国_159
-  - 🇬🇧_英国_198
-  - 🇹🇷_土耳其_166
-  - 🇭🇰_香港_94
-  - 🇺🇸_美国_307
-  - 🏳️_未知_123
-  - 🇬🇧_英国_189
-  - xx|8151|puddincat07@Telegram
-  - 🇬🇧_英国_197
-  - 🇺🇸_美国_232
-  - 🇺🇸_美国_358
-  - 🇺🇸_美国_354
-  - 🇺🇸_美国_285
-  - 🇺🇸_美国_269
-  - tr|6405|puddincat07@Telegram
-  - 🇬🇧_英国_226
-  - 🇬🇧_英国_200
-  - 🇺🇸_美国_315
-  - 🏳️_未知_112
-  - 🇺🇸_美国_288
-  - 🇺🇸_美国_272
-  - 🇺🇸_美国_273
-  - 🏳️_未知_142
-  - 🇺🇸_美国_265
-  - 🏳️_未知_115
-  - 🇺🇸_美国_312
-  - 🏳️_未知_238
-  - 🇺🇸_美国_330
-  - 🇺🇸_美国_263
-  - 🇺🇸_美国_355
-  - 🇯🇵_日本_9
-  - 🏳️_未知_248
-  - 🇬🇧_英国_214
-  - 🇬🇧_英国_195
-  - 🏳️_未知_146
-  - 🏳️_未知_246
-  - 🇺🇸_美国_322
-  - 🇨🇳_中国_88
-  - 🇬🇧_英国_222
-  - 🏳️_未知_104
-  - 🏳️_未知_233
-  - 🇺🇸_美国_256
-  - 🇺🇸_美国_320
-  - 🇬🇧_英国_204
-  - 🇺🇸_美国_33
-  - 🇬🇧_英国_171
-  - 🇸🇨_塞舌尔_118
-  - 🇺🇸_美国_314
-  - 🇺🇸_美国_347
-  - 🇬🇧_英国_202
-  - 🏳️_未知_133
-  - 🇬🇧_英国_190
-  - 🇺🇸_美国_250
-  - 🇺🇸_美国_296
-  - 🇺🇸_美国_291
-  - 🇺🇸_美国_350
-  - 🏳️_未知_120
-  - 🇬🇧_英国_208
-  - 🏳️_未知_155
-  - 🇺🇸_美国_324
-  - 🏳️_未知_169
-  - xx|f463|puddincat07@Telegram
-  - 🇬🇧_英国_164
-  - 🇯🇵_日本_12
-  - 🏳️_未知_180
-  - 🏳️_未知_149
-  - 🇱🇻_拉脱维亚_37
-  - 🇺🇸_美国_351
-  - 🇬🇧_英国_211
-  - 🇬🇧_英国_210
-  - 🇺🇸_美国_309
-  - 🇺🇸_美国_311
-  - 🇷🇺_俄罗斯_93
-  - 🇺🇸_美国_274
-  - 🇺🇸_美国_305
-  - 🇺🇸_美国_361
-  - 🇬🇧_英国_186
-  - 🇯🇵_日本_98
-  - 🇺🇸_美国_292
-  - 🇬🇧_英国_216
-  - 🇬🇧_英国_228
-  - 🇺🇸_美国_334
-  - 🇬🇧_英国_209
-  - 🇺🇸_美国_317
-  - 🇵🇱_波兰_17
-  - 🇺🇸_美国_319
-  - 🇮🇹_意大利_21
-  - 🏳️_未知_106
-  - 🏳️_未知_108
-  - 🇬🇧_英国_207
-  - 🏳️_未知_170
-  - us|28e3|puddincat07@Telegram
-  - 🇺🇸_美国_299
-  - 🏳️_未知_147
-  - 🏳️_未知_241
-  - xx|6907|puddincat07@Telegram
-  - 🇬🇧_英国_199
-  - 🇬🇧_英国_182
-  - 🇺🇸_美国_331
-  - 🇺🇸_美国_286
-  - 🇬🇧_英国_219
-  - gb|9e5d|puddincat07@Telegram
-  - 🇺🇸_美国_148
-  - 🇺🇸_美国_298
-  - 🇬🇧_英国_215
-  - 🇬🇧_英国_158
-  - 🇺🇸_美国_346
-  - 🇺🇸_美国_262
-  - 🇺🇸_美国_258
+  - 🏳️_未知_145
   - 🇦🇹_奥地利_131
+  - 🇺🇸_美国_355
+  - 🇺🇸_美国_289
+  - 🇬🇧_英国_230
+  - 🇬🇧_英国_171
+  - 🏳️_未知_135
+  - 🏳️_未知_239
+  - 🇩🇪_德国_97
+  - xx|f463|puddincat07@Telegram
+  - 🏳️_未知_243
+  - 🇬🇧_英国_195
+  - 🇭🇰_香港_100
   - 🇺🇸_美国_293
-  - 🇫🇷_法国_103
-  - 🇺🇸_美国_281
+  - 🇺🇸_美国_280
+  - 🇺🇸_美国_260
   - 🇺🇸_美国_300
-  - 🇬🇧_英国_203
-  - 🏳️_未知_168
-  - 🇨🇳_中国_89
-  - 🇺🇸_美国_360
-  - 🇺🇸_美国_177
-  - 每天更新，请加电报群防止失联
-  - 🇬🇧_英国_229
-  - 🇺🇸_美国_366
-  - 🇳🇱_荷兰_5
-  - 🇬🇧_英国_223
+  - 🇺🇸_美国_347
+  - 🇺🇸_美国_336
+  - 🇬🇧_英国_215
+  - 🇺🇸_美国_283
   - 🇬🇧_英国_193
-  - 🇺🇸_美国_357
-  - 🇺🇸_美国_297
-  - 🇺🇸_美国_318
-  - 🇺🇸_美国_294
-  - 🏳️_未知_235
-  - 🇬🇧_英国_191
-  - 🇺🇸_美国_275
-  - 🇬🇧_英国_231
-  - 🇺🇸_美国_271
-  - 🇺🇸_美国_163
-  - 🇺🇸_美国_270
-  - us|1cb5|puddincat07@Telegram
-  - 🇬🇧_英国_213
-  - 🇨🇳_中国_92
-  - 🏳️_未知_236
-  - 🏳️_未知_140
-  - 🇺🇸_美国_249
-  - 🏳️_未知_162
-  - 🏳️_未知_109
-  - 🇺🇸_美国_310
-  - 🇺🇸_美国_301
-  - 🇺🇸_美国_277
-  - 🏳️_未知_122
-  - 🇬🇧_英国_220
+  - 🏳️_未知_241
   - 🇬🇧_英国_201
-  - 🇺🇸_美国_96
+  - 🇻🇳_越南_23
+  - 🇬🇧_英国_229
+  - 🇺🇸_美国_328
+  - 🇺🇸_美国_315
+  - 🏳️_未知_161
+  - 🇺🇸_美国_282
+  - 🇺🇸_美国_295
+  - 🇺🇸_美国_308
+  - 🇬🇧_英国_217
+  - 🇮🇹_意大利_21
+  - 🇺🇸_美国_345
+  - 🇺🇸_美国_321
+  - 🇺🇸_美国_292
+  - 🇺🇸_美国_256
+  - 🇯🇵_日本_12
+  - 🇺🇸_美国_175
+  - 🇺🇸_美国_361
+  - 🇺🇸_美国_337
+  - 🇺🇸_美国_338
+  - 🏳️_未知_121
+  - 🇺🇸_美国_306
+  - 🇺🇸_美国_299
+  - 🇺🇸_美国_270
+  - 🏳️_未知_144
+  - 🇺🇸_美国_364
+  - 🇬🇧_英国_197
+  - 🇺🇸_美国_262
+  - xx|2c29|puddincat07@Telegram
+  - 🇱🇻_拉脱维亚_39
+  - 🇺🇸_美国_296
+  - 每天更新，请加电报群防止失联
+  - 🏳️_未知_104
+  - 🇬🇧_英国_191
+  - 🇺🇸_美国_284
+  - 🇬🇧_英国_225
+  - 🇺🇸_美国_351
+  - 🇮🇹_意大利_22
+  - 🇺🇸_美国_319
+  - 🇬🇧_英国_181
+  - 🇺🇸_美国_286
+  - 🇺🇸_美国_323
+  - 🇹🇷_土耳其_166
+  - 🏳️_未知_236
+  - 🇬🇧_英国_219
+  - 🇺🇸_美国_249
+  - 🇬🇧_英国_218
+  - 🇸🇨_塞舌尔_118
+  - 🇬🇧_英国_207
+  - 🏳️_未知_112
+  - 🇺🇸_美国_265
+  - 🇬🇧_英国_194
+  - 免费VPN：https://tt.vg/FJOE2Mm
+  - 🇹🇼_台湾_138
+  - us|28e3|puddincat07@Telegram
+  - 🏳️_未知_125
+  - 🇭🇰_香港_139
+  - 🇺🇸_美国_281
+  - 🇺🇸_美国_332
+  - za|d18d|puddincat07@Telegram
+  - 🇬🇧_英国_209
+  - 🏳️_未知_126
+  - 🇬🇧_英国_211
+  - 日期：07-16
+  - 🇺🇸_美国_354
+  - us|5c3a|puddincat07@Telegram
+  - 🇺🇸_美国_302
+  - 🇺🇸_美国_342
+  - 🇵🇱_波兰_17
+  - 🇬🇧_英国_221
+  - 🏳️_未知_245
+  - 🇺🇸_美国_340
+  - 🇭🇰_香港_247
+  - 🇬🇧_英国_231
+  - 🇺🇸_美国_36
+  - 🇺🇸_美国_250
+  - 🇺🇸_美国_346
+  - 🇺🇸_美国_367
+  - 🏳️_未知_130
+  - 🇷🇺_俄罗斯_93
+  - 🇺🇸_美国_311
+  - 🇺🇸_美国_152
+  - 🇺🇸_美国_287
+  - 🏳️_未知_244
+  - 🇺🇸_美国_274
+  - 🇺🇸_美国_365
+  - 🇺🇸_美国_352
+  - 🏳️_未知_120
+  - 🇺🇸_美国_353
+  - 🇯🇵_日本_10
+  - 🇬🇧_英国_185
+  - 🇺🇸_美国_264
+  - 🇯🇵_日本_31
+  - 🇺🇸_美国_154
+  - 🇺🇸_美国_317
+  - 🇺🇸_美国_177
+  - 🇺🇸_美国_349
+  - 🇬🇧_英国_188
+  - 🇺🇸_美国_325
+  - 🇺🇸_美国_305
+  - 🇺🇸_美国_288
+  - 🇺🇸_美国_279
+  - 🇺🇸_美国_344
+  - 🇺🇸_美国_261
+  - 🇺🇸_美国_324
+  - 🏳️_未知_127
+  - 🇬🇧_英国_212
+  - 🇬🇧_英国_214
+  - 🇺🇸_美国_297
+  - 🇬🇧_英国_198
+  - 🇺🇸_美国_326
+  - 🇺🇸_美国_178
+  - 🇬🇧_英国_205
+  - 🇺🇸_美国_278
+  - 🇬🇧_英国_190
+  - 🇦🇺_澳大利亚_35
+  - 🇬🇧_英国_186
+  - 🇩🇪_德国_41
+  - 🇷🇺_俄罗斯_18
+  - 🇺🇸_美国_309
+  - 🇺🇸_美国_259
+  - 🇺🇸_美国_327
+  - 🏳️_未知_169
+  - 🇬🇧_英国_213
+  - 🇺🇸_美国_322
+  - 🇺🇸_美国_343
+  - 🏳️_未知_140
+  - 🏳️_未知_149
+  - 🇺🇸_美国_360
+  - 🏳️_未知_108
+  - 🇺🇸_美国_301
+  - 🇬🇧_英国_202
+  - 🇺🇸_美国_268
+  - 🇺🇸_美国_253
+  - 🇬🇧_英国_184
+  - 🇺🇸_美国_263
+  - 🇺🇸_美国_275
+  - xx|e2b9|puddincat07@Telegram
+  - 🇺🇸_美国_276
+  - 🇺🇸_美国_313
+  - 🏳️_未知_246
+  - 🇺🇸_美国_290
+  - 🇺🇸_美国_316
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
