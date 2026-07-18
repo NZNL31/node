@@ -3,54 +3,54 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-cfb
-  latency: 60.94
-  name: de|80b0|puddincat07@Telegram
-  password: amazonskr05
-  port: '443'
-  score: 6.2192320315064
-  server: 3.122.115.111
-  sim_score: 4.189941631261637
-  speed: 37.9
-  type: ss
-  udp: true
-- latency: 61.23
-  name: us|aa7c|puddincat07@Telegram
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+- cipher: aes-128-gcm
+  latency: 54.02
+  name: us|4a58|puddincat07@Telegram
+  password: a-wym4ovY4Yw
+  plugin: v2ray-plugin
+  plugin-opts:
+    host: h5.dspp.store
+    mode: websocket
+    mux: false
+    path: ''
+    skip-cert-verify: true
+    tls: false
   port: 443
-  score: 3.6763024661113834
-  server: 104.17.147.1
-  sim_score: 2.5018500822527705
-  skip-cert-verify: true
-  sni: jobscareerforstudent.com
-  speed: 22.51
-  type: trojan
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 86.29
-  name: sk|1309|puddincat07@Telegram
-  password: Vr06rU_v1vFPYeXq9zbsAA
-  port: '1080'
-  score: 3.0443852126550004
-  server: 156.146.40.84
-  sim_score: 1.1636357005046793
-  speed: 26.27
+  score: 8.320992225101815
+  server: 172.67.198.153
+  sim_score: 1.0232681469667346
+  speed: 44.95
   type: ss
   udp: true
+- client-fingerprint: chrome
+  latency: 39.22
+  name: us|841c|puddincat07@Telegram
+  network: ws
+  password: humanity
+  port: 443
+  score: 4.30137684854666
+  server: 165.215.250.14
+  sim_score: 3.216804647065233
+  skip-cert-verify: false
+  sni: www.calmlunch.com
+  speed: 16.87
+  type: trojan
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: /assignment
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - de|80b0|puddincat07@Telegram
-  - us|aa7c|puddincat07@Telegram
-  - sk|1309|puddincat07@Telegram
+  - us|4a58|puddincat07@Telegram
+  - us|841c|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - de|80b0|puddincat07@Telegram
-  - us|aa7c|puddincat07@Telegram
-  - sk|1309|puddincat07@Telegram
+  - us|4a58|puddincat07@Telegram
+  - us|841c|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
