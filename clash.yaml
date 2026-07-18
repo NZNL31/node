@@ -3,132 +3,129 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 2
-  cipher: auto
-  latency: 51.77
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 8.924087309252464
-  server: v10.hdacd.com
-  sim_score: 0.8694735415729657
+- latency: 45.46
+  name: xx|ec7a|puddincat07@Telegram
+  network: tcp
+  password: JA96378052
+  port: '443'
+  score: 9.953805543334799
+  server: certain-kit.rooster465.autos
+  sim_score: 5.761813964075248
   skip-cert-verify: false
-  speed: 46.2
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+  sni: certain-kit.rooster465.autos
+  speed: 45.25
+  type: trojan
+  udp: true
 - alterId: 0
   cipher: chacha20-ietf-poly1305
-  latency: 57.48
+  latency: 46.13
   name: xx|e2b9|puddincat07@Telegram
   password: hbGrpfvNrJsUmKmPbR3iY2
   port: 443
-  score: 8.655184411969381
+  score: 6.676783004552352
   server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 0.9754605338590105
+  sim_score: 1.5480444955417445
   skip-cert-verify: true
-  speed: 49.75
+  speed: 30.8
   tls: true
-  type: ss
-- alterId: 0
-  latency: 50.36
-  name: de|acb5|puddincat07@Telegram
-  network: tcp
-  password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
-  port: 443
-  score: 8.224781572676727
-  server: 185.137.157.151
-  sim_score: 1.3421118944255723
-  skip-cert-verify: true
-  sni: 185.137.157.151
-  speed: 41.42
-  tls: true
-  type: trojan
-  udp: true
-- latency: 60.89
-  name: xx|921d|puddincat07@Telegram
-  network: tcp
-  password: HW85960347
-  port: 443
-  score: 7.64000656922319
-  server: lucky-primate.rooster465.autos
-  sim_score: 4.633288983655782
-  skip-cert-verify: false
-  sni: lucky-primate.rooster465.autos
-  speed: 46.52
-  type: trojan
-  udp: true
-- latency: 63.02
-  name: xx|f787|puddincat07@Telegram
-  network: tcp
-  password: HW85960347
-  port: 443
-  score: 6.510631545541098
-  server: exciting-turtle.rooster465.autos
-  sim_score: 1.961787616800212
-  skip-cert-verify: false
-  sni: exciting-turtle.rooster465.autos
-  speed: 41.03
-  type: trojan
-  udp: true
-- latency: 57.34
-  name: xx|7876|puddincat07@Telegram
-  network: tcp
-  password: HW85960347
-  port: 443
-  score: 5.575514475061039
-  server: major-cobra.rooster465.autos
-  sim_score: 0.7128111868652027
-  skip-cert-verify: false
-  sni: major-cobra.rooster465.autos
-  speed: 31.97
-  type: trojan
-  udp: true
-- cipher: rc4-md5
-  latency: 51.31
-  name: ca|4230|puddincat07@Telegram
-  password: 14fFPrbezE3HDZzsMOr6
-  port: 8080
-  score: 2.911713116351588
-  server: 137.184.174.93
-  sim_score: 1.6428777347605164
-  speed: 14.94
   type: ss
 - cipher: chacha20-ietf-poly1305
-  latency: 57.28
+  latency: 46.78
   name: sk|1309|puddincat07@Telegram
   password: Vr06rU_v1vFPYeXq9zbsAA
   port: '1080'
-  score: 2.2905027932960893
+  score: 5.994014536126549
   server: 156.146.40.84
-  sim_score: 1.1916575774258857
-  speed: 13.12
+  sim_score: 1.950064938477174
+  speed: 28.04
+  type: ss
+  udp: true
+- latency: 39.91
+  name: xx|67ef|puddincat07@Telegram
+  network: tcp
+  password: HW85960347
+  port: '443'
+  score: 5.474818341267853
+  server: sharing-fawn.rooster465.autos
+  sim_score: 1.0158333789382643
+  skip-cert-verify: false
+  sni: sharing-fawn.rooster465.autos
+  speed: 21.85
+  type: trojan
+  udp: true
+- latency: 41.14
+  name: xx|8902|puddincat07@Telegram
+  network: tcp
+  password: JA96378052
+  port: '443'
+  score: 4.171122994652406
+  server: normal-cow.rooster465.autos
+  sim_score: 4.6620121692689995
+  skip-cert-verify: false
+  sni: normal-cow.rooster465.autos
+  speed: 17.16
+  type: trojan
+  udp: true
+- cipher: aes-256-cfb
+  latency: 40.25
+  name: de|3ceb|puddincat07@Telegram
+  password: amazonskr05
+  port: '443'
+  score: 3.272049689440994
+  server: 3.75.172.120
+  sim_score: 1.2577781312127438
+  speed: 13.17
+  type: ss
+  udp: true
+- latency: 47.81
+  name: au|23e3|puddincat07@Telegram
+  network: tcp
+  password: XG59623478
+  port: 443
+  score: 2.4973854842083245
+  server: 82.117.225.216
+  sim_score: 2.2466634333907427
+  skip-cert-verify: false
+  sni: concise-buck.rooster465.autos
+  speed: 11.94
+  type: trojan
+  udp: true
+- cipher: aes-256-cfb
+  latency: 50.99
+  name: de|0f5c|puddincat07@Telegram
+  password: amazonskr05
+  port: '443'
+  score: 2.008236909197882
+  server: 3.77.54.36
+  sim_score: 1.1108639321227016
+  speed: 10.24
   type: ss
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|8151|puddincat07@Telegram
+  - xx|ec7a|puddincat07@Telegram
   - xx|e2b9|puddincat07@Telegram
-  - de|acb5|puddincat07@Telegram
-  - xx|921d|puddincat07@Telegram
-  - xx|f787|puddincat07@Telegram
-  - xx|7876|puddincat07@Telegram
-  - ca|4230|puddincat07@Telegram
   - sk|1309|puddincat07@Telegram
+  - xx|67ef|puddincat07@Telegram
+  - xx|8902|puddincat07@Telegram
+  - de|3ceb|puddincat07@Telegram
+  - au|23e3|puddincat07@Telegram
+  - de|0f5c|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|8151|puddincat07@Telegram
+  - xx|ec7a|puddincat07@Telegram
   - xx|e2b9|puddincat07@Telegram
-  - de|acb5|puddincat07@Telegram
-  - xx|921d|puddincat07@Telegram
-  - xx|f787|puddincat07@Telegram
-  - xx|7876|puddincat07@Telegram
-  - ca|4230|puddincat07@Telegram
   - sk|1309|puddincat07@Telegram
+  - xx|67ef|puddincat07@Telegram
+  - xx|8902|puddincat07@Telegram
+  - de|3ceb|puddincat07@Telegram
+  - au|23e3|puddincat07@Telegram
+  - de|0f5c|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
