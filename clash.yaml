@@ -4,74 +4,108 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 54.42
-  name: sk|1309|puddincat07@Telegram
-  password: Vr06rU_v1vFPYeXq9zbsAA
-  port: '1080'
-  score: 9.062844542447628
-  server: 156.146.40.84
-  sim_score: 2.5193597839505384
-  speed: 49.32
+  latency: 25.5
+  name: gb|6872|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: 8080
+  score: 19.019607843137255
+  server: 82.38.31.187
+  sim_score: 1.9130645347835131
+  speed: 48.5
   type: ss
+- cipher: rc4-md5
+  latency: 26.13
+  name: ca|4230|puddincat07@Telegram
+  password: 14fFPrbezE3HDZzsMOr6
+  port: 8080
+  score: 13.65480290853425
+  server: 137.184.174.93
+  sim_score: 1.5866026416407306
+  speed: 35.68
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 34.5
+  name: xx|22d2|puddincat07@Telegram
+  password: mps3FwmDjLrWaOVg
+  port: 443
+  score: 13.434782608695652
+  server: series-a2.varzesh360.co
+  sim_score: 4.980013559666461
+  speed: 46.35
+  type: ss
+- latency: 34.12
+  name: xx|a72d|puddincat07@Telegram
+  password: JA96378052
+  port: 443
+  score: 12.192262602579135
+  server: precious-stag.rooster465.autos
+  sim_score: 1.8226669748541653
+  skip-cert-verify: true
+  sni: precious-stag.rooster465.autos
+  speed: 41.6
+  type: trojan
   udp: true
-- client-fingerprint: chrome
-  latency: 69.56
-  name: xx|66d8|puddincat07@Telegram
+- latency: 37.51
+  name: xx|46ca|puddincat07@Telegram
   network: tcp
-  password: KV63147582
-  port: 443
-  score: 3.759344450833812
-  server: selected-bison.rooster465.autos
-  sim_score: 1.1592121991720257
+  password: HW85960347
+  port: '443'
+  score: 11.14636097040789
+  server: master-possum.rooster465.autos
+  sim_score: 0.5705294651157443
   skip-cert-verify: false
-  sni: selected-bison.rooster465.autos
-  speed: 26.15
+  sni: master-possum.rooster465.autos
+  speed: 41.81
   type: trojan
   udp: true
-- alterId: 0
-  cipher: chacha20-ietf-poly1305
-  latency: 78.0
-  name: xx|e2b9|puddincat07@Telegram
-  password: hbGrpfvNrJsUmKmPbR3iY2
+- latency: 34.94
+  name: xx|003a|puddincat07@Telegram
+  network: tcp
+  password: HW85960347
   port: 443
-  score: 1.8666666666666667
-  server: tinkered-pennies-puppies.freesocks.work
-  sim_score: 0.5984921348523132
-  skip-cert-verify: true
-  speed: 14.56
-  tls: true
-  type: ss
-- alterId: 0
-  latency: 100.96
-  name: us|97f6|puddincat07@Telegram
-  password: Mitivpn
-  port: 443
-  score: 1.3748019017432647
-  server: 167.82.101.251
-  sim_score: 1.0916764403541364
-  skip-cert-verify: true
-  sni: ssl.fastly.com
-  speed: 13.88
-  tls: true
+  score: 10.718374356038925
+  server: quality-sheepdog.rooster465.autos
+  sim_score: 3.5239293713427005
+  skip-cert-verify: false
+  sni: quality-sheepdog.rooster465.autos
+  speed: 37.45
   type: trojan
   udp: true
+- cipher: rc4-md5
+  latency: 35.33
+  name: us|c950|puddincat07@Telegram
+  obfs: plain
+  password: 14fFPrbezE3HDZzsMOr6
+  port: 8080
+  protocol: origin
+  score: 3.209736767619587
+  server: 107.151.182.253
+  sim_score: 2.197843591644513
+  speed: 11.34
+  type: ssr
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - sk|1309|puddincat07@Telegram
-  - xx|66d8|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
-  - us|97f6|puddincat07@Telegram
+  - gb|6872|puddincat07@Telegram
+  - ca|4230|puddincat07@Telegram
+  - xx|22d2|puddincat07@Telegram
+  - xx|a72d|puddincat07@Telegram
+  - xx|46ca|puddincat07@Telegram
+  - xx|003a|puddincat07@Telegram
+  - us|c950|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - sk|1309|puddincat07@Telegram
-  - xx|66d8|puddincat07@Telegram
-  - xx|e2b9|puddincat07@Telegram
-  - us|97f6|puddincat07@Telegram
+  - gb|6872|puddincat07@Telegram
+  - ca|4230|puddincat07@Telegram
+  - xx|22d2|puddincat07@Telegram
+  - xx|a72d|puddincat07@Telegram
+  - xx|46ca|puddincat07@Telegram
+  - xx|003a|puddincat07@Telegram
+  - us|c950|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
