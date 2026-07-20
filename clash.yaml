@@ -4,74 +4,103 @@ mode: Rule
 port: 7890
 proxies:
 - cipher: chacha20-ietf-poly1305
-  latency: 31.84
-  name: gb|8507|puddincat07@Telegram
+  latency: 62.51
+  name: gb|0db8|puddincat07@Telegram
   password: oZIoA69Q8yhcQV8ka3Pa3A
   port: 8080
-  score: 9.538316582914574
-  server: 82.38.31.35
-  sim_score: 1.3350184598362158
-  speed: 30.37
+  score: 7.557190849464086
+  server: 82.38.31.174
+  sim_score: 2.721648566643381
+  speed: 47.24
   type: ss
-- latency: 39.01
-  name: xx|3653|puddincat07@Telegram
-  network: ws
-  password: Mitivpn
+- latency: 70.62
+  name: xx|35c8|puddincat07@Telegram
+  password: PD07395842
   port: 443
-  score: 8.010766470135863
-  server: iranpoems.ir
-  sim_score: 1.3330200528540392
+  score: 6.777116964032851
+  server: pro-crane.rooster465.autos
+  sim_score: 2.5774392942458957
   skip-cert-verify: false
-  sni: www.gamingdll.ir
-  speed: 31.25
+  speed: 47.86
   type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: www.gamingdll.ir
-    path: /usa=mitivpn
-- client-fingerprint: chrome
-  latency: 53.87
-  name: xx|66d8|puddincat07@Telegram
-  network: tcp
-  password: KV63147582
+- latency: 53.8
+  name: xx|f129|puddincat07@Telegram
+  password: NQ26071394
   port: 443
-  score: 6.833116762576575
-  server: selected-bison.rooster465.autos
-  sim_score: 1.011050901517136
+  score: 6.401486988847584
+  server: chief-cricket.rooster465.autos
+  sim_score: 2.6416712010881422
   skip-cert-verify: false
-  sni: selected-bison.rooster465.autos
-  speed: 36.81
+  speed: 34.44
   type: trojan
-  udp: true
-- latency: 32.72
-  name: xx|b3d3|puddincat07@Telegram
+- latency: 56.72
+  name: xx|355a|puddincat07@Telegram
+  password: ON38567014
+  port: 443
+  score: 5.636459802538787
+  server: harmless-akita.rooster465.autos
+  sim_score: 0.8214568814760286
+  skip-cert-verify: false
+  sni: harmless-akita.rooster465.autos
+  speed: 31.97
+  type: trojan
+- cipher: aes-256-cfb
+  latency: 66.46
+  name: de|1e4c|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 2.7008727053866988
+  server: 63.183.207.82
+  sim_score: 1.8719414215711159
+  speed: 17.95
+  type: ss
+- cipher: aes-256-cfb
+  latency: 66.16
+  name: de|a868|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 2.283857315598549
+  server: 63.177.252.44
+  sim_score: 2.523588237032877
+  speed: 15.11
+  type: ss
+- alterId: 0
+  latency: 55.85
+  name: xx|61a3|puddincat07@Telegram
   password: XG59623478
   port: 443
-  score: 6.6656479217603914
-  server: possible-pup.rooster465.autos
-  sim_score: 1.070621400579259
+  score: 1.8800358102059087
+  server: concise-buck.rooster465.autos
+  sim_score: 1.788487775945688
   skip-cert-verify: true
-  sni: possible-pup.rooster465.autos
-  speed: 21.81
+  sni: concise-buck.rooster465.autos
+  speed: 10.5
+  tls: true
   type: trojan
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|8507|puddincat07@Telegram
-  - xx|3653|puddincat07@Telegram
-  - xx|66d8|puddincat07@Telegram
-  - xx|b3d3|puddincat07@Telegram
+  - gb|0db8|puddincat07@Telegram
+  - xx|35c8|puddincat07@Telegram
+  - xx|f129|puddincat07@Telegram
+  - xx|355a|puddincat07@Telegram
+  - de|1e4c|puddincat07@Telegram
+  - de|a868|puddincat07@Telegram
+  - xx|61a3|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|8507|puddincat07@Telegram
-  - xx|3653|puddincat07@Telegram
-  - xx|66d8|puddincat07@Telegram
-  - xx|b3d3|puddincat07@Telegram
+  - gb|0db8|puddincat07@Telegram
+  - xx|35c8|puddincat07@Telegram
+  - xx|f129|puddincat07@Telegram
+  - xx|355a|puddincat07@Telegram
+  - de|1e4c|puddincat07@Telegram
+  - de|a868|puddincat07@Telegram
+  - xx|61a3|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
