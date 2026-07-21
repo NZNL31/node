@@ -3,45 +3,57 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-cfb
-  latency: 31.02
-  name: de|20f7|puddincat07@Telegram
-  password: amazonskr05
-  port: '443'
-  score: 4.316569954867828
-  server: 63.176.169.206
-  sim_score: 1.158328435447264
-  speed: 13.39
+- cipher: chacha20-ietf-poly1305
+  latency: 83.89
+  name: gb|9e5d|puddincat07@Telegram
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  port: 8080
+  score: 5.742043151746334
+  server: 82.38.31.189
+  sim_score: 1.1364272152548318
+  speed: 48.17
   type: ss
+- alterId: 0
+  latency: 68.15
+  name: xx|049d|puddincat07@Telegram
+  password: IQ68037294
+  port: 443
+  score: 5.584739545121057
+  server: full-mackerel.rooster465.autos
+  sim_score: 1.2511558448317763
+  skip-cert-verify: true
+  speed: 38.06
+  tls: true
+  type: trojan
   udp: true
-- cipher: rc4-md5
-  latency: 40.18
-  name: xx|f013|puddincat07@Telegram
-  password: efanccyun
-  plugin: obfs
-  plugin-opts:
-    host: 202503181464410-9tCwc1fdZ3.download.microsoft.com
-    mode: http
-  port: 8765
-  score: 3.633648581383773
-  server: cn01.efan8867801.xyz
-  sim_score: 0.7577074103066608
-  speed: 14.6
-  tfo: false
-  type: ss
+- latency: 58.54
+  name: hk|01ee|puddincat07@Telegram
+  network: tcp
+  password: HW85960347
+  port: '443'
+  score: 4.069012640929279
+  server: 185.14.47.195
+  sim_score: 1.9886161870982553
+  skip-cert-verify: false
+  sni: eminent-lamb.rooster465.autos
+  speed: 23.82
+  type: trojan
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - de|20f7|puddincat07@Telegram
-  - xx|f013|puddincat07@Telegram
+  - gb|9e5d|puddincat07@Telegram
+  - xx|049d|puddincat07@Telegram
+  - hk|01ee|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - de|20f7|puddincat07@Telegram
-  - xx|f013|puddincat07@Telegram
+  - gb|9e5d|puddincat07@Telegram
+  - xx|049d|puddincat07@Telegram
+  - hk|01ee|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
