@@ -4,60 +4,63 @@ mode: Rule
 port: 7890
 proxies:
 - client-fingerprint: chrome
-  latency: 28.93
+  latency: 28.34
   name: us|7df2|puddincat07@Telegram
   network: tcp
   password: CF68213490
   port: 443
-  score: 11.980642931213271
+  score: 14.823570924488354
   server: 54.245.167.246
-  sim_score: 1.310746889708718
+  sim_score: 2.595123537355202
   skip-cert-verify: false
   sni: tolerant-rattler.rooster465.autos
-  speed: 34.66
+  speed: 42.01
   type: trojan
   udp: true
-- latency: 30.78
+- latency: 28.1
   name: xx|edf3|puddincat07@Telegram
   password: JA96378052
   port: 443
-  score: 11.786874593892138
+  score: 13.85409252669039
   server: primary-mallard.rooster465.autos
-  sim_score: 1.3622134989894228
+  sim_score: 1.047454495317047
   skip-cert-verify: false
-  speed: 36.28
+  speed: 38.93
   type: trojan
-- latency: 33.0
+- latency: 28.69
   name: xx|5f19|puddincat07@Telegram
   password: PD07395842
   port: 443
-  score: 11.124242424242425
+  score: 8.633670268386197
   server: tidy-gopher.rooster465.autos
-  sim_score: 2.516162411943614
+  sim_score: 0.8903111053488253
   skip-cert-verify: false
   sni: tidy-gopher.rooster465.autos
-  speed: 36.71
+  speed: 24.77
   type: trojan
-- latency: 32.96
-  name: xx|b86d|puddincat07@Telegram
-  password: KV63147582
+- alterId: 0
+  latency: 27.87
+  name: xx|2af3|puddincat07@Telegram
+  password: HW85960347
   port: 443
-  score: 8.798543689320388
-  server: wondrous-dogfish.rooster465.autos
-  sim_score: 0.9000860764792573
-  skip-cert-verify: false
-  sni: wondrous-dogfish.rooster465.autos
-  speed: 29.0
+  score: 4.424111948331539
+  server: dashing-possum.rooster465.autos
+  sim_score: 1.5399399113495462
+  skip-cert-verify: true
+  sni: dashing-possum.rooster465.autos
+  speed: 12.33
+  tls: true
   type: trojan
+  udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 33.04
+  latency: 38.15
   name: gb|84ee|puddincat07@Telegram
   password: oZIoA69Q8yhcQV8ka3Pa3A
   port: 443
-  score: 6.3892251815980625
+  score: 4.141546526867629
   server: 82.38.31.57
-  sim_score: 2.978540264150426
-  speed: 21.11
+  sim_score: 2.6014155121667026
+  speed: 15.8
   type: ss
 proxy-groups:
 - name: 🌐 节点选择
@@ -66,7 +69,7 @@ proxy-groups:
   - us|7df2|puddincat07@Telegram
   - xx|edf3|puddincat07@Telegram
   - xx|5f19|puddincat07@Telegram
-  - xx|b86d|puddincat07@Telegram
+  - xx|2af3|puddincat07@Telegram
   - gb|84ee|puddincat07@Telegram
   type: select
 - interval: 300
@@ -75,7 +78,7 @@ proxy-groups:
   - us|7df2|puddincat07@Telegram
   - xx|edf3|puddincat07@Telegram
   - xx|5f19|puddincat07@Telegram
-  - xx|b86d|puddincat07@Telegram
+  - xx|2af3|puddincat07@Telegram
   - gb|84ee|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
