@@ -3,69 +3,72 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 48.43
-  name: us|9fbd|puddincat07@Telegram
-  password: 4732adfa16c6450bbef87264e41332db
-  port: 443
-  score: 5.3995457361139785
-  server: 104.16.159.7
-  sim_score: 4.568559553497939
+- alterId: 0
+  cipher: chacha20-ietf-poly1305
+  latency: 47.26
+  name: in|3177|puddincat07@Telegram
+  password: WOir3lXBhMHDcLFPQdEZXPu37_pTQDCXfm
+  port: 28061
+  score: 6.713922979263648
+  server: 103.111.114.71
+  sim_score: 2.4254572620352115
   skip-cert-verify: true
-  sni: bangladeshipatri.com
-  speed: 26.15
+  speed: 31.73
+  tls: true
+  type: ss
+- latency: 50.39
+  name: xx|428b|puddincat07@Telegram
+  password: 58b489f2-58f3-41f2-bc5c-76bba7618468
+  port: 443
+  score: 2.0639015677713832
+  server: es-full.privateip.net
+  sim_score: 1.991908194756288
+  skip-cert-verify: true
+  speed: 10.4
   type: trojan
   udp: true
-- client-fingerprint: chrome
-  latency: 54.78
-  name: xx|0a8d|puddincat07@Telegram
-  network: tcp
+- alterId: 0
+  latency: 86.78
+  name: nl|75ba|puddincat07@Telegram
   password: KV63147582
   port: 443
-  score: 4.382986491420226
-  server: hardy-seahorse.rooster465.autos
-  sim_score: 1.7377021645958282
+  score: 1.7354229085042636
+  server: 89.39.70.233
+  sim_score: 1.2185123747046216
   skip-cert-verify: true
-  sni: hardy-seahorse.rooster465.autos
-  speed: 24.01
+  sni: game-firefly.rooster465.autos
+  speed: 15.06
+  tls: true
   type: trojan
   udp: true
-- cipher: aes-256-cfb
-  latency: 79.06
-  name: us|a621|puddincat07@Telegram
-  password: amazonskr05
+- latency: 76.68
+  name: xx|19a6|puddincat07@Telegram
+  password: NQ26071394
   port: 443
-  score: 3.9172780166961796
-  server: 54.167.54.100
-  sim_score: 1.0763127598619198
-  speed: 30.97
-  type: ss
-- cipher: aes-256-cfb
-  latency: 63.98
-  name: us|d41d|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 2.1522350734604565
-  server: 34.207.112.128
-  sim_score: 1.1680561534068448
-  speed: 13.77
-  type: ss
+  score: 1.6379760041731872
+  server: ready-kangaroo.rooster465.autos
+  sim_score: 4.853522679268723
+  skip-cert-verify: false
+  sni: ready-kangaroo.rooster465.autos
+  speed: 12.56
+  type: trojan
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|9fbd|puddincat07@Telegram
-  - xx|0a8d|puddincat07@Telegram
-  - us|a621|puddincat07@Telegram
-  - us|d41d|puddincat07@Telegram
+  - in|3177|puddincat07@Telegram
+  - xx|428b|puddincat07@Telegram
+  - nl|75ba|puddincat07@Telegram
+  - xx|19a6|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|9fbd|puddincat07@Telegram
-  - xx|0a8d|puddincat07@Telegram
-  - us|a621|puddincat07@Telegram
-  - us|d41d|puddincat07@Telegram
+  - in|3177|puddincat07@Telegram
+  - xx|428b|puddincat07@Telegram
+  - nl|75ba|puddincat07@Telegram
+  - xx|19a6|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
