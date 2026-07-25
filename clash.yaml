@@ -3,62 +3,101 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
+- latency: 39.22
+  name: us|db5e|puddincat07@Telegram
+  network: ws
+  password: humanity
+  port: 443
+  score: 12.113717491075981
+  server: 198.62.62.23
+  sim_score: 1.1953550623211584
+  skip-cert-verify: false
+  sni: www.calmlunch.com
+  speed: 47.51
+  type: trojan
+  ws-opts:
+    headers:
+      Host: www.calmlunch.com
+    path: /assignment
+- cipher: chacha20-ietf-poly1305
+  latency: 42.47
+  name: gb|3b4b|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 11.210266070167176
+  server: 82.38.31.34
+  sim_score: 3.3616362262682733
+  speed: 47.61
+  type: ss
 - alterId: 2
   cipher: auto
-  latency: 86.36
+  latency: 35.6
   name: xx|8151|puddincat07@Telegram
   port: 30807
-  score: 3.924270495599815
+  score: 10.668539325842696
   server: v10.hdacd.com
-  sim_score: 4.772457411348565
+  sim_score: 3.5363244799091484
   skip-cert-verify: false
-  speed: 33.89
+  speed: 37.98
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- cipher: aes-256-cfb
-  latency: 64.45
-  name: us|d41d|puddincat07@Telegram
-  password: amazonskr05
+- alterId: 0
+  latency: 37.06
+  name: xx|19a6|puddincat07@Telegram
+  network: tcp
+  password: NQ26071394
   port: 443
-  score: 3.124903025601241
-  server: 34.207.112.128
-  sim_score: 1.671644445204561
-  speed: 20.14
-  type: ss
-- latency: 92.81
-  name: xx|39d1|puddincat07@Telegram
-  network: ws
-  password: 87d1bfd4-574e-4c96-ad42-0426f27461ff
-  port: '443'
-  score: 2.9242538519556085
-  server: v2.dabache.top
-  sim_score: 2.5066777914402665
+  score: 9.732865623313545
+  server: ready-kangaroo.rooster465.autos
+  sim_score: 1.1167188034872226
   skip-cert-verify: true
-  sni: _acme-challenge.sb.cloudns.biz
-  speed: 27.14
+  sni: ready-kangaroo.rooster465.autos
+  speed: 36.07
+  tls: true
   type: trojan
   udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/56.0.2924.87 Safari/537.36
-    path: /
+- cipher: aes-256-cfb
+  latency: 38.66
+  name: us|0fc9|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 3.2436627004655976
+  server: 54.197.30.38
+  sim_score: 2.661043837832076
+  speed: 12.54
+  type: ss
+- cipher: aes-256-cfb
+  latency: 39.58
+  name: us|a621|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 2.1248105103587673
+  server: 54.167.54.100
+  sim_score: 4.564443065232015
+  speed: 8.41
+  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - us|db5e|puddincat07@Telegram
+  - gb|3b4b|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - us|d41d|puddincat07@Telegram
-  - xx|39d1|puddincat07@Telegram
+  - xx|19a6|puddincat07@Telegram
+  - us|0fc9|puddincat07@Telegram
+  - us|a621|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - us|db5e|puddincat07@Telegram
+  - gb|3b4b|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - us|d41d|puddincat07@Telegram
-  - xx|39d1|puddincat07@Telegram
+  - xx|19a6|puddincat07@Telegram
+  - us|0fc9|puddincat07@Telegram
+  - us|a621|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
