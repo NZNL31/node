@@ -3,52 +3,40 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 30.3
-  name: xx|4242|puddincat07@Telegram
-  password: JT80563429
-  port: 443
-  score: 13.92079207920792
-  server: healthy-louse.rooster465.autos
-  sim_score: 1.189854901813553
-  skip-cert-verify: true
-  speed: 42.18
-  type: trojan
 - alterId: 2
   cipher: auto
-  latency: 36.63
+  latency: 86.36
   name: xx|8151|puddincat07@Telegram
   port: 30807
-  score: 13.336063336063335
+  score: 3.924270495599815
   server: v10.hdacd.com
-  sim_score: 3.123725634099028
+  sim_score: 4.772457411348565
   skip-cert-verify: false
-  speed: 48.85
+  speed: 33.89
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
 - cipher: aes-256-cfb
-  latency: 38.07
-  name: us|a621|puddincat07@Telegram
+  latency: 64.45
+  name: us|d41d|puddincat07@Telegram
   password: amazonskr05
   port: 443
-  score: 10.675072235355923
-  server: 54.167.54.100
-  sim_score: 1.0496211284594557
-  skip-cert-verify: true
-  speed: 40.64
+  score: 3.124903025601241
+  server: 34.207.112.128
+  sim_score: 1.671644445204561
+  speed: 20.14
   type: ss
-  udp: true
-- latency: 27.03
+- latency: 92.81
   name: xx|39d1|puddincat07@Telegram
   network: ws
   password: 87d1bfd4-574e-4c96-ad42-0426f27461ff
   port: '443'
-  score: 10.514243433222346
+  score: 2.9242538519556085
   server: v2.dabache.top
-  sim_score: 0.5862050567496295
+  sim_score: 2.5066777914402665
   skip-cert-verify: true
   sni: _acme-challenge.sb.cloudns.biz
-  speed: 28.42
+  speed: 27.14
   type: trojan
   udp: true
   ws-opts:
@@ -56,86 +44,21 @@ proxies:
       User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like
         Gecko) Chrome/56.0.2924.87 Safari/537.36
     path: /
-- latency: 36.81
-  name: xx|e041|puddincat07@Telegram
-  password: NQ26071394
-  port: 443
-  score: 9.02200488997555
-  server: ready-lion.rooster465.autos
-  sim_score: 1.135192479077393
-  skip-cert-verify: false
-  speed: 33.21
-  type: trojan
-- latency: 37.09
-  name: xx|acd7|puddincat07@Telegram
-  password: 7e70223b-f331-41d5-9313-02b8d2df2885
-  port: '20023'
-  score: 8.584524130493394
-  server: kkvlvvq-a.catcat321.com
-  sim_score: 1.446924630927469
-  skip-cert-verify: false
-  sni: hk.catxstar.com
-  speed: 31.84
-  type: trojan
-  udp: true
-- alterId: 0
-  latency: 37.09
-  name: xx|2339|puddincat07@Telegram
-  network: tcp
-  password: IQ68037294
-  port: 443
-  score: 8.576435696953356
-  server: definite-giraffe.rooster465.autos
-  sim_score: 1.8186584468167268
-  skip-cert-verify: true
-  sni: definite-giraffe.rooster465.autos
-  speed: 31.81
-  tls: true
-  type: trojan
-  udp: true
-- latency: 37.4
-  name: xx|c4ab|puddincat07@Telegram
-  network: ws
-  password: 87d1bfd4-574e-4c96-ad42-0426f27461ff
-  port: '443'
-  score: 6.12566844919786
-  server: join.my.telegram.channel.cmliussss.to.unlock.more.premium.nodes.cf.090227.xyz
-  sim_score: 2.0050428661368063
-  skip-cert-verify: false
-  sni: _acme-challenge.sb.cloudns.biz
-  speed: 22.91
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko)
-        Chrome/57.0.2987.133 Safari/537.36
-    path: /
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|4242|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - us|a621|puddincat07@Telegram
+  - us|d41d|puddincat07@Telegram
   - xx|39d1|puddincat07@Telegram
-  - xx|e041|puddincat07@Telegram
-  - xx|acd7|puddincat07@Telegram
-  - xx|2339|puddincat07@Telegram
-  - xx|c4ab|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|4242|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - us|a621|puddincat07@Telegram
+  - us|d41d|puddincat07@Telegram
   - xx|39d1|puddincat07@Telegram
-  - xx|e041|puddincat07@Telegram
-  - xx|acd7|puddincat07@Telegram
-  - xx|2339|puddincat07@Telegram
-  - xx|c4ab|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
