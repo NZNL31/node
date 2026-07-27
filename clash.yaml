@@ -3,67 +3,71 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
+- alterId: 0
+  latency: 52.13
+  name: fr|b078|puddincat07@Telegram
+  network: tcp
+  password: NQ26071394
+  port: 443
+  score: 9.539612507193553
+  server: 35.181.65.111
+  sim_score: 2.442037196537465
+  skip-cert-verify: true
+  sni: ready-kangaroo.rooster465.autos
+  speed: 49.73
+  tls: true
+  type: trojan
+  udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 28.23
-  name: nl|447b|puddincat07@Telegram
+  latency: 49.29
+  name: nl|9e7b|puddincat07@Telegram
   password: CJmTCCx7Ltud
   port: 8388
-  score: 16.85795253276656
-  server: 108.181.58.239
-  sim_score: 1.0983932819115254
-  speed: 47.59
+  score: 7.908297829174274
+  server: 108.181.126.122
+  sim_score: 1.7344184305388075
+  speed: 38.98
   type: ss
-- latency: 30.17
-  name: xx|8697|puddincat07@Telegram
-  password: JT80563429
+- latency: 53.09
+  name: xx|9e37|puddincat07@Telegram
+  password: a6f2dfa2-dfde-46db-9b0d-29f8c9032ed5
   port: 443
-  score: 13.748757043420614
-  server: fair-ram.rooster465.autos
-  sim_score: 2.851360689870667
-  skip-cert-verify: false
-  sni: fair-ram.rooster465.autos
-  speed: 41.48
-  type: trojan
-- cipher: chacha20-ietf-poly1305
-  latency: 29.99
-  name: nl|3094|puddincat07@Telegram
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  port: 8080
-  score: 10.033344448149384
-  server: 193.29.139.147
-  sim_score: 1.5696397554703019
-  speed: 30.09
-  type: ss
-  udp: true
-- alterId: 0
-  cipher: chacha20-ietf-poly1305
-  latency: 39.13
-  name: us|f054|puddincat07@Telegram
-  password: Yq42Vx56a2SghCnLtOyOCF
-  port: 443
-  score: 9.856887298747763
-  server: 216.105.168.19
-  sim_score: 1.562590779360649
+  score: 3.7502354492371444
+  server: de2-full.privateip.net
+  sim_score: 1.2450249066852819
   skip-cert-verify: true
-  speed: 38.57
-  tls: true
-  type: ss
+  speed: 19.91
+  type: trojan
+  udp: true
+- alterId: 2
+  cipher: auto
+  latency: 37.45
+  name: xx|8151|puddincat07@Telegram
+  port: 30807
+  score: 2.576769025367156
+  server: v10.hdacd.com
+  sim_score: 1.5351649285920101
+  skip-cert-verify: false
+  speed: 9.65
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - nl|447b|puddincat07@Telegram
-  - xx|8697|puddincat07@Telegram
-  - nl|3094|puddincat07@Telegram
-  - us|f054|puddincat07@Telegram
+  - fr|b078|puddincat07@Telegram
+  - nl|9e7b|puddincat07@Telegram
+  - xx|9e37|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - nl|447b|puddincat07@Telegram
-  - xx|8697|puddincat07@Telegram
-  - nl|3094|puddincat07@Telegram
-  - us|f054|puddincat07@Telegram
+  - fr|b078|puddincat07@Telegram
+  - nl|9e7b|puddincat07@Telegram
+  - xx|9e37|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
