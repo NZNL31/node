@@ -3,94 +3,58 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alpn:
-  - http/1.1
-  latency: 62.14
-  name: us|8d9d|puddincat07@Telegram
-  network: ws
-  password: MITIVPN
-  port: '2053'
-  score: 6.5159317669777925
-  server: 104.17.147.22
-  sim_score: 3.428878082752025
-  skip-cert-verify: true
-  sni: ikk---7-MiTiVPN----o.kingnetwork.ir
-  speed: 40.49
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/51.0.2704.106 Safari/537.36
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/de
-- latency: 62.75
-  name: xx|1e1f|puddincat07@Telegram
-  password: FC60532879
-  port: 443
-  score: 6.261354581673306
-  server: helpful-possum.rooster465.autos
-  sim_score: 2.2547159853516865
-  skip-cert-verify: true
-  sni: helpful-possum.rooster465.autos
-  speed: 39.29
-  tls: true
-  type: trojan
-  udp: true
-- latency: 65.38
+- latency: 53.65
   name: xx|6cf2|puddincat07@Telegram
   password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
   port: 20041
-  score: 4.629856225145304
+  score: 7.677539608574091
   server: Hkdcrtc-e.catcat321.com
-  sim_score: 1.2577010862046611
+  sim_score: 1.201569920332298
   skip-cert-verify: true
   sni: de.catxstar.com
-  speed: 30.27
+  speed: 41.19
   type: trojan
   udp: true
-- cipher: rc4-md5
-  latency: 62.36
-  name: us|c950|puddincat07@Telegram
-  obfs: plain
-  password: 14fFPrbezE3HDZzsMOr6
-  port: 8080
-  protocol: origin
-  score: 3.983322642719692
-  server: 107.151.182.253
-  sim_score: 1.886156177488659
-  speed: 24.84
-  type: ssr
-- latency: 64.5
-  name: xx|00d9|puddincat07@Telegram
-  network: tcp
-  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  port: '20066'
-  score: 1.5116279069767442
-  server: hkdcrtc-e.catcat321.com
-  sim_score: 0.7804880651742871
+- alterId: 2
+  cipher: auto
+  latency: 53.95
+  name: xx|8151|puddincat07@Telegram
+  port: 30807
+  score: 5.512511584800741
+  server: v10.hdacd.com
+  sim_score: 3.5847745587460182
+  skip-cert-verify: false
+  speed: 29.74
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+- cipher: chacha20-ietf-poly1305
+  latency: 50.95
+  name: ua|b344|puddincat07@Telegram
+  password: XF0klw7870vXn3uQIxe19Q
+  port: 1080
+  score: 5.379784102060844
+  server: 194.54.80.37
+  sim_score: 1.7257688363038972
   skip-cert-verify: true
-  speed: 9.75
-  type: trojan
+  speed: 27.41
+  type: ss
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|8d9d|puddincat07@Telegram
-  - xx|1e1f|puddincat07@Telegram
   - xx|6cf2|puddincat07@Telegram
-  - us|c950|puddincat07@Telegram
-  - xx|00d9|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - ua|b344|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|8d9d|puddincat07@Telegram
-  - xx|1e1f|puddincat07@Telegram
   - xx|6cf2|puddincat07@Telegram
-  - us|c950|puddincat07@Telegram
-  - xx|00d9|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - ua|b344|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
