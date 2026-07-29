@@ -3,120 +3,133 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 28.19
-  name: xx|6cf2|puddincat07@Telegram
-  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  port: '20041'
-  score: 16.388790351188366
-  server: Hkdcrtc-e.catcat321.com
-  sim_score: 1.5354939613354779
-  skip-cert-verify: true
-  sni: de.catxstar.com
-  speed: 46.2
-  type: trojan
-  udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 29.14
-  name: xx|bde7|puddincat07@Telegram
-  password: kvrov4vd4iszb3aw
-  port: 25026
-  score: 15.490734385724089
-  server: koviraaa.kovira2.ir
-  sim_score: 2.5535163045691838
-  speed: 45.14
+  latency: 35.05
+  name: us|0a2c|puddincat07@Telegram
+  password: G5p6ww4o67HB
+  port: 8388
+  score: 13.038516405135523
+  server: 108.181.0.177
+  sim_score: 0.9618913953701098
+  speed: 45.7
+  type: ss
+- alterId: 2
+  cipher: auto
+  latency: 38.79
+  name: xx|8151|puddincat07@Telegram
+  port: 30807
+  score: 10.528486723382315
+  server: v10.hdacd.com
+  sim_score: 1.8160629613482757
+  skip-cert-verify: false
+  speed: 40.84
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+- cipher: chacha20-ietf
+  latency: 38.8
+  name: sg|a935|puddincat07@Telegram
+  password: asd123456
+  port: 8388
+  score: 9.896907216494846
+  server: 103.36.91.32
+  sim_score: 1.0190077984615444
+  speed: 38.4
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 36.82
+  name: us|c3bc|puddincat07@Telegram
+  password: XF0klw7870vXn3uQIxe19Q
+  port: 1080
+  score: 6.852254209668659
+  server: 193.42.38.209
+  sim_score: 1.5854150915904657
+  speed: 25.23
   type: ss
   udp: true
-- latency: 26.8
-  name: us|3055|puddincat07@Telegram
-  network: ws
-  password: MiTiVPN
-  port: 2087
-  score: 14.619402985074625
-  server: 104.18.6.178
-  sim_score: 1.2563012467645118
-  skip-cert-verify: true
-  sni: g-o-MiTiVPN---MiTiVPNj.kingnetwork.ir
-  speed: 39.18
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: g-o-MiTiVPN---MiTiVPNj.kingnetwork.ir
-    path: /---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/nl
 - cipher: aes-256-cfb
-  latency: 27.92
+  latency: 38.47
   name: kr|9179|puddincat07@Telegram
   password: qwerREWQ@@
   port: 2078
-  score: 9.727793696275072
+  score: 6.7845074083701595
   server: 27.255.82.134
-  sim_score: 1.104485127570968
-  speed: 27.16
+  sim_score: 1.603674861024201
+  speed: 26.1
   type: ss
   udp: true
-- cipher: aes-256-cfb
-  latency: 41.28
-  name: se|599b|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 9.193313953488373
-  server: 13.53.198.63
-  sim_score: 2.512298768978148
-  speed: 37.95
-  type: ss
-  udp: true
-- client-fingerprint: chrome
-  latency: 28.94
-  name: xx|2b70|puddincat07@Telegram
-  network: tcp
-  password: IQ68037294
-  port: 443
-  score: 8.731859018659295
-  server: modern-bedbug.rooster465.autos
-  sim_score: 4.030946846663707
-  skip-cert-verify: false
-  sni: modern-bedbug.rooster465.autos
-  speed: 25.27
-  type: trojan
-  udp: true
-- latency: 40.6
-  name: us|b958|puddincat07@Telegram
+- latency: 38.78
+  name: us|a98a|puddincat07@Telegram
   network: ws
   password: humanity
   port: 443
-  score: 3.694581280788177
-  server: 104.26.14.137
-  sim_score: 0.9970719728556132
+  score: 6.250644662197008
+  server: 104.18.32.47
+  sim_score: 1.067826328848739
   skip-cert-verify: false
-  sni: www.ignitelimit.com
-  speed: 15.0
+  sni: www.gossipglove.com
+  speed: 24.24
   type: trojan
   ws-opts:
     headers:
-      Host: www.ignitelimit.com
+      Host: www.gossipglove.com
     path: /assignment
+- latency: 38.03
+  name: xx|6cf2|puddincat07@Telegram
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  port: '20041'
+  score: 4.664738364449119
+  server: Hkdcrtc-e.catcat321.com
+  sim_score: 0.9626581629277131
+  skip-cert-verify: true
+  sni: de.catxstar.com
+  speed: 17.74
+  type: trojan
+  udp: true
+- alpn:
+  - http/1.1
+  latency: 37.95
+  name: xx|7fd8|puddincat07@Telegram
+  network: ws
+  password: 5xjmr1dz66pgsew0
+  port: '8443'
+  score: 2.555994729907773
+  server: hyperon.site
+  sim_score: 1.9422881891044705
+  skip-cert-verify: false
+  sni: com.digitalposts.dpdns.org
+  speed: 9.7
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/56.0.2924.87 Safari/537.36
+    path: /bkdicj
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|6cf2|puddincat07@Telegram
-  - xx|bde7|puddincat07@Telegram
-  - us|3055|puddincat07@Telegram
+  - us|0a2c|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - sg|a935|puddincat07@Telegram
+  - us|c3bc|puddincat07@Telegram
   - kr|9179|puddincat07@Telegram
-  - se|599b|puddincat07@Telegram
-  - xx|2b70|puddincat07@Telegram
-  - us|b958|puddincat07@Telegram
+  - us|a98a|puddincat07@Telegram
+  - xx|6cf2|puddincat07@Telegram
+  - xx|7fd8|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|6cf2|puddincat07@Telegram
-  - xx|bde7|puddincat07@Telegram
-  - us|3055|puddincat07@Telegram
+  - us|0a2c|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - sg|a935|puddincat07@Telegram
+  - us|c3bc|puddincat07@Telegram
   - kr|9179|puddincat07@Telegram
-  - se|599b|puddincat07@Telegram
-  - xx|2b70|puddincat07@Telegram
-  - us|b958|puddincat07@Telegram
+  - us|a98a|puddincat07@Telegram
+  - xx|6cf2|puddincat07@Telegram
+  - xx|7fd8|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
