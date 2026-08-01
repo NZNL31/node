@@ -3,82 +3,41 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 27.5
-  name: us|4fcf|puddincat07@Telegram
-  password: 4aec4e7f8cf8454ea4613659822e1a61
-  port: 443
-  score: 13.94909090909091
-  server: 104.16.159.112
-  sim_score: 1.3162677214437835
-  skip-cert-verify: true
-  sni: jobscareertoday.com
-  speed: 38.36
-  type: trojan
+- cipher: aes-256-gcm
+  latency: 58.59
+  name: ru|0c6f|puddincat07@Telegram
+  password: 2027e830399d8d08
+  port: 10910
+  score: 7.2725721112817885
+  server: 195.58.48.19
+  sim_score: 1.3752504199454574
+  speed: 42.61
+  type: ss
   udp: true
 - cipher: aes-256-cfb
-  latency: 29.48
-  name: se|1954|puddincat07@Telegram
+  latency: 63.51
+  name: us|2e39|puddincat07@Telegram
   password: amazonskr05
   port: '443'
-  score: 11.153324287652646
-  server: 13.51.233.2
-  sim_score: 1.995020949367946
-  speed: 32.88
+  score: 5.003936387970399
+  server: 54.226.30.144
+  sim_score: 3.1239860424849537
+  speed: 31.78
   type: ss
-  udp: true
-- cipher: aes-256-cfb
-  latency: 27.91
-  name: se|00b7|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 5.542816194912218
-  server: 13.61.5.244
-  sim_score: 3.0216656758356777
-  speed: 15.47
-  type: ss
-  udp: true
-- cipher: aes-256-cfb
-  latency: 27.85
-  name: se|eb79|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 5.159784560143627
-  server: 13.62.20.75
-  sim_score: 1.1936669947740222
-  speed: 14.37
-  type: ss
-  udp: true
-- latency: 26.75
-  name: us|9fbd|puddincat07@Telegram
-  password: 4732adfa16c6450bbef87264e41332db
-  port: 443
-  score: 5.121495327102803
-  server: 104.16.159.7
-  sim_score: 2.316316734931151
-  skip-cert-verify: true
-  sni: bangladeshipatri.com
-  speed: 13.7
-  type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|4fcf|puddincat07@Telegram
-  - se|1954|puddincat07@Telegram
-  - se|00b7|puddincat07@Telegram
-  - se|eb79|puddincat07@Telegram
-  - us|9fbd|puddincat07@Telegram
+  - ru|0c6f|puddincat07@Telegram
+  - us|2e39|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|4fcf|puddincat07@Telegram
-  - se|1954|puddincat07@Telegram
-  - se|00b7|puddincat07@Telegram
-  - se|eb79|puddincat07@Telegram
-  - us|9fbd|puddincat07@Telegram
+  - ru|0c6f|puddincat07@Telegram
+  - us|2e39|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
