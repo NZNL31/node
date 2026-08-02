@@ -3,58 +3,82 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 0
-  latency: 26.94
-  name: xx|bd39|puddincat07@Telegram
-  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  port: 20004
-  score: 16.610987379361543
-  server: oplosgru-c.catcat321.com
-  sim_score: 1.626016622727819
-  skip-cert-verify: true
-  sni: hk.catxstar.com
-  speed: 44.75
-  tls: true
-  type: trojan
-  udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 30.73
-  name: xx|bf1e|puddincat07@Telegram
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-  port: 50099
-  score: 13.794337780670354
-  server: r3mrcg001287h3p.cybervena.com
-  sim_score: 1.7416127013341534
-  speed: 42.39
-  type: ss
 - alterId: 2
   cipher: auto
-  latency: 37.82
+  latency: 34.28
   name: xx|8151|puddincat07@Telegram
   port: 30807
-  score: 4.476467477525119
+  score: 13.54434072345391
   server: v10.hdacd.com
-  sim_score: 2.220272783466007
+  sim_score: 2.1338680033810156
   skip-cert-verify: false
-  speed: 16.93
+  speed: 46.43
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+- cipher: chacha20-ietf-poly1305
+  latency: 36.03
+  name: xx|7a56|puddincat07@Telegram
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  port: 50099
+  score: 12.936441854010546
+  server: r3mrcg00129437x.cybervena.com
+  sim_score: 1.1063960253268865
+  speed: 46.61
+  type: ss
+- cipher: aes-256-cfb
+  latency: 36.49
+  name: kr|9179|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 2078
+  score: 11.551109893121403
+  server: 27.255.82.134
+  sim_score: 1.1510573213014648
+  skip-cert-verify: false
+  speed: 42.15
+  type: ss
+  udp: false
+- cipher: aes-256-gcm
+  latency: 42.66
+  name: gb|cf29|puddincat07@Telegram
+  password: RexnBgU7EV5ADxG
+  port: 7001
+  score: 7.489451476793249
+  server: 94.156.250.148
+  sim_score: 0.9794910856166134
+  speed: 31.95
+  type: ss
+- latency: 39.05
+  name: xx|00d9|puddincat07@Telegram
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  port: 20041
+  score: 4.7272727272727275
+  server: hkdcrtc-e.catcat321.com
+  sim_score: 1.959368174454623
+  skip-cert-verify: true
+  sni: hkdcrtc-e.catcat321.com
+  speed: 18.46
+  type: trojan
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|bd39|puddincat07@Telegram
-  - xx|bf1e|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
+  - xx|7a56|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
+  - gb|cf29|puddincat07@Telegram
+  - xx|00d9|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|bd39|puddincat07@Telegram
-  - xx|bf1e|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
+  - xx|7a56|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
+  - gb|cf29|puddincat07@Telegram
+  - xx|00d9|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
