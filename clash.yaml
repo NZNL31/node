@@ -3,77 +3,41 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 45.73
+- cipher: chacha20-ietf-poly1305
+  latency: 38.37
+  name: gb|af2e|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 10.552514985665887
+  server: 82.38.31.16
+  sim_score: 3.975217974885216
+  speed: 40.49
+  type: ss
+- latency: 48.75
   name: xx|6cf2|puddincat07@Telegram
   password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
   port: 20041
-  score: 9.910343319483928
+  score: 9.019487179487179
   server: Hkdcrtc-e.catcat321.com
-  sim_score: 1.0933091408465276
+  sim_score: 1.6494406349568327
   skip-cert-verify: true
   sni: de.catxstar.com
-  speed: 45.32
+  speed: 43.97
   type: trojan
   udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 35.47
-  name: gb|84ee|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 443
-  score: 9.374118973780659
-  server: 82.38.31.57
-  sim_score: 1.5333201510399805
-  speed: 33.25
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 41.51
-  name: gb|6a08|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 8080
-  score: 3.9219465189111062
-  server: 82.38.31.155
-  sim_score: 3.159169700592563
-  speed: 16.28
-  type: ss
-- cipher: aes-256-cfb
-  latency: 40.69
-  name: se|6522|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 2.804128778569673
-  server: 16.171.111.98
-  sim_score: 1.5681980852307753
-  speed: 11.41
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 39.43
-  name: xx|2d8b|puddincat07@Telegram
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-  port: 50099
-  score: 2.104996195790008
-  server: r3mrcg001286ek2.cybervena.com
-  sim_score: 1.2184211356327874
-  speed: 8.3
-  type: ss
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - gb|af2e|puddincat07@Telegram
   - xx|6cf2|puddincat07@Telegram
-  - gb|84ee|puddincat07@Telegram
-  - gb|6a08|puddincat07@Telegram
-  - se|6522|puddincat07@Telegram
-  - xx|2d8b|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - gb|af2e|puddincat07@Telegram
   - xx|6cf2|puddincat07@Telegram
-  - gb|84ee|puddincat07@Telegram
-  - gb|6a08|puddincat07@Telegram
-  - se|6522|puddincat07@Telegram
-  - xx|2d8b|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
