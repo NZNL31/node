@@ -3,61 +3,84 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 24.71
-  name: xx|f24c|puddincat07@Telegram
-  network: ws
-  password: 51a0af77-a60c-4d9b-81a4-f50e1b38d90b
-  port: 2096
-  score: 19.449615540267096
-  server: jumao91.shop
-  sim_score: 0.9701313331551926
+- latency: 26.2
+  name: xx|6cf2|puddincat07@Telegram
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  port: 20041
+  score: 13.606870229007633
+  server: Hkdcrtc-e.catcat321.com
+  sim_score: 1.6797815906697617
   skip-cert-verify: true
-  sni: jumao91.shop
-  speed: 48.06
+  sni: de.catxstar.com
+  speed: 35.65
   type: trojan
   udp: true
-  ws-opts:
-    headers:
-      Host: jumao91.shop
-    path: /proxyip=45.207.156.255
 - cipher: chacha20-ietf-poly1305
-  latency: 37.53
+  latency: 27.79
+  name: xx|bf1e|puddincat07@Telegram
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  port: 50099
+  score: 9.683339330694494
+  server: r3mrcg001287h3p.cybervena.com
+  sim_score: 1.0925404624952808
+  speed: 26.91
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  latency: 41.24
   name: us|78fa|puddincat07@Telegram
   password: ljqdalu13..
   port: 8313
-  score: 7.343458566480149
+  score: 8.622696411251212
   server: 38.180.135.39
-  sim_score: 0.7545631813343802
-  speed: 27.56
+  sim_score: 0.7108960691015459
+  speed: 35.56
   type: ss
   udp: true
-- cipher: aes-256-cfb
-  latency: 190.54
-  name: kr|9179|puddincat07@Telegram
-  password: qwerREWQ@@
-  port: 2078
-  score: 1.5482313425002625
-  server: 27.255.82.134
-  sim_score: 0.845878078922253
-  skip-cert-verify: false
-  speed: 29.5
-  type: ss
-  udp: false
+- latency: 37.89
+  name: xx|00d9|puddincat07@Telegram
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  port: 20041
+  score: 2.7817366059646345
+  server: hkdcrtc-e.catcat321.com
+  sim_score: 1.8711970632820794
+  skip-cert-verify: true
+  sni: hkdcrtc-e.catcat321.com
+  speed: 10.54
+  type: trojan
+  udp: true
+- alterId: 0
+  latency: 40.27
+  name: xx|bd39|puddincat07@Telegram
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  port: 20004
+  score: 2.108269183014651
+  server: oplosgru-c.catcat321.com
+  sim_score: 1.1023182305747325
+  skip-cert-verify: true
+  sni: hk.catxstar.com
+  speed: 8.49
+  tls: true
+  type: trojan
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|f24c|puddincat07@Telegram
+  - xx|6cf2|puddincat07@Telegram
+  - xx|bf1e|puddincat07@Telegram
   - us|78fa|puddincat07@Telegram
-  - kr|9179|puddincat07@Telegram
+  - xx|00d9|puddincat07@Telegram
+  - xx|bd39|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|f24c|puddincat07@Telegram
+  - xx|6cf2|puddincat07@Telegram
+  - xx|bf1e|puddincat07@Telegram
   - us|78fa|puddincat07@Telegram
-  - kr|9179|puddincat07@Telegram
+  - xx|00d9|puddincat07@Telegram
+  - xx|bd39|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
