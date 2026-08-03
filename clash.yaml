@@ -3,98 +3,58 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 64.37
-  name: xx|0ea4|puddincat07@Telegram
-  password: ND91608427
-  port: 443
-  score: 5.030293615038062
-  server: upright-impala.rooster465.autos
-  sim_score: 1.7742955779737688
-  skip-cert-verify: true
-  sni: upright-impala.rooster465.autos
-  speed: 32.38
-  type: trojan
-- latency: 79.9
+- latency: 52.42
   name: xx|8a1e|puddincat07@Telegram
   network: tcp
   password: ND91608427
   port: '443'
-  score: 4.494367959949937
+  score: 6.901945822205265
   server: moved-meerkat.rooster465.autos
-  sim_score: 1.8126465488814267
+  sim_score: 0.7412283338808389
   skip-cert-verify: true
   sni: moved-meerkat.rooster465.autos
-  speed: 35.91
+  speed: 36.18
   type: trojan
   udp: true
-- alterId: 2
-  cipher: auto
-  latency: 96.18
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 4.352256186317321
-  server: v10.hdacd.com
-  sim_score: 0.8919119318584455
-  skip-cert-verify: false
-  speed: 41.86
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- cipher: aes-256-cfb
-  latency: 63.43
-  name: kr|9179|puddincat07@Telegram
-  password: qwerREWQ@@
-  port: 2078
-  score: 3.878291029481318
-  server: 27.255.82.134
-  sim_score: 1.7129080152956946
-  skip-cert-verify: false
-  speed: 24.6
-  type: ss
-  udp: false
-- latency: 94.75
+- latency: 57.06
   name: xx|dd58|puddincat07@Telegram
   network: tcp
   password: ND91608427
   port: '443'
-  score: 3.3350923482849604
+  score: 5.383806519453207
   server: definite-sturgeon.rooster465.autos
-  sim_score: 3.2662394255706797
+  sim_score: 0.6326270657129744
   skip-cert-verify: true
   sni: definite-sturgeon.rooster465.autos
-  speed: 31.6
+  speed: 30.72
   type: trojan
   udp: true
-- cipher: chacha20-ietf-poly1305
-  latency: 64.05
-  name: nl|42be|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 8080
-  score: 2.2732240437158473
-  server: 193.29.139.151
-  sim_score: 0.8527601053048401
-  speed: 14.56
+- cipher: aes-256-cfb
+  latency: 51.07
+  name: kr|9179|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 2078
+  score: 4.078715488545134
+  server: 27.255.82.134
+  sim_score: 1.0408748404221402
+  skip-cert-verify: false
+  speed: 20.83
   type: ss
+  udp: false
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|0ea4|puddincat07@Telegram
   - xx|8a1e|puddincat07@Telegram
-  - xx|8151|puddincat07@Telegram
-  - kr|9179|puddincat07@Telegram
   - xx|dd58|puddincat07@Telegram
-  - nl|42be|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|0ea4|puddincat07@Telegram
   - xx|8a1e|puddincat07@Telegram
-  - xx|8151|puddincat07@Telegram
-  - kr|9179|puddincat07@Telegram
   - xx|dd58|puddincat07@Telegram
-  - nl|42be|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
