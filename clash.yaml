@@ -3,116 +3,97 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 37.29
-  name: xx|bd39|puddincat07@Telegram
-  password: 41c406e2-12b5-41f2-a329-d0621052d675
-  port: 20066
-  score: 12.949852507374631
-  server: oplosgru-c.catcat321.com
-  sim_score: 3.6811441357855097
+- latency: 38.06
+  name: xx|e9ef|puddincat07@Telegram
+  password: 507ca9a0-2d8e-4b65-8763-82dfbdbd599f
+  port: 443
+  score: 10.706778770362584
+  server: chjs.lydurlclub.top
+  sim_score: 1.1272511363154845
   skip-cert-verify: true
-  sni: hk.catxstar.com
-  speed: 48.29
-  tls: true
+  speed: 40.75
+  type: trojan
+  udp: true
+- latency: 39.49
+  name: xx|8a1e|puddincat07@Telegram
+  password: ND91608427
+  port: 443
+  score: 9.108635097493035
+  server: moved-meerkat.rooster465.autos
+  sim_score: 5.089531648361133
+  skip-cert-verify: true
+  sni: moved-meerkat.rooster465.autos
+  speed: 35.97
   type: trojan
   udp: true
 - alterId: 2
   cipher: auto
-  latency: 48.58
+  latency: 27.72
   name: xx|8151|puddincat07@Telegram
   port: 30807
-  score: 9.40304652120214
+  score: 7.395382395382396
   server: v10.hdacd.com
-  sim_score: 1.4574340230139693
+  sim_score: 3.292041271652726
   skip-cert-verify: false
-  speed: 45.68
+  speed: 20.5
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- latency: 46.31
-  name: xx|dd58|puddincat07@Telegram
-  password: ND91608427
+- cipher: aes-256-cfb
+  latency: 29.67
+  name: jp|f147|puddincat07@Telegram
+  password: amazonskr05
   port: 443
-  score: 7.752105376808464
-  server: definite-sturgeon.rooster465.autos
-  sim_score: 2.0590232549820913
-  skip-cert-verify: true
-  sni: definite-sturgeon.rooster465.autos
-  speed: 35.9
-  type: trojan
+  score: 6.208291203235592
+  server: 13.231.162.164
+  sim_score: 2.509223497286589
+  speed: 18.42
+  type: ss
   udp: true
-- latency: 37.63
-  name: us|3149|puddincat07@Telegram
-  password: 0e81a9cd-d849-4101-8d64-574c283207de
-  port: 2083
-  score: 6.550624501727345
-  server: 104.21.69.44
-  sim_score: 2.9760658808506224
-  skip-cert-verify: true
-  sni: de1.trojanvpn.de
-  speed: 24.65
-  type: trojan
-  udp: true
-- latency: 92.51
+- cipher: aes-256-cfb
+  latency: 28.44
+  name: kr|9179|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 2078
+  score: 3.60407876230661
+  server: 27.255.82.134
+  sim_score: 3.6636642781220226
+  skip-cert-verify: false
+  speed: 10.25
+  type: ss
+  udp: false
+- latency: 44.55
   name: xx|6cf2|puddincat07@Telegram
   password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
   port: 20041
-  score: 4.52167333261269
+  score: 3.4433221099887765
   server: Hkdcrtc-e.catcat321.com
-  sim_score: 1.281340730755257
+  sim_score: 2.3969312323477707
   skip-cert-verify: true
   sni: de.catxstar.com
-  speed: 41.83
-  type: trojan
-- alterId: 0
-  latency: 141.38
-  name: xx|00d9|puddincat07@Telegram
-  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  port: 20041
-  score: 2.834205686801528
-  server: hkdcrtc-e.catcat321.com
-  sim_score: 1.5007255675289373
-  skip-cert-verify: true
-  sni: de.catxstar.com
-  speed: 40.07
-  tls: true
-  type: trojan
-  udp: true
-- latency: 53.7
-  name: xx|cecf|puddincat07@Telegram
-  network: tcp
-  password: ND91608427
-  port: 443
-  score: 1.9851024208566106
-  server: becoming-hare.rooster465.autos
-  sim_score: 1.6262586931343206
-  skip-cert-verify: true
-  sni: becoming-hare.rooster465.autos
-  speed: 10.66
+  speed: 15.34
   type: trojan
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|bd39|puddincat07@Telegram
+  - xx|e9ef|puddincat07@Telegram
+  - xx|8a1e|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - xx|dd58|puddincat07@Telegram
-  - us|3149|puddincat07@Telegram
+  - jp|f147|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
   - xx|6cf2|puddincat07@Telegram
-  - xx|00d9|puddincat07@Telegram
-  - xx|cecf|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|bd39|puddincat07@Telegram
+  - xx|e9ef|puddincat07@Telegram
+  - xx|8a1e|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - xx|dd58|puddincat07@Telegram
-  - us|3149|puddincat07@Telegram
+  - jp|f147|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
   - xx|6cf2|puddincat07@Telegram
-  - xx|00d9|puddincat07@Telegram
-  - xx|cecf|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
