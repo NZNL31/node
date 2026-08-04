@@ -3,102 +3,52 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-cfb
-  latency: 39.94
-  name: kr|9179|puddincat07@Telegram
-  password: qwerREWQ@@
-  port: 2078
-  score: 10.738607911867803
-  server: 27.255.82.134
-  sim_score: 3.0514265599517056
-  skip-cert-verify: false
-  speed: 42.89
-  type: ss
-  udp: false
-- latency: 38.15
-  name: xx|6cf2|puddincat07@Telegram
-  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  port: 20041
-  score: 9.866317169069463
-  server: Hkdcrtc-e.catcat321.com
-  sim_score: 0.6221922743427326
+- latency: 73.92
+  name: us|3bc2|puddincat07@Telegram
+  password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
+  port: 443
+  score: 2.7502705627705626
+  server: 149.104.104.58
+  sim_score: 4.3312164638041315
   skip-cert-verify: true
-  sni: de.catxstar.com
-  speed: 37.64
+  speed: 20.33
   type: trojan
-  udp: true
-- alterId: 0
-  latency: 28.77
-  name: xx|00d9|puddincat07@Telegram
+- latency: 89.12
+  name: xx|bd39|puddincat07@Telegram
   password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  port: 20041
-  score: 8.654848800834202
-  server: hkdcrtc-e.catcat321.com
-  sim_score: 4.374682583927869
+  port: 20004
+  score: 1.0457809694793536
+  server: oplosgru-c.catcat321.com
+  sim_score: 0.6025055949671699
   skip-cert-verify: true
-  sni: de.catxstar.com
-  speed: 24.9
-  tls: true
+  sni: hk.catxstar.com
+  speed: 9.32
   type: trojan
-  udp: true
-- alterId: 2
-  cipher: auto
-  latency: 43.31
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 8.651581620872777
-  server: v10.hdacd.com
-  sim_score: 1.28625545833945
-  skip-cert-verify: false
-  speed: 37.47
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
 - cipher: chacha20-ietf-poly1305
-  latency: 45.52
-  name: xx|05ab|puddincat07@Telegram
-  password: 28789988-887e-4e41-83cd-27bbfb7999ad
-  port: '40028'
-  score: 4.964850615114235
-  server: xunlinknode.csdjhajkshdjkas.com
-  sim_score: 0.8978993103288951
-  speed: 22.6
+  latency: 83.48
+  name: ca|2de2|puddincat07@Telegram
+  password: G5p6ww4o67HB
+  port: 8388
+  score: 0.9690943938667944
+  server: 108.181.118.10
+  sim_score: 1.3199446058637776
+  speed: 8.09
   type: ss
-  udp: true
-- latency: 38.8
-  name: xx|dd58|puddincat07@Telegram
-  network: tcp
-  password: ND91608427
-  port: '443'
-  score: 3.7371134020618557
-  server: definite-sturgeon.rooster465.autos
-  sim_score: 1.1586475563926137
-  skip-cert-verify: true
-  sni: definite-sturgeon.rooster465.autos
-  speed: 14.5
-  type: trojan
-  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - kr|9179|puddincat07@Telegram
-  - xx|6cf2|puddincat07@Telegram
-  - xx|00d9|puddincat07@Telegram
-  - xx|8151|puddincat07@Telegram
-  - xx|05ab|puddincat07@Telegram
-  - xx|dd58|puddincat07@Telegram
+  - us|3bc2|puddincat07@Telegram
+  - xx|bd39|puddincat07@Telegram
+  - ca|2de2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - kr|9179|puddincat07@Telegram
-  - xx|6cf2|puddincat07@Telegram
-  - xx|00d9|puddincat07@Telegram
-  - xx|8151|puddincat07@Telegram
-  - xx|05ab|puddincat07@Telegram
-  - xx|dd58|puddincat07@Telegram
+  - us|3bc2|puddincat07@Telegram
+  - xx|bd39|puddincat07@Telegram
+  - ca|2de2|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
