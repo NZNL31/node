@@ -3,101 +3,100 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
+- alterId: 2
+  cipher: auto
+  latency: 38.76
+  name: xx|8151|puddincat07@Telegram
+  port: 30807
+  score: 9.218266253869968
+  server: v10.hdacd.com
+  sim_score: 1.2534687708333558
+  skip-cert-verify: false
+  speed: 35.73
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
 - cipher: aes-256-cfb
-  latency: 43.64
+  latency: 38.3
+  name: kr|9179|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 2078
+  score: 8.14621409921671
+  server: 27.255.82.134
+  sim_score: 0.9122356729139811
+  skip-cert-verify: false
+  speed: 31.2
+  type: ss
+  udp: false
+- cipher: aes-256-cfb
+  latency: 49.86
   name: us|92fd|puddincat07@Telegram
   password: amazonskr05
   port: 443
-  score: 10.669110907424383
+  score: 7.288407541115123
   server: 3.85.61.177
-  sim_score: 1.177374006063755
-  speed: 46.56
+  sim_score: 3.616747755977456
+  speed: 36.34
   type: ss
   udp: true
-- alpn:
-  - http/1.1
-  latency: 40.41
-  name: xx|027a|puddincat07@Telegram
-  network: ws
-  password: ersi13mjahoao8e6
-  port: '443'
-  score: 9.267508042563723
-  server: cctvhikvision.center
-  sim_score: 4.480562300751487
-  skip-cert-verify: false
-  sni: ramz.xuithree.dpdns.org
-  speed: 37.45
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/61.0.3163.100 Safari/537.36
-    path: /dksk
 - cipher: aes-256-cfb
-  latency: 37.33
+  latency: 39.78
   name: se|9a78|puddincat07@Telegram
   password: amazonskr05
   port: 443
-  score: 8.073935172783283
+  score: 4.2885872297637
   server: 13.61.13.49
-  sim_score: 1.1608640324961361
-  speed: 30.14
+  sim_score: 3.498917238061401
+  speed: 17.06
   type: ss
   udp: true
-- latency: 35.6
-  name: us|5c67|puddincat07@Telegram
-  password: UaQmDQajuW
-  port: 55523
-  score: 6.564606741573034
-  server: 185.132.54.106
-  sim_score: 2.21514609362915
-  sni: b32-10.cmj0502.cn
-  speed: 23.37
-  type: trojan
-- latency: 41.48
-  name: xx|dd58|puddincat07@Telegram
-  password: ND91608427
+- alterId: 0
+  latency: 65.15
+  name: xx|7fd8|puddincat07@Telegram
+  network: ws
+  password: ersi13mjahoao8e6
   port: 443
-  score: 3.8187078109932497
-  server: definite-sturgeon.rooster465.autos
-  sim_score: 1.874004655613426
-  skip-cert-verify: false
-  sni: definite-sturgeon.rooster465.autos
-  speed: 15.84
+  score: 2.9086722947045276
+  server: hyperon.site
+  sim_score: 1.450250883260775
+  skip-cert-verify: true
+  sni: ramz.xuithree.dpdns.org
+  speed: 18.95
+  tls: true
   type: trojan
-- cipher: aes-256-cfb
-  latency: 40.75
-  name: jp|68d6|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 3.4085889570552146
-  server: 13.231.227.228
-  sim_score: 1.6643807371106891
-  speed: 13.89
-  type: ss
   udp: true
+- latency: 54.08
+  name: xx|bd39|puddincat07@Telegram
+  network: tcp
+  password: 41c406e2-12b5-41f2-a329-d0621052d675
+  port: 20066
+  score: 1.786242603550296
+  server: oplosgru-c.catcat321.com
+  sim_score: 2.0717839323405425
+  sni: hk.catxstar.com
+  speed: 9.66
+  type: trojan
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - xx|8151|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
   - us|92fd|puddincat07@Telegram
-  - xx|027a|puddincat07@Telegram
   - se|9a78|puddincat07@Telegram
-  - us|5c67|puddincat07@Telegram
-  - xx|dd58|puddincat07@Telegram
-  - jp|68d6|puddincat07@Telegram
+  - xx|7fd8|puddincat07@Telegram
+  - xx|bd39|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - xx|8151|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
   - us|92fd|puddincat07@Telegram
-  - xx|027a|puddincat07@Telegram
   - se|9a78|puddincat07@Telegram
-  - us|5c67|puddincat07@Telegram
-  - xx|dd58|puddincat07@Telegram
-  - jp|68d6|puddincat07@Telegram
+  - xx|7fd8|puddincat07@Telegram
+  - xx|bd39|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
