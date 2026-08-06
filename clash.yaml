@@ -3,100 +3,43 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
+- cipher: aes-256-cfb
+  latency: 53.58
+  name: us|92fd|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 4.755505785740948
+  server: 3.85.61.177
+  sim_score: 1.5486234538075552
+  speed: 25.48
+  type: ss
+  udp: true
 - alterId: 2
   cipher: auto
-  latency: 42.29
+  latency: 53.33
   name: xx|8151|puddincat07@Telegram
   port: 30807
-  score: 11.546464885315677
+  score: 4.537783611475717
   server: v10.hdacd.com
-  sim_score: 1.1240997918081161
+  sim_score: 2.4589989735083853
   skip-cert-verify: false
-  speed: 48.83
+  speed: 24.2
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- cipher: aes-256-cfb
-  latency: 41.08
-  name: jp|68d6|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 8.636806231742941
-  server: 13.231.227.228
-  sim_score: 1.242744218260252
-  speed: 35.48
-  type: ss
-  udp: true
-- latency: 42.32
-  name: xx|bd39|puddincat07@Telegram
-  network: tcp
-  password: 41c406e2-12b5-41f2-a329-d0621052d675
-  port: 20066
-  score: 6.980151228733459
-  server: oplosgru-c.catcat321.com
-  sim_score: 2.3489991747964276
-  sni: hk.catxstar.com
-  speed: 29.54
-  type: trojan
-- alpn:
-  - http/1.1
-  latency: 34.54
-  name: xx|027a|puddincat07@Telegram
-  network: ws
-  password: ersi13mjahoao8e6
-  port: '443'
-  score: 6.09148812970469
-  server: cctvhikvision.center
-  sim_score: 1.003005625691762
-  skip-cert-verify: false
-  sni: ramz.xuithree.dpdns.org
-  speed: 21.04
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/61.0.3163.100 Safari/537.36
-    path: /dksk
-- alpn:
-  - http/1.1
-  latency: 34.89
-  name: xx|4a51|puddincat07@Telegram
-  network: ws
-  password: ersi13mjahoao8e6
-  port: '443'
-  score: 4.686156491831471
-  server: hikvision-plus.com
-  sim_score: 3.9455257344931844
-  skip-cert-verify: false
-  sni: ramz.xuithree.dpdns.org
-  speed: 16.35
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/70.0.3538.110 Safari/537.36
-    path: /dksk
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - us|92fd|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - jp|68d6|puddincat07@Telegram
-  - xx|bd39|puddincat07@Telegram
-  - xx|027a|puddincat07@Telegram
-  - xx|4a51|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - us|92fd|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - jp|68d6|puddincat07@Telegram
-  - xx|bd39|puddincat07@Telegram
-  - xx|027a|puddincat07@Telegram
-  - xx|4a51|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
