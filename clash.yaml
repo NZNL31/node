@@ -3,62 +3,41 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-cfb
-  latency: 29.18
-  name: kr|9179|puddincat07@Telegram
-  password: qwerREWQ@@
-  port: 2078
-  score: 14.31117203564085
-  server: 27.255.82.134
-  sim_score: 0.7979076316056668
-  skip-cert-verify: false
-  speed: 41.76
-  type: ss
-  udp: false
-- latency: 39.24
+- latency: 38.65
+  name: xx|bd39|puddincat07@Telegram
+  network: tcp
+  password: 41c406e2-12b5-41f2-a329-d0621052d675
+  port: 20066
+  score: 10.747736093143596
+  server: oplosgru-c.catcat321.com
+  sim_score: 3.662354757746353
+  sni: hk.catxstar.com
+  speed: 41.54
+  type: trojan
+- latency: 27.74
   name: xx|dd58|puddincat07@Telegram
   password: ND91608427
   port: 443
-  score: 10.688073394495412
+  score: 10.263157894736842
   server: definite-sturgeon.rooster465.autos
-  sim_score: 0.8379068144562595
+  sim_score: 1.7458692510249099
   skip-cert-verify: false
   sni: definite-sturgeon.rooster465.autos
-  speed: 41.94
+  speed: 28.47
   type: trojan
 - alpn:
   - http/1.1
-  latency: 27.09
-  name: xx|027a|puddincat07@Telegram
-  network: ws
-  password: ersi13mjahoao8e6
-  port: '443'
-  score: 10.180878552971574
-  server: cctvhikvision.center
-  sim_score: 2.993986388425
-  skip-cert-verify: false
-  sni: ramz.xuithree.dpdns.org
-  speed: 27.58
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/61.0.3163.100 Safari/537.36
-    path: /dksk
-- alpn:
-  - http/1.1
-  latency: 35.75
+  latency: 36.59
   name: xx|4a51|puddincat07@Telegram
   network: ws
   password: ersi13mjahoao8e6
   port: '443'
-  score: 8.682517482517483
+  score: 9.740366220278764
   server: hikvision-plus.com
-  sim_score: 2.080546844747808
+  sim_score: 1.0711185467219508
   skip-cert-verify: false
   sni: ramz.xuithree.dpdns.org
-  speed: 31.04
+  speed: 35.64
   type: trojan
   udp: true
   ws-opts:
@@ -66,38 +45,74 @@ proxies:
       User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/70.0.3538.110 Safari/537.36
     path: /dksk
-- latency: 46.85
-  name: xx|bd39|puddincat07@Telegram
-  network: tcp
-  password: 41c406e2-12b5-41f2-a329-d0621052d675
-  port: 20066
-  score: 7.7822838847385265
-  server: oplosgru-c.catcat321.com
-  sim_score: 3.754278136676055
-  sni: hk.catxstar.com
-  speed: 36.46
-  type: trojan
 - cipher: aes-256-cfb
-  latency: 44.66
+  latency: 53.06
   name: jp|68d6|puddincat07@Telegram
   password: amazonskr05
   port: 443
-  score: 6.854008060904613
+  score: 9.1688654353562
   server: 13.231.227.228
-  sim_score: 3.9122449306381393
-  speed: 30.61
+  sim_score: 5.055362992172331
+  speed: 48.65
   type: ss
+  udp: true
+- alpn:
+  - http/1.1
+  latency: 29.14
+  name: xx|027a|puddincat07@Telegram
+  network: ws
+  password: ersi13mjahoao8e6
+  port: '443'
+  score: 8.809196980096088
+  server: cctvhikvision.center
+  sim_score: 1.3655756671156702
+  skip-cert-verify: false
+  sni: ramz.xuithree.dpdns.org
+  speed: 25.67
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/61.0.3163.100 Safari/537.36
+    path: /dksk
+- cipher: aes-256-cfb
+  latency: 39.17
+  name: kr|9179|puddincat07@Telegram
+  password: qwerREWQ@@
+  port: 2078
+  score: 8.646923666070972
+  server: 27.255.82.134
+  sim_score: 2.0025577824151424
+  skip-cert-verify: false
+  speed: 33.87
+  type: ss
+  udp: false
+- alterId: 0
+  latency: 27.95
+  name: xx|7fd8|puddincat07@Telegram
+  network: ws
+  password: ersi13mjahoao8e6
+  port: 443
+  score: 3.932021466905188
+  server: hyperon.site
+  sim_score: 0.8634465977824595
+  skip-cert-verify: true
+  sni: ramz.xuithree.dpdns.org
+  speed: 10.99
+  tls: true
+  type: trojan
   udp: true
 - alterId: 2
   cipher: auto
-  latency: 27.8
+  latency: 27.55
   name: xx|8151|puddincat07@Telegram
   port: 30807
-  score: 3.8309352517985613
+  score: 3.1361161524500907
   server: v10.hdacd.com
-  sim_score: 1.137388028656744
+  sim_score: 0.9500822547066367
   skip-cert-verify: false
-  speed: 10.65
+  speed: 8.64
   tls: false
   type: vmess
   uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
@@ -105,23 +120,25 @@ proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - kr|9179|puddincat07@Telegram
-  - xx|dd58|puddincat07@Telegram
-  - xx|027a|puddincat07@Telegram
-  - xx|4a51|puddincat07@Telegram
   - xx|bd39|puddincat07@Telegram
+  - xx|dd58|puddincat07@Telegram
+  - xx|4a51|puddincat07@Telegram
   - jp|68d6|puddincat07@Telegram
+  - xx|027a|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
+  - xx|7fd8|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - kr|9179|puddincat07@Telegram
-  - xx|dd58|puddincat07@Telegram
-  - xx|027a|puddincat07@Telegram
-  - xx|4a51|puddincat07@Telegram
   - xx|bd39|puddincat07@Telegram
+  - xx|dd58|puddincat07@Telegram
+  - xx|4a51|puddincat07@Telegram
   - jp|68d6|puddincat07@Telegram
+  - xx|027a|puddincat07@Telegram
+  - kr|9179|puddincat07@Telegram
+  - xx|7fd8|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
