@@ -3,19 +3,43 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
+- alterId: 2
+  cipher: auto
+  latency: 55.98
+  name: xx|8151|puddincat07@Telegram
+  port: 30807
+  score: 8.379778492318685
+  server: v10.hdacd.com
+  sim_score: 3.8208540289362154
+  skip-cert-verify: false
+  speed: 46.91
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+- latency: 41.82
+  name: xx|dd58|puddincat07@Telegram
+  password: ND91608427
+  port: 443
+  score: 6.948828311812529
+  server: definite-sturgeon.rooster465.autos
+  sim_score: 3.70889406215438
+  skip-cert-verify: false
+  sni: definite-sturgeon.rooster465.autos
+  speed: 29.06
+  type: trojan
 - alpn:
   - http/1.1
-  latency: 58.59
+  latency: 41.03
   name: xx|4a51|puddincat07@Telegram
   network: ws
   password: ersi13mjahoao8e6
   port: '443'
-  score: 7.451783580815839
+  score: 4.872044845235194
   server: hikvision-plus.com
-  sim_score: 1.9706420400625957
+  sim_score: 3.9048537225441775
   skip-cert-verify: false
   sni: ramz.xuithree.dpdns.org
-  speed: 43.66
+  speed: 19.99
   type: trojan
   udp: true
   ws-opts:
@@ -23,58 +47,38 @@ proxies:
       User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/70.0.3538.110 Safari/537.36
     path: /dksk
-- alterId: 2
-  cipher: auto
-  latency: 61.22
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 6.81639986932375
-  server: v10.hdacd.com
-  sim_score: 2.4955925992946817
-  skip-cert-verify: false
-  speed: 41.73
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- cipher: aes-256-cfb
-  latency: 76.82
-  name: se|9a78|puddincat07@Telegram
-  password: amazonskr05
+- alterId: 0
+  latency: 56.77
+  name: xx|7fd8|puddincat07@Telegram
+  network: ws
+  password: ersi13mjahoao8e6
   port: 443
-  score: 2.2754491017964074
-  server: 13.61.13.49
-  sim_score: 0.7125602855993709
-  speed: 17.48
-  type: ss
-  udp: true
-- cipher: aes-256-cfb
-  latency: 75.16
-  name: jp|68d6|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 2.237892496008515
-  server: 13.231.227.228
-  sim_score: 1.8419928408450872
-  speed: 16.82
-  type: ss
+  score: 3.4771886559802705
+  server: hyperon.site
+  sim_score: 0.6879279502017934
+  skip-cert-verify: true
+  sni: ramz.xuithree.dpdns.org
+  speed: 19.74
+  tls: true
+  type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|4a51|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - se|9a78|puddincat07@Telegram
-  - jp|68d6|puddincat07@Telegram
+  - xx|dd58|puddincat07@Telegram
+  - xx|4a51|puddincat07@Telegram
+  - xx|7fd8|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|4a51|puddincat07@Telegram
   - xx|8151|puddincat07@Telegram
-  - se|9a78|puddincat07@Telegram
-  - jp|68d6|puddincat07@Telegram
+  - xx|dd58|puddincat07@Telegram
+  - xx|4a51|puddincat07@Telegram
+  - xx|7fd8|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
