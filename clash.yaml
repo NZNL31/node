@@ -3,59 +3,69 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 39.18
-  name: us|3fe0|puddincat07@Telegram
-  network: ws
-  password: chrysanthemum
-  port: 443
-  score: 9.568657478305258
-  server: 104.20.48.11
-  sim_score: 1.143684527334433
-  skip-cert-verify: true
-  sni: cmee.ezbiz.dynv6.net
-  speed: 37.49
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      Host: cmee.ezbiz.dynv6.net
-    path: /
-- latency: 40.3
-  name: xx|6cf2|puddincat07@Telegram
-  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  port: 20041
-  score: 8.553349875930522
-  server: Hkdcrtc-e.catcat321.com
-  sim_score: 1.556790640499154
-  skip-cert-verify: true
-  sni: de.catxstar.com
-  speed: 34.47
-  type: trojan
 - cipher: aes-256-cfb
-  latency: 40.0
+  latency: 62.22
   name: jp|6953|puddincat07@Telegram
   password: amazonskr05
   port: 443
-  score: 6.515
+  score: 7.299903567984572
   server: 13.114.17.103
-  sim_score: 2.091219170981712
-  speed: 26.06
+  sim_score: 1.6167091197470467
+  speed: 45.42
   type: ss
+- latency: 62.15
+  name: xx|c44f|puddincat07@Telegram
+  password: 71cada65-d23e-418c-88e4-a06188d14689
+  port: 443
+  score: 7.261464199517298
+  server: de-two.quiet-rogue.site
+  sim_score: 1.4656700560130755
+  skip-cert-verify: true
+  sni: de-two.quiet-rogue.site
+  speed: 45.13
+  type: hysteria2
+  udp: true
+- alterId: 2
+  cipher: auto
+  latency: 62.09
+  name: xx|8151|puddincat07@Telegram
+  port: 30807
+  score: 5.018521501046868
+  server: v10.hdacd.com
+  sim_score: 2.01252712774071
+  skip-cert-verify: false
+  speed: 31.16
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+- latency: 62.14
+  name: xx|6cf2|puddincat07@Telegram
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  port: '20041'
+  score: 1.8007724493080142
+  server: Hkdcrtc-e.catcat321.com
+  sim_score: 2.6375974236460604
+  skip-cert-verify: true
+  speed: 11.19
+  type: trojan
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|3fe0|puddincat07@Telegram
-  - xx|6cf2|puddincat07@Telegram
   - jp|6953|puddincat07@Telegram
+  - xx|c44f|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - xx|6cf2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|3fe0|puddincat07@Telegram
-  - xx|6cf2|puddincat07@Telegram
   - jp|6953|puddincat07@Telegram
+  - xx|c44f|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - xx|6cf2|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
