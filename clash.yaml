@@ -3,45 +3,56 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- alterId: 2
-  cipher: auto
-  latency: 42.09
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 9.242100261344737
-  server: v10.hdacd.com
-  sim_score: 1.9674000425256375
-  skip-cert-verify: false
-  speed: 38.9
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- alterId: 0
-  latency: 36.73
-  name: xx|6cf2|puddincat07@Telegram
-  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-  port: 20041
-  score: 5.112986659406481
-  server: Hkdcrtc-e.catcat321.com
-  sim_score: 1.6350342598853058
+- latency: 28.11
+  name: hk|b3cb|puddincat07@Telegram
+  network: tcp
+  password: BxceQaOe
+  port: 32434
+  score: 16.23977232301672
+  server: 18.163.120.239
+  sim_score: 1.8561594309389458
   skip-cert-verify: true
-  sni: de.catxstar.com
-  speed: 18.78
-  tls: true
+  sni: t.me%252Fripaojiedian
+  speed: 45.65
   type: trojan
+- latency: 38.86
+  name: nl|7363|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 8.347915594441584
+  server: 5.129.235.85
+  sim_score: 1.0023083160390025
+  skip-cert-verify: true
+  sni: www.linux.com
+  speed: 32.44
+  type: hysteria2
+  udp: true
+- cipher: aes-256-cfb
+  latency: 41.3
+  name: us|95ff|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 7.983050847457628
+  server: 98.89.48.191
+  sim_score: 1.0227512621751191
+  skip-cert-verify: true
+  speed: 32.97
+  type: ss
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|8151|puddincat07@Telegram
-  - xx|6cf2|puddincat07@Telegram
+  - hk|b3cb|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
+  - us|95ff|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|8151|puddincat07@Telegram
-  - xx|6cf2|puddincat07@Telegram
+  - hk|b3cb|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
+  - us|95ff|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
