@@ -3,86 +3,52 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 29.18
-  name: xx|7a56|puddincat07@Telegram
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-  port: 50099
-  score: 14.681288553803977
-  server: r3mrcg00129437x.cybervena.com
-  sim_score: 1.770317413954664
-  speed: 42.84
-  type: ss
-- alterId: 0
-  latency: 33.68
-  name: us|42b4|puddincat07@Telegram
-  network: ws
-  password: humanity
+- latency: 31.9
+  name: fr|20a5|puddincat07@Telegram
+  password: 0fe4bbdb-2854-4cc5-986c-f62dbb900bc5
   port: 443
-  score: 11.757719714964372
-  server: 104.19.64.105
-  sim_score: 1.0148230004948278
+  score: 11.896551724137932
+  server: 141.94.115.231
+  sim_score: 1.536030727258876
   skip-cert-verify: true
-  sni: www.calmlunch.com
-  speed: 39.6
-  tls: true
+  speed: 37.95
   type: trojan
   udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 26.85
-  name: gb|bdc7|puddincat07@Telegram
-  password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-  port: '61312'
-  score: 7.418994413407821
-  server: 129.151.81.122
-  sim_score: 0.9106768495262605
-  speed: 19.92
+  latency: 36.12
+  name: gb|3b4b|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 9.072535991140644
+  server: 82.38.31.34
+  sim_score: 2.2468338710326794
+  speed: 32.77
   type: ss
-  udp: true
-- client-fingerprint: chrome
-  latency: 28.24
-  name: hk|6371|puddincat07@Telegram
-  network: tcp
-  password: BxceQaOe
-  port: 443
-  score: 4.529036827195467
-  server: 119.246.1.143
-  sim_score: 2.104208835248224
+- latency: 28.01
+  name: xx|6cf2|puddincat07@Telegram
+  password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+  port: '20041'
+  score: 6.262049268118528
+  server: Hkdcrtc-e.catcat321.com
+  sim_score: 1.7033222473200649
   skip-cert-verify: true
-  sni: 119.246.1.143
-  speed: 12.79
+  speed: 17.54
   type: trojan
-  udp: true
-- latency: 31.61
-  name: nl|7363|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 2.7364757987978487
-  server: 5.129.235.85
-  sim_score: 0.9294087702744391
-  skip-cert-verify: true
-  sni: www.linux.com
-  speed: 8.65
-  type: hysteria2
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|7a56|puddincat07@Telegram
-  - us|42b4|puddincat07@Telegram
-  - gb|bdc7|puddincat07@Telegram
-  - hk|6371|puddincat07@Telegram
-  - nl|7363|puddincat07@Telegram
+  - fr|20a5|puddincat07@Telegram
+  - gb|3b4b|puddincat07@Telegram
+  - xx|6cf2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|7a56|puddincat07@Telegram
-  - us|42b4|puddincat07@Telegram
-  - gb|bdc7|puddincat07@Telegram
-  - hk|6371|puddincat07@Telegram
-  - nl|7363|puddincat07@Telegram
+  - fr|20a5|puddincat07@Telegram
+  - gb|3b4b|puddincat07@Telegram
+  - xx|6cf2|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
