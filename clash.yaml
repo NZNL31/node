@@ -3,118 +3,68 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 38.28
-  name: gb|cbca|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 443
-  score: 10.167189132706373
-  server: 82.38.31.36
-  sim_score: 2.625126855355075
-  speed: 38.92
-  type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 47.94
-  name: za|d18d|puddincat07@Telegram
-  password: Xsy8Ox4yOV3xLlpxtjzs3X
-  port: 16233
-  score: 9.997914059240717
-  server: 102.133.165.160
-  sim_score: 1.157868171559856
-  speed: 47.93
-  type: ss
-- latency: 47.94
+- latency: 40.09
   name: nl|7363|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 9.119732999582812
+  score: 10.119730606136192
   server: 5.129.235.85
-  sim_score: 3.1876003482405184
+  sim_score: 2.5475059881825817
   skip-cert-verify: true
   sni: www.linux.com
-  speed: 43.72
+  speed: 40.57
   type: hysteria2
   udp: true
+- latency: 39.23
+  name: us|71fb|puddincat07@Telegram
+  password: 669d0ac7b5b64ebbb1abb75d5d540a5c
+  port: 443
+  score: 6.8773897527402506
+  server: 104.16.159.6
+  sim_score: 2.5291298360886443
+  skip-cert-verify: true
+  sni: bangladeshipatri.com
+  speed: 26.98
+  type: trojan
+  udp: true
 - cipher: chacha20-ietf-poly1305
-  latency: 49.02
-  name: gb|3b4b|puddincat07@Telegram
+  latency: 37.7
+  name: gb|e901|puddincat07@Telegram
   password: oZIoA69Q8yhcQV8ka3Pa3A
   port: 8080
-  score: 6.489188086495307
-  server: 82.38.31.34
-  sim_score: 1.6880340887643426
-  speed: 31.81
+  score: 3.281167108753315
+  server: 82.38.31.10
+  sim_score: 0.8714356482685569
+  speed: 12.37
   type: ss
-- cipher: chacha20-ietf-poly1305
-  latency: 41.02
-  name: xx|bf1e|puddincat07@Telegram
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-  port: 50099
-  score: 4.817162359824476
-  server: r3mrcg001287h3p.cybervena.com
-  sim_score: 1.5287930240585834
-  speed: 19.76
-  type: ss
-- alterId: 2
-  cipher: auto
-  latency: 39.62
-  name: xx|8151|puddincat07@Telegram
-  port: 30807
-  score: 4.192327107521454
-  server: v10.hdacd.com
-  sim_score: 1.3651744552592282
-  skip-cert-verify: false
-  speed: 16.61
-  tls: false
-  type: vmess
-  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-- latency: 39.04
-  name: xx|c44f|puddincat07@Telegram
-  password: 71cada65-d23e-418c-88e4-a06188d14689
-  port: 443
-  score: 3.9190573770491803
-  server: de-two.quiet-rogue.site
-  sim_score: 2.5122748405663096
-  skip-cert-verify: true
-  sni: de-two.quiet-rogue.site
-  speed: 15.3
-  type: hysteria2
-  udp: true
 - cipher: aes-256-cfb
-  latency: 46.13
-  name: jp|f147|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 2.9807066984608714
-  server: 13.231.162.164
-  sim_score: 2.2731761903038987
-  speed: 13.75
+  latency: 41.55
+  name: lt|7a1f|puddincat07@Telegram
+  password: qYEN5HX4JKeVCdEC
+  port: 9039
+  score: 2.943441636582431
+  server: 195.238.126.84
+  sim_score: 1.3019779994999157
+  speed: 12.23
   type: ss
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|cbca|puddincat07@Telegram
-  - za|d18d|puddincat07@Telegram
   - nl|7363|puddincat07@Telegram
-  - gb|3b4b|puddincat07@Telegram
-  - xx|bf1e|puddincat07@Telegram
-  - xx|8151|puddincat07@Telegram
-  - xx|c44f|puddincat07@Telegram
-  - jp|f147|puddincat07@Telegram
+  - us|71fb|puddincat07@Telegram
+  - gb|e901|puddincat07@Telegram
+  - lt|7a1f|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|cbca|puddincat07@Telegram
-  - za|d18d|puddincat07@Telegram
   - nl|7363|puddincat07@Telegram
-  - gb|3b4b|puddincat07@Telegram
-  - xx|bf1e|puddincat07@Telegram
-  - xx|8151|puddincat07@Telegram
-  - xx|c44f|puddincat07@Telegram
-  - jp|f147|puddincat07@Telegram
+  - us|71fb|puddincat07@Telegram
+  - gb|e901|puddincat07@Telegram
+  - lt|7a1f|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
