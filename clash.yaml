@@ -3,40 +3,98 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 51.92
+- cipher: chacha20-ietf-poly1305
+  latency: 37.75
+  name: nl|a3cf|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 12.919205298013246
+  server: 193.29.139.204
+  sim_score: 2.0878615212136284
+  speed: 48.77
+  type: ss
+- cipher: rc4-md5
+  latency: 36.63
+  name: us|c950|puddincat07@Telegram
+  obfs: plain
+  password: 14fFPrbezE3HDZzsMOr6
+  port: 8080
+  protocol: origin
+  score: 10.619710619710618
+  server: 107.151.182.253
+  sim_score: 2.785225651923856
+  speed: 38.9
+  type: ssr
+- latency: 27.68
+  name: nl|7363|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 9.25578034682081
+  server: 5.129.235.85
+  sim_score: 3.439811939157263
+  skip-cert-verify: true
+  sni: www.linux.com
+  speed: 25.62
+  type: hysteria2
+  udp: true
+- alterId: 2
+  cipher: auto
+  latency: 38.9
+  name: xx|8151|puddincat07@Telegram
+  port: 30807
+  score: 7.4910025706940875
+  server: v10.hdacd.com
+  sim_score: 1.1788473298715376
+  skip-cert-verify: false
+  speed: 29.14
+  tls: false
+  type: vmess
+  uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+- cipher: chacha20-ietf-poly1305
+  latency: 26.54
+  name: gb|76ce|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 6.58251695553881
+  server: 82.38.31.49
+  sim_score: 2.801043606219147
+  speed: 17.47
+  type: ss
+- alterId: 0
+  latency: 39.87
   name: xx|bd39|puddincat07@Telegram
   password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
   port: 20004
-  score: 3.5150231124807396
+  score: 4.078254326561325
   server: oplosgru-c.catcat321.com
-  sim_score: 2.2999444613037805
-  skip-cert-verify: false
+  sim_score: 3.4792613770243586
+  skip-cert-verify: true
   sni: hk.catxstar.com
-  speed: 18.25
+  speed: 16.26
+  tls: true
   type: trojan
-- cipher: rc4-md5
-  latency: 51.1
-  name: gb|1af8|puddincat07@Telegram
-  password: 14fFPrbezE3HDZzsMOr6
-  port: 8080
-  score: 2.9315068493150687
-  server: 146.70.61.37
-  sim_score: 2.8137736638949806
-  speed: 14.98
-  type: ss
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - nl|a3cf|puddincat07@Telegram
+  - us|c950|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - gb|76ce|puddincat07@Telegram
   - xx|bd39|puddincat07@Telegram
-  - gb|1af8|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - nl|a3cf|puddincat07@Telegram
+  - us|c950|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
+  - xx|8151|puddincat07@Telegram
+  - gb|76ce|puddincat07@Telegram
   - xx|bd39|puddincat07@Telegram
-  - gb|1af8|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
