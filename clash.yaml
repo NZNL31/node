@@ -3,77 +3,196 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- client-fingerprint: chrome
-  latency: 39.41
-  name: us|9f71|puddincat07@Telegram
+- alpn:
+  - http/1.1
+  - h2
+  - h3
+  client-fingerprint: chrome
+  latency: 61.19
+  name: us|5eb0|puddincat07@Telegram
   network: ws
   password: humanity
   port: '443'
-  score: 12.070540471961433
-  server: 104.17.111.8
-  sim_score: 1.5286779874080096
+  score: 7.813368197417879
+  server: 198.41.223.96
+  sim_score: 0.8724298373805451
   skip-cert-verify: false
   sni: www.ignitelimit.com
-  speed: 47.57
+  speed: 47.81
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/49.0.2623.87 Safari/537.36
+    path: /assignment
+- client-fingerprint: chrome
+  latency: 58.23
+  name: us|cf65|puddincat07@Telegram
+  network: ws
+  password: humanity
+  port: '443'
+  score: 5.217241971492358
+  server: 104.18.152.204
+  sim_score: 1.6256116952580022
+  skip-cert-verify: false
+  sni: www.ignitelimit.com
+  speed: 30.38
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like
+        Gecko) Chrome/42.0.2311.90 Safari/537.36
+    path: /assignment
+- client-fingerprint: chrome
+  latency: 73.3
+  name: xx|0c76|puddincat07@Telegram
+  network: ws
+  password: humanity
+  port: '443'
+  score: 3.413369713506139
+  server: ip.myip2.qzz.io
+  sim_score: 4.040766811352365
+  skip-cert-verify: false
+  sni: www.ignitelimit.com
+  speed: 25.02
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/534.7
+        (KHTML, like Gecko) Chrome/7.0.517.44 Safari/534.7
+    path: /assignment
+- client-fingerprint: chrome
+  latency: 63.51
+  name: us|cc28|puddincat07@Telegram
+  network: ws
+  password: humanity
+  port: '443'
+  score: 2.856243111321052
+  server: 104.18.152.246
+  sim_score: 1.2951816038118427
+  skip-cert-verify: false
+  sni: www.ignitelimit.com
+  speed: 18.14
   type: trojan
   udp: true
   ws-opts:
     headers:
       User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/50.0.2661.102 Safari/537.36
+        like Gecko) Chrome/70.0.3538.67 Safari/537.36
     path: /assignment
 - client-fingerprint: chrome
-  latency: 37.44
-  name: us|7ca3|puddincat07@Telegram
+  latency: 58.28
+  name: us|b4ce|puddincat07@Telegram
   network: ws
   password: humanity
   port: '443'
-  score: 9.091880341880342
-  server: 104.16.174.109
-  sim_score: 5.3310733402510015
+  score: 2.3970487302676733
+  server: 104.16.174.117
+  sim_score: 1.2184904192063153
   skip-cert-verify: false
   sni: www.ignitelimit.com
-  speed: 34.04
+  speed: 13.97
   type: trojan
   udp: true
   ws-opts:
     headers:
-      User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/534.3
-        (KHTML, like Gecko) Chrome/6.0.472.63 Safari/534.3
+      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/54.0.2840.99 Safari/537.36
     path: /assignment
-- client-fingerprint: chrome
-  latency: 34.92
-  name: xx|9b26|puddincat07@Telegram
+- alpn:
+  - h3
+  - h2
+  - http/1.1
+  client-fingerprint: chrome
+  latency: 67.82
+  name: xx|cf0d|puddincat07@Telegram
   network: ws
   password: humanity
   port: '443'
-  score: 6.597938144329897
-  server: render.com
-  sim_score: 1.45792485481444
+  score: 1.657328221763492
+  server: join-telegram-channel-tirexnet.trex.kdns.fr
+  sim_score: 1.4930877841592642
   skip-cert-verify: false
   sni: www.ignitelimit.com
-  speed: 23.04
+  speed: 11.24
   type: trojan
   udp: true
   ws-opts:
     headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/60.0.3112.90 Safari/537.36
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/57.0.2987.133 Safari/537.36
     path: /assignment
+- cipher: aes-256-cfb
+  latency: 65.77
+  name: cn|3cba|puddincat07@Telegram
+  password: 7eadc6dbe2ae
+  port: '65443'
+  score: 1.5371750038011252
+  server: 121.46.230.136
+  sim_score: 1.360117391502168
+  speed: 10.11
+  type: ss
+  udp: true
+- client-fingerprint: chrome
+  latency: 60.6
+  name: us|3f57|puddincat07@Telegram
+  network: ws
+  password: humanity
+  port: '443'
+  score: 1.447194719471947
+  server: 104.19.229.21
+  sim_score: 0.720708235770474
+  skip-cert-verify: false
+  sni: www.ignitelimit.com
+  speed: 8.77
+  type: trojan
+  udp: true
+  ws-opts:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; de-DE) AppleWebKit/534.17
+        (KHTML, like Gecko) Chrome/10.0.649.0 Safari/534.17
+    path: assignment
+- cipher: aes-256-cfb
+  latency: 66.21
+  name: th|55f8|puddincat07@Telegram
+  password: 7eadc6dbe2ae
+  port: 65443
+  score: 1.327594019030358
+  server: 103.169.67.34
+  sim_score: 5.7553243518166255
+  skip-cert-verify: true
+  speed: 8.79
+  type: ss
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|9f71|puddincat07@Telegram
-  - us|7ca3|puddincat07@Telegram
-  - xx|9b26|puddincat07@Telegram
+  - us|5eb0|puddincat07@Telegram
+  - us|cf65|puddincat07@Telegram
+  - xx|0c76|puddincat07@Telegram
+  - us|cc28|puddincat07@Telegram
+  - us|b4ce|puddincat07@Telegram
+  - xx|cf0d|puddincat07@Telegram
+  - cn|3cba|puddincat07@Telegram
+  - us|3f57|puddincat07@Telegram
+  - th|55f8|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|9f71|puddincat07@Telegram
-  - us|7ca3|puddincat07@Telegram
-  - xx|9b26|puddincat07@Telegram
+  - us|5eb0|puddincat07@Telegram
+  - us|cf65|puddincat07@Telegram
+  - xx|0c76|puddincat07@Telegram
+  - us|cc28|puddincat07@Telegram
+  - us|b4ce|puddincat07@Telegram
+  - xx|cf0d|puddincat07@Telegram
+  - cn|3cba|puddincat07@Telegram
+  - us|3f57|puddincat07@Telegram
+  - th|55f8|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
