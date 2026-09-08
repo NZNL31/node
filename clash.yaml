@@ -3,57 +3,45 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 35.74
+- latency: 21.6
+  name: us|d4f7|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
+  port: 443
+  score: 7.148148148148148
+  server: 130.49.161.70
+  sim_score: 1.083840436610802
+  skip-cert-verify: false
+  sni: hy2.aspidnet.xyz
+  speed: 15.44
+  tls: false
+  type: hysteria2
+- latency: 45.29
   name: nl|7363|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 13.111359820928929
+  score: 3.91697946566571
   server: 5.129.235.85
-  sim_score: 1.1377565732057553
+  sim_score: 1.359579143684341
   skip-cert-verify: true
   sni: www.linux.com
-  speed: 46.86
+  speed: 17.74
   type: hysteria2
   udp: true
-- latency: 36.06
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 12.365501941209097
-  server: 66.94.121.46
-  sim_score: 0.780601820956316
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 44.59
-  type: hysteria2
-  udp: true
-- latency: 34.58
-  name: xx|30c7|puddincat07@Telegram
-  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-  port: 443
-  score: 6.194331983805669
-  server: admin.wwwinternetvideo.click
-  sim_score: 2.0140827900643723
-  skip-cert-verify: true
-  sni: admin.wwwinternetvideo.click
-  speed: 21.42
-  tls: false
-  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - us|d4f7|puddincat07@Telegram
   - nl|7363|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
-  - xx|30c7|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - us|d4f7|puddincat07@Telegram
   - nl|7363|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
-  - xx|30c7|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
