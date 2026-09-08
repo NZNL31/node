@@ -3,45 +3,56 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 21.6
-  name: us|d4f7|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
+- latency: 28.29
+  name: xx|30c7|puddincat07@Telegram
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
   port: 443
-  score: 7.148148148148148
-  server: 130.49.161.70
-  sim_score: 1.083840436610802
-  skip-cert-verify: false
-  sni: hy2.aspidnet.xyz
-  speed: 15.44
+  score: 17.108518911276068
+  server: admin.wwwinternetvideo.click
+  sim_score: 1.283684055248717
+  skip-cert-verify: true
+  sni: admin.wwwinternetvideo.click
+  speed: 48.4
   tls: false
   type: hysteria2
-- latency: 45.29
-  name: nl|7363|puddincat07@Telegram
+- latency: 28.93
+  name: co|2f90|puddincat07@Telegram
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  port: 443
+  score: 14.552367784306949
+  server: 45.192.12.93
+  sim_score: 3.405081121413187
+  sni: admin.wwwinternetvideo.click
+  speed: 42.1
+  tls: false
+  type: hysteria2
+- latency: 28.9
+  name: us|7a73|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 3.91697946566571
-  server: 5.129.235.85
-  sim_score: 1.359579143684341
+  score: 13.384083044982699
+  server: 66.94.121.46
+  sim_score: 1.8012697346177406
   skip-cert-verify: true
-  sni: www.linux.com
-  speed: 17.74
+  sni: www.broadcom.com
+  speed: 38.68
   type: hysteria2
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|d4f7|puddincat07@Telegram
-  - nl|7363|puddincat07@Telegram
+  - xx|30c7|puddincat07@Telegram
+  - co|2f90|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|d4f7|puddincat07@Telegram
-  - nl|7363|puddincat07@Telegram
+  - xx|30c7|puddincat07@Telegram
+  - co|2f90|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
