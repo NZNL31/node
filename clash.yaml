@@ -3,28 +3,72 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 33.6
+- latency: 33.2
+  name: us|d4f7|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
+  port: 443
+  score: 13.987951807228914
+  server: 130.49.161.70
+  sim_score: 1.1679558720930108
+  skip-cert-verify: false
+  sni: hy2.aspidnet.xyz
+  speed: 46.44
+  tls: false
+  type: hysteria2
+- latency: 33.85
+  name: xx|30c7|puddincat07@Telegram
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  port: 443
+  score: 9.249630723781388
+  server: admin.wwwinternetvideo.click
+  sim_score: 1.3481259790764801
+  skip-cert-verify: true
+  sni: admin.wwwinternetvideo.click
+  speed: 31.31
+  tls: false
+  type: hysteria2
+- latency: 34.47
   name: co|2f90|puddincat07@Telegram
   password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
   port: 443
-  score: 11.913690476190474
+  score: 3.6437481868291273
   server: 45.192.12.93
-  sim_score: 0.7131723281878934
+  sim_score: 3.3151712317004574
   sni: admin.wwwinternetvideo.click
-  speed: 40.03
+  speed: 12.56
   tls: false
   type: hysteria2
+- latency: 187.42
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 2.4661188773876854
+  server: 66.94.121.46
+  sim_score: 0.8646480630337161
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 46.22
+  type: hysteria2
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - us|d4f7|puddincat07@Telegram
+  - xx|30c7|puddincat07@Telegram
   - co|2f90|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - us|d4f7|puddincat07@Telegram
+  - xx|30c7|puddincat07@Telegram
   - co|2f90|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
