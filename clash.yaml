@@ -3,54 +3,41 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 28.29
-  name: xx|30c7|puddincat07@Telegram
-  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-  port: 443
-  score: 17.108518911276068
-  server: admin.wwwinternetvideo.click
-  sim_score: 1.283684055248717
+- latency: 83.91
+  name: us|c3d4|puddincat07@Telegram
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  port: 8443
+  score: 5.688237397211298
+  server: 159.223.157.129
+  sim_score: 1.7271063052281608
   skip-cert-verify: true
-  sni: admin.wwwinternetvideo.click
-  speed: 48.4
+  sni: www.microsoft.com
+  speed: 47.73
   tls: false
   type: hysteria2
-- latency: 28.93
-  name: co|2f90|puddincat07@Telegram
-  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-  port: 443
-  score: 14.552367784306949
-  server: 45.192.12.93
-  sim_score: 3.405081121413187
-  sni: admin.wwwinternetvideo.click
-  speed: 42.1
-  tls: false
-  type: hysteria2
-- latency: 28.9
+- latency: 61.09
   name: us|7a73|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 13.384083044982699
+  score: 4.242920281551809
   server: 66.94.121.46
-  sim_score: 1.8012697346177406
+  sim_score: 4.659835794685728
   skip-cert-verify: true
   sni: www.broadcom.com
-  speed: 38.68
+  speed: 25.92
   type: hysteria2
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|30c7|puddincat07@Telegram
-  - co|2f90|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|30c7|puddincat07@Telegram
-  - co|2f90|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
