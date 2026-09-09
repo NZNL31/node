@@ -3,30 +3,42 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 40.9
-  name: us|d4f7|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
-  port: 443
-  score: 3.403422982885086
-  server: 130.49.161.70
-  sim_score: 1.0516654712176656
-  skip-cert-verify: false
-  sni: hy2.aspidnet.xyz
-  speed: 13.92
+- latency: 27.91
+  name: us|c3d4|puddincat07@Telegram
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  port: 8443
+  score: 17.85023289143676
+  server: 159.223.157.129
+  sim_score: 1.1490780054295473
+  skip-cert-verify: true
+  sni: www.microsoft.com
+  speed: 49.82
   tls: false
   type: hysteria2
+- latency: 42.35
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 2.5076741440377806
+  server: 66.94.121.46
+  sim_score: 1.5631154831084537
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 10.62
+  type: hysteria2
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|d4f7|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|d4f7|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
