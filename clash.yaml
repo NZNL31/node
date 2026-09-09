@@ -3,43 +3,28 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 83.91
-  name: us|c3d4|puddincat07@Telegram
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  port: 8443
-  score: 5.688237397211298
-  server: 159.223.157.129
-  sim_score: 1.7271063052281608
-  skip-cert-verify: true
-  sni: www.microsoft.com
-  speed: 47.73
+- latency: 33.6
+  name: co|2f90|puddincat07@Telegram
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  port: 443
+  score: 11.913690476190474
+  server: 45.192.12.93
+  sim_score: 0.7131723281878934
+  sni: admin.wwwinternetvideo.click
+  speed: 40.03
   tls: false
   type: hysteria2
-- latency: 61.09
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 4.242920281551809
-  server: 66.94.121.46
-  sim_score: 4.659835794685728
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 25.92
-  type: hysteria2
-  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|c3d4|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - co|2f90|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|c3d4|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - co|2f90|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
