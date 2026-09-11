@@ -2,31 +2,15 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies:
-- latency: 66.6
-  name: us|d4f7|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
-  port: 443
-  score: 2.400900900900901
-  server: 130.49.161.70
-  sim_score: 3.011432554764127
-  skip-cert-verify: false
-  sni: hy2.aspidnet.xyz
-  speed: 15.99
-  tls: false
-  type: hysteria2
+proxies: []
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|d4f7|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies:
-  - us|d4f7|puddincat07@Telegram
+  proxies: []
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
