@@ -3,29 +3,42 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 31.6
+- cipher: aes-256-cfb
+  latency: 32.96
+  name: gb|3708|puddincat07@Telegram
+  password: amazonskr05
+  port: '443'
+  score: 9.526699029126213
+  server: 52.56.143.197
+  sim_score: 3.7378221001285987
+  speed: 31.4
+  type: ss
+  udp: true
+- latency: 28.86
   name: us|7a73|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 4.768987341772152
+  score: 7.969507969507969
   server: 66.94.121.46
-  sim_score: 1.6954450818231703
+  sim_score: 0.617410113791382
   skip-cert-verify: true
   sni: www.broadcom.com
-  speed: 15.07
+  speed: 23.0
   type: hysteria2
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - gb|3708|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - gb|3708|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
