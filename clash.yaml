@@ -2,30 +2,16 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies:
-- latency: 81.77
-  name: us|c3d4|puddincat07@Telegram
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  port: 8443
-  score: 5.9422771187477075
-  server: 159.223.157.129
-  sim_score: 1.6463642319918201
-  skip-cert-verify: true
-  sni: www.microsoft.com
-  speed: 48.59
-  tls: false
-  type: hysteria2
+proxies: []
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|c3d4|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies:
-  - us|c3d4|puddincat07@Telegram
+  proxies: []
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
