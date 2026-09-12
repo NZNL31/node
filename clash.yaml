@@ -3,28 +3,28 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 36.59
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 4.536758677234217
-  server: 66.94.121.46
-  sim_score: 1.8300065220442405
+- latency: 81.77
+  name: us|c3d4|puddincat07@Telegram
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  port: 8443
+  score: 5.9422771187477075
+  server: 159.223.157.129
+  sim_score: 1.6463642319918201
   skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 16.6
+  sni: www.microsoft.com
+  speed: 48.59
+  tls: false
   type: hysteria2
-  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|7a73|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|7a73|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
