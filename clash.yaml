@@ -3,54 +3,42 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 42.05
+- latency: 30.62
   name: us|d4f7|puddincat07@Telegram
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
   password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
   port: 443
-  score: 7.4577883472057085
+  score: 15.725016329196603
   server: 130.49.161.70
-  sim_score: 0.6154845685580488
+  sim_score: 3.3851954011035756
   skip-cert-verify: false
   sni: hy2.aspidnet.xyz
-  speed: 31.36
+  speed: 48.15
   tls: false
   type: hysteria2
-- latency: 40.15
+- latency: 27.56
   name: xx|6aa1|puddincat07@Telegram
   password: 3b8c82ed-fe66-472d-915e-034ccb57103f
   port: 443
-  score: 7.212951432129515
+  score: 7.031930333817126
   server: labs.frkn.org
-  sim_score: 1.1795630754432536
+  sim_score: 3.6485283022685193
   skip-cert-verify: true
   sni: labs.frkn.org
-  speed: 28.96
+  speed: 19.38
   tls: false
   type: hysteria2
-- latency: 39.64
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 7.058526740665993
-  server: 66.94.121.46
-  sim_score: 2.2272590086686477
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 27.98
-  type: hysteria2
-  udp: true
-- latency: 40.57
+- latency: 35.37
   name: us|c3d4|puddincat07@Telegram
   password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
   port: 8443
-  score: 5.12201133842741
+  score: 2.906417868249929
   server: 159.223.157.129
-  sim_score: 2.774626314948654
+  sim_score: 0.8697897896052196
   skip-cert-verify: true
   sni: www.microsoft.com
-  speed: 20.78
+  speed: 10.28
   tls: false
   type: hysteria2
 proxy-groups:
@@ -59,7 +47,6 @@ proxy-groups:
   - 🔄 自动选择
   - us|d4f7|puddincat07@Telegram
   - xx|6aa1|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
   - us|c3d4|puddincat07@Telegram
   type: select
 - interval: 300
@@ -67,9 +54,8 @@ proxy-groups:
   proxies:
   - us|d4f7|puddincat07@Telegram
   - xx|6aa1|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
   - us|c3d4|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
