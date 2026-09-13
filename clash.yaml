@@ -3,42 +3,74 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 39.12
+- auth: https://xship.top
+  latency: 27.59
+  name: xx|a030|puddincat07@Telegram
+  password: https://xship.top
+  port: 443
+  score: 13.93258426966292
+  server: starlink-ft.251313.xyz
+  sim_score: 2.1231662627819152
+  skip-cert-verify: true
+  sni: xship.top
+  speed: 38.44
+  type: hysteria2
+  udp: true
+- latency: 36.5
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 11.345205479452055
+  server: 66.94.121.46
+  sim_score: 5.190842842756585
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 41.41
+  type: hysteria2
+  udp: true
+- latency: 37.12
   name: us|338b|puddincat07@Telegram
   password: 18bd49994f2eea74ff62798bd75fb7d1
   port: 443
-  score: 7.893660531697342
+  score: 6.007543103448276
   server: 107.175.219.48
-  sim_score: 2.0963289962294795
+  sim_score: 0.8750840856870847
   skip-cert-verify: true
-  speed: 30.88
+  speed: 22.3
   tls: false
   type: hysteria2
-- latency: 41.29
-  name: us|c3d4|puddincat07@Telegram
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  port: 8443
-  score: 7.636231533058853
-  server: 159.223.157.129
-  sim_score: 1.9466879675204518
+- auth: 0bffb8e71bca29788862f986caae97b3
+  latency: 50.16
+  name: jp|e134|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
+  password: 0bffb8e71bca29788862f986caae97b3
+  port: 443
+  score: 4.565390749601276
+  server: 8.211.175.129
+  sim_score: 1.0512304992949584
   skip-cert-verify: true
-  sni: www.microsoft.com
-  speed: 31.53
-  tls: false
+  sni: 8.211.175.129
+  speed: 22.9
   type: hysteria2
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - xx|a030|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   - us|338b|puddincat07@Telegram
-  - us|c3d4|puddincat07@Telegram
+  - jp|e134|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - xx|a030|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   - us|338b|puddincat07@Telegram
-  - us|c3d4|puddincat07@Telegram
+  - jp|e134|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
