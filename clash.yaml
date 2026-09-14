@@ -3,46 +3,59 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: 0bffb8e71bca29788862f986caae97b3
-  latency: 37.98
-  name: jp|e134|puddincat07@Telegram
+- auth: f6bcf150bc912812b240caf89bc89264
+  latency: 73.62
+  name: us|e0a4|puddincat07@Telegram
   obfs: salamander
   obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
-  password: 0bffb8e71bca29788862f986caae97b3
+  password: f6bcf150bc912812b240caf89bc89264
   port: 443
-  score: 10.363349131121645
-  server: 8.211.175.129
-  sim_score: 2.9130893732468417
+  score: 6.21977723444716
+  server: 45.149.172.74
+  sim_score: 1.2916058833225497
   skip-cert-verify: true
-  sni: 8.211.175.129
-  speed: 39.36
+  sni: 45.149.172.74
+  speed: 45.79
   type: hysteria2
   udp: true
-- latency: 42.63
+- latency: 93.79
   name: us|7a73|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 9.401829697396199
+  score: 3.9236592387248104
   server: 66.94.121.46
-  sim_score: 3.161801825061106
+  sim_score: 1.0339481968718234
   skip-cert-verify: true
   sni: www.broadcom.com
-  speed: 40.08
+  speed: 36.8
   type: hysteria2
   udp: true
+- latency: 64.58
+  name: us|338b|puddincat07@Telegram
+  password: 18bd49994f2eea74ff62798bd75fb7d1
+  port: 443
+  score: 1.6553112418705482
+  server: 107.175.219.48
+  sim_score: 3.4054559377447786
+  skip-cert-verify: true
+  speed: 10.69
+  tls: false
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - jp|e134|puddincat07@Telegram
+  - us|e0a4|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
+  - us|338b|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - jp|e134|puddincat07@Telegram
+  - us|e0a4|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
+  - us|338b|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
