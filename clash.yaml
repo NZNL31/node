@@ -3,73 +3,56 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 54.08
-  name: us|c3d4|puddincat07@Telegram
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  port: 8443
-  score: 6.375739644970414
-  server: 159.223.157.129
-  sim_score: 2.1708675352905082
-  skip-cert-verify: true
-  sni: www.microsoft.com
-  speed: 34.48
-  tls: false
-  type: hysteria2
-- latency: 57.45
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 6.194952132288947
-  server: 66.94.121.46
-  sim_score: 2.8680357037503033
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 35.59
-  type: hysteria2
-  udp: true
-- auth: 0bffb8e71bca29788862f986caae97b3
-  latency: 55.07
-  name: jp|e134|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
-  password: 0bffb8e71bca29788862f986caae97b3
-  port: 443
-  score: 5.45669148356637
-  server: 8.211.175.129
-  sim_score: 1.0898081950986631
-  skip-cert-verify: true
-  sni: 8.211.175.129
-  speed: 30.05
-  type: hysteria2
-  udp: true
-- latency: 61.09
+- latency: 26.12
   name: us|338b|puddincat07@Telegram
   password: 18bd49994f2eea74ff62798bd75fb7d1
   port: 443
-  score: 2.3342609265018823
+  score: 16.902756508422662
   server: 107.175.219.48
-  sim_score: 4.058343974181094
+  sim_score: 1.707334829527092
   skip-cert-verify: true
-  speed: 14.26
+  speed: 44.15
   tls: false
   type: hysteria2
+- latency: 27.49
+  name: us|c3d4|puddincat07@Telegram
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  port: 8443
+  score: 11.691524190614771
+  server: 159.223.157.129
+  sim_score: 1.5128774297784473
+  skip-cert-verify: true
+  sni: www.microsoft.com
+  speed: 32.14
+  tls: false
+  type: hysteria2
+- latency: 37.03
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 10.645422630299757
+  server: 66.94.121.46
+  sim_score: 0.6429267562248476
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 39.42
+  type: hysteria2
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - us|338b|puddincat07@Telegram
   - us|c3d4|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
-  - jp|e134|puddincat07@Telegram
-  - us|338b|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - us|338b|puddincat07@Telegram
   - us|c3d4|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
-  - jp|e134|puddincat07@Telegram
-  - us|338b|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
