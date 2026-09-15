@@ -3,61 +3,42 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 25.24
-  name: us|e0a4|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
-  password: f6bcf150bc912812b240caf89bc89264
+- latency: 69.08
+  name: us|338b|puddincat07@Telegram
+  password: 18bd49994f2eea74ff62798bd75fb7d1
   port: 443
-  score: 18.87083993660856
-  server: 45.149.172.74
-  sim_score: 0.8992052064847722
+  score: 4.923277359583092
+  server: 107.175.219.48
+  sim_score: 1.546511437246452
   skip-cert-verify: true
-  sni: 45.149.172.74
-  speed: 47.63
+  speed: 34.01
   tls: false
   type: hysteria2
-- latency: 69.19
-  name: us|c540|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
-  password: d4a705d40356ef719212045528e04594
-  port: 443
-  score: 7.194681312328371
-  server: 45.149.172.80
-  sim_score: 1.4758269760131268
+- latency: 89.67
+  name: us|c3d4|puddincat07@Telegram
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  port: 8443
+  score: 2.1088435374149657
+  server: 159.223.157.129
+  sim_score: 2.485450762431697
   skip-cert-verify: true
-  sni: 45.149.172.80
-  speed: 49.78
+  sni: www.microsoft.com
+  speed: 18.91
   tls: false
   type: hysteria2
-- latency: 62.41
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 2.576510174651498
-  server: 66.94.121.46
-  sim_score: 1.3281475469757478
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 16.08
-  type: hysteria2
-  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|e0a4|puddincat07@Telegram
-  - us|c540|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - us|338b|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|e0a4|puddincat07@Telegram
-  - us|c540|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - us|338b|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
