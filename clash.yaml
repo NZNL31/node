@@ -3,71 +3,79 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 40.63
+- latency: 65.94
+  name: xx|7c54|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+  password: cd74c0a406664a5bc0bac098220a2468
+  port: 443
+  score: 5.905368516833485
+  server: nl1.sferavpn.pro
+  sim_score: 1.52407501198309
+  skip-cert-verify: true
+  sni: nl1.sferavpn.pro
+  speed: 38.94
+  tls: false
+  type: hysteria2
+- latency: 89.71
+  name: us|c540|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
+  password: d4a705d40356ef719212045528e04594
+  port: 443
+  score: 5.002786757329173
+  server: 45.149.172.80
+  sim_score: 4.6484699446891184
+  skip-cert-verify: true
+  sni: 45.149.172.80
+  speed: 44.88
+  tls: false
+  type: hysteria2
+- latency: 91.78
+  name: gb|d819|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+  password: cd74c0a406664a5bc0bac098220a2468
+  port: 443
+  score: 3.9660056657223794
+  server: 2.27.249.79
+  sim_score: 0.7185133611603683
+  skip-cert-verify: false
+  sni: nl1.sferavpn.pro
+  speed: 36.4
+  tls: false
+  type: hysteria2
+- latency: 118.17
   name: us|e0a4|puddincat07@Telegram
   obfs: salamander
   obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
   password: f6bcf150bc912812b240caf89bc89264
   port: 443
-  score: 9.081959143490032
+  score: 3.01007023779301
   server: 45.149.172.74
-  sim_score: 1.8185187708462192
+  sim_score: 2.5497928367635843
   skip-cert-verify: true
   sni: 45.149.172.74
-  speed: 36.9
-  tls: false
-  type: hysteria2
-- latency: 38.92
-  name: us|338b|puddincat07@Telegram
-  password: 18bd49994f2eea74ff62798bd75fb7d1
-  port: 443
-  score: 5.578108941418294
-  server: 107.175.219.48
-  sim_score: 1.954488137805327
-  skip-cert-verify: true
-  speed: 21.71
-  tls: false
-  type: hysteria2
-- cipher: aes-256-cfb
-  latency: 40.02
-  name: fr|ede9|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 4.915042478760619
-  server: 15.188.246.220
-  sim_score: 0.7744850293781105
-  speed: 19.67
-  type: ss
-  udp: true
-- latency: 38.42
-  name: de|4e72|puddincat07@Telegram
-  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-  port: 443
-  score: 4.872462259239978
-  server: 64.188.98.171
-  sim_score: 1.586485896961166
-  skip-cert-verify: true
-  sni: germany3.h2corp.local
-  speed: 18.72
+  speed: 35.57
   tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - xx|7c54|puddincat07@Telegram
+  - us|c540|puddincat07@Telegram
+  - gb|d819|puddincat07@Telegram
   - us|e0a4|puddincat07@Telegram
-  - us|338b|puddincat07@Telegram
-  - fr|ede9|puddincat07@Telegram
-  - de|4e72|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - xx|7c54|puddincat07@Telegram
+  - us|c540|puddincat07@Telegram
+  - gb|d819|puddincat07@Telegram
   - us|e0a4|puddincat07@Telegram
-  - us|338b|puddincat07@Telegram
-  - fr|ede9|puddincat07@Telegram
-  - de|4e72|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
