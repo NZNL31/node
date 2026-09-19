@@ -3,43 +3,27 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 55.23
-  name: us|d4f7|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
-  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
-  port: 443
-  score: 7.742169110990403
-  server: 130.49.161.70
-  sim_score: 2.675217277329654
-  skip-cert-verify: false
-  sni: hy2.aspidnet.xyz
-  speed: 42.76
-  tls: false
-  type: hysteria2
-- latency: 57.68
+- latency: 55.36
   name: de|4e72|puddincat07@Telegram
   password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
   port: 443
-  score: 3.053051317614424
+  score: 4.192557803468208
   server: 64.188.98.171
-  sim_score: 1.391689019279701
+  sim_score: 2.523590877119814
   skip-cert-verify: true
   sni: germany3.h2corp.local
-  speed: 17.61
+  speed: 23.21
   tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|d4f7|puddincat07@Telegram
   - de|4e72|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|d4f7|puddincat07@Telegram
   - de|4e72|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
