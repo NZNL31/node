@@ -3,45 +3,45 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 54.1
-  name: de|4e72|puddincat07@Telegram
-  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+- latency: 34.17
+  name: us|d4f7|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
   port: 443
-  score: 6.4547134935305
-  server: 64.188.98.171
-  sim_score: 1.6620246041381495
-  skip-cert-verify: true
-  sni: germany3.h2corp.local
-  speed: 34.92
+  score: 12.420251682762656
+  server: 130.49.161.70
+  sim_score: 1.3982828404309813
+  skip-cert-verify: false
+  sni: hy2.aspidnet.xyz
+  speed: 42.44
   tls: false
   type: hysteria2
-- latency: 56.81
-  name: xx|7c54|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
-  password: cd74c0a406664a5bc0bac098220a2468
-  port: 443
-  score: 4.148917444111952
-  server: nl1.sferavpn.pro
-  sim_score: 2.548900971771144
+- latency: 31.12
+  name: us|c3d4|puddincat07@Telegram
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  port: 8443
+  score: 9.280205655526991
+  server: 159.223.157.129
+  sim_score: 3.0209810152891703
   skip-cert-verify: true
-  sni: nl1.sferavpn.pro
-  speed: 23.57
+  sni: www.microsoft.com
+  speed: 28.88
   tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - de|4e72|puddincat07@Telegram
-  - xx|7c54|puddincat07@Telegram
+  - us|d4f7|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - de|4e72|puddincat07@Telegram
-  - xx|7c54|puddincat07@Telegram
+  - us|d4f7|puddincat07@Telegram
+  - us|c3d4|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
