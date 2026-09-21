@@ -3,217 +3,44 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 43.73
-  name: us|e0a4|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: 5c8f1a3e7b2d9046c1f8a5e3b7d04f2a
-  password: f6bcf150bc912812b240caf89bc89264
+- latency: 58.04
+  name: co|2f90|puddincat07@Telegram
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
   port: 443
-  score: 8.40841527555454
-  server: 45.149.172.74
-  sim_score: 2.216837809443677
-  skip-cert-verify: true
-  sni: 45.149.172.74
-  speed: 36.77
+  score: 4.136802205375603
+  server: 45.192.12.93
+  sim_score: 1.9948301975355285
+  sni: admin.wwwinternetvideo.click
+  speed: 24.01
   tls: false
   type: hysteria2
-- client-fingerprint: chrome
-  latency: 54.56
-  name: us|e9fc|puddincat07@Telegram
-  network: ws
-  password: humanity
-  port: '443'
-  score: 7.80791788856305
-  server: 104.21.46.3
-  sim_score: 1.2169458355370835
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  speed: 42.6
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/65.0.3325.181 Safari/537.36
-    path: /assignment
-- client-fingerprint: chrome
-  latency: 51.71
-  name: us|98c8|puddincat07@Telegram
-  network: ws
-  password: humanity
-  port: '443'
-  score: 6.621543221813963
-  server: 104.18.152.133
-  sim_score: 2.136074942459654
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  speed: 34.24
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/70.0.3538.102 Safari/537.36
-    path: /assignment
-- client-fingerprint: chrome
-  latency: 51.07
-  name: us|9165|puddincat07@Telegram
-  network: ws
-  password: humanity
-  port: '443'
-  score: 6.483258272958684
-  server: 104.18.152.233
-  sim_score: 1.4656166834323385
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  speed: 33.11
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/49.0.2623.110 Safari/537.36
-    path: /assignment
-- client-fingerprint: chrome
-  latency: 23.65
-  name: us|246e|puddincat07@Telegram
-  network: ws
-  password: humanity
-  port: '443'
-  score: 5.488372093023256
-  server: 104.16.174.143
-  sim_score: 2.5691813606892637
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  speed: 12.98
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko)
-        Chrome/49.0.2623.112 Safari/537.36
-    path: /assignment
-- client-fingerprint: chrome
-  latency: 63.86
-  name: us|8095|puddincat07@Telegram
-  network: ws
-  password: humanity
-  port: '443'
-  score: 3.997807704353273
-  server: 104.18.152.210
-  sim_score: 1.3304959858838235
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  speed: 25.53
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/66.0.3359.139 Safari/537.36
-    path: /assignment
-- client-fingerprint: chrome
-  latency: 42.34
-  name: us|01ca|puddincat07@Telegram
-  network: ws
-  password: humanity
-  port: '443'
-  score: 3.134152102031176
-  server: 104.18.152.244
-  sim_score: 1.812885304491469
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  speed: 13.27
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/37.0.2062.120 Safari/537.36
-    path: /assignment
-- client-fingerprint: chrome
-  latency: 53.1
-  name: us|ea36|puddincat07@Telegram
-  network: ws
-  password: humanity
-  port: '443'
-  score: 2.156308851224105
-  server: 104.17.111.1
-  sim_score: 0.6839178106645618
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  speed: 11.45
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like
-        Gecko) Chrome/40.0.2214.111 Safari/537.36
-    path: /assignment
-- alpn:
-  - h3
-  - h2
-  - http/1.1
-  client-fingerprint: chrome
-  latency: 49.42
-  name: xx|cf0d|puddincat07@Telegram
-  network: ws
-  password: humanity
-  port: '443'
-  score: 2.1064346418454067
-  server: join-telegram-channel-tirexnet.trex.kdns.fr
-  sim_score: 1.4905923554768552
-  skip-cert-verify: false
-  sni: www.ignitelimit.com
-  speed: 10.41
-  type: trojan
-  udp: true
-  ws-opts:
-    headers:
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/57.0.2987.133 Safari/537.36
-    path: /assignment
-- latency: 44.18
-  name: us|c3d4|puddincat07@Telegram
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  port: 8443
-  score: 1.914893617021277
-  server: 159.223.157.129
-  sim_score: 3.212097999993227
+- latency: 56.33
+  name: xx|7c54|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+  password: cd74c0a406664a5bc0bac098220a2468
+  port: 443
+  score: 2.7605183738682766
+  server: nl1.sferavpn.pro
+  sim_score: 0.8068072849751045
   skip-cert-verify: true
-  sni: www.microsoft.com
-  speed: 8.46
+  sni: nl1.sferavpn.pro
+  speed: 15.55
   tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|e0a4|puddincat07@Telegram
-  - us|e9fc|puddincat07@Telegram
-  - us|98c8|puddincat07@Telegram
-  - us|9165|puddincat07@Telegram
-  - us|246e|puddincat07@Telegram
-  - us|8095|puddincat07@Telegram
-  - us|01ca|puddincat07@Telegram
-  - us|ea36|puddincat07@Telegram
-  - xx|cf0d|puddincat07@Telegram
-  - us|c3d4|puddincat07@Telegram
+  - co|2f90|puddincat07@Telegram
+  - xx|7c54|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|e0a4|puddincat07@Telegram
-  - us|e9fc|puddincat07@Telegram
-  - us|98c8|puddincat07@Telegram
-  - us|9165|puddincat07@Telegram
-  - us|246e|puddincat07@Telegram
-  - us|8095|puddincat07@Telegram
-  - us|01ca|puddincat07@Telegram
-  - us|ea36|puddincat07@Telegram
-  - xx|cf0d|puddincat07@Telegram
-  - us|c3d4|puddincat07@Telegram
+  - co|2f90|puddincat07@Telegram
+  - xx|7c54|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
