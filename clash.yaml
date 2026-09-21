@@ -3,30 +3,18 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 61.85
+- latency: 40.1
   name: us|d4f7|puddincat07@Telegram
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
   password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
   port: 443
-  score: 4.8957154405820535
+  score: 7.266832917705735
   server: 130.49.161.70
-  sim_score: 1.3613646508393507
+  sim_score: 2.2262640746098166
   skip-cert-verify: false
   sni: hy2.aspidnet.xyz
-  speed: 30.28
-  tls: false
-  type: hysteria2
-- latency: 62.62
-  name: ru|6cb0|puddincat07@Telegram
-  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-  port: 443
-  score: 1.5154902587032897
-  server: 91.196.32.163
-  sim_score: 5.005482477314197
-  skip-cert-verify: true
-  sni: germany3.h2corp.local
-  speed: 9.49
+  speed: 29.14
   tls: false
   type: hysteria2
 proxy-groups:
@@ -34,14 +22,12 @@ proxy-groups:
   proxies:
   - 🔄 自动选择
   - us|d4f7|puddincat07@Telegram
-  - ru|6cb0|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - us|d4f7|puddincat07@Telegram
-  - ru|6cb0|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
