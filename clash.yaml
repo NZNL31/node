@@ -3,41 +3,47 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 115.66
-  name: hk|a1f8|puddincat07@Telegram
-  password: T2c9PTpPZz09
-  port: '1080'
-  score: 2.1035794570292237
-  server: 103.210.161.8
-  sim_score: 0.9485791639876484
-  skip-cert-verify: true
-  speed: 24.33
-  type: socks5
-  username: T2c9PTpPZz09
-- cipher: aes-256-cfb
-  latency: 106.59
-  name: jp|b0fd|puddincat07@Telegram
-  password: amazonskr05
-  port: '443'
-  score: 1.8275635613096912
-  server: 3.112.209.209
-  sim_score: 0.8691550812455313
-  speed: 19.48
-  type: ss
-  udp: true
+- latency: 40.97
+  name: us|601d|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  port: 443
+  score: 11.462045399072494
+  server: 162.249.125.133
+  sim_score: 1.4432378358698137
+  skip-cert-verify: false
+  sni: hy2-new.aspidnet.xyz
+  speed: 46.96
+  tls: false
+  type: hysteria2
+- latency: 28.97
+  name: gb|d819|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+  password: cd74c0a406664a5bc0bac098220a2468
+  port: 443
+  score: 10.652399033482913
+  server: 2.27.249.79
+  sim_score: 0.9281631542615594
+  skip-cert-verify: false
+  sni: nl1.sferavpn.pro
+  speed: 30.86
+  tls: false
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - hk|a1f8|puddincat07@Telegram
-  - jp|b0fd|puddincat07@Telegram
+  - us|601d|puddincat07@Telegram
+  - gb|d819|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - hk|a1f8|puddincat07@Telegram
-  - jp|b0fd|puddincat07@Telegram
+  - us|601d|puddincat07@Telegram
+  - gb|d819|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
