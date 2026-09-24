@@ -3,45 +3,63 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 37.16
-  name: us|c3d4|puddincat07@Telegram
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  port: 8443
-  score: 6.835306781485468
-  server: 159.223.157.129
-  sim_score: 1.2625955928625074
-  skip-cert-verify: true
-  sni: www.microsoft.com
-  speed: 25.4
-  tls: false
-  type: hysteria2
-- latency: 26.05
+- latency: 29.39
   name: us|d4f7|puddincat07@Telegram
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
   password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
   port: 443
-  score: 6.1266794625719765
+  score: 11.640013610071453
   server: 130.49.161.70
-  sim_score: 1.1306981689090085
+  sim_score: 3.214699493425306
   skip-cert-verify: false
   sni: hy2.aspidnet.xyz
-  speed: 15.96
+  speed: 34.21
+  tls: false
+  type: hysteria2
+- latency: 45.03
+  name: xx|7c54|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+  password: cd74c0a406664a5bc0bac098220a2468
+  port: 443
+  score: 7.9569176104819
+  server: nl1.sferavpn.pro
+  sim_score: 2.5366354479289117
+  skip-cert-verify: true
+  sni: nl1.sferavpn.pro
+  speed: 35.83
+  tls: false
+  type: hysteria2
+- latency: 38.23
+  name: gb|d819|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
+  password: cd74c0a406664a5bc0bac098220a2468
+  port: 443
+  score: 4.8731362804080565
+  server: 2.27.249.79
+  sim_score: 1.5872809314171947
+  skip-cert-verify: false
+  sni: nl1.sferavpn.pro
+  speed: 18.63
   tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|c3d4|puddincat07@Telegram
   - us|d4f7|puddincat07@Telegram
+  - xx|7c54|puddincat07@Telegram
+  - gb|d819|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|c3d4|puddincat07@Telegram
   - us|d4f7|puddincat07@Telegram
+  - xx|7c54|puddincat07@Telegram
+  - gb|d819|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
