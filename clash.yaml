@@ -3,46 +3,29 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 49.26
-  name: xx|7c54|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: 44f1c1e2f8b99e792ceed574627a1eb0
-  password: cd74c0a406664a5bc0bac098220a2468
+- latency: 92.34
+  name: de|a8f2|puddincat07@Telegram
+  password: 4927997d847df94e1cc3f8dd77ce3283
   port: 443
-  score: 7.192448233861145
-  server: nl1.sferavpn.pro
-  sim_score: 0.9909187502040533
+  score: 1.1176088369070825
+  server: 194.87.55.90
+  sim_score: 0.865323410039912
   skip-cert-verify: true
-  sni: nl1.sferavpn.pro
-  speed: 35.43
+  sni: api-maps.yandex.ru
+  speed: 10.32
   tls: false
   type: hysteria2
-- auth: my_super_password_123
-  latency: 70.73
-  name: xx|e524|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 5.33719779442952
-  server: open.w2m.ink
-  sim_score: 1.775177041513195
-  skip-cert-verify: true
-  sni: open.w2m.ink
-  speed: 37.75
-  type: hysteria2
-  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|7c54|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
+  - de|a8f2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|7c54|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
+  - de|a8f2|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
