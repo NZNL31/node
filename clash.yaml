@@ -3,29 +3,60 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 92.34
-  name: de|a8f2|puddincat07@Telegram
-  password: 4927997d847df94e1cc3f8dd77ce3283
+- latency: 47.27
+  name: us|d4f7|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
   port: 443
-  score: 1.1176088369070825
-  server: 194.87.55.90
-  sim_score: 0.865323410039912
+  score: 9.680558493759255
+  server: 130.49.161.70
+  sim_score: 1.2211501790174382
+  skip-cert-verify: false
+  sni: hy2.aspidnet.xyz
+  speed: 45.76
+  tls: false
+  type: hysteria2
+- auth: my_super_password_123
+  latency: 69.49
+  name: xx|e524|puddincat07@Telegram
+  password: my_super_password_123
+  port: 443
+  score: 3.5990790041732628
+  server: open.w2m.ink
+  sim_score: 1.9386879313840621
   skip-cert-verify: true
-  sni: api-maps.yandex.ru
-  speed: 10.32
+  sni: open.w2m.ink
+  speed: 25.01
+  type: hysteria2
+  udp: true
+- latency: 91.56
+  name: tr|97c4|puddincat07@Telegram
+  password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
+  port: 443
+  score: 3.1913499344692005
+  server: 217.60.33.215
+  sim_score: 0.8247238732466035
+  skip-cert-verify: true
+  sni: streambox.wwwinternetvideo.click
+  speed: 29.22
   tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - de|a8f2|puddincat07@Telegram
+  - us|d4f7|puddincat07@Telegram
+  - xx|e524|puddincat07@Telegram
+  - tr|97c4|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - de|a8f2|puddincat07@Telegram
+  - us|d4f7|puddincat07@Telegram
+  - xx|e524|puddincat07@Telegram
+  - tr|97c4|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
