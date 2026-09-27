@@ -3,71 +3,28 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: my_super_password_123
-  latency: 73.29
-  name: xx|e524|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 5.854823304680037
-  server: open.w2m.ink
-  sim_score: 1.1407385993767525
-  skip-cert-verify: true
-  sni: open.w2m.ink
-  speed: 42.91
-  type: hysteria2
-  udp: true
-- latency: 67.34
-  name: tr|97c4|puddincat07@Telegram
-  password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
-  port: 443
-  score: 4.584199584199585
-  server: 217.60.33.215
-  sim_score: 2.224130724811642
-  skip-cert-verify: true
-  sni: streambox.wwwinternetvideo.click
-  speed: 30.87
-  tls: false
-  type: hysteria2
-- latency: 71.67
+- latency: 120.23
   name: ru|6cb0|puddincat07@Telegram
   password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
   port: 443
-  score: 2.9677689409794894
+  score: 2.685685768942859
   server: 91.196.32.163
-  sim_score: 1.65343957187556
+  sim_score: 0.7412605190521919
   skip-cert-verify: true
   sni: germany3.h2corp.local
-  speed: 21.27
+  speed: 32.29
   tls: false
-  type: hysteria2
-- auth: RQBXe4kpsRant_2u1PzdneBOPuCSwUSI
-  latency: 86.28
-  name: jp|c39b|puddincat07@Telegram
-  password: RQBXe4kpsRant_2u1PzdneBOPuCSwUSI
-  port: 443
-  score: 2.349327770050997
-  server: 43.167.208.94
-  sim_score: 3.0705070724750936
-  skip-cert-verify: true
-  sni: 43.167.208.94
-  speed: 20.27
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|e524|puddincat07@Telegram
-  - tr|97c4|puddincat07@Telegram
   - ru|6cb0|puddincat07@Telegram
-  - jp|c39b|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|e524|puddincat07@Telegram
-  - tr|97c4|puddincat07@Telegram
   - ru|6cb0|puddincat07@Telegram
-  - jp|c39b|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
