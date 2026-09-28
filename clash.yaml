@@ -3,64 +3,47 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 58.12
-  name: nl|a4cd|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: HysteriaHowdy
-  password: HowdyHysteria2023w0W
-  port: 8443
-  score: 5.825877494838267
-  server: 51.15.19.206
-  sim_score: 0.9956746999908944
-  skip-cert-verify: true
-  sni: sni-here.com
-  speed: 33.86
-  tls: false
-  type: hysteria2
-- auth: my_super_password_123
-  latency: 57.3
-  name: xx|e524|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 3.0698080279232114
-  server: open.w2m.ink
-  sim_score: 1.3615187651358087
-  skip-cert-verify: true
-  sni: open.w2m.ink
-  speed: 17.59
-  type: hysteria2
-  udp: true
 - down: ''
   fingerprint: ''
-  latency: 61.16
+  latency: 40.3
   name: tr|97c4|puddincat07@Telegram
   obfs: ''
   obfs-password: ''
   password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
   port: '443'
-  score: 1.3440156965336822
+  score: 9.784119106699752
   server: 217.60.33.215
-  sim_score: 2.5775375233950086
+  sim_score: 3.0467143216553536
   skip-cert-verify: true
   sni: streambox.wwwinternetvideo.click
-  speed: 8.22
+  speed: 39.43
   type: hysteria2
   up: ''
+- auth: gf1:gfhysteria2024
+  latency: 38.75
+  name: nl|7363|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 8.025806451612903
+  server: 5.129.235.85
+  sim_score: 3.2073891167190984
+  skip-cert-verify: true
+  sni: www.linux.com
+  speed: 31.1
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - nl|a4cd|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
   - tr|97c4|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - nl|a4cd|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
   - tr|97c4|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
