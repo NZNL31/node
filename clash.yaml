@@ -3,44 +3,43 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: my_super_password_123
-  latency: 35.18
-  name: xx|e524|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 9.644684479818078
-  server: open.w2m.ink
-  sim_score: 2.7940878998612724
+- cipher: chacha20-ietf-poly1305
+  latency: 38.4
+  name: gb|8507|puddincat07@Telegram
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  score: 8.901041666666668
+  server: 82.38.31.35
+  sim_score: 1.2538392904099724
   skip-cert-verify: true
-  sni: open.w2m.ink
-  speed: 33.93
-  type: hysteria2
+  speed: 34.18
+  type: ss
   udp: true
-- auth: my_super_password_123
-  latency: 39.38
-  name: xx|01b0|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 5.642458100558658
-  server: open.2ml.bid
-  sim_score: 1.6410494249318015
+- auth: 19f72087-4591-4d72-930b-2697078ec2be
+  latency: 39.36
+  name: xx|ff21|puddincat07@Telegram
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  port: 18333
+  score: 4.024390243902439
+  server: sg1.xiaoliyu.cyou
+  sim_score: 2.2122781254210095
   skip-cert-verify: true
-  sni: open.2ml.bid
-  speed: 22.22
+  sni: sg1.xiaoliyu.cyou
+  speed: 15.84
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|e524|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
+  - gb|8507|puddincat07@Telegram
+  - xx|ff21|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|e524|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
+  - gb|8507|puddincat07@Telegram
+  - xx|ff21|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
