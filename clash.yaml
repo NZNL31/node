@@ -3,42 +3,69 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 38.4
-  name: gb|8507|puddincat07@Telegram
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  port: 8080
-  score: 8.901041666666668
-  server: 82.38.31.35
-  sim_score: 1.2538392904099724
+- auth: my_super_password_123
+  latency: 23.97
+  name: xx|01b0|puddincat07@Telegram
+  password: my_super_password_123
+  port: 443
+  score: 15.511055486024198
+  server: open.2ml.bid
+  sim_score: 2.9434296699793734
   skip-cert-verify: true
-  speed: 34.18
-  type: ss
-  udp: true
-- auth: 19f72087-4591-4d72-930b-2697078ec2be
-  latency: 39.36
-  name: xx|ff21|puddincat07@Telegram
+  sni: open.2ml.bid
+  speed: 37.18
+  type: hysteria2
+- latency: 42.24
+  name: xx|8b9a|puddincat07@Telegram
   password: 19f72087-4591-4d72-930b-2697078ec2be
   port: 18333
-  score: 4.024390243902439
-  server: sg1.xiaoliyu.cyou
-  sim_score: 2.2122781254210095
+  score: 6.027462121212121
+  server: us4.xiaoliyu.cyou
+  sim_score: 2.8061637631760594
   skip-cert-verify: true
-  sni: sg1.xiaoliyu.cyou
-  speed: 15.84
+  sni: us4.xiaoliyu.cyou
+  speed: 25.46
+  type: hysteria2
+- auth: gf1:gfhysteria2024
+  latency: 38.5
+  name: nl|7363|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 4.898701298701298
+  server: 5.129.235.85
+  sim_score: 3.4498573083180295
+  skip-cert-verify: true
+  sni: www.linux.com
+  speed: 18.86
+  type: hysteria2
+- latency: 27.16
+  name: ru|6cb0|puddincat07@Telegram
+  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+  port: 443
+  score: 3.3946980854197353
+  server: 91.196.32.163
+  sim_score: 1.030175976972503
+  skip-cert-verify: true
+  sni: germany3.h2corp.local
+  speed: 9.22
+  tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - gb|8507|puddincat07@Telegram
-  - xx|ff21|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - xx|8b9a|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
+  - ru|6cb0|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - gb|8507|puddincat07@Telegram
-  - xx|ff21|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - xx|8b9a|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
+  - ru|6cb0|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
