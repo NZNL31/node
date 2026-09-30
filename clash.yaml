@@ -3,43 +3,57 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: gf1:gfhysteria2024
-  latency: 58.6
-  name: nl|7363|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 6.455631399317405
-  server: 5.129.235.85
-  sim_score: 0.8519500425237234
-  skip-cert-verify: true
-  sni: www.linux.com
-  speed: 37.83
-  type: hysteria2
 - auth: my_super_password_123
-  latency: 59.27
+  latency: 37.59
+  name: xx|e524|puddincat07@Telegram
+  password: my_super_password_123
+  port: 443
+  score: 9.348230912476721
+  server: open.w2m.ink
+  sim_score: 1.5776267005611482
+  skip-cert-verify: true
+  sni: open.w2m.ink
+  speed: 35.14
+  type: hysteria2
+  udp: true
+- latency: 54.4
+  name: xx|7f5c|puddincat07@Telegram
+  password: Trojan@82164024
+  port: 443
+  score: 6.4375
+  server: se.tronsg.com
+  sim_score: 0.7825440529980315
+  skip-cert-verify: true
+  sni: se.tronsg.com
+  speed: 35.02
+  type: trojan
+- auth: my_super_password_123
+  latency: 49.32
   name: xx|01b0|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 2.9239075417580556
+  score: 5.296025952960259
   server: open.2ml.bid
-  sim_score: 1.5799021153506707
+  sim_score: 0.7612591129327108
   skip-cert-verify: true
   sni: open.2ml.bid
-  speed: 17.33
+  speed: 26.12
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - nl|7363|puddincat07@Telegram
+  - xx|e524|puddincat07@Telegram
+  - xx|7f5c|puddincat07@Telegram
   - xx|01b0|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - nl|7363|puddincat07@Telegram
+  - xx|e524|puddincat07@Telegram
+  - xx|7f5c|puddincat07@Telegram
   - xx|01b0|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
