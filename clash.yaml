@@ -3,101 +3,33 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: https://xship.top
-  latency: 51.45
-  name: xx|a030|puddincat07@Telegram
-  password: https://xship.top
-  port: 443
-  score: 7.994169096209912
-  server: starlink-ft.251313.xyz
-  sim_score: 1.447522621898755
+- down: ''
+  fingerprint: ''
+  latency: 38.06
+  name: fr|3671|puddincat07@Telegram
+  obfs: ''
+  obfs-password: ''
+  password: gf1:gfhysteria2024
+  port: '443'
+  score: 4.792433000525485
+  server: 173.212.201.85
+  sim_score: 1.092543993180871
   skip-cert-verify: true
-  sni: xship.top
-  speed: 41.13
+  sni: www.docker.com
+  speed: 18.24
   type: hysteria2
-  udp: true
-- latency: 72.29
-  name: xx|cbe2|puddincat07@Telegram
-  password: Trojan@82164024
-  port: 443
-  score: 5.2413888504634105
-  server: th1.zestapp778.com
-  sim_score: 2.272093967332604
-  skip-cert-verify: true
-  sni: th1.zestapp778.com
-  speed: 37.89
-  type: trojan
-- latency: 73.3
-  name: xx|3c97|puddincat07@Telegram
-  password: Trojan@82164024
-  port: 443
-  score: 5.23055934515689
-  server: ie.tronsg.com
-  sim_score: 1.593742382892712
-  skip-cert-verify: true
-  sni: ie.tronsg.com
-  speed: 38.34
-  type: trojan
-- auth: my_super_password_123
-  latency: 73.98
-  name: xx|e524|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 5.044606650446067
-  server: open.w2m.ink
-  sim_score: 1.582344279618888
-  skip-cert-verify: true
-  sni: open.w2m.ink
-  speed: 37.32
-  type: hysteria2
-  udp: true
-- auth: 633bc3be486b646190661ac2387c150a
-  latency: 78.33
-  name: au|c385|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
-  password: 633bc3be486b646190661ac2387c150a
-  port: 443
-  score: 4.793821013660155
-  server: 152.67.115.203
-  sim_score: 0.9808875955569464
-  skip-cert-verify: true
-  sni: www.bing.com
-  speed: 37.55
-  type: hysteria2
-- auth: my_super_password_123
-  latency: 72.58
-  name: xx|01b0|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 3.7572333976302015
-  server: open.2ml.bid
-  sim_score: 1.286151833979755
-  skip-cert-verify: true
-  sni: open.2ml.bid
-  speed: 27.27
-  type: hysteria2
+  up: ''
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|a030|puddincat07@Telegram
-  - xx|cbe2|puddincat07@Telegram
-  - xx|3c97|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
-  - au|c385|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
+  - fr|3671|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|a030|puddincat07@Telegram
-  - xx|cbe2|puddincat07@Telegram
-  - xx|3c97|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
-  - au|c385|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
+  - fr|3671|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
