@@ -3,44 +3,61 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 29.86
-  name: ru|6cb0|puddincat07@Telegram
-  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+- latency: 25.28
+  name: xx|6e0b|puddincat07@Telegram
+  network: ws
+  password: 9efd3f19-c7cb-4fa9-8d66-0598043597dc
   port: 443
-  score: 9.343603482920294
-  server: 91.196.32.163
-  sim_score: 3.3542066583466172
+  score: 19.533227848101266
+  server: ttww11.bpca2026.top
+  sim_score: 0.7001755610922098
   skip-cert-verify: true
-  sni: germany3.h2corp.local
-  speed: 27.9
-  tls: false
-  type: hysteria2
+  sni: ttww11.bpca2026.top
+  speed: 49.38
+  type: trojan
+  ws-opts:
+    headers:
+      Host: ttww11.bpca2026.top
+    path: /images
 - auth: my_super_password_123
-  latency: 34.74
-  name: xx|e524|puddincat07@Telegram
+  latency: 28.92
+  name: xx|01b0|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 4.067357512953368
-  server: open.w2m.ink
-  sim_score: 1.4770053557288523
+  score: 14.951590594744122
+  server: open.2ml.bid
+  sim_score: 1.0045953974490067
   skip-cert-verify: true
-  sni: open.w2m.ink
-  speed: 14.13
+  sni: open.2ml.bid
+  speed: 43.24
   type: hysteria2
-  udp: true
+- auth: gf1:gfhysteria2024
+  latency: 26.13
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 13.823191733639495
+  server: 66.94.121.46
+  sim_score: 1.5473592964061569
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 36.12
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - ru|6cb0|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
+  - xx|6e0b|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - ru|6cb0|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
+  - xx|6e0b|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
