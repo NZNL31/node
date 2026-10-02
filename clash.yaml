@@ -4,55 +4,31 @@ mode: Rule
 port: 7890
 proxies:
 - auth: my_super_password_123
-  latency: 45.61
+  latency: 23.01
   name: xx|e524|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 9.607542205656653
+  score: 17.26205997392438
   server: open.w2m.ink
-  sim_score: 0.9435439183497583
+  sim_score: 1.8867829329804475
   skip-cert-verify: true
   sni: open.w2m.ink
-  speed: 43.82
+  speed: 39.72
   type: hysteria2
   udp: true
 - auth: 633bc3be486b646190661ac2387c150a
-  latency: 48.91
+  latency: 21.64
   name: au|c385|puddincat07@Telegram
   obfs: salamander
   obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
   password: 633bc3be486b646190661ac2387c150a
   port: 443
-  score: 9.069719893682274
+  score: 14.86136783733826
   server: 152.67.115.203
-  sim_score: 0.838991919926425
+  sim_score: 1.3208486225782048
   skip-cert-verify: true
   sni: www.bing.com
-  speed: 44.36
-  type: hysteria2
-- auth: my_super_password_123
-  latency: 83.55
-  name: xx|01b0|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 4.2956313584679835
-  server: open.2ml.bid
-  sim_score: 1.5872094498396652
-  skip-cert-verify: true
-  sni: open.2ml.bid
-  speed: 35.89
-  type: hysteria2
-- auth: gf1:gfhysteria2024
-  latency: 86.3
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 2.6071842410196986
-  server: 66.94.121.46
-  sim_score: 1.5483248368718237
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 22.5
+  speed: 32.16
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
@@ -60,16 +36,12 @@ proxy-groups:
   - 🔄 自动选择
   - xx|e524|puddincat07@Telegram
   - au|c385|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - xx|e524|puddincat07@Telegram
   - au|c385|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
