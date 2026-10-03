@@ -3,61 +3,47 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 25.28
-  name: xx|6e0b|puddincat07@Telegram
-  network: ws
-  password: 9efd3f19-c7cb-4fa9-8d66-0598043597dc
-  port: 443
-  score: 19.533227848101266
-  server: ttww11.bpca2026.top
-  sim_score: 0.7001755610922098
-  skip-cert-verify: true
-  sni: ttww11.bpca2026.top
-  speed: 49.38
-  type: trojan
-  ws-opts:
-    headers:
-      Host: ttww11.bpca2026.top
-    path: /images
+- cipher: chacha20-ietf-poly1305
+  latency: 52.33
+  name: us|461e|puddincat07@Telegram
+  password: t0srmdxrm3xyjnvqz9ewlxb2myq7rjuv
+  plugin: obfs
+  plugin-opts:
+    host: (Telegram🇨🇳 @VPNine1)9f6b1e7:141612
+    mode: tls
+  port: '2377'
+  score: 7.8673800879036895
+  server: 134.195.101.118
+  sim_score: 4.9891108938567825
+  speed: 41.17
+  type: ss
+  udp: true
 - auth: my_super_password_123
-  latency: 28.92
-  name: xx|01b0|puddincat07@Telegram
+  latency: 53.0
+  name: xx|e524|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 14.951590594744122
-  server: open.2ml.bid
-  sim_score: 1.0045953974490067
+  score: 6.916981132075471
+  server: open.w2m.ink
+  sim_score: 1.4023793705048018
   skip-cert-verify: true
-  sni: open.2ml.bid
-  speed: 43.24
+  sni: open.w2m.ink
+  speed: 36.66
   type: hysteria2
-- auth: gf1:gfhysteria2024
-  latency: 26.13
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 13.823191733639495
-  server: 66.94.121.46
-  sim_score: 1.5473592964061569
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 36.12
-  type: hysteria2
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|6e0b|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - us|461e|puddincat07@Telegram
+  - xx|e524|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|6e0b|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - us|461e|puddincat07@Telegram
+  - xx|e524|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
