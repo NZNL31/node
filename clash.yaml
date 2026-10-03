@@ -3,43 +3,30 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: my_super_password_123
-  latency: 113.78
-  name: xx|01b0|puddincat07@Telegram
-  password: my_super_password_123
+- auth: https://xship.best
+  latency: 31.16
+  name: xx|a030|puddincat07@Telegram
+  password: https://xship.best
   port: 443
-  score: 3.389875197750044
-  server: open.2ml.bid
-  sim_score: 3.1195464732456744
+  score: 13.096919127086009
+  server: starlink-ft.251313.xyz
+  sim_score: 1.876799634522372
   skip-cert-verify: true
-  sni: open.2ml.bid
-  speed: 38.57
+  sni: xship.top
+  speed: 40.81
   type: hysteria2
-- auth: gf1:gfhysteria2024
-  latency: 61.03
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 2.7756840897919055
-  server: 66.94.121.46
-  sim_score: 1.1938701297606913
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 16.94
-  type: hysteria2
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|01b0|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - xx|a030|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|01b0|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - xx|a030|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
