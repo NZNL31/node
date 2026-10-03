@@ -4,28 +4,41 @@ mode: Rule
 port: 7890
 proxies:
 - auth: my_super_password_123
-  latency: 61.04
-  name: xx|e524|puddincat07@Telegram
+  latency: 113.78
+  name: xx|01b0|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 7.429554390563565
-  server: open.w2m.ink
-  sim_score: 3.7519473514344885
+  score: 3.389875197750044
+  server: open.2ml.bid
+  sim_score: 3.1195464732456744
   skip-cert-verify: true
-  sni: open.w2m.ink
-  speed: 45.35
+  sni: open.2ml.bid
+  speed: 38.57
   type: hysteria2
-  udp: true
+- auth: gf1:gfhysteria2024
+  latency: 61.03
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 2.7756840897919055
+  server: 66.94.121.46
+  sim_score: 1.1938701297606913
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 16.94
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|e524|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|e524|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
