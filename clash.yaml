@@ -3,47 +3,60 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 52.33
-  name: us|461e|puddincat07@Telegram
-  password: t0srmdxrm3xyjnvqz9ewlxb2myq7rjuv
-  plugin: obfs
-  plugin-opts:
-    host: (Telegram🇨🇳 @VPNine1)9f6b1e7:141612
-    mode: tls
-  port: '2377'
-  score: 7.8673800879036895
-  server: 134.195.101.118
-  sim_score: 4.9891108938567825
-  speed: 41.17
-  type: ss
-  udp: true
 - auth: my_super_password_123
-  latency: 53.0
+  latency: 33.49
   name: xx|e524|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 6.916981132075471
+  score: 11.83935503135264
   server: open.w2m.ink
-  sim_score: 1.4023793705048018
+  sim_score: 0.8222115203967078
   skip-cert-verify: true
   sni: open.w2m.ink
-  speed: 36.66
+  speed: 39.65
   type: hysteria2
   udp: true
+- auth: 633bc3be486b646190661ac2387c150a
+  latency: 39.11
+  name: au|c385|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
+  password: 633bc3be486b646190661ac2387c150a
+  port: 443
+  score: 6.4203528509332655
+  server: 152.67.115.203
+  sim_score: 1.092253314470639
+  skip-cert-verify: true
+  sni: www.bing.com
+  speed: 25.11
+  type: hysteria2
+- auth: gf1:gfhysteria2024
+  latency: 37.75
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 4.521854304635761
+  server: 66.94.121.46
+  sim_score: 2.2805787046296135
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 17.07
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|461e|puddincat07@Telegram
   - xx|e524|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|461e|puddincat07@Telegram
   - xx|e524|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
