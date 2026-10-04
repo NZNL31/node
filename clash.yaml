@@ -3,60 +3,61 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
+- cipher: aes-256-cfb
+  latency: 40.31
+  name: fr|eaa3|puddincat07@Telegram
+  password: amazonskr05
+  port: 443
+  score: 11.508310592904987
+  server: 52.47.133.105
+  sim_score: 2.590601449716617
+  skip-cert-verify: true
+  speed: 46.39
+  type: ss
+  udp: true
 - auth: my_super_password_123
-  latency: 39.93
+  latency: 42.71
   name: xx|e524|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 9.203606311044329
+  score: 7.265277452587217
   server: open.w2m.ink
-  sim_score: 1.4949840006744222
+  sim_score: 1.174530536477596
   skip-cert-verify: true
   sni: open.w2m.ink
-  speed: 36.75
+  speed: 31.03
   type: hysteria2
   udp: true
-- latency: 45.67
-  name: xx|b47e|puddincat07@Telegram
-  password: 5b140fc6a0a74e7f
-  port: 20008
-  score: 5.421502080140136
-  server: gsg192i.zxom.eu.org
-  sim_score: 1.6411033792114196
-  skip-cert-verify: true
-  sni: gsg192i.zxom.eu.org
-  speed: 24.76
-  type: trojan
 - alpn:
   - h2
   grpc-opts:
     grpc-service-name: ajv
-  latency: 39.91
+  latency: 33.09
   name: gb|35ea|puddincat07@Telegram
   network: grpc
   password: MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo
   port: 443
-  score: 2.330243046855425
+  score: 4.874584466606225
   server: 31.77.168.33
-  sim_score: 1.0999895030090954
+  sim_score: 1.3487442890823735
   skip-cert-verify: true
   sni: d3-de2.cloud-cdn.xyz
-  speed: 9.3
+  speed: 16.13
   type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - fr|eaa3|puddincat07@Telegram
   - xx|e524|puddincat07@Telegram
-  - xx|b47e|puddincat07@Telegram
   - gb|35ea|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - fr|eaa3|puddincat07@Telegram
   - xx|e524|puddincat07@Telegram
-  - xx|b47e|puddincat07@Telegram
   - gb|35ea|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
