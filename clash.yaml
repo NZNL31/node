@@ -3,62 +3,44 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: aes-256-cfb
-  latency: 40.31
-  name: fr|eaa3|puddincat07@Telegram
-  password: amazonskr05
-  port: 443
-  score: 11.508310592904987
-  server: 52.47.133.105
-  sim_score: 2.590601449716617
-  skip-cert-verify: true
-  speed: 46.39
-  type: ss
-  udp: true
 - auth: my_super_password_123
-  latency: 42.71
-  name: xx|e524|puddincat07@Telegram
+  latency: 60.64
+  name: xx|01b0|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 7.265277452587217
-  server: open.w2m.ink
-  sim_score: 1.174530536477596
+  score: 6.550131926121372
+  server: open.2ml.bid
+  sim_score: 1.131517591344737
   skip-cert-verify: true
-  sni: open.w2m.ink
-  speed: 31.03
+  sni: open.2ml.bid
+  speed: 39.72
   type: hysteria2
-  udp: true
-- alpn:
-  - h2
-  grpc-opts:
-    grpc-service-name: ajv
-  latency: 33.09
-  name: gb|35ea|puddincat07@Telegram
-  network: grpc
-  password: MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo
+- auth: 633bc3be486b646190661ac2387c150a
+  latency: 61.67
+  name: au|c385|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
+  password: 633bc3be486b646190661ac2387c150a
   port: 443
-  score: 4.874584466606225
-  server: 31.77.168.33
-  sim_score: 1.3487442890823735
+  score: 2.2490676179665963
+  server: 152.67.115.203
+  sim_score: 3.340640939938549
   skip-cert-verify: true
-  sni: d3-de2.cloud-cdn.xyz
-  speed: 16.13
-  type: trojan
-  udp: true
+  sni: www.bing.com
+  speed: 13.87
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - fr|eaa3|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
-  - gb|35ea|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - fr|eaa3|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
-  - gb|35ea|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
