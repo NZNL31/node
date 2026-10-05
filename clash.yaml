@@ -3,45 +3,56 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: 633bc3be486b646190661ac2387c150a
-  latency: 72.91
-  name: au|c385|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
-  password: 633bc3be486b646190661ac2387c150a
+- auth: gf1:gfhysteria2024
+  latency: 26.49
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
   port: 443
-  score: 4.714030997119736
-  server: 152.67.115.203
-  sim_score: 1.1863321335621393
+  score: 16.138165345413363
+  server: 66.94.121.46
+  sim_score: 1.0116959458127417
   skip-cert-verify: true
-  sni: www.bing.com
-  speed: 34.37
+  sni: www.broadcom.com
+  speed: 42.75
   type: hysteria2
 - auth: my_super_password_123
-  latency: 64.27
+  latency: 37.26
   name: xx|e524|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 3.6984596234635134
+  score: 11.28287707997853
   server: open.w2m.ink
-  sim_score: 1.47339357958439
+  sim_score: 1.0427247616474138
   skip-cert-verify: true
   sni: open.w2m.ink
-  speed: 23.77
+  speed: 42.04
   type: hysteria2
   udp: true
+- auth: 19f72087-4591-4d72-930b-2697078ec2be
+  latency: 27.91
+  name: xx|80bb|puddincat07@Telegram
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  port: 18333
+  score: 11.15370834826227
+  server: us3.xiaoliyu.cyou
+  sim_score: 2.84046007497676
+  skip-cert-verify: true
+  speed: 31.13
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - au|c385|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   - xx|e524|puddincat07@Telegram
+  - xx|80bb|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - au|c385|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   - xx|e524|puddincat07@Telegram
+  - xx|80bb|puddincat07@Telegram
   type: url-test
   url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
