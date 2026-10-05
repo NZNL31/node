@@ -3,107 +3,46 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: gf1:gfhysteria2024
-  latency: 25.05
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 17.28942115768463
-  server: 66.94.121.46
-  sim_score: 1.3606023565344216
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 43.31
-  type: hysteria2
-- auth: my_super_password_123
-  latency: 24.49
-  name: xx|01b0|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 15.210289914250716
-  server: open.2ml.bid
-  sim_score: 1.1133938139137833
-  skip-cert-verify: true
-  sni: open.2ml.bid
-  speed: 37.25
-  type: hysteria2
-- auth: my_super_password_123
-  latency: 25.27
-  name: xx|e524|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 9.766521567075584
-  server: open.w2m.ink
-  sim_score: 0.6299322710167197
-  skip-cert-verify: true
-  sni: open.w2m.ink
-  speed: 24.68
-  type: hysteria2
-  udp: true
 - auth: 633bc3be486b646190661ac2387c150a
-  latency: 24.66
+  latency: 72.91
   name: au|c385|puddincat07@Telegram
   obfs: salamander
   obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
   password: 633bc3be486b646190661ac2387c150a
   port: 443
-  score: 7.392538523925385
+  score: 4.714030997119736
   server: 152.67.115.203
-  sim_score: 2.2805313080672454
+  sim_score: 1.1863321335621393
   skip-cert-verify: true
   sni: www.bing.com
-  speed: 18.23
+  speed: 34.37
   type: hysteria2
-- latency: 39.28
-  name: us|81c2|puddincat07@Telegram
-  password: 4291c983-c520-46ac-82cc-48f14bef573f
-  port: 35013
-  score: 6.713340122199592
-  server: 129.213.91.185
-  sim_score: 4.9742590298137985
-  skip-cert-verify: true
-  sni: www.bing.com
-  speed: 26.37
-  tls: false
-  type: hysteria2
-- alpn:
-  - h2
-  grpc-opts:
-    grpc-service-name: ajv
-  latency: 23.92
-  name: gb|37db|puddincat07@Telegram
-  network: grpc
-  password: MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo
+- auth: my_super_password_123
+  latency: 64.27
+  name: xx|e524|puddincat07@Telegram
+  password: my_super_password_123
   port: 443
-  score: 6.663879598662207
-  server: 31.77.168.21
-  sim_score: 1.9523160386566352
+  score: 3.6984596234635134
+  server: open.w2m.ink
+  sim_score: 1.47339357958439
   skip-cert-verify: true
-  sni: d3-de2.cloud-cdn.xyz
-  speed: 15.94
-  type: trojan
+  sni: open.w2m.ink
+  speed: 23.77
+  type: hysteria2
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|7a73|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
   - au|c385|puddincat07@Telegram
-  - us|81c2|puddincat07@Telegram
-  - gb|37db|puddincat07@Telegram
+  - xx|e524|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|7a73|puddincat07@Telegram
-  - xx|01b0|puddincat07@Telegram
-  - xx|e524|puddincat07@Telegram
   - au|c385|puddincat07@Telegram
-  - us|81c2|puddincat07@Telegram
-  - gb|37db|puddincat07@Telegram
+  - xx|e524|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
