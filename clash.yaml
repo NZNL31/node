@@ -3,58 +3,72 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: my_super_password_123
-  latency: 45.58
-  name: xx|01b0|puddincat07@Telegram
-  password: my_super_password_123
-  port: 443
-  score: 9.980254497586662
-  server: open.2ml.bid
-  sim_score: 1.0370696684107896
+- latency: 77.45
+  name: us|81c2|puddincat07@Telegram
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  port: 35013
+  score: 5.01484828921885
+  server: 129.213.91.185
+  sim_score: 1.2028875372490162
   skip-cert-verify: true
-  sni: open.2ml.bid
-  speed: 45.49
+  sni: www.bing.com
+  speed: 38.84
+  tls: false
   type: hysteria2
 - auth: 633bc3be486b646190661ac2387c150a
-  latency: 30.01
+  latency: 43.13
   name: au|c385|puddincat07@Telegram
   obfs: salamander
   obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
   password: 633bc3be486b646190661ac2387c150a
   port: 443
-  score: 9.900033322225925
+  score: 2.327846046835149
   server: 152.67.115.203
-  sim_score: 2.486087419354059
+  sim_score: 1.1829563919439776
   skip-cert-verify: true
   sni: www.bing.com
-  speed: 29.71
+  speed: 10.04
   type: hysteria2
-- latency: 30.29
-  name: us|81c2|puddincat07@Telegram
-  password: 4291c983-c520-46ac-82cc-48f14bef573f
-  port: 35013
-  score: 7.99603829646748
-  server: 129.213.91.185
-  sim_score: 1.3932427343322886
+- auth: my_super_password_123
+  latency: 60.51
+  name: xx|01b0|puddincat07@Telegram
+  password: my_super_password_123
+  port: 443
+  score: 2.178152371508842
+  server: open.2ml.bid
+  sim_score: 1.9260956595426033
   skip-cert-verify: true
-  sni: www.bing.com
-  speed: 24.22
-  tls: false
+  sni: open.2ml.bid
+  speed: 13.18
+  type: hysteria2
+- auth: gf1:gfhysteria2024
+  latency: 99.87
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 1.6321217582857714
+  server: 66.94.121.46
+  sim_score: 1.0237470600591345
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 16.3
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|01b0|puddincat07@Telegram
-  - au|c385|puddincat07@Telegram
   - us|81c2|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|01b0|puddincat07@Telegram
-  - au|c385|puddincat07@Telegram
   - us|81c2|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
