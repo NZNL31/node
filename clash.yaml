@@ -2,15 +2,31 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies: []
+proxies:
+- auth: 633bc3be486b646190661ac2387c150a
+  latency: 77.86
+  name: au|c385|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
+  password: 633bc3be486b646190661ac2387c150a
+  port: 443
+  score: 3.8877472386334446
+  server: 152.67.115.203
+  sim_score: 3.084333278002642
+  skip-cert-verify: true
+  sni: www.bing.com
+  speed: 30.27
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - au|c385|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies: []
+  proxies:
+  - au|c385|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
