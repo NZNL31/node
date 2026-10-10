@@ -2,28 +2,15 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies:
-- latency: 56.08
-  name: xx|febb|puddincat07@Telegram
-  password: 96ab5cd282733fd4c312a61f972f330a
-  port: 443
-  score: 7.8013552068473615
-  server: vp3.yysyy.online
-  sim_score: 1.5342267383852415
-  skip-cert-verify: false
-  speed: 43.75
-  tls: false
-  type: hysteria2
+proxies: []
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|febb|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies:
-  - xx|febb|puddincat07@Telegram
+  proxies: []
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
