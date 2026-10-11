@@ -4,27 +4,43 @@ mode: Rule
 port: 7890
 proxies:
 - auth: my_super_password_123
-  latency: 59.23
+  latency: 24.8
   name: xx|01b0|puddincat07@Telegram
   password: my_super_password_123
   port: 443
-  score: 7.325679554279926
+  score: 16.064516129032256
   server: open.2ml.bid
-  sim_score: 1.5993067134220023
+  sim_score: 1.2343931150473582
   skip-cert-verify: true
   sni: open.2ml.bid
-  speed: 43.39
+  speed: 39.84
+  type: hysteria2
+- auth: 633bc3be486b646190661ac2387c150a
+  latency: 53.95
+  name: au|c385|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
+  password: 633bc3be486b646190661ac2387c150a
+  port: 443
+  score: 7.812789620018536
+  server: 152.67.115.203
+  sim_score: 1.047272025021498
+  skip-cert-verify: true
+  sni: www.bing.com
+  speed: 42.15
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - xx|01b0|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - xx|01b0|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
