@@ -3,32 +3,29 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- cipher: chacha20-ietf-poly1305
-  latency: 60.03
-  name: tw|91e2|puddincat07@Telegram
-  password: t0srmdxrm3xyjnvqz9ewlxb2myq7rjuv
-  plugin: obfs
-  plugin-opts:
-    host: 817aa69.default.nintendo.com:112719
-    mode: tls
-  port: 2377
-  score: 8.235882058970514
-  server: 211.72.214.20
-  sim_score: 4.355004770803915
-  speed: 49.44
-  type: ss
-  udp: true
+- auth: my_super_password_123
+  latency: 59.23
+  name: xx|01b0|puddincat07@Telegram
+  password: my_super_password_123
+  port: 443
+  score: 7.325679554279926
+  server: open.2ml.bid
+  sim_score: 1.5993067134220023
+  skip-cert-verify: true
+  sni: open.2ml.bid
+  speed: 43.39
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - tw|91e2|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - tw|91e2|puddincat07@Telegram
+  - xx|01b0|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
