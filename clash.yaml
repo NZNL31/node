@@ -3,74 +3,75 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 29.39
-  name: xx|30c7|puddincat07@Telegram
-  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-  port: 443
-  score: 15.549506634909832
-  server: admin.wwwinternetvideo.click
-  sim_score: 1.1821535399803929
-  sni: admin.wwwinternetvideo.click
-  speed: 45.7
+- latency: 29.78
+  name: us|81c2|puddincat07@Telegram
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  port: 35013
+  score: 12.807253190060443
+  server: 129.213.91.185
+  sim_score: 1.9359048215043058
+  skip-cert-verify: true
+  sni: www.bing.com
+  speed: 38.14
   tls: false
   type: hysteria2
-- down: ''
-  fingerprint: ''
-  latency: 30.4
-  name: fr|3671|puddincat07@Telegram
-  obfs: ''
-  obfs-password: ''
-  password: gf1:gfhysteria2024
-  port: '443'
-  score: 13.200657894736842
-  server: 173.212.201.85
-  sim_score: 1.8051584571685277
-  skip-cert-verify: true
-  sni: www.docker.com
-  speed: 40.13
-  type: hysteria2
-  up: ''
-- latency: 29.73
-  name: ru|6cb0|puddincat07@Telegram
-  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+- latency: 28.36
+  name: us|d4f7|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
   port: 443
-  score: 12.731247897746385
-  server: 91.196.32.163
-  sim_score: 1.3880726680796376
-  skip-cert-verify: true
-  sni: germany3.h2corp.local
-  speed: 37.85
+  score: 8.120592383638929
+  server: 130.49.161.70
+  sim_score: 1.2328797998318988
+  skip-cert-verify: false
+  sni: hy2.aspidnet.xyz
+  speed: 23.03
   tls: false
+  type: hysteria2
+- auth: 633bc3be486b646190661ac2387c150a
+  latency: 32.86
+  name: au|c385|puddincat07@Telegram
+  obfs: salamander
+  obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
+  password: 633bc3be486b646190661ac2387c150a
+  port: 443
+  score: 5.7851491174680465
+  server: 152.67.115.203
+  sim_score: 1.5268278734603733
+  skip-cert-verify: true
+  sni: www.bing.com
+  speed: 19.01
   type: hysteria2
 - auth: gf1:gfhysteria2024
-  latency: 21.32
-  name: nl|7363|puddincat07@Telegram
+  latency: 29.01
+  name: us|7a73|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 9.00562851782364
-  server: 5.129.235.85
-  sim_score: 0.7349636837980199
+  score: 3.2816270251637363
+  server: 66.94.121.46
+  sim_score: 0.6334228462379405
   skip-cert-verify: true
-  sni: www.linux.com
-  speed: 19.2
+  sni: www.broadcom.com
+  speed: 9.52
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|30c7|puddincat07@Telegram
-  - fr|3671|puddincat07@Telegram
-  - ru|6cb0|puddincat07@Telegram
-  - nl|7363|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
+  - us|d4f7|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|30c7|puddincat07@Telegram
-  - fr|3671|puddincat07@Telegram
-  - ru|6cb0|puddincat07@Telegram
-  - nl|7363|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
+  - us|d4f7|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
