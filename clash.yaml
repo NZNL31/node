@@ -2,16 +2,71 @@ allow-lan: true
 log-level: info
 mode: Rule
 port: 7890
-proxies: []
+proxies:
+- latency: 21.94
+  name: xx|febb|puddincat07@Telegram
+  password: 96ab5cd282733fd4c312a61f972f330a
+  port: 443
+  score: 15.46490428441203
+  server: vp3.yysyy.online
+  sim_score: 0.8772814059733949
+  skip-cert-verify: false
+  speed: 33.93
+  tls: false
+  type: hysteria2
+- auth: gf1:gfhysteria2024
+  latency: 37.5
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 11.130666666666666
+  server: 66.94.121.46
+  sim_score: 2.3690136180419366
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 41.74
+  type: hysteria2
+- latency: 44.25
+  name: us|81c2|puddincat07@Telegram
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  port: 35013
+  score: 7.340112994350282
+  server: 129.213.91.185
+  sim_score: 1.4899732240075183
+  skip-cert-verify: true
+  sni: www.bing.com
+  speed: 32.48
+  tls: false
+  type: hysteria2
+- auth: gf1:gfhysteria2024
+  latency: 37.22
+  name: nl|7363|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 4.809242342826437
+  server: 5.129.235.85
+  sim_score: 2.1218899966505855
+  skip-cert-verify: true
+  sni: www.linux.com
+  speed: 17.9
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - xx|febb|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
-  proxies: []
+  proxies:
+  - xx|febb|puddincat07@Telegram
+  - us|7a73|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
