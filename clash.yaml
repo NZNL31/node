@@ -3,87 +3,73 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 51.76
-  name: us|81c2|puddincat07@Telegram
-  password: 4291c983-c520-46ac-82cc-48f14bef573f
-  port: 35013
-  score: 8.647604327666151
-  server: 129.213.91.185
-  sim_score: 1.2241376290197656
-  skip-cert-verify: true
-  sni: www.bing.com
-  speed: 44.76
-  tls: false
-  type: hysteria2
-- auth: gf1:gfhysteria2024
-  latency: 61.46
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
+- auth: https://xship.2fa.cat
+  latency: 40.46
+  name: xx|a030|puddincat07@Telegram
+  password: https://xship.2fa.cat
   port: 443
-  score: 7.203058900097625
-  server: 66.94.121.46
-  sim_score: 1.3502508838908338
+  score: 11.720217498764212
+  server: starlink-ft.251313.xyz
+  sim_score: 1.2659607571106775
   skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 44.27
+  sni: xship.top
+  speed: 47.42
   type: hysteria2
-- latency: 48.88
-  name: xx|e07a|puddincat07@Telegram
-  password: Trojan@82164024
-  port: 443
-  score: 7.174713584288051
-  server: kr.tronsg.com
-  sim_score: 1.6815542152989347
-  skip-cert-verify: true
-  sni: kr.tronsg.com
-  speed: 35.07
-  type: trojan
   udp: true
 - auth: 633bc3be486b646190661ac2387c150a
-  latency: 52.95
+  latency: 27.76
   name: au|c385|puddincat07@Telegram
   obfs: salamander
   obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
   password: 633bc3be486b646190661ac2387c150a
   port: 443
-  score: 5.23890462700661
+  score: 11.628242074927954
   server: 152.67.115.203
-  sim_score: 1.453684884619233
+  sim_score: 0.7299487927904731
   skip-cert-verify: true
   sni: www.bing.com
-  speed: 27.74
+  speed: 32.28
   type: hysteria2
-- auth: https://xship.2fa.cat
-  latency: 81.73
-  name: xx|a030|puddincat07@Telegram
-  password: https://xship.2fa.cat
+- auth: gf1:gfhysteria2024
+  latency: 26.86
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
   port: 443
-  score: 3.264407194420653
-  server: starlink-ft.251313.xyz
-  sim_score: 1.4239194567154585
+  score: 8.618763961280715
+  server: 66.94.121.46
+  sim_score: 2.6065004880377023
   skip-cert-verify: true
-  sni: xship.top
-  speed: 26.68
+  sni: www.broadcom.com
+  speed: 23.15
   type: hysteria2
+- latency: 38.24
+  name: xx|e07a|puddincat07@Telegram
+  password: Trojan@82164024
+  port: 443
+  score: 5.17520920502092
+  server: kr.tronsg.com
+  sim_score: 3.3997085690936175
+  skip-cert-verify: true
+  sni: kr.tronsg.com
+  speed: 19.79
+  type: trojan
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|81c2|puddincat07@Telegram
+  - xx|a030|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
   - xx|e07a|puddincat07@Telegram
-  - au|c385|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|81c2|puddincat07@Telegram
+  - xx|a030|puddincat07@Telegram
+  - au|c385|puddincat07@Telegram
   - us|7a73|puddincat07@Telegram
   - xx|e07a|puddincat07@Telegram
-  - au|c385|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
   type: url-test
   url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
