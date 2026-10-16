@@ -4,45 +4,57 @@ mode: Rule
 port: 7890
 proxies:
 - auth: 633bc3be486b646190661ac2387c150a
-  latency: 27.53
+  latency: 24.76
   name: au|c385|puddincat07@Telegram
   obfs: salamander
   obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
   password: 633bc3be486b646190661ac2387c150a
   port: 443
-  score: 7.8568833999273515
+  score: 19.35379644588045
   server: 152.67.115.203
-  sim_score: 2.2091207412227396
+  sim_score: 1.722726432422394
   skip-cert-verify: true
   sni: www.bing.com
-  speed: 21.63
+  speed: 47.92
   type: hysteria2
-- auth: https://xship.2fa.cat
-  latency: 41.11
-  name: xx|a030|puddincat07@Telegram
-  password: https://xship.2fa.cat
+- latency: 28.36
+  name: xx|febb|puddincat07@Telegram
+  password: 96ab5cd282733fd4c312a61f972f330a
   port: 443
-  score: 1.9654585259061055
-  server: starlink-ft.251313.xyz
-  sim_score: 1.077013545373317
-  skip-cert-verify: true
-  sni: xship.top
-  speed: 8.08
+  score: 8.106488011283497
+  server: vp3.yysyy.online
+  sim_score: 1.280094606229797
+  skip-cert-verify: false
+  speed: 22.99
+  tls: false
   type: hysteria2
-  udp: true
+- latency: 49.64
+  name: us|81c2|puddincat07@Telegram
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  port: 35013
+  score: 5.058420628525383
+  server: 129.213.91.185
+  sim_score: 0.9042264302359831
+  skip-cert-verify: true
+  sni: www.bing.com
+  speed: 25.11
+  tls: false
+  type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - au|c385|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
+  - xx|febb|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - au|c385|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
+  - xx|febb|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
