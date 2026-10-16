@@ -3,48 +3,61 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
+- auth: gf1:gfhysteria2024
+  latency: 89.75
+  name: us|7a73|puddincat07@Telegram
+  password: gf1:gfhysteria2024
+  port: 443
+  score: 5.4852367688022285
+  server: 66.94.121.46
+  sim_score: 4.379526902537258
+  skip-cert-verify: true
+  sni: www.broadcom.com
+  speed: 49.23
+  type: hysteria2
 - down: ''
   fingerprint: ''
-  latency: 37.33
+  latency: 90.71
   name: xx|344a|puddincat07@Telegram
   obfs: ''
   obfs-password: ''
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   port: '443'
-  score: 10.487543530672381
+  score: 4.900231507000331
   server: vpn-sg-001.fastervpn.world
-  sim_score: 1.9487581502213436
+  sim_score: 1.4817508756766076
   skip-cert-verify: true
   sni: vpn-sg-001.fastervpn.world
-  speed: 39.15
+  speed: 44.45
   type: hysteria2
   up: ''
-- auth: https://xship.2fa.cat
-  latency: 53.54
-  name: xx|a030|puddincat07@Telegram
-  password: https://xship.2fa.cat
-  port: 443
-  score: 8.147179678744864
-  server: starlink-ft.251313.xyz
-  sim_score: 1.2733195208571186
+- latency: 77.39
+  name: us|81c2|puddincat07@Telegram
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  port: 35013
+  score: 1.387776198475255
+  server: 129.213.91.185
+  sim_score: 1.933223570247971
   skip-cert-verify: true
-  sni: xship.top
-  speed: 43.62
+  sni: www.bing.com
+  speed: 10.74
+  tls: false
   type: hysteria2
-  udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
+  - us|7a73|puddincat07@Telegram
   - xx|344a|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
+  - us|7a73|puddincat07@Telegram
   - xx|344a|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
