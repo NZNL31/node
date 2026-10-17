@@ -3,60 +3,62 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- auth: gf1:gfhysteria2024
-  latency: 55.61
-  name: nl|7363|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 4.58370796619313
-  server: 5.129.235.85
-  sim_score: 1.6758646218881688
+- down: ''
+  fingerprint: ''
+  latency: 48.91
+  name: xx|344a|puddincat07@Telegram
+  obfs: ''
+  obfs-password: ''
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  port: '443'
+  score: 7.622163156818647
+  server: vpn-sg-001.fastervpn.world
+  sim_score: 1.5205612114053726
   skip-cert-verify: true
-  sni: www.linux.com
-  speed: 25.49
+  sni: vpn-sg-001.fastervpn.world
+  speed: 37.28
   type: hysteria2
-- auth: https://xship.2fa.cat
-  latency: 96.06
-  name: xx|a030|puddincat07@Telegram
-  password: https://xship.2fa.cat
+  up: ''
+- latency: 89.94
+  name: xx|febb|puddincat07@Telegram
+  password: 96ab5cd282733fd4c312a61f972f330a
   port: 443
-  score: 2.8326046221111807
-  server: starlink-ft.251313.xyz
-  sim_score: 1.2601970257496007
-  skip-cert-verify: true
-  sni: xship.top
-  speed: 27.21
+  score: 5.5003335557038024
+  server: vp3.yysyy.online
+  sim_score: 1.2759006869635559
+  skip-cert-verify: false
+  speed: 49.47
+  tls: false
   type: hysteria2
-  udp: true
 - auth: 633bc3be486b646190661ac2387c150a
-  latency: 99.31
+  latency: 80.18
   name: au|c385|puddincat07@Telegram
   obfs: salamander
   obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
   password: 633bc3be486b646190661ac2387c150a
   port: 443
-  score: 2.79830832745947
+  score: 1.620104764280369
   server: 152.67.115.203
-  sim_score: 0.7592650985934626
+  sim_score: 1.1973029887545736
   skip-cert-verify: true
   sni: www.bing.com
-  speed: 27.79
+  speed: 12.99
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - nl|7363|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
+  - xx|344a|puddincat07@Telegram
+  - xx|febb|puddincat07@Telegram
   - au|c385|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - nl|7363|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
+  - xx|344a|puddincat07@Telegram
+  - xx|febb|puddincat07@Telegram
   - au|c385|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
 rules:
 - MATCH,🌐 节点选择
