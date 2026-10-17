@@ -5,60 +5,45 @@ port: 7890
 proxies:
 - down: ''
   fingerprint: ''
-  latency: 48.91
+  latency: 39.4
   name: xx|344a|puddincat07@Telegram
   obfs: ''
   obfs-password: ''
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   port: '443'
-  score: 7.622163156818647
+  score: 6.530456852791878
   server: vpn-sg-001.fastervpn.world
-  sim_score: 1.5205612114053726
+  sim_score: 0.7728387465653209
   skip-cert-verify: true
   sni: vpn-sg-001.fastervpn.world
-  speed: 37.28
+  speed: 25.73
   type: hysteria2
   up: ''
-- latency: 89.94
-  name: xx|febb|puddincat07@Telegram
-  password: 96ab5cd282733fd4c312a61f972f330a
-  port: 443
-  score: 5.5003335557038024
-  server: vp3.yysyy.online
-  sim_score: 1.2759006869635559
-  skip-cert-verify: false
-  speed: 49.47
-  tls: false
-  type: hysteria2
-- auth: 633bc3be486b646190661ac2387c150a
-  latency: 80.18
-  name: au|c385|puddincat07@Telegram
-  obfs: salamander
-  obfs-password: 850a3fb1cd33a28f12d837578ae1a2e7
-  password: 633bc3be486b646190661ac2387c150a
-  port: 443
-  score: 1.620104764280369
-  server: 152.67.115.203
-  sim_score: 1.1973029887545736
+- latency: 40.05
+  name: us|81c2|puddincat07@Telegram
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  port: 35013
+  score: 2.4044943820224725
+  server: 129.213.91.185
+  sim_score: 2.132058057664209
   skip-cert-verify: true
   sni: www.bing.com
-  speed: 12.99
+  speed: 9.63
+  tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - xx|344a|puddincat07@Telegram
-  - xx|febb|puddincat07@Telegram
-  - au|c385|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - xx|344a|puddincat07@Telegram
-  - xx|febb|puddincat07@Telegram
-  - au|c385|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
