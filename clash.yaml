@@ -4,28 +4,56 @@ mode: Rule
 port: 7890
 proxies:
 - auth: gf1:gfhysteria2024
-  latency: 58.54
-  name: us|7a73|puddincat07@Telegram
+  latency: 55.55
+  name: nl|7363|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 2.459856508370345
-  server: 66.94.121.46
-  sim_score: 2.3272551456571158
+  score: 5.944194419441945
+  server: 5.129.235.85
+  sim_score: 2.700741830635417
   skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 14.4
+  sni: www.linux.com
+  speed: 33.02
+  type: hysteria2
+- auth: lh92eQnxIpeg2odHHDg0SrcczqwS4e8Y
+  latency: 79.67
+  name: br|adf1|puddincat07@Telegram
+  password: lh92eQnxIpeg2odHHDg0SrcczqwS4e8Y
+  port: 443
+  score: 2.6697627714321577
+  server: 179.255.104.98
+  sim_score: 4.163004542917379
+  skip-cert-verify: true
+  sni: dl1.yuanshicheng.com
+  speed: 21.27
+  type: hysteria2
+  udp: true
+- latency: 87.65
+  name: xx|ec20|puddincat07@Telegram
+  password: 9yOIR2_QAChKs26rYaiX_aoNnOALd0aU
+  port: 443
+  score: 2.2304620650313747
+  server: nl1server.rabstvo.shop
+  sim_score: 1.347325626983813
+  skip-cert-verify: true
+  speed: 19.55
+  tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|7a73|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
+  - br|adf1|puddincat07@Telegram
+  - xx|ec20|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|7a73|puddincat07@Telegram
+  - nl|7363|puddincat07@Telegram
+  - br|adf1|puddincat07@Telegram
+  - xx|ec20|puddincat07@Telegram
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
