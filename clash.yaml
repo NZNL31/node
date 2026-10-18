@@ -4,28 +4,42 @@ mode: Rule
 port: 7890
 proxies:
 - auth: gf1:gfhysteria2024
-  latency: 38.09
+  latency: 55.99
   name: us|7a73|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 4.263586243108427
+  score: 8.162171816395785
   server: 66.94.121.46
-  sim_score: 1.1301944021685453
+  sim_score: 5.59868124153421
   skip-cert-verify: true
   sni: www.broadcom.com
-  speed: 16.24
+  speed: 45.7
+  type: hysteria2
+- latency: 53.46
+  name: us|81c2|puddincat07@Telegram
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  port: 35013
+  score: 2.9367751589973814
+  server: 129.213.91.185
+  sim_score: 3.1622648079509332
+  skip-cert-verify: true
+  sni: www.bing.com
+  speed: 15.7
+  tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - us|7a73|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - us|7a73|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
