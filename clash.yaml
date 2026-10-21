@@ -3,46 +3,56 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- down: ''
-  fingerprint: ''
-  latency: 57.1
-  name: xx|344a|puddincat07@Telegram
-  obfs: ''
-  obfs-password: ''
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  port: '443'
-  score: 8.513134851138354
-  server: vpn-sg-001.fastervpn.world
-  sim_score: 1.8101977444368456
-  skip-cert-verify: true
-  sni: vpn-sg-001.fastervpn.world
-  speed: 48.61
-  type: hysteria2
-  up: ''
 - cipher: aes-256-gcm
-  latency: 61.12
+  latency: 62.22
+  name: nl|f92b|puddincat07@Telegram
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  port: 19999
+  score: 7.672774027643845
+  server: 202.50.253.27
+  sim_score: 0.8930829766944568
+  speed: 47.74
+  type: ss
+  udp: true
+- auth: https://xship.top
+  latency: 63.61
+  name: xx|a030|puddincat07@Telegram
+  password: https://xship.top
+  port: 443
+  score: 6.2930356862128605
+  server: starlink-ft.251313.xyz
+  sim_score: 1.518659275469553
+  skip-cert-verify: true
+  sni: xship.top
+  speed: 40.03
+  type: hysteria2
+  udp: true
+- cipher: aes-256-gcm
+  latency: 63.45
   name: nl|5013|puddincat07@Telegram
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
   port: 19999
-  score: 6.047120418848167
+  score: 3.014972419227738
   server: 202.50.253.90
-  sim_score: 1.2659177903993826
-  speed: 36.96
+  sim_score: 1.6028472316314808
+  speed: 19.13
   type: ss
   udp: true
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - xx|344a|puddincat07@Telegram
+  - nl|f92b|puddincat07@Telegram
+  - xx|a030|puddincat07@Telegram
   - nl|5013|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - xx|344a|puddincat07@Telegram
+  - nl|f92b|puddincat07@Telegram
+  - xx|a030|puddincat07@Telegram
   - nl|5013|puddincat07@Telegram
   type: url-test
-  url: https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe
+  url: https://www.gstatic.com/generate_204
 rules:
 - MATCH,🌐 节点选择
