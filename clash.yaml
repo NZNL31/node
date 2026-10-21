@@ -3,58 +3,48 @@ log-level: info
 mode: Rule
 port: 7890
 proxies:
-- latency: 44.52
-  name: us|81c2|puddincat07@Telegram
-  password: 4291c983-c520-46ac-82cc-48f14bef573f
-  port: 35013
-  score: 9.449685534591195
-  server: 129.213.91.185
-  sim_score: 3.7587693694442468
-  skip-cert-verify: true
-  sni: 129.213.91.185
-  speed: 42.07
-  tls: false
-  type: hysteria2
-- latency: 48.38
+- latency: 95.76
   name: us|d4f7|puddincat07@Telegram
   obfs: salamander
   obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
   password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
   port: 443
-  score: 3.241008681273253
+  score: 3.3552631578947367
   server: 130.49.161.70
-  sim_score: 1.2402613797651927
+  sim_score: 2.5888070666017975
   skip-cert-verify: false
   sni: hy2.aspidnet.xyz
-  speed: 15.68
+  speed: 32.13
   tls: false
   type: hysteria2
-- auth: gf1:gfhysteria2024
-  latency: 51.32
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 2.4103663289166017
-  server: 66.94.121.46
-  sim_score: 1.9701215641537941
+- down: ''
+  fingerprint: ''
+  latency: 51.02
+  name: xx|344a|puddincat07@Telegram
+  obfs: ''
+  obfs-password: ''
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  port: '443'
+  score: 2.659741277930223
+  server: vpn-sg-001.fastervpn.world
+  sim_score: 1.752586571452813
   skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 12.37
+  sni: vpn-sg-001.fastervpn.world
+  speed: 13.57
   type: hysteria2
+  up: ''
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
-  - us|81c2|puddincat07@Telegram
   - us|d4f7|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - xx|344a|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
-  - us|81c2|puddincat07@Telegram
   - us|d4f7|puddincat07@Telegram
-  - us|7a73|puddincat07@Telegram
+  - xx|344a|puddincat07@Telegram
   type: url-test
   url: https://www.gstatic.com/generate_204
 rules:
