@@ -4,28 +4,57 @@ mode: Rule
 port: 7890
 proxies:
 - auth: gf1:gfhysteria2024
-  latency: 30.03
+  latency: 37.94
   name: us|7a73|puddincat07@Telegram
   password: gf1:gfhysteria2024
   port: 443
-  score: 7.1928071928071935
+  score: 11.001581444385874
   server: 66.94.121.46
-  sim_score: 2.020801962527919
+  sim_score: 0.5988379522537965
   skip-cert-verify: true
   sni: www.broadcom.com
-  speed: 21.6
+  speed: 41.74
+  type: hysteria2
+- auth: https://xship.top
+  latency: 40.24
+  name: xx|a030|puddincat07@Telegram
+  password: https://xship.top
+  port: 443
+  score: 5.241053677932406
+  server: starlink-ft.251313.xyz
+  sim_score: 1.4006411757870216
+  skip-cert-verify: true
+  sni: xship.top
+  speed: 21.09
+  type: hysteria2
+  udp: true
+- latency: 40.1
+  name: us|81c2|puddincat07@Telegram
+  password: 4291c983-c520-46ac-82cc-48f14bef573f
+  port: 35013
+  score: 4.9900249376558605
+  server: 129.213.91.185
+  sim_score: 1.1615461248380625
+  skip-cert-verify: true
+  sni: 129.213.91.185
+  speed: 20.01
+  tls: false
   type: hysteria2
 proxy-groups:
 - name: 🌐 节点选择
   proxies:
   - 🔄 自动选择
   - us|7a73|puddincat07@Telegram
+  - xx|a030|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: select
 - interval: 300
   name: 🔄 自动选择
   proxies:
   - us|7a73|puddincat07@Telegram
+  - xx|a030|puddincat07@Telegram
+  - us|81c2|puddincat07@Telegram
   type: url-test
-  url: https://www.gstatic.com/generate_204
+  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 rules:
 - MATCH,🌐 节点选择
