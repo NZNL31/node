@@ -179,7 +179,7 @@ def main():
 
     # ---- 收集 ----
     got = 0
-    deadline = time.time() + 90
+    deadline = time.time() + 150
     while submitted and time.time() < deadline:
         time.sleep(4)
         for rid in list(submitted):

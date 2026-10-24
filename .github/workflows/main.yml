@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: "0 */3 * * *"   # 每 3 小时
   workflow_dispatch:
-  push:                     # TEMP: 临时启用，验证完立刻删
-    branches: [main]
 
 permissions:
   contents: write
