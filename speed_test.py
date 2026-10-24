@@ -380,8 +380,10 @@ def build_clash_config(nodes):
         "proxy-groups": [
             {"name": "🌐 节点选择", "type": "select",
              "proxies": ["🔄 自动选择"] + names},
+            # 节点多（900+）的时候健康检查本身就不便宜，interval 放宽到 10 分钟，
+            # lazy 让这个组没被选中时直接跳过检查，别在手机上白耗流量
             {"name": "🔄 自动选择", "type": "url-test",
-             "url": TEST_URL, "interval": 300, "tolerance": 50,
+             "url": TEST_URL, "interval": 600, "tolerance": 50, "lazy": True,
              "proxies": names},
         ],
         "rules": ["MATCH,🌐 节点选择"],
