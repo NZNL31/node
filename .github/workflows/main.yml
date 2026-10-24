@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "0 */3 * * *"   # 每 3 小时
   workflow_dispatch:
+  push:                     # TEMP: 临时启用，验证完立刻删
+    branches: [main]
 
 permissions:
   contents: write
@@ -91,24 +93,30 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
-          git add clash.yaml v2.txt
 
+          git add clash.yaml v2.txt
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
             exit 0
           fi
 
-          git commit -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')"
-
-          for i in 1 2 3; do
+          for i in 1 2 3 4; do
+            git add clash.yaml v2.txt
+            git commit -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
             if git push origin HEAD:main; then
-              echo "推送成功"
+              echo "推送成功（第 $i 次尝试）"
               exit 0
             fi
-            echo "推送失败，第 $i 次重试…"
+
+            echo "推送失败，同步远端后重试（$i/4）…"
             git fetch origin main --depth=1 || true
-            git rebase FETCH_HEAD || git rebase --abort || true
+            # 不要用 rebase：clash.yaml / v2.txt 是每次重新生成的产物，和远端
+            # 必然冲突，rebase 会直接把整个任务搞挂（踩过一次）。
+            # reset --mixed 把索引换成远端最新，工作区的产物保持不动，
+            # 下一轮 add 时以本次生成的结果为准，其余文件跟远端走。
+            git reset --mixed FETCH_HEAD || true
             sleep 5
           done
+
           echo "推送连续失败，请手动重跑" >&2
           exit 1
