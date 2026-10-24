@@ -12,12 +12,14 @@
 现在的做法：
   1. 把全部节点写进 probe.yaml，启动 mihomo（external-controller: 9090）
   2. 并发调用 /proxies/{name}/delay?url=... 让 mihomo 走真实代理去请求
-  3. 只保留活着的节点，再按类型轮转选取，避免单一类型占满名额
-  4. 输出 clash.yaml（给 Clash 用）和 v2.txt（base64 的 URI 列表）
+  3. 首轮失败的节点再补测一轮（并发高时有一批是排队超时，不是真死）
+  4. 按协议类型配额选取，而不是单纯按延迟取前 N
+  5. 输出 clash.yaml（给 Clash 用）和 v2.txt（base64 的 URI 列表）
 
 注意：延迟是「测速机器 → 节点 → 目标站」的往返时间，测速机器在 GitHub Actions
 （美国）。对国内用户来说它只能说明节点活着、离美国近，说明不了国内能不能连。
-所以这里的延迟只用来排序参考，不作为「国内可用性」的依据。
+所以节点名里的延迟标记写成 `[US 123ms]`，明确标注这是美国机房测出来的值，
+不是你的延迟；真正该看的是客户端自己的延迟（🔄 自动选择 组会本地实测）。
 
 环境变量：
   MIHOMO_BIN         mihomo 可执行文件路径，默认 ./mihomo
@@ -52,6 +54,24 @@ TIMEOUT_MS = 5000
 MAX_PROBE = int(os.environ.get("MAX_PROBE", 1500))
 CONCURRENCY = int(os.environ.get("PROBE_CONCURRENCY", 32))
 TOP_N = int(os.environ.get("TOP_N", 300))
+
+# 国内存活先验：协议越容易被 GFW 识别，国内可达率越低。
+#
+# 依据是 2026-10-24 对 926 个节点的实测（CI 判定「活」的节点，再从国内 TCP 复测）：
+#   vless 362/632 = 57%   vmess 56%   hysteria2 大部分可达   ss 14/179 = 7.8%
+# 裸 ss 没有 TLS 伪装、流量特征明显，是 GFW 打击的重点，国内存活率只有 vless 的
+# 七分之一。如果按延迟单纯取前 N，ss 会占满名额（它连美国快），而它恰恰是国内
+# 最连不上的那批。所以按协议加权分配名额。
+TYPE_WEIGHT = {
+    "vless": 1.0,
+    "trojan": 1.0,
+    "hysteria2": 1.0,
+    "tuic": 1.0,
+    "vmess": 0.9,
+    "ss": 0.25,
+    "ssr": 0.15,
+}
+DEFAULT_WEIGHT = 0.5
 
 
 # ------------------------------------------------------------------ 节点转 URI
@@ -237,6 +257,77 @@ def probe_one(name: str):
         return None
 
 
+def probe_all(nodes, label="测速"):
+    """并发探测一批节点，返回 [(delay, node), ...]。"""
+    out = []
+    if not nodes:
+        return out
+    with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
+        futures = {pool.submit(probe_one, n["name"]): n for n in nodes}
+        done = 0
+        for fut in as_completed(futures):
+            node = futures[fut]
+            delay = fut.result()
+            done += 1
+            if delay:
+                out.append((delay, node))
+            if done % 50 == 0:
+                print(f"  {label}进度 {done}/{len(nodes)}，可用 {len(out)}")
+    return out
+
+
+def select_nodes(results, top_n):
+    """
+    按协议加权配额选取节点。
+
+    不能按延迟单纯取前 N：CI 测的是「美国 → 节点」，ss 节点因为离美国近反而
+    排前面，而它国内可达率只有 7.8%。按 TYPE_WEIGHT 分名额能把名额让给
+    vless / trojan / hysteria2 这些国内存活率高的协议。
+
+    某类型存活数不够时，剩余名额按全局延迟顺序补齐，不会浪费。
+    """
+    by_type = {}
+    for delay, node in sorted(results, key=lambda x: x[0]):
+        by_type.setdefault(node.get("type", "?"), []).append((delay, node))
+
+    present = [t for t in by_type if by_type[t]]
+    if not present:
+        return []
+
+    weight_sum = sum(TYPE_WEIGHT.get(t, DEFAULT_WEIGHT) for t in present)
+    picked, used = [], set()
+    for t in sorted(present, key=lambda t: -TYPE_WEIGHT.get(t, DEFAULT_WEIGHT)):
+        w = TYPE_WEIGHT.get(t, DEFAULT_WEIGHT)
+        quota = max(1, round(top_n * w / weight_sum))
+        for delay, node in by_type[t][:quota]:
+            if len(picked) >= top_n:
+                break
+            picked.append((delay, node))
+            used.add(id(node))
+
+    # 配额没用满（某类型存活数不足）的部分，用「延迟 / 权重」这个有效代价补齐。
+    # 不能直接按延迟补：ss 连美国最快，按延迟补等于把刚压下去的名额又还回去。
+    if len(picked) < top_n:
+        rest = [(delay / TYPE_WEIGHT.get(n.get("type", "?"), DEFAULT_WEIGHT),
+                 delay, n)
+                for delay, n in results if id(n) not in used]
+        rest.sort(key=lambda x: x[0])
+        for _, delay, node in rest:
+            if len(picked) >= top_n:
+                break
+            picked.append((delay, node))
+            used.add(id(node))
+
+    picked.sort(key=lambda x: x[0])
+    out = []
+    for delay, node in picked:
+        node = dict(node)
+        # 标注 US，避免用户把这个数字当成自己的延迟
+        node["name"] = f"{node['name']} [US {delay}ms]"
+        out.append(node)
+    return out
+
+
 # ------------------------------------------------------------------ 输出
 
 def build_clash_config(nodes):
@@ -303,19 +394,15 @@ def main():
 
     print(f"启动 mihomo，开始真实测速（{len(nodes)} 个节点，并发 {CONCURRENCY}）")
     proc = start_mihomo()
-    results = []
     try:
-        with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
-            futures = {pool.submit(probe_one, n["name"]): n for n in nodes}
-            done = 0
-            for fut in as_completed(futures):
-                node = futures[fut]
-                delay = fut.result()
-                done += 1
-                if delay:
-                    results.append((delay, node))
-                if done % 50 == 0:
-                    print(f"  进度 {done}/{len(nodes)}，可用 {len(results)}")
+        results = probe_all(nodes)
+        # 首轮失败的再补一轮：并发 32 的时候总有一批是 mihomo 排队超时，
+        # 不是节点真的连不上。补测一次成本很低，能捞回来不少。
+        alive = {n["name"] for _, n in results}
+        retry = [n for n in nodes if n["name"] not in alive]
+        if retry:
+            print(f"补测首轮失败的 {len(retry)} 个节点…")
+            results += probe_all(retry, label="补测")
     finally:
         proc.terminate()
         try:
@@ -334,35 +421,16 @@ def main():
         return
 
     results.sort(key=lambda x: x[0])
-
-    # 按类型轮转取，而不是单纯按延迟取前 N。
-    #
-    # 原因：测速是在 GitHub Actions（美国）上跑的，测的是「美国 → 节点」的延迟。
-    # 对国内用户来说，这个数字只能说明节点活着、且离美国近，说明不了国内能不能连。
-    # 实测 926 个节点里，vless 国内可达率 57%，ss 只有 7.8%——而按延迟排序会让
-    # 那些「美国访问快、国内被墙」的 ss 节点占满名额。按类型轮转能保住多样性。
-    by_type = {}
-    for delay, node in results:
-        by_type.setdefault(node["type"], []).append((delay, node))
-
-    order = sorted(by_type, key=lambda t: -len(by_type[t]))
-    best = []
-    while len(best) < TOP_N and any(by_type.values()):
-        for t in order:
-            if not by_type[t] or len(best) >= TOP_N:
-                continue
-            delay, node = by_type[t].pop(0)
-            node = dict(node)
-            node["name"] = f"{node['name']} [{delay}ms]"
-            best.append(node)
+    best = select_nodes(results, TOP_N)
 
     dist = {}
     for n in best:
-        dist[n["type"]] = dist.get(n["type"], 0) + 1
-    print(f"保留 {len(best)} 个节点（按类型轮转，避免单一类型占满名额）")
+        t = n["type"]
+        dist[t] = dist.get(t, 0) + 1
+    print(f"保留 {len(best)} 个节点（按协议加权配额，ss 名额被压缩）")
     print(f"  类型分布: {dist}")
     print(f"  CI 延迟区间: {results[0][0]}~{results[-1][0]}ms"
-          f"（注意：这是美国机房的测量值，不代表国内延迟）")
+          f"（美国机房的测量值，不代表国内延迟）")
     write_outputs(best)
 
 
