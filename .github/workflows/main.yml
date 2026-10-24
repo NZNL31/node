@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "0 */3 * * *"   # 每 3 小时
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "subscriptions.json"
+      - "fetch_subscriptions.py"
+      - "speed_test.py"
 
 permissions:
   contents: write

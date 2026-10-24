@@ -24,7 +24,7 @@ https://raw.githubusercontent.com/NZNL31/node/main/v2.txt
 subscriptions.json
       │
       ▼
-fetch_subscriptions.py   ← 拉取 10 个订阅源，解析成 Clash 节点
+fetch_subscriptions.py   ← 拉取 8 个订阅源，解析成 Clash 节点
       │                    all_nodes.yaml（中间产物，不入库）
       ▼
 speed_test.py            ← 启动 mihomo，逐个节点走真实代理测延迟
