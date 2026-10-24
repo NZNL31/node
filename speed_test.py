@@ -13,19 +13,32 @@
   1. 把全部节点写进 probe.yaml，启动 mihomo（external-controller: 9090）
   2. 并发调用 /proxies/{name}/delay?url=... 让 mihomo 走真实代理去请求
   3. 首轮失败的节点再补测一轮（并发高时有一批是排队超时，不是真死）
-  4. 按协议类型配额选取，而不是单纯按延迟取前 N
+  4. **不按延迟筛选**，只用来排序和打标记（原因见下）
   5. 输出 clash.yaml（给 Clash 用）和 v2.txt（base64 的 URI 列表）
 
-注意：延迟是「测速机器 → 节点 → 目标站」的往返时间，测速机器在 GitHub Actions
-（美国）。对国内用户来说它只能说明节点活着、离美国近，说明不了国内能不能连。
-所以节点名里的延迟标记写成 `[US 123ms]`，明确标注这是美国机房测出来的值，
-不是你的延迟；真正该看的是客户端自己的延迟（🔄 自动选择 组会本地实测）。
+为什么不按延迟筛选（这是本脚本最重要的一条）：
+
+  延迟是「测速机器 → 节点 → 目标站」的往返时间，测速机器在 GitHub Actions
+  的 runner 上，在美国机房。它测出来的数字跟国内能不能连上几乎不相关，甚至
+  是负相关——便宜的美西 VPS 对美国快、对国内慢；做了国内线路优化的节点反过来。
+
+  2026-10-24 用同一份节点池、同一台国内机器做 TCP 复测，实测：
+
+    原始池 925 个节点          国内可达 407 个 = 44.0%
+    CI 按延迟筛出的 199 个      国内可达  31 个 = 15.6%
+
+  也就是说「测速筛选」把可用率从 44% 砍到 15.6%，筛掉的主要是国内能用的节点。
+  所以现在只用延迟做两件事：在同类节点里排序、在名字里打 [US 123ms] 标记。
+  节点集合本身不再因为延迟被淘汰。
+
+  唯一还会被淘汰的是 mihomo -t 校验不通过的节点（字段不合法，会让整个配置
+  加载失败），这个跟网络无关，必须摘掉。
 
 环境变量：
   MIHOMO_BIN         mihomo 可执行文件路径，默认 ./mihomo
   MAX_PROBE          最多探测多少个节点，默认 1500
   PROBE_CONCURRENCY  并发数，默认 32
-  TOP_N              最终保留多少个节点，默认 300
+  MAX_OUTPUT         最终最多输出多少个节点，默认 1000（超出才按协议配额裁剪）
   PROBE_URL          测速目标地址
 """
 
@@ -53,15 +66,14 @@ TEST_URL = os.environ.get("PROBE_URL", "https://www.gstatic.com/generate_204")
 TIMEOUT_MS = 5000
 MAX_PROBE = int(os.environ.get("MAX_PROBE", 1500))
 CONCURRENCY = int(os.environ.get("PROBE_CONCURRENCY", 32))
-TOP_N = int(os.environ.get("TOP_N", 300))
+MAX_OUTPUT = int(os.environ.get("MAX_OUTPUT", 1000))
 
-# 国内存活先验：协议越容易被 GFW 识别，国内可达率越低。
+# 国内可达率先验，只用来决定输出顺序（哪种协议排在前面）和超出上限时怎么裁剪。
 #
-# 依据是 2026-10-24 对 926 个节点的实测（CI 判定「活」的节点，再从国内 TCP 复测）：
-#   vless 362/632 = 57%   vmess 56%   hysteria2 大部分可达   ss 14/179 = 7.8%
-# 裸 ss 没有 TLS 伪装、流量特征明显，是 GFW 打击的重点，国内存活率只有 vless 的
-# 七分之一。如果按延迟单纯取前 N，ss 会占满名额（它连美国快），而它恰恰是国内
-# 最连不上的那批。所以按协议加权分配名额。
+# 2026-10-24 从国内对原始池做 TCP 复测（UDP 协议无法用 TCP 探测，单独标注）：
+#   vless 359/632 = 56.8%   vmess 32/57 = 56.1%   ss 13/178 = 7.3%
+# 裸 ss 没有 TLS 伪装、流量特征明显，是 GFW 打击的重点，国内存活率只有 vless
+# 的八分之一。所以输出时 vless/trojan/hysteria2/tuic 排前面，ss/ssr 排最后。
 TYPE_WEIGHT = {
     "vless": 1.0,
     "trojan": 1.0,
@@ -72,6 +84,16 @@ TYPE_WEIGHT = {
     "ssr": 0.15,
 }
 DEFAULT_WEIGHT = 0.5
+
+# 输出顺序：国内可达率高的协议排前面，用户手动挑节点时先看到的更可能能用
+TYPE_ORDER = ["vless", "trojan", "hysteria2", "tuic", "vmess", "ss", "ssr"]
+
+
+def type_rank(t):
+    try:
+        return TYPE_ORDER.index(t)
+    except ValueError:
+        return len(TYPE_ORDER)
 
 
 # ------------------------------------------------------------------ 节点转 URI
@@ -276,54 +298,71 @@ def probe_all(nodes, label="测速"):
     return out
 
 
-def select_nodes(results, top_n):
+def select_nodes(nodes, delays, max_output):
     """
-    按协议加权配额选取节点。
+    选取并排序，不按延迟淘汰。
 
-    不能按延迟单纯取前 N：CI 测的是「美国 → 节点」，ss 节点因为离美国近反而
-    排前面，而它国内可达率只有 7.8%。按 TYPE_WEIGHT 分名额能把名额让给
-    vless / trojan / hysteria2 这些国内存活率高的协议。
+    nodes    : 全部节点（已过 mihomo -t 校验）
+    delays   : {id(node): 延迟}，只包含 CI 探活的节点
+    max_output: 输出上限。节点数没超上限时全部输出，只有超了才按协议配额裁剪。
 
-    某类型存活数不够时，剩余名额按全局延迟顺序补齐，不会浪费。
+    排序规则：按协议分块，国内可达率高的协议排前面（vless/trojan/hysteria2/tuic
+    → vmess → ss → ssr）；块内 CI 探活的在前（延迟升序），没探活的在后。
+
+    这样做的理由见文件头：CI 延迟跟国内可用性负相关，拿它筛选会把可用率从
+    44% 砍到 15.6%。它只能当排序依据和参考标记。
     """
     by_type = {}
-    for delay, node in sorted(results, key=lambda x: x[0]):
-        by_type.setdefault(node.get("type", "?"), []).append((delay, node))
+    for n in nodes:
+        by_type.setdefault(n.get("type", "?"), []).append(n)
 
-    present = [t for t in by_type if by_type[t]]
-    if not present:
-        return []
+    for t, lst in by_type.items():
+        lst.sort(key=lambda n: (id(n) not in delays,
+                                delays.get(id(n), 0)))
 
-    weight_sum = sum(TYPE_WEIGHT.get(t, DEFAULT_WEIGHT) for t in present)
-    picked, used = [], set()
-    for t in sorted(present, key=lambda t: -TYPE_WEIGHT.get(t, DEFAULT_WEIGHT)):
-        w = TYPE_WEIGHT.get(t, DEFAULT_WEIGHT)
-        quota = max(1, round(top_n * w / weight_sum))
-        for delay, node in by_type[t][:quota]:
-            if len(picked) >= top_n:
+    order = sorted(by_type, key=type_rank)
+
+    if len(nodes) <= max_output:
+        chosen = [(t, n) for t in order for n in by_type[t]]
+    else:
+        # 超上限时按协议加权配额裁剪，避免 ss 这种数量多但国内存活率低的协议
+        # 把名额吃光
+        weight_sum = sum(TYPE_WEIGHT.get(t, DEFAULT_WEIGHT) for t in order)
+        quota = {t: max(1, round(max_output * TYPE_WEIGHT.get(t, DEFAULT_WEIGHT)
+                                 / weight_sum))
+                 for t in order}
+        chosen, idx = [], {t: 0 for t in order}
+        while len(chosen) < max_output:
+            progressed = False
+            for t in order:
+                if len(chosen) >= max_output:
+                    break
+                if idx[t] < quota[t] and idx[t] < len(by_type[t]):
+                    chosen.append((t, by_type[t][idx[t]]))
+                    idx[t] += 1
+                    progressed = True
+            if not progressed:
                 break
-            picked.append((delay, node))
-            used.add(id(node))
-
-    # 配额没用满（某类型存活数不足）的部分，用「延迟 / 权重」这个有效代价补齐。
-    # 不能直接按延迟补：ss 连美国最快，按延迟补等于把刚压下去的名额又还回去。
-    if len(picked) < top_n:
-        rest = [(delay / TYPE_WEIGHT.get(n.get("type", "?"), DEFAULT_WEIGHT),
-                 delay, n)
-                for delay, n in results if id(n) not in used]
-        rest.sort(key=lambda x: x[0])
-        for _, delay, node in rest:
-            if len(picked) >= top_n:
+        # 配额没取满（某类型节点数不够）的，剩余名额按协议顺序补齐
+        while len(chosen) < max_output:
+            progressed = False
+            for t in order:
+                if len(chosen) >= max_output:
+                    break
+                if idx[t] < len(by_type[t]):
+                    chosen.append((t, by_type[t][idx[t]]))
+                    idx[t] += 1
+                    progressed = True
+            if not progressed:
                 break
-            picked.append((delay, node))
-            used.add(id(node))
 
-    picked.sort(key=lambda x: x[0])
     out = []
-    for delay, node in picked:
+    for _, node in chosen:
+        d = delays.get(id(node))
         node = dict(node)
-        # 标注 US，避免用户把这个数字当成自己的延迟
-        node["name"] = f"{node['name']} [US {delay}ms]"
+        # 只给探活的打标记，明确这是美国机房测出来的值，不是用户的延迟
+        if d:
+            node["name"] = f"{node['name']} [US {d}ms]"
         out.append(node)
     return out
 
@@ -383,13 +422,13 @@ def main():
     # mihomo 不可用时降级：不测速，全部保留，交给客户端自己选
     if not mihomo_available():
         print(f"[警告] 找不到 mihomo（{MIHOMO_BIN}），跳过测速，保留全部节点")
-        write_outputs(nodes[:TOP_N])
+        write_outputs(nodes[:MAX_OUTPUT])
         return
 
     nodes, ok = validate_config(nodes)
     if not ok:
         print("[警告] 配置校验未通过，跳过测速，保留全部节点")
-        write_outputs(nodes[:TOP_N])
+        write_outputs(nodes[:MAX_OUTPUT])
         return
 
     print(f"启动 mihomo，开始真实测速（{len(nodes)} 个节点，并发 {CONCURRENCY}）")
@@ -410,27 +449,27 @@ def main():
         except subprocess.TimeoutExpired:
             proc.kill()
 
-    print(f"测速完成：{len(results)}/{len(nodes)} 个节点可用")
+    print(f"探活完成：{len(results)}/{len(nodes)} 个节点从 CI 连得通")
 
-    # 可用节点太少时不要发布一份几乎不可用的配置，保留原列表更稳妥
-    min_ok = int(os.environ.get("MIN_OK", 10))
-    if len(results) < min_ok:
-        print(f"[警告] 只有 {len(results)} 个节点通过测速（阈值 {min_ok}），"
-              f"跳过筛选，保留原始列表", file=sys.stderr)
-        write_outputs(nodes[:TOP_N])
-        return
-
-    results.sort(key=lambda x: x[0])
-    best = select_nodes(results, TOP_N)
+    # 注意：这里不做「可用太少就放弃」的降级。探活数量本来就不该影响发布，
+    # 因为 CI 连不通 ≠ 国内连不通（实测 CI 探活的 199 个里国内只有 31 个能用，
+    # 而未探活的节点里反而藏着大部分国内能用的）。
+    delays = {id(n): d for d, n in results}
+    best = select_nodes(nodes, delays, MAX_OUTPUT)
 
     dist = {}
+    probed = 0
     for n in best:
-        t = n["type"]
-        dist[t] = dist.get(t, 0) + 1
-    print(f"保留 {len(best)} 个节点（按协议加权配额，ss 名额被压缩）")
+        dist[n["type"]] = dist.get(n["type"], 0) + 1
+        if n["name"].endswith("ms]"):
+            probed += 1
+    print(f"输出 {len(best)} 个节点（不按延迟淘汰，只按协议排序）")
     print(f"  类型分布: {dist}")
-    print(f"  CI 延迟区间: {results[0][0]}~{results[-1][0]}ms"
-          f"（美国机房的测量值，不代表国内延迟）")
+    print(f"  其中 CI 探活 {probed} 个，其余 {len(best) - probed} 个未探活"
+          f"（不代表国内不能用）")
+    if results:
+        ds = sorted(d for d, _ in results)
+        print(f"  CI 延迟区间: {ds[0]}~{ds[-1]}ms（美国机房测量值，不是你的延迟）")
     write_outputs(best)
 
 

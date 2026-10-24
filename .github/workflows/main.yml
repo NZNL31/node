@@ -55,9 +55,8 @@ jobs:
         env:
           MAX_PROBE: 1500
           PROBE_CONCURRENCY: 32
-          # 多留一些：CI 测不出国内可达性，靠数量和协议配额保证多样性
-          TOP_N: 300
-          MIN_OK: 10
+          # 测速只用于排序和打标记，不用于淘汰节点（原因见 speed_test.py 文件头）
+          MAX_OUTPUT: 1000
         run: python speed_test.py
 
       # 产物自检：宁可这次不更新，也不要发布一份坏配置
