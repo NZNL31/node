@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "0 */3 * * *"   # 每 3 小时
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "speed_test.py"
+      - ".github/workflows/main.yml"
 
 permissions:
   contents: write
@@ -53,7 +58,7 @@ jobs:
         env:
           MAX_PROBE: 1500
           PROBE_CONCURRENCY: 32
-          TOP_N: 100
+          TOP_N: 300            # 多留一些：CI 测不出国内可达性，靠数量保证多样性
           MIN_OK: 10
         run: python speed_test.py
 

@@ -12,14 +12,18 @@
 现在的做法：
   1. 把全部节点写进 probe.yaml，启动 mihomo（external-controller: 9090）
   2. 并发调用 /proxies/{name}/delay?url=... 让 mihomo 走真实代理去请求
-  3. 按真实延迟升序排列，取前 TOP_N 个
+  3. 只保留活着的节点，再按类型轮转选取，避免单一类型占满名额
   4. 输出 clash.yaml（给 Clash 用）和 v2.txt（base64 的 URI 列表）
+
+注意：延迟是「测速机器 → 节点 → 目标站」的往返时间，测速机器在 GitHub Actions
+（美国）。对国内用户来说它只能说明节点活着、离美国近，说明不了国内能不能连。
+所以这里的延迟只用来排序参考，不作为「国内可用性」的依据。
 
 环境变量：
   MIHOMO_BIN         mihomo 可执行文件路径，默认 ./mihomo
   MAX_PROBE          最多探测多少个节点，默认 1500
   PROBE_CONCURRENCY  并发数，默认 32
-  TOP_N              最终保留多少个节点，默认 100
+  TOP_N              最终保留多少个节点，默认 300
   PROBE_URL          测速目标地址
 """
 
@@ -47,7 +51,7 @@ TEST_URL = os.environ.get("PROBE_URL", "https://www.gstatic.com/generate_204")
 TIMEOUT_MS = 5000
 MAX_PROBE = int(os.environ.get("MAX_PROBE", 1500))
 CONCURRENCY = int(os.environ.get("PROBE_CONCURRENCY", 32))
-TOP_N = int(os.environ.get("TOP_N", 100))
+TOP_N = int(os.environ.get("TOP_N", 300))
 
 
 # ------------------------------------------------------------------ 节点转 URI
@@ -330,14 +334,35 @@ def main():
         return
 
     results.sort(key=lambda x: x[0])
-    best = []
-    for delay, node in results[:TOP_N]:
-        node = dict(node)
-        node["name"] = f"{node['name']} [{delay}ms]"
-        best.append(node)
 
-    print(f"保留延迟最低的 {len(best)} 个，延迟区间 "
-          f"{results[0][0]}~{results[min(len(results), TOP_N) - 1][0]}ms")
+    # 按类型轮转取，而不是单纯按延迟取前 N。
+    #
+    # 原因：测速是在 GitHub Actions（美国）上跑的，测的是「美国 → 节点」的延迟。
+    # 对国内用户来说，这个数字只能说明节点活着、且离美国近，说明不了国内能不能连。
+    # 实测 926 个节点里，vless 国内可达率 57%，ss 只有 7.8%——而按延迟排序会让
+    # 那些「美国访问快、国内被墙」的 ss 节点占满名额。按类型轮转能保住多样性。
+    by_type = {}
+    for delay, node in results:
+        by_type.setdefault(node["type"], []).append((delay, node))
+
+    order = sorted(by_type, key=lambda t: -len(by_type[t]))
+    best = []
+    while len(best) < TOP_N and any(by_type.values()):
+        for t in order:
+            if not by_type[t] or len(best) >= TOP_N:
+                continue
+            delay, node = by_type[t].pop(0)
+            node = dict(node)
+            node["name"] = f"{node['name']} [{delay}ms]"
+            best.append(node)
+
+    dist = {}
+    for n in best:
+        dist[n["type"]] = dist.get(n["type"], 0) + 1
+    print(f"保留 {len(best)} 个节点（按类型轮转，避免单一类型占满名额）")
+    print(f"  类型分布: {dist}")
+    print(f"  CI 延迟区间: {results[0][0]}~{results[-1][0]}ms"
+          f"（注意：这是美国机房的测量值，不代表国内延迟）")
     write_outputs(best)
 
 
