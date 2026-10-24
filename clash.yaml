@@ -1,60 +1,1163 @@
 allow-lan: true
-log-level: info
 mode: Rule
+log-level: info
 port: 7890
 proxies:
-- auth: gf1:gfhysteria2024
-  latency: 37.94
-  name: us|7a73|puddincat07@Telegram
-  password: gf1:gfhysteria2024
-  port: 443
-  score: 11.001581444385874
-  server: 66.94.121.46
-  sim_score: 0.5988379522537965
-  skip-cert-verify: true
-  sni: www.broadcom.com
-  speed: 41.74
-  type: hysteria2
-- auth: https://xship.top
-  latency: 40.24
-  name: xx|a030|puddincat07@Telegram
-  password: https://xship.top
-  port: 443
-  score: 5.241053677932406
-  server: starlink-ft.251313.xyz
-  sim_score: 1.4006411757870216
-  skip-cert-verify: true
-  sni: xship.top
-  speed: 21.09
-  type: hysteria2
+- name: 防范境外势力渗透
+  type: vmess
+  server: 127.0.0.53
+  port: 80
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
   udp: true
-- latency: 40.1
-  name: us|81c2|puddincat07@Telegram
-  password: 4291c983-c520-46ac-82cc-48f14bef573f
-  port: 35013
-  score: 4.9900249376558605
-  server: 129.213.91.185
-  sim_score: 1.1615461248380625
-  skip-cert-verify: true
-  sni: 129.213.91.185
-  speed: 20.01
-  tls: false
+- name: '防范境外势力渗透 #1'
+  type: vmess
+  server: 127.0.0.53
+  port: 81
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
+  udp: true
+- name: '防范境外势力渗透 #2'
+  type: vmess
+  server: 127.0.0.53
+  port: 82
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
+  udp: true
+- name: '防范境外势力渗透 #3'
+  type: vmess
+  server: 127.0.0.53
+  port: 83
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
+  udp: true
+- name: '防范境外势力渗透 #4'
+  type: vmess
+  server: 127.0.0.53
+  port: 84
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
+  udp: true
+- name: '防范境外势力渗透 #5'
+  type: vmess
+  server: 127.0.0.53
+  port: 85
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
+  udp: true
+- name: '防范境外势力渗透 #6'
+  type: vmess
+  server: 127.0.0.53
+  port: 86
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
+  udp: true
+- name: '防范境外势力渗透 #7'
+  type: vmess
+  server: 127.0.0.53
+  port: 87
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
+  udp: true
+- name: '防范境外势力渗透 #8'
+  type: vmess
+  server: 127.0.0.53
+  port: 88
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
+  udp: true
+- name: '防范境外势力渗透 #9'
+  type: vmess
+  server: 127.0.0.53
+  port: 89
+  uuid: 88888888-8888-8888-8888-888888888888
+  alterId: 0
+  cipher: auto
+  udp: true
+- name: 🇩🇪192088 | ⚡️Telegram = t.me/v...
   type: hysteria2
+  server: 35.158.96.132
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  skip-cert-verify: true
+  sni: vpn-de-002.fastervpn.world
+- name: '@KAFING_2'
+  type: hysteria2
+  server: 181.214.99.162
+  port: 35000
+  password: b4bd0613-ff7c-4f2f-954d-185915e6ddad
+  skip-cert-verify: true
+  sni: api.kermanshahi.org
+  obfs: salamander
+  obfs-password: '@JavidnamanIran-Javid-SHAH-KingRezaPahlavi'
+- name: 🇺🇸139909 | ⚡️Telegram = t.me/S...
+  type: hysteria2
+  server: 54.213.89.22
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  skip-cert-verify: true
+  sni: vk.com
+- name: '@V2rayng_mar_ket'
+  type: hysteria2
+  server: 109.104.153.124
+  port: 11592
+  password: 35d26d53bc
+  skip-cert-verify: true
+  sni: srv-0e5387.frd21.ru
+  obfs: salamander
+  obfs-password: 87d72c2949c0ca85bbda09459244e374
+- name: 🛸62@oneclickvpnkeys
+  type: hysteria2
+  server: clash2.deep-links.com
+  port: 443
+  password: 4c858cccff331e64c711a199a6cb256a
+  skip-cert-verify: true
+  sni: clash2.deep-links.com
+- name: 🛸69@oneclickvpnkeys
+  type: hysteria2
+  server: 198.46.146.118
+  port: 36720
+  password: 4fUg3KH31LpMhko6o0Ka9Q
+  skip-cert-verify: true
+  sni: bing.com
+- name: '@v2ray_phoenix'
+  type: hysteria2
+  server: 37.9.4.112
+  port: 17701
+  password: 56ff50da-a238-4646-95ab-dd159634bd87
+  skip-cert-verify: true
+  sni: ru03.arpanet-cdn.com
+  obfs: salamander
+  obfs-password: 588c76723192f87cfe6d6786816177cd2bd9773acdc545928d7d1d5e8338d4ce
+- name: '@Begoo_VPN ²⁹⁰'
+  type: hysteria2
+  server: 91.142.73.159
+  port: 36758
+  password: 5bcodmhjtyfyyrqh
+  skip-cert-verify: true
+  sni: cdn77.dmtr.ru
+  obfs: salamander
+  obfs-password: dzcb7hv6i2kx2zze
+- name: 🛸96@oneclickvpnkeys
+  type: hysteria2
+  server: 155.117.19.17
+  port: 443
+  password: 5fa748137b6d822308eea4611f474ad5
+  skip-cert-verify: true
+  sni: www.bing.com
+  obfs: salamander
+  obfs-password: a39ca173b57ac7021b08bf3e3de9f1f6
+- name: Telegram 🆔@cnetvpn 🇷🇺
+  type: hysteria2
+  server: giftcard.gisora.ir
+  port: 52000
+  password: 617z9r1mbzbm1t5z
+  skip-cert-verify: true
+  sni: giftcard.gisora.ir
+  obfs: salamander
+  obfs-password: 09p333uviv2qal0y
+- name: Telegram:@v2rayng3
+  type: hysteria2
+  server: 31.76.80.69
+  port: 443
+  password: 6aab8efdf13945829ae3699c342be406
+  skip-cert-verify: true
+  sni: fiproxy1.lockdwn.com
+  obfs: salamander
+  obfs-password: uw9b2qq5rx
+- name: 🇫🇮@Azaranv2ray
+  type: hysteria2
+  server: 79.137.206.157
+  port: 21000
+  password: 77f73bd5-51bf-4143-8ebd-02f56ba376f4
+  skip-cert-verify: true
+  sni: hy.kirian.su
+  obfs: salamander
+  obfs-password: 9VK3Nqd0bcXGPxcay9hRLY28HBtKo5
+- name: Telegram 🆔@Cnetvpn 🇺🇲
+  type: hysteria2
+  server: giftcard.gateway-stream.com
+  port: 52087
+  password: 8f0gvz5eul6omhq4
+  skip-cert-verify: true
+  sni: giftcard.gateway-stream.com
+  obfs: salamander
+  obfs-password: fuw2k1ddrouwxr3u
+- name: Telegram 🆔@cnetvpn 🇩🇪
+  type: hysteria2
+  server: gift-catalog.aroonia.ir
+  port: 52000
+  password: 8z2e26xkqsa598s3
+  skip-cert-verify: true
+  sni: gift-catalog.aroonia.ir
+  obfs: salamander
+  obfs-password: 6cmj1dymhm79hopl
+- name: 🤩96@oneclickvpnkeys
+  type: hysteria2
+  server: 103.115.109.49
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  skip-cert-verify: true
+  sni: 'https:'
+- name: 🛸100@oneclickvpnkeys
+  type: hysteria2
+  server: 160.187.100.109
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  skip-cert-verify: true
+  sni: vpn-tw-002.fastervpn.world
+- name: 🤩98@oneclickvpnkeys
+  type: hysteria2
+  server: vpn-tw-002.fastervpn.world
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  skip-cert-verify: true
+  sni: 127.0.0.1
+- name: '@v2ray_configs_pools 🌍 ⚡️'
+  type: hysteria2
+  server: 5.254.51.108
+  port: 9443
+  password: Hc9_NX924RE_Mn948rgrwiub_m93V84nll
+  skip-cert-verify: true
+  sni: keyhop-voxility-at.dynuddns.com
+- name: 🩵+@Azarakhsh_Proxy+🩷
+  type: hysteria2
+  server: 179.61.132.96
+  port: 8443
+  password: KevinZakarian
+  skip-cert-verify: true
+  sni: 179.61.132.96
+  obfs: salamander
+  obfs-password: KevinZakarian
+- name: '@meliproxyy'
+  type: hysteria2
+  server: me17.msjia8844.site
+  port: 7443
+  password: M8LP9DztTr3znqCkmf-r08CQLBLLFK1r
+  skip-cert-verify: true
+  sni: me17.msjia8844.site
+- name: '@FarazV2ray'
+  type: hysteria2
+  server: 162.249.125.133
+  port: 443
+  password: QCgqi_I4EkV8UR-OgQ_tG4EnVTEVvIyR2GgRBzrIn2s
+  skip-cert-verify: true
+  sni: hy2-new.aspidnet.xyz
+  obfs: salamander
+  obfs-password: c1b4086fea89914496c7e10967a419216566
+- name: Telegram@vpnjey
+  type: hysteria2
+  server: 179.61.138.145
+  port: 54759
+  password: Telegram-Vpnjey
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 'Telegram@vpnjey #1'
+  type: hysteria2
+  server: 179.61.138.145
+  port: 36264
+  password: Telegram-vpnjey
+  skip-cert-verify: true
+  sni: de2.jey.cc.cd
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 'Telegram@vpnjey #2'
+  type: hysteria2
+  server: 31.76.27.23
+  port: 37009
+  password: Telegram-vpnjey
+  skip-cert-verify: true
+  sni: de.vpnjey.store
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 🛸64@oneclickvpnkeys
+  type: hysteria2
+  server: 77.110.96.201
+  port: 36264
+  password: Telegram-vpnjey
+  skip-cert-verify: true
+  sni: se.vpnjey2.dpdns.org
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 'Channel : @Daily_Configs #1'
+  type: hysteria2
+  server: 179.61.138.145
+  port: 443
+  password: Telegram
+  skip-cert-verify: true
+  sni: de2.jey.cc.cd
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 'Telegram@vpnjey #5'
+  type: hysteria2
+  server: 31.76.27.23
+  port: 443
+  password: Telegram
+  skip-cert-verify: true
+  sni: de.vpnjey.store
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 'Telegram@vpnjey #6'
+  type: hysteria2
+  server: 77.110.96.201
+  port: 443
+  password: Telegram
+  skip-cert-verify: true
+  sni: se.vpnjey2.dpdns.org
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 'Telegram@vpnjey #7'
+  type: hysteria2
+  server: 179.61.138.145
+  port: 54759
+  password: Telegram%40vpnjey
+  skip-cert-verify: true
+  obfs: salamander
+  obfs-password: Telegram@vpnjey
+- name: 🇳🇱 - NL - @FreeOnlineVPN
+  type: hysteria2
+  server: 206.71.158.37
+  port: 35000
+  password: Yet-Another-Public-Config-1
+  skip-cert-verify: true
+  sni: YAPC-1.afshin.ir
+  obfs: salamander
+  obfs-password: Yet-Another-Public-Config-1
+- name: '@KAFING_2 #2'
+  type: hysteria2
+  server: 5.175.249.174
+  port: 35000
+  password: b4bd0613-ff7c-4f2f-954d-185915e6ddad
+  skip-cert-verify: true
+  sni: api.kermanshahi.org
+  obfs: salamander
+  obfs-password: '@JavidnamanIran-Javid-SHAH-KingRezaPahlavi'
+- name: 🛸75@oneclickvpnkeys
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: 33333
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  skip-cert-verify: true
+  sni: hy2.123266.xyz
+- name: '@V2rayng_mar_ket #1'
+  type: hysteria2
+  server: 155.94.134.183
+  port: 11592
+  password: ca78f919e6
+  skip-cert-verify: true
+  sni: srv-3fc7c9.21freedom.net
+  obfs: salamander
+  obfs-password: ec66908dbc46e6920143d9b684adf277
+- name: 🇨🇭192087 | ⚡️Telegram = t.me/v...
+  type: hysteria2
+  server: 208.69.78.217
+  port: 443
+  password: capadm96216165
+  skip-cert-verify: true
+  sni: vpn.local
+  obfs: salamander
+  obfs-password: mbQXP2ASuHbF6ZPq
+- name: '@vmess_ir'
+  type: hysteria2
+  server: nas.aizhzo.com
+  port: 5010
+  password: eBTe6Ax2pUts8oMEWoYVDfnSlHfkLffQ
+  skip-cert-verify: true
+  sni: nas.aizhzo.com
+  obfs: salamander
+  obfs-password: 7M4RXPFcQyQEGbkxBPfXo4bilMhCW2U9
+- name: '@pass_net'
+  type: hysteria2
+  server: 51.75.118.5
+  port: 20161
+  password: fb2defa0-2ee5-4ad9-90b7-dde7cbf3f01f
+  skip-cert-verify: true
+  sni: www.bing.com
+  obfs: salamander
+  obfs-password: 546e172a11c77094
+- name: 'Telegram 🆔@Cnetvpn 🇺🇲 #1'
+  type: hysteria2
+  server: giftcard.gateway-stream.com
+  port: 52076
+  password: fmaznn1lrzys7ddy
+  skip-cert-verify: true
+  sni: giftcard.gateway-stream.com
+  obfs: salamander
+  obfs-password: fuw2k1ddrouwxr3u
+- name: '@confiig_hub #1'
+  type: hysteria2
+  server: 130.49.161.70
+  port: 443
+  password: p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR
+  skip-cert-verify: true
+  sni: hy2.aspidnet.xyz
+  obfs: salamander
+  obfs-password: rG07s3COMIEvdnQipRyWzx_H_2xygNC3
+- name: 🇱🇻hysteria
+  type: hysteria2
+  server: pro2.riziro.ir
+  port: 44100
+  password: rjj39jg8iphgd06h
+  skip-cert-verify: true
+  sni: pro2.riziro.ir
+  obfs: salamander
+  obfs-password: 2gg0tx9d2etug8n9
+- name: Telegram 🆔@cnetvpn 🇳🇱
+  type: hysteria2
+  server: giftcard.gateway-stream.com
+  port: 52050
+  password: s6gt5e4mof43sfg8
+  skip-cert-verify: true
+  sni: giftcard.gateway-stream.com
+  obfs: salamander
+  obfs-password: fuw2k1ddrouwxr3u
+- name: '@fastkanfig کانال تلگرام'
+  type: hysteria2
+  server: bwdf2fnt.xn--e1aatfr8bwa.online
+  port: 443
+  password: tnnls
+  skip-cert-verify: true
+  sni: bwdf2fnt.xn--e1aatfr8bwa.online
+  obfs: salamander
+  obfs-password: b6d1f3888ab1d90dd11aac1dce427b81
+- name: Telegram 🆔@cnetvpn 🇸🇪
+  type: hysteria2
+  server: giftcard.gateway-stream.com
+  port: 52062
+  password: vz86jgszv4zszchv
+  skip-cert-verify: true
+  sni: giftcard.gateway-stream.com
+  obfs: salamander
+  obfs-password: fuw2k1ddrouwxr3u
+- name: Telegram 🆔@cnetvpn 🇫🇮
+  type: hysteria2
+  server: giftcard.gateway-stream.com
+  port: 52090
+  password: xf2ak19a4uajprxg
+  skip-cert-verify: true
+  sni: giftcard.gateway-stream.com
+  obfs: salamander
+  obfs-password: fuw2k1ddrouwxr3u
+- name: 🇦🇪[www.v2nodes.com] vless-AE-1...
+  type: vless
+  server: 95.174.68.188
+  port: 14430
+  uuid: 965ffbbe-c6b6-4d5f-8dea-6d8abc55d9c0
+  udp: true
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: 95.174.68.188
+- name: '🇦🇪[www.v2nodes.com] vless-AE-1... #1'
+  type: vless
+  server: uae.unixzone.us
+  port: 22573
+  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: uae.unixzone.us
+- name: '🇦🇪[www.v2nodes.com] vless-AE-1... #2'
+  type: vless
+  server: 147.78.0.186
+  port: 8443
+  uuid: 04c808e2-0b59-47b0-a54b-32fc7ef1c902
+  udp: true
+  network: ws
+  ws-opts:
+    path: pyip=bpb.yousef.isegaro.comfp=randomsecurity=tls
+    headers:
+      Host: free.cndyw.ggff.net
+- name: 🇦🇱[www.v2nodes.com] vless-AL-1...
+  type: vless
+  server: 89.125.139.115
+  port: 443
+  uuid: 04c808e2-0b59-47b0-a54b-32fc7ef1c902
+  udp: true
+  network: ws
+  ws-opts:
+    path: pyip=bpb.yousef.isegaro.comfp=chromesecurity=tls
+    headers:
+      Host: free.cndyw.ggff.net
+- name: 🇦🇲[www.v2nodes.com] vless-AM-1...
+  type: vless
+  server: 194.36.37.59
+  port: 10004
+  uuid: f7376394-cd54-11f1-bb6a-bff6d0326f6a
+  udp: true
+  network: ws
+  ws-opts:
+    path: /vpnjantit
+    headers:
+      Host: ''
+- name: '🇦🇲[www.v2nodes.com] vless-AM-1... #1'
+  type: vless
+  server: 88.218.95.88
+  port: 443
+  uuid: b8df3f50-ffef-4c7e-9ef3-d5b156a47c02
+  udp: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
+  tls: true
+  servername: www.google.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: '🇦🇲[www.v2nodes.com] vless-AM-1... #2'
+  type: vless
+  server: 77.91.68.70
+  port: 55983
+  uuid: f667a096-5231-4cfb-8759-92bb32473139
+  udp: true
+  tls: true
+  servername: yahoo.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: '🇺🇦[www.v2nodes.com] vless-UA-1... #9'
+  type: vless
+  server: 213.111.148.137
+  port: 443
+  uuid: 40af9131-d540-448a-bc56-5bba147a1dc3
+  udp: true
+  network: ws
+  ws-opts:
+    path: /fp=android
+    headers:
+      Host: proxy-1cu.pages.dev
+  tls: true
+  servername: proxy-1cu.pages.dev
+  skip-cert-verify: true
+- name: 🇦🇺[www.v2nodes.com] vless-AU-1...
+  type: vless
+  server: 51.161.204.244
+  port: 443
+  uuid: 36e89875-9c53-482b-bc41-d3890e9da176
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  client-fingerprint: firefox
+- name: '🇦🇺[www.v2nodes.com] vless-AU-1... #1'
+  type: vless
+  server: 51.161.204.242
+  port: 443
+  uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: '🇬🇧[www.v2nodes.com] vless-GB-1... #2'
+  type: vless
+  server: p2real4.greewebservices.ir
+  port: 1340
+  uuid: 2582857a-632b-4c4e-9b67-96213cbaf58c
+  udp: true
+  tls: true
+  servername: play.googleapis.com
+  skip-cert-verify: true
+  client-fingerprint: ios
+- name: '🇧🇬[www.v2nodes.com] vless-BG-1... #1'
+  type: vless
+  server: 203.202.232.110
+  port: 443
+  uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
+  udp: true
+  network: ws
+  ws-opts:
+    path: /socks5=888:888@hkip.1d.mom:1080fp=chromefp=chromesecurity=tls
+    headers:
+      Host: vlso5.1d.mom
+- name: 🏳[www.v2nodes.com] vless-
+  type: vless
+  server: 155.103.71.142
+  port: 443
+  uuid: d342d11e-d224-4463-b982-532309285094
+  udp: true
+  network: ws
+  ws-opts:
+    path: /fp=chromefp=chrome
+    headers:
+      Host: ccc.010304.xyz
+  tls: true
+  servername: ccc.010304.xyz
+  skip-cert-verify: true
+- name: 🇸🇪[www.v2nodes.com] vless-SE-3...
+  type: vless
+  server: b2n.ir
+  port: 443
+  uuid: e6df2095-a73c-4043-8693-8d5a03686870
+  udp: true
+- name: '🇧🇷[www.v2nodes.com] vless-BR-1... #1'
+  type: vless
+  server: cf.090227.xyz
+  port: 443
+  uuid: d342d11e-d224-4463-b982-532309285094
+  udp: true
+  network: ws
+  ws-opts:
+    path: /fp=chromesecurity=tls
+    headers:
+      Host: ccc.010304.xyz
+- name: 🇸🇪[www.v2nodes.com] vless-SE-9...
+  type: vless
+  server: 188.114.97.6
+  port: 443
+  uuid: e6df2095-a73c-4043-8693-8d5a03686870
+  udp: true
+- name: '🏳[www.v2nodes.com] vless- #2'
+  type: vless
+  server: 178.172.227.124
+  port: 14430
+  uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
+  udp: true
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: 178.172.227.124
+- name: 🇧🇾[www.v2nodes.com] vless-BY-1...
+  type: vless
+  server: 95.128.71.79
+  port: 14430
+  uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
+  udp: true
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: 95.128.71.79
+- name: 🇨🇦[www.v2nodes.com] vless-CA-1...
+  type: vless
+  server: 209.200.246.148
+  port: 443
+  uuid: ca52e2b6-fb9f-4dac-b6dc-49da9923f251
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  client-fingerprint: firefox
+- name: '🇨🇦[www.v2nodes.com] vless-CA-1... #1'
+  type: vless
+  server: 66.70.179.198
+  port: 2053
+  uuid: dc620cd6-a9d8-4a0f-8f18-006b895db77e
+  udp: true
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  client-fingerprint: firefox
+- name: '🇨🇦[www.v2nodes.com] vless-CA-1... #2'
+  type: vless
+  server: milo.rubinaz.xyz
+  port: 8080
+  uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
+  udp: true
+- name: 🇸🇬[www.v2nodes.com] vless-SG
+  type: vless
+  server: 172.64.152.241
+  port: 443
+  uuid: d342d11e-d224-4463-b982-532309285094
+  udp: true
+  network: ws
+  ws-opts:
+    path: /security=tls
+    headers:
+      Host: ccc.010304.xyz
+- name: '🇸🇬[www.v2nodes.com] vless-SG #1'
+  type: vless
+  server: 199.181.197.40
+  port: 8880
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: vms.lifetime19.workers.dev
+- name: 🇯🇵[www.v2nodes.com] vless-JP
+  type: vless
+  server: 188.114.98.0
+  port: 443
+  uuid: 22424ee2-6fe3-42ca-9749-6d4c5a8acc82
+  udp: true
+  network: ws
+  ws-opts:
+    path: /id-pusatfp=chrome
+    headers:
+      Host: tn1r.eu.cc
+  tls: true
+  servername: tn1r.eu.cc
+  skip-cert-verify: true
+- name: 🇿🇦[www.v2nodes.com] vless-ZA
+  type: vless
+  server: 139.84.242.103
+  port: 443
+  uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
+  udp: true
+  network: ws
+  ws-opts:
+    path: /socks5=888:888@hkip.1d.mom:1080fp=chrome
+    headers:
+      Host: vlso5.1d.mom
+  tls: true
+  servername: vlso5.1d.mom
+  skip-cert-verify: true
+- name: '🇸🇬[www.v2nodes.com] vless-SG #2'
+  type: vless
+  server: 104.234.239.139
+  port: 443
+  uuid: 70756c73-0000-4000-8000-650000000000
+  udp: true
+  network: ws
+  ws-opts:
+    path: /pulsefp=chrome
+    headers:
+      Host: parsa-panel-u48we.wotic15356.workers.dev
+  tls: true
+  servername: parsa-panel-u48we.wotic15356.workers.dev
+  skip-cert-verify: true
+- name: '🇸🇬[www.v2nodes.com] vless-SG #3'
+  type: vless
+  server: 185.193.29.123
+  port: 443
+  uuid: 1d16c6e0-1bbe-435b-b661-90043fee999c
+  udp: true
+  network: ws
+  ws-opts:
+    path: Telegram-WangCai2🇨🇳security=tls
+    headers:
+      Host: notls.lukongtou.eu.org
+- name: '🇸🇬[www.v2nodes.com] vless-SG #4'
+  type: vless
+  server: 45.130.125.30
+  port: 8880
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  udp: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime58.workers.dev
+- name: '🇸🇬[www.v2nodes.com] vless-SG #5'
+  type: vless
+  server: 104.18.0.181
+  port: 2082
+  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+  udp: true
+- name: '🇸🇬[www.v2nodes.com] vless-SG #6'
+  type: vless
+  server: 104.21.91.244
+  port: 443
+  uuid: e6df2095-a73c-4043-8693-8d5a03686870
+  udp: true
+- name: 🇨🇭[www.v2nodes.com] vless-CH-1...
+  type: vless
+  server: 45.90.59.15
+  port: 443
+  uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  client-fingerprint: firefox
+- name: '🇨🇭[www.v2nodes.com] vless-CH-1... #1'
+  type: vless
+  server: 208.69.78.217
+  port: 2053
+  uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+  udp: true
+  tls: true
+  servername: www.apple.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: 🇿🇦[www.v2nodes.com] vless-ZA-1...
+  type: vless
+  server: platform101.golnamakcert.top
+  port: 80
+  uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+  udp: true
+  network: ws
+  ws-opts:
+    path: /platform101
+    headers:
+      Host: platform101.halalkhor.info
+- name: '🇨🇱[www.v2nodes.com] vless-CL-1... #1'
+  type: vless
+  server: 131.255.6.88
+  port: 443
+  uuid: 04c808e2-0b59-47b0-a54b-32fc7ef1c902
+  udp: true
+  network: ws
+  ws-opts:
+    path: pyip=bpb.yousef.isegaro.comfp=chromesecurity=tls
+    headers:
+      Host: free.cndyw.ggff.net
+- name: 🇨🇾[www.v2nodes.com] vless-CY-1...
+  type: vless
+  server: 194.55.166.65
+  port: 2087
+  uuid: 04c808e2-0b59-47b0-a54b-32fc7ef1c902
+  udp: true
+  network: ws
+  ws-opts:
+    path: pyip=bpb.yousef.isegaro.comfp=randomsecurity=tls
+    headers:
+      Host: free.cndyw.ggff.net
+- name: '🇨🇾[www.v2nodes.com] vless-CY-1... #1'
+  type: vless
+  server: 213.111.177.107
+  port: 443
+  uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
+  udp: true
+  network: ws
+  ws-opts:
+    path: /socks5=888:888@hkip.1d.mom:1080fp=chromesecurity=tls
+    headers:
+      Host: vlso5.1d.mom
+- name: 🇨🇿[www.v2nodes.com] vless-CZ-1...
+  type: vless
+  server: 195.123.245.241
+  port: 443
+  uuid: 7c053ca8-38cc-45e2-930c-eda1fd66f903
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: gateway.icloud.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: 🇩🇪[www.v2nodes.com] vless-DE-1...
+  type: vless
+  server: 198.202.146.51
+  port: 443
+  uuid: afbd410e-1663-4f40-9d3b-df5117aa23ca
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: 198.202.146.51.sslip.io
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: '🇩🇪[www.v2nodes.com] vless-DE-1... #1'
+  type: vless
+  server: 82.118.19.153
+  port: 443
+  uuid: adcaa148-7c66-4282-a81a-99ec8afa029d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.cloudflare.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: '🇩🇪[www.v2nodes.com] vless-DE-1... #2'
+  type: vless
+  server: 46.28.69.123
+  port: 443
+  uuid: b945f9aa-1b45-4912-aa7e-248509472bad
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: gateway.icloud.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: '🇩🇪[www.v2nodes.com] vless-DE-1... #3'
+  type: vless
+  server: 89.169.53.176
+  port: 4443
+  uuid: 20dd9433-389e-4573-ba7b-689619cf13da
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: gateway.icloud.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: '🇩🇪[www.v2nodes.com] vless-DE-1... #4'
+  type: vless
+  server: 130.17.25.67
+  port: 443
+  uuid: 1c5ed2e1-56da-41ab-9a78-159d9892ec17
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: github.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: '🇩🇪[www.v2nodes.com] vless-DE-1... #5'
+  type: vless
+  server: uiuxtestsdcv-development-r6dg9.lucity.app
+  port: 443
+  uuid: 58b06206-cd53-23d6-279a-0f0dd259cb0a
+  udp: true
+  network: ws
+  ws-opts:
+    path: /ws/58b06206-cd53-23d6-279a-0f0dd259cb0afp=chrome
+    headers:
+      Host: uiuxtestsdcv-development-r6dg9.lucity.app
+  tls: true
+  servername: uiuxtestsdcv-development-r6dg9.lucity.app
+  skip-cert-verify: true
+- name: '🇫🇮[www.v2nodes.com] vless-FI-1... #4'
+  type: vless
+  server: mci.amir12.ir
+  port: 2112
+  uuid: 36c3dcc2-17b6-4478-b8a7-3978e6d5afe9
+  udp: true
+  tls: true
+  servername: play.google.com
+  skip-cert-verify: true
+  client-fingerprint: chrome
+- name: '🇩🇪[www.v2nodes.com] vless-DE-1... #7'
+  type: vless
+  server: 45.144.30.86
+  port: 443
+  uuid: 30572b57-f5ab-4eb8-82d4-a24d399b99f6
+  udp: true
+- name: '🇺🇸[www.v2nodes.com] vless-US-1... #14'
+  type: vless
+  server: wwww.qarvian.ir
+  port: 443
+  uuid: 153900df-5824-4b55-98c4-418c5baea523
+  udp: true
+  network: ws
+  ws-opts:
+    path: /fp=chrome
+    headers:
+      Host: copy_az_channel_NUFiLTER_7i.global.ssl.fastly.net.
+  tls: true
+  servername: firefox.com
+  skip-cert-verify: true
+- name: '🇩🇪[www.v2nodes.com] vless-DE-1... #9'
+  type: vless
+  server: shortbig.ir
+  port: 2087
+  uuid: 31f185b6-e591-413b-ba72-88083a87feb2
+  udp: true
 proxy-groups:
 - name: 🌐 节点选择
+  type: select
   proxies:
   - 🔄 自动选择
-  - us|7a73|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
-  - us|81c2|puddincat07@Telegram
-  type: select
-- interval: 300
-  name: 🔄 自动选择
-  proxies:
-  - us|7a73|puddincat07@Telegram
-  - xx|a030|puddincat07@Telegram
-  - us|81c2|puddincat07@Telegram
+  - 防范境外势力渗透
+  - '防范境外势力渗透 #1'
+  - '防范境外势力渗透 #2'
+  - '防范境外势力渗透 #3'
+  - '防范境外势力渗透 #4'
+  - '防范境外势力渗透 #5'
+  - '防范境外势力渗透 #6'
+  - '防范境外势力渗透 #7'
+  - '防范境外势力渗透 #8'
+  - '防范境外势力渗透 #9'
+  - 🇩🇪192088 | ⚡️Telegram = t.me/v...
+  - '@KAFING_2'
+  - 🇺🇸139909 | ⚡️Telegram = t.me/S...
+  - '@V2rayng_mar_ket'
+  - 🛸62@oneclickvpnkeys
+  - 🛸69@oneclickvpnkeys
+  - '@v2ray_phoenix'
+  - '@Begoo_VPN ²⁹⁰'
+  - 🛸96@oneclickvpnkeys
+  - Telegram 🆔@cnetvpn 🇷🇺
+  - Telegram:@v2rayng3
+  - 🇫🇮@Azaranv2ray
+  - Telegram 🆔@Cnetvpn 🇺🇲
+  - Telegram 🆔@cnetvpn 🇩🇪
+  - 🤩96@oneclickvpnkeys
+  - 🛸100@oneclickvpnkeys
+  - 🤩98@oneclickvpnkeys
+  - '@v2ray_configs_pools 🌍 ⚡️'
+  - 🩵+@Azarakhsh_Proxy+🩷
+  - '@meliproxyy'
+  - '@FarazV2ray'
+  - Telegram@vpnjey
+  - 'Telegram@vpnjey #1'
+  - 'Telegram@vpnjey #2'
+  - 🛸64@oneclickvpnkeys
+  - 'Channel : @Daily_Configs #1'
+  - 'Telegram@vpnjey #5'
+  - 'Telegram@vpnjey #6'
+  - 'Telegram@vpnjey #7'
+  - 🇳🇱 - NL - @FreeOnlineVPN
+  - '@KAFING_2 #2'
+  - 🛸75@oneclickvpnkeys
+  - '@V2rayng_mar_ket #1'
+  - 🇨🇭192087 | ⚡️Telegram = t.me/v...
+  - '@vmess_ir'
+  - '@pass_net'
+  - 'Telegram 🆔@Cnetvpn 🇺🇲 #1'
+  - '@confiig_hub #1'
+  - 🇱🇻hysteria
+  - Telegram 🆔@cnetvpn 🇳🇱
+  - '@fastkanfig کانال تلگرام'
+  - Telegram 🆔@cnetvpn 🇸🇪
+  - Telegram 🆔@cnetvpn 🇫🇮
+  - 🇦🇪[www.v2nodes.com] vless-AE-1...
+  - '🇦🇪[www.v2nodes.com] vless-AE-1... #1'
+  - '🇦🇪[www.v2nodes.com] vless-AE-1... #2'
+  - 🇦🇱[www.v2nodes.com] vless-AL-1...
+  - 🇦🇲[www.v2nodes.com] vless-AM-1...
+  - '🇦🇲[www.v2nodes.com] vless-AM-1... #1'
+  - '🇦🇲[www.v2nodes.com] vless-AM-1... #2'
+  - '🇺🇦[www.v2nodes.com] vless-UA-1... #9'
+  - 🇦🇺[www.v2nodes.com] vless-AU-1...
+  - '🇦🇺[www.v2nodes.com] vless-AU-1... #1'
+  - '🇬🇧[www.v2nodes.com] vless-GB-1... #2'
+  - '🇧🇬[www.v2nodes.com] vless-BG-1... #1'
+  - 🏳[www.v2nodes.com] vless-
+  - 🇸🇪[www.v2nodes.com] vless-SE-3...
+  - '🇧🇷[www.v2nodes.com] vless-BR-1... #1'
+  - 🇸🇪[www.v2nodes.com] vless-SE-9...
+  - '🏳[www.v2nodes.com] vless- #2'
+  - 🇧🇾[www.v2nodes.com] vless-BY-1...
+  - 🇨🇦[www.v2nodes.com] vless-CA-1...
+  - '🇨🇦[www.v2nodes.com] vless-CA-1... #1'
+  - '🇨🇦[www.v2nodes.com] vless-CA-1... #2'
+  - 🇸🇬[www.v2nodes.com] vless-SG
+  - '🇸🇬[www.v2nodes.com] vless-SG #1'
+  - 🇯🇵[www.v2nodes.com] vless-JP
+  - 🇿🇦[www.v2nodes.com] vless-ZA
+  - '🇸🇬[www.v2nodes.com] vless-SG #2'
+  - '🇸🇬[www.v2nodes.com] vless-SG #3'
+  - '🇸🇬[www.v2nodes.com] vless-SG #4'
+  - '🇸🇬[www.v2nodes.com] vless-SG #5'
+  - '🇸🇬[www.v2nodes.com] vless-SG #6'
+  - 🇨🇭[www.v2nodes.com] vless-CH-1...
+  - '🇨🇭[www.v2nodes.com] vless-CH-1... #1'
+  - 🇿🇦[www.v2nodes.com] vless-ZA-1...
+  - '🇨🇱[www.v2nodes.com] vless-CL-1... #1'
+  - 🇨🇾[www.v2nodes.com] vless-CY-1...
+  - '🇨🇾[www.v2nodes.com] vless-CY-1... #1'
+  - 🇨🇿[www.v2nodes.com] vless-CZ-1...
+  - 🇩🇪[www.v2nodes.com] vless-DE-1...
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #1'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #2'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #3'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #4'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #5'
+  - '🇫🇮[www.v2nodes.com] vless-FI-1... #4'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #7'
+  - '🇺🇸[www.v2nodes.com] vless-US-1... #14'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #9'
+- name: 🔄 自动选择
   type: url-test
-  url: https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  proxies:
+  - 防范境外势力渗透
+  - '防范境外势力渗透 #1'
+  - '防范境外势力渗透 #2'
+  - '防范境外势力渗透 #3'
+  - '防范境外势力渗透 #4'
+  - '防范境外势力渗透 #5'
+  - '防范境外势力渗透 #6'
+  - '防范境外势力渗透 #7'
+  - '防范境外势力渗透 #8'
+  - '防范境外势力渗透 #9'
+  - 🇩🇪192088 | ⚡️Telegram = t.me/v...
+  - '@KAFING_2'
+  - 🇺🇸139909 | ⚡️Telegram = t.me/S...
+  - '@V2rayng_mar_ket'
+  - 🛸62@oneclickvpnkeys
+  - 🛸69@oneclickvpnkeys
+  - '@v2ray_phoenix'
+  - '@Begoo_VPN ²⁹⁰'
+  - 🛸96@oneclickvpnkeys
+  - Telegram 🆔@cnetvpn 🇷🇺
+  - Telegram:@v2rayng3
+  - 🇫🇮@Azaranv2ray
+  - Telegram 🆔@Cnetvpn 🇺🇲
+  - Telegram 🆔@cnetvpn 🇩🇪
+  - 🤩96@oneclickvpnkeys
+  - 🛸100@oneclickvpnkeys
+  - 🤩98@oneclickvpnkeys
+  - '@v2ray_configs_pools 🌍 ⚡️'
+  - 🩵+@Azarakhsh_Proxy+🩷
+  - '@meliproxyy'
+  - '@FarazV2ray'
+  - Telegram@vpnjey
+  - 'Telegram@vpnjey #1'
+  - 'Telegram@vpnjey #2'
+  - 🛸64@oneclickvpnkeys
+  - 'Channel : @Daily_Configs #1'
+  - 'Telegram@vpnjey #5'
+  - 'Telegram@vpnjey #6'
+  - 'Telegram@vpnjey #7'
+  - 🇳🇱 - NL - @FreeOnlineVPN
+  - '@KAFING_2 #2'
+  - 🛸75@oneclickvpnkeys
+  - '@V2rayng_mar_ket #1'
+  - 🇨🇭192087 | ⚡️Telegram = t.me/v...
+  - '@vmess_ir'
+  - '@pass_net'
+  - 'Telegram 🆔@Cnetvpn 🇺🇲 #1'
+  - '@confiig_hub #1'
+  - 🇱🇻hysteria
+  - Telegram 🆔@cnetvpn 🇳🇱
+  - '@fastkanfig کانال تلگرام'
+  - Telegram 🆔@cnetvpn 🇸🇪
+  - Telegram 🆔@cnetvpn 🇫🇮
+  - 🇦🇪[www.v2nodes.com] vless-AE-1...
+  - '🇦🇪[www.v2nodes.com] vless-AE-1... #1'
+  - '🇦🇪[www.v2nodes.com] vless-AE-1... #2'
+  - 🇦🇱[www.v2nodes.com] vless-AL-1...
+  - 🇦🇲[www.v2nodes.com] vless-AM-1...
+  - '🇦🇲[www.v2nodes.com] vless-AM-1... #1'
+  - '🇦🇲[www.v2nodes.com] vless-AM-1... #2'
+  - '🇺🇦[www.v2nodes.com] vless-UA-1... #9'
+  - 🇦🇺[www.v2nodes.com] vless-AU-1...
+  - '🇦🇺[www.v2nodes.com] vless-AU-1... #1'
+  - '🇬🇧[www.v2nodes.com] vless-GB-1... #2'
+  - '🇧🇬[www.v2nodes.com] vless-BG-1... #1'
+  - 🏳[www.v2nodes.com] vless-
+  - 🇸🇪[www.v2nodes.com] vless-SE-3...
+  - '🇧🇷[www.v2nodes.com] vless-BR-1... #1'
+  - 🇸🇪[www.v2nodes.com] vless-SE-9...
+  - '🏳[www.v2nodes.com] vless- #2'
+  - 🇧🇾[www.v2nodes.com] vless-BY-1...
+  - 🇨🇦[www.v2nodes.com] vless-CA-1...
+  - '🇨🇦[www.v2nodes.com] vless-CA-1... #1'
+  - '🇨🇦[www.v2nodes.com] vless-CA-1... #2'
+  - 🇸🇬[www.v2nodes.com] vless-SG
+  - '🇸🇬[www.v2nodes.com] vless-SG #1'
+  - 🇯🇵[www.v2nodes.com] vless-JP
+  - 🇿🇦[www.v2nodes.com] vless-ZA
+  - '🇸🇬[www.v2nodes.com] vless-SG #2'
+  - '🇸🇬[www.v2nodes.com] vless-SG #3'
+  - '🇸🇬[www.v2nodes.com] vless-SG #4'
+  - '🇸🇬[www.v2nodes.com] vless-SG #5'
+  - '🇸🇬[www.v2nodes.com] vless-SG #6'
+  - 🇨🇭[www.v2nodes.com] vless-CH-1...
+  - '🇨🇭[www.v2nodes.com] vless-CH-1... #1'
+  - 🇿🇦[www.v2nodes.com] vless-ZA-1...
+  - '🇨🇱[www.v2nodes.com] vless-CL-1... #1'
+  - 🇨🇾[www.v2nodes.com] vless-CY-1...
+  - '🇨🇾[www.v2nodes.com] vless-CY-1... #1'
+  - 🇨🇿[www.v2nodes.com] vless-CZ-1...
+  - 🇩🇪[www.v2nodes.com] vless-DE-1...
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #1'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #2'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #3'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #4'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #5'
+  - '🇫🇮[www.v2nodes.com] vless-FI-1... #4'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #7'
+  - '🇺🇸[www.v2nodes.com] vless-US-1... #14'
+  - '🇩🇪[www.v2nodes.com] vless-DE-1... #9'
 rules:
 - MATCH,🌐 节点选择
