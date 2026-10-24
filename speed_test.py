@@ -16,6 +16,10 @@
   4. **不按延迟筛选**，只用来排序和打标记（原因见下）
   5. 输出 clash.yaml（给 Clash 用）和 v2.txt（base64 的 URI 列表）
 
+排序还会参考 hk_probe.py 攒下来的香港探测数据（hk_latency.json）。香港离中国
+近，那边的 RTT 加 30ms 左右就接近国内用户的真实体验，比 CI 在美国测出来的值
+有用得多；但香港测不出墙，所以同样只用于排序，不用于淘汰。
+
 为什么不按延迟筛选（这是本脚本最重要的一条）：
 
   延迟是「测速机器 → 节点 → 目标站」的往返时间，测速机器在 GitHub Actions
@@ -59,6 +63,7 @@ ALL_NODES_FILE = "all_nodes.yaml"
 CLASH_FILE = "clash.yaml"
 V2_FILE = "v2.txt"
 PROBE_FILE = "probe.yaml"
+HK_FILE = "hk_latency.json"
 
 MIHOMO_BIN = os.environ.get("MIHOMO_BIN", "./mihomo")
 API_BASE = "http://127.0.0.1:9090"
@@ -94,6 +99,30 @@ def type_rank(t):
         return TYPE_ORDER.index(t)
     except ValueError:
         return len(TYPE_ORDER)
+
+
+def node_key(node):
+    return f"{str(node.get('server', '')).lower()}:{node.get('port')}"
+
+
+def load_hk_latency():
+    """
+    读 hk_probe.py 攒下来的香港探测结果。
+
+    这个数据比 CI 的延迟有用得多：香港离中国近，测出来的值加 30ms 左右就接近
+    国内用户的实际 RTT。但它**测不出墙**（GFW 在中国出境链路上，从香港探测
+    不经过它），所以只用来排序，不用来淘汰。
+    """
+    if not os.path.exists(HK_FILE):
+        return {}
+    try:
+        with open(HK_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+        nodes = data.get("nodes")
+        return nodes if isinstance(nodes, dict) else {}
+    except Exception as e:
+        print(f"[警告] 读 {HK_FILE} 失败，忽略：{e}")
+        return {}
 
 
 # ------------------------------------------------------------------ 节点转 URI
@@ -298,27 +327,45 @@ def probe_all(nodes, label="测速"):
     return out
 
 
-def select_nodes(nodes, delays, max_output):
+def select_nodes(nodes, delays, hk, max_output):
     """
     选取并排序，不按延迟淘汰。
 
-    nodes    : 全部节点（已过 mihomo -t 校验）
-    delays   : {id(node): 延迟}，只包含 CI 探活的节点
+    nodes     : 全部节点（已过 mihomo -t 校验）
+    delays    : {id(node): 延迟}，CI（美国）探活的节点
+    hk        : {"server:port": {"ms": 毫秒或 None}}，香港探测点的结果
     max_output: 输出上限。节点数没超上限时全部输出，只有超了才按协议配额裁剪。
 
     排序规则：按协议分块，国内可达率高的协议排前面（vless/trojan/hysteria2/tuic
-    → vmess → ss → ssr）；块内 CI 探活的在前（延迟升序），没探活的在后。
+    → vmess → ss → ssr）；块内依次是：
 
-    这样做的理由见文件头：CI 延迟跟国内可用性负相关，拿它筛选会把可用率从
-    44% 砍到 15.6%。它只能当排序依据和参考标记。
+      1. 香港测得通的（按香港延迟升序）—— 最接近国内真实体验
+      2. 香港没测过、但 CI 探活的（按 CI 延迟升序）
+      3. 两边都没数据的
+      4. 香港明确连不上的 —— 大概率是死节点，垫底
+
+    为什么以香港数据优先：香港离中国近，它测出的 RTT 加 30ms 左右就是国内用户
+    的实际体验；CI 在美国，测出来的值基本只能说明「节点活着」。但它测不出墙，
+    所以只影响排序，不影响是否发布。
     """
     by_type = {}
     for n in nodes:
         by_type.setdefault(n.get("type", "?"), []).append(n)
 
+    def sort_key(n):
+        e = hk.get(node_key(n))
+        if e:
+            ms = e.get("ms")
+            if ms is not None:
+                return (0, ms)
+            return (3, 0)                     # 香港连不上 → 垫底
+        d = delays.get(id(n))
+        if d:
+            return (1, d)
+        return (2, 0)
+
     for t, lst in by_type.items():
-        lst.sort(key=lambda n: (id(n) not in delays,
-                                delays.get(id(n), 0)))
+        lst.sort(key=sort_key)
 
     order = sorted(by_type, key=type_rank)
 
@@ -358,10 +405,15 @@ def select_nodes(nodes, delays, max_output):
 
     out = []
     for _, node in chosen:
+        e = hk.get(node_key(node))
         d = delays.get(id(node))
         node = dict(node)
-        # 只给探活的打标记，明确这是美国机房测出来的值，不是用户的延迟
-        if d:
+        if e and e.get("ms") is not None:
+            node["name"] = f"{node['name']} [HK {e['ms']:g}ms]"
+        elif e:
+            node["name"] = f"{node['name']} [HK 超时]"
+        elif d:
+            # 没有香港数据时退回 CI 的测量值，但必须标明是美国测的
             node["name"] = f"{node['name']} [US {d}ms]"
         out.append(node)
     return out
@@ -421,16 +473,16 @@ def main():
 
     nodes = nodes[:MAX_PROBE]
 
-    # mihomo 不可用时降级：不测速，全部保留，交给客户端自己选
+    # mihomo 不可用时降级：不测速，全部保留，但香港排序数据还能用
     if not mihomo_available():
         print(f"[警告] 找不到 mihomo（{MIHOMO_BIN}），跳过测速，保留全部节点")
-        write_outputs(nodes[:MAX_OUTPUT])
+        write_outputs(select_nodes(nodes, {}, load_hk_latency(), MAX_OUTPUT))
         return
 
     nodes, ok = validate_config(nodes)
     if not ok:
         print("[警告] 配置校验未通过，跳过测速，保留全部节点")
-        write_outputs(nodes[:MAX_OUTPUT])
+        write_outputs(select_nodes(nodes, {}, load_hk_latency(), MAX_OUTPUT))
         return
 
     print(f"启动 mihomo，开始真实测速（{len(nodes)} 个节点，并发 {CONCURRENCY}）")
@@ -457,18 +509,27 @@ def main():
     # 因为 CI 连不通 ≠ 国内连不通（实测 CI 探活的 199 个里国内只有 31 个能用，
     # 而未探活的节点里反而藏着大部分国内能用的）。
     delays = {id(n): d for d, n in results}
-    best = select_nodes(nodes, delays, MAX_OUTPUT)
+    hk = load_hk_latency()
+    best = select_nodes(nodes, delays, hk, MAX_OUTPUT)
 
-    dist = {}
-    probed = 0
+    dist, stat = {}, {"HK": 0, "HK超时": 0, "US": 0, "无数据": 0}
     for n in best:
         dist[n["type"]] = dist.get(n["type"], 0) + 1
-        if n["name"].endswith("ms]"):
-            probed += 1
+        name = n["name"]
+        if name.endswith("[HK 超时]"):
+            stat["HK超时"] += 1
+        elif "[HK " in name:
+            stat["HK"] += 1
+        elif name.endswith("ms]"):
+            stat["US"] += 1
+        else:
+            stat["无数据"] += 1
     print(f"输出 {len(best)} 个节点（不按延迟淘汰，只按协议排序）")
     print(f"  类型分布: {dist}")
-    print(f"  其中 CI 探活 {probed} 个，其余 {len(best) - probed} 个未探活"
-          f"（不代表国内不能用）")
+    print(f"  香港测得 {stat['HK']} 个，香港超时 {stat['HK超时']} 个，"
+          f"仅美国探活 {stat['US']} 个，无数据 {stat['无数据']} 个")
+    if hk:
+        print(f"  香港缓存 {len(hk)} 条（由 hk_probe.py 分轮积累）")
     if results:
         ds = sorted(d for d, _ in results)
         print(f"  CI 延迟区间: {ds[0]}~{ds[-1]}ms（美国机房测量值，不是你的延迟）")

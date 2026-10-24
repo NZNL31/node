@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "0 */3 * * *"   # 每 3 小时
   workflow_dispatch:
+  push:                     # TEMP: 临时启用，验证完立刻删
+    branches: [main]
 
 permissions:
   contents: write
@@ -49,6 +51,15 @@ jobs:
           MIN_NODES: 50          # 少于这个数说明订阅源集体失效，直接失败
         run: python fetch_subscriptions.py
 
+      # check-host.net 的香港探测点有速率限制（实测连发约 50 次开始返回
+      # limit_exceeded），所以每轮只测一小批，结果累积在 hk_latency.json 里，
+      # 几轮覆盖全量。这一步失败不影响发布。
+      - name: 香港探测点测延迟
+        env:
+          HK_BATCH: 30           # 每轮最多测多少个
+          HK_TTL_H: 96           # 结果缓存 4 天
+        run: python hk_probe.py
+
       - name: 真实测速
         env:
           MAX_PROBE: 1500
@@ -62,6 +73,8 @@ jobs:
         run: |
           python - <<'PY'
           import base64
+          import json
+          import os
           import sys
           import yaml
 
@@ -83,6 +96,16 @@ jobs:
           if len(uris) != len(proxies):
               sys.exit(f"v2.txt 有 {len(uris)} 条，clash.yaml 有 {len(proxies)} 个节点，不一致")
 
+          # 香港延迟缓存是可选的，但既然要提交，格式必须是对的
+          if os.path.exists("hk_latency.json"):
+              hk = json.load(open("hk_latency.json", encoding="utf-8"))
+              entries = hk.get("nodes") or {}
+              bad = [k for k, v in entries.items()
+                     if not isinstance(v, dict) or "ms" not in v]
+              if bad:
+                  sys.exit(f"hk_latency.json 有 {len(bad)} 条格式不对: {bad[:3]}")
+              print(f"香港缓存 {len(entries)} 条")
+
           print(f"校验通过: {len(proxies)} 个节点, {len(uris)} 条 URI")
           PY
 
@@ -92,6 +115,8 @@ jobs:
           git config user.email "actions@github.com"
 
           git add clash.yaml v2.txt
+          git add hk_latency.json 2>/dev/null || true
+
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
             exit 0
@@ -99,6 +124,7 @@ jobs:
 
           for i in 1 2 3 4; do
             git add clash.yaml v2.txt
+            git add hk_latency.json 2>/dev/null || true
             git commit -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
             if git push origin HEAD:main; then
               echo "推送成功（第 $i 次尝试）"

@@ -17,6 +17,7 @@ server 字段，结果 1352 个节点里有 1336 个的 server 是 "404: Not Fou
 """
 
 import base64
+import ipaddress
 import json
 import os
 import re
@@ -365,6 +366,25 @@ def extract_uris(text: str):
 
 # ------------------------------------------------------------------ 校验与去重
 
+def is_usable_server(server) -> bool:
+    """
+    排除指向本机/内网/保留地址的节点。
+
+    有些订阅源会带上占位模板，server 写成 127.0.0.53 之类（实测一个源里有 10 条
+    vmess 都是这个地址），这种节点在任何机器上都连不通，纯属占位符。
+    域名不在这里判断（很多节点用域名，解析结果这里不做假设）。
+    """
+    s = str(server or "").strip().strip("[]")
+    if not s:
+        return False
+    try:
+        ip = ipaddress.ip_address(s)
+    except ValueError:
+        return True                      # 是域名，放过
+    return not (ip.is_private or ip.is_loopback or ip.is_reserved
+                or ip.is_unspecified or ip.is_link_local or ip.is_multicast)
+
+
 def normalize_node(node: dict):
     """校验从 YAML 直接拿到的节点，返回干净的字典或 None。"""
     if not isinstance(node, dict):
@@ -373,6 +393,8 @@ def normalize_node(node: dict):
     if ntype not in SUPPORTED:
         return None
     if not node.get("server") or not node.get("port"):
+        return None
+    if not is_usable_server(node.get("server")):
         return None
     try:
         node["port"] = int(node["port"])
