@@ -128,6 +128,20 @@ python fetch_subscriptions.py
 python speed_test.py        # 没有 mihomo 会自动降级为不探活、全部保留
 ```
 
+## 想知道哪些节点你这边真的能用
+
+跑 `check_cn.py`，它从**你自己机器**出发做 TCP 可达性探测：
+
+```bash
+python check_cn.py                     # 测仓库里已发布的 clash.yaml
+python check_cn.py my.yaml             # 测本地文件
+python check_cn.py <订阅地址>           # 测任意订阅
+```
+
+输出会按协议分组给出可达率。注意 `hysteria2` / `tuic` 是 UDP 协议，TCP 探测
+对它们必然失败，脚本会单独标注并剔除。TCP 连不上就一定不能用，能连上也不保证
+一定好用 —— 但用它筛掉死节点足够了。
+
 ## 注意
 
 - `subscriptions.json` 里的订阅链接含私有 token，本仓库是公开的，**加自己的机场链接前先想清楚**。
