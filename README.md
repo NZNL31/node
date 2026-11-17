@@ -25,6 +25,7 @@ subscriptions.json
       │
       ▼
 fetch_subscriptions.py   ← 拉取 8 个订阅源，解析成 Clash 节点
+      │                    去重键 = 类型 + 服务器 + 端口 + 凭证 + 传输层标识
       │                    all_nodes.yaml（中间产物，不入库）
       ▼
 hk_probe.py              ← 借 check-host.net 的香港探测点测 TCP 延迟
@@ -33,8 +34,14 @@ hk_probe.py              ← 借 check-host.net 的香港探测点测 TCP 延迟
 speed_test.py            ← 启动 mihomo 逐个节点走真实代理探活
       │                    探活只用来排序和打标记，不淘汰节点
       ▼
+校验门禁                 ← 结构自检（悬空引用、条数一致性）
+      │                    + mihomo -t 加载最终 clash.yaml
+      ▼
 clash.yaml + v2.txt      ← 提交回仓库
 ```
+
+任何一步失败都**不产出**：宁可这一轮不更新、保留上一版能用的订阅，也不要发布
+一份加载不了的配置。
 
 ### fetch_subscriptions.py
 
@@ -45,8 +52,10 @@ clash.yaml + v2.txt      ← 提交回仓库
 3. 明文 URI 列表
 
 支持 `vmess` / `vless` / `trojan` / `ss` / `ssr` / `hysteria2` / `tuic`。
-节点按 `类型 + 服务器 + 端口 + 凭证` 去重，重名节点自动加序号后缀
-（重名会让 Clash 直接拒绝加载配置）。
+节点去重键是 `类型 + 服务器 + 端口 + 凭证`，ws/grpc 还要带上传输层标识
+（`Host`/`path`、`serviceName`）—— CDN 后面常见同一个 `server:port`、同一个 UUID、
+只靠 Host 区分的几十个节点，只按凭证去重会把它们合并成一个。重名节点自动加序号
+后缀（重名会让 Clash 直接拒绝加载配置）。
 
 ### speed_test.py
 
@@ -172,6 +181,41 @@ rules:
 
 早期版本只有一条 `MATCH`，等于把国内站点也塞进代理，白付一份延迟和机场流量。
 DNS 走 fake-ip + 国内 DoH，非国内域名交给远端解析。
+
+### v2.txt 的导出规则
+
+`clash.yaml` 是完整节点字典，字段不会丢；`v2.txt` 要把节点**还原成分享链接**，
+还原时漏一个字段，客户端拿到的就是一个连不上的节点。几个容易漏的：
+
+| 字段 | 漏了会怎样 |
+|---|---|
+| vless 的 `reality-opts`（`pbk` / `sid`） | 导出成 `security=tls`，客户端按普通 TLS 握手，**必然失败** |
+| `client-fingerprint`（`fp`） | REALITY/TLS 指纹伪装缺失，握手失败或特征暴露 |
+| grpc 的 `serviceName` | 走 grpc 的节点全部连不上 |
+| trojan 的 `ws-opts` | 变成裸 TCP + TLS，握手失败 |
+| IPv6 主机的方括号 `[::1]` | `host:port` 被按多个冒号切错，解析不出端口 |
+
+自检方式是用自己的解析器把导出的 URI 再解析一遍，断言关键字段还在：
+
+```python
+back = fetch_subscriptions.parse_uri(speed_test.node_to_uri(node))
+assert back["reality-opts"] == node["reality-opts"]
+```
+
+当前产物 1000/1000 条 URI 往返无损。
+
+### 校验门禁
+
+`clash.yaml` 里的规则或组类型写错，在客户端上就是**整个订阅加载失败**，所以
+CI 在提交前过两道关：
+
+1. 结构自检（Python）：有没有节点、代理组里有没有悬空引用、`v2.txt` 条数与
+   `clash.yaml` 节点数是否一致、`hk_latency.json` 格式对不对。
+2. `./mihomo -t -f clash.yaml`：用 CI 里已经下好的**同一个版本**真正加载一遍。
+   只校验纯 proxies 的 `probe.yaml` 是不够的 —— 规则和组是另一半。
+
+`speed_test.py` 里 `mihomo -t` 失败又定位不到问题节点时，直接 `exit 1` 本轮不产出，
+不发布未校验的订阅。
 
 ## 加订阅源
 
