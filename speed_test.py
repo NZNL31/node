@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-真实测速：起一个 mihomo 实例，逐个节点走真实代理测延迟。
+真实测速：起一个 sing-box 实例，逐个节点走真实代理测延迟。
 
 旧版本是假的：
     latency = random.uniform(30, 150)
@@ -10,11 +10,14 @@
 协议，TCP 端口开不开跟能不能用毫无关系。结果是随机淘汰掉真正可用的节点。
 
 现在的做法：
-  1. 把全部节点写进 probe.yaml，启动 mihomo（external-controller: 9090）
-  2. 并发调用 /proxies/{name}/delay?url=... 让 mihomo 走真实代理去请求
+  1. 把节点翻译成 sing-box outbound 写进 probe.json，启动 sing-box
+     （clash_api 的 external_controller: 9090）
+  2. 并发调用 /proxies/{name}/delay?url=... 让 sing-box 走真实代理去请求
+     （这两个端点和 mihomo 的 Clash API 语义一致，失败同样是 503/504）
   3. 首轮失败的节点再补测一轮（并发高时有一批是排队超时，不是真死）
   4. **不按延迟筛选**，只用来排序和打标记（原因见下）
-  5. 输出 clash.yaml（给 Clash 用）和 v2.txt（base64 的 URI 列表）
+  5. 输出 clash.yaml（Clash / mihomo 用）、v2.txt（base64 的 URI 列表，
+     v2rayN / Shadowrocket 用）、singbox.json（sing-box 内核的客户端用）
 
 排序还会参考 hk_probe.py 攒下来的香港探测数据（hk_latency.json）。香港离中国
 近，那边的 RTT 加 30ms 左右就接近国内用户的真实体验，比 CI 在美国测出来的值
@@ -35,14 +38,16 @@
   所以现在只用延迟做两件事：在同类节点里排序、在名字里打 [US 123ms] 标记。
   节点集合本身不再因为延迟被淘汰。
 
-  唯一还会被淘汰的是 mihomo -t 校验不通过的节点（字段不合法，会让整个配置
-  加载失败），这个跟网络无关，必须摘掉。
+  唯一还会被排除的是 sing-box 表达不了的节点（xhttp 传输、SSR 协议）——
+  它们只是不参与探活、不进 singbox.json，在 clash.yaml 和 v2.txt 里照常发布。
 
 环境变量：
-  MIHOMO_BIN         mihomo 可执行文件路径，默认 ./mihomo
+  SINGBOX_BIN        sing-box 可执行文件路径，默认 ./sing-box
   MAX_PROBE          最多探测多少个节点，默认 2500
   PROBE_CONCURRENCY  并发数，默认 32
   MAX_OUTPUT         最终最多输出多少个节点，默认 1500（超出才按协议配额裁剪）
+  FEATURED_SIZE      🚀 精选 组放多少个节点，默认 30
+  HK_TTL_H           香港延迟超过多少小时不再参与排序，默认 96
   PROBE_URL          测速目标地址
 """
 
@@ -63,10 +68,11 @@ import yaml
 ALL_NODES_FILE = "all_nodes.yaml"
 CLASH_FILE = "clash.yaml"
 V2_FILE = "v2.txt"
-PROBE_FILE = "probe.yaml"
+SINGBOX_FILE = "singbox.json"
+PROBE_FILE = "probe.json"
 HK_FILE = "hk_latency.json"
 
-MIHOMO_BIN = os.environ.get("MIHOMO_BIN", "./mihomo")
+SINGBOX_BIN = os.environ.get("SINGBOX_BIN", "./sing-box")
 API_BASE = "http://127.0.0.1:9090"
 TEST_URL = os.environ.get("PROBE_URL", "https://www.gstatic.com/generate_204")
 TIMEOUT_MS = 5000
@@ -269,66 +275,174 @@ def node_to_uri(node: dict):
     return None
 
 
-# ------------------------------------------------------------------ mihomo 控制
+# ------------------------------------------------------------------ sing-box 控制
+#
+# 探活引擎是 sing-box。它和 mihomo 在我们要用的两个 Clash 兼容端点上行为一致
+# （`/proxies`、`/proxies/{name}/delay`，失败同样返回 503/504），所以 probe_one()
+# 一行都不用改。差别只有两处：
+#
+#   1. sing-box 吃 JSON 不吃 Clash YAML，节点要先翻译成 outbound；
+#   2. sing-box 支持的传输和取值比 mihomo 窄（没有 xhttp，不认 SSR，flow 只认
+#      xtls-rprx-vision，uTLS 指纹只认白名单）。翻译不了的节点只是**不参与探活**，
+#      仍然照常发布 —— 它们在 mihomo/Clash 客户端那边是能用的，没理由因为探活
+#      引擎不认识就丢掉。
 
-def write_probe_config(nodes, path=PROBE_FILE):
+SUPPORTED_TRANSPORT = {"ws", "grpc", "http", "httpupgrade", "quic"}
+# sing-box 只认这些 uTLS 指纹；mihomo 接受任意字符串（例如 unsafe）
+FP_ALLOWED = {"chrome", "firefox", "safari", "ios", "android", "edge", "360",
+              "qq", "random", "randomized"}
+
+
+def _transport(node):
+    net = str(node.get("network") or "tcp").lower()
+    if net in ("tcp", "raw", ""):
+        return None, None
+    if net == "ws":
+        ws = node.get("ws-opts") or {}
+        t = {"type": "ws", "path": ws.get("path") or "/"}
+        host = (ws.get("headers") or {}).get("Host")
+        if host:
+            t["headers"] = {"Host": host}
+        return t, None
+    if net == "grpc":
+        return {"type": "grpc",
+                "service_name": (node.get("grpc-opts") or {}).get(
+                    "grpc-service-name", "")}, None
+    if net in SUPPORTED_TRANSPORT:
+        return {"type": net}, None
+    return None, f"传输 {net}"
+
+
+def _tls(node):
+    reality = node.get("reality-opts") or {}
+    if not (node.get("tls") or reality):
+        return None
+    tls = {"enabled": True}
+    sni = node.get("servername") or node.get("sni") or node.get("server")
+    if sni:
+        tls["server_name"] = str(sni)
+    if node.get("skip-cert-verify"):
+        tls["insecure"] = True
+    fp = str(node.get("client-fingerprint") or "").lower()
+    if fp:
+        tls["utls"] = {"enabled": True,
+                       "fingerprint": fp if fp in FP_ALLOWED else "chrome"}
+    if reality.get("public-key"):
+        # REALITY 在 sing-box 里强制要求 uTLS
+        tls.setdefault("utls", {"enabled": True, "fingerprint": "chrome"})
+        tls["reality"] = {"enabled": True, "public_key": reality["public-key"],
+                          "short_id": reality.get("short-id") or ""}
+    return tls
+
+
+def node_to_outbound(node):
+    """把 Clash 节点字典翻译成 sing-box outbound；翻不了返回 (None, 原因)。"""
+    ntype = node.get("type")
+    transport, reason = _transport(node)
+    if reason:
+        return None, reason
+    if ntype == "ssr":
+        return None, "SSR"
+    out = {"tag": node["name"], "server": str(node["server"]).strip("[]"),
+           "server_port": int(node["port"])}
+    if ntype == "vless":
+        out.update(type="vless", uuid=node["uuid"])
+        flow = str(node.get("flow") or "")
+        if flow:
+            # mihomo 认 xtls-rprx-vision-udp443，sing-box 只认 xtls-rprx-vision
+            out["flow"] = flow.replace("-udp443", "")
+    elif ntype == "vmess":
+        out.update(type="vmess", uuid=node["uuid"],
+                   security=node.get("cipher") or "auto",
+                   alter_id=int(node.get("alterId") or 0))
+    elif ntype == "trojan":
+        out.update(type="trojan", password=node["password"])
+    elif ntype == "ss":
+        out.update(type="shadowsocks", method=node["cipher"],
+                   password=node["password"])
+    elif ntype == "hysteria2":
+        out.update(type="hysteria2", password=node["password"])
+        if node.get("obfs"):
+            out["obfs"] = {"type": node["obfs"],
+                           "password": node.get("obfs-password") or ""}
+    elif ntype == "tuic":
+        out.update(type="tuic", uuid=node["uuid"], password=node["password"])
+    else:
+        return None, f"类型 {ntype}"
+    if transport:
+        out["transport"] = transport
+    tls = _tls(node)
+    if tls:
+        out["tls"] = tls
+    elif ntype in ("trojan", "hysteria2", "tuic"):
+        out["tls"] = {"enabled": True}
+    return out, None
+
+
+def write_probe_config(outbounds, path=PROBE_FILE):
     config = {
-        "mixed-port": 7890,
-        "external-controller": "127.0.0.1:9090",
-        "mode": "rule",
-        "log-level": "warning",
-        "ipv6": False,
-        "proxies": nodes,
-        "rules": ["MATCH,DIRECT"],
+        "log": {"level": "warn"},
+        "inbounds": [{"type": "mixed", "tag": "in", "listen": "127.0.0.1",
+                      "listen_port": 7890}],
+        "outbounds": list(outbounds) + [{"type": "direct", "tag": "direct"}],
+        "route": {"final": "direct"},
+        "experimental": {"clash_api": {"external_controller": "127.0.0.1:9090"}},
     }
     with open(path, "w", encoding="utf-8") as f:
-        yaml.dump(config, f, allow_unicode=True, sort_keys=False,
-                  default_flow_style=False)
+        json.dump(config, f, ensure_ascii=False)
 
 
-def mihomo_available() -> bool:
-    if not os.path.exists(MIHOMO_BIN):
+def singbox_available() -> bool:
+    if not os.path.exists(SINGBOX_BIN):
         return False
     try:
-        subprocess.run([MIHOMO_BIN, "-v"], capture_output=True, timeout=10)
+        subprocess.run([SINGBOX_BIN, "version"], capture_output=True, timeout=10)
         return True
     except Exception:
         return False
 
 
-def validate_config(nodes):
-    """
-    用 mihomo -t 校验配置。个别节点字段不合法会让整个配置加载失败，
-    这里根据报错信息把涉事节点摘掉再试，最多 20 轮。
-    """
-    for _ in range(20):
-        write_probe_config(nodes)
-        r = subprocess.run([MIHOMO_BIN, "-t", "-d", ".", "-f", PROBE_FILE],
-                           capture_output=True, text=True, timeout=120)
-        if r.returncode == 0:
-            return nodes, True
-        err = (r.stderr or "") + (r.stdout or "")
-        removed = [n for n in nodes if n.get("name") and str(n["name"]) in err]
-        if not removed:
-            print("[警告] mihomo 校验失败，且无法定位问题节点：")
-            print(err.strip()[:600])
-            return nodes, False
-        for n in removed:
-            nodes.remove(n)
-        print(f"[校验] 摘掉 {len(removed)} 个不合法节点后重试")
-    return nodes, False
+def check_outbounds(outbounds, path=PROBE_FILE):
+    write_probe_config(outbounds, path)
+    r = subprocess.run([SINGBOX_BIN, "check", "-c", path],
+                       capture_output=True, text=True, timeout=120)
+    return r.returncode == 0, ((r.stderr or "") + (r.stdout or "")).strip()
 
 
-def start_mihomo():
+def validate_outbounds(outbounds):
+    """
+    用 `sing-box check` 筛掉它加载不了的 outbound。
+
+    分批校验（100 个一批），只在某批失败时才逐条定位 —— 1269 个节点正常情况
+    十几秒跑完。被筛掉的节点只是不参与探活，仍然照常发布：它们可能只是 sing-box
+    不支持的写法，在 mihomo/Clash 客户端那边是好的。
+    """
+    good, bad = [], []
+    for i in range(0, len(outbounds), 100):
+        part = outbounds[i:i + 100]
+        ok, _ = check_outbounds(part)
+        if ok:
+            good += part
+            continue
+        for ob in part:
+            ok, msg = check_outbounds([ob])
+            if ok:
+                good.append(ob)
+            else:
+                bad.append((ob["tag"], (msg.splitlines() or [""])[-1][:120]))
+    return good, bad
+
+
+def start_singbox():
     proc = subprocess.Popen(
-        [MIHOMO_BIN, "-d", ".", "-f", PROBE_FILE],
+        [SINGBOX_BIN, "run", "-c", PROBE_FILE],
         stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True,
     )
-    for _ in range(30):
+    for _ in range(40):
         time.sleep(0.5)
         if proc.poll() is not None:
             err = proc.stderr.read() if proc.stderr else ""
-            raise RuntimeError(f"mihomo 启动失败: {err[:500]}")
+            raise RuntimeError(f"sing-box 启动失败: {err[:500]}")
         try:
             with urllib.request.urlopen(f"{API_BASE}/version", timeout=2) as resp:
                 if resp.status == 200:
@@ -336,11 +450,11 @@ def start_mihomo():
         except Exception:
             continue
     proc.kill()
-    raise RuntimeError("mihomo API 30 秒内未就绪")
+    raise RuntimeError("sing-box 的 clash_api 30 秒内未就绪")
 
 
 def probe_one(name: str):
-    """让 mihomo 走指定节点请求一次，返回延迟毫秒；失败返回 None。"""
+    """让代理核心走指定节点请求一次，返回延迟毫秒；失败返回 None。"""
     q = urllib.parse.urlencode({"timeout": TIMEOUT_MS, "url": TEST_URL})
     url = f"{API_BASE}/proxies/{urllib.parse.quote(str(name), safe='')}/delay?{q}"
     try:
@@ -375,7 +489,7 @@ def select_nodes(nodes, delays, hk, max_output):
     """
     选取并排序，不按延迟淘汰。
 
-    nodes     : 全部节点（已过 mihomo -t 校验）
+    nodes     : 全部节点（可能含少量 sing-box 表达不了、因而没探活的节点）
     delays    : {id(node): 延迟}，CI（美国）探活的节点
     hk        : {"server:port": {"ms": 毫秒或 None}}，香港探测点的结果
     max_output: 输出上限。节点数没超上限时全部输出，只有超了才按协议配额裁剪。
@@ -542,8 +656,89 @@ def build_clash_config(nodes):
     }
 
 
+# sing-box 的 route 规则里没有 GEOIP 了（geoip 规则在 1.12 被移除），要直连国内
+# 只有两条路：远程 rule_set（首次启动要联网下载，节点全挂时下不下来就起不来），
+# 或者域名后缀。这里选后者：不依赖任何下载，配置永远能加载。
+CN_DOMAIN_SUFFIX = [
+    "cn", "baidu.com", "qq.com", "tencent.com", "weixin.qq.com", "taobao.com",
+    "tmall.com", "alicdn.com", "alipay.com", "aliyun.com", "jd.com", "163.com",
+    "126.com", "blizzard.com.cn", "bilibili.com", "hdslb.com", "zhihu.com",
+    "weibo.com", "sina.com.cn", "iqiyi.com", "youku.com", "douyin.com",
+    "meituan.com", "dianping.com", "12306.cn", "ctrip.com", "xiaomi.com",
+    "mi.com", "huawei.com", "vivo.com.cn", "oppo.com", "kuaishou.com",
+    "bytedance.com", "toutiao.com", "pinduoduo.com", "ximalaya.com",
+    "netease.com", "qcloud.com", "myqcloud.com", "bdstatic.com",
+]
+
+
+def build_singbox_config(nodes):
+    """
+    同一批节点的 sing-box 版配置（给 sing-box 内核的客户端用）。
+
+    和 clash.yaml 是「同一份节点、两种渲染」，不是两套数据：节点字典是唯一真相源。
+    差异都在结构性字段上 —— 策略组变成 selector / urltest outbound，规则变成
+    route.rules 里的 JSON 对象。
+
+    sing-box 表达不了的节点（xhttp 传输、SSR）会被跳过，所以在 singbox.json 里
+    会比 clash.yaml 少几个 —— 数量对不上是预期的，不是 bug。
+    """
+    names, outbounds = [], []
+    for n in nodes:
+        ob, _reason = node_to_outbound(n)
+        if ob:
+            outbounds.append(ob)
+            names.append(ob["tag"])
+    featured = names[:FEATURED_SIZE]
+    return {
+        "log": {"level": "info", "timestamp": True},
+        "dns": {
+            "servers": [
+                # DoH 服务器本身是域名，需要一个本地解析器来解析它（sing-box 1.12+
+                # 要求显式指定，否则报 missing domain resolver）
+                {"tag": "local", "type": "local"},
+                {"tag": "ali", "type": "https", "server": "dns.alidns.com",
+                 "domain_resolver": "local"},
+                {"tag": "dnspod", "type": "https", "server": "doh.pub",
+                 "domain_resolver": "local"},
+            ],
+            # 只解析本地需要的部分：域名是原样交给节点去连的，不会在这里泄漏出去。
+            # 故意不使用 detour 走代理 —— 免费节点随时会挂，DNS 不该依赖它们。
+            "rules": [],
+            "final": "ali",
+            "strategy": "prefer_ipv4",
+        },
+        "inbounds": [
+            {"type": "mixed", "tag": "mixed-in", "listen": "127.0.0.1",
+             "listen_port": 7890},
+        ],
+        "outbounds": outbounds + [
+            {"type": "selector", "tag": "🌐 节点选择",
+             "outbounds": ["🚀 精选", "🔄 自动选择"] + names,
+             "default": "🚀 精选"},
+            {"type": "urltest", "tag": "🚀 精选", "outbounds": featured,
+             "url": TEST_URL, "interval": "5m", "tolerance": 50},
+            {"type": "urltest", "tag": "🔄 自动选择", "outbounds": names,
+             "url": TEST_URL, "interval": "10m", "tolerance": 50},
+            {"type": "direct", "tag": "direct"},
+        ],
+        "route": {
+            "rules": [
+                {"action": "sniff"},
+                {"protocol": "dns", "action": "hijack-dns"},
+                {"ip_is_private": True, "outbound": "direct"},
+                {"domain_suffix": CN_DOMAIN_SUFFIX, "outbound": "direct"},
+            ],
+            "final": "🌐 节点选择",
+            # 节点的 server 有不少是域名。sing-box 1.12 起不允许隐式解析，
+            # 必须显式指定解析器，否则整个配置加载失败。
+            "default_domain_resolver": "ali",
+            "auto_detect_interface": True,
+        },
+    }
+
+
 def write_outputs(nodes):
-    """clash.yaml 与 v2.txt 必须一起写，避免 v2.txt 残留上一次的内容。"""
+    """三份产物一起写，避免其中一份残留上一轮的内容。"""
     with open(CLASH_FILE, "w", encoding="utf-8") as f:
         yaml.dump(build_clash_config(nodes), f, allow_unicode=True,
                   sort_keys=False, default_flow_style=False)
@@ -552,8 +747,15 @@ def write_outputs(nodes):
     with open(V2_FILE, "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(uris).encode()).decode())
 
+    sbox = build_singbox_config(nodes)
+    with open(SINGBOX_FILE, "w", encoding="utf-8") as f:
+        json.dump(sbox, f, ensure_ascii=False, indent=1)
+
+    node_obs = len(sbox["outbounds"]) - 3          # 去掉两个组和 direct
     print(f"已写出 {CLASH_FILE}（{len(nodes)} 个节点）")
     print(f"已写出 {V2_FILE}（{len(uris)} 条 URI）")
+    print(f"已写出 {SINGBOX_FILE}（{node_obs} 个 outbound；"
+          f"比 clash.yaml 少 {len(nodes) - node_obs} 个 sing-box 表达不了的节点）")
 
 
 # ------------------------------------------------------------------ 主流程
@@ -580,28 +782,46 @@ def main():
         ).hexdigest())[:MAX_PROBE]
         print(f"[注意] 节点数超过 MAX_PROBE={MAX_PROBE}，本轮按哈希取样 {len(nodes)} 个")
 
-    # mihomo 不可用时降级：不测速，全部保留，但香港排序数据还能用
-    if not mihomo_available():
-        print(f"[警告] 找不到 mihomo（{MIHOMO_BIN}），跳过测速，保留全部节点")
+    # sing-box 不可用时降级：不测速，全部保留，但香港排序数据还能用
+    if not singbox_available():
+        print(f"[警告] 找不到 sing-box（{SINGBOX_BIN}），跳过测速，保留全部节点")
         write_outputs(select_nodes(nodes, {}, load_hk_latency(), MAX_OUTPUT))
         return
 
-    nodes, ok = validate_config(nodes)
-    if not ok:
-        # 校验失败又定位不到问题节点，说明这份配置可能根本加载不了。
-        # 宁可这一轮不更新（保留仓库里上一版能用的产物），也不要发布坏配置。
-        print("[错误] mihomo 配置校验未通过，本轮不产出（保留上一版订阅）",
-              file=sys.stderr)
+    # 翻译成 sing-box outbound。翻不了的节点（xhttp 传输、SSR）不参与探活，
+    # 但仍然原样发布 —— Clash 客户端那边它们是能用的。
+    by_name = {n["name"]: n for n in nodes}
+    outbounds, unrepresentable = [], {}
+    for n in nodes:
+        ob, reason = node_to_outbound(n)
+        if ob:
+            outbounds.append(ob)
+        else:
+            unrepresentable[reason] = unrepresentable.get(reason, 0) + 1
+    if unrepresentable:
+        print(f"[跳过探活] {sum(unrepresentable.values())} 个节点 sing-box 表达不了："
+              f"{unrepresentable}（仍会发布，只是没有延迟标记）")
+
+    good, bad = validate_outbounds(outbounds)
+    if bad:
+        print(f"[校验] {len(bad)} 个节点 sing-box 加载不了，本轮不参与探活（仍会发布）")
+        for tag, msg in bad[:5]:
+            print(f"   {tag} → {msg}")
+    if not good:
+        print("[错误] 没有任何节点能被 sing-box 加载，本轮不产出", file=sys.stderr)
         sys.exit(1)
 
-    print(f"启动 mihomo，开始真实测速（{len(nodes)} 个节点，并发 {CONCURRENCY}）")
-    proc = start_mihomo()
+    probe_nodes = [by_name[o["tag"]] for o in good if o["tag"] in by_name]
+    write_probe_config(good)
+
+    print(f"启动 sing-box，开始真实测速（{len(probe_nodes)} 个节点，并发 {CONCURRENCY}）")
+    proc = start_singbox()
     try:
-        results = probe_all(nodes)
-        # 首轮失败的再补一轮：并发 32 的时候总有一批是 mihomo 排队超时，
+        results = probe_all(probe_nodes)
+        # 首轮失败的再补一轮：并发 32 的时候总有一批是核心排队超时，
         # 不是节点真的连不上。补测一次成本很低，能捞回来不少。
         alive = {n["name"] for _, n in results}
-        retry = [n for n in nodes if n["name"] not in alive]
+        retry = [n for n in probe_nodes if n["name"] not in alive]
         if retry:
             print(f"补测首轮失败的 {len(retry)} 个节点…")
             results += probe_all(retry, label="补测")
@@ -612,7 +832,7 @@ def main():
         except subprocess.TimeoutExpired:
             proc.kill()
 
-    print(f"探活完成：{len(results)}/{len(nodes)} 个节点从 CI 连得通")
+    print(f"探活完成：{len(results)}/{len(probe_nodes)} 个节点从 CI 连得通")
 
     # 注意：这里不做「可用太少就放弃」的降级。探活数量本来就不该影响发布，
     # 因为 CI 连不通 ≠ 国内连不通（实测 CI 探活的 199 个里国内只有 31 个能用，

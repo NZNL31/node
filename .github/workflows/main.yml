@@ -34,17 +34,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # mihomo 用来做真实测速：起一个本地代理，逐个节点走真实链路测延迟。
-      # compatible 版本不依赖 AVX 指令集，兼容性最好。
-      - name: 下载 mihomo
+      # sing-box 用来做真实测速：起一个本地代理，逐个节点走真实链路测延迟。
+      # 它同时提供 Clash 兼容的 clash_api（/proxies/{name}/delay），所以探活逻辑
+      # 和用 mihomo 时完全一样，只是内核换了、顺便少维护一个二进制。
+      - name: 下载 sing-box
         env:
-          MIHOMO_VERSION: v1.19.33
+          SINGBOX_VERSION: 1.14.4
         run: |
-          curl -fL --retry 3 -o mihomo.gz \
-            "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-compatible-${MIHOMO_VERSION}.gz"
-          gunzip -f mihomo.gz
-          chmod +x mihomo
-          ./mihomo -v
+          curl -fL --retry 3 -o sing-box.tar.gz \
+            "https://github.com/SagerNet/sing-box/releases/download/v${SINGBOX_VERSION}/sing-box-${SINGBOX_VERSION}-linux-amd64.tar.gz"
+          tar -xzf sing-box.tar.gz
+          mv "sing-box-${SINGBOX_VERSION}-linux-amd64/sing-box" .
+          chmod +x sing-box
+          ./sing-box version
 
       - name: 拉取并解析订阅
         env:
@@ -99,6 +101,23 @@ jobs:
           if len(uris) != len(proxies):
               sys.exit(f"v2.txt 有 {len(uris)} 条，clash.yaml 有 {len(proxies)} 个节点，不一致")
 
+          # singbox.json：sing-box 表达不了的节点（xhttp 传输、SSR）不会进去，
+          # 所以它的节点数只会比 clash.yaml 少一点，不会多，也不能少太多。
+          sb = json.load(open("singbox.json", encoding="utf-8"))
+          sb_outs = sb.get("outbounds") or []
+          node_outs = [o for o in sb_outs if o.get("type") not in
+                       ("selector", "urltest", "direct", "block")]
+          tags = {o["tag"] for o in sb_outs}
+          if len(tags) != len(sb_outs):
+              sys.exit("singbox.json 里有重复的 outbound tag")
+          dangling_sb = [t for g in sb_outs
+                         if g.get("outbounds")
+                         for t in g["outbounds"] if t not in tags]
+          if dangling_sb:
+              sys.exit(f"singbox.json 的组里有悬空引用: {dangling_sb[:3]}")
+          if not (0.85 * len(proxies) <= len(node_outs) <= len(proxies)):
+              sys.exit(f"singbox.json 节点数异常: {len(node_outs)} vs clash.yaml {len(proxies)}")
+
           # 香港延迟缓存是可选的，但既然要提交，格式必须是对的
           if os.path.exists("hk_latency.json"):
               hk = json.load(open("hk_latency.json", encoding="utf-8"))
@@ -109,21 +128,22 @@ jobs:
                   sys.exit(f"hk_latency.json 有 {len(bad)} 条格式不对: {bad[:3]}")
               print(f"香港缓存 {len(entries)} 条")
 
-          print(f"校验通过: {len(proxies)} 个节点, {len(uris)} 条 URI")
+          print(f"校验通过: {len(proxies)} 个 Clash 节点, {len(uris)} 条 URI, "
+                f"{len(node_outs)} 个 sing-box outbound")
           PY
 
       # 上面的自检只看结构（悬空引用、条数一致性）。真正决定「客户端能不能加载」
-      # 的是 mihomo 自己：规则写错、组类型不对、字段类型不对，在客户端上就是
+      # 的是代理内核自己：规则写错、组类型不对、字段类型不对，在客户端上就是
       # 整个订阅加载失败。这里用 CI 里已经下好的同一个版本过一遍。
-      - name: 用 mihomo 校验最终配置
-        run: ./mihomo -t -d . -f clash.yaml
+      - name: 用 sing-box 校验最终配置
+        run: ./sing-box check -c singbox.json
 
       - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
 
-          git add clash.yaml v2.txt
+          git add clash.yaml v2.txt singbox.json
           git add hk_latency.json 2>/dev/null || true
 
           if git diff --cached --quiet; then
@@ -132,7 +152,7 @@ jobs:
           fi
 
           for i in 1 2 3 4; do
-            git add clash.yaml v2.txt
+            git add clash.yaml v2.txt singbox.json
             git add hk_latency.json 2>/dev/null || true
             git commit -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
             if git push origin HEAD:main; then
