@@ -78,9 +78,13 @@ def split_hostport(hostport: str):
 
 
 def qget(q, *keys, default=""):
-    """从 parse_qs 结果里取第一个存在的键。"""
+    """从 parse_qs 结果里取第一个**非空**的键。
+
+    注意必须跳过空值：`?sni=&host=x` 会让 sni 命中但取到空串，后面的 host 就永远
+    轮不到 —— 表现为节点「SNI 为空、连不上」。
+    """
     for k in keys:
-        if k in q and q[k]:
+        if k in q and q[k] and str(q[k][0]).strip():
             return q[k][0]
     return default
 
@@ -388,6 +392,24 @@ def is_usable_server(server) -> bool:
                 or ip.is_unspecified or ip.is_link_local or ip.is_multicast)
 
 
+def fill_sni(node: dict):
+    """
+    给开了 TLS 但没有 SNI 的节点补一个。
+
+    没有 SNI 的 TLS 握手在 CDN / 多域名前置的节点上直接失败（服务端不知道要出示
+    哪张证书），客户端表现就是「连不上」。补的值按可信度依次取：ws 的 Host 头 →
+    服务器地址本身。前者是真正的目标域名，后者只是兜底。
+    """
+    if not node.get("tls"):
+        return node
+    key = "sni" if node.get("type") in ("trojan", "hysteria2", "tuic") else "servername"
+    if node.get(key) or node.get("servername") or node.get("sni"):
+        return node
+    host = ((node.get("ws-opts") or {}).get("headers") or {}).get("Host")
+    node[key] = str(host).strip() if host else str(node.get("server", ""))
+    return node
+
+
 def normalize_node(node: dict):
     """校验从 YAML 直接拿到的节点，返回干净的字典或 None。"""
     if not isinstance(node, dict):
@@ -408,9 +430,59 @@ def normalize_node(node: dict):
     for field in REQUIRED.get(ntype, ()):
         if not node.get(field):
             return None
+    # xtls-rprx-vision 是 TLS 上的协议，没有 TLS 的 flow 节点物理上不可能连通。
+    # 实测源里有 34 个这种（多半是从完整写法里剥掉了 security=tls）。
+    if ntype == "vless" and node.get("flow") and not node.get("tls"):
+        return None
+    node = fill_sni(node)
     node["type"] = ntype
     node["name"] = str(node.get("name") or node["server"])[:60]
     return node
+
+
+def completeness(node: dict):
+    """节点信息完整度，用于在「同一节点被多个源写了不同版本」时挑最全的那个。"""
+    return (bool(node.get("tls")),
+            bool(node.get("servername") or node.get("sni")),
+            (node.get("network") or "tcp") != "tcp",
+            bool(node.get("ws-opts")),
+            bool(node.get("grpc-opts")),
+            len(node))
+
+
+def identity(node: dict):
+    """同一节点的身份：协议 + 服务器 + 端口 + 凭证（不含传输层）。"""
+    cred = node.get("uuid") or node.get("password") or ""
+    return (node["type"], str(node["server"]).lower(), int(node["port"]),
+            str(cred)[:24])
+
+
+def prefer_complete(nodes):
+    """
+    同一个节点被多个源写了不同完整度时，丢掉信息更少的那些。
+
+    典型例子：free18 把某节点写成 `security=none&type=tcp`（无 TLS、无 SNI、
+    无 ws），而另一个源对同一个 UUID + 同一个 server:port 写的是
+    `security=tls&sni=...&type=ws`。两条都被当作不同节点发布的话，前一条必然连
+    不上 —— 实测这类「残缺变体」有 137 个。
+
+    只丢弃**严格更弱**的变体；完整度相同的一律都留（可能真的是不同入口）。
+    """
+    groups = {}
+    for n in nodes:
+        groups.setdefault(identity(n), []).append(n)
+    kept, dropped = [], 0
+    for vs in groups.values():
+        if len(vs) == 1:
+            kept.append(vs[0])
+            continue
+        best = max(completeness(n) for n in vs)
+        for n in vs:
+            if completeness(n) == best:
+                kept.append(n)
+            else:
+                dropped += 1
+    return kept, dropped
 
 
 def node_key(node: dict):
@@ -444,9 +516,7 @@ def main():
         urls = json.load(f).get("subscriptions", [])
 
     headers = {"User-Agent": UA}
-    seen = set()
-    nodes = []
-    used_names = {}
+    collected = []          # [(host, kind, [node, ...]), ...]
     stats = []
 
     for url in urls:
@@ -474,13 +544,35 @@ def main():
             raw_nodes = [parse_uri(u) for u in extract_uris(text)]
             kind = "URI 列表"
 
-        added = 0
+        good = []
         for node in raw_nodes:
             if not node:
                 continue
             node = normalize_node(node)
-            if not node:
-                continue
+            if node:
+                good.append(node)
+        collected.append((host, kind, good, len(raw_nodes)))
+
+    # 先按「完整度」清理：同一个节点被多个源写成不同完整度时只留最全的。
+    # 必须在去重之前做 —— 去重是先到先得，先到的常常正是那个残缺版本，
+    # 之后再比对就没有参照物了（实测这样只能清掉 17 个，而实际有 137 个）。
+    flat = [n for _, _, good, _cnt in collected for n in good]
+    before_clean = len(flat)
+    survivors, degraded = prefer_complete(flat)
+    survived_ids = {id(n) for n in survivors}
+    if degraded:
+        print(f"[清理] 丢弃 {degraded} 个残缺变体"
+              f"（同一端点+凭证存在更完整的写法）：{before_clean} → {len(survivors)}")
+
+    seen = set()
+    nodes = []
+    used_names = {}
+
+    for host, kind, good, parsed_count in collected:
+        added = 0
+        for node in good:
+            if id(node) not in survived_ids:
+                continue                      # 上面判定为残缺变体
             key = node_key(node)
             if key in seen:
                 continue
@@ -497,7 +589,7 @@ def main():
             nodes.append(node)
             added += 1
 
-        print(f"[{kind}] {host}: 解析 {len(raw_nodes)} 条，新增 {added} 条")
+        print(f"[{kind}] {host}: 解析 {parsed_count} 条，新增 {added} 条")
         stats.append((host, added, kind))
 
     with open(OUT_FILE, "w", encoding="utf-8") as f:

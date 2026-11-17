@@ -48,9 +48,11 @@ jobs:
           chmod +x sing-box
           ./sing-box version
 
-      # 淘汰逻辑的回归测试（纯计算，不联网，毫秒级）。这条挂了就别发布。
+      # 解析层 + 淘汰逻辑的回归测试（纯计算，不联网，毫秒级）。挂了就别发布。
       - name: 回归测试
-        run: python test_health.py
+        run: |
+          python test_parse.py
+          python test_health.py
 
       - name: 拉取并解析订阅
         env:
