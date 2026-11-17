@@ -35,7 +35,7 @@ https://raw.githubusercontent.com/NZNL31/node/main/singbox.json
 subscriptions.json
       │
       ▼
-fetch_subscriptions.py   ← 拉取 9 个订阅源，解析成 Clash 节点
+fetch_subscriptions.py   ← 拉取 7 个订阅源，解析成 Clash 节点
       │                    去重键 = 类型 + 服务器 + 端口 + 凭证 + 传输层标识
       │                    all_nodes.yaml（中间产物，不入库）
       ▼
@@ -348,6 +348,34 @@ assert back["reality-opts"] == node["reality-opts"]
 
 不支持 `https`（HTTP 代理）/ `socks5` / `hysteria`(v1) / `anytls` 这几类，遇到会
 静默跳过 —— 例如 `kooker.jp.txt` 的 740 行里有约 78 行是这些类型。
+
+### 加源之前先看两个指标
+
+**别只看「解析出多少条」，要看「去重后新增多少条」。** 实测近 16 轮：
+
+| 源 | 解析 | 去重后新增 | 说明 |
+|---|---:|---:|---|
+| chengaopan | 401 | 373 | 主力 |
+| free18 | 410 | 321 | 主力，波动大（85~351） |
+| kooker | 655 | 241 | 主力，每小时重建 |
+| mahdibland | 200 | 108 | 稳定 |
+| ermaozi | 489 | 96 | 重叠多 |
+| dalazhi | 18 | 15 | 小但干净 |
+| peasoft | 385 | **6** | 高度重叠，几乎无独有供给 |
+
+反面例子：`PuddinCat/BestClash`（解析 16 条、新增 **1** 条）和
+`Pawdroid/Free-servers`（解析 14 条、新增 **1** 条）已因此被移除 ——
+删掉它们只损失 1 个节点（1161 → 1160），省两次请求。
+
+第二个指标是**活跃度**：源仓库近 7 天的提交数。静态清单（几个月不变的文件）不会
+补充新节点，里面的节点失效后不会被替换，属于**结构性衰减**；活跃源（像
+`kooker/FreeSubsCheck` 近 7 天 100 次提交、每小时重建）才有持续供给。
+
+注意这两个指标要一起看：`peasoft` 近 7 天有 20 次提交（很活跃），但独有供给只有
+6 条 —— 活跃 ≠ 有独特节点，只是把同一批节点又列了一遍。
+
+同一个仓库的不同输出文件通常互相重叠（`kooker` 的 `mihomo.yaml`、`base64.txt`
+与 `kooker.jp.txt` 是同一批节点），**不必重复添加**。
 
 ## 可调参数
 
