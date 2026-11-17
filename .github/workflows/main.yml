@@ -26,11 +26,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
 
       - name: 安装依赖
         run: |
           python -m pip install --upgrade pip
-          pip install requests pyyaml
+          pip install -r requirements.txt
 
       # mihomo 用来做真实测速：起一个本地代理，逐个节点走真实链路测延迟。
       # compatible 版本不依赖 AVX 指令集，兼容性最好。
@@ -56,6 +58,7 @@ jobs:
         env:
           HK_BATCH: 30           # 每轮最多测多少个
           HK_TTL_H: 96           # 结果缓存 4 天
+          HK_PRUNE_DAYS: 30      # 已不在池里的条目再留 30 天
         run: python hk_probe.py
 
       - name: 真实测速
@@ -64,6 +67,8 @@ jobs:
           PROBE_CONCURRENCY: 32
           # 测速只用于排序和打标记，不用于淘汰节点（原因见 speed_test.py 文件头）
           MAX_OUTPUT: 1000
+          HK_TTL_H: 96           # 与 hk_probe.py 保持一致：过期数据不参与排序
+          FEATURED_SIZE: 30      # 🚀 精选组大小
         run: python speed_test.py
 
       # 产物自检：宁可这次不更新，也不要发布一份坏配置
@@ -106,6 +111,12 @@ jobs:
 
           print(f"校验通过: {len(proxies)} 个节点, {len(uris)} 条 URI")
           PY
+
+      # 上面的自检只看结构（悬空引用、条数一致性）。真正决定「客户端能不能加载」
+      # 的是 mihomo 自己：规则写错、组类型不对、字段类型不对，在客户端上就是
+      # 整个订阅加载失败。这里用 CI 里已经下好的同一个版本过一遍。
+      - name: 用 mihomo 校验最终配置
+        run: ./mihomo -t -d . -f clash.yaml
 
       - name: 提交并推送
         run: |

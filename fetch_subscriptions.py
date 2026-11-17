@@ -169,7 +169,10 @@ def parse_vless(body: str, name: str):
 
 def parse_trojan(body: str, name: str):
     u = urlparse("trojan://" + body)
-    if not u.hostname or not u.password:
+    # 标准写法 trojan://password@host:port 里 userinfo 没有冒号，
+    # urlparse 会把它放进 username 而不是 password，两个都要看。
+    password = unquote(u.password or u.username)
+    if not u.hostname or not password:
         return None
     q = parse_qs(u.query)
     node = {
@@ -177,7 +180,7 @@ def parse_trojan(body: str, name: str):
         "type": "trojan",
         "server": u.hostname,
         "port": u.port or 443,
-        "password": u.password,
+        "password": password,
         "udp": True,
         "skip-cert-verify": True,
         "sni": qget(q, "sni", "peer", default=u.hostname),
@@ -241,8 +244,8 @@ def parse_ssr(body: str, name: str):
         "password": b64d(pwd_b64),
         "protocol": protocol,
         "obfs": obfs,
-        "protocol-param": qget(q, "protoparam"),
-        "obfs-param": qget(q, "obfsparam"),
+        "protocol-param": b64d(qget(q, "protoparam")),
+        "obfs-param": b64d(qget(q, "obfsparam")),
         "udp": True,
     }
 
@@ -252,7 +255,7 @@ def parse_hysteria2(body: str, name: str):
     if not u.hostname:
         return None
     q = parse_qs(u.query)
-    password = u.password or u.username or qget(q, "password")
+    password = unquote(u.password or u.username or qget(q, "password"))
     if not password:
         return None
     node = {
@@ -282,8 +285,8 @@ def parse_tuic(body: str, name: str):
         "type": "tuic",
         "server": u.hostname,
         "port": u.port or 443,
-        "uuid": u.username,
-        "password": u.password or "",
+        "uuid": unquote(u.username),
+        "password": unquote(u.password or ""),
         "udp": True,
         "skip-cert-verify": True,
     }
@@ -411,9 +414,23 @@ def normalize_node(node: dict):
 
 
 def node_key(node: dict):
-    """去重键：同一台机器上不同 UUID 是不同节点，所以要带上凭证。"""
+    """去重键：同一台机器上不同 UUID 是不同节点，所以要带上凭证。
+
+    ws/grpc 还要带上传输层身份：CDN 后面的节点经常是同一个 server:port + 同一个
+    UUID，只靠 Host/path 区分，否则会把几十个不同的节点合并成一个。
+    """
     cred = node.get("uuid") or node.get("password") or ""
-    return (node["type"], str(node["server"]).lower(), node["port"], str(cred)[:24])
+    ws = node.get("ws-opts") or {}
+    grpc = node.get("grpc-opts") or {}
+    if ws:
+        transport = "ws|%s|%s" % (((ws.get("headers") or {}).get("Host") or "").lower(),
+                                  ws.get("path", ""))
+    elif grpc.get("grpc-service-name"):
+        transport = "grpc|" + grpc["grpc-service-name"]
+    else:
+        transport = ""
+    return (node["type"], str(node["server"]).lower(), node["port"],
+            str(cred)[:24], transport)
 
 
 # ------------------------------------------------------------------ 主流程

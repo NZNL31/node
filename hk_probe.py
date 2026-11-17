@@ -29,9 +29,10 @@ check-host.net 是免费公共服务，有速率限制，实测连续提交约 5
 不影响节点是否被发布，所以数据旧一点没关系。
 
 环境变量：
-  HK_BATCH    每轮最多测多少个节点，默认 30
-  HK_TTL_H    结果缓存多少小时算过期，默认 96（4 天）
-  HK_NODE     探测点，默认 hk1.node.check-host.net
+  HK_BATCH        每轮最多测多少个节点，默认 30
+  HK_TTL_H        结果缓存多少小时算过期，默认 96（4 天）
+  HK_PRUNE_DAYS   已不在节点池里的条目再保留多少天，默认 30
+  HK_NODE         探测点，默认 hk1.node.check-host.net
 """
 
 import hashlib
@@ -52,6 +53,8 @@ API = "https://check-host.net"
 NODE = os.environ.get("HK_NODE", "hk1.node.check-host.net")
 BATCH = int(os.environ.get("HK_BATCH", 30))
 TTL_H = float(os.environ.get("HK_TTL_H", 96))
+# 已不在节点池里的孤儿条目保留多少天（池子会来回换，留几天可能还用得上）
+PRUNE_DAYS = float(os.environ.get("HK_PRUNE_DAYS", 30))
 UA = "Mozilla/5.0 (compatible; node-subscription-aggregator/1.0)"
 
 # TCP 探测对 UDP 协议没有意义，直接跳过
@@ -86,6 +89,24 @@ def save_cache(cache):
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False, indent=1, sort_keys=True)
     os.replace(tmp, CACHE_FILE)
+
+
+def prune_cache(cache, nodes):
+    """
+    删掉既不在当前节点池里、又超过保留期的条目。
+
+    节点池每轮都在换，缓存以前只进不出：实测 1371 条里有 1119 条对应的节点
+    早就不在池子里了，文件变成 96KB 还每 3 小时提交一次。保留期内的孤儿条目
+    留着有用（节点可能过几天又回来），超过就没人会再用了。
+    """
+    live = {f"{str(n['server']).lower()}:{n['port']}" for n in nodes}
+    cutoff = time.time() - PRUNE_DAYS * 86400
+    before = len(cache["nodes"])
+    cache["nodes"] = {
+        k: v for k, v in cache["nodes"].items()
+        if k in live or float(v.get("ts") or 0) >= cutoff
+    }
+    return before - len(cache["nodes"])
 
 
 def pick_batch(nodes, cache, batch):
@@ -196,6 +217,10 @@ def main():
 
     if submitted:
         print(f"  {len(submitted)} 个探测超时未回，下一轮再试")
+
+    pruned = prune_cache(cache, tcp_nodes)
+    if pruned:
+        print(f"  清理失效条目 {pruned} 条（已不在节点池且超过 {PRUNE_DAYS:g} 天）")
 
     save_cache(cache)
     ok = sum(1 for k in cache["nodes"].values() if k.get("ms") is not None)

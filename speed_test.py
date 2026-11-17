@@ -47,6 +47,7 @@
 """
 
 import base64
+import hashlib
 import json
 import os
 import subprocess
@@ -72,6 +73,10 @@ TIMEOUT_MS = 5000
 MAX_PROBE = int(os.environ.get("MAX_PROBE", 1500))
 CONCURRENCY = int(os.environ.get("PROBE_CONCURRENCY", 32))
 MAX_OUTPUT = int(os.environ.get("MAX_OUTPUT", 1000))
+# 香港延迟数据超过这个时长就不参与排序和打标签（和 hk_probe.py 的 TTL 对齐）
+HK_TTL_H = float(os.environ.get("HK_TTL_H", 96))
+# 「🚀 精选」组的大小：手机上的健康检查只覆盖这么多节点
+FEATURED_SIZE = int(os.environ.get("FEATURED_SIZE", 30))
 
 # 国内可达率先验，只用来决定输出顺序（哪种协议排在前面）和超出上限时怎么裁剪。
 #
@@ -131,11 +136,19 @@ def b64url(s: str) -> str:
     return base64.urlsafe_b64encode(s.encode()).decode().strip("=")
 
 
+def uri_host(host) -> str:
+    """IPv6 必须写成 [::1]，否则 host:port 会被解析器当成多个冒号切错。"""
+    h = str(host or "").strip()
+    if ":" in h and not h.startswith("["):
+        return f"[{h}]"
+    return h
+
+
 def node_to_uri(node: dict):
     """把 Clash 节点字典还原成分享链接，供 v2.txt 使用。"""
     t = node.get("type")
     name = urllib.parse.quote(str(node.get("name", "")), safe="")
-    host = node.get("server")
+    host = uri_host(node.get("server"))
     port = node.get("port")
 
     if t == "ss":
@@ -143,6 +156,14 @@ def node_to_uri(node: dict):
         return f"ss://{userinfo}@{host}:{port}#{name}"
 
     if t == "vmess":
+        net = node.get("network", "tcp")
+        ws = node.get("ws-opts") or {}
+        grpc = node.get("grpc-opts") or {}
+        if net == "grpc":
+            host_field, path_field = "", grpc.get("grpc-service-name", "")
+        else:
+            host_field = (ws.get("headers") or {}).get("Host", "")
+            path_field = ws.get("path", "")
         obj = {
             "v": "2",
             "ps": node.get("name", ""),
@@ -151,10 +172,10 @@ def node_to_uri(node: dict):
             "id": node.get("uuid"),
             "aid": str(node.get("alterId", 0)),
             "scy": node.get("cipher", "auto"),
-            "net": node.get("network", "tcp"),
+            "net": net,
             "type": "none",
-            "host": (node.get("ws-opts", {}).get("headers", {}) or {}).get("Host", ""),
-            "path": node.get("ws-opts", {}).get("path", ""),
+            "host": host_field,
+            "path": path_field,
             "tls": "tls" if node.get("tls") else "",
             "sni": node.get("servername", ""),
         }
@@ -172,6 +193,19 @@ def node_to_uri(node: dict):
             q["sni"] = node["servername"]
         if node.get("flow"):
             q["flow"] = node["flow"]
+        # reality 少一个 pbk/sid 就完全连不上（客户端会当普通 TLS 握手，必然失败）
+        reality = node.get("reality-opts") or {}
+        if reality.get("public-key"):
+            q["security"] = "reality"
+            q["pbk"] = reality["public-key"]
+            if reality.get("short-id"):
+                q["sid"] = reality["short-id"]
+        # fp 是 REALITY/TLS 指纹伪装，缺了会被识别或握手失败
+        if node.get("client-fingerprint"):
+            q["fp"] = node["client-fingerprint"]
+        grpc = node.get("grpc-opts") or {}
+        if grpc.get("grpc-service-name"):
+            q["serviceName"] = grpc["grpc-service-name"]
         ws = node.get("ws-opts") or {}
         if ws:
             q["path"] = ws.get("path", "/")
@@ -185,8 +219,16 @@ def node_to_uri(node: dict):
             q["sni"] = node["sni"]
         if node.get("network"):
             q["type"] = node["network"]
+        ws = node.get("ws-opts") or {}
+        if ws:
+            q["path"] = ws.get("path", "/")
+            q["host"] = (ws.get("headers") or {}).get("Host", "")
+        grpc = node.get("grpc-opts") or {}
+        if grpc.get("grpc-service-name"):
+            q["serviceName"] = grpc["grpc-service-name"]
         query = urllib.parse.urlencode(q)
-        return f"trojan://{node.get('password')}@{host}:{port}?{query}#{name}"
+        pwd = urllib.parse.quote(str(node.get("password", "")), safe="")
+        return f"trojan://{pwd}@{host}:{port}?{query}#{name}"
 
     if t == "hysteria2":
         q = {}
@@ -196,14 +238,16 @@ def node_to_uri(node: dict):
             q["obfs"] = node["obfs"]
             q["obfs-password"] = node.get("obfs-password", "")
         query = urllib.parse.urlencode(q)
-        return f"hysteria2://{node.get('password')}@{host}:{port}?{query}#{name}"
+        pwd = urllib.parse.quote(str(node.get("password", "")), safe="")
+        return f"hysteria2://{pwd}@{host}:{port}?{query}#{name}"
 
     if t == "tuic":
         q = {}
         if node.get("sni"):
             q["sni"] = node["sni"]
         query = urllib.parse.urlencode(q)
-        return f"tuic://{node.get('uuid')}:{node.get('password')}@{host}:{port}?{query}#{name}"
+        pwd = urllib.parse.quote(str(node.get("password", "")), safe="")
+        return f"tuic://{node.get('uuid')}:{pwd}@{host}:{port}?{query}#{name}"
 
     if t == "ssr":
         # SSR 链接必须整段 base64，这里做一个最小可用的还原
@@ -352,8 +396,25 @@ def select_nodes(nodes, delays, hk, max_output):
     for n in nodes:
         by_type.setdefault(n.get("type", "?"), []).append(n)
 
-    def sort_key(n):
+    now = time.time()
+
+    def hk_fresh(n):
+        """
+        取这个节点的香港数据，超过 TTL 的当作没有。
+
+        缓存里的条目可能很旧（按最久未测优先轮转，一个节点可能要几天才轮到一次），
+        旧的 8ms 和今天实测的 30ms 放一起排序，前者会被无条件排到最前，标签还写着
+        [HK 8ms] —— 那是在骗自己。过期就当没数据。
+        """
         e = hk.get(node_key(n))
+        if not e:
+            return None
+        if now - float(e.get("ts") or 0) > HK_TTL_H * 3600:
+            return None
+        return e
+
+    def sort_key(n):
+        e = hk_fresh(n)
         if e:
             ms = e.get("ms")
             if ms is not None:
@@ -405,7 +466,7 @@ def select_nodes(nodes, delays, hk, max_output):
 
     out = []
     for _, node in chosen:
-        e = hk.get(node_key(node))
+        e = hk_fresh(node)
         d = delays.get(id(node))
         node = dict(node)
         if e and e.get("ms") is not None:
@@ -423,22 +484,61 @@ def select_nodes(nodes, delays, hk, max_output):
 
 def build_clash_config(nodes):
     names = [n["name"] for n in nodes]
+    # 精选组只放排在最前面的若干个节点（香港延迟最低的一批）。手机上的问题是
+    # 「🔄 自动选择」包住全部节点，而它默认被选中，于是 lazy 不起作用，每 10 分钟
+    # 真的去健康检查上千个节点。精选组把这份开销压到 FEATURED_SIZE 个。
+    featured = names[:FEATURED_SIZE]
     return {
-        "allow-lan": True,
+        # 订阅是公开的，配置会落到别人手里；开 allow-lan 等于把一个无鉴权的
+        # 代理端口暴露给整个局域网。要共享时自己改成 true。
+        "allow-lan": False,
         "mode": "Rule",
         "log-level": "info",
         "port": 7890,
+        "socks-port": 7891,
+        # 统一延迟：url-test 比较时剔除握手时间，只按真实 RTT 排，否则
+        # 慢 TLS 握手会污染排序结果
+        "unified-delay": True,
+        # 并发建连，多节点池下首包明显更快
+        "tcp-concurrent": True,
+        "dns": {
+            "enable": True,
+            "ipv6": False,
+            # fake-ip：域名解析不阻塞连接建立，并把 DNS 交给代理远端解析，
+            # 顺带避免本地 DNS 污染
+            "enhanced-mode": "fake-ip",
+            "fake-ip-range": "198.18.0.1/16",
+            "default-nameserver": ["223.5.5.5", "119.29.29.29"],
+            "nameserver": ["https://dns.alidns.com/dns-query",
+                           "https://doh.pub/dns-query"],
+            "fallback": ["https://1.1.1.1/dns-query",
+                         "https://dns.google/dns-query"],
+            "fallback-filter": {
+                "geoip": True,
+                "geoip-code": "CN",
+                "ipcidr": ["240.0.0.0/4"],
+            },
+        },
         "proxies": nodes,
         "proxy-groups": [
             {"name": "🌐 节点选择", "type": "select",
-             "proxies": ["🔄 自动选择"] + names},
+             "proxies": ["🚀 精选", "🔄 自动选择"] + names},
+            {"name": "🚀 精选", "type": "url-test",
+             "url": TEST_URL, "interval": 300, "tolerance": 50,
+             "expected-status": 204, "proxies": featured},
             # 节点多（900+）的时候健康检查本身就不便宜，interval 放宽到 10 分钟，
             # lazy 让这个组没被选中时直接跳过检查，别在手机上白耗流量
             {"name": "🔄 自动选择", "type": "url-test",
              "url": TEST_URL, "interval": 600, "tolerance": 50, "lazy": True,
-             "proxies": names},
+             "expected-status": 204, "proxies": names},
         ],
-        "rules": ["MATCH,🌐 节点选择"],
+        # 国内和局域网直连。原来只有 MATCH 一条，等于把国内站点也塞进代理，
+        # 白付一份延迟和流量。
+        "rules": [
+            "GEOIP,LAN,DIRECT,no-resolve",
+            "GEOIP,CN,DIRECT",
+            "MATCH,🌐 节点选择",
+        ],
     }
 
 
@@ -471,7 +571,14 @@ def main():
         print("[错误] 没有节点可用", file=sys.stderr)
         sys.exit(1)
 
-    nodes = nodes[:MAX_PROBE]
+    # 超过上限时按哈希取样，而不是砍掉尾部。池子是按订阅源顺序拼起来的，
+    # 直接切片等于只测前几个源，后面的源永远拿不到延迟数据（hk_probe.py 里
+    # 同样的理由）。
+    if len(nodes) > MAX_PROBE:
+        nodes = sorted(nodes, key=lambda n: hashlib.md5(
+            f"{str(n.get('server', '')).lower()}:{n.get('port')}".encode()
+        ).hexdigest())[:MAX_PROBE]
+        print(f"[注意] 节点数超过 MAX_PROBE={MAX_PROBE}，本轮按哈希取样 {len(nodes)} 个")
 
     # mihomo 不可用时降级：不测速，全部保留，但香港排序数据还能用
     if not mihomo_available():
@@ -481,9 +588,11 @@ def main():
 
     nodes, ok = validate_config(nodes)
     if not ok:
-        print("[警告] 配置校验未通过，跳过测速，保留全部节点")
-        write_outputs(select_nodes(nodes, {}, load_hk_latency(), MAX_OUTPUT))
-        return
+        # 校验失败又定位不到问题节点，说明这份配置可能根本加载不了。
+        # 宁可这一轮不更新（保留仓库里上一版能用的产物），也不要发布坏配置。
+        print("[错误] mihomo 配置校验未通过，本轮不产出（保留上一版订阅）",
+              file=sys.stderr)
+        sys.exit(1)
 
     print(f"启动 mihomo，开始真实测速（{len(nodes)} 个节点，并发 {CONCURRENCY}）")
     proc = start_mihomo()
