@@ -63,10 +63,10 @@ jobs:
 
       - name: 真实测速
         env:
-          MAX_PROBE: 1500
+          MAX_PROBE: 2500
           PROBE_CONCURRENCY: 32
           # 测速只用于排序和打标记，不用于淘汰节点（原因见 speed_test.py 文件头）
-          MAX_OUTPUT: 1000
+          MAX_OUTPUT: 1500
           HK_TTL_H: 96           # 与 hk_probe.py 保持一致：过期数据不参与排序
           FEATURED_SIZE: 30      # 🚀 精选组大小
         run: python speed_test.py

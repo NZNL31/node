@@ -24,7 +24,7 @@ https://raw.githubusercontent.com/NZNL31/node/main/v2.txt
 subscriptions.json
       │
       ▼
-fetch_subscriptions.py   ← 拉取 8 个订阅源，解析成 Clash 节点
+fetch_subscriptions.py   ← 拉取 9 个订阅源，解析成 Clash 节点
       │                    去重键 = 类型 + 服务器 + 端口 + 凭证 + 传输层标识
       │                    all_nodes.yaml（中间产物，不入库）
       ▼
@@ -202,7 +202,7 @@ back = fetch_subscriptions.parse_uri(speed_test.node_to_uri(node))
 assert back["reality-opts"] == node["reality-opts"]
 ```
 
-当前产物 1000/1000 条 URI 往返无损。
+当前产物 1283/1283 条 URI 往返无损。
 
 ### 校验门禁
 
@@ -229,6 +229,12 @@ CI 在提交前过两道关：
 }
 ```
 
+优先级：同一台机器 + 同一端口 + 同一凭证只保留一条，所以**多源重复不会浪费名额**，
+按顺序先出现的源赢。想让自己最在意的源优先，把它放到数组前面。
+
+不支持 `https`（HTTP 代理）/ `socks5` / `hysteria`(v1) / `anytls` 这几类，遇到会
+静默跳过 —— 例如 `kooker.jp.txt` 的 740 行里有约 78 行是这些类型。
+
 ## 可调参数
 
 都在 `.github/workflows/main.yml` 的 env 里：
@@ -239,9 +245,9 @@ CI 在提交前过两道关：
 | `HK_BATCH` | 30 | 每轮最多测多少个节点的香港延迟（受 check-host.net 限流约束） |
 | `HK_TTL_H` | 96 | 香港延迟缓存多少小时算过期。过期数据既不参与排序也不打标签 |
 | `HK_PRUNE_DAYS` | 30 | 已不在节点池里的缓存条目再保留多少天，超过就删（否则文件只进不出） |
-| `MAX_PROBE` | 1500 | 最多探活多少个节点；超限时按哈希取样，而不是砍掉尾部（尾部永远是最后几个源） |
+| `MAX_PROBE` | 2500 | 最多探活多少个节点；超限时按哈希取样，而不是砍掉尾部（尾部永远是最后几个源） |
 | `PROBE_CONCURRENCY` | 32 | 探活并发数 |
-| `MAX_OUTPUT` | 1000 | 最多输出多少个节点。节点数没超这个值时**全部输出**，只有超了才按协议配额裁剪 |
+| `MAX_OUTPUT` | 1500 | 最多输出多少个节点。节点数没超这个值时**全部输出**，只有超了才按协议配额裁剪 |
 | `FEATURED_SIZE` | 30 | `🚀 精选` 组放多少个节点 |
 
 依赖锁在 `requirements.txt` 里。pyyaml 的大版本升级会改变 `yaml.dump` 的排版，

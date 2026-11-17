@@ -40,9 +40,9 @@
 
 环境变量：
   MIHOMO_BIN         mihomo 可执行文件路径，默认 ./mihomo
-  MAX_PROBE          最多探测多少个节点，默认 1500
+  MAX_PROBE          最多探测多少个节点，默认 2500
   PROBE_CONCURRENCY  并发数，默认 32
-  MAX_OUTPUT         最终最多输出多少个节点，默认 1000（超出才按协议配额裁剪）
+  MAX_OUTPUT         最终最多输出多少个节点，默认 1500（超出才按协议配额裁剪）
   PROBE_URL          测速目标地址
 """
 
@@ -70,9 +70,9 @@ MIHOMO_BIN = os.environ.get("MIHOMO_BIN", "./mihomo")
 API_BASE = "http://127.0.0.1:9090"
 TEST_URL = os.environ.get("PROBE_URL", "https://www.gstatic.com/generate_204")
 TIMEOUT_MS = 5000
-MAX_PROBE = int(os.environ.get("MAX_PROBE", 1500))
+MAX_PROBE = int(os.environ.get("MAX_PROBE", 2500))
 CONCURRENCY = int(os.environ.get("PROBE_CONCURRENCY", 32))
-MAX_OUTPUT = int(os.environ.get("MAX_OUTPUT", 1000))
+MAX_OUTPUT = int(os.environ.get("MAX_OUTPUT", 1500))
 # 香港延迟数据超过这个时长就不参与排序和打标签（和 hk_probe.py 的 TTL 对齐）
 HK_TTL_H = float(os.environ.get("HK_TTL_H", 96))
 # 「🚀 精选」组的大小：手机上的健康检查只覆盖这么多节点
