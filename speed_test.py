@@ -71,6 +71,7 @@ V2_FILE = "v2.txt"
 SINGBOX_FILE = "singbox.json"
 PROBE_FILE = "probe.json"
 HK_FILE = "hk_latency.json"
+HEALTH_FILE = "node_health.json"
 
 SINGBOX_BIN = os.environ.get("SINGBOX_BIN", "./sing-box")
 API_BASE = "http://127.0.0.1:9090"
@@ -83,6 +84,11 @@ MAX_OUTPUT = int(os.environ.get("MAX_OUTPUT", 1500))
 HK_TTL_H = float(os.environ.get("HK_TTL_H", 96))
 # 「🚀 精选」组的大小：手机上的健康检查只覆盖这么多节点
 FEATURED_SIZE = int(os.environ.get("FEATURED_SIZE", 30))
+# 连续多少轮真实探活失败就淘汰。设 1 = 单轮失败即删（激进），默认 2 留一轮容错，
+# 因为并发 32 时有相当一批是排队超时/被临时限流，不是真死。
+DEAD_ROUNDS = int(os.environ.get("DEAD_ROUNDS", 2))
+# 淘汰的地板：如果删完会低于这个数，就整批放弃淘汰（宁可脏一点，也不能把订阅砍空）
+MIN_KEEP = int(os.environ.get("MIN_KEEP", 150))
 
 # 国内可达率先验，只用来决定输出顺序（哪种协议排在前面）和超出上限时怎么裁剪。
 #
@@ -114,6 +120,79 @@ def type_rank(t):
 
 def node_key(node):
     return f"{str(node.get('server', '')).lower()}:{node.get('port')}"
+
+
+# ------------------------------------------------------------------ 健康记录
+
+def load_health():
+    """读连续失败计数。节点跨轮次才判死，单轮失败只记一笔。"""
+    if not os.path.exists(HEALTH_FILE):
+        return {"updated": 0, "nodes": {}}
+    try:
+        with open(HEALTH_FILE, encoding="utf-8") as f:
+            d = json.load(f)
+        if not isinstance(d.get("nodes"), dict):
+            d["nodes"] = {}
+        return d
+    except Exception as e:
+        print(f"[警告] 读 {HEALTH_FILE} 失败，按空记录处理：{e}")
+        return {"updated": 0, "nodes": {}}
+
+
+def save_health(health):
+    health["updated"] = int(time.time())
+    tmp = HEALTH_FILE + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(health, f, ensure_ascii=False, indent=1, sort_keys=True)
+    os.replace(tmp, HEALTH_FILE)
+
+
+def apply_health(nodes, alive_names, probed_names, health, dead_rounds, min_keep):
+    """
+    更新连续失败计数，并淘汰「连续 dead_rounds 轮都连不上」的节点。
+
+    这条策略和「不按延迟筛选」不冲突，是两回事：
+
+      * 延迟只影响排序，永远不淘汰 —— 因为 CI 在美国测出来的快慢与国内无关
+        （实测按延迟筛选把可用率从 44% 砍到 15.6%）。
+      * 但**连不上**是另一回事：一个节点从任何角度看都建立不了连接，留着它只会
+        让客户端的 url-test 白跑一遍。所以连不上要淘汰，只是给一轮容错。
+
+    没被探活的节点（sing-box 表达不了的 xhttp/SSR）不参与判定，永远不会被这条
+    规则删掉 —— 我们没测过它，不能因为它「不可测」就当成死了。
+    """
+    now = int(time.time())
+    entries = health["nodes"]
+    pool_keys = {node_key(n) for n in nodes}
+
+    for n in nodes:
+        key = node_key(n)
+        if n["name"] in alive_names:
+            entries.pop(key, None)                    # 通了就清零
+        elif n["name"] in probed_names:
+            e = entries.get(key) or {"fails": 0}
+            e["fails"] = int(e.get("fails", 0)) + 1
+            e["last"] = now
+            entries[key] = e
+
+    kept, dropped = [], []
+    for n in nodes:
+        failing = n["name"] in probed_names and n["name"] not in alive_names
+        if failing and int((entries.get(node_key(n)) or {}).get("fails", 0)) >= dead_rounds:
+            dropped.append(n)
+        else:
+            kept.append(n)
+
+    # 地板保护：删完太少了就整批放弃，宁可脏也不能把订阅砍空
+    if dropped and len(kept) < min_keep:
+        print(f"[警告] 淘汰后只剩 {len(kept)} 个节点（低于 MIN_KEEP={min_keep}），"
+              f"本轮放弃淘汰（{len(dropped)} 个节点达到条件但被地板拦下）")
+        return list(nodes), [], True, health
+
+    # 只保留本轮池子里出现过的记录（含被淘汰的 —— 淘汰了也要继续记失败次数，
+    # 否则下轮它会以「首次失败」的身份被放回来，来回抖）。
+    health["nodes"] = {k: v for k, v in entries.items() if k in pool_keys}
+    return kept, dropped, False, health
 
 
 def load_hk_latency():
@@ -834,9 +913,29 @@ def main():
 
     print(f"探活完成：{len(results)}/{len(probe_nodes)} 个节点从 CI 连得通")
 
-    # 注意：这里不做「可用太少就放弃」的降级。探活数量本来就不该影响发布，
-    # 因为 CI 连不通 ≠ 国内连不通（实测 CI 探活的 199 个里国内只有 31 个能用，
-    # 而未探活的节点里反而藏着大部分国内能用的）。
+    # 淘汰「连续 DEAD_ROUNDS 轮都连不上」的节点。延迟不参与淘汰，连接失败参与。
+    alive = {n["name"] for _, n in results}
+    probed = {n["name"] for n in probe_nodes}
+    health = load_health()
+    before = len(nodes)
+    nodes, dropped, floor_blocked, health = apply_health(
+        nodes, alive, probed, health, DEAD_ROUNDS, MIN_KEEP)
+    save_health(health)
+    if dropped:
+        dist = {}
+        for n in dropped:
+            dist[n["type"]] = dist.get(n["type"], 0) + 1
+        print(f"淘汰 {len(dropped)} 个连续 {DEAD_ROUNDS} 轮连不上的节点："
+              f"{dist}（池 {before} → {len(nodes)}）")
+    elif floor_blocked:
+        print(f"本轮仍未淘汰（地板 MIN_KEEP={MIN_KEEP} 拦下了），池 {len(nodes)} 个")
+    else:
+        print(f"本轮没有节点达到淘汰条件（连续 {DEAD_ROUNDS} 轮失败），"
+              f"池 {len(nodes)} 个")
+
+    # 注意：这里仍然不做「可用太少就放弃」的降级。淘汰有 MIN_KEEP 兜底，
+    # 但探活数量本身不该影响发布，因为 CI 连不通 ≠ 国内连不通（实测 CI 探活的
+    # 199 个里国内只有 31 个能用，而未探活的节点里反而藏着大部分国内能用的）。
     delays = {id(n): d for d, n in results}
     hk = load_hk_latency()
     best = select_nodes(nodes, delays, hk, MAX_OUTPUT)

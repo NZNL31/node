@@ -48,11 +48,14 @@ jobs:
           chmod +x sing-box
           ./sing-box version
 
+      # 淘汰逻辑的回归测试（纯计算，不联网，毫秒级）。这条挂了就别发布。
+      - name: 回归测试
+        run: python test_health.py
+
       - name: 拉取并解析订阅
         env:
           MIN_NODES: 50          # 少于这个数说明订阅源集体失效，直接失败
         run: python fetch_subscriptions.py
-
       # check-host.net 的香港探测点有速率限制（实测连发约 50 次开始返回
       # limit_exceeded），所以每轮只测一小批，结果累积在 hk_latency.json 里，
       # 几轮覆盖全量。这一步失败不影响发布。
@@ -128,6 +131,16 @@ jobs:
                   sys.exit(f"hk_latency.json 有 {len(bad)} 条格式不对: {bad[:3]}")
               print(f"香港缓存 {len(entries)} 条")
 
+          # 连续失败计数：丢了它就等于所有淘汰状态清零，节点会集体复活
+          if os.path.exists("node_health.json"):
+              nh = json.load(open("node_health.json", encoding="utf-8"))
+              entries = nh.get("nodes") or {}
+              bad = [k for k, v in entries.items()
+                     if not isinstance(v, dict) or "fails" not in v]
+              if bad:
+                  sys.exit(f"node_health.json 有 {len(bad)} 条格式不对: {bad[:3]}")
+              print(f"健康记录 {len(entries)} 条")
+
           print(f"校验通过: {len(proxies)} 个 Clash 节点, {len(uris)} 条 URI, "
                 f"{len(node_outs)} 个 sing-box outbound")
           PY
@@ -144,8 +157,7 @@ jobs:
           git config user.email "actions@github.com"
 
           git add clash.yaml v2.txt singbox.json
-          git add hk_latency.json 2>/dev/null || true
-
+          git add hk_latency.json node_health.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
             exit 0
@@ -153,7 +165,7 @@ jobs:
 
           for i in 1 2 3 4; do
             git add clash.yaml v2.txt singbox.json
-            git add hk_latency.json 2>/dev/null || true
+            git add hk_latency.json node_health.json 2>/dev/null || true
             git commit -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
             if git push origin HEAD:main; then
               echo "推送成功（第 $i 次尝试）"
