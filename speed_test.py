@@ -110,6 +110,11 @@ DEFAULT_WEIGHT = 0.5
 # 输出顺序：国内可达率高的协议排前面，用户手动挑节点时先看到的更可能能用
 TYPE_ORDER = ["vless", "trojan", "hysteria2", "tuic", "vmess", "ss", "ssr"]
 
+# 不参与淘汰的协议：UDP 系。GitHub runner 对 UDP 出网限制很严，实测 hysteria2
+# 44 个节点里只有 1 个能从 CI 探活成功，而这个协议在国内往往是最好用的那一类。
+# 探不通是「测不了」，不是「死了」—— 和 sing-box 表达不了同理。
+NO_ELIMINATE_TYPES = {"hysteria2", "tuic"}
+
 
 def type_rank(t):
     try:
@@ -159,7 +164,8 @@ def apply_health(nodes, alive_names, probed_names, health, dead_rounds, min_keep
         让客户端的 url-test 白跑一遍。所以连不上要淘汰，只是给一轮容错。
 
     没被探活的节点（sing-box 表达不了的 xhttp/SSR）不参与判定，永远不会被这条
-    规则删掉 —— 我们没测过它，不能因为它「不可测」就当成死了。
+    规则删掉 —— 我们没测过它，不能因为它「不可测」就当成死了。UDP 协议
+    （hysteria2 / tuic）同样豁免，理由见 NO_ELIMINATE_TYPES。
     """
     now = int(time.time())
     entries = health["nodes"]
@@ -170,7 +176,8 @@ def apply_health(nodes, alive_names, probed_names, health, dead_rounds, min_keep
         key = node_key(n)
         if n["name"] in alive_names:
             entries.pop(key, None)                    # 通了就清零
-        elif n["name"] in probed_names:
+        elif (n["name"] in probed_names
+              and n.get("type") not in NO_ELIMINATE_TYPES):
             # 同一个 server:port 上可能挂着好几个节点（不同 UUID）。它们共用一条
             # 记录，所以本轮只累加一次 —— 否则「连续 N 轮」会变成「同一轮 N 次」。
             if key in bumped:
@@ -183,7 +190,9 @@ def apply_health(nodes, alive_names, probed_names, health, dead_rounds, min_keep
 
     kept, dropped = [], []
     for n in nodes:
-        failing = n["name"] in probed_names and n["name"] not in alive_names
+        exempt = n.get("type") in NO_ELIMINATE_TYPES
+        failing = (n["name"] in probed_names and n["name"] not in alive_names
+                   and not exempt)
         if failing and int((entries.get(node_key(n)) or {}).get("fails", 0)) >= dead_rounds:
             dropped.append(n)
         else:

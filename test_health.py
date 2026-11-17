@@ -52,4 +52,12 @@ print("同端点两个节点一轮后 fails:", h1["nodes"]["5.5.5.5:5"]["fails"]
 assert h1["nodes"]["5.5.5.5:5"]["fails"] == 1, "同轮不应重复累加"
 assert len(d1) == 0, "只失败一轮不该淘汰"
 
+# UDP 协议豁免：hysteria2 探不通也不能淘汰（CI 对 UDP 出网限制很严）
+h = node("6.6.6.6", 6, "hy2-node")
+h["type"] = "hysteria2"
+k3, d3, _b3, h3 = st.apply_health([h], set(), {"hy2-node"}, {"nodes": {}}, 1, 1)
+print("hysteria2 失败一轮后:", "淘汰" if d3 else "保留", "| 有无记录:", h3["nodes"])
+assert len(d3) == 0 and len(k3) == 1, "UDP 协议不该被淘汰"
+assert "6.6.6.6:6" not in h3["nodes"], "豁免的协议不该累计失败次数"
+
 print("\n全部断言通过")
