@@ -27,6 +27,8 @@ https://raw.githubusercontent.com/NZNL31/node/main/singbox.json
 
 每 3 小时自动更新一次。
 
+更详细的改动记录、实测数据与已知取舍见 [docs/optimization-report.md](docs/optimization-report.md)。
+
 ## 工作流程
 
 ```
