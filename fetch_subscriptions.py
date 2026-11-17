@@ -507,6 +507,21 @@ def node_key(node: dict):
 
 # ------------------------------------------------------------------ 主流程
 
+def source_label(url: str) -> str:
+    """
+    给订阅源的日志标签。
+
+    只取 host 是没有意义的：这些源全都挂在 raw.githubusercontent.com 下，
+    日志里会变成 9 行一模一样的 "raw.githubusercontent.com: 解析 N 条"，
+    看不出来是哪家源在缩水。所以对 GitHub raw 取 owner/repo，其它取 host。
+    """
+    host = url.split("//")[-1].split("/")[0]
+    parts = [p.split("?")[0] for p in url.split("//")[-1].split("/")[1:] if p]
+    if ".githubusercontent.com" in host and len(parts) >= 2:
+        return f"{parts[0]}/{parts[1]}"
+    return f"{host}/{parts[0]}" if parts else host
+
+
 def main():
     if not os.path.exists(SUBS_FILE):
         print(f"[错误] 找不到 {SUBS_FILE}")
@@ -520,7 +535,7 @@ def main():
     stats = []
 
     for url in urls:
-        host = url.split("//")[-1].split("/")[0]
+        host = source_label(url)
         try:
             resp = requests.get(url, headers=headers, timeout=TIMEOUT)
         except Exception as e:
