@@ -43,4 +43,13 @@ kept2, dropped2, blocked2, _ = st.apply_health(nodes, alive, probed, {"nodes": {
 print("地板保护:", len(kept2), "kept /", len(dropped2), "dropped")
 assert len(dropped2) == 0 and len(kept2) == 4 and blocked2 is True
 
+# 同一端点上的多个节点，本轮只应记一次失败（否则「连续 2 轮」= 同轮 2 次）
+e1 = {"name": "5.5.5.5:5#a", "server": "5.5.5.5", "port": 5, "type": "vless"}
+e2 = {"name": "5.5.5.5:5#b", "server": "5.5.5.5", "port": 5, "type": "vless"}
+k1, d1, _b1, h1 = st.apply_health([e1, e2], set(), {"5.5.5.5:5#a", "5.5.5.5:5#b"},
+                                  {"nodes": {}}, 2, 1)
+print("同端点两个节点一轮后 fails:", h1["nodes"]["5.5.5.5:5"]["fails"], "| 淘汰:", len(d1))
+assert h1["nodes"]["5.5.5.5:5"]["fails"] == 1, "同轮不应重复累加"
+assert len(d1) == 0, "只失败一轮不该淘汰"
+
 print("\n全部断言通过")

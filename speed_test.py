@@ -164,12 +164,18 @@ def apply_health(nodes, alive_names, probed_names, health, dead_rounds, min_keep
     now = int(time.time())
     entries = health["nodes"]
     pool_keys = {node_key(n) for n in nodes}
+    bumped = set()          # 本轮已经记过失败的端点
 
     for n in nodes:
         key = node_key(n)
         if n["name"] in alive_names:
             entries.pop(key, None)                    # 通了就清零
         elif n["name"] in probed_names:
+            # 同一个 server:port 上可能挂着好几个节点（不同 UUID）。它们共用一条
+            # 记录，所以本轮只累加一次 —— 否则「连续 N 轮」会变成「同一轮 N 次」。
+            if key in bumped:
+                continue
+            bumped.add(key)
             e = entries.get(key) or {"fails": 0}
             e["fails"] = int(e.get("fails", 0)) + 1
             e["last"] = now
