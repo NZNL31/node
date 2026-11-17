@@ -244,6 +244,19 @@ def uri_host(host) -> str:
     return h
 
 
+def insecure_params(node):
+    """
+    把 `skip-cert-verify` 还原成 URI 参数。
+
+    两个名字都要写：v2rayN / Xray 家族认 `allowInsecure`，sing-box 和部分客户端
+    认 `insecure`。少写一个，客户端就会老老实实做证书校验 —— 而免费节点几乎全是
+    自签证书或 CDN 不匹配的证书，表现就是「配置看着齐全、就是连不上」。
+    """
+    if not node.get("skip-cert-verify"):
+        return {}
+    return {"allowInsecure": "1", "insecure": "1"}
+
+
 def node_to_uri(node: dict):
     """把 Clash 节点字典还原成分享链接，供 v2.txt 使用。"""
     t = node.get("type")
@@ -277,6 +290,7 @@ def node_to_uri(node: dict):
             "host": host_field,
             "path": path_field,
             "tls": "tls" if node.get("tls") else "",
+            "allowInsecure": bool(node.get("skip-cert-verify")),
             "sni": node.get("servername", ""),
         }
         return "vmess://" + base64.b64encode(
@@ -284,7 +298,8 @@ def node_to_uri(node: dict):
         ).decode()
 
     if t == "vless":
-        q = {}
+        # VLESS 分享链接按规范必须带 encryption=none，缺了部分客户端直接不认。
+        q = {"encryption": "none"}
         if node.get("network"):
             q["type"] = node["network"]
         if node.get("tls"):
@@ -310,6 +325,7 @@ def node_to_uri(node: dict):
         if ws:
             q["path"] = ws.get("path", "/")
             q["host"] = (ws.get("headers") or {}).get("Host", "")
+        q.update(insecure_params(node))
         query = urllib.parse.urlencode({k: v for k, v in q.items() if v})
         return f"vless://{node.get('uuid')}@{host}:{port}?{query}#{name}"
 
@@ -326,6 +342,7 @@ def node_to_uri(node: dict):
         grpc = node.get("grpc-opts") or {}
         if grpc.get("grpc-service-name"):
             q["serviceName"] = grpc["grpc-service-name"]
+        q.update(insecure_params(node))
         query = urllib.parse.urlencode(q)
         pwd = urllib.parse.quote(str(node.get("password", "")), safe="")
         return f"trojan://{pwd}@{host}:{port}?{query}#{name}"
@@ -337,6 +354,7 @@ def node_to_uri(node: dict):
         if node.get("obfs"):
             q["obfs"] = node["obfs"]
             q["obfs-password"] = node.get("obfs-password", "")
+        q.update(insecure_params(node))
         query = urllib.parse.urlencode(q)
         pwd = urllib.parse.quote(str(node.get("password", "")), safe="")
         return f"hysteria2://{pwd}@{host}:{port}?{query}#{name}"
@@ -345,6 +363,7 @@ def node_to_uri(node: dict):
         q = {}
         if node.get("sni"):
             q["sni"] = node["sni"]
+        q.update(insecure_params(node))
         query = urllib.parse.urlencode(q)
         pwd = urllib.parse.quote(str(node.get("password", "")), safe="")
         return f"tuic://{node.get('uuid')}:{pwd}@{host}:{port}?{query}#{name}"

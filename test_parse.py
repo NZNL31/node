@@ -43,4 +43,22 @@ a.pop("ws_opts")
 kept2, dropped2 = fs.prefer_complete([a, b])
 assert dropped2 == 0 and len(kept2) == 2
 
+import speed_test as st
+
+# 7) 导出侧：VLESS 必须带 encryption=none，skip-cert-verify 必须还原成 insecure 参数
+n = {"name": "x", "type": "vless", "server": "1.2.3.7", "port": 443, "uuid": "u-7",
+     "tls": True, "servername": "s.example.com", "skip-cert-verify": True,
+     "network": "ws", "ws-opts": {"path": "/ws", "headers": {"Host": "s.example.com"}}}
+uri = st.node_to_uri(n)
+assert "encryption=none" in uri, uri
+assert "allowInsecure=1" in uri and "insecure=1" in uri, uri
+back = fs.parse_uri(uri)
+assert back and back["servername"] == "s.example.com" and back["tls"] is True, back
+
+# 8) 不带 skip-cert-verify 的节点不应凭空多出 insecure 参数
+n2 = dict(n, name="y")
+n2.pop("skip-cert-verify")
+uri2 = st.node_to_uri(n2)
+assert "insecure=1" not in uri2 and "allowInsecure=1" not in uri2, uri2
+
 print("解析层回归测试全部通过")
