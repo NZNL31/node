@@ -71,6 +71,7 @@ if [ "${PURITY:-0}" = "1" ]; then
     if [ "${TOP_N:-0}" -gt 0 ]; then
       log "[附加] 按纯净度选优选 top${TOP_N}"
       python3 select_top.py || log "[警告] 选优选失败，只保留全量 v2.txt"
+      log "[附加] 优选文件留在本机（不进仓库）：$(pwd)/top${TOP_N}.txt"
     fi
   else
     log "[警告] 纯净度标注失败，保留未标注的 v2.txt"
@@ -81,10 +82,7 @@ fi
 case "$PUBLISH" in
   git)
     log "[发布] 提交并推送"
-    git add v2.txt hk_latency.json node_health.json ip_purity.json node_quality.json 2>/dev/null || true
-    if [ -n "${TOP_N:-}" ] && [ -f "top${TOP_N}.txt" ]; then
-      git add "top${TOP_N}.txt"
-    fi
+    git add v2.txt hk_latency.json node_health.json 2>/dev/null || true
     if git diff --cached --quiet; then
       log "[发布] 没有变化，跳过提交"
     else

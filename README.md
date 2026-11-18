@@ -240,7 +240,7 @@ python speed_test.py        # 没有 sing-box 会自动降级为不探活、全�
 | 6 | **纯净度打分** | `purity.py`：经节点查**出口 IP**，交 `ipquality` 打分（按 IP 缓存 7 天） |
 | 7 | 汇总 | `node_quality.json`（每节点的出口 IP / 分数 / ASN / 国家） |
 | 8 | 选优选 | `select_top.py`：按分数排序，同一 IP 取 1、同一 /24 最多 3、同一 ASN 最多 4 |
-| 9 | 输出订阅 | `top50.txt`（与 `v2.txt` 同格式）；`TOP_N=0` 则只发全量 |
+| 9 | 输出订阅 | `top{N}.txt`（与 `v2.txt` 同格式，N 由调用方指定）；`TOP_N=0` 则只发全量 |
 | 10 | 直连测试 | 已在第 5 步做过（**在打分之前**，所以分数只花在真能用的节点上） |
 | 11 | 发布 | `PUBLISH=none`（服务器本地 + nginx）或 `PUBLISH=git` |
 | 12 | 汇报 | `run.sh` 的 `logs/run-*.log` + `select_top.py` 打印的前 10 名 |
