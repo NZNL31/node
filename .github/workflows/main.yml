@@ -57,6 +57,7 @@ jobs:
       - name: 拉取并解析订阅
         env:
           MIN_NODES: 50          # 少于这个数说明订阅源集体失效，直接失败
+          SOURCE_LIMIT: 1200     # 单个源最多收 1200 个（巨型 dump 兜底）
         run: python fetch_subscriptions.py
       # check-host.net 的香港探测点有速率限制（实测连发约 50 次开始返回
       # limit_exceeded），所以每轮只测一小批，结果累积在 hk_latency.json 里，
@@ -70,58 +71,49 @@ jobs:
 
       - name: 真实测速
         env:
-          MAX_PROBE: 2500
-          PROBE_CONCURRENCY: 32
+          MAX_PROBE: 6000
+          PROBE_CONCURRENCY: 64
+          PROBE_TIMEOUT_MS: 4000
+          VERIFY_SLOTS: 24       # 204 校验并发槽位
+          VERIFY_TIMEOUT: 8      # 单次 204 校验超时（秒）
           # 测速只用于排序和打标记，不用于淘汰节点（原因见 speed_test.py 文件头）
           MAX_OUTPUT: 1500
           HK_TTL_H: 96           # 与 hk_probe.py 保持一致：过期数据不参与排序
-          FEATURED_SIZE: 30      # 🚀 精选组大小
         run: python speed_test.py
 
-      # 产物自检：宁可这次不更新，也不要发布一份坏配置
+      # 产物自检：宁可这次不更新，也不要发布一份坏的订阅
       - name: 校验产物
         run: |
           python - <<'PY'
           import base64
+          import collections
           import json
           import os
           import sys
-          import yaml
 
-          doc = yaml.safe_load(open("clash.yaml", encoding="utf-8"))
-          proxies = doc.get("proxies") or []
-          groups = doc.get("proxy-groups") or []
-          if not proxies:
-              sys.exit("clash.yaml 里没有节点")
-
-          names = {p["name"] for p in proxies}
-          group_names = {g["name"] for g in groups}
-          dangling = [n for g in groups for n in g["proxies"]
-                      if n not in names | group_names]
-          if dangling:
-              sys.exit(f"代理组里有悬空引用: {dangling[:3]}")
+          sys.path.insert(0, ".")
+          import fetch_subscriptions as fs
 
           raw = base64.b64decode(open("v2.txt", encoding="utf-8").read()).decode()
           uris = [l for l in raw.splitlines() if "://" in l]
-          if len(uris) != len(proxies):
-              sys.exit(f"v2.txt 有 {len(uris)} 条，clash.yaml 有 {len(proxies)} 个节点，不一致")
+          if not uris:
+              sys.exit("v2.txt 里没有链接")
 
-          # singbox.json：sing-box 表达不了的节点（xhttp 传输、SSR）不会进去，
-          # 所以它的节点数只会比 clash.yaml 少一点，不会多，也不能少太多。
-          sb = json.load(open("singbox.json", encoding="utf-8"))
-          sb_outs = sb.get("outbounds") or []
-          node_outs = [o for o in sb_outs if o.get("type") not in
-                       ("selector", "urltest", "direct", "block")]
-          tags = {o["tag"] for o in sb_outs}
-          if len(tags) != len(sb_outs):
-              sys.exit("singbox.json 里有重复的 outbound tag")
-          dangling_sb = [t for g in sb_outs
-                         if g.get("outbounds")
-                         for t in g["outbounds"] if t not in tags]
-          if dangling_sb:
-              sys.exit(f"singbox.json 的组里有悬空引用: {dangling_sb[:3]}")
-          if not (0.85 * len(proxies) <= len(node_outs) <= len(proxies)):
-              sys.exit(f"singbox.json 节点数异常: {len(node_outs)} vs clash.yaml {len(proxies)}")
+          # 每条链接都必须能被我们自己的解析器重新解析回节点 —— 这是唯一能挡住
+          # 「导出时丢了 encryption=none / insecure / sni」这类错误的检查。
+          broken = [u[:60] for u in uris if not fs.parse_uri(u)]
+          if broken:
+              sys.exit(f"{len(broken)} 条链接无法回灌解析: {broken[:3]}")
+
+          names = [u.split("#", 1)[1] if "#" in u else "" for u in uris]
+          dup = [k for k, v in collections.Counter(names).items() if v > 1 and k]
+          if dup:
+              sys.exit(f"有重名节点（客户端会互相覆盖）: {dup[:3]}")
+
+          schemes = collections.Counter(u.split("://")[0] for u in uris)
+          # 目标客户端是 v2rayN + sing-box 内核，SSR 和 xhttp 在这里跑不了
+          if schemes.get("ssr"):
+              sys.exit(f"v2.txt 里出现了 {schemes['ssr']} 条 SSR（sing-box 内核不支持）")
 
           # 香港延迟缓存是可选的，但既然要提交，格式必须是对的
           if os.path.exists("hk_latency.json"):
@@ -143,22 +135,15 @@ jobs:
                   sys.exit(f"node_health.json 有 {len(bad)} 条格式不对: {bad[:3]}")
               print(f"健康记录 {len(entries)} 条")
 
-          print(f"校验通过: {len(proxies)} 个 Clash 节点, {len(uris)} 条 URI, "
-                f"{len(node_outs)} 个 sing-box outbound")
+          print(f"校验通过: {len(uris)} 条 URI, 协议分布 {dict(schemes)}")
           PY
-
-      # 上面的自检只看结构（悬空引用、条数一致性）。真正决定「客户端能不能加载」
-      # 的是代理内核自己：规则写错、组类型不对、字段类型不对，在客户端上就是
-      # 整个订阅加载失败。这里用 CI 里已经下好的同一个版本过一遍。
-      - name: 用 sing-box 校验最终配置
-        run: ./sing-box check -c singbox.json
 
       - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
 
-          git add clash.yaml v2.txt singbox.json
+          git add v2.txt
           git add hk_latency.json node_health.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
@@ -166,7 +151,7 @@ jobs:
           fi
 
           for i in 1 2 3 4; do
-            git add clash.yaml v2.txt singbox.json
+            git add v2.txt
             git add hk_latency.json node_health.json 2>/dev/null || true
             git commit -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
             if git push origin HEAD:main; then

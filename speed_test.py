@@ -16,8 +16,7 @@
      （这两个端点和 mihomo 的 Clash API 语义一致，失败同样是 503/504）
   3. 首轮失败的节点再补测一轮（并发高时有一批是排队超时，不是真死）
   4. **不按延迟筛选**，只用来排序和打标记（原因见下）
-  5. 输出 clash.yaml（Clash / mihomo 用）、v2.txt（base64 的 URI 列表，
-     v2rayN / Shadowrocket 用）、singbox.json（sing-box 内核的客户端用）
+  5. 只输出 v2.txt（base64 的分享链接列表），给 v2rayN + sing-box 内核用
 
 排序还会参考 hk_probe.py 攒下来的香港探测数据（hk_latency.json）。香港离中国
 近，那边的 RTT 加 30ms 左右就接近国内用户的真实体验，比 CI 在美国测出来的值
@@ -55,8 +54,10 @@ import base64
 import hashlib
 import json
 import os
+import queue as queue_mod
 import subprocess
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -66,17 +67,17 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import yaml
 
 ALL_NODES_FILE = "all_nodes.yaml"
-CLASH_FILE = "clash.yaml"
 V2_FILE = "v2.txt"
-SINGBOX_FILE = "singbox.json"
 PROBE_FILE = "probe.json"
+VERIFY_FILE = "verify.json"
 HK_FILE = "hk_latency.json"
 HEALTH_FILE = "node_health.json"
 
 SINGBOX_BIN = os.environ.get("SINGBOX_BIN", "./sing-box")
-API_BASE = "http://127.0.0.1:9090"
+CONTROLLER = "127.0.0.1:9090"
+API_BASE = f"http://{CONTROLLER}"
 TEST_URL = os.environ.get("PROBE_URL", "https://www.gstatic.com/generate_204")
-TIMEOUT_MS = 5000
+TIMEOUT_MS = int(os.environ.get("PROBE_TIMEOUT_MS", 5000))
 MAX_PROBE = int(os.environ.get("MAX_PROBE", 2500))
 CONCURRENCY = int(os.environ.get("PROBE_CONCURRENCY", 32))
 MAX_OUTPUT = int(os.environ.get("MAX_OUTPUT", 1500))
@@ -84,6 +85,9 @@ MAX_OUTPUT = int(os.environ.get("MAX_OUTPUT", 1500))
 HK_TTL_H = float(os.environ.get("HK_TTL_H", 96))
 # 「🚀 精选」组的大小：手机上的健康检查只覆盖这么多节点
 FEATURED_SIZE = int(os.environ.get("FEATURED_SIZE", 30))
+# 204 校验的并发槽位数与单次超时
+VERIFY_SLOTS = int(os.environ.get("VERIFY_SLOTS", 24))
+VERIFY_TIMEOUT = float(os.environ.get("VERIFY_TIMEOUT", 8))
 # 连续多少轮真实探活失败就淘汰。设 1 = 单轮失败即删（激进），默认 2 留一轮容错，
 # 因为并发 32 时有相当一批是排队超时/被临时限流，不是真死。
 DEAD_ROUNDS = int(os.environ.get("DEAD_ROUNDS", 2))
@@ -517,7 +521,7 @@ def write_probe_config(outbounds, path=PROBE_FILE):
                       "listen_port": 7890}],
         "outbounds": list(outbounds) + [{"type": "direct", "tag": "direct"}],
         "route": {"final": "direct"},
-        "experimental": {"clash_api": {"external_controller": "127.0.0.1:9090"}},
+        "experimental": {"clash_api": {"external_controller": CONTROLLER}},
     }
     with open(path, "w", encoding="utf-8") as f:
         json.dump(config, f, ensure_ascii=False)
@@ -582,6 +586,130 @@ def start_singbox():
             continue
     proc.kill()
     raise RuntimeError("sing-box 的 clash_api 30 秒内未就绪")
+
+
+def build_verify_config(nodes, slots, port_base):
+    """
+    构造「多槽位」校验配置：每个槽位一个 mixed inbound + 一个 selector。
+
+    校验必须让请求真正走指定节点，而 sing-box 的路由是全局的。做法是开 N 组
+    互相独立的 inbound/selector，用 route.rules 把 in-i 固定指到 sel-i，
+    每个 worker 只改自己那个 selector —— 这样 N 个节点可以并发校验，互不干扰。
+    """
+    obs = [o for o in (node_to_outbound(n)[0] for n in nodes) if o]
+    tags = [o["tag"] for o in obs]
+    if not tags:
+        return None
+    return {
+        "log": {"level": "error"},
+        "inbounds": [{"type": "mixed", "tag": f"in-{i}", "listen": "127.0.0.1",
+                      "listen_port": port_base + i} for i in range(slots)],
+        "outbounds": obs + [
+            {"type": "selector", "tag": f"sel-{i}", "outbounds": tags,
+             "default": tags[0]} for i in range(slots)
+        ] + [{"type": "direct", "tag": "direct"}],
+        "route": {
+            "rules": [{"inbound": [f"in-{i}"], "outbound": f"sel-{i}"}
+                      for i in range(slots)],
+            "final": "direct",
+        },
+        "experimental": {"clash_api": {"external_controller": CONTROLLER}},
+    }
+
+
+def select_proxy(selector, name):
+    """PUT /proxies/{selector} 切换该槽位使用的节点。"""
+    body = json.dumps({"name": name}).encode()
+    req = urllib.request.Request(
+        f"{API_BASE}/proxies/{urllib.parse.quote(selector, safe='')}",
+        data=body, method="PUT",
+        headers={"Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=5):
+            return True
+    except Exception:
+        return False
+
+
+def http_status_via(port, timeout):
+    """经本地代理端口发一次真实 HTTPS 请求，返回状态码（失败返回 None）。"""
+    proxy = f"http://127.0.0.1:{port}"
+    opener = urllib.request.build_opener(
+        urllib.request.ProxyHandler({"http": proxy, "https": proxy}))
+    try:
+        with opener.open(TEST_URL, timeout=timeout) as resp:
+            return getattr(resp, "status", resp.getcode())
+    except Exception:
+        return None
+
+
+def verify_204(nodes, slots=VERIFY_SLOTS, timeout=VERIFY_TIMEOUT):
+    """
+    逐节点验证「经该节点发真实 HTTP 请求，且收到 204」。
+
+    为什么需要这一步：sing-box 的 /proxies/{name}/delay 只保证「请求完成了」，
+    **不校验状态码** —— 实测同一个节点打 generate_204 和打一个必然 404 的路径
+    都会返回延迟。所以延迟通过只能说明隧道通了，不能说明出口是好的（被劫持、
+    被墙插页、只放行特定域名的节点都会通过 delay 但根本不能用）。
+    """
+    if not nodes:
+        return set(), {}
+    port_base = 7900
+    cfg = build_verify_config(nodes, slots, port_base)
+    if cfg is None:
+        return set(), {}
+    with open(VERIFY_FILE, "w", encoding="utf-8") as f:
+        json.dump(cfg, f, ensure_ascii=False)
+
+    proc = subprocess.Popen([SINGBOX_BIN, "run", "-c", VERIFY_FILE],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+    verified, statuses = set(), {}
+    try:
+        for _ in range(40):
+            time.sleep(0.5)
+            if proc.poll() is not None:
+                print(f"[警告] 校验实例启动失败: {(proc.stderr.read() or '')[:300]}")
+                return set(), {}
+            try:
+                with urllib.request.urlopen(f"{API_BASE}/version", timeout=2):
+                    break
+            except Exception:
+                continue
+
+        queue = queue_mod.Queue()
+        for n in nodes:
+            queue.put(n)
+        lock = threading.Lock()
+
+        def worker(idx):
+            selector = f"sel-{idx}"
+            port = port_base + idx
+            while True:
+                try:
+                    n = queue.get_nowait()
+                except queue_mod.Empty:
+                    return
+                if not select_proxy(selector, n["name"]):
+                    continue
+                code = http_status_via(port, timeout)
+                with lock:
+                    statuses[code] = statuses.get(code, 0) + 1
+                    if code == 204:
+                        verified.add(n["name"])
+
+        threads = [threading.Thread(target=worker, args=(i,), daemon=True)
+                   for i in range(slots)]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
+    finally:
+        proc.terminate()
+        try:
+            proc.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            proc.kill()
+    return verified, statuses
 
 
 def probe_one(name: str):
@@ -727,166 +855,20 @@ def select_nodes(nodes, delays, hk, max_output):
 
 # ------------------------------------------------------------------ 输出
 
-def build_clash_config(nodes):
-    names = [n["name"] for n in nodes]
-    # 精选组只放排在最前面的若干个节点（香港延迟最低的一批）。手机上的问题是
-    # 「🔄 自动选择」包住全部节点，而它默认被选中，于是 lazy 不起作用，每 10 分钟
-    # 真的去健康检查上千个节点。精选组把这份开销压到 FEATURED_SIZE 个。
-    featured = names[:FEATURED_SIZE]
-    return {
-        # 订阅是公开的，配置会落到别人手里；开 allow-lan 等于把一个无鉴权的
-        # 代理端口暴露给整个局域网。要共享时自己改成 true。
-        "allow-lan": False,
-        "mode": "Rule",
-        "log-level": "info",
-        "port": 7890,
-        "socks-port": 7891,
-        # 统一延迟：url-test 比较时剔除握手时间，只按真实 RTT 排，否则
-        # 慢 TLS 握手会污染排序结果
-        "unified-delay": True,
-        # 并发建连，多节点池下首包明显更快
-        "tcp-concurrent": True,
-        "dns": {
-            "enable": True,
-            "ipv6": False,
-            # fake-ip：域名解析不阻塞连接建立，并把 DNS 交给代理远端解析，
-            # 顺带避免本地 DNS 污染
-            "enhanced-mode": "fake-ip",
-            "fake-ip-range": "198.18.0.1/16",
-            "default-nameserver": ["223.5.5.5", "119.29.29.29"],
-            "nameserver": ["https://dns.alidns.com/dns-query",
-                           "https://doh.pub/dns-query"],
-            "fallback": ["https://1.1.1.1/dns-query",
-                         "https://dns.google/dns-query"],
-            "fallback-filter": {
-                "geoip": True,
-                "geoip-code": "CN",
-                "ipcidr": ["240.0.0.0/4"],
-            },
-        },
-        "proxies": nodes,
-        "proxy-groups": [
-            {"name": "🌐 节点选择", "type": "select",
-             "proxies": ["🚀 精选", "🔄 自动选择"] + names},
-            {"name": "🚀 精选", "type": "url-test",
-             "url": TEST_URL, "interval": 300, "tolerance": 50,
-             "expected-status": 204, "proxies": featured},
-            # 节点多（900+）的时候健康检查本身就不便宜，interval 放宽到 10 分钟，
-            # lazy 让这个组没被选中时直接跳过检查，别在手机上白耗流量
-            {"name": "🔄 自动选择", "type": "url-test",
-             "url": TEST_URL, "interval": 600, "tolerance": 50, "lazy": True,
-             "expected-status": 204, "proxies": names},
-        ],
-        # 国内和局域网直连。原来只有 MATCH 一条，等于把国内站点也塞进代理，
-        # 白付一份延迟和流量。
-        "rules": [
-            "GEOIP,LAN,DIRECT,no-resolve",
-            "GEOIP,CN,DIRECT",
-            "MATCH,🌐 节点选择",
-        ],
-    }
-
-
-# sing-box 的 route 规则里没有 GEOIP 了（geoip 规则在 1.12 被移除），要直连国内
-# 只有两条路：远程 rule_set（首次启动要联网下载，节点全挂时下不下来就起不来），
-# 或者域名后缀。这里选后者：不依赖任何下载，配置永远能加载。
-CN_DOMAIN_SUFFIX = [
-    "cn", "baidu.com", "qq.com", "tencent.com", "weixin.qq.com", "taobao.com",
-    "tmall.com", "alicdn.com", "alipay.com", "aliyun.com", "jd.com", "163.com",
-    "126.com", "blizzard.com.cn", "bilibili.com", "hdslb.com", "zhihu.com",
-    "weibo.com", "sina.com.cn", "iqiyi.com", "youku.com", "douyin.com",
-    "meituan.com", "dianping.com", "12306.cn", "ctrip.com", "xiaomi.com",
-    "mi.com", "huawei.com", "vivo.com.cn", "oppo.com", "kuaishou.com",
-    "bytedance.com", "toutiao.com", "pinduoduo.com", "ximalaya.com",
-    "netease.com", "qcloud.com", "myqcloud.com", "bdstatic.com",
-]
-
-
-def build_singbox_config(nodes):
-    """
-    同一批节点的 sing-box 版配置（给 sing-box 内核的客户端用）。
-
-    和 clash.yaml 是「同一份节点、两种渲染」，不是两套数据：节点字典是唯一真相源。
-    差异都在结构性字段上 —— 策略组变成 selector / urltest outbound，规则变成
-    route.rules 里的 JSON 对象。
-
-    sing-box 表达不了的节点（xhttp 传输、SSR）会被跳过，所以在 singbox.json 里
-    会比 clash.yaml 少几个 —— 数量对不上是预期的，不是 bug。
-    """
-    names, outbounds = [], []
-    for n in nodes:
-        ob, _reason = node_to_outbound(n)
-        if ob:
-            outbounds.append(ob)
-            names.append(ob["tag"])
-    featured = names[:FEATURED_SIZE]
-    return {
-        "log": {"level": "info", "timestamp": True},
-        "dns": {
-            "servers": [
-                # DoH 服务器本身是域名，需要一个本地解析器来解析它（sing-box 1.12+
-                # 要求显式指定，否则报 missing domain resolver）
-                {"tag": "local", "type": "local"},
-                {"tag": "ali", "type": "https", "server": "dns.alidns.com",
-                 "domain_resolver": "local"},
-                {"tag": "dnspod", "type": "https", "server": "doh.pub",
-                 "domain_resolver": "local"},
-            ],
-            # 只解析本地需要的部分：域名是原样交给节点去连的，不会在这里泄漏出去。
-            # 故意不使用 detour 走代理 —— 免费节点随时会挂，DNS 不该依赖它们。
-            "rules": [],
-            "final": "ali",
-            "strategy": "prefer_ipv4",
-        },
-        "inbounds": [
-            {"type": "mixed", "tag": "mixed-in", "listen": "127.0.0.1",
-             "listen_port": 7890},
-        ],
-        "outbounds": outbounds + [
-            {"type": "selector", "tag": "🌐 节点选择",
-             "outbounds": ["🚀 精选", "🔄 自动选择"] + names,
-             "default": "🚀 精选"},
-            {"type": "urltest", "tag": "🚀 精选", "outbounds": featured,
-             "url": TEST_URL, "interval": "5m", "tolerance": 50},
-            {"type": "urltest", "tag": "🔄 自动选择", "outbounds": names,
-             "url": TEST_URL, "interval": "10m", "tolerance": 50},
-            {"type": "direct", "tag": "direct"},
-        ],
-        "route": {
-            "rules": [
-                {"action": "sniff"},
-                {"protocol": "dns", "action": "hijack-dns"},
-                {"ip_is_private": True, "outbound": "direct"},
-                {"domain_suffix": CN_DOMAIN_SUFFIX, "outbound": "direct"},
-            ],
-            "final": "🌐 节点选择",
-            # 节点的 server 有不少是域名。sing-box 1.12 起不允许隐式解析，
-            # 必须显式指定解析器，否则整个配置加载失败。
-            "default_domain_resolver": "ali",
-            "auto_detect_interface": True,
-        },
-    }
-
-
 def write_outputs(nodes):
-    """三份产物一起写，避免其中一份残留上一轮的内容。"""
-    with open(CLASH_FILE, "w", encoding="utf-8") as f:
-        yaml.dump(build_clash_config(nodes), f, allow_unicode=True,
-                  sort_keys=False, default_flow_style=False)
+    """
+    只写一份产物：`v2.txt`（base64 的分享链接列表）。
 
+    目标是 v2rayN + sing-box 内核，所以不再产出 clash.yaml / singbox.json ——
+    sing-box 内核认的是分享链接，v2rayN 负责把链接转成它自己的配置。反过来，
+    sing-box 跑不了的写法（xhttp 传输、SSR 协议）在这条链路上也用不了，那些节点
+    在 main() 里就被剔除了，不会进入 v2.txt。
+    """
     uris = [u for u in (node_to_uri(n) for n in nodes) if u]
     with open(V2_FILE, "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(uris).encode()).decode())
-
-    sbox = build_singbox_config(nodes)
-    with open(SINGBOX_FILE, "w", encoding="utf-8") as f:
-        json.dump(sbox, f, ensure_ascii=False, indent=1)
-
-    node_obs = len(sbox["outbounds"]) - 3          # 去掉两个组和 direct
-    print(f"已写出 {CLASH_FILE}（{len(nodes)} 个节点）")
     print(f"已写出 {V2_FILE}（{len(uris)} 条 URI）")
-    print(f"已写出 {SINGBOX_FILE}（{node_obs} 个 outbound；"
-          f"比 clash.yaml 少 {len(nodes) - node_obs} 个 sing-box 表达不了的节点）")
+    return len(uris)
 
 
 # ------------------------------------------------------------------ 主流程
@@ -919,30 +901,40 @@ def main():
         write_outputs(select_nodes(nodes, {}, load_hk_latency(), MAX_OUTPUT))
         return
 
-    # 翻译成 sing-box outbound。翻不了的节点（xhttp 传输、SSR）不参与探活，
-    # 但仍然原样发布 —— Clash 客户端那边它们是能用的。
-    by_name = {n["name"]: n for n in nodes}
-    outbounds, unrepresentable = [], {}
+    # 翻译成 sing-box outbound。翻不了的（xhttp 传输、SSR 协议）**直接剔除**：
+    # 产物只给 v2rayN + sing-box 内核用，这些写法在那条链路上根本跑不起来，
+    # 留在订阅里只会变成「导入后连不上」的噪音。
+    representable, dropped_repr = [], {}
     for n in nodes:
         ob, reason = node_to_outbound(n)
         if ob:
-            outbounds.append(ob)
+            representable.append(n)
         else:
-            unrepresentable[reason] = unrepresentable.get(reason, 0) + 1
-    if unrepresentable:
-        print(f"[跳过探活] {sum(unrepresentable.values())} 个节点 sing-box 表达不了："
-              f"{unrepresentable}（仍会发布，只是没有延迟标记）")
+            dropped_repr[reason] = dropped_repr.get(reason, 0) + 1
+    if dropped_repr:
+        print(f"[剔除] {sum(dropped_repr.values())} 个节点 sing-box 跑不了："
+              f"{dropped_repr}")
+    nodes = representable
+    by_name = {n["name"]: n for n in nodes}
+    outbounds = [node_to_outbound(n)[0] for n in nodes]
 
     good, bad = validate_outbounds(outbounds)
     if bad:
-        print(f"[校验] {len(bad)} 个节点 sing-box 加载不了，本轮不参与探活（仍会发布）")
+        # 从池里彻底剔除：这类节点是「translate 得出来但内核加载不了」，典型原因是
+        # 加密方式非法（实测 cipher 写成字面量 "ss"）或 2022 密钥不是合法 base64。
+        # 一个这样的节点就能让客户端整份配置加载失败，不能留。
+        bad_tags = {tag for tag, _ in bad}
+        print(f"[校验] {len(bad)} 个节点 sing-box 加载不了，从池中剔除")
         for tag, msg in bad[:5]:
             print(f"   {tag} → {msg}")
+        nodes = [n for n in nodes if n["name"] not in bad_tags]
+        by_name = {n["name"]: n for n in nodes}
     if not good:
         print("[错误] 没有任何节点能被 sing-box 加载，本轮不产出", file=sys.stderr)
         sys.exit(1)
 
     probe_nodes = [by_name[o["tag"]] for o in good if o["tag"] in by_name]
+
     write_probe_config(good)
 
     print(f"启动 sing-box，开始真实测速（{len(probe_nodes)} 个节点，并发 {CONCURRENCY}）")
@@ -963,10 +955,20 @@ def main():
         except subprocess.TimeoutExpired:
             proc.kill()
 
-    print(f"探活完成：{len(results)}/{len(probe_nodes)} 个节点从 CI 连得通")
+    print(f"延迟探活：{len(results)}/{len(probe_nodes)} 个节点隧道能通")
+
+    # 关键一步：延迟通过只说明隧道通了，不说明出口是好的。这一步经每个节点发一次
+    # 真实 HTTP 请求，要求状态码必须是 204 才认为可用（详见 verify_204 的注释）。
+    by_name2 = {n["name"]: n for n in probe_nodes}
+    delay_alive = {n["name"]: n for _, n in results if n["name"] in by_name2}
+    verified, statuses = verify_204(list(delay_alive.values()))
+    print(f"204 校验：{len(verified)}/{len(delay_alive)} 通过；"
+          f"状态码分布 {dict(sorted(statuses.items(), key=lambda x: str(x[0])))}")
+    results = [(d, n) for d, n in results if n["name"] in verified]
+    print(f"探活完成：{len(results)}/{len(probe_nodes)} 个节点经 204 校验可用")
 
     # 淘汰「连续 DEAD_ROUNDS 轮都连不上」的节点。延迟不参与淘汰，连接失败参与。
-    alive = {n["name"] for _, n in results}
+    alive = verified
     probed = {n["name"] for n in probe_nodes}
     health = load_health()
     hk = load_hk_latency()
@@ -987,11 +989,12 @@ def main():
         print(f"本轮没有节点达到淘汰条件（连续 {DEAD_ROUNDS} 轮失败），"
               f"池 {len(nodes)} 个")
 
-    # 注意：这里仍然不做「可用太少就放弃」的降级。淘汰有 MIN_KEEP 兜底，
-    # 但探活数量本身不该影响发布，因为 CI 连不通 ≠ 国内连不通（实测 CI 探活的
-    # 199 个里国内只有 31 个能用，而未探活的节点里反而藏着大部分国内能用的）。
+    # 只发布通过 204 校验的节点。香港豁免的节点保留在池里（下一轮可能被 CI 探到），
+    # 但本轮没有 204 证据，所以不进订阅 —— 宁可少发，不发没验证过的。
+    publishable = [n for n in nodes if n["name"] in verified]
+    print(f"发布 {len(publishable)} 个（池内 {len(nodes)} 个，其余本轮未通过 204 校验）")
     delays = {id(n): d for d, n in results}
-    best = select_nodes(nodes, delays, hk, MAX_OUTPUT)
+    best = select_nodes(publishable, delays, hk, MAX_OUTPUT)
 
     dist, stat = {}, {"HK": 0, "HK超时": 0, "US": 0, "无数据": 0}
     for n in best:

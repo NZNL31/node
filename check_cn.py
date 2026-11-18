@@ -18,12 +18,15 @@ TCP 能连上也不代表一定能用（可能握手失败、证书不对、被�
 但连不上就肯定不能用，所以这个指标适合用来筛掉死节点。
 """
 
+import base64
 import concurrent.futures as cf
 import socket
 import sys
 import urllib.request
 
-DEFAULT_URL = "https://raw.githubusercontent.com/NZNL31/node/main/clash.yaml"
+import fetch_subscriptions as fs
+
+DEFAULT_URL = "https://raw.githubusercontent.com/NZNL31/node/main/v2.txt"
 UDP_TYPES = {"hysteria2", "tuic", "wireguard", "hysteria"}
 TIMEOUT = 3.0
 
@@ -37,15 +40,34 @@ def tcp_ok(host, port):
 
 
 def load_nodes(src):
-    if "://" in src:
+    """支持三种输入：v2.txt（base64 链接列表）、明文链接列表、老的 Clash YAML。"""
+    if "://" in src and not src.startswith(("vless://", "vmess://", "trojan://")):
         raw = urllib.request.urlopen(src, timeout=30).read().decode()
     else:
         with open(src, encoding="utf-8") as f:
             raw = f.read()
-    import yaml
-    doc = yaml.safe_load(raw) or {}
-    return [(p.get("name", ""), p.get("type"), p.get("server"), p.get("port"))
-            for p in doc.get("proxies") or []]
+
+    text = raw.strip()
+    if "://" not in text:                     # 整体 base64
+        try:
+            text = base64.b64decode(text + "=" * (-len(text) % 4)).decode()
+        except Exception:
+            pass
+    if "proxies:" in text:                    # 兼容老的 Clash YAML
+        import yaml
+        doc = yaml.safe_load(text) or {}
+        return [(p.get("name", ""), p.get("type"), p.get("server"), p.get("port"))
+                for p in doc.get("proxies") or []]
+
+    out = []
+    for line in text.splitlines():
+        line = line.strip()
+        if "://" not in line:
+            continue
+        n = fs.parse_uri(line)
+        if n:
+            out.append((n.get("name", ""), n.get("type"), n.get("server"), n.get("port")))
+    return out
 
 
 def main():

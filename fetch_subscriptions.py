@@ -17,6 +17,7 @@ server 字段，结果 1352 个节点里有 1336 个的 server 是 "404: Not Fou
 """
 
 import base64
+import hashlib
 import ipaddress
 import json
 import os
@@ -31,6 +32,8 @@ SUBS_FILE = "subscriptions.json"
 OUT_FILE = "all_nodes.yaml"
 
 TIMEOUT = 25
+# 单个源最多收多少个节点（0 = 不限）。巨型全量 dump 靠这个兜底。
+SOURCE_LIMIT = int(os.environ.get("SOURCE_LIMIT", 1200))
 # 用 Clash 的 UA，多数订阅服务会直接返回 Clash YAML，比 base64 更好解析
 UA = "clash.meta/1.19.33"
 
@@ -392,6 +395,21 @@ def is_usable_server(server) -> bool:
                 or ip.is_unspecified or ip.is_link_local or ip.is_multicast)
 
 
+def sample_source(nodes, limit):
+    """
+    单个源超过上限时按哈希取样。
+
+    有些源是一整份几十万条的全量 dump（实测 rtwo2 的 curated.txt 有 5.5 万条、18.7MB），
+    全量收进来会让候选池远超探活预算 —— 没被探活的节点照样会发布，等于把垃圾灌进
+    订阅。按哈希取样既能保留多样性，又不受文件内排序影响（文件头部常常是同一批节点）。
+    """
+    if limit <= 0 or len(nodes) <= limit:
+        return nodes
+    return sorted(nodes, key=lambda n: hashlib.md5(
+        f"{str(n.get('server', '')).lower()}:{n.get('port')}".encode()
+    ).hexdigest())[:limit]
+
+
 def fill_sni(node: dict):
     """
     给开了 TLS 但没有 SNI 的节点补一个。
@@ -410,6 +428,25 @@ def fill_sni(node: dict):
     return node
 
 
+_CTRL = re.compile(r"[\x00-\x1f\x7f]")
+# SS 的加密方式必须在这张表里（或 2022-blake3-* 系列）。实测源里有把 cipher 写成
+# 字面量 "ss"、或者 base64 里混进 \r 变成 "^m" 的，客户端和 sing-box 都会因为
+# 「unknown method」拒绝加载整份配置 —— 一个坏节点能拖垮整份订阅。
+SS_METHODS = {
+    "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
+    "aes-128-cfb", "aes-192-cfb", "aes-256-cfb",
+    "aes-128-ctr", "aes-192-ctr", "aes-256-ctr",
+    "chacha20", "chacha20-ietf", "xchacha20",
+    "chacha20-ietf-poly1305", "xchacha20-ietf-poly1305",
+    "rc4-md5", "none",
+}
+
+
+def clean_str(value) -> str:
+    """去掉控制字符和首尾空白。"""
+    return _CTRL.sub("", str(value if value is not None else "")).strip()
+
+
 def normalize_node(node: dict):
     """校验从 YAML 直接拿到的节点，返回干净的字典或 None。"""
     if not isinstance(node, dict):
@@ -417,6 +454,10 @@ def normalize_node(node: dict):
     ntype = str(node.get("type", "")).lower()
     if ntype not in SUPPORTED:
         return None
+    # 先清掉所有字符串字段里的控制字符，再走校验
+    for k, v in list(node.items()):
+        if isinstance(v, str):
+            node[k] = clean_str(v)
     if not node.get("server") or not node.get("port"):
         return None
     if not is_usable_server(node.get("server")):
@@ -427,6 +468,21 @@ def normalize_node(node: dict):
         return None
     if not (0 < node["port"] < 65536):
         return None
+    if ntype == "ss":
+        method = str(node.get("cipher") or "").lower()
+        if method not in SS_METHODS and not method.startswith("2022-blake3-"):
+            return None
+        if method.startswith("2022-blake3-"):
+            # 2022 系列的 password 必须是 base64 的 16/32 字节密钥，否则客户端
+            # 加载整份配置时直接报 decode key 失败
+            try:
+                key = base64.b64decode(
+                    str(node.get("password", "")) + "=" * (-len(str(node.get("password", ""))) % 4),
+                    validate=True)
+            except Exception:
+                return None
+            if len(key) not in (16, 32):
+                return None
     for field in REQUIRED.get(ntype, ()):
         if not node.get(field):
             return None
@@ -566,6 +622,7 @@ def main():
             node = normalize_node(node)
             if node:
                 good.append(node)
+        good = sample_source(good, SOURCE_LIMIT)
         collected.append((host, kind, good, len(raw_nodes)))
 
     # 先按「完整度」清理：同一个节点被多个源写成不同完整度时只留最全的。
