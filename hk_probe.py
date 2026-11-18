@@ -47,6 +47,8 @@ import urllib.request
 import yaml
 
 ALL_NODES_FILE = "all_nodes.yaml"
+# 与 speed_test.py 一致：优先用 CI 提交的候选池
+CANDIDATES_FILE = "candidates.yaml"
 CACHE_FILE = "hk_latency.json"
 
 API = "https://check-host.net"
@@ -170,11 +172,13 @@ def parse_result(payload):
 
 
 def main():
-    if not os.path.exists(ALL_NODES_FILE):
-        print(f"[跳过] 找不到 {ALL_NODES_FILE}", file=sys.stderr)
+    src = CANDIDATES_FILE if os.path.exists(CANDIDATES_FILE) else ALL_NODES_FILE
+    if not os.path.exists(src):
+        print(f"[跳过] 找不到 {CANDIDATES_FILE} 或 {ALL_NODES_FILE}", file=sys.stderr)
         return
+    print(f"[香港探测] 输入: {src}")
 
-    with open(ALL_NODES_FILE, encoding="utf-8") as f:
+    with open(src, encoding="utf-8") as f:
         nodes = (yaml.safe_load(f) or {}).get("proxies") or []
 
     tcp_nodes = [n for n in nodes
