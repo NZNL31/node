@@ -1,0 +1,13 @@
+[Unit]
+Description=每 3 小时更新一次订阅
+
+[Timer]
+# 错开整点，避免和一堆 cron 抢资源
+OnCalendar=*-*-* 00/3:07:00
+# 服务器错过触发时间（关机/重启）后，启动时补跑一次
+Persistent=true
+AccuracySec=1min
+Unit=node-sub.service
+
+[Install]
+WantedBy=timers.target

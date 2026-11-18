@@ -1,0 +1,21 @@
+[Unit]
+Description=node 订阅聚合：拉取 → 香港探测 → 探活/校验 → 输出 v2.txt
+Documentation=https://github.com/NZNL31/node
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# 按实际部署路径改
+WorkingDirectory=/opt/node
+ExecStart=/opt/node/run.sh
+User=node
+Group=node
+# 一次性任务：失败不重启，等定时器下一轮再触发
+TimeoutStartSec=25min
+Nice=10
+# 敏感项（仓库 token 等）放在这里，不要写进仓库
+EnvironmentFile=-/opt/node/.env
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+# 服务器上要执行的脚本必须是 LF，否则 crontab/systemd 里会报
+# "/usr/bin/env: 'bash\r': No such file or directory"
+*.sh        text eol=lf
+run.sh      text eol=lf
+*.py        text eol=lf
+deploy/*.service text eol=lf
+deploy/*.timer   text eol=lf
+deploy/Dockerfile text eol=lf
+*.cmd       text eol=crlf

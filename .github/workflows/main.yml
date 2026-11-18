@@ -144,7 +144,7 @@ jobs:
           git config user.email "actions@github.com"
 
           git add v2.txt
-          git add hk_latency.json node_health.json ci_alive.json 2>/dev/null || true
+          git add hk_latency.json node_health.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
             exit 0
@@ -152,7 +152,7 @@ jobs:
 
           for i in 1 2 3 4; do
             git add v2.txt
-            git add hk_latency.json node_health.json ci_alive.json 2>/dev/null || true
+            git add hk_latency.json node_health.json 2>/dev/null || true
             git commit -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
             if git push origin HEAD:main; then
               echo "推送成功（第 $i 次尝试）"

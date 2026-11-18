@@ -95,13 +95,13 @@ UDP 出网限制很严；用 HTTPS(204) 去测它们，测的是「能不能跑 
 结论很硬：**「在美国机房通过 204」对国内可用性没有预测力**，唯一有预测力的是
 香港探测点。所以：
 
-- 香港探测的 30→50 个名额不再随机轮转，而是优先给「CI 已通过 204、但还没有
-  新鲜香港数据」的节点（speed_test.py 写 ci_alive.json，hk_probe.py 读）；
-- 排序仍然把香港测得通的排最前面；
+- 香港探测名额保持**无偏轮转**（最久未测优先 + 哈希打散）。曾试过优先测「CI 已通过
+  204」的节点，但那个群体本机可用率是 0%，等于把预算投给最没价值的人群，已撤销；
+- 排序把香港测得通的排最前面；
 - 客户端务必用 url-test / 自动选择 —— 它才是你这里唯一的真实观测点。
 
-想得到「只含你本机能用」的订阅，可以在本机跑 local_filter.py（可选工具，
-不参与 CI；项目运行不依赖任何本地机器）。
+想得到「只含你本机能用」的订阅，可以在本机跑 `local_filter.py`（可选工具，
+不参与项目运行）。
 
 ## 淘汰规则
 
@@ -179,6 +179,39 @@ UDP 出网限制很严；用 HTTPS(204) 去测它们，测的是「能不能跑 
 
 依赖锁在 `requirements.txt`。
 
+## 在服务器上运行（推荐）
+
+GitHub Actions 的 runner 全在境外，探活结果对国内可用性没有预测力（见上面的校准
+章节）。所以**真正该跑的地方是一台你能控制的服务器**：跑在哪，校验就是哪里的视角。
+项目不绑定任何具体机器，任何 Linux VPS 都行。
+
+```bash
+# 1. 取代码 + 依赖
+git clone https://github.com/NZNL31/node.git /opt/node && cd /opt/node
+python3 -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+
+# 2. 配置（发布方式、并发、可选纯净度标注）
+cp deploy/env.example .env && chmod 600 .env
+
+# 3. 跑一轮（sing-box 缺失会自动下载）
+./run.sh
+```
+
+三种部署方式，选一个：
+
+| 方式 | 做法 |
+|---|---|
+| **systemd 定时**（推荐） | `cp deploy/node-sub.* /etc/systemd/system/` → `systemctl enable --now node-sub.timer`（每 3 小时，错开整点，错过会补跑） |
+| cron | `7 */3 * * * /opt/node/run.sh` |
+| 容器 | `docker build -f deploy/Dockerfile -t node-subs .` 然后按文件顶部注释运行 |
+
+产物默认只落在服务器上（`PUBLISH=none`），配合 nginx 静态托管即可；想继续发布到
+GitHub 就设 `PUBLISH=git`（需要能 push 的凭据，见 `deploy/env.example` 里的说明）。
+
+`run.sh` 自带：单实例锁（定时重叠不会跑两份）、`logs/run-*.log` 日志（保留 30 个）、
+sing-box 自动下载、任一步失败则不产出。
+
 ## 本地运行
 
 ```bash
@@ -188,10 +221,32 @@ python hk_probe.py          # 可选，攒香港延迟数据
 python test_parse.py        # 解析/导出回归（不联网）
 python test_health.py       # 淘汰逻辑回归（不联网）
 
-# 探活与 204 校验需要一个 sing-box 二进制（放仓库根目录，命名 sing-box）
+# 探活与 204/STUN 校验需要一个 sing-box 二进制（放仓库根目录，命名 sing-box）
 #   https://github.com/SagerNet/sing-box/releases
 python speed_test.py        # 没有 sing-box 会自动降级为不探活、全部保留
 ```
+
+## 可选：出口 IP 纯净度（结合 ipquality）
+
+节点服务器地址 ≠ 出口 IP（CDN 前置、中转、家宽落地都会不同），所以纯净度必须
+**经节点**查：用与校验同一套槽位，从节点里请求一个 IP 回显服务拿到真实出口 IP，
+再交给 [NZNL31/ipquality](https://github.com/NZNL31/ipquality) 打分，把
+`[A 96]` 这样的标记写回节点名。
+
+```bash
+git clone https://github.com/NZNL31/ipquality ../ipquality
+pip install -r ../ipquality/requirements.txt
+
+export IPQUALITY_DIR=../ipquality
+python3 purity.py                 # 在 v2.txt 上原地标注
+PURITY_MIN=80 python3 purity.py   # 只保留评分 ≥80 的
+```
+
+在 `run.sh` 里设 `PURITY=1` 即可每轮自动执行。同一出口 IP 上常挂着几十个节点，
+分数按 IP 缓存 7 天（`ip_purity.json`），避免把 ip-api / IPQS 的免费额度打爆。
+
+> 注意：**纯净度 ≠ 可用性**。纯净度只说明这个 IP 不容易被风控拦（登录、支付、
+> 流媒体），能不能连、在不在墙外是另一回事 —— 这两件事在本项目里是两条独立流水线。
 
 ## 想知道哪些节点你这边真的能用
 

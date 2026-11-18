@@ -72,7 +72,6 @@ ALL_NODES_FILE = "all_nodes.yaml"
 V2_FILE = "v2.txt"
 PROBE_FILE = "probe.json"
 VERIFY_FILE = "verify.json"
-CI_ALIVE_FILE = "ci_alive.json"
 HK_FILE = "hk_latency.json"
 HEALTH_FILE = "node_health.json"
 
@@ -1116,17 +1115,6 @@ def main():
     print(f"STUN 校验（UDP 协议）：{len(udp_ok)}/{len(udp_nodes)} 通过")
 
     verified |= udp_ok
-    # 记下这一轮通过校验的端点，供下一轮 hk_probe.py 优先探测 —— 香港探测每轮只有
-    # 30 个名额（check-host.net 限流），而它是唯一与「国内可用」相关的信号
-    # （实测：香港测得通的节点本机可用率 27.3%，只通过 CI 204 的节点 0.0%）。
-    try:
-        with open(CI_ALIVE_FILE, "w", encoding="utf-8") as f:
-            json.dump({"updated": int(time.time()),
-                       "keys": sorted({node_key(n) for n in probe_nodes
-                                       if n["name"] in verified})},
-                      f, ensure_ascii=False, indent=1)
-    except Exception as e:
-        print(f"[警告] 写 {CI_ALIVE_FILE} 失败: {e}")
     results = [(d, n) for d, n in results if n["name"] in verified]
     print(f"探活完成：{len(results)}/{len(probe_nodes)} 个节点通过协议级校验")
 
