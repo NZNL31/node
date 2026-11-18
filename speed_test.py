@@ -1236,7 +1236,10 @@ def main():
               "用 PROBE_VIA 换出口：", file=sys.stderr)
         print("      PROBE_VIA=socks5://127.0.0.1:7890 ./run.sh", file=sys.stderr)
         print("   3) 先小样本验证链路再全量：MAX_PROBE=50 ./run.sh", file=sys.stderr)
-        print(f"   4) 抓 sing-box 日志：PROBE_LOG_LEVEL=debug ./run.sh"
+        print("   4) 如果这台机器有「按连接询问」的防火墙（Little Snitch / LuLu 等），"
+              "给 sing-box 二进制建一条「任意目标/任意端口」的永久允许规则 ——"
+              "否则每条连接都会卡在待审核队列里", file=sys.stderr)
+        print(f"   5) 抓 sing-box 日志：PROBE_LOG_LEVEL=debug ./run.sh"
               f"（会写到 {SINGBOX_LOG}）", file=sys.stderr)
         try:
             tail = open(SINGBOX_LOG, encoding="utf-8", errors="replace").read().splitlines()[-20:]
