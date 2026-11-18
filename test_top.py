@@ -71,3 +71,47 @@ got2 = base64.b64decode(open("top3b.txt", encoding="utf-8").read()).decode().spl
 assert len(got2) == 1, got2
 
 print("选优选链路回归测试全部通过")
+
+# 6) ip_lookup --json 的真实结构：分数嵌在 score.score，ASN 只在 org 里
+import types
+
+
+class _CP:
+    def __init__(self, out):
+        self.stdout = out
+        self.returncode = 0
+
+
+PAYLOAD = {
+    "ip": "1.2.3.4", "org": "AS13335 Cloudflare, Inc.", "country": "US",
+    "score": {"score": 84.5, "grade": "B", "confidence": 92,
+              "verdict": "可用", "dimensions": []},
+}
+_real_run = purity.subprocess.run
+purity.subprocess.run = lambda *a, **k: _CP(json.dumps(PAYLOAD))
+try:
+    cache = {}
+    score, grade, cached = purity.score_ip("1.2.3.4", cache)
+    assert score == 84.5 and grade == "B" and cached is False, (score, grade, cached)
+    assert cache["1.2.3.4"]["asn"] == "AS13335", cache
+    assert cache["1.2.3.4"]["country"] == "US"
+    # 第二次必须命中缓存、不再调用外部命令
+    calls = []
+    purity.subprocess.run = lambda *a, **k: calls.append(1) or _CP("{}")
+    score2, grade2, cached2 = purity.score_ip("1.2.3.4", cache)
+    assert cached2 is True and score2 == 84.5 and not calls
+finally:
+    purity.subprocess.run = _real_run
+
+# 7) 兼容：顶层就是数字的老实现 / 私有地址这类没有分数的返回
+purity.subprocess.run = lambda *a, **k: _CP(json.dumps({"score": 77, "grade": "C"}))
+try:
+    assert purity.score_ip("9.9.9.9", {})[0] == 77
+    purity.subprocess.run = lambda *a, **k: _CP(json.dumps(
+        {"ip": "10.0.0.1", "applicable": False, "error": "私有地址"}))
+    assert purity.score_ip("10.0.0.1", {})[0] is None
+finally:
+    purity.subprocess.run = _real_run
+
+print("ipquality JSON 契约断言通过")
+

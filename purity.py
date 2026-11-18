@@ -24,6 +24,7 @@
 import base64
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -100,17 +101,31 @@ def score_ip(ip, cache):
     except Exception as e:
         print(f"[警告] ipquality 调用失败 {ip}: {type(e).__name__}")
         return None, None, False
-    # ip_lookup --json 的字段命名可能随版本变，这里做宽松取值
-    score = data.get("score", data.get("ip_score", data.get("total")))
+    # ip_lookup --json 的顶层是 {ip, org, country, ..., score: {...}}，
+    # 真正分数嵌在 score.score 里（score 本身是个对象，含 grade/confidence/dimensions）。
+    # 早期写成 data["score"] 会把整个对象当成数字，直接崩。
+    sc = data.get("score")
     grade = data.get("grade") or data.get("level")
-    if score is None:
+    confidence = data.get("confidence")
+    if isinstance(sc, dict):
+        score = sc.get("score")
+        grade = sc.get("grade") or grade
+        confidence = sc.get("confidence", confidence)
+    elif isinstance(sc, (int, float)):
+        score = sc
+    else:
+        score = data.get("ip_score") or data.get("total")
+    if not isinstance(score, (int, float)):
         print(f"[警告] ipquality 未给出分数 {ip}: {str(data)[:120]}")
         return None, None, False
-    # asn / country 用于 top-N 去重（同一 ASN 不能占满名额）
-    asn = data.get("asn") or (data.get("basic") or {}).get("asn")
+    # asn：payload 里没有独立字段，只在 org 里（形如 "AS13335 Cloudflare, Inc."）
+    asn = data.get("asn")
+    if not asn:
+        m = re.search(r"\bAS\d+\b", str(data.get("org") or ""))
+        asn = m.group(0) if m else None
     country = data.get("country") or (data.get("basic") or {}).get("country")
-    cache[ip] = {"score": score, "grade": grade, "asn": asn,
-                 "country": country, "ts": int(now)}
+    cache[ip] = {"score": score, "grade": grade, "asn": asn, "country": country,
+                 "confidence": confidence, "ts": int(now)}
     return score, grade, False
 
 
