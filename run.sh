@@ -82,10 +82,16 @@ candidates_fresh() {
   [ "$age" -lt "$CANDIDATES_MAX_AGE_H" ]
 }
 
-if [ "$PUBLISH" = "git" ]; then
+# 同步远端：即使 PUBLISH=none 也要做 —— CI 产出的 candidates.yaml 在远端，
+# 不同步就可能拿到过期的候选池。只在工作区干净时快进，不覆盖本地改动。
+if git rev-parse --git-dir >/dev/null 2>&1; then
   log "[0/4] 同步仓库"
   git fetch -q origin || log "[警告] fetch 失败，继续用本地状态"
-  git merge -q --ff-only origin/main 2>/dev/null || log "[提示] 本地有改动或已分叉，跳过合并"
+  if [ -z "$(git status --porcelain 2>/dev/null)" ]; then
+    git merge -q --ff-only origin/main 2>/dev/null || log "[提示] 已分叉，跳过合并"
+  else
+    log "[提示] 工作区有改动，跳过合并（不想覆盖你正在改的文件）"
+  fi
 fi
 
 if candidates_fresh; then
