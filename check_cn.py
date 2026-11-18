@@ -71,7 +71,12 @@ def load_nodes(src):
 
 
 def main():
-    src = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_URL
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    out_json = ""
+    for i, a in enumerate(sys.argv):
+        if a == "--json" and i + 1 < len(sys.argv):
+            out_json = sys.argv[i + 1]
+    src = args[0] if args else DEFAULT_URL
     nodes = load_nodes(src)
     if not nodes:
         sys.exit(f"{src} 里没有找到节点")
@@ -79,12 +84,29 @@ def main():
     print(f"共 {len(nodes)} 个节点，开始 TCP 探测（超时 {TIMEOUT}s）…")
     results = []
     with cf.ThreadPoolExecutor(max_workers=64) as pool:
-        futs = {pool.submit(tcp_ok, s, p): t for _, t, s, p in nodes}
+        reachable = []
+        futs = {pool.submit(tcp_ok, s, p): (t, s, p) for _, t, s, p in nodes}
         for i, fut in enumerate(cf.as_completed(futs), 1):
-            results.append((futs[fut], fut.result()))
+            typ, srv, prt = futs[fut]
+            ok = fut.result()
+            if ok:
+                reachable.append(f"{str(srv).lower()}:{prt}")
+            results.append((typ, ok))
             if i % 100 == 0:
                 ok = sum(1 for _, r in results if r)
                 print(f"  {i}/{len(nodes)}，可达 {ok}")
+
+    # 机器可读输出：把「这台机器到哪些节点 TCP 通」写成 json，供流水线当附加信号
+    if out_json:
+        import json as _json
+        import os as _os
+        import socket as _socket
+        keys = reachable
+        _json.dump({"updated": int(__import__("time").time()),
+                    "vantage": _socket.gethostname(),
+                    "ok": sorted(set(keys))},
+                   open(out_json, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        print(f"\n已写出 {out_json}（{len(set(keys))} 个端点可达）")
 
     total, ok_total = len(results), sum(1 for _, r in results if r)
     print(f"\n总体：{ok_total}/{total} = {ok_total / total * 100:.1f}%")
