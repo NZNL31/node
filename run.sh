@@ -86,6 +86,32 @@ else
   log "[2/4] 跳过香港探测（HK_PROBE=0）；排序只看本机测得的延迟"
 fi
 
+# 探活前置检查：先确认「这台机器能把 HTTPS 打出去」。
+# 出网被拦（云厂商限制 / 中间设备干扰）时，全量探活只会得到 0，白跑几分钟。
+preflight_egress() {
+  local url="https://www.gstatic.com/generate_204" code
+  if [ -n "${PROBE_VIA:-}" ]; then
+    local hostport="${PROBE_VIA#*://}"
+    case "$PROBE_VIA" in
+      socks5://*|socks5h://*) code=$(curl -sS -m 10 --socks5-hostname "$hostport" -o /dev/null -w '%{http_code}' "$url" 2>/dev/null || echo 000) ;;
+      *)                      code=$(curl -sS -m 10 -x "$PROBE_VIA" -o /dev/null -w '%{http_code}' "$url" 2>/dev/null || echo 000) ;;
+    esac
+    log "[预检] 经 $PROBE_VIA 出网 → HTTP $code"
+  else
+    code=$(curl -sS -m 10 -o /dev/null -w '%{http_code}' "$url" 2>/dev/null || echo 000)
+    log "[预检] 直连出网 → HTTP $code"
+  fi
+  if [ "$code" != "204" ]; then
+    log "[错误] 探测路径不通（HTTP $code）。这时候继续探活只会得到 0，先修出口："
+    log "       python3 doctor.py                      # 判断是时间/证书/出网/到节点 哪一层"
+    log "       PROBE_VIA=socks5://127.0.0.1:7890 ./run.sh   # 用本地代理换出口"
+    exit 1
+  fi
+}
+
+log "[2.5/4] 探测路径预检"
+preflight_egress
+
 log "[3/4] 探活 + 协议级校验 + 输出"
 python3 speed_test.py || { log "[错误] 探活/校验失败，本轮不产出"; exit 1; }
 

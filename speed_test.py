@@ -1198,6 +1198,19 @@ def main():
 
     print(f"延迟探活：{len(results)}/{len(probe_nodes)} 个节点隧道能通")
 
+    # 一个都不通，几乎不可能是「节点全死了」，而是这台机器的出网被拦了：
+    # 实测同一批节点在美国机房 725/765 能过 204，所以 0 只说明探测路径有问题。
+    # 直接失败、把排查方向打出来，别让它静默产出空订阅。
+    if not results:
+        print("[错误] 所有节点都没通过延迟探活 —— 先怀疑探测路径，而不是节点：", file=sys.stderr)
+        print("   1) python3 doctor.py 看是时间/证书/出网/到节点 哪一层断",
+              file=sys.stderr)
+        print("   2) 如果这台机器直连被拦（云厂商限制或中间设备干扰），"
+              "用 PROBE_VIA 换出口：", file=sys.stderr)
+        print("      PROBE_VIA=socks5://127.0.0.1:7890 ./run.sh", file=sys.stderr)
+        print("   3) 先小样本验证链路再全量：MAX_PROBE=50 ./run.sh", file=sys.stderr)
+        sys.exit(1)
+
     # 关键一步：延迟通过只说明隧道通了，不说明出口是好的。这一步经每个节点发一次
     # 真实 HTTP 请求，要求状态码必须是 204 才认为可用（详见 verify_204 的注释）。
     by_name2 = {n["name"]: n for n in probe_nodes}
