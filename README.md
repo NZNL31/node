@@ -49,10 +49,10 @@ hk_probe.py              ← 借 check-host.net 的香港探测点测 TCP 延迟
       ▼
 speed_test.py            ← 剔除 sing-box 跑不了的 → sing-box check 逐条校验
       │                    ① 延迟探活：/proxies/{name}/delay 走真实隧道
-      │                    ② 204 校验：经节点发真实 HTTPS 请求，必须收到 204
+      │                    ② 协议级校验：TCP 走 204，UDP 走 STUN
       │                    ③ 连续失败计数 → 淘汰（带香港免死）
       ▼
-v2.txt                   ← 只发布通过 204 校验的节点
+v2.txt                   ← 只发布通过协议级校验的节点
 ```
 
 任何一步失败都**不产出**：宁可这一轮不更新、保留上一版能用的订阅。
@@ -65,13 +65,20 @@ v2.txt                   ← 只发布通过 204 校验的节点
 | 级别 | 做什么 | 能发现什么 |
 |---|---|---|
 | ① 延迟探活 | sing-box 的 `/proxies/{name}/delay` 走真实代理隧道请求 `generate_204` | 节点连不上、握手失败 |
-| ② 204 校验 | 经该节点发一次真实 HTTPS 请求，**要求状态码 204** | 出口被劫持、被插页、只放行特定域名 |
+| ② 协议级校验 | TCP 协议（vless/vmess/trojan/ss）：经节点发真实 HTTPS 请求，**要求 204**<br>UDP 协议（hysteria2/tuic）：经节点发 **STUN binding 请求**，要求收到 binding success | 出口被劫持、被插页、只放行特定域名；UDP 隧道通了但转发不通 |
 
 **为什么必须有 ②**：sing-box 的 delay 接口**不校验状态码**。实测同一个节点打
-`generate_204` 和打一个必然 404 的路径都会返回延迟 —— 12/12 个节点两个路径都"通"。
-也就是说 delay 只能证明隧道建立了，不能证明出口是好的。这一步用 24 个并发槽位
-（每个槽位一个 inbound + 一个 selector，把请求钉在指定节点上）完成，实测
-56 个隧道通的节点里有 4 个拿不到 204 被剔除。
+`generate_204` 和打一个必然 404 的路径都会返回延迟 —— 12/12 个节点两个路径都「通」。
+也就是说 delay 只能证明隧道建立了，不能证明出口是好的。
+
+② 用 24 个并发槽位实现（每个槽位一个 `mixed` inbound + 一个 `selector`，用
+`route.rules` 把 `in-i` 钉到 `sel-i`），实测 768 个隧道通的节点里有 26 个拿不到
+204 被剔除。
+
+**UDP 协议单独测的原因**：`hysteria2` / `tuic` 是 UDP 协议，而 GitHub runner 的
+UDP 出网限制很严；用 HTTPS(204) 去测它们，测的是「能不能跑 TCP」而不是「能不能
+跑它自己的协议」。所以这两类走 STUN（对齐 v2rayN 自己的 `stun:` 测速类型）：
+经 sing-box 的 SOCKS5 UDP 中继发 STUN binding 请求，收到 binding success 才算通过。
 
 ## 淘汰规则
 
@@ -141,7 +148,7 @@ v2.txt                   ← 只发布通过 204 校验的节点
 | `HK_BATCH` / `HK_TTL_H` / `HK_PRUNE_DAYS` | 30 / 96 / 30 | 香港探测批量、过期小时、孤儿条目保留天数 |
 | `MAX_PROBE` | 6000 | 最多探活多少个；超限按哈希取样 |
 | `PROBE_CONCURRENCY` / `PROBE_TIMEOUT_MS` | 64 / 4000 | 延迟探活的并发与超时 |
-| `VERIFY_SLOTS` / `VERIFY_TIMEOUT` | 24 / 8 | 204 校验的并发槽位与单次超时 |
+| `VERIFY_SLOTS` / `VERIFY_TIMEOUT` | 24 / 8 | 协议级校验（204 / STUN）的并发槽位与单次超时 |
 | `MAX_OUTPUT` | 1500 | 输出上限，超出才按协议配额裁剪 |
 | `DEAD_ROUNDS` | 2 | 连续几轮失败才淘汰（1 = 立即） |
 | `MIN_KEEP` | 150 | 淘汰地板 |

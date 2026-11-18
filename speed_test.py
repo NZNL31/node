@@ -55,6 +55,8 @@ import hashlib
 import json
 import os
 import queue as queue_mod
+import socket
+import struct
 import subprocess
 import sys
 import threading
@@ -88,6 +90,11 @@ FEATURED_SIZE = int(os.environ.get("FEATURED_SIZE", 30))
 # 204 校验的并发槽位数与单次超时
 VERIFY_SLOTS = int(os.environ.get("VERIFY_SLOTS", 24))
 VERIFY_TIMEOUT = float(os.environ.get("VERIFY_TIMEOUT", 8))
+VERIFY_PORT_BASE = 7900
+# UDP 协议（hysteria2 / tuic）用 STUN 校验，对齐 v2rayN 自己的 stun: 探测思路
+STUN_SERVERS = [("stun.cloudflare.com", 3478), ("stun.l.google.com", 19302)]
+# 这些类型走 UDP 校验，其余走 204 校验
+UDP_PROTOCOLS = {"hysteria2", "tuic"}
 # 连续多少轮真实探活失败就淘汰。设 1 = 单轮失败即删（激进），默认 2 留一轮容错，
 # 因为并发 32 时有相当一批是排队超时/被临时限流，不是真死。
 DEAD_ROUNDS = int(os.environ.get("DEAD_ROUNDS", 2))
@@ -654,7 +661,7 @@ def verify_204(nodes, slots=VERIFY_SLOTS, timeout=VERIFY_TIMEOUT):
     """
     if not nodes:
         return set(), {}
-    port_base = 7900
+    port_base = VERIFY_PORT_BASE
     cfg = build_verify_config(nodes, slots, port_base)
     if cfg is None:
         return set(), {}
@@ -710,6 +717,140 @@ def verify_204(nodes, slots=VERIFY_SLOTS, timeout=VERIFY_TIMEOUT):
         except subprocess.TimeoutExpired:
             proc.kill()
     return verified, statuses
+
+
+def _socks5_udp_associate(port, timeout):
+    """在本地 mixed 入站上开一条 SOCKS5 UDP ASSOCIATE，返回 (tcp_sock, 中继地址)。"""
+    s = socket.create_connection(("127.0.0.1", port), timeout=timeout)
+    s.settimeout(timeout)
+    try:
+        s.sendall(b"\x05\x01\x00")
+        if s.recv(2) != b"\x05\x00":
+            s.close()
+            return None
+        s.sendall(b"\x05\x03\x00\x01" + b"\x00" * 4 + b"\x00\x00")
+        resp = s.recv(10)
+        if len(resp) < 10 or resp[1] != 0:
+            s.close()
+            return None
+        ip = socket.inet_ntoa(resp[4:8])
+        if ip == "0.0.0.0":
+            ip = "127.0.0.1"
+        return s, (ip, struct.unpack("!H", resp[8:10])[0])
+    except Exception:
+        try:
+            s.close()
+        except Exception:
+            pass
+        return None
+
+
+def stun_via(port, timeout, servers=STUN_SERVERS):
+    """
+    经本地代理端口发一个 UDP STUN binding 请求，收到 binding success 才算通。
+
+    为什么 UDP 协议要单独测：hysteria2 / tuic 是 UDP 协议，而 GitHub runner 的
+    UDP 出网限制很严；用 HTTPS(204) 去测它们，测的是「能不能跑 TCP」，不是
+    「能不能跑它自己的协议」。v2rayN 自己的测速类型里也有 stun:/dns: 这类
+    UDP 探测，这里对齐同样的思路。
+    """
+    for host, port_num in servers:
+        try:
+            ip = socket.gethostbyname(host)
+        except Exception:
+            continue
+        got = _socks5_udp_associate(port, timeout)
+        if not got:
+            continue
+        tcp, relay = got
+        udp = None
+        try:
+            udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            udp.settimeout(timeout)
+            tid = os.urandom(12)
+            stun = b"\x00\x01\x00\x00\x21\x12\xa4\x42" + tid
+            pkt = (b"\x00\x00\x00\x01" + socket.inet_aton(ip)
+                   + struct.pack("!H", port_num) + stun)
+            udp.sendto(pkt, relay)
+            data, _ = udp.recvfrom(1500)
+            if len(data) < 10:
+                continue
+            atyp = data[3]
+            hlen = 4 + (4 if atyp == 1 else 16 if atyp == 4 else 1 + data[4]) + 2
+            payload = data[hlen:]
+            # 0x0101 = STUN Binding Success Response
+            if len(payload) >= 20 and payload[0:2] == b"\x01\x01":
+                return True
+        except Exception:
+            pass
+        finally:
+            if udp:
+                udp.close()
+            try:
+                tcp.close()
+            except Exception:
+                pass
+    return False
+
+
+def verify_udp(nodes, slots=VERIFY_SLOTS, timeout=VERIFY_TIMEOUT):
+    """UDP 协议（hysteria2 / tuic）的校验：并发槽位 + STUN，与 verify_204 同构。"""
+    if not nodes:
+        return set()
+    port_base = VERIFY_PORT_BASE
+    cfg = build_verify_config(nodes, slots, port_base)
+    if cfg is None:
+        return set()
+    with open(VERIFY_FILE, "w", encoding="utf-8") as f:
+        json.dump(cfg, f, ensure_ascii=False)
+
+    proc = subprocess.Popen([SINGBOX_BIN, "run", "-c", VERIFY_FILE],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+    ok = set()
+    try:
+        for _ in range(40):
+            time.sleep(0.5)
+            if proc.poll() is not None:
+                print(f"[警告] UDP 校验实例启动失败: {(proc.stderr.read() or '')[:300]}")
+                return set()
+            try:
+                with urllib.request.urlopen(f"{API_BASE}/version", timeout=2):
+                    break
+            except Exception:
+                continue
+
+        queue = queue_mod.Queue()
+        for n in nodes:
+            queue.put(n)
+        lock = threading.Lock()
+
+        def worker(idx):
+            selector = f"sel-{idx}"
+            port = port_base + idx
+            while True:
+                try:
+                    n = queue.get_nowait()
+                except queue_mod.Empty:
+                    return
+                if not select_proxy(selector, n["name"]):
+                    continue
+                if stun_via(port, timeout):
+                    with lock:
+                        ok.add(n["name"])
+
+        threads = [threading.Thread(target=worker, args=(i,), daemon=True)
+                   for i in range(slots)]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
+    finally:
+        proc.terminate()
+        try:
+            proc.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            proc.kill()
+    return ok
 
 
 def probe_one(name: str):
@@ -960,12 +1101,22 @@ def main():
     # 关键一步：延迟通过只说明隧道通了，不说明出口是好的。这一步经每个节点发一次
     # 真实 HTTP 请求，要求状态码必须是 204 才认为可用（详见 verify_204 的注释）。
     by_name2 = {n["name"]: n for n in probe_nodes}
-    delay_alive = {n["name"]: n for _, n in results if n["name"] in by_name2}
-    verified, statuses = verify_204(list(delay_alive.values()))
-    print(f"204 校验：{len(verified)}/{len(delay_alive)} 通过；"
+    delay_alive = [n for _, n in results if n["name"] in by_name2]
+    udp_nodes = [n for n in delay_alive if n["type"] in UDP_PROTOCOLS]
+    tcp_nodes = [n for n in delay_alive if n["type"] not in UDP_PROTOCOLS]
+
+    # TCP 协议：经节点发真实 HTTPS 请求，必须 204
+    verified, statuses = verify_204(tcp_nodes)
+    print(f"204 校验（TCP 协议）：{len(verified)}/{len(tcp_nodes)} 通过；"
           f"状态码分布 {dict(sorted(statuses.items(), key=lambda x: str(x[0])))}")
+
+    # UDP 协议：经节点发 STUN binding 请求，必须收到 binding success
+    udp_ok = verify_udp(udp_nodes)
+    print(f"STUN 校验（UDP 协议）：{len(udp_ok)}/{len(udp_nodes)} 通过")
+
+    verified |= udp_ok
     results = [(d, n) for d, n in results if n["name"] in verified]
-    print(f"探活完成：{len(results)}/{len(probe_nodes)} 个节点经 204 校验可用")
+    print(f"探活完成：{len(results)}/{len(probe_nodes)} 个节点通过协议级校验")
 
     # 淘汰「连续 DEAD_ROUNDS 轮都连不上」的节点。延迟不参与淘汰，连接失败参与。
     alive = verified
