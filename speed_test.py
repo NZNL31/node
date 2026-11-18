@@ -961,16 +961,28 @@ def verify_udp(nodes, slots=VERIFY_SLOTS, timeout=VERIFY_TIMEOUT):
 
 
 def probe_one(name: str):
-    """让代理核心走指定节点请求一次，返回延迟毫秒；失败返回 None。"""
+    """
+    让代理核心走指定节点请求一次，返回 (延迟毫秒, 失败原因)。
+
+    失败原因必须留住 —— HTTP 状态码本身就是判据：
+      404  → 探活配置里没有这个节点（我们自己配置/命名的问题，不是节点问题）
+      503  → 拨号或握手失败（节点或链路）
+      504  → 超时（给的时间太短，或链路慢/不通）
+    以前一律吞成 None，现场只能看到「0/N」，没法区分是哪一类。
+    """
     q = urllib.parse.urlencode({"timeout": TIMEOUT_MS, "url": TEST_URL})
     url = f"{API_BASE}/proxies/{urllib.parse.quote(str(name), safe='')}/delay?{q}"
     try:
         with urllib.request.urlopen(url, timeout=TIMEOUT_MS / 1000 + 5) as resp:
             data = json.loads(resp.read().decode())
         delay = data.get("delay")
-        return int(delay) if isinstance(delay, int) and delay > 0 else None
-    except Exception:
-        return None
+        if isinstance(delay, int) and delay > 0:
+            return delay, None
+        return None, "empty"
+    except urllib.error.HTTPError as e:
+        return None, f"HTTP {e.code}"
+    except Exception as e:
+        return None, type(e).__name__
 
 
 def probe_all(nodes, label="测速"):
@@ -978,17 +990,23 @@ def probe_all(nodes, label="测速"):
     out = []
     if not nodes:
         return out
+    reasons = {}
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
         futures = {pool.submit(probe_one, n["name"]): n for n in nodes}
         done = 0
         for fut in as_completed(futures):
             node = futures[fut]
-            delay = fut.result()
+            delay, why = fut.result()
             done += 1
             if delay:
                 out.append((delay, node))
+            elif why:
+                reasons[why] = reasons.get(why, 0) + 1
             if done % 50 == 0:
                 print(f"  {label}进度 {done}/{len(nodes)}，可用 {len(out)}")
+    if reasons:
+        top = sorted(reasons.items(), key=lambda kv: -kv[1])
+        print(f"  {label}失败原因分布: " + ", ".join(f"{k}×{v}" for k, v in top[:6]))
     return out
 
 
