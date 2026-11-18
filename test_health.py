@@ -67,4 +67,12 @@ k4, d4, _b4, h4 = st.apply_health([h], set(), {"hk-ok"}, {"nodes": {}}, 1, 1,
 print("香港测通但 CI 失败:", "保留" if k4 else "被淘汰")
 assert len(k4) == 1 and not d4, "香港测得通的节点必须豁免淘汰"
 
+# 香港探测名额应优先给「CI 已通过 204、但还没有香港数据」的节点
+import hk_probe as hkp
+nodes = [{"server": f"1.1.1.{i}", "port": 443} for i in range(1, 6)]
+batch = hkp.pick_batch(nodes, {"nodes": {}}, 2, ci_alive={"1.1.1.3:443", "1.1.1.4:443"})
+picked = {t[4]["server"] for t in batch}
+print("香港探测优先取:", sorted(picked))
+assert picked == {"1.1.1.3", "1.1.1.4"}, picked
+
 print("\n全部断言通过")

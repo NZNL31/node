@@ -48,6 +48,7 @@ import yaml
 
 ALL_NODES_FILE = "all_nodes.yaml"
 CACHE_FILE = "hk_latency.json"
+CI_ALIVE_FILE = "ci_alive.json"
 
 API = "https://check-host.net"
 NODE = os.environ.get("HK_NODE", "hk1.node.check-host.net")
@@ -109,13 +110,36 @@ def prune_cache(cache, nodes):
     return before - len(cache["nodes"])
 
 
-def pick_batch(nodes, cache, batch):
+def load_ci_alive():
     """
-    挑这一轮要测的节点：没测过的优先，其次是最久没测过的。
+    读 speed_test.py 上一轮写下的「通过 204 校验」的端点列表。
 
-    同一批里按 key 的哈希排序，而不是按节点池顺序。节点池是按订阅源顺序拼起来的，
+    用途：香港探测每轮只有 30 个名额（check-host.net 限流），而它测出来的结果是
+    唯一与「国内能不能用」相关的信号（实测：香港测得通的节点本机可用率 27.3%，
+    只通过 CI 的 204 的节点 0.0%）。所以名额要花在「CI 已证明活着、但还没有香港
+    数据」的节点上，而不是随机轮转。
+    """
+    if not os.path.exists(CI_ALIVE_FILE):
+        return set()
+    try:
+        with open(CI_ALIVE_FILE, encoding="utf-8") as f:
+            d = json.load(f)
+        keys = d.get("keys")
+        return set(keys) if isinstance(keys, list) else set()
+    except Exception:
+        return set()
+
+
+def pick_batch(nodes, cache, batch, ci_alive=frozenset()):
+    """
+    挑这一轮要测的节点，优先级：
+
+      1. CI 侧通过 204、但还没有新鲜香港数据的 —— 最可能可用，名额优先给它
+      2. 其它没测过/过期的 —— 按最久没测过排序
+
+    同一档内按 key 的哈希排序，而不是按节点池顺序。节点池是按订阅源顺序拼起来的，
     按顺序取会让前几轮全落在一个源上（实测第一轮 20 个全是同一个源里的伊朗节点），
-    哈希排序能让每批都散布在整个池子里，取样更有代表性。
+    哈希排序能让每批都散布在整个池子里。
     """
     now = time.time()
     fresh = []
@@ -124,10 +148,11 @@ def pick_batch(nodes, cache, batch):
         entry = cache["nodes"].get(key)
         if entry and now - entry.get("ts", 0) < TTL_H * 3600:
             continue
-        fresh.append((entry.get("ts", 0) if entry else 0,
+        tier = 0 if key in ci_alive else 1
+        fresh.append((tier, entry.get("ts", 0) if entry else 0,
                       hashlib.md5(key.encode()).hexdigest(), key, n))
 
-    fresh.sort(key=lambda x: (x[0], x[1]))
+    fresh.sort(key=lambda x: (x[0], x[1], x[2]))
     return fresh[:batch]
 
 
@@ -176,7 +201,7 @@ def main():
     tcp_nodes = [n for n in nodes
                  if n.get("type") not in UDP_TYPES and n.get("server") and n.get("port")]
     cache = load_cache()
-    batch = pick_batch(tcp_nodes, cache, BATCH)
+    batch = pick_batch(tcp_nodes, cache, BATCH, load_ci_alive())
 
     print(f"香港探测点：可测节点 {len(tcp_nodes)} 个，本轮取 {len(batch)} 个"
           f"（缓存里已有 {len(cache['nodes'])} 条）")
