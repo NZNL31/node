@@ -1,0 +1,130 @@
+name: Publish Subscription
+
+# 手动触发的「完整发布」流程：拉源 → 探活/协议级校验 → 写 v2.txt。
+#
+# 为什么不跟 candidates 那个定时任务合并：探活的结论只在「从哪台机器测」这个前提下
+# 有意义。默认流程只做供给聚合，探活由你自己的服务器（run.sh）做；这个工作流是
+# 「暂时没有可用服务器」时的兜底 —— 用 GitHub 的 runner 当探活机。
+#
+# 代价要清楚：runner 在境外（美国/欧洲），测出来的是「从那里能不能连」，
+# 与国内可用性相关性很弱（实测同一批节点：美国侧 725/765 通过，国内机器仅 41/716 可用）。
+# 所以它产出的订阅只适合「先有一份能跑的东西」，不适合当长期质量门槛。
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_probe:
+        description: "最多探活多少个节点（0 = 全量）"
+        required: false
+        default: "0"
+      max_output:
+        description: "最多输出多少条"
+        required: false
+        default: "1500"
+      probe_timeout_ms:
+        description: "单节点探活超时（毫秒）"
+        required: false
+        default: "4000"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-subscription
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: 签出仓库
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 回归测试
+        run: |
+          python test_parse.py
+          python test_top.py
+          python test_health.py
+
+      - name: 下载 sing-box
+        env:
+          SINGBOX_VERSION: 1.14.4
+        run: |
+          curl -fL --retry 3 -o sing-box.tar.gz \
+            "https://github.com/SagerNet/sing-box/releases/download/v${SINGBOX_VERSION}/sing-box-${SINGBOX_VERSION}-linux-amd64.tar.gz"
+          tar -xzf sing-box.tar.gz
+          mv "sing-box-${SINGBOX_VERSION}-linux-amd64/sing-box" .
+          chmod +x sing-box
+          ./sing-box version
+
+      - name: 探活 + 协议级校验
+        env:
+          SINGBOX_BIN: ./sing-box
+          MAX_PROBE: ${{ inputs.max_probe }}
+          MAX_OUTPUT: ${{ inputs.max_output }}
+          PROBE_TIMEOUT_MS: ${{ inputs.probe_timeout_ms }}
+          PROBE_CONCURRENCY: 64
+          VERIFY_SLOTS: 24
+          VERIFY_TIMEOUT: 8
+        run: |
+          # max_probe=0 表示不限制：给一个足够大的值，交回脚本自己判断
+          if [ "$MAX_PROBE" = "0" ]; then export MAX_PROBE=100000; fi
+          python speed_test.py
+
+      - name: 校验产物
+        run: |
+          python - <<'PY'
+          import base64
+          import collections
+          import sys
+          sys.path.insert(0, ".")
+          import fetch_subscriptions as fs
+
+          raw = base64.b64decode(open("v2.txt", encoding="utf-8").read()).decode()
+          uris = [l for l in raw.splitlines() if "://" in l]
+          if not uris:
+              sys.exit("v2.txt 里没有链接")
+          broken = [u[:60] for u in uris if not fs.parse_uri(u)]
+          if broken:
+              sys.exit(f"{len(broken)} 条无法回灌解析: {broken[:3]}")
+          schemes = collections.Counter(u.split("://")[0] for u in uris)
+          print(f"v2.txt {len(uris)} 条: {dict(schemes)}")
+          PY
+
+      - name: 提交并推送
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add v2.txt hk_latency.json node_health.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "没有变化，跳过提交"
+            exit 0
+          fi
+          for i in 1 2 3 4; do
+            git add v2.txt hk_latency.json node_health.json 2>/dev/null || true
+            git commit -q -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
+            if git push -q origin HEAD:main; then
+              echo "推送成功（第 $i 次）"
+              exit 0
+            fi
+            echo "推送失败，同步后重试（$i/4）"
+            git fetch -q origin main --depth=1 || true
+            git reset -q --mixed FETCH_HEAD || true
+            sleep 5
+          done
+          echo "推送连续失败，请手动重跑" >&2
+          exit 1
