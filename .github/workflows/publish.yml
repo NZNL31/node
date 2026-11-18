@@ -71,6 +71,16 @@ jobs:
           chmod +x sing-box
           ./sing-box version
 
+      # 香港探测点是目前唯一与「国内能不能用」相关的信号（实测：带 HK 标记的节点
+      # 国内可用率 27.3%，只有本机延迟标记的约 0%）。每轮只测 50 个（check-host.net
+      # 限流），结果累积在 hk_latency.json，几轮后覆盖会涨上来。
+      - name: 香港探测点测延迟
+        env:
+          HK_BATCH: 50
+          HK_TTL_H: 96
+          HK_PRUNE_DAYS: 30
+        run: python hk_probe.py || echo "[警告] 香港探测失败，继续"
+
       - name: 探活 + 协议级校验
         env:
           SINGBOX_BIN: ./sing-box
