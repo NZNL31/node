@@ -34,7 +34,7 @@
     CI 按延迟筛出的 199 个      国内可达  31 个 = 15.6%
 
   也就是说「测速筛选」把可用率从 44% 砍到 15.6%，筛掉的主要是国内能用的节点。
-  所以现在只用延迟做两件事：在同类节点里排序、在名字里打 [US 123ms] 标记。
+  所以现在只用延迟做两件事：在同类节点里排序、在名字里打 [123ms] 标记。
   节点集合本身不再因为延迟被淘汰。
 
   唯一还会被排除的是 sing-box 表达不了的节点（xhttp 传输、SSR 协议）——
@@ -69,6 +69,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import yaml
 
 ALL_NODES_FILE = "all_nodes.yaml"
+# CI 每轮把「解析 + 去重后的候选池」提交成 candidates.yaml，服务器优先消费它；
+# 没有或过期时再自己跑 fetch_subscriptions.py 生成 all_nodes.yaml。
+CANDIDATES_FILE = "candidates.yaml"
 V2_FILE = "v2.txt"
 PROBE_FILE = "probe.json"
 VERIFY_FILE = "verify.json"
@@ -77,6 +80,10 @@ HEALTH_FILE = "node_health.json"
 
 SINGBOX_BIN = os.environ.get("SINGBOX_BIN", "./sing-box")
 CONTROLLER = "127.0.0.1:9090"
+# 可选：所有探活都从这个代理出去（换探测视角，例如链到一个香港/新加坡出口）。
+# 留空 = 直接用本机网络。
+PROBE_VIA = os.environ.get("PROBE_VIA", "").strip()
+VIA_TAG = "via"
 API_BASE = f"http://{CONTROLLER}"
 TEST_URL = os.environ.get("PROBE_URL", "https://www.gstatic.com/generate_204")
 TIMEOUT_MS = int(os.environ.get("PROBE_TIMEOUT_MS", 5000))
@@ -521,12 +528,52 @@ def node_to_outbound(node):
     return out, None
 
 
+
+def via_outbound():
+    """把 PROBE_VIA 解析成 sing-box 出站；没配就返回 None。"""
+    if not PROBE_VIA:
+        return None
+    raw = PROBE_VIA if "://" in PROBE_VIA else "socks5://" + PROBE_VIA
+    u = urllib.parse.urlparse(raw)
+    scheme = (u.scheme or "socks5").lower()
+    typ = {"socks5": "socks", "socks5h": "socks", "socks": "socks",
+           "http": "http", "https": "http"}.get(scheme)
+    if not typ or not u.hostname:
+        print(f"[警告] PROBE_VIA 无法解析: {PROBE_VIA}")
+        return None
+    ob = {"type": typ, "tag": VIA_TAG, "server": u.hostname,
+          "server_port": int(u.port or (1080 if typ == "socks" else 8080))}
+    if u.username:
+        ob["username"] = urllib.parse.unquote(u.username)
+    if u.password:
+        ob["password"] = urllib.parse.unquote(u.password)
+    if scheme == "https":
+        ob["tls"] = {"enabled": True}
+    return ob
+
+
+def with_detour(outbounds, via):
+    """给每个节点出站挂 detour —— 连节点这一步就走代理，从而换掉探测视角。"""
+    if not via:
+        return [dict(o) for o in outbounds]
+    out = []
+    for o in outbounds:
+        o = dict(o)
+        o["detour"] = via["tag"]
+        out.append(o)
+    return out
+
+
 def write_probe_config(outbounds, path=PROBE_FILE):
+    via = via_outbound()
+    outs = with_detour(outbounds, via)
+    if via:
+        outs.append(via)
     config = {
         "log": {"level": "warn"},
         "inbounds": [{"type": "mixed", "tag": "in", "listen": "127.0.0.1",
                       "listen_port": 7890}],
-        "outbounds": list(outbounds) + [{"type": "direct", "tag": "direct"}],
+        "outbounds": outs + [{"type": "direct", "tag": "direct"}],
         "route": {"final": "direct"},
         "experimental": {"clash_api": {"external_controller": CONTROLLER}},
     }
@@ -604,9 +651,11 @@ def build_verify_config(nodes, slots, port_base):
     每个 worker 只改自己那个 selector —— 这样 N 个节点可以并发校验，互不干扰。
     """
     obs = [o for o in (node_to_outbound(n)[0] for n in nodes) if o]
-    tags = [o["tag"] for o in obs]
-    if not tags:
+    if not obs:
         return None
+    via = via_outbound()
+    obs = with_detour(obs, via)
+    tags = [o["tag"] for o in obs]
     return {
         "log": {"level": "error"},
         "inbounds": [{"type": "mixed", "tag": f"in-{i}", "listen": "127.0.0.1",
@@ -614,7 +663,7 @@ def build_verify_config(nodes, slots, port_base):
         "outbounds": obs + [
             {"type": "selector", "tag": f"sel-{i}", "outbounds": tags,
              "default": tags[0]} for i in range(slots)
-        ] + [{"type": "direct", "tag": "direct"}],
+        ] + ([via] if via else []) + [{"type": "direct", "tag": "direct"}],
         "route": {
             "rules": [{"inbound": [f"in-{i}"], "outbound": f"sel-{i}"}
                       for i in range(slots)],
@@ -989,7 +1038,7 @@ def select_nodes(nodes, delays, hk, max_output):
             node["name"] = f"{node['name']} [HK 超时]"
         elif d:
             # 没有香港数据时退回 CI 的测量值，但必须标明是美国测的
-            node["name"] = f"{node['name']} [US {d}ms]"
+            node["name"] = f"{node['name']} [{d}ms]"
         out.append(node)
     return out
 
@@ -1015,11 +1064,13 @@ def write_outputs(nodes):
 # ------------------------------------------------------------------ 主流程
 
 def main():
-    if not os.path.exists(ALL_NODES_FILE):
-        print(f"[错误] 找不到 {ALL_NODES_FILE}", file=sys.stderr)
+    src = CANDIDATES_FILE if os.path.exists(CANDIDATES_FILE) else ALL_NODES_FILE
+    if not os.path.exists(src):
+        print(f"[错误] 找不到 {CANDIDATES_FILE} 或 {ALL_NODES_FILE}", file=sys.stderr)
         sys.exit(1)
+    print(f"输入: {src}")
 
-    with open(ALL_NODES_FILE, encoding="utf-8") as f:
+    with open(src, encoding="utf-8") as f:
         nodes = (yaml.safe_load(f) or {}).get("proxies") or []
     print(f"载入 {len(nodes)} 个节点")
 
@@ -1147,7 +1198,7 @@ def main():
     delays = {id(n): d for d, n in results}
     best = select_nodes(publishable, delays, hk, MAX_OUTPUT)
 
-    dist, stat = {}, {"HK": 0, "HK超时": 0, "US": 0, "无数据": 0}
+    dist, stat = {}, {"HK": 0, "HK超时": 0, "本机": 0, "无数据": 0}
     for n in best:
         dist[n["type"]] = dist.get(n["type"], 0) + 1
         name = n["name"]
@@ -1156,13 +1207,13 @@ def main():
         elif "[HK " in name:
             stat["HK"] += 1
         elif name.endswith("ms]"):
-            stat["US"] += 1
+            stat["本机"] += 1
         else:
             stat["无数据"] += 1
     print(f"输出 {len(best)} 个节点（不按延迟淘汰，只按协议排序）")
     print(f"  类型分布: {dist}")
     print(f"  香港测得 {stat['HK']} 个，香港超时 {stat['HK超时']} 个，"
-          f"仅美国探活 {stat['US']} 个，无数据 {stat['无数据']} 个")
+          f"本机探活 {stat['本机']} 个，无数据 {stat['无数据']} 个")
     if hk:
         print(f"  香港缓存 {len(hk)} 条（由 hk_probe.py 分轮积累）")
     if results:

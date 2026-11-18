@@ -1,22 +1,25 @@
-name: Update Subscriptions
+name: Update Candidates
+
+# 这个工作流只做「供给聚合」：拉订阅源 → 解析 → 完整性清理 → 去重 → 提交候选池。
+# 探活与发布不在这里做 —— 「能不能连」的结论取决于从哪台机器测，由运行方自己的
+# 服务器（run.sh）负责，它才是唯一写入订阅的进程。
 
 on:
   schedule:
-    - cron: "0 */3 * * *"   # 每 3 小时
+    - cron: "0 */3 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
-# 定时和手动触发撞车时排队执行，不要互相取消（取消会留下半套产物）
 concurrency:
-  group: update-subscriptions
+  group: update-candidates
   cancel-in-progress: false
 
 jobs:
-  update:
+  candidates:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: 签出仓库
@@ -34,21 +37,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # sing-box 用来做真实测速：起一个本地代理，逐个节点走真实链路测延迟。
-      # 它同时提供 Clash 兼容的 clash_api（/proxies/{name}/delay），所以探活逻辑
-      # 和用 mihomo 时完全一样，只是内核换了、顺便少维护一个二进制。
-      - name: 下载 sing-box
-        env:
-          SINGBOX_VERSION: 1.14.4
-        run: |
-          curl -fL --retry 3 -o sing-box.tar.gz \
-            "https://github.com/SagerNet/sing-box/releases/download/v${SINGBOX_VERSION}/sing-box-${SINGBOX_VERSION}-linux-amd64.tar.gz"
-          tar -xzf sing-box.tar.gz
-          mv "sing-box-${SINGBOX_VERSION}-linux-amd64/sing-box" .
-          chmod +x sing-box
-          ./sing-box version
-
-      # 解析层 + 淘汰逻辑的回归测试（纯计算，不联网，毫秒级）。挂了就别发布。
       - name: 回归测试
         run: |
           python test_parse.py
@@ -60,83 +48,37 @@ jobs:
           MIN_NODES: 50          # 少于这个数说明订阅源集体失效，直接失败
           SOURCE_LIMIT: 1200     # 单个源最多收 1200 个（巨型 dump 兜底）
         run: python fetch_subscriptions.py
-      # check-host.net 的香港探测点有速率限制（实测连发约 50 次开始返回
-      # limit_exceeded），所以每轮只测一小批，结果累积在 hk_latency.json 里，
-      # 几轮覆盖全量。这一步失败不影响发布。
-      - name: 香港探测点测延迟
-        env:
-          HK_BATCH: 50           # 每轮最多测多少个（check-host.net 约 50 次后限流）
-          HK_TTL_H: 96           # 结果缓存 4 天
-          HK_PRUNE_DAYS: 30      # 已不在池里的条目再留 30 天
-        run: python hk_probe.py
 
-      - name: 真实测速
-        env:
-          MAX_PROBE: 6000
-          PROBE_CONCURRENCY: 64
-          PROBE_TIMEOUT_MS: 4000
-          VERIFY_SLOTS: 24       # 204 校验并发槽位
-          VERIFY_TIMEOUT: 8      # 单次 204 校验超时（秒）
-          # 测速只用于排序和打标记，不用于淘汰节点（原因见 speed_test.py 文件头）
-          MAX_OUTPUT: 1500
-          HK_TTL_H: 96           # 与 hk_probe.py 保持一致：过期数据不参与排序
-        run: python speed_test.py
-
-      # 产物自检：宁可这次不更新，也不要发布一份坏的订阅
-      - name: 校验产物
+      - name: 生成候选池
         run: |
+          cp all_nodes.yaml candidates.yaml
           python - <<'PY'
-          import base64
-          import collections
-          import json
-          import os
           import sys
+          import yaml
 
-          sys.path.insert(0, ".")
-          import fetch_subscriptions as fs
-
-          raw = base64.b64decode(open("v2.txt", encoding="utf-8").read()).decode()
-          uris = [l for l in raw.splitlines() if "://" in l]
-          if not uris:
-              sys.exit("v2.txt 里没有链接")
-
-          # 每条链接都必须能被我们自己的解析器重新解析回节点 —— 这是唯一能挡住
-          # 「导出时丢了 encryption=none / insecure / sni」这类错误的检查。
-          broken = [u[:60] for u in uris if not fs.parse_uri(u)]
-          if broken:
-              sys.exit(f"{len(broken)} 条链接无法回灌解析: {broken[:3]}")
-
-          names = [u.split("#", 1)[1] if "#" in u else "" for u in uris]
-          dup = [k for k, v in collections.Counter(names).items() if v > 1 and k]
-          if dup:
-              sys.exit(f"有重名节点（客户端会互相覆盖）: {dup[:3]}")
-
-          schemes = collections.Counter(u.split("://")[0] for u in uris)
-          # 目标客户端是 v2rayN + sing-box 内核，SSR 和 xhttp 在这里跑不了
-          if schemes.get("ssr"):
-              sys.exit(f"v2.txt 里出现了 {schemes['ssr']} 条 SSR（sing-box 内核不支持）")
-
-          # 香港延迟缓存是可选的，但既然要提交，格式必须是对的
-          if os.path.exists("hk_latency.json"):
-              hk = json.load(open("hk_latency.json", encoding="utf-8"))
-              entries = hk.get("nodes") or {}
-              bad = [k for k, v in entries.items()
-                     if not isinstance(v, dict) or "ms" not in v]
-              if bad:
-                  sys.exit(f"hk_latency.json 有 {len(bad)} 条格式不对: {bad[:3]}")
-              print(f"香港缓存 {len(entries)} 条")
-
-          # 连续失败计数：丢了它就等于所有淘汰状态清零，节点会集体复活
-          if os.path.exists("node_health.json"):
-              nh = json.load(open("node_health.json", encoding="utf-8"))
-              entries = nh.get("nodes") or {}
-              bad = [k for k, v in entries.items()
-                     if not isinstance(v, dict) or "fails" not in v]
-              if bad:
-                  sys.exit(f"node_health.json 有 {len(bad)} 条格式不对: {bad[:3]}")
-              print(f"健康记录 {len(entries)} 条")
-
-          print(f"校验通过: {len(uris)} 条 URI, 协议分布 {dict(schemes)}")
+          doc = yaml.safe_load(open("candidates.yaml", encoding="utf-8"))
+          nodes = doc.get("proxies") or []
+          if not nodes:
+              sys.exit("候选池为空")
+          names = {n["name"] for n in nodes}
+          if len(names) != len(nodes):
+              sys.exit("候选池里有重名节点（客户端会互相覆盖）")
+          import collections
+          dist = collections.Counter(n["type"] for n in nodes)
+          print(f"候选池 {len(nodes)} 个节点: {dict(dist)}")
+          # 假 IP / 保留地址不该出现在候选池里
+          import ipaddress
+          bad = []
+          for n in nodes:
+              try:
+                  ip = ipaddress.ip_address(str(n["server"]).strip("[]"))
+              except ValueError:
+                  continue
+              if ip.is_private or ip.is_loopback or ip.is_reserved or ip.is_link_local:
+                  bad.append(n["server"])
+          if bad:
+              sys.exit(f"候选池里出现了内网/保留地址: {bad[:3]}")
+          print("校验通过")
           PY
 
       - name: 提交并推送
@@ -144,29 +86,23 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
 
-          git add v2.txt
-          git add hk_latency.json node_health.json 2>/dev/null || true
+          git add candidates.yaml
           if git diff --cached --quiet; then
-            echo "没有变化，跳过提交"
+            echo "候选池没有变化，跳过提交"
             exit 0
           fi
 
           for i in 1 2 3 4; do
-            git add v2.txt
-            git add hk_latency.json node_health.json 2>/dev/null || true
-            git commit -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
-            if git push origin HEAD:main; then
+            git add candidates.yaml
+            git commit -q -m "chore: 更新候选池 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
+            if git push -q origin HEAD:main; then
               echo "推送成功（第 $i 次尝试）"
               exit 0
             fi
-
             echo "推送失败，同步远端后重试（$i/4）…"
-            git fetch origin main --depth=1 || true
-            # 不要用 rebase：clash.yaml / v2.txt 是每次重新生成的产物，和远端
-            # 必然冲突，rebase 会直接把整个任务搞挂（踩过一次）。
-            # reset --mixed 把索引换成远端最新，工作区的产物保持不动，
-            # 下一轮 add 时以本次生成的结果为准，其余文件跟远端走。
-            git reset --mixed FETCH_HEAD || true
+            git fetch -q origin main --depth=1 || true
+            # 只回退索引，工作区的候选池保持本次生成的内容
+            git reset -q --mixed FETCH_HEAD || true
             sleep 5
           done
 

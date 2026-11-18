@@ -61,4 +61,22 @@ n2.pop("skip-cert-verify")
 uri2 = st.node_to_uri(n2)
 assert "insecure=1" not in uri2 and "allowInsecure=1" not in uri2, uri2
 
+# 9) PROBE_VIA：让探活从指定代理出去（换探测视角）
+st.PROBE_VIA = "socks5://user:p%40ss@10.0.0.1:1080"
+v = st.via_outbound()
+assert v["type"] == "socks" and v["server"] == "10.0.0.1" and v["server_port"] == 1080
+assert v["username"] == "user" and v["password"] == "p@ss", v   # userinfo 要解码
+
+st.PROBE_VIA = "http://10.0.0.2:8080"
+v2 = st.via_outbound()
+assert v2["type"] == "http" and v2["server_port"] == 8080, v2
+
+st.PROBE_VIA = ""
+assert st.via_outbound() is None
+obs = [{"tag": "a", "type": "vless"}]
+assert st.with_detour(obs, {"tag": "via"})[0]["detour"] == "via"
+assert "detour" not in st.with_detour(obs, None)[0]
+# 不改原对象
+assert "detour" not in obs[0]
+
 print("解析层回归测试全部通过")
