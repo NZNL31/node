@@ -83,6 +83,9 @@ CONTROLLER = "127.0.0.1:9090"
 # 可选：所有探活都从这个代理出去（换探测视角，例如链到一个香港/新加坡出口）。
 # 留空 = 直接用本机网络。
 PROBE_VIA = os.environ.get("PROBE_VIA", "").strip()
+# sing-box 自己的日志级别：排查握手失败时设 debug
+PROBE_LOG_LEVEL = os.environ.get("PROBE_LOG_LEVEL", "warn")
+SINGBOX_LOG = "singbox.log"
 VIA_TAG = "via"
 API_BASE = f"http://{CONTROLLER}"
 TEST_URL = os.environ.get("PROBE_URL", "https://www.gstatic.com/generate_204")
@@ -617,7 +620,7 @@ def write_probe_config(outbounds, path=PROBE_FILE):
     if via:
         outs.append(via)
     config = {
-        "log": {"level": "warn"},
+        "log": {"level": PROBE_LOG_LEVEL},
         "inbounds": [{"type": "mixed", "tag": "in", "listen": "127.0.0.1",
                       "listen_port": probe_listen_port()}],
         "outbounds": outs + [{"type": "direct", "tag": "direct"}],
@@ -670,9 +673,15 @@ def validate_outbounds(outbounds):
 
 
 def start_singbox():
+    """起探活实例；stderr 落盘到 singbox.log，排查时不用靠猜。"""
+    try:
+        os.makedirs("logs", exist_ok=True)
+        err = open(SINGBOX_LOG, "w", encoding="utf-8")
+    except Exception:
+        err = subprocess.DEVNULL
     proc = subprocess.Popen(
         [SINGBOX_BIN, "run", "-c", PROBE_FILE],
-        stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True,
+        stdout=subprocess.DEVNULL, stderr=err, text=True,
     )
     for _ in range(40):
         time.sleep(0.5)
@@ -1209,6 +1218,16 @@ def main():
               "用 PROBE_VIA 换出口：", file=sys.stderr)
         print("      PROBE_VIA=socks5://127.0.0.1:7890 ./run.sh", file=sys.stderr)
         print("   3) 先小样本验证链路再全量：MAX_PROBE=50 ./run.sh", file=sys.stderr)
+        print(f"   4) 抓 sing-box 日志：PROBE_LOG_LEVEL=debug ./run.sh"
+              f"（会写到 {SINGBOX_LOG}）", file=sys.stderr)
+        try:
+            tail = open(SINGBOX_LOG, encoding="utf-8", errors="replace").read().splitlines()[-20:]
+        except Exception:
+            tail = []
+        if tail:
+            print(f"\n[sing-box 最后 {len(tail)} 行]", file=sys.stderr)
+            for line in tail:
+                print("   " + line[:200], file=sys.stderr)
         sys.exit(1)
 
     # 关键一步：延迟通过只说明隧道通了，不说明出口是好的。这一步经每个节点发一次

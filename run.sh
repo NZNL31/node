@@ -16,8 +16,24 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-# shellcheck disable=SC1091
-[ -f .env ] && set -a && . ./.env && set +a
+# 加载 .env，但**不覆盖命令行/系统已显式设置的变量**。
+# 之前用 `set -a; . ./.env`，.env 里的 MAX_PROBE=6000 会把
+# `MAX_PROBE=50 ./run.sh` 顶掉 —— 表现就是「设了 50 却还是跑全量」。
+if [ -f .env ]; then
+  while IFS= read -r line || [ -n "$line" ]; do
+    case "$line" in ''|\#*) continue ;; esac
+    key="${line%%=*}"
+    val="${line#*=}"
+    key="$(printf '%s' "$key" | tr -d '[:space:]')"
+    [ -z "$key" ] && continue
+    # 去掉包裹的引号
+    val="${val%\"}"; val="${val#\"}"
+    val="${val%\'}"; val="${val#\'}"
+    if [ -z "$(eval "printf '%s' \"\${$key+x}\"")" ]; then
+      export "$key=$val"
+    fi
+  done < .env
+fi
 
 SINGBOX_BIN="${SINGBOX_BIN:-./sing-box}"
 SINGBOX_VERSION="${SINGBOX_VERSION:-1.14.4}"
