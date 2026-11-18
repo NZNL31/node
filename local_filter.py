@@ -72,8 +72,8 @@ def main():
     print(f"TCP 协议 {len(tcp)} 条 / UDP 协议 {len(udp)} 条")
     print(f"开始本机校验（{st.VERIFY_SLOTS} 并发，单次超时 {st.VERIFY_TIMEOUT}s）…")
 
-    cfg = st.build_verify_config([n for _, n in pairs], st.VERIFY_SLOTS,
-                                 st.VERIFY_PORT_BASE)
+    base = st.verify_port_base(st.VERIFY_SLOTS)
+    cfg = st.build_verify_config([n for _, n in pairs], st.VERIFY_SLOTS, base)
     if cfg is None:
         sys.exit("没有可用于校验的节点")
     with open("verify_local.json", "w", encoding="utf-8") as f:
@@ -104,7 +104,7 @@ def main():
 
         def worker(idx):
             nonlocal tcp_ok, udp_ok
-            selector, port = f"sel-{idx}", st.VERIFY_PORT_BASE + idx
+            selector, port = f"sel-{idx}", base + idx
             while True:
                 try:
                     u, n = todos.get_nowait()

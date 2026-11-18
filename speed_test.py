@@ -564,6 +564,53 @@ def with_detour(outbounds, via):
     return out
 
 
+
+def _free_ports(count, start):
+    """
+    找一段连续可用的本地端口。
+
+    为什么必须动态挑：探活实例要绑 127.0.0.1，而服务器上常常已经有客户端在跑
+    （mihomo/clash 的混合端口就是 7890，正好和默认值撞上）。撞上就是
+    "bind: address already in use"，整轮直接失败。
+    """
+    import socket
+    for base in range(start, start + 200):
+        socks = []
+        ok = True
+        for i in range(count):
+            sk = socket.socket()
+            try:
+                sk.bind(("127.0.0.1", base + i))
+                socks.append(sk)
+            except OSError:
+                ok = False
+                break
+        for sk in socks:
+            sk.close()
+        if ok:
+            return base
+    raise RuntimeError(f"找不到连续的 {count} 个空闲端口（从 {start} 起）")
+
+
+_PROBE_PORT_CACHE = {}
+_VERIFY_BASE_CACHE = {}
+
+
+def probe_listen_port():
+    """探活实例的本地入站端口（避开被占用的）。"""
+    if "p" not in _PROBE_PORT_CACHE:
+        _PROBE_PORT_CACHE["p"] = _free_ports(
+            1, int(os.environ.get("PROBE_LISTEN_PORT", 7890)))
+    return _PROBE_PORT_CACHE["p"]
+
+
+def verify_port_base(slots):
+    """校验槽位用的连续端口段基址（同一进程内只算一次，调用方必须共用）。"""
+    if slots not in _VERIFY_BASE_CACHE:
+        _VERIFY_BASE_CACHE[slots] = _free_ports(slots, VERIFY_PORT_BASE)
+    return _VERIFY_BASE_CACHE[slots]
+
+
 def write_probe_config(outbounds, path=PROBE_FILE):
     via = via_outbound()
     outs = with_detour(outbounds, via)
@@ -572,7 +619,7 @@ def write_probe_config(outbounds, path=PROBE_FILE):
     config = {
         "log": {"level": "warn"},
         "inbounds": [{"type": "mixed", "tag": "in", "listen": "127.0.0.1",
-                      "listen_port": 7890}],
+                      "listen_port": probe_listen_port()}],
         "outbounds": outs + [{"type": "direct", "tag": "direct"}],
         "route": {"final": "direct"},
         "experimental": {"clash_api": {"external_controller": CONTROLLER}},
@@ -642,7 +689,7 @@ def start_singbox():
     raise RuntimeError("sing-box 的 clash_api 30 秒内未就绪")
 
 
-def build_verify_config(nodes, slots, port_base):
+def build_verify_config(nodes, slots, port_base=None):
     """
     构造「多槽位」校验配置：每个槽位一个 mixed inbound + 一个 selector。
 
@@ -653,6 +700,8 @@ def build_verify_config(nodes, slots, port_base):
     obs = [o for o in (node_to_outbound(n)[0] for n in nodes) if o]
     if not obs:
         return None
+    if port_base is None:
+        port_base = verify_port_base(slots)
     via = via_outbound()
     obs = with_detour(obs, via)
     tags = [o["tag"] for o in obs]
@@ -710,7 +759,7 @@ def verify_204(nodes, slots=VERIFY_SLOTS, timeout=VERIFY_TIMEOUT):
     """
     if not nodes:
         return set(), {}
-    port_base = VERIFY_PORT_BASE
+    port_base = verify_port_base(slots)
     cfg = build_verify_config(nodes, slots, port_base)
     if cfg is None:
         return set(), {}
@@ -846,7 +895,7 @@ def verify_udp(nodes, slots=VERIFY_SLOTS, timeout=VERIFY_TIMEOUT):
     """UDP 协议（hysteria2 / tuic）的校验：并发槽位 + STUN，与 verify_204 同构。"""
     if not nodes:
         return set()
-    port_base = VERIFY_PORT_BASE
+    port_base = verify_port_base(slots)
     cfg = build_verify_config(nodes, slots, port_base)
     if cfg is None:
         return set()

@@ -184,8 +184,8 @@ def main():
         sys.exit(f"找不到 sing-box（{box}）")
 
     cache = load_cache()
-    cfg = st.build_verify_config([n for _, n in entries], st.VERIFY_SLOTS,
-                                 st.VERIFY_PORT_BASE)
+    base = st.verify_port_base(st.VERIFY_SLOTS)
+    cfg = st.build_verify_config([n for _, n in entries], st.VERIFY_SLOTS, base)
     if cfg is None:
         sys.exit("没有可校验的节点")
     with open("purity.json", "w", encoding="utf-8") as f:
@@ -213,7 +213,7 @@ def main():
             q.put((idx, n))
 
         def worker(i):
-            sel, port = f"sel-{i}", st.VERIFY_PORT_BASE + i
+            sel, port = f"sel-{i}", base + i
             while True:
                 try:
                     idx, n = q.get_nowait()

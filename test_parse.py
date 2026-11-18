@@ -79,4 +79,30 @@ assert "detour" not in st.with_detour(obs, None)[0]
 # 不改原对象
 assert "detour" not in obs[0]
 
+# 10) 端口自动避让：服务器上客户端常占着 7890（mihomo 混合端口）
+import socket
+hold = []
+for port in (7890, 7900):
+    sk = socket.socket()
+    try:
+        sk.bind(("127.0.0.1", port))
+        sk.listen(1)
+        hold.append(sk)
+    except OSError:
+        sk.close()          # 已被别的东西占着，同样能验证避让
+try:
+    st._PROBE_PORT_CACHE.clear()
+    st._VERIFY_BASE_CACHE.clear()
+    assert st.probe_listen_port() != 7890 or not hold
+    b = st.verify_port_base(4)
+    if hold:
+        assert b != 7900, b
+    assert st.verify_port_base(4) == b, "同进程内必须稳定"
+    assert st.probe_listen_port() == st.probe_listen_port()
+finally:
+    for sk in hold:
+        sk.close()
+    st._PROBE_PORT_CACHE.clear()
+    st._VERIFY_BASE_CACHE.clear()
+
 print("解析层回归测试全部通过")
