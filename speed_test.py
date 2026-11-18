@@ -152,7 +152,16 @@ def save_health(health):
     os.replace(tmp, HEALTH_FILE)
 
 
-def apply_health(nodes, alive_names, probed_names, health, dead_rounds, min_keep):
+def hk_alive_keys(hk, ttl_h):
+    """香港探测点测得通、且数据没过期的端点（server:port）。"""
+    now = time.time()
+    return {k for k, v in hk.items()
+            if v.get("ms") is not None
+            and now - float(v.get("ts") or 0) <= ttl_h * 3600}
+
+
+def apply_health(nodes, alive_names, probed_names, health, dead_rounds, min_keep,
+                 hk_alive=frozenset()):
     """
     更新连续失败计数，并淘汰「连续 dead_rounds 轮都连不上」的节点。
 
@@ -163,9 +172,12 @@ def apply_health(nodes, alive_names, probed_names, health, dead_rounds, min_keep
       * 但**连不上**是另一回事：一个节点从任何角度看都建立不了连接，留着它只会
         让客户端的 url-test 白跑一遍。所以连不上要淘汰，只是给一轮容错。
 
-    没被探活的节点（sing-box 表达不了的 xhttp/SSR）不参与判定，永远不会被这条
-    规则删掉 —— 我们没测过它，不能因为它「不可测」就当成死了。UDP 协议
-    （hysteria2 / tuic）同样豁免，理由见 NO_ELIMINATE_TYPES。
+    三条豁免（都是「我们没法证明它死了」）：
+
+      * sing-box 表达不了的 xhttp/SSR：从没测过；
+      * UDP 协议（hysteria2/tuic）：CI 对 UDP 出网限制很严；
+      * **香港探测点测得通的**：CI 在美国到不了，不等于亚洲到不了。实测这条能
+        救回 113 个被误杀的节点（占当时池子的 30%）。
     """
     now = int(time.time())
     entries = health["nodes"]
@@ -188,15 +200,21 @@ def apply_health(nodes, alive_names, probed_names, health, dead_rounds, min_keep
             e["last"] = now
             entries[key] = e
 
-    kept, dropped = [], []
+    kept, dropped, hk_saved = [], [], 0
     for n in nodes:
         exempt = n.get("type") in NO_ELIMINATE_TYPES
         failing = (n["name"] in probed_names and n["name"] not in alive_names
                    and not exempt)
         if failing and int((entries.get(node_key(n)) or {}).get("fails", 0)) >= dead_rounds:
-            dropped.append(n)
+            if node_key(n) in hk_alive:
+                hk_saved += 1          # 香港测得通：CI 到不了罢了，留着
+                kept.append(n)
+            else:
+                dropped.append(n)
         else:
             kept.append(n)
+    if hk_saved:
+        print(f"[豁免] {hk_saved} 个节点 CI 侧连不上、但香港测得通，本轮保留")
 
     # 地板保护：删完太少了就整批放弃，宁可脏也不能把订阅砍空
     if dropped and len(kept) < min_keep:
@@ -951,9 +969,11 @@ def main():
     alive = {n["name"] for _, n in results}
     probed = {n["name"] for n in probe_nodes}
     health = load_health()
+    hk = load_hk_latency()
     before = len(nodes)
     nodes, dropped, floor_blocked, health = apply_health(
-        nodes, alive, probed, health, DEAD_ROUNDS, MIN_KEEP)
+        nodes, alive, probed, health, DEAD_ROUNDS, MIN_KEEP,
+        hk_alive=hk_alive_keys(hk, HK_TTL_H))
     save_health(health)
     if dropped:
         dist = {}
@@ -971,7 +991,6 @@ def main():
     # 但探活数量本身不该影响发布，因为 CI 连不通 ≠ 国内连不通（实测 CI 探活的
     # 199 个里国内只有 31 个能用，而未探活的节点里反而藏着大部分国内能用的）。
     delays = {id(n): d for d, n in results}
-    hk = load_hk_latency()
     best = select_nodes(nodes, delays, hk, MAX_OUTPUT)
 
     dist, stat = {}, {"HK": 0, "HK超时": 0, "US": 0, "无数据": 0}

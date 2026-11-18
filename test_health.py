@@ -60,4 +60,11 @@ print("hysteria2 失败一轮后:", "淘汰" if d3 else "保留", "| 有无记�
 assert len(d3) == 0 and len(k3) == 1, "UDP 协议不该被淘汰"
 assert "6.6.6.6:6" not in h3["nodes"], "豁免的协议不该累计失败次数"
 
+# 香港测得通的节点不能因为「CI 连不上」被淘汰（CI 在美国，亚洲通 ≠ 美国通）
+h = node("7.7.7.7", 7, "hk-ok")
+k4, d4, _b4, h4 = st.apply_health([h], set(), {"hk-ok"}, {"nodes": {}}, 1, 1,
+                                  hk_alive={"7.7.7.7:7"})
+print("香港测通但 CI 失败:", "保留" if k4 else "被淘汰")
+assert len(k4) == 1 and not d4, "香港测得通的节点必须豁免淘汰"
+
 print("\n全部断言通过")
