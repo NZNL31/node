@@ -52,6 +52,7 @@ jobs:
       - name: 回归测试
         run: |
           python test_parse.py
+          python test_top.py
           python test_health.py
 
       - name: 拉取并解析订阅

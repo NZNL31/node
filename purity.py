@@ -34,6 +34,7 @@ import fetch_subscriptions as fp
 import speed_test as st
 
 CACHE_FILE = "ip_purity.json"
+QUALITY_FILE = "node_quality.json"
 CACHE_TTL = float(os.environ.get("PURITY_CACHE_DAYS", 7)) * 86400
 IPQUALITY_DIR = os.environ.get("IPQUALITY_DIR", "../ipquality")
 IPQ_CMD = os.environ.get("IPQ_CMD", "")
@@ -105,9 +106,26 @@ def score_ip(ip, cache):
     if score is None:
         print(f"[警告] ipquality 未给出分数 {ip}: {str(data)[:120]}")
         return None, None, False
-    cache[ip] = {"score": score, "grade": grade, "ts": int(now)}
+    # asn / country 用于 top-N 去重（同一 ASN 不能占满名额）
+    asn = data.get("asn") or (data.get("basic") or {}).get("asn")
+    country = data.get("country") or (data.get("basic") or {}).get("country")
+    cache[ip] = {"score": score, "grade": grade, "asn": asn,
+                 "country": country, "ts": int(now)}
     return score, grade, False
 
+
+
+def quality_tag(score, grade):
+    """节点名后缀，例如 `[A 96]`。没分数就空串。"""
+    if score is None:
+        return ""
+    return f"[{grade or '?'} {score:g}]"
+
+
+def final_name(name, score, grade):
+    """标注后的节点名 —— purity 和 select_top 必须用同一个名字，否则对不上。"""
+    tag = quality_tag(score, grade)
+    return f"{name} {tag}" if tag else name
 
 
 def annotate(entries, ips, results, purity_min=0):
@@ -118,11 +136,11 @@ def annotate(entries, ips, results, purity_min=0):
         score, grade = results.get(ip, (None, None))
         if score is not None and purity_min and score < purity_min:
             continue
-        if score is not None:
-            tag = f"[{grade or '?'} {score:g}]"
+        tag = quality_tag(score, grade)
+        if tag:
             base = line.split("#", 1)[0]
-            name = urllib.parse.quote(f"{n['name']} {tag}", safe="")
-            line = f"{base}#{name}"
+            new_name = urllib.parse.quote(final_name(n["name"], score, grade), safe="")
+            line = f"{base}#{new_name}"
         out.append(line)
     return out
 
@@ -213,14 +231,40 @@ def main():
         by_ip.setdefault(ip, []).append(idx)
     print(f"去重后 {len(by_ip)} 个出口 IP，开始打分（命中缓存的不再调 API）…")
 
+    # 评分要调外部 API，几十个 IP 串行会很慢 —— 小并发跑，但要限流（免费额度）
+    from concurrent.futures import ThreadPoolExecutor
     results = {}
-    for ip in by_ip:
-        score, grade, cached = score_ip(ip, cache)
-        results[ip] = (score, grade)
+
+    def _one(ip):
+        score, grade, _cached = score_ip(ip, cache)
+        return ip, score, grade
+
+    with ThreadPoolExecutor(max_workers=int(os.environ.get("PURITY_CONCURRENCY", 4))) as pool:
+        for ip, score, grade in pool.map(_one, list(by_ip)):
+            results[ip] = (score, grade)
         flag = "缓存" if cached else "新查"
         print(f"  {ip:16s} {score if score is not None else '—':>5} "
               f"{(grade or '—'):>2}  ({flag})")
     save_cache(cache)
+
+    # 落一份 sidecar：每个节点的出口 IP 与评分，供 select_top.py 选优选。
+    # 名字必须用**标注后**的（带 [A 96]），否则 select_top 按名字回查 v2.txt 会全部落空。
+    rows = []
+    for idx, (line, n) in enumerate(entries):
+        ip = ips.get(idx)
+        if not ip:
+            continue
+        score, grade = results.get(ip, (None, None))
+        meta = cache.get(ip) or {}
+        rows.append({"name": final_name(n["name"], score, grade),
+                     "raw_name": n["name"], "type": n["type"],
+                     "server": str(n["server"]), "port": n["port"], "ip": ip,
+                     "score": score, "grade": grade,
+                     "asn": meta.get("asn"), "country": meta.get("country")})
+    with open(QUALITY_FILE, "w", encoding="utf-8") as f:
+        json.dump({"updated": int(time.time()), "nodes": rows},
+                  f, ensure_ascii=False, indent=1)
+    print(f"评分明细已写入 {QUALITY_FILE}（{len(rows)} 条）")
 
     out = annotate(entries, ips, results, PURITY_MIN)
     kept = len(out)

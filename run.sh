@@ -63,11 +63,15 @@ python3 hk_probe.py || log "[警告] 香港探测失败，继续"
 log "[3/3] 探活 + 协议级校验 + 输出"
 python3 speed_test.py || { log "[错误] 探活/校验失败，本轮不产出"; exit 1; }
 
-# --- 可选：出口 IP 纯净度标注（结合 NZNL31/ipquality）-----------------------
+# --- 可选：出口 IP 纯净度标注 + 选优选（结合 NZNL31/ipquality）--------------
 if [ "${PURITY:-0}" = "1" ]; then
   log "[附加] 出口 IP 纯净度标注"
   if python3 purity.py; then
     log "[附加] 纯净度标注完成"
+    if [ "${TOP_N:-0}" -gt 0 ]; then
+      log "[附加] 按纯净度选优选 top${TOP_N}"
+      python3 select_top.py || log "[警告] 选优选失败，只保留全量 v2.txt"
+    fi
   else
     log "[警告] 纯净度标注失败，保留未标注的 v2.txt"
   fi
@@ -77,7 +81,10 @@ fi
 case "$PUBLISH" in
   git)
     log "[发布] 提交并推送"
-    git add v2.txt hk_latency.json node_health.json ip_purity.json 2>/dev/null || true
+    git add v2.txt hk_latency.json node_health.json ip_purity.json node_quality.json 2>/dev/null || true
+    if [ -n "${TOP_N:-}" ] && [ -f "top${TOP_N}.txt" ]; then
+      git add "top${TOP_N}.txt"
+    fi
     if git diff --cached --quiet; then
       log "[发布] 没有变化，跳过提交"
     else
