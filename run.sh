@@ -101,6 +101,15 @@ else
   python3 fetch_subscriptions.py || { log "[错误] 拉取失败"; exit 1; }
 fi
 
+# 可选：本机 TCP 可达性快照，供香港探测把名额集中在还活着的节点上。
+# 注意 vantage 必须是有意义的出口（本机/机房），被中间设备劫持的环境会全通，
+# hk_probe 会自动识别并忽略那种文件。
+if [ "${TCP_REACH:-0}" = "1" ]; then
+  log "[2/4] 本机 TCP 可达性快照"
+  SRC=candidates.yaml; [ -f "$SRC" ] || SRC=all_nodes.yaml
+  python3 check_cn.py "$SRC" --json tcp_reach.json || log "[警告] TCP 可达性探测失败"
+fi
+
 if [ "${HK_PROBE:-0}" = "1" ]; then
   log "[2/4] 香港探测点（可选，失败不影响发布）"
   python3 hk_probe.py || log "[警告] 香港探测失败，继续"

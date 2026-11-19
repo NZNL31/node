@@ -49,6 +49,9 @@ import yaml
 ALL_NODES_FILE = "all_nodes.yaml"
 # 与 speed_test.py 一致：优先用 CI 提交的候选池
 CANDIDATES_FILE = "candidates.yaml"
+# 可选：某台机器跑 `check_cn.py --json tcp_reach.json` 产出的可达端点列表。
+# 有了它，香港探测的有限名额优先给「从这个视角可达」的节点。
+TCP_REACH_FILE = "tcp_reach.json"
 CACHE_FILE = "hk_latency.json"
 
 API = "https://check-host.net"
@@ -111,9 +114,45 @@ def prune_cache(cache, nodes):
     return before - len(cache["nodes"])
 
 
-def pick_batch(nodes, cache, batch):
+
+def load_tcp_reach(pool_size):
     """
-    挑这一轮要测的节点：没测过的优先，其次是最久没测过的。
+    读 tcp_reach.json（{vantage, ok:["server:port",...]}）。
+
+    带可信度守卫：如果它把几乎全部节点都判为可达，说明那个视角的 TCP 探测被中间设备
+    劫持了（实测某台受限机器 15/15、679/679 全通），当筛子等于没筛 —— 直接忽略。
+    """
+    if not os.path.exists(TCP_REACH_FILE):
+        return set(), None
+    try:
+        with open(TCP_REACH_FILE, encoding="utf-8") as f:
+            d = json.load(f)
+        ok = set(d.get("ok") or [])
+        vantage = d.get("vantage") or "未知"
+    except Exception as e:
+        print(f"[警告] 读 {TCP_REACH_FILE} 失败，忽略：{e}")
+        return set(), None
+    if not ok:
+        return set(), vantage
+    ratio = len(ok) / max(pool_size, 1)
+    if ratio > 0.95:
+        print(f"[警告] {TCP_REACH_FILE} 声称 {len(ok)}/{pool_size} = {ratio:.0%} 可达，"
+              f"这个视角大概率被劫持（全通=没筛），本轮忽略它")
+        return set(), vantage
+    print(f"[香港探测] 参考 {TCP_REACH_FILE}（vantage={vantage}，{len(ok)} 个可达）")
+    return ok, vantage
+
+
+def pick_batch(nodes, cache, batch, reachable=frozenset()):
+    """
+    挑这一轮要测的节点，优先级：
+
+      1. 在 tcp_reach.json 里可达（说明从那个视角端口是通的）、但还没有新鲜香港数据
+      2. 其它没测过/过期的
+
+    为什么要分档：香港探测每轮只有 50 个名额（check-host.net 限流），全池 3000+ 个节点
+    轮不过来。按「某视角 TCP 可达」优先，本质是把名额集中在还活着的节点上 —— 这是
+    负面证据的反面用法，不引入「按美国 204 通过筛选」那种偏差（那个群体本机可用率 0%）。
 
     同一批里按 key 的哈希排序，而不是按节点池顺序。节点池是按订阅源顺序拼起来的，
     按顺序取会让前几轮全落在一个源上（实测第一轮 20 个全是同一个源里的伊朗节点），
@@ -130,10 +169,11 @@ def pick_batch(nodes, cache, batch):
         entry = cache["nodes"].get(key)
         if entry and now - entry.get("ts", 0) < TTL_H * 3600:
             continue
-        fresh.append((entry.get("ts", 0) if entry else 0,
+        tier = 0 if key in reachable else 1
+        fresh.append((tier, entry.get("ts", 0) if entry else 0,
                       hashlib.md5(key.encode()).hexdigest(), key, n))
 
-    fresh.sort(key=lambda x: (x[0], x[1]))
+    fresh.sort(key=lambda x: (x[0], x[1], x[2]))
     return fresh[:batch]
 
 
@@ -184,7 +224,8 @@ def main():
     tcp_nodes = [n for n in nodes
                  if n.get("type") not in UDP_TYPES and n.get("server") and n.get("port")]
     cache = load_cache()
-    batch = pick_batch(tcp_nodes, cache, BATCH)
+    reachable, _vantage = load_tcp_reach(len(tcp_nodes))
+    batch = pick_batch(tcp_nodes, cache, BATCH, reachable)
 
     print(f"香港探测点：可测节点 {len(tcp_nodes)} 个，本轮取 {len(batch)} 个"
           f"（缓存里已有 {len(cache['nodes'])} 条）")

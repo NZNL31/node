@@ -71,8 +71,27 @@ assert len(k4) == 1 and not d4, "香港测得通的节点必须豁免淘汰"
 import hk_probe as hkp
 nodes = [{"server": f"1.1.1.{i}", "port": 443} for i in range(1, 6)]
 batch = hkp.pick_batch(nodes, {"nodes": {}}, 2)
-picked = {t[3]["server"] for t in batch}
+picked = {t[4]["server"] for t in batch}
 print("香港探测优先取:", sorted(picked))
 assert len(picked) == 2, picked
+
+# 香港探测：优先给「tcp_reach.json 里可达」的节点，但全通的假信号要被丢弃
+nodes = [{"server": f"2.2.2.{i}", "port": 443} for i in range(1, 6)]
+b = hkp.pick_batch(nodes, {"nodes": {}}, 1, reachable={"2.2.2.4:443"})
+assert {t[4]["server"] for t in b} == {"2.2.2.4"}, b
+
+import json, os, tempfile
+tmp = tempfile.mkdtemp()
+os.chdir(tmp)
+# 全通 = 被劫持，应当忽略
+json.dump({"vantage": "gated-vm", "ok": [f"2.2.2.{i}:443" for i in range(1, 6)]},
+          open(hkp.TCP_REACH_FILE, "w", encoding="utf-8"))
+got, _v = hkp.load_tcp_reach(pool_size=5)
+assert got == set(), "全通的 tcp_reach 必须被丢弃"
+# 正常比例（可达 2/5）才采纳
+json.dump({"vantage": "cn-box", "ok": ["2.2.2.1:443", "2.2.2.2:443"]},
+          open(hkp.TCP_REACH_FILE, "w", encoding="utf-8"))
+got, v = hkp.load_tcp_reach(pool_size=5)
+assert got == {"2.2.2.1:443", "2.2.2.2:443"} and v == "cn-box", (got, v)
 
 print("\n全部断言通过")
