@@ -94,4 +94,19 @@ json.dump({"vantage": "cn-box", "ok": ["2.2.2.1:443", "2.2.2.2:443"]},
 got, v = hkp.load_tcp_reach(pool_size=5)
 assert got == {"2.2.2.1:443", "2.2.2.2:443"} and v == "cn-box", (got, v)
 
+# 香港缓存合并：同一个端点取 ts 较新的（整文件覆盖会丢数据）
+local = {"a:1": {"ms": 10, "ts": 100}, "b:2": {"ms": 20, "ts": 300}}
+incoming = {"a:1": {"ms": 15, "ts": 200},   # 更新 → 采用
+            "b:2": {"ms": 99, "ts": 50},    # 更旧 → 保留本地
+            "c:3": {"ms": None, "ts": 400}}  # 新增 → 加入
+merged, added, updated = hkp.merge_caches(local, incoming)
+assert added == 1 and updated == 1, (added, updated)
+assert merged["a:1"]["ms"] == 15, merged["a:1"]
+assert merged["b:2"]["ms"] == 20, merged["b:2"]
+assert "c:3" in merged
+
+# 空输入不应报错
+m2, a2, u2 = hkp.merge_caches(None, None)
+assert m2 == {} and a2 == 0 and u2 == 0
+
 print("\n全部断言通过")

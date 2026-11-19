@@ -54,11 +54,21 @@ jobs:
           HK_PRUNE_DAYS: 30
         run: python hk_probe.py
 
-      - name: 提交并推送
+      # 这个文件是整文件覆盖写的，而别的机器也可能回传同一个文件。
+      # 提交前先把远端的版本合并进来（按 ts 取较新），否则后推的会把先推的条目抹掉。
+      - name: 合并远端缓存
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
-          git add hk_latency.json
+          git fetch -q origin main || echo "[warn] fetch 失败，跳过合并"
+          if git show origin/main:hk_latency.json > /tmp/remote_hk.json 2>/dev/null; then
+            python hk_probe.py --merge /tmp/remote_hk.json
+          else
+            echo "[skip] 远端没有 hk_latency.json"
+          fi
+
+      - name: 提交并推送
+        run: |
           if git diff --cached --quiet; then
             echo "香港缓存没有变化，跳过提交"
             exit 0

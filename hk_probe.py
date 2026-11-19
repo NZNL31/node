@@ -177,6 +177,29 @@ def pick_batch(nodes, cache, batch, reachable=frozenset()):
     return fresh[:batch]
 
 
+def merge_caches(local, incoming):
+    """
+    合并两份 hk_latency.json：同一个端点取 ts 较新的那条。
+
+    为什么需要：这个文件是整文件覆盖写的 —— CI 每小时写一次、别的机器也可能回传，
+    谁后推谁赢，先推的那份就丢了。按 ts 合并可以让双方都不丢。
+    返回 (合并后的 nodes, 新增条数, 更新条数)。
+    """
+    merged = dict(local or {})
+    added = updated = 0
+    for key, entry in (incoming or {}).items():
+        if not isinstance(entry, dict):
+            continue
+        old = merged.get(key)
+        if old is None:
+            merged[key] = entry
+            added += 1
+        elif float(entry.get("ts") or 0) > float(old.get("ts") or 0):
+            merged[key] = entry
+            updated += 1
+    return merged, added, updated
+
+
 def submit(host, port):
     """提交一次探测，返回 request_id；限流返回字符串 'LIMIT'，其它错误返回 None。"""
     q = urllib.parse.urlencode({"host": f"{host}:{port}", "node": NODE})
@@ -277,7 +300,29 @@ def main():
           f"其中 {ok} 条连通")
 
 
+def merge_from(path):
+    """把外部 hk_latency.json 合并进来（按 ts 取新）。"""
+    if not path or not os.path.exists(path):
+        print(f"[跳过] 没有可合并的文件: {path}")
+        return
+    try:
+        with open(path, encoding="utf-8") as f:
+            incoming = (json.load(f) or {}).get("nodes") or {}
+    except Exception as e:
+        print(f"[警告] 读 {path} 失败: {e}")
+        return
+    cache = load_cache()
+    merged, added, updated = merge_caches(cache["nodes"], incoming)
+    cache["nodes"] = merged
+    save_cache(cache)
+    print(f"[合并] {path}: 新增 {added} 条，更新 {updated} 条，合计 {len(merged)} 条")
+
+
 if __name__ == "__main__":
+    if "--merge" in sys.argv:
+        i = sys.argv.index("--merge")
+        merge_from(sys.argv[i + 1] if i + 1 < len(sys.argv) else "")
+        sys.exit(0)
     try:
         main()
     except Exception as e:
