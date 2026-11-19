@@ -1,0 +1,79 @@
+name: HK Probe
+
+# 只做一件事：用 check-host.net 的香港探测点，给「最久没测过」的节点补延迟数据。
+#
+# 为什么单独跑：香港探测每轮上限约 50 个（check-host.net 限流），而候选池有 3000+ 个。
+# 挂在发布流程里每 3 小时才 50 个，覆盖一轮要 8 天；单独每小时跑一次，一天 1200 个，
+# 覆盖一轮约 3 天，正好落在 hk_latency.json 的 96 小时 TTL 内。
+#
+# 这一步不碰节点本身：hk_probe.py 只和 check-host.net 通信（提交任务 + 取结果），
+# 真正的 TCP 探测发生在 check-host 的香港机器上。
+
+on:
+  schedule:
+    - cron: "20 * * * *"    # 每小时的第 20 分
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: "本轮测多少个（check-host.net 约 50 次后限流）"
+        required: false
+        default: "50"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hk-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: 签出仓库
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 香港探测
+        env:
+          HK_BATCH: ${{ inputs.batch || 50 }}
+          HK_TTL_H: 96
+          HK_PRUNE_DAYS: 30
+        run: python hk_probe.py
+
+      - name: 提交并推送
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add hk_latency.json
+          if git diff --cached --quiet; then
+            echo "香港缓存没有变化，跳过提交"
+            exit 0
+          fi
+          for i in 1 2 3 4; do
+            git add hk_latency.json
+            git commit -q -m "chore: 香港延迟 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
+            if git push -q origin HEAD:main; then
+              echo "推送成功（第 $i 次）"
+              exit 0
+            fi
+            echo "推送失败，同步后重试（$i/4）"
+            git fetch -q origin main --depth=1 || true
+            git reset -q --mixed FETCH_HEAD || true
+            sleep 5
+          done
+          echo "推送连续失败，请手动重跑" >&2
+          exit 1
