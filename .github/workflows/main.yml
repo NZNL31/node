@@ -81,19 +81,31 @@ jobs:
           print("校验通过")
           PY
 
+      # GitHub 的 schedule 是 best-effort：实测小时级 cron 一次都没触发，每 3 小时那个
+      # 任务一天也只跑 4 次（间隔 9 小时）。所以把香港探测并进这个至少会被触发的任务里，
+      # 每次 50 个 —— 不依赖 hk.yml 能否按时醒来。
+      - name: 香港探测（并入候选池任务）
+        env:
+          HK_NODES: hk1.node.check-host.net,jp1.node.check-host.net
+          HK_BATCH: 50
+          HK_TTL_H: 96
+          HK_PRUNE_DAYS: 30
+          HK_COLLECT_SECONDS: 300
+        run: python hk_probe.py || echo "[警告] 香港探测失败，继续"
+
       - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
 
-          git add candidates.yaml
+          git add candidates.yaml hk_latency.json
           if git diff --cached --quiet; then
             echo "候选池没有变化，跳过提交"
             exit 0
           fi
 
           for i in 1 2 3 4; do
-            git add candidates.yaml
+            git add candidates.yaml hk_latency.json
             git commit -q -m "chore: 更新候选池 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
             if git push -q origin HEAD:main; then
               echo "推送成功（第 $i 次尝试）"
