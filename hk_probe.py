@@ -67,6 +67,8 @@ PRUNE_DAYS = float(os.environ.get("HK_PRUNE_DAYS", 30))
 # 而这些探测其实稍后是能返回的 —— 只是我们等得不够久。
 COLLECT_SECONDS = int(os.environ.get("HK_COLLECT_SECONDS", 300))
 POLL_SECONDS = float(os.environ.get("HK_POLL_SECONDS", 2.5))
+# 被限流时退避多久再试（实测限流是短冷却，十几秒后恢复）
+LIMIT_BACKOFF = float(os.environ.get("HK_LIMIT_BACKOFF", 15))
 UA = "Mozilla/5.0 (compatible; node-subscription-aggregator/1.0)"
 
 # TCP 探测对 UDP 协议没有意义，直接跳过
@@ -236,6 +238,13 @@ def submit(host, port, node=None):
     q = urllib.parse.urlencode({"host": f"{host}:{port}", "node": node or NODE})
     try:
         data = http_json(f"{API}/check-tcp?{q}")
+    except urllib.error.HTTPError as e:
+        # 429 是限流（比 JSON 里的 limit_exceeded 更常见）。以前被当成普通失败跳过，
+        # 于是每轮只提交了一半就去采结果了。
+        if e.code == 429:
+            return "LIMIT"
+        print(f"  [跳过] {host}:{port} 提交失败: HTTP {e.code}")
+        return None
     except Exception as e:
         print(f"  [跳过] {host}:{port} 提交失败: {e}")
         return None
@@ -297,13 +306,15 @@ def main():
     submitted, limited = {}, False
     for _tier, _ts, _h, key, n in batch:
         rid = None
-        for _attempt in range(len(nodes_pref)):
+        for attempt in range(len(nodes_pref) * 2):
             rid = submit(n["server"], n["port"], nodes_pref[cur])
             if rid != "LIMIT":
                 break
             cur = (cur + 1) % len(nodes_pref)
+            print(f"  被限流，换探测点并退避 {LIMIT_BACKOFF}s（第 {attempt + 1} 次）")
+            time.sleep(LIMIT_BACKOFF)
         if rid == "LIMIT":
-            print("  所有探测点都被限流，本轮提前收工")
+            print("  探测点都被限流，本轮提前收工")
             limited = True
             break
         if rid:
