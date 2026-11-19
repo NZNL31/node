@@ -78,6 +78,9 @@ PUBLISHABLE_FILE = "publishable.json"
 # 每轮写一份「体检卡」，让「自主运行」这件事可以被一眼确认：
 # 最后一次成功是什么时候、发了多少、香港覆盖多少。
 STATUS_FILE = "status.json"
+# 只含「有探测点证据」的节点，给下游（纯净度排序等）一个更靠谱的挑选池。
+# 实测带这类标记的节点国内可用率 27.3%，只有本机延迟标记的约 0~4%。
+HK_ONLY_FILE = "v2_hk.txt"
 V2_FILE = "v2.txt"
 PROBE_FILE = "probe.json"
 VERIFY_FILE = "verify.json"
@@ -1348,6 +1351,18 @@ def main():
             print(f"[HK_ONLY] 香港覆盖不足（仅 {len(kept)} 条，低于 HK_ONLY_MIN="
                   f"{HK_ONLY_MIN}），本轮回退为全量发布")
     print(f"发布 {len(publishable)} 个（池内 {len(nodes)} 个，其余本轮未通过 204 校验）")
+
+    # 额外产出一份「有探测点证据」的子集：下游按纯净度挑优选时，在这个池子里挑
+    # 才不会挑到「干净但连不上」的节点。
+    try:
+        hk_keys = hk_alive_keys(hk, HK_TTL_H)
+        hk_subset = [n for n in publishable if node_key(n) in hk_keys]
+        uris = [u for u in (node_to_uri(n) for n in hk_subset) if u]
+        with open(HK_ONLY_FILE, "w", encoding="utf-8") as f:
+            f.write(base64.b64encode("\n".join(uris).encode()).decode())
+        print(f"已写出 {HK_ONLY_FILE}（{len(uris)} 条带探测点证据）")
+    except Exception as e:
+        print(f"[警告] 写 {HK_ONLY_FILE} 失败: {e}")
     delays = {id(n): d for d, n in results}
     best = select_nodes(publishable, delays, hk, MAX_OUTPUT)
 

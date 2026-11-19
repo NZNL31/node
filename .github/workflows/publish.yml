@@ -146,13 +146,13 @@ jobs:
 
       - name: 提交并推送
         run: |
-          git add v2.txt hk_latency.json node_health.json publishable.json status.json 2>/dev/null || true
+          git add v2.txt v2_hk.txt hk_latency.json node_health.json publishable.json status.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
             exit 0
           fi
           for i in 1 2 3 4; do
-            git add v2.txt hk_latency.json node_health.json publishable.json status.json 2>/dev/null || true
+            git add v2.txt v2_hk.txt hk_latency.json node_health.json publishable.json status.json 2>/dev/null || true
             git commit -q -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
             if git push -q origin HEAD:main; then
               echo "推送成功（第 $i 次）"
