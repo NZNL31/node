@@ -85,6 +85,10 @@ HK_ONLY_FILE = "v2_hk.txt"
 # 格式：{ips: {"1.2.3.4": {"country": "HK", "asn": "AS12345"}}}
 # 它只做「排序偏好」和「产出亚洲机房子集」，不作为发布门槛 —— 地理位置是相关性，不是验证。
 GEO_FILE = "geo.json"
+# CDN / anycast 前置的节点：探测点连到的是就近边缘，不是源站，延迟标记不可信。
+# 实测候选池里约三分之一的 IP 属于 Cloudflare 段。
+CDN_ORG_HINTS = ("cloudflare", "akamai", "fastly", "cloudfront", "gcore", "bunnycdn")
+CDN_ASNS = {"AS13335", "AS209242", "AS16625", "AS54113", "AS19551", "AS60068"}
 ASIA_COUNTRIES = {"HK", "JP", "SG", "TW", "KR", "MY", "TH", "VN", "PH", "ID", "MO"}
 ASIA_FILE = "v2_asia.txt"
 V2_FILE = "v2.txt"
@@ -185,16 +189,40 @@ def load_geo(path=GEO_FILE):
     ips = data.get("ips") or {}
     out = {}
     for ip, info in ips.items():
-        country = (info or {}).get("country")
-        if country:
-            out[str(ip).strip("[]").lower()] = str(country).upper()
+        info = info or {}
+        if not info.get("country"):
+            continue
+        out[str(ip).strip("[]").lower()] = {
+            "country": str(info["country"]).upper(),
+            "asn": info.get("asn"),
+            "org": info.get("org") or "",
+        }
     if out:
         print(f"[地理] {path}: {len(out)} 个 IP 有归属地")
     return out
 
 
+def geo_info(node, geo):
+    """取归属地信息。兼容两种写法：{"ip": "HK"} 与 {"ip": {"country": "HK", ...}}。"""
+    raw = geo.get(str(node.get("server", "")).strip("[]").lower())
+    if isinstance(raw, str):
+        return {"country": raw.upper()}
+    return raw or {}
+
+
 def geo_country(node, geo):
-    return geo.get(str(node.get("server", "")).strip("[]").lower())
+    return geo_info(node, geo).get("country")
+
+
+def is_cdn_fronted(node, geo):
+    """这个节点的地址是不是 CDN/anycast 边缘（那样探测延迟就没意义了）。"""
+    info = geo_info(node, geo)
+    if not info:
+        return False
+    if str(info.get("asn") or "").upper() in CDN_ASNS:
+        return True
+    org = str(info.get("org") or "").lower()
+    return any(h in org for h in CDN_ORG_HINTS)
 
 
 def probe_tag(entry):
@@ -1125,7 +1153,7 @@ def select_nodes(nodes, delays, hk, max_output):
         return 0 if c in ASIA_COUNTRIES else 1
 
     def sort_key(n):
-        e = hk_fresh(n)
+        e = None if is_cdn_fronted(n, _GEO) else hk_fresh(n)
         if e:
             ms = e.get("ms")
             if ms is not None:
@@ -1177,10 +1205,14 @@ def select_nodes(nodes, delays, hk, max_output):
 
     out = []
     for _, node in chosen:
-        e = hk_fresh(node)
+        cdn = is_cdn_fronted(node, _GEO)
+        e = None if cdn else hk_fresh(node)
         d = delays.get(id(node))
         node = dict(node)
-        if e and e.get("ms") is not None:
+        if cdn:
+            # CDN/anycast 前置：探测点连到的是就近边缘，延迟不是到源站的路径，不标数值
+            node["name"] = f"{node['name']} [CDN]"
+        elif e and e.get("ms") is not None:
             node["name"] = f"{node['name']} [{probe_tag(e)} {e['ms']:g}ms]"
         elif e:
             node["name"] = f"{node['name']} [{probe_tag(e)} 超时]"
@@ -1444,6 +1476,7 @@ def main():
                 "proxied_via": PROBE_VIA or None,
                 "geo_known": len(_GEO),
                 "asia_nodes": sum(1 for n in best if geo_country(n, _GEO) in ASIA_COUNTRIES),
+                "cdn_nodes": sum(1 for n in best if is_cdn_fronted(n, _GEO)),
             }, f, ensure_ascii=False, indent=1)
     except Exception as e:
         print(f"[警告] 写 {STATUS_FILE} 失败: {e}")

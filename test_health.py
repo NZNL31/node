@@ -132,4 +132,23 @@ assert [n["server"] for n in geo] == ["1.1.1.1", "9.9.9.9"], geo       # 亚洲�
 assert st.geo_country(nodes[1], st._GEO) == "HK"
 st._GEO = {}
 
+# CDN 前置的节点：探测延迟不可信，应标 [CDN] 且不参与证据排序
+st._GEO = {
+    "1.1.1.1": {"country": "HK", "asn": "AS999", "org": "Some HK Ltd"},
+    "2.2.2.2": {"country": "CA", "asn": "AS13335", "org": "Cloudflare, Inc."},
+}
+assert st.is_cdn_fronted({"server": "2.2.2.2"}, st._GEO) is True
+assert st.is_cdn_fronted({"server": "1.1.1.1"}, st._GEO) is False
+assert st.is_cdn_fronted({"server": "3.3.3.3"}, st._GEO) is False   # 未知不算 CDN
+
+nodes = [{"name": "cf", "type": "vless", "server": "2.2.2.2", "port": 443},
+         {"name": "hk", "type": "vless", "server": "1.1.1.1", "port": 443}]
+hk = {"2.2.2.2:443": {"ms": 2.2, "ts": __import__("time").time(), "node": "hk1.node.check-host.net"},
+      "1.1.1.1:443": {"ms": 40.0, "ts": __import__("time").time(), "node": "hk1.node.check-host.net"}}
+out = st.select_nodes(nodes, {}, hk, 10)
+names = {n["server"]: n["name"] for n in out}
+assert "[CDN]" in names["2.2.2.2"], names       # CDN 不标 2.2ms 这种假延迟
+assert "[HK 40ms]" in names["1.1.1.1"], names
+st._GEO = {}
+
 print("\n全部断言通过")
