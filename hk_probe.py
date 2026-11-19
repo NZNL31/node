@@ -52,6 +52,9 @@ CANDIDATES_FILE = "candidates.yaml"
 # 可选：某台机器跑 `check_cn.py --json tcp_reach.json` 产出的可达端点列表。
 # 有了它，香港探测的有限名额优先给「从这个视角可达」的节点。
 TCP_REACH_FILE = "tcp_reach.json"
+# 上一轮通过 204/STUN 的端点（speed_test.py 写）。香港探测优先给这些节点：
+# 注定不会发布的节点不该占用有限的名额。
+PUBLISHABLE_FILE = "publishable.json"
 CACHE_FILE = "hk_latency.json"
 
 API = "https://check-host.net"
@@ -115,6 +118,23 @@ def prune_cache(cache, nodes):
 
 
 
+def load_priority():
+    """读 publishable.json，返回 (端点集合, 说明文字)。"""
+    if not os.path.exists(PUBLISHABLE_FILE):
+        return set(), ""
+    try:
+        with open(PUBLISHABLE_FILE, encoding="utf-8") as f:
+            d = json.load(f)
+        keys = set(d.get("keys") or [])
+    except Exception as e:
+        print(f"[警告] 读 {PUBLISHABLE_FILE} 失败，忽略：{e}")
+        return set(), ""
+    if keys:
+        print(f"[香港探测] 优先测 {PUBLISHABLE_FILE} 里的 {len(keys)} 个端点"
+              f"（上一轮通过 204/STUN）")
+    return keys, "publishable"
+
+
 def load_tcp_reach(pool_size):
     """
     读 tcp_reach.json（{vantage, ok:["server:port",...]}）。
@@ -143,12 +163,14 @@ def load_tcp_reach(pool_size):
     return ok, vantage
 
 
-def pick_batch(nodes, cache, batch, reachable=frozenset()):
+def pick_batch(nodes, cache, batch, reachable=frozenset(), prioritized=frozenset()):
     """
     挑这一轮要测的节点，优先级：
 
-      1. 在 tcp_reach.json 里可达（说明从那个视角端口是通的）、但还没有新鲜香港数据
-      2. 其它没测过/过期的
+      1. 在 publishable.json 里（上一轮通过 204/STUN）—— 这是最终可能发布的集合，
+         给它优先探测，等于把有限名额从 3000+ 收敛到几百个
+      2. 在 tcp_reach.json 里可达的（次优先）
+      3. 其它没测过/过期的
 
     为什么要分档：香港探测每轮只有 50 个名额（check-host.net 限流），全池 3000+ 个节点
     轮不过来。按「某视角 TCP 可达」优先，本质是把名额集中在还活着的节点上 —— 这是
@@ -169,7 +191,12 @@ def pick_batch(nodes, cache, batch, reachable=frozenset()):
         entry = cache["nodes"].get(key)
         if entry and now - entry.get("ts", 0) < TTL_H * 3600:
             continue
-        tier = 0 if key in reachable else 1
+        if key in prioritized:
+            tier = 0
+        elif key in reachable:
+            tier = 1
+        else:
+            tier = 2
         fresh.append((tier, entry.get("ts", 0) if entry else 0,
                       hashlib.md5(key.encode()).hexdigest(), key, n))
 
@@ -247,8 +274,9 @@ def main():
     tcp_nodes = [n for n in nodes
                  if n.get("type") not in UDP_TYPES and n.get("server") and n.get("port")]
     cache = load_cache()
+    prioritized, _src = load_priority()
     reachable, _vantage = load_tcp_reach(len(tcp_nodes))
-    batch = pick_batch(tcp_nodes, cache, BATCH, reachable)
+    batch = pick_batch(tcp_nodes, cache, BATCH, reachable, prioritized)
 
     print(f"香港探测点：可测节点 {len(tcp_nodes)} 个，本轮取 {len(batch)} 个"
           f"（缓存里已有 {len(cache['nodes'])} 条）")

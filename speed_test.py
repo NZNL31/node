@@ -72,6 +72,9 @@ ALL_NODES_FILE = "all_nodes.yaml"
 # CI 每轮把「解析 + 去重后的候选池」提交成 candidates.yaml，服务器优先消费它；
 # 没有或过期时再自己跑 fetch_subscriptions.py 生成 all_nodes.yaml。
 CANDIDATES_FILE = "candidates.yaml"
+# 本轮通过 204/STUN 的端点。hk_probe.py 读它，把香港探测的有限名额优先给这些节点 ——
+# 注定不会发布的节点没必要占用探测预算。
+PUBLISHABLE_FILE = "publishable.json"
 V2_FILE = "v2.txt"
 PROBE_FILE = "probe.json"
 VERIFY_FILE = "verify.json"
@@ -1275,6 +1278,17 @@ def main():
     print(f"STUN 校验（UDP 协议）：{len(udp_ok)}/{len(udp_nodes)} 通过")
 
     verified |= udp_ok
+
+    # 落一份「本轮到过协议级校验」的端点清单，供下一轮 hk_probe.py 优先探测
+    try:
+        keys = sorted({node_key(n) for n in probe_nodes if n["name"] in verified})
+        with open(PUBLISHABLE_FILE, "w", encoding="utf-8") as f:
+            json.dump({"updated": int(time.time()), "keys": keys},
+                      f, ensure_ascii=False, indent=1)
+        print(f"已写出 {PUBLISHABLE_FILE}（{len(keys)} 个端点，供香港探测优先使用）")
+    except Exception as e:
+        print(f"[警告] 写 {PUBLISHABLE_FILE} 失败: {e}")
+
     results = [(d, n) for d, n in results if n["name"] in verified]
     print(f"探活完成：{len(results)}/{len(probe_nodes)} 个节点通过协议级校验")
 

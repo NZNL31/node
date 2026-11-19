@@ -109,4 +109,11 @@ assert "c:3" in merged
 m2, a2, u2 = hkp.merge_caches(None, None)
 assert m2 == {} and a2 == 0 and u2 == 0
 
+# 香港探测三档：publishable 优先于 tcp_reach 优先于其它
+nodes = [{"server": f"3.3.3.{i}", "port": 443} for i in range(1, 5)]
+b = hkp.pick_batch(nodes, {"nodes": {}}, 2,
+                   reachable={"3.3.3.2:443"}, prioritized={"3.3.3.4:443"})
+picked = [t[4]["server"] for t in b]
+assert picked == ["3.3.3.4", "3.3.3.2"], picked
+
 print("\n全部断言通过")
