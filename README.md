@@ -6,6 +6,9 @@
 |---|---|---|
 | `v2.txt` | base64 编码的分享链接列表，给 **v2rayN（sing-box 内核）** / Shadowrocket 等客户端用 | 服务器 |
 | `candidates.yaml` | 每轮的候选池（拉源 + 解析 + 去重后的结果，**未探活**） | CI |
+| `v2_hk.txt` | `v2.txt` 的子集，只含「有亚洲探测点证据」的节点（同格式） | 服务器/CI |
+| `status.json` | 每轮状态快照：`updated_utc` / `nodes` / `by_type` / `hk_fresh_alive` | 服务器/CI |
+| `publishable.json` | 上一轮通过 204/STUN 的端点清单（供探测预算排序） | 服务器/CI |
 
 订阅地址：
 
