@@ -68,7 +68,11 @@ PRUNE_DAYS = float(os.environ.get("HK_PRUNE_DAYS", 30))
 COLLECT_SECONDS = int(os.environ.get("HK_COLLECT_SECONDS", 300))
 POLL_SECONDS = float(os.environ.get("HK_POLL_SECONDS", 2.5))
 # 被限流时退避多久再试（实测限流是短冷却，十几秒后恢复）
-LIMIT_BACKOFF = float(os.environ.get("HK_LIMIT_BACKOFF", 15))
+LIMIT_BACKOFF = float(os.environ.get("HK_LIMIT_BACKOFF", 10))
+# 整轮最多为限流等待几次（不是每个节点各自等）。
+# 之前写成「每节点最多重试 4 次 × 15 秒」，50 个节点最坏会跑 50 分钟，
+# 直接撞上工作流 20 分钟超时。现在整轮共享预算，超了就带着已有结果收工。
+MAX_LIMIT_WAITS = int(os.environ.get("HK_MAX_LIMIT_WAITS", 3))
 UA = "Mozilla/5.0 (compatible; node-subscription-aggregator/1.0)"
 
 # TCP 探测对 UDP 协议没有意义，直接跳过
@@ -303,18 +307,19 @@ def main():
     # 「刚好被限」时有用，不会提升总吞吐。
     nodes_pref = [x.strip() for x in os.environ.get("HK_NODES", NODE).split(",") if x.strip()]
     cur = 0
+    limit_waits = 0
     submitted, limited = {}, False
     for _tier, _ts, _h, key, n in batch:
-        rid = None
-        for attempt in range(len(nodes_pref) * 2):
-            rid = submit(n["server"], n["port"], nodes_pref[cur])
-            if rid != "LIMIT":
-                break
+        rid = submit(n["server"], n["port"], nodes_pref[cur])
+        while rid == "LIMIT" and limit_waits < MAX_LIMIT_WAITS:
+            limit_waits += 1
             cur = (cur + 1) % len(nodes_pref)
-            print(f"  被限流，换探测点并退避 {LIMIT_BACKOFF}s（第 {attempt + 1} 次）")
+            print(f"  被限流，换到 {nodes_pref[cur].split('.')[0]} 并退避 "
+                  f"{LIMIT_BACKOFF:g}s（整轮第 {limit_waits}/{MAX_LIMIT_WAITS} 次）")
             time.sleep(LIMIT_BACKOFF)
+            rid = submit(n["server"], n["port"], nodes_pref[cur])
         if rid == "LIMIT":
-            print("  探测点都被限流，本轮提前收工")
+            print(f"  限流退避预算用尽，带着已提交的 {len(submitted)} 个去采结果")
             limited = True
             break
         if rid:
