@@ -81,6 +81,12 @@ STATUS_FILE = "status.json"
 # 只含「有探测点证据」的节点，给下游（纯净度排序等）一个更靠谱的挑选池。
 # 实测带这类标记的节点国内可用率 27.3%，只有本机延迟标记的约 0~4%。
 HK_ONLY_FILE = "v2_hk.txt"
+# 可选的服务器 IP 地理位置表（谁产都行：本地查询、离线库、别的机器批量查）。
+# 格式：{ips: {"1.2.3.4": {"country": "HK", "asn": "AS12345"}}}
+# 它只做「排序偏好」和「产出亚洲机房子集」，不作为发布门槛 —— 地理位置是相关性，不是验证。
+GEO_FILE = "geo.json"
+ASIA_COUNTRIES = {"HK", "JP", "SG", "TW", "KR", "MY", "TH", "VN", "PH", "ID", "MO"}
+ASIA_FILE = "v2_asia.txt"
 V2_FILE = "v2.txt"
 PROBE_FILE = "probe.json"
 VERIFY_FILE = "verify.json"
@@ -161,6 +167,34 @@ def type_rank(t):
         return TYPE_ORDER.index(t)
     except ValueError:
         return len(TYPE_ORDER)
+
+
+_GEO = {}
+
+
+def load_geo(path=GEO_FILE):
+    """读地理位置表，返回 {ip: country}；没有文件就返回空字典（功能自动降级）。"""
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"[警告] 读 {path} 失败，跳过地理位置加权：{e}")
+        return {}
+    ips = data.get("ips") or {}
+    out = {}
+    for ip, info in ips.items():
+        country = (info or {}).get("country")
+        if country:
+            out[str(ip).strip("[]").lower()] = str(country).upper()
+    if out:
+        print(f"[地理] {path}: {len(out)} 个 IP 有归属地")
+    return out
+
+
+def geo_country(node, geo):
+    return geo.get(str(node.get("server", "")).strip("[]").lower())
 
 
 def probe_tag(entry):
@@ -1083,17 +1117,24 @@ def select_nodes(nodes, delays, hk, max_output):
             return None
         return e
 
+    def geo_rank(n):
+        """机房在亚洲的排前面（0），未知/其它为 1。没有 geo.json 时恒为 1（不改变原顺序）。"""
+        c = geo_country(n, _GEO)
+        if not c:
+            return 1
+        return 0 if c in ASIA_COUNTRIES else 1
+
     def sort_key(n):
         e = hk_fresh(n)
         if e:
             ms = e.get("ms")
             if ms is not None:
-                return (0, hk_sort_ms(e))
-            return (3, 0)                     # 探测点连不上 → 垫底
+                return (0, geo_rank(n), hk_sort_ms(e))
+            return (3, 1, 0)                  # 探测点连不上 → 垫底
         d = delays.get(id(n))
         if d:
-            return (1, d)
-        return (2, 0)
+            return (1, geo_rank(n), d)
+        return (2, geo_rank(n), 0)
 
     for t, lst in by_type.items():
         lst.sort(key=sort_key)
@@ -1318,6 +1359,8 @@ def main():
     probed = {n["name"] for n in probe_nodes}
     health = load_health()
     hk = load_hk_latency()
+    global _GEO
+    _GEO = load_geo()
     before = len(nodes)
     nodes, dropped, floor_blocked, health = apply_health(
         nodes, alive, probed, health, DEAD_ROUNDS, MIN_KEEP,
@@ -1363,6 +1406,20 @@ def main():
         print(f"已写出 {HK_ONLY_FILE}（{len(uris)} 条带探测点证据）")
     except Exception as e:
         print(f"[警告] 写 {HK_ONLY_FILE} 失败: {e}")
+
+    # 再产一份「服务器机房在亚洲」的子集：这是免费、不限量的弱信号，
+    # 用来给下游挑优选时扩大候选池（池子不再只有带探测点证据的那几十条）。
+    try:
+        if _GEO:
+            asia = [n for n in publishable if geo_country(n, _GEO) in ASIA_COUNTRIES]
+            uris = [u for u in (node_to_uri(n) for n in asia) if u]
+            with open(ASIA_FILE, "w", encoding="utf-8") as f:
+                f.write(base64.b64encode("\n".join(uris).encode()).decode())
+            print(f"已写出 {ASIA_FILE}（{len(uris)} 条，机房在亚洲）")
+        else:
+            print(f"[跳过] 没有 {GEO_FILE}，不生成 {ASIA_FILE}")
+    except Exception as e:
+        print(f"[警告] 写 {ASIA_FILE} 失败: {e}")
     delays = {id(n): d for d, n in results}
     best = select_nodes(publishable, delays, hk, MAX_OUTPUT)
 
@@ -1385,6 +1442,8 @@ def main():
                 "hk_fresh_alive": len(hk_alive),
                 "publishable": len(publishable),
                 "proxied_via": PROBE_VIA or None,
+                "geo_known": len(_GEO),
+                "asia_nodes": sum(1 for n in best if geo_country(n, _GEO) in ASIA_COUNTRIES),
             }, f, ensure_ascii=False, indent=1)
     except Exception as e:
         print(f"[警告] 写 {STATUS_FILE} 失败: {e}")

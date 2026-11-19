@@ -116,4 +116,20 @@ b = hkp.pick_batch(nodes, {"nodes": {}}, 2,
 picked = [t[4]["server"] for t in b]
 assert picked == ["3.3.3.4", "3.3.3.2"], picked
 
+# 地理位置只做排序偏好：没有 geo 时不改变顺序；有 geo 时同层内亚洲机房优先
+import json as _json
+nodes = [{"name": "us", "type": "vless", "server": "9.9.9.9", "port": 443},
+         {"name": "hk", "type": "vless", "server": "1.1.1.1", "port": 443}]
+delays = {id(nodes[0]): 100, id(nodes[1]): 200}
+
+st._GEO = {}
+plain = st.select_nodes(nodes, delays, {}, 10)
+assert [n["server"] for n in plain] == ["9.9.9.9", "1.1.1.1"], plain   # 纯按延迟
+
+st._GEO = {"1.1.1.1": "HK", "9.9.9.9": "US"}
+geo = st.select_nodes(nodes, delays, {}, 10)
+assert [n["server"] for n in geo] == ["1.1.1.1", "9.9.9.9"], geo       # 亚洲机房优先
+assert st.geo_country(nodes[1], st._GEO) == "HK"
+st._GEO = {}
+
 print("\n全部断言通过")
