@@ -109,9 +109,11 @@ UDP_PROTOCOLS = {"hysteria2", "tuic"}
 # 因为并发 32 时有相当一批是排队超时/被临时限流，不是真死。
 DEAD_ROUNDS = int(os.environ.get("DEAD_ROUNDS", 2))
 # 只发布香港测得通的节点（香港是目前唯一与国内可用性正相关的信号，27.3% vs ~0%）。
-# 但香港覆盖需要时间积累，覆盖不足时硬开会把订阅砍到几十条，所以带地板保护。
+# 但「有标记」不等于「数据新鲜」：实测发布集里 185 条有标记、其中只有 51 条在 96h TTL 内。
+# 覆盖不足时开这个开关会把订阅砍到几十条，比全量还差，所以地板设 200 条 ——
+# 它同时充当「覆盖度闸门」：新鲜数据攒够之前，开关不会真的生效。
 HK_ONLY = os.environ.get("HK_ONLY", "0") == "1"
-HK_ONLY_MIN = int(os.environ.get("HK_ONLY_MIN", 20))
+HK_ONLY_MIN = int(os.environ.get("HK_ONLY_MIN", 200))
 
 # 淘汰的地板：如果删完会低于这个数，就整批放弃淘汰（宁可脏一点，也不能把订阅砍空）
 MIN_KEEP = int(os.environ.get("MIN_KEEP", 150))

@@ -227,7 +227,7 @@ MAX_PROBE=50 PROBE_VIA=... ./run.sh     # 先小样本验证链路，别一上�
 | `MAX_OUTPUT` | 1500 | 输出上限，超出才按协议配额裁剪 |
 | `DEAD_ROUNDS` | 2 | 连续几轮失败才淘汰（1 = 立即） |
 | `MIN_KEEP` | 150 | 淘汰地板 |
-| `HK_ONLY` / `HK_ONLY_MIN` | 0 / 20 | 只发布香港测得通的节点；低于地板条数时自动回退为全量 |
+| `HK_ONLY` / `HK_ONLY_MIN` | 0 / 200 | 只发布香港测得通的节点；低于地板条数时自动回退为全量 |
 | `SINGBOX_BIN` / `SINGBOX_VERSION` | `./sing-box` / 1.14.4 | 探活、校验、204 检查都靠它 |
 
 依赖锁在 `requirements.txt`。
