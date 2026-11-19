@@ -108,6 +108,11 @@ UDP_PROTOCOLS = {"hysteria2", "tuic"}
 # 连续多少轮真实探活失败就淘汰。设 1 = 单轮失败即删（激进），默认 2 留一轮容错，
 # 因为并发 32 时有相当一批是排队超时/被临时限流，不是真死。
 DEAD_ROUNDS = int(os.environ.get("DEAD_ROUNDS", 2))
+# 只发布香港测得通的节点（香港是目前唯一与国内可用性正相关的信号，27.3% vs ~0%）。
+# 但香港覆盖需要时间积累，覆盖不足时硬开会把订阅砍到几十条，所以带地板保护。
+HK_ONLY = os.environ.get("HK_ONLY", "0") == "1"
+HK_ONLY_MIN = int(os.environ.get("HK_ONLY_MIN", 20))
+
 # 淘汰的地板：如果删完会低于这个数，就整批放弃淘汰（宁可脏一点，也不能把订阅砍空）
 MIN_KEEP = int(os.environ.get("MIN_KEEP", 150))
 
@@ -1296,6 +1301,18 @@ def main():
     # 只发布通过 204 校验的节点。香港豁免的节点保留在池里（下一轮可能被 CI 探到），
     # 但本轮没有 204 证据，所以不进订阅 —— 宁可少发，不发没验证过的。
     publishable = [n for n in nodes if n["name"] in verified]
+
+    # 只发「香港测得通」的节点：把没有亚洲侧证据的去掉。覆盖不足时自动回退，
+    # 避免把订阅砍成个位数 —— 那还不如发一份宽一点但带标记的。
+    if HK_ONLY:
+        hk_alive = hk_alive_keys(hk, HK_TTL_H)
+        kept = [n for n in publishable if node_key(n) in hk_alive]
+        if len(kept) >= HK_ONLY_MIN:
+            print(f"[HK_ONLY] 只保留香港测得通的节点：{len(publishable)} → {len(kept)}")
+            publishable = kept
+        else:
+            print(f"[HK_ONLY] 香港覆盖不足（仅 {len(kept)} 条，低于 HK_ONLY_MIN="
+                  f"{HK_ONLY_MIN}），本轮回退为全量发布")
     print(f"发布 {len(publishable)} 个（池内 {len(nodes)} 个，其余本轮未通过 204 校验）")
     delays = {id(n): d for d, n in results}
     best = select_nodes(publishable, delays, hk, MAX_OUTPUT)

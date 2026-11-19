@@ -11,6 +11,9 @@ name: Publish Subscription
 # 所以它产出的订阅只适合「先有一份能跑的东西」，不适合当长期质量门槛。
 
 on:
+  # 每天一次，配合 hk.yml 每小时累积的香港数据；也可随时手动触发
+  schedule:
+    - cron: "0 20 * * *"
   workflow_dispatch:
     inputs:
       max_probe:
@@ -25,6 +28,10 @@ on:
         description: "单节点探活超时（毫秒）"
         required: false
         default: "4000"
+      hk_only:
+        description: "只发布香港测得通的节点（1/0，覆盖不足会自动回退）"
+        required: false
+        default: "0"
 
 permissions:
   contents: write
@@ -87,6 +94,7 @@ jobs:
           MAX_PROBE: ${{ inputs.max_probe }}
           MAX_OUTPUT: ${{ inputs.max_output }}
           PROBE_TIMEOUT_MS: ${{ inputs.probe_timeout_ms }}
+          HK_ONLY: ${{ inputs.hk_only || '0' }}
           PROBE_CONCURRENCY: 64
           VERIFY_SLOTS: 24
           VERIFY_TIMEOUT: 8
