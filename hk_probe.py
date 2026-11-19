@@ -63,6 +63,10 @@ BATCH = int(os.environ.get("HK_BATCH", 30))
 TTL_H = float(os.environ.get("HK_TTL_H", 96))
 # 已不在节点池里的孤儿条目保留多少天（池子会来回换，留几天可能还用得上）
 PRUNE_DAYS = float(os.environ.get("HK_PRUNE_DAYS", 30))
+# 结果采集窗口。原来 150 秒会丢掉近一半结果（实测提交 50 只回来 27），
+# 而这些探测其实稍后是能返回的 —— 只是我们等得不够久。
+COLLECT_SECONDS = int(os.environ.get("HK_COLLECT_SECONDS", 300))
+POLL_SECONDS = float(os.environ.get("HK_POLL_SECONDS", 2.5))
 UA = "Mozilla/5.0 (compatible; node-subscription-aggregator/1.0)"
 
 # TCP 探测对 UDP 协议没有意义，直接跳过
@@ -227,9 +231,9 @@ def merge_caches(local, incoming):
     return merged, added, updated
 
 
-def submit(host, port):
+def submit(host, port, node=None):
     """提交一次探测，返回 request_id；限流返回字符串 'LIMIT'，其它错误返回 None。"""
-    q = urllib.parse.urlencode({"host": f"{host}:{port}", "node": NODE})
+    q = urllib.parse.urlencode({"host": f"{host}:{port}", "node": node or NODE})
     try:
         data = http_json(f"{API}/check-tcp?{q}")
     except Exception as e:
@@ -285,34 +289,45 @@ def main():
         return
 
     # ---- 提交 ----
+    # 探测点优先序列：hk1 最接近国内，被限流时依次退到 jp1 / sg1，而不是整轮收工。
+    # 限流是按来源 IP 的全局短冷却（实测同时被限、十几秒后恢复），所以换点只在
+    # 「刚好被限」时有用，不会提升总吞吐。
+    nodes_pref = [x.strip() for x in os.environ.get("HK_NODES", NODE).split(",") if x.strip()]
+    cur = 0
     submitted, limited = {}, False
     for _tier, _ts, _h, key, n in batch:
-        rid = submit(n["server"], n["port"])
+        rid = None
+        for _attempt in range(len(nodes_pref)):
+            rid = submit(n["server"], n["port"], nodes_pref[cur])
+            if rid != "LIMIT":
+                break
+            cur = (cur + 1) % len(nodes_pref)
         if rid == "LIMIT":
-            print("  触发限流，本轮提前收工")
+            print("  所有探测点都被限流，本轮提前收工")
             limited = True
             break
         if rid:
-            submitted[rid] = key
+            submitted[rid] = (key, nodes_pref[cur])
         time.sleep(0.6)   # 温和一点，别把免费服务打挂
 
     print(f"已提交 {len(submitted)} 个探测" + ("（被限流）" if limited else ""))
 
     # ---- 收集 ----
     got = 0
-    deadline = time.time() + 150
+    deadline = time.time() + COLLECT_SECONDS
     while submitted and time.time() < deadline:
-        time.sleep(4)
+        time.sleep(POLL_SECONDS)
         for rid in list(submitted):
             try:
                 res = http_json(f"{API}/check-result/{rid}")
             except Exception:
                 continue
-            done, ms = parse_result(res.get(NODE))
+            key, used_node = submitted[rid]
+            done, ms = parse_result(res.get(used_node))
             if not done:
                 continue
-            key = submitted.pop(rid)
-            cache["nodes"][key] = {"ms": ms, "ts": int(time.time())}
+            submitted.pop(rid)
+            cache["nodes"][key] = {"ms": ms, "ts": int(time.time()), "node": used_node}
             got += 1
 
     if submitted:

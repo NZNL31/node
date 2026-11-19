@@ -83,6 +83,10 @@ jobs:
       # 限流），结果累积在 hk_latency.json，几轮后覆盖会涨上来。
       - name: 香港探测点测延迟
         env:
+          # 探测点优先序列：hk1 最接近国内；被限流时依次退到 jp1（限流是按来源 IP
+          # 的全局短冷却，换点只为不整轮收工，不提升总吞吐）
+          HK_NODES: hk1.node.check-host.net,jp1.node.check-host.net
+          HK_COLLECT_SECONDS: 300
           HK_BATCH: 50
           HK_TTL_H: 96
           HK_PRUNE_DAYS: 30

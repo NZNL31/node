@@ -96,6 +96,9 @@ TIMEOUT_MS = int(os.environ.get("PROBE_TIMEOUT_MS", 5000))
 MAX_PROBE = int(os.environ.get("MAX_PROBE", 2500))
 CONCURRENCY = int(os.environ.get("PROBE_CONCURRENCY", 32))
 MAX_OUTPUT = int(os.environ.get("MAX_OUTPUT", 1500))
+# 非香港探测点（jp1/sg1/vn1）测出来的延迟加多少偏移再参与排序。
+# 它们离国内更远，直接和香港数值混排会低估香港节点的优势。
+HK_NONHK_PENALTY_MS = float(os.environ.get("HK_NONHK_PENALTY_MS", 30))
 # 香港延迟数据超过这个时长就不参与排序和打标签（和 hk_probe.py 的 TTL 对齐）
 HK_TTL_H = float(os.environ.get("HK_TTL_H", 96))
 # 「🚀 精选」组的大小：手机上的健康检查只覆盖这么多节点
@@ -152,6 +155,18 @@ def type_rank(t):
         return TYPE_ORDER.index(t)
     except ValueError:
         return len(TYPE_ORDER)
+
+
+def probe_tag(entry):
+    """探测点前缀：hk1→HK、jp1→JP、sg1→SG、vn1→VN。"""
+    node = str((entry or {}).get("node") or "hk1")
+    return node.split(".")[0].strip().upper()[:2] or "HK"
+
+
+def hk_sort_ms(entry):
+    """参与排序的毫秒数：非香港探测点按偏移折算，保持可比性。"""
+    ms = float(entry.get("ms") or 0)
+    return ms + (0 if probe_tag(entry) == "HK" else HK_NONHK_PENALTY_MS)
 
 
 def node_key(node):
@@ -1067,8 +1082,8 @@ def select_nodes(nodes, delays, hk, max_output):
         if e:
             ms = e.get("ms")
             if ms is not None:
-                return (0, ms)
-            return (3, 0)                     # 香港连不上 → 垫底
+                return (0, hk_sort_ms(e))
+            return (3, 0)                     # 探测点连不上 → 垫底
         d = delays.get(id(n))
         if d:
             return (1, d)
@@ -1119,9 +1134,9 @@ def select_nodes(nodes, delays, hk, max_output):
         d = delays.get(id(node))
         node = dict(node)
         if e and e.get("ms") is not None:
-            node["name"] = f"{node['name']} [HK {e['ms']:g}ms]"
+            node["name"] = f"{node['name']} [{probe_tag(e)} {e['ms']:g}ms]"
         elif e:
-            node["name"] = f"{node['name']} [HK 超时]"
+            node["name"] = f"{node['name']} [{probe_tag(e)} 超时]"
         elif d:
             # 没有香港数据时退回 CI 的测量值，但必须标明是美国测的
             node["name"] = f"{node['name']} [{d}ms]"
@@ -1337,9 +1352,9 @@ def main():
     for n in best:
         dist[n["type"]] = dist.get(n["type"], 0) + 1
         name = n["name"]
-        if name.endswith("[HK 超时]"):
+        if name.endswith("超时]") and ("[HK " in name or "[JP " in name or "[SG " in name or "[VN " in name):
             stat["HK超时"] += 1
-        elif "[HK " in name:
+        elif any(t in name for t in ("[HK ", "[JP ", "[SG ", "[VN ")):
             stat["HK"] += 1
         elif name.endswith("ms]"):
             stat["本机"] += 1
