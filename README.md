@@ -9,6 +9,8 @@
 | `v2_hk.txt` | `v2.txt` 的子集，只含「有亚洲探测点证据」的节点（同格式） | 服务器/CI |
 | `status.json` | 每轮状态快照：`updated_utc` / `nodes` / `by_type` / `hk_fresh_alive` | 服务器/CI |
 | `publishable.json` | 上一轮通过 204/STUN 的端点清单（供探测预算排序） | 服务器/CI |
+| `geo.json` | 服务器 IP → 归属地/ASN（批量查询，只影响排序与候选池，不作为发布门槛） | CI |
+| `v2_asia.txt` | `v2.txt` 的子集，只含机房在亚洲的节点 | 服务器/CI |
 
 订阅地址：
 
