@@ -235,7 +235,7 @@ def main():
 
     # ---- 提交 ----
     submitted, limited = {}, False
-    for _, _, key, n in batch:
+    for _tier, _ts, _h, key, n in batch:
         rid = submit(n["server"], n["port"])
         if rid == "LIMIT":
             print("  触发限流，本轮提前收工")
