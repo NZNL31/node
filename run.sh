@@ -165,7 +165,7 @@ fi
 case "$PUBLISH" in
   git)
     log "[发布] 提交并推送 v2.txt"
-    git add v2.txt hk_latency.json node_health.json 2>/dev/null || true
+    git add v2.txt hk_latency.json node_health.json publishable.json status.json 2>/dev/null || true
     if git diff --cached --quiet; then
       log "[发布] 没有变化，跳过提交"
     else
@@ -180,7 +180,7 @@ case "$PUBLISH" in
         log "[发布] 推送失败，同步远端后重试（${i}/4）"
         git fetch -q origin || true
         git reset -q --soft origin/main 2>/dev/null || true
-        git add v2.txt hk_latency.json node_health.json 2>/dev/null || true
+        git add v2.txt hk_latency.json node_health.json publishable.json status.json 2>/dev/null || true
         git commit -q -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
         sleep 5
       done

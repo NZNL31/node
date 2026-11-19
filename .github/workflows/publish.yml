@@ -78,6 +78,25 @@ jobs:
           chmod +x sing-box
           ./sing-box version
 
+      # 自愈：候选池缺失或过期时，这一轮自己拉源，不依赖 candidates 工作流是否按时跑
+      - name: 确保候选池可用
+        run: |
+          MAX_AGE_H="${CANDIDATES_MAX_AGE_H:-12}"
+          NEED=0
+          if [ ! -f candidates.yaml ]; then
+            echo "候选池不存在"
+            NEED=1
+          else
+            AGE_H=$(( ( $(date +%s) - $(date -r candidates.yaml +%s) ) / 3600 ))
+            echo "候选池年龄 ${AGE_H}h（阈值 ${MAX_AGE_H}h）"
+            [ "$AGE_H" -gt "$MAX_AGE_H" ] && NEED=1
+          fi
+          if [ "$NEED" = "1" ]; then
+            echo "自己拉源"
+            MIN_NODES=50 SOURCE_LIMIT=1200 python fetch_subscriptions.py
+            cp all_nodes.yaml candidates.yaml
+          fi
+
       # 香港探测点是目前唯一与「国内能不能用」相关的信号（实测：带 HK 标记的节点
       # 国内可用率 27.3%，只有本机延迟标记的约 0%）。每轮只测 50 个（check-host.net
       # 限流），结果累积在 hk_latency.json，几轮后覆盖会涨上来。
@@ -138,13 +157,13 @@ jobs:
 
       - name: 提交并推送
         run: |
-          git add v2.txt hk_latency.json node_health.json publishable.json 2>/dev/null || true
+          git add v2.txt hk_latency.json node_health.json publishable.json status.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "没有变化，跳过提交"
             exit 0
           fi
           for i in 1 2 3 4; do
-            git add v2.txt hk_latency.json node_health.json publishable.json 2>/dev/null || true
+            git add v2.txt hk_latency.json node_health.json publishable.json status.json 2>/dev/null || true
             git commit -q -m "chore: 更新订阅 $(date -u '+%Y-%m-%d %H:%M UTC')" || true
             if git push -q origin HEAD:main; then
               echo "推送成功（第 $i 次）"

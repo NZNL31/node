@@ -75,6 +75,9 @@ CANDIDATES_FILE = "candidates.yaml"
 # 本轮通过 204/STUN 的端点。hk_probe.py 读它，把香港探测的有限名额优先给这些节点 ——
 # 注定不会发布的节点没必要占用探测预算。
 PUBLISHABLE_FILE = "publishable.json"
+# 每轮写一份「体检卡」，让「自主运行」这件事可以被一眼确认：
+# 最后一次成功是什么时候、发了多少、香港覆盖多少。
+STATUS_FILE = "status.json"
 V2_FILE = "v2.txt"
 PROBE_FILE = "probe.json"
 VERIFY_FILE = "verify.json"
@@ -1347,6 +1350,29 @@ def main():
     print(f"发布 {len(publishable)} 个（池内 {len(nodes)} 个，其余本轮未通过 204 校验）")
     delays = {id(n): d for d, n in results}
     best = select_nodes(publishable, delays, hk, MAX_OUTPUT)
+
+    # 落一份状态快照（不参与任何判断，只用于观测）
+    try:
+        hk_alive = hk_alive_keys(hk, HK_TTL_H)
+        fresh_hk = {k for k, v in hk.items()
+                    if time.time() - float(v.get("ts") or 0) <= HK_TTL_H * 3600}
+        dist = {}
+        for n in best:
+            dist[n["type"]] = dist.get(n["type"], 0) + 1
+        with open(STATUS_FILE, "w", encoding="utf-8") as f:
+            json.dump({
+                "updated": int(time.time()),
+                "updated_utc": time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()),
+                "nodes": len(best),
+                "by_type": dist,
+                "hk_only": HK_ONLY,
+                "hk_fresh": len(fresh_hk),
+                "hk_fresh_alive": len(hk_alive),
+                "publishable": len(publishable),
+                "proxied_via": PROBE_VIA or None,
+            }, f, ensure_ascii=False, indent=1)
+    except Exception as e:
+        print(f"[警告] 写 {STATUS_FILE} 失败: {e}")
 
     dist, stat = {}, {"HK": 0, "HK超时": 0, "本机": 0, "无数据": 0}
     for n in best:
