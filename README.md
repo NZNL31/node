@@ -42,6 +42,7 @@
 | `hk_probe.py` | check-host 香港探测点补延迟（只访问一个域名） |
 | `geo_lookup.py` | 批量查 IP 归属地，增量更新 `geo.json` |
 | `purity.py` / `select_top.py` | 可选：出口 IP 纯净度标注与 top-N 精选 |
+| `muse_filter.py` | 从新鲜候选池做 Muse 专用实测：TCP 预筛 + Muse API + 出口国家 |
 | `run.sh` | 服务器入口：同步 → 候选池 → 预检 → 探活 → 可选纯净度 → 发布 |
 | `doctor.py` | 四层体检：系统时间 / CA / 出网 / 到节点 |
 | `check_cn.py` | 任意视角的 TCP 可达率统计 |
@@ -65,3 +66,10 @@ cp deploy/env.example .env    # 发布方式、并发、可选纯净度、探测
 - 自用项目，不保证可用性，也不提供支持。
 - 节点全部来自公开订阅源，随时会失效；`v2.txt` 是某一轮的快照。
 - 想判断「我这边到底能用哪些」，只能在本地实测 —— 这正是上面「服务器定稿」的原因。
+- 给 Muse 选节点时先跑 `python muse_filter.py`。纯净度和香港延迟只能预测可用性，
+  不能代替本机的代理握手和 Muse API 请求；脚本默认从较新的 `candidates.yaml`
+  里选，把真正通过的节点写到 `v2_muse_ok.txt`，再用这份池子做纯净度排名。
+  也可用 `MUSE_SOURCES=v2.txt` 只测已发布池。固定某个地区可用
+  `MUSE_COUNTRIES=US python muse_filter.py`。香港探针 400ms 不能直接拿来卡本机
+  Muse 往返，后者还包含本机出境、握手和后端响应；默认只记录并按本机耗时排序，
+  需要硬门槛时再设置 `MUSE_MAX_LATENCY_MS=1200`。
