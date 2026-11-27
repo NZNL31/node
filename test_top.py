@@ -103,6 +103,15 @@ try:
 finally:
     purity.subprocess.run = _real_run
 
+# 6.1) 批量评分必须把 cache 命中标志从 worker 传回，不能引用未定义变量
+_real_score_ip = purity.score_ip
+purity.score_ip = lambda ip, cache: (88, "B", True)
+try:
+    scored = purity.score_ips({"1.2.3.4": [0], "5.6.7.8": [1]}, {}, workers=2)
+    assert scored == {"1.2.3.4": (88, "B"), "5.6.7.8": (88, "B")}, scored
+finally:
+    purity.score_ip = _real_score_ip
+
 # 7) 兼容：顶层就是数字的老实现 / 私有地址这类没有分数的返回
 purity.subprocess.run = lambda *a, **k: _CP(json.dumps({"score": 77, "grade": "C"}))
 try:

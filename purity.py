@@ -30,6 +30,7 @@ import sys
 import time
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 
 import fetch_subscriptions as fp
 import speed_test as st
@@ -129,6 +130,23 @@ def score_ip(ip, cache):
     return score, grade, False
 
 
+def score_ips(by_ip, cache, workers=None):
+    """并发给去重后的出口 IP 打分，返回 {ip: (score, grade)}。"""
+    def one(ip):
+        score, grade, cached = score_ip(ip, cache)
+        return ip, score, grade, cached
+
+    results = {}
+    worker_count = workers or int(os.environ.get("PURITY_CONCURRENCY", 4))
+    with ThreadPoolExecutor(max_workers=worker_count) as pool:
+        for ip, score, grade, cached in pool.map(one, list(by_ip)):
+            results[ip] = (score, grade)
+            flag = "缓存" if cached else "新查"
+            print(f"  {ip:16s} {score if score is not None else '—':>5} "
+                  f"{(grade or '—'):>2}  ({flag})")
+    return results
+
+
 
 def quality_tag(score, grade):
     """节点名后缀，例如 `[A 96]`。没分数就空串。"""
@@ -198,15 +216,7 @@ def main():
     ips = {}
     lock = threading.Lock()
     try:
-        for _ in range(40):
-            time.sleep(0.5)
-            if proc.poll() is not None:
-                sys.exit(f"sing-box 启动失败: {(proc.stderr.read() or '')[:300]}")
-            try:
-                urllib.request.urlopen(f"{st.API_BASE}/version", timeout=2)
-                break
-            except Exception:
-                continue
+        st.wait_for_clash_api(proc, "纯净度校验实例")
 
         q = queue_mod.Queue()
         for idx, (line, n) in enumerate(entries):
@@ -247,19 +257,7 @@ def main():
     print(f"去重后 {len(by_ip)} 个出口 IP，开始打分（命中缓存的不再调 API）…")
 
     # 评分要调外部 API，几十个 IP 串行会很慢 —— 小并发跑，但要限流（免费额度）
-    from concurrent.futures import ThreadPoolExecutor
-    results = {}
-
-    def _one(ip):
-        score, grade, _cached = score_ip(ip, cache)
-        return ip, score, grade
-
-    with ThreadPoolExecutor(max_workers=int(os.environ.get("PURITY_CONCURRENCY", 4))) as pool:
-        for ip, score, grade in pool.map(_one, list(by_ip)):
-            results[ip] = (score, grade)
-        flag = "缓存" if cached else "新查"
-        print(f"  {ip:16s} {score if score is not None else '—':>5} "
-              f"{(grade or '—'):>2}  ({flag})")
+    results = score_ips(by_ip, cache)
     save_cache(cache)
 
     # 落一份 sidecar：每个节点的出口 IP 与评分，供 select_top.py 选优选。

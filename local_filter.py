@@ -19,7 +19,6 @@ import base64
 import os
 import subprocess
 import sys
-import time
 import urllib.request
 
 import speed_test as st
@@ -86,15 +85,7 @@ def main():
                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
     ok_names, tcp_ok, udp_ok = set(), 0, 0
     try:
-        for _ in range(40):
-            time.sleep(0.5)
-            if proc.poll() is not None:
-                sys.exit(f"sing-box 启动失败: {(proc.stderr.read() or '')[:300]}")
-            try:
-                urllib.request.urlopen(f"{st.API_BASE}/version", timeout=2)
-                break
-            except Exception:
-                continue
+        st.wait_for_clash_api(proc, "本机校验实例")
 
         todos = queue_mod.Queue()
         for u, n in pairs:

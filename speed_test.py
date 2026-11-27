@@ -690,6 +690,7 @@ def _free_ports(count, start):
 
 _PROBE_PORT_CACHE = {}
 _VERIFY_BASE_CACHE = {}
+_CONTROLLER_ADDRESS = ""
 
 
 def probe_listen_port():
@@ -707,6 +708,40 @@ def verify_port_base(slots):
     return _VERIFY_BASE_CACHE[slots]
 
 
+def controller_address():
+    """Clash API 地址；默认 9090，被占用时自动顺延。"""
+    global _CONTROLLER_ADDRESS, CONTROLLER, API_BASE
+    if not _CONTROLLER_ADDRESS:
+        port = _free_ports(1, int(os.environ.get("CLASH_API_PORT", 9090)))
+        _CONTROLLER_ADDRESS = f"127.0.0.1:{port}"
+        CONTROLLER = _CONTROLLER_ADDRESS
+        API_BASE = f"http://{CONTROLLER}"
+    return _CONTROLLER_ADDRESS
+
+
+def api_base():
+    controller_address()
+    return API_BASE
+
+
+def wait_for_clash_api(proc, label="sing-box", timeout=30):
+    """等 Clash API 就绪；进程退出或超时必须明确报错，不能继续跑出假 0 结果。"""
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        if proc.poll() is not None:
+            detail = proc.stderr.read() if proc.stderr else ""
+            raise RuntimeError(f"{label} 启动失败: {(detail or '').strip()[:500]}")
+        try:
+            with urllib.request.urlopen(f"{api_base()}/version", timeout=2) as resp:
+                if resp.status == 200:
+                    return
+        except Exception:
+            pass
+        time.sleep(0.25)
+    raise RuntimeError(
+        f"{label} 的 Clash API {controller_address()} 在 {timeout:g} 秒内未就绪")
+
+
 def write_probe_config(outbounds, path=PROBE_FILE):
     via = via_outbound()
     outs = with_detour(outbounds, via)
@@ -718,7 +753,7 @@ def write_probe_config(outbounds, path=PROBE_FILE):
                       "listen_port": probe_listen_port()}],
         "outbounds": outs + [{"type": "direct", "tag": "direct"}],
         "route": {"final": "direct"},
-        "experimental": {"clash_api": {"external_controller": CONTROLLER}},
+        "experimental": {"clash_api": {"external_controller": controller_address()}},
     }
     with open(path, "w", encoding="utf-8") as f:
         json.dump(config, f, ensure_ascii=False)
@@ -776,19 +811,13 @@ def start_singbox():
         [SINGBOX_BIN, "run", "-c", PROBE_FILE],
         stdout=subprocess.DEVNULL, stderr=err, text=True,
     )
-    for _ in range(40):
-        time.sleep(0.5)
-        if proc.poll() is not None:
-            err = proc.stderr.read() if proc.stderr else ""
-            raise RuntimeError(f"sing-box 启动失败: {err[:500]}")
-        try:
-            with urllib.request.urlopen(f"{API_BASE}/version", timeout=2) as resp:
-                if resp.status == 200:
-                    return proc
-        except Exception:
-            continue
-    proc.kill()
-    raise RuntimeError("sing-box 的 clash_api 30 秒内未就绪")
+    try:
+        wait_for_clash_api(proc, "sing-box 探活实例")
+        return proc
+    except Exception:
+        proc.kill()
+        proc.wait(timeout=10)
+        raise
 
 
 def build_verify_config(nodes, slots, port_base=None):
@@ -820,7 +849,7 @@ def build_verify_config(nodes, slots, port_base=None):
                       for i in range(slots)],
             "final": "direct",
         },
-        "experimental": {"clash_api": {"external_controller": CONTROLLER}},
+        "experimental": {"clash_api": {"external_controller": controller_address()}},
     }
 
 
@@ -828,7 +857,7 @@ def select_proxy(selector, name):
     """PUT /proxies/{selector} 切换该槽位使用的节点。"""
     body = json.dumps({"name": name}).encode()
     req = urllib.request.Request(
-        f"{API_BASE}/proxies/{urllib.parse.quote(selector, safe='')}",
+        f"{api_base()}/proxies/{urllib.parse.quote(selector, safe='')}",
         data=body, method="PUT",
         headers={"Content-Type": "application/json"})
     try:
@@ -872,16 +901,7 @@ def verify_204(nodes, slots=VERIFY_SLOTS, timeout=VERIFY_TIMEOUT):
                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
     verified, statuses = set(), {}
     try:
-        for _ in range(40):
-            time.sleep(0.5)
-            if proc.poll() is not None:
-                print(f"[警告] 校验实例启动失败: {(proc.stderr.read() or '')[:300]}")
-                return set(), {}
-            try:
-                with urllib.request.urlopen(f"{API_BASE}/version", timeout=2):
-                    break
-            except Exception:
-                continue
+        wait_for_clash_api(proc, "204 校验实例")
 
         queue = queue_mod.Queue()
         for n in nodes:
@@ -1008,16 +1028,7 @@ def verify_udp(nodes, slots=VERIFY_SLOTS, timeout=VERIFY_TIMEOUT):
                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
     ok = set()
     try:
-        for _ in range(40):
-            time.sleep(0.5)
-            if proc.poll() is not None:
-                print(f"[警告] UDP 校验实例启动失败: {(proc.stderr.read() or '')[:300]}")
-                return set()
-            try:
-                with urllib.request.urlopen(f"{API_BASE}/version", timeout=2):
-                    break
-            except Exception:
-                continue
+        wait_for_clash_api(proc, "UDP 校验实例")
 
         queue = queue_mod.Queue()
         for n in nodes:
@@ -1064,7 +1075,7 @@ def probe_one(name: str):
     以前一律吞成 None，现场只能看到「0/N」，没法区分是哪一类。
     """
     q = urllib.parse.urlencode({"timeout": TIMEOUT_MS, "url": TEST_URL})
-    url = f"{API_BASE}/proxies/{urllib.parse.quote(str(name), safe='')}/delay?{q}"
+    url = f"{api_base()}/proxies/{urllib.parse.quote(str(name), safe='')}/delay?{q}"
     try:
         with urllib.request.urlopen(url, timeout=TIMEOUT_MS / 1000 + 5) as resp:
             data = json.loads(resp.read().decode())
@@ -1235,6 +1246,8 @@ def write_outputs(nodes):
     在 main() 里就被剔除了，不会进入 v2.txt。
     """
     uris = [u for u in (node_to_uri(n) for n in nodes) if u]
+    if not uris:
+        raise RuntimeError("没有可写入的有效节点，拒绝生成空订阅")
     with open(V2_FILE, "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(uris).encode()).decode())
     print(f"已写出 {V2_FILE}（{len(uris)} 条 URI）")
@@ -1372,6 +1385,12 @@ def main():
     print(f"STUN 校验（UDP 协议）：{len(udp_ok)}/{len(udp_nodes)} 通过")
 
     verified |= udp_ok
+
+    if not verified:
+        print("[错误] 所有隧道都通了，但没有任何节点通过协议级校验（204/STUN）。"
+              "这通常说明校验链路或目标站异常，本轮不写空订阅；"
+              "先运行 python3 doctor.py 排查。", file=sys.stderr)
+        sys.exit(1)
 
     # 落一份「本轮到过协议级校验」的端点清单，供下一轮 hk_probe.py 优先探测
     try:

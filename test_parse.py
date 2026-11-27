@@ -43,6 +43,26 @@ a.pop("ws_opts")
 kept2, dropped2 = fs.prefer_complete([a, b])
 assert dropped2 == 0 and len(kept2) == 2
 
+# 6.1) 凭证只有后缀不同也必须视为不同节点，不能截断到前 24 位
+prefix = "u-" + "a" * 24
+full_long = dict(full, uuid=prefix + "A")
+bare_long = dict(bare, uuid=prefix + "B")
+kept_long, dropped_long = fs.prefer_complete([full_long, bare_long])
+assert dropped_long == 0 and len(kept_long) == 2, (kept_long, dropped_long)
+
+tuic_a = {"name": "ta", "type": "tuic", "server": "1.1.1.2", "port": 443,
+          "uuid": prefix + "A", "password": "pw-a"}
+tuic_b = dict(tuic_a, name="tb", password="pw-b")
+assert fs.node_key(tuic_a) != fs.node_key(tuic_b), fs.node_key(tuic_a)
+
+# 6.2) SIP002 明文 userinfo 中的百分号编码必须还原
+n = fs.parse_uri("ss://aes-128-gcm:p%40ss%3Aword@1.2.3.4:8388#ss-percent")
+assert n and n["password"] == "p@ss:word", n
+
+# 6.3) 共享地址等非公网单播地址不应进入候选池
+assert fs.is_usable_server("100.64.0.1") is False
+assert fs.is_usable_server("8.8.8.8") is True
+
 import speed_test as st
 
 # 7) 导出侧：VLESS 必须带 encryption=none，skip-cert-verify 必须还原成 insecure 参数
@@ -82,12 +102,14 @@ assert "detour" not in obs[0]
 # 10) 端口自动避让：服务器上客户端常占着 7890（mihomo 混合端口）
 import socket
 hold = []
-for port in (7890, 7900):
+held_ports = set()
+for port in (9090, 7890, 7900):
     sk = socket.socket()
     try:
         sk.bind(("127.0.0.1", port))
         sk.listen(1)
         hold.append(sk)
+        held_ports.add(port)
     except OSError:
         sk.close()          # 已被别的东西占着，同样能验证避让
 try:
@@ -99,10 +121,40 @@ try:
         assert b != 7900, b
     assert st.verify_port_base(4) == b, "同进程内必须稳定"
     assert st.probe_listen_port() == st.probe_listen_port()
+    st._CONTROLLER_ADDRESS = ""
+    api_address = st.controller_address()
+    if 9090 in held_ports:
+        assert not api_address.endswith(":9090"), api_address
 finally:
     for sk in hold:
         sk.close()
     st._PROBE_PORT_CACHE.clear()
     st._VERIFY_BASE_CACHE.clear()
+    st._CONTROLLER_ADDRESS = ""
+
+# 11) Clash API 启动失败/超时必须明确报错，不能继续制造假 0 结果
+import io
+
+
+class _FailedProc:
+    stderr = io.StringIO("listen failed")
+
+    @staticmethod
+    def poll():
+        return 1
+
+
+try:
+    st.wait_for_clash_api(_FailedProc(), "测试实例", timeout=0.1)
+    raise AssertionError("进程已退出时 wait_for_clash_api 必须抛错")
+except RuntimeError as e:
+    assert "测试实例" in str(e) and "listen failed" in str(e), e
+
+# 12) 空结果不能写成一份空订阅
+try:
+    st.write_outputs([])
+    raise AssertionError("空节点列表必须拒绝写订阅")
+except RuntimeError as e:
+    assert "空订阅" in str(e), e
 
 print("解析层回归测试全部通过")

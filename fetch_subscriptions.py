@@ -211,6 +211,9 @@ def parse_ss(body: str, name: str):
         userinfo, _, hostport = body.rpartition("@")
         if ":" not in userinfo:
             userinfo = b64d(userinfo)
+        else:
+            # 兼容 SIP002 的明文 userinfo；密码里的 @ : # 等字符必须以百分号编码。
+            userinfo = unquote(userinfo)
     else:
         # 老格式: ss://base64(method:pass@host:port)
         decoded = b64d(body)
@@ -219,7 +222,7 @@ def parse_ss(body: str, name: str):
         userinfo, _, hostport = decoded.rpartition("@")
 
     method, _, password = userinfo.partition(":")
-    host, port = split_hostport(hostport)
+    host, port = split_hostport(unquote(hostport))
     if not (method and password and host and port):
         return None
     return {
@@ -391,8 +394,9 @@ def is_usable_server(server) -> bool:
         ip = ipaddress.ip_address(s)
     except ValueError:
         return True                      # 是域名，放过
-    return not (ip.is_private or ip.is_loopback or ip.is_reserved
-                or ip.is_unspecified or ip.is_link_local or ip.is_multicast)
+    # is_global 同时排除私有、回环、链路本地、组播和 100.64.0.0/10 等保留段。
+    # 节点地址必须是公网可路由的；逐个枚举保留属性容易漏掉新类别。
+    return ip.is_global
 
 
 def sample_source(nodes, limit):
@@ -508,9 +512,11 @@ def completeness(node: dict):
 
 def identity(node: dict):
     """同一节点的身份：协议 + 服务器 + 端口 + 凭证（不含传输层）。"""
-    cred = node.get("uuid") or node.get("password") or ""
+    # tuic 同时用 UUID 和密码认证，因此不能只取其中一个；也不能截断凭证，
+    # 否则前 24 位相同的 UUID/长密码会被误判成同一节点。
+    cred = (str(node.get("uuid") or ""), str(node.get("password") or ""))
     return (node["type"], str(node["server"]).lower(), int(node["port"]),
-            str(cred)[:24])
+            cred)
 
 
 def prefer_complete(nodes):
@@ -547,7 +553,7 @@ def node_key(node: dict):
     ws/grpc 还要带上传输层身份：CDN 后面的节点经常是同一个 server:port + 同一个
     UUID，只靠 Host/path 区分，否则会把几十个不同的节点合并成一个。
     """
-    cred = node.get("uuid") or node.get("password") or ""
+    cred = (str(node.get("uuid") or ""), str(node.get("password") or ""))
     ws = node.get("ws-opts") or {}
     grpc = node.get("grpc-opts") or {}
     if ws:
@@ -558,7 +564,7 @@ def node_key(node: dict):
     else:
         transport = ""
     return (node["type"], str(node["server"]).lower(), node["port"],
-            str(cred)[:24], transport)
+            cred, transport)
 
 
 # ------------------------------------------------------------------ 主流程
