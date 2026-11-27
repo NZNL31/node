@@ -1,0 +1,161 @@
+name: Build Muse Snapshot
+
+# 云端生成 Muse 专用可用节点快照。这个工作流不依赖任何本机：
+# 拉最新候选池 → TCP/配置/握手/Muse API/出口国家校验 → 提交固定 latest 快照。
+#
+# 注意：它证明的是「GitHub runner → 节点 → Muse」可用，不等价于「中国大陆本机
+# → 节点」。需要严格的本机结论时，必须由同一网络中的探针运行 muse_filter.py。
+
+on:
+  schedule:
+    - cron: "20 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-muse-snapshot
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: 签出仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 回归测试
+        run: |
+          python test_parse.py
+          python test_top.py
+          python test_health.py
+          python test_muse_filter.py
+
+      - name: 下载 sing-box
+        env:
+          SINGBOX_VERSION: 1.14.5
+        run: |
+          curl -fL --retry 3 -o sing-box.tar.gz \
+            "https://github.com/SagerNet/sing-box/releases/download/v${SINGBOX_VERSION}/sing-box-${SINGBOX_VERSION}-linux-amd64.tar.gz"
+          tar -xzf sing-box.tar.gz
+          mv "sing-box-${SINGBOX_VERSION}-linux-amd64/sing-box" .
+          chmod +x sing-box
+          ./sing-box version
+
+      - name: 确保候选池新鲜
+        env:
+          CANDIDATES_MAX_AGE_H: 12
+        run: |
+          NEED=0
+          if [ ! -f candidates.yaml ]; then
+            NEED=1
+          else
+            AGE_H=$(( ( $(date +%s) - $(date -r candidates.yaml +%s) ) / 3600 ))
+            echo "候选池年龄 ${AGE_H}h"
+            [ "$AGE_H" -gt "$CANDIDATES_MAX_AGE_H" ] && NEED=1
+          fi
+          if [ "$NEED" = "1" ]; then
+            MIN_NODES=50 SOURCE_LIMIT=1200 python fetch_subscriptions.py
+            cp all_nodes.yaml candidates.yaml
+          fi
+
+      - name: 构建 Muse 实测快照
+        env:
+          SINGBOX_BIN: ./sing-box
+          MUSE_SOURCES: candidates.yaml
+          MUSE_OUT: artifacts/muse/latest/v2_muse_ok.txt
+          MUSE_REPORT: artifacts/muse/latest/muse_reach.json
+          MUSE_COUNTRIES: US,CA,JP,SG,MX,AU,GB
+          MUSE_SLOTS: 32
+          MUSE_TIMEOUT: 8
+          MUSE_TCP_PRECHECK: 1
+          MUSE_TCP_TIMEOUT: 3
+          MUSE_TCP_WORKERS: 128
+        run: |
+          mkdir -p artifacts/muse/latest
+          python muse_filter.py
+
+      - name: 生成快照说明
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("artifacts/muse/latest/muse_reach.json").read_text(encoding="utf-8"))
+          ok = [row for row in report["nodes"] if row.get("ok")]
+          countries = {}
+          types = {}
+          for row in ok:
+              countries[row["exit_country"]] = countries.get(row["exit_country"], 0) + 1
+              types[row["type"]] = types.get(row["type"], 0) + 1
+          lines = [
+              "# Muse 云端实测快照",
+              "",
+              "该目录由 GitHub Actions 自动生成；Muse 直接消费，不需要连接节点。",
+              "",
+              f"- 生成时间：`{report['updated']}`",
+              f"- Muse 目标：`{report['target']}`",
+              f"- 候选数：{report['candidates']}",
+              f"- 实测节点数：{report['probed']}",
+              f"- 最终通过：{report['passed']}",
+              f"- 类型：{json.dumps(types, ensure_ascii=False, sort_keys=True)}",
+              f"- 出口：{json.dumps(countries, ensure_ascii=False, sort_keys=True)}",
+              "",
+              "`muse_reach.json` 已包含每条通过节点的 `exit_ip`；ipquality 应直接对该字段",
+              "做新鲜打分，不应从无法连接节点的虚拟机再次进入代理。",
+          ]
+          Path("artifacts/muse/latest/README.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+          PY
+
+      - name: 保存构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: muse-live-check
+          path: artifacts/muse/latest/
+          retention-days: 14
+
+      - name: 提交并推送快照
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add -f artifacts/muse/latest/v2_muse_ok.txt \
+            artifacts/muse/latest/muse_reach.json \
+            artifacts/muse/latest/README.md
+          if git diff --cached --quiet; then
+            echo "快照没有变化，跳过提交"
+            exit 0
+          fi
+          git commit -q -m "chore: 更新 Muse 实测快照 $(date -u '+%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3 4; do
+            if git push -q origin HEAD:main; then
+              echo "推送成功（第 $i 次）"
+              exit 0
+            fi
+            echo "推送失败，同步后重试（$i/4）"
+            git fetch -q origin main
+            if ! git rebase -q origin/main; then
+              git rebase --abort || true
+              echo "无法自动合并远端更新" >&2
+              exit 1
+            fi
+            sleep 5
+          done
+          echo "推送连续失败" >&2
+          exit 1

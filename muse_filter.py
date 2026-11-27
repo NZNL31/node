@@ -266,10 +266,13 @@ def run_probes(entries):
                     status, muse_ms, loc, ip = None, None, None, None
                 else:
                     status, _, muse_ms = request_via(port, TARGET_URL, TIMEOUT)
-                    trace_status, trace_body, _ = request_via(
-                        port, TRACE_URL, TIMEOUT)
-                    trace = parse_trace(trace_body) if trace_status == 200 else {}
-                    loc, ip = trace.get("loc"), trace.get("ip")
+                    if status == 200:
+                        trace_status, trace_body, _ = request_via(
+                            port, TRACE_URL, TIMEOUT)
+                        trace = parse_trace(trace_body) if trace_status == 200 else {}
+                        loc, ip = trace.get("loc"), trace.get("ip")
+                    else:
+                        loc, ip = None, None
                 ok = acceptance(status, loc, muse_ms or float("inf"))
                 row = {"line": line, "name": node["name"], "type": node["type"],
                        "server": str(node["server"]), "port": int(node["port"]),

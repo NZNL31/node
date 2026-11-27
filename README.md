@@ -61,6 +61,10 @@ cp deploy/env.example .env    # 发布方式、并发、可选纯净度、探测
 注意 GitHub 的 `schedule` 是 best-effort —— 实测小时级 cron 基本不触发，所以香港探测
 并进了 3 小时那个任务。
 
+Muse 的无人值守模式由 `muse.yml` 每 6 小时执行：它使用 GitHub runner 作为探针，
+自动更新 `artifacts/muse/latest/`。这是“云端探针 → 节点 → Muse”的结论，不依赖本机；
+如果必须保证中国大陆本机可用，仍需在相同网络中运行 `muse_filter.py`。
+
 ## 注意
 
 - 自用项目，不保证可用性，也不提供支持。
